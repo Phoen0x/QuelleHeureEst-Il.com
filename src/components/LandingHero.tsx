@@ -8,7 +8,7 @@ const features = [
   { icon: Globe, label: 'Heure, Date, et Fuseau Horaire local', color: 'text-blue-400' },
   { icon: Cloud, label: 'Météo', color: 'text-sky-400' },
   { icon: Wind, label: 'Qualité de l\'air et pollution', color: 'text-emerald-400' },
-  { icon: Flower2, label: 'Pollen Levels', color: 'text-amber-400' },
+  { icon: Flower2, label: 'Niveaux de Pollen', color: 'text-amber-400' },
 ];
 
 export function LandingHero({ isOffline }: LandingHeroProps) {
