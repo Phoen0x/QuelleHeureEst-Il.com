@@ -69,42 +69,64 @@ export default function App() {
 
         <main className="flex-1 max-w-7xl mx-auto w-full px-4 py-8">
           {isOffline && !location && (
-            <div className="flex items-center gap-2 text-amber-400 text-sm bg-amber-500/10
-                            border border-amber-500/20 px-4 py-3 rounded-2xl mb-6">
+            <div className={`flex items-center gap-2 text-sm px-4 py-3 rounded-2xl mb-6 ${
+              settings.theme === 'light'
+                ? 'text-amber-700 bg-amber-100 border border-amber-300'
+                : 'text-amber-400 bg-amber-500/10 border border-amber-500/20'
+            }`}>
               <AlertCircle className="w-4 h-4 shrink-0" />
-              You are offline. Search results may be limited to previously cached locations.
+              Vous êtes hors ligne. Les résultats peuvent être limités aux lieux en cache.
             </div>
           )}
 
           {loading && (
             <div className="flex flex-col items-center justify-center gap-4 py-24">
-              <div className="w-16 h-16 rounded-2xl bg-blue-500/10 border border-blue-500/20
-                              flex items-center justify-center">
-                <Loader2 className="w-8 h-8 text-blue-400 animate-spin" />
+              <div className={`w-16 h-16 rounded-2xl flex items-center justify-center ${
+                settings.theme === 'light'
+                  ? 'bg-blue-100 border border-blue-300'
+                  : 'bg-blue-500/10 border border-blue-500/20'
+              }`}>
+                <Loader2 className={`w-8 h-8 animate-spin ${
+                  settings.theme === 'light' ? 'text-blue-600' : 'text-blue-400'
+                }`} />
               </div>
-              <p className="text-slate-400 text-sm">
-                Fetching data for {location?.name}...
+              <p className={`text-sm ${
+                settings.theme === 'light' ? 'text-slate-600' : 'text-slate-400'
+              }`}>
+                Récupération des données pour {location?.name}...
               </p>
             </div>
           )}
 
           {error && !loading && (
             <div className="flex flex-col items-center gap-4 py-16">
-              <div className="w-16 h-16 rounded-2xl bg-red-500/10 border border-red-500/20
-                              flex items-center justify-center">
-                <AlertCircle className="w-8 h-8 text-red-400" />
+              <div className={`w-16 h-16 rounded-2xl flex items-center justify-center ${
+                settings.theme === 'light'
+                  ? 'bg-red-100 border border-red-300'
+                  : 'bg-red-500/10 border border-red-500/20'
+              }`}>
+                <AlertCircle className={`w-8 h-8 ${
+                  settings.theme === 'light' ? 'text-red-600' : 'text-red-400'
+                }`} />
               </div>
               <div className="text-center">
-                <p className="text-slate-300 font-medium">Failed to load data</p>
-                <p className="text-slate-500 text-sm mt-1">{error}</p>
+                <p className={`font-medium ${
+                  settings.theme === 'light' ? 'text-slate-900' : 'text-slate-300'
+                }`}>Échec du chargement des données</p>
+                <p className={`text-sm mt-1 ${
+                  settings.theme === 'light' ? 'text-slate-600' : 'text-slate-500'
+                }`}>{error}</p>
               </div>
               {location && (
                 <button
                   onClick={handleRefresh}
-                  className="px-5 py-2.5 rounded-xl bg-blue-500/10 border border-blue-500/30
-                             text-blue-400 text-sm font-medium hover:bg-blue-500/20 transition-colors"
+                  className={`px-5 py-2.5 rounded-xl text-sm font-medium transition-colors ${
+                    settings.theme === 'light'
+                      ? 'bg-blue-100 border border-blue-300 text-blue-700 hover:bg-blue-200'
+                      : 'bg-blue-500/10 border border-blue-500/30 text-blue-400 hover:bg-blue-500/20'
+                  }`}
                 >
-                  Try again
+                  Réessayer
                 </button>
               )}
             </div>

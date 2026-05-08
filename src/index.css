@@ -42,10 +42,19 @@
   }
 
   .light-mode .card-glass {
-    @apply bg-white/80 border-slate-200/80;
+    @apply bg-slate-50/95 border-slate-300/60;
   }
 
   .light-mode .card-glass:hover {
-    @apply border-slate-300/80;
+    @apply border-slate-400/60;
   }
+
+  .light-mode {
+    --text-primary: rgb(15, 23, 42);
+    --text-secondary: rgb(71, 85, 105);
+    --text-tertiary: rgb(120, 133, 155);
+    --bg-primary: rgb(248, 250, 252);
+    --bg-secondary: rgb(241, 245, 249);
+  }
+
 }
