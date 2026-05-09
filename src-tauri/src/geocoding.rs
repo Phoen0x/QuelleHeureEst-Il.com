@@ -1,4 +1,5 @@
 use serde_json::{json, Value};
+use urlencoding;
 
 pub async fn search_locations(query: &str) -> Result<Vec<Value>, String> {
     let url = format!(
