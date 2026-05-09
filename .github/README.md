@@ -224,7 +224,7 @@ tests/
 - Packaging automatisé
 - Publication Play Store
 
----
+```
 
 ## 📦 Installation et développement
 
@@ -237,7 +237,6 @@ tests/
 ```bash
 git clone https://github.com/VotreOrg/QuelleHeureEst-Il.com.git
 cd QuelleHeureEst-Il.com
-```
 
 ### Installer les dépendances
 ```bash
