@@ -192,7 +192,6 @@ infra/
   proxmox/
 docs/
 tests/
-```
 
 ---
 
