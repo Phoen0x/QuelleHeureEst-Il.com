@@ -1,5 +1,110 @@
-For all designs I ask you to make, have them be beautiful, not cookie cutter. Make webpages that are fully featured and worthy for production.
+QuelleHeureEst-Il?.com est une application open-source native cross-platform, pas une web app ni une PWA.
+L’UI web n’est qu’une couche embarquée dans Tauri.
+Toute la logique métier, les APIs, le cache offline, la cohérence fonctionnelle et le traitement des données doivent être en Rust côté backend local.
+L’application doit fonctionner sans navigateur, comme un client lourd local, en offline-first.
 
-By default, this template supports JSX syntax with Tailwind CSS classes, React hooks, and Lucide React for icons. Do not install other packages for UI themes, icons, etc unless absolutely necessary or I request them.
+Le projet doit être multilingue natif.
+Le français est la langue par défaut.
+L’utilisateur choisit sa langue d’affichage dans l’application.
+Le code, les commentaires, la documentation, les discussions de conception et les messages générés doivent rester en français.
 
-Use icons from lucide-react for logos.
+Si un repo GitHub existant est fourni, l’importer et l’utiliser comme base prioritaire.
+Ne jamais recréer le projet de zéro si une base existe.
+
+Objectif :
+Fournir pour n’importe quel lieu l’heure locale exacte, le fuseau horaire, la météo, la qualité de l’air, la pollution, le pollen et les infos environnementales connexes.
+
+Priorité :
+Android d’abord, Google Play en objectif principal.
+Ensuite desktop, iOS, wearable, TV, self-host.
+Compatibilité Android la plus large possible selon les contraintes techniques.
+Compatible GrapheneOS dès la conception, avec sécurité maximale, permissions minimales, et aucun message/notification/alerte parasite.
+Notifications, réseau et permissions = cas de bord de sécurité.
+
+Contraintes :
+100 % open-source.
+Zéro service/API payant.
+Zéro abonnement.
+Zéro vendor lock-in.
+Aucune dépendance critique à un fournisseur propriétaire payant.
+Si une fonction coûte normalement de l’argent : alternative gratuite, locale ou open-source.
+Offline-first obligatoire.
+Sobriété réseau.
+Pas de tracking inutile.
+i18n et a11y dès le départ.
+Sécurité forte.
+Maintenable 10 ans minimum.
+Performant sur appareils modestes.
+
+Sources :
+Ne pas limiter les sources par défaut.
+Multiplier les sources gratuites, ouvertes et fiables.
+Comparer les valeurs pour réduire les erreurs.
+Conserver la provenance.
+Si divergence : afficher les différences et/ou fournir moyenne, médiane ou estimation consolidée.
+Préférer la validation croisée à une source unique.
+Ne pas masquer les divergences utiles.
+
+Stack :
+Rust pour le backend local et la logique métier.
+Tauri 2 pour le shell cross-platform.
+TypeScript + Svelte de préférence, ou React si nécessaire, pour l’UI embarquée.
+SQLite locale.
+SQLCipher ou équivalent libre si chiffrement nécessaire.
+Docker, VM, Proxmox, Qubes OS si pertinent.
+Ne proposer une alternative à Tauri que si nécessaire.
+
+Sources gratuites :
+Open-Meteo pour météo, air, pollen.
+Open-Meteo Geocoding ou base locale.
+Fuseaux horaires via base TZ embarquée ou calcul local.
+Heure calculée localement.
+Aucun service payant par défaut.
+
+Fonctionnalités :
+Recherche par nom ou coordonnées.
+Géocodage.
+Dashboard.
+Cache local intelligent.
+Dernier état connu hors ligne.
+Dégradation progressive sans réseau.
+Favoris.
+Historique.
+Multi-profils.
+Notifications.
+Export JSON/CSV.
+Offline complet après première sync.
+Support desktop, mobile, TV, wearable et self-host si compatible.
+
+Architecture :
+1. Présentation : UI responsive, clair/sombre, adaptée au device.
+2. Domaine : géolocalisation, timezone, agrégation météo/air/pollen, cohérence métier.
+3. Adaptateurs : APIs, géocodage, stockage, cache, sync.
+4. Offline-first : cache, dernier état connu, fraîcheur, dégradation progressive.
+5. Sécurité : chiffrement local, permissions minimales, isolation des données.
+
+MVP :
+Saisie d’un lieu.
+Géocodage.
+Open-Meteo.
+Calcul timezone.
+Dashboard.
+Cache local offline.
+
+Repo :
+apps/desktop, apps/mobile, apps/tv, apps/wearable,
+crates/core-domain, geocoding, timezone, weather, air-quality, persistence, sync, ui-kit,
+infra/docker, infra/proxmox, docs, tests.
+
+Fonctions à prévoir à terme :
+pression, visibilité, brouillard, phases de la lune, astuces vies, vêtements, risque maladie, activité sportive, recommandations lunettes, proverbes, fêtes, calendrier, journée, retard d’avion, vols d’avions, retards de train, traduction multilingue, amélioration du mode clair, amélioration de l’icône météo, plus de jours météo, correction du lever et coucher de soleil, correction du fait que l’app est une app native et pas un site web, trafic, travaux, radars, policiers, manifestations, nouvelles lois, itinéraire vélo, promenade de chien, jogging.
+
+Réponse attendue :
+Français.
+Structurée, claire, actionnable.
+Très concise.
+Minimiser les tokens.
+Aller droit au but.
+Ne pas inventer de fonctionnalités.
+Poser une seule question si nécessaire.
+Toujours : Rust d’abord, local d’abord, offline d’abord, Android d’abord, sécurité d’abord.
