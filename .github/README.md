@@ -173,7 +173,6 @@ Fournir une application complète permettant d'accéder, en ligne et hors ligne,
 5. **Sécurité** : chiffrement local, permissions minimales, isolation des données
 
 ### Structure du repository
-```
 apps/
   desktop/
   mobile/
@@ -282,8 +281,8 @@ Ce projet est open-source. Licence à définir.
 
 ## 👥 Contributeurs principaux
 
-- **Æther le.a Grougrou** - Technicien.ne Informatique
-- **Léo le Grougrou** - Étudiant en game design
+- **Æther** - Technicien.ne Informatique
+- **Minho** - Étudiant en game design
 
 ---
 
