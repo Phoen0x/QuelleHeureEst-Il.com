@@ -275,7 +275,7 @@ Ce projet n'est pas open-source, libre, gratuit ou communautaire.
 Il appartient exclusivement à son organisation, Phoen0x, propriété d'ÆtherXYZ, et l'équipe QuelleHeureEst-Il.com dont les administrateurs et seuls détenteurs sont ÆtherXYZ et MinhoZenS.
 Toute copie, reproduction, distribution, modification ou utilisation — partielle ou totale, commerciale ou non — est strictement interdite sans autorisation écrite explicite de l'organisation.
 ---
-© 2026 QuelleHeureEst-Il.com — Tous droits réservés.  
+© 2026 Phoen0x — Tous droits réservés.  
 Voir le fichier [LICENSE](./LICENSE) pour les conditions légales complètes.
 
 ---
