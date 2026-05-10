@@ -3,6 +3,7 @@ name: Auto Approve PR (Approved Users Only)
 on:
   pull_request:
     types: [opened, synchronize]
+  workflow_dispatch: {}
 
 jobs:
   auto-approve:
@@ -11,41 +12,31 @@ jobs:
       pull-requests: write
 
     steps:
-      - name: Check if PR author is approved AND NOT from bolt.new
-        id: check_source
-        run: |
-          PR_AUTHOR="${{ github.event.pull_request.user.login }}"
-          APPROVED_USERS="Phoen0x|AetherXYZ|MinhoZenS"
-          
-          # Vérifie que c'est un utilisateur approuvé
-          if [[ $PR_AUTHOR =~ ^($APPROVED_USERS)$ ]]; then
-            echo "author_approved=true" >> $GITHUB_OUTPUT
-          else
-            echo "author_approved=false" >> $GITHUB_OUTPUT
-          fi
-
-      - name: Check commit metadata for bolt.new signs
-        id: check_bolt
-        if: steps.check_source.outputs.author_approved == 'true'
+      - name: Auto-approve single PR (event)
+        if: github.event_name == 'pull_request'
         uses: actions/github-script@v7
         with:
           script: |
-            const commits = context.payload.pull_request.commits;
+            const APPROVED_USERS = ['Phoen0x', 'AetherXYZ', 'MinhoZenS'];
+            const pr = context.payload.pull_request;
+            const author = pr.user.login;
+
+            if (!APPROVED_USERS.includes(author)) {
+              core.info(`Author ${author} not in approved list, skipping.`);
+              return;
+            }
+
             const { owner, repo } = context.repo;
-            const prNumber = context.issue.number;
-            
-            // Récupère les commits de la PR
-            const prCommits = await github.rest.pulls.listCommits({
+            const prNumber = pr.number;
+
+            const commits = await github.rest.pulls.listCommits({
               owner, repo, pull_number: prNumber
             });
-            
+
             let isBoltPush = false;
-            
-            for (const commit of prCommits.data) {
+            for (const commit of commits.data) {
               const committerName = commit.commit.committer?.name || "";
               const committerEmail = commit.commit.committer?.email || "";
-              
-              // Détecte bolt.new via le committer ou l'email
               if (
                 committerName.includes("bolt") ||
                 committerEmail.includes("stackblitz") ||
@@ -56,29 +47,79 @@ jobs:
                 break;
               }
             }
-            
-            core.setOutput("is_bolt_push", isBoltPush);
 
-      - name: Approve PR
-        if: steps.check_source.outputs.author_approved == 'true' && steps.check_bolt.outputs.is_bolt_push == 'false'
-        uses: actions/github-script@v7
-        with:
-          script: |
-            github.rest.pulls.createReview({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              pull_number: context.issue.number,
+            if (isBoltPush) {
+              core.info('Bolt.new / StackBlitz detected, not auto-approving.');
+              await github.rest.issues.createComment({
+                owner, repo,
+                issue_number: prNumber,
+                body: '⚠️ **Auto-approval blocked**: Commits detected from bolt.new (StackBlitz). Manual review required.'
+              });
+              return;
+            }
+
+            await github.rest.pulls.createReview({
+              owner, repo,
+              pull_number: prNumber,
               event: 'APPROVE'
-            })
+            });
+            core.info(`PR #${prNumber} auto-approved.`);
 
-      - name: Comment if blocked
-        if: steps.check_bolt.outputs.is_bolt_push == 'true'
+      - name: Auto-approve all open PRs (manual)
+        if: github.event_name == 'workflow_dispatch'
         uses: actions/github-script@v7
         with:
           script: |
-            github.rest.issues.createComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: context.issue.number,
-              body: '⚠️ **Auto-approval blocked**: Commits detected from bolt.new (StackBlitz). Manual review required.'
-            })
+            const APPROVED_USERS = ['Phoen0x', 'AetherXYZ', 'MinhoZenS'];
+            const { owner, repo } = context.repo;
+
+            const prs = await github.paginate(
+              github.rest.pulls.list,
+              { owner, repo, state: 'open' }
+            );
+
+            for (const pr of prs) {
+              const author = pr.user.login;
+              const prNumber = pr.number;
+
+              if (!APPROVED_USERS.includes(author)) {
+                core.info(`PR #${prNumber}: author ${author} not approved, skipping.`);
+                continue;
+              }
+
+              const commits = await github.rest.pulls.listCommits({
+                owner, repo, pull_number: prNumber
+              });
+
+              let isBoltPush = false;
+              for (const commit of commits.data) {
+                const committerName = commit.commit.committer?.name || "";
+                const committerEmail = commit.commit.committer?.email || "";
+                if (
+                  committerName.includes("bolt") ||
+                  committerEmail.includes("stackblitz") ||
+                  committerEmail.includes("bolt") ||
+                  committerName.includes("Bolt")
+                ) {
+                  isBoltPush = true;
+                  break;
+                }
+              }
+
+              if (isBoltPush) {
+                core.info(`PR #${prNumber}: bolt.new detected, not auto-approving.`);
+                await github.rest.issues.createComment({
+                  owner, repo,
+                  issue_number: prNumber,
+                  body: '⚠️ **Auto-approval blocked**: Commits detected from bolt.new (StackBlitz). Manual review required.'
+                });
+                continue;
+              }
+
+              await github.rest.pulls.createReview({
+                owner, repo,
+                pull_number: prNumber,
+                event: 'APPROVE'
+              });
+              core.info(`PR #${prNumber} auto-approved.`);
+            }
