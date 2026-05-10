@@ -160,6 +160,8 @@ Fournir une application complète permettant d'accéder, en ligne et hors ligne,
 - Manifestations
 - Nouvelles lois
 - Itinéraires vélo, promenade de chien, jogging
+- Agenda
+- Système d'amis et d'envoi de messages / planning.
 
 ---
 
@@ -260,8 +262,29 @@ npm run tauri build
 
 ---
 
+## 👥 Administrateurs - Contributeurs
+
+- **ÆtherXYZ**
+- **MinhoZenS**
+
+---
+
+## 📄 Licence
+
+> **⚠️ Projet privé et propriétaire — tous droits réservés.**
+
+Ce projet n'est pas open-source, libre, gratuit ou communautaire.  
+Il appartient exclusivement à son organisation, Phoen0x, propriété d'ÆtherXYZ, et l'équipe QuelleHeureEst-Il.com dont les administrateurs et seuls détenteurs sont ÆtherXYZ et MinhoZenS.
+Toute copie, reproduction, distribution, modification ou utilisation — partielle ou totale, commerciale ou non — est strictement interdite sans autorisation écrite explicite de l'organisation.
+---
+© 2026 QuelleHeureEst-Il.com — Tous droits réservés.  
+Voir le fichier [LICENSE](./LICENSE) pour les conditions légales complètes.
+
+---
+
 ## 🤝 Contribuer
 
+Vous pouvez contribuer si vous le souhaitez. Nous saurons nous en souvenir.
 Merci de :
 1. Fork le projet
 2. Créer une branche pour votre fonctionnalité (`git checkout -b feature/ma-fonctionnalite`)
@@ -271,22 +294,9 @@ Merci de :
 
 ---
 
-## 📄 Licence
-
-Ce projet est open-source. Licence à définir.
-
----
-
-## 👥 Contributeurs principaux
-
-- **Æther** - Technicien.ne Informatique
-- **Minho** - Étudiant en game design
-
----
-
 ## 📞 Contact
 
-Pour toute question ou suggestion, ouvrez une issue sur ce dépôt.
+Pour toute question, suggestion, ou autre, ouvrez une issue sur ce dépôt.
 
 ---
 
