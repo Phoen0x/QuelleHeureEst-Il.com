@@ -10,38 +10,57 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
+      issues: write
+      contents: read
 
     steps:
       - name: Auto-approve single PR (event)
         if: github.event_name == 'pull_request'
         uses: actions/github-script@v7
         with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const APPROVED_USERS = ['Phoen0x', 'AetherXYZ', 'MinhoZenS'];
+            const { owner, repo } = context.repo;
             const pr = context.payload.pull_request;
+            const prNumber = pr.number;
             const author = pr.user.login;
 
+            function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+            async function withRetry(fn, attempts = 3, initialDelay = 1000) {
+              let delay = initialDelay;
+              for (let i = 0; i < attempts; i++) {
+                try { return await fn(); }
+                catch (e) {
+                  const last = i === attempts - 1;
+                  core.warning(`Attempt ${i+1} failed: ${e.message || e}. ${last ? 'No more retries.' : `Retrying in ${delay}ms...`}`);
+                  if (last) throw e;
+                  await sleep(delay);
+                  delay *= 2;
+                }
+              }
+            }
+
+            // Author filter
             if (!APPROVED_USERS.includes(author)) {
-              core.info(`Author ${author} not in approved list, skipping.`);
+              core.info(`Author ${author} not in approved list, skipping PR #${prNumber}.`);
               return;
             }
 
-            const { owner, repo } = context.repo;
-            const prNumber = pr.number;
-
-            const commits = await github.rest.pulls.listCommits({
-              owner, repo, pull_number: prNumber
-            });
+            // Commit scan for bolt.new / StackBlitz
+            const commits = await withRetry(() => github.rest.pulls.listCommits({
+              owner, repo, pull_number: prNumber, per_page: 100
+            }));
 
             let isBoltPush = false;
             for (const commit of commits.data) {
               const committerName = commit.commit.committer?.name || "";
               const committerEmail = commit.commit.committer?.email || "";
               if (
-                committerName.includes("bolt") ||
-                committerEmail.includes("stackblitz") ||
-                committerEmail.includes("bolt") ||
-                committerName.includes("Bolt")
+                committerName.toLowerCase().includes("bolt") ||
+                committerEmail.toLowerCase().includes("stackblitz") ||
+                committerEmail.toLowerCase().includes("bolt")
               ) {
                 isBoltPush = true;
                 break;
@@ -49,77 +68,195 @@ jobs:
             }
 
             if (isBoltPush) {
-              core.info('Bolt.new / StackBlitz detected, not auto-approving.');
-              await github.rest.issues.createComment({
-                owner, repo,
-                issue_number: prNumber,
-                body: '⚠️ **Auto-approval blocked**: Commits detected from bolt.new (StackBlitz). Manual review required.'
-              });
+              core.info(`PR #${prNumber}: bolt.new/StackBlitz detected, not auto-approving.`);
+              const warningBody = '⚠️ **Auto-approval blocked**: Commits detected from bolt.new (StackBlitz). Manual review required.';
+              const comments = await withRetry(() => github.rest.issues.listComments({ owner, repo, issue_number: prNumber, per_page: 100 }));
+              if (!comments.data.some(c => c.body && c.body.includes('Auto-approval blocked'))) {
+                await withRetry(() => github.rest.issues.createComment({ owner, repo, issue_number: prNumber, body: warningBody }));
+              }
               return;
             }
 
-            await github.rest.pulls.createReview({
+            // Check runs filtering: ONLY CodeQL checks matter
+            const sha = pr.head.sha;
+            try {
+              const checks = await withRetry(() => github.rest.checks.listForRef({
+                owner, repo, ref: sha, per_page: 100
+              }));
+
+              const runs = checks.data.check_runs || [];
+
+              // Only keep CodeQL checks
+              const codeqlRuns = runs.filter(r =>
+                r.name.toLowerCase().includes("codeql")
+              );
+
+              // If CodeQL exists, all must be success
+              const failing = codeqlRuns.filter(r =>
+                r.status === 'completed' && r.conclusion !== 'success'
+              );
+
+              if (failing.length) {
+                const names = failing.map(r => r.name).join(', ');
+                core.info(`PR #${prNumber}: CodeQL checks failed (${names}), skipping approval.`);
+                const body = `⚠️ Auto-approval skipped: CodeQL checks failed: ${names}.`;
+                const comments = await withRetry(() => github.rest.issues.listComments({ owner, repo, issue_number: prNumber, per_page: 100 }));
+                if (!comments.data.some(c => c.body && c.body.includes('CodeQL checks failed'))) {
+                  await withRetry(() => github.rest.issues.createComment({ owner, repo, issue_number: prNumber, body }));
+                }
+                return;
+              }
+
+            } catch (e) {
+              core.warning(`PR #${prNumber}: unable to verify CodeQL checks (${e.message || e}), skipping approval.`);
+              return;
+            }
+
+            // Idempotence: skip if already approved
+            const reviews = await withRetry(() => github.rest.pulls.listReviews({
+              owner, repo, pull_number: prNumber, per_page: 100
+            }));
+
+            const alreadyApproved = reviews.data.some(r =>
+              r.user?.login === 'github-actions[bot]' && r.state === 'APPROVED'
+            );
+
+            if (alreadyApproved) {
+              core.info(`PR #${prNumber}: already approved by github-actions[bot], skipping.`);
+              return;
+            }
+
+            // Approve PR
+            await withRetry(() => github.rest.pulls.createReview({
               owner, repo,
               pull_number: prNumber,
-              event: 'APPROVE'
-            });
+              event: 'APPROVE',
+              body: 'Auto-approved by workflow.'
+            }));
+
             core.info(`PR #${prNumber} auto-approved.`);
 
       - name: Auto-approve all open PRs (manual)
         if: github.event_name == 'workflow_dispatch'
         uses: actions/github-script@v7
         with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const APPROVED_USERS = ['Phoen0x', 'AetherXYZ', 'MinhoZenS'];
             const { owner, repo } = context.repo;
 
-            const prs = await github.paginate(
-              github.rest.pulls.list,
-              { owner, repo, state: 'open' }
-            );
+            function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
 
-            for (const pr of prs) {
-              const author = pr.user.login;
-              const prNumber = pr.number;
-
-              if (!APPROVED_USERS.includes(author)) {
-                core.info(`PR #${prNumber}: author ${author} not approved, skipping.`);
-                continue;
-              }
-
-              const commits = await github.rest.pulls.listCommits({
-                owner, repo, pull_number: prNumber
-              });
-
-              let isBoltPush = false;
-              for (const commit of commits.data) {
-                const committerName = commit.commit.committer?.name || "";
-                const committerEmail = commit.commit.committer?.email || "";
-                if (
-                  committerName.includes("bolt") ||
-                  committerEmail.includes("stackblitz") ||
-                  committerEmail.includes("bolt") ||
-                  committerName.includes("Bolt")
-                ) {
-                  isBoltPush = true;
-                  break;
+            async function withRetry(fn, attempts = 3, initialDelay = 1000) {
+              let delay = initialDelay;
+              for (let i = 0; i < attempts; i++) {
+                try { return await fn(); }
+                catch (e) {
+                  const last = i === attempts - 1;
+                  core.warning(`Attempt ${i+1} failed: ${e.message || e}. ${last ? 'No more retries.' : `Retrying in ${delay}ms...`}`);
+                  if (last) throw e;
+                  await sleep(delay);
+                  delay *= 2;
                 }
               }
+            }
 
-              if (isBoltPush) {
-                core.info(`PR #${prNumber}: bolt.new detected, not auto-approving.`);
-                await github.rest.issues.createComment({
+            const prs = await withRetry(() => github.paginate(
+              github.rest.pulls.list,
+              { owner, repo, state: 'open', per_page: 50 }
+            ));
+
+            for (const pr of prs) {
+              const prNumber = pr.number;
+              const author = pr.user.login;
+
+              try {
+                if (!APPROVED_USERS.includes(author)) {
+                  core.info(`PR #${prNumber}: author ${author} not approved, skipping.`);
+                  continue;
+                }
+
+                // Commit scan
+                const commits = await withRetry(() => github.rest.pulls.listCommits({
+                  owner, repo, pull_number: prNumber, per_page: 100
+                }));
+
+                let isBoltPush = false;
+                for (const commit of commits.data) {
+                  const committerName = commit.commit.committer?.name || "";
+                  const committerEmail = commit.commit.committer?.email || "";
+                  if (
+                    committerName.toLowerCase().includes("bolt") ||
+                    committerEmail.toLowerCase().includes("stackblitz") ||
+                    committerEmail.toLowerCase().includes("bolt")
+                  ) {
+                    isBoltPush = true;
+                    break;
+                  }
+                }
+
+                if (isBoltPush) {
+                  const warningBody = '⚠️ **Auto-approval blocked**: Commits detected from bolt.new (StackBlitz). Manual review required.';
+                  const comments = await withRetry(() => github.rest.issues.listComments({ owner, repo, issue_number: prNumber, per_page: 100 }));
+                  if (!comments.data.some(c => c.body && c.body.includes('Auto-approval blocked'))) {
+                    await withRetry(() => github.rest.issues.createComment({ owner, repo, issue_number: prNumber, body: warningBody }));
+                  }
+                  continue;
+                }
+
+                // CodeQL-only check
+                const sha = pr.head.sha;
+                try {
+                  const checks = await withRetry(() => github.rest.checks.listForRef({
+                    owner, repo, ref: sha, per_page: 100
+                  }));
+
+                  const runs = checks.data.check_runs || [];
+                  const codeqlRuns = runs.filter(r =>
+                    r.name.toLowerCase().includes("codeql")
+                  );
+
+                  const failing = codeqlRuns.filter(r =>
+                    r.status === 'completed' && r.conclusion !== 'success'
+                  );
+
+                  if (failing.length) {
+                    const names = failing.map(r => r.name).join(', ');
+                    const body = `⚠️ Auto-approval skipped: CodeQL checks failed: ${names}.`;
+                    const comments = await withRetry(() => github.rest.issues.listComments({ owner, repo, issue_number: prNumber, per_page: 100 }));
+                    if (!comments.data.some(c => c.body && c.body.includes('CodeQL checks failed'))) {
+                      await withRetry(() => github.rest.issues.createComment({ owner, repo, issue_number: prNumber, body }));
+                    }
+                    continue;
+                  }
+
+                } catch (e) {
+                  core.warning(`PR #${prNumber}: unable to verify CodeQL checks (${e.message || e}), skipping.`);
+                  continue;
+                }
+
+                // Idempotence
+                const reviews = await withRetry(() => github.rest.pulls.listReviews({
+                  owner, repo, pull_number: prNumber, per_page: 100
+                }));
+
+                const alreadyApproved = reviews.data.some(r =>
+                  r.user?.login === 'github-actions[bot]' && r.state === 'APPROVED'
+                );
+
+                if (alreadyApproved) continue;
+
+                // Approve
+                await withRetry(() => github.rest.pulls.createReview({
                   owner, repo,
-                  issue_number: prNumber,
-                  body: '⚠️ **Auto-approval blocked**: Commits detected from bolt.new (StackBlitz). Manual review required.'
-                });
-                continue;
-              }
+                  pull_number: prNumber,
+                  event: 'APPROVE',
+                  body: 'Auto-approved by workflow.'
+                }));
 
-              await github.rest.pulls.createReview({
-                owner, repo,
-                pull_number: prNumber,
-                event: 'APPROVE'
-              });
-              core.info(`PR #${prNumber} auto-approved.`);
+                core.info(`PR #${prNumber} auto-approved for author ${author}.`);
+
+              } catch (err) {
+                core.error(`Error processing PR #${prNumber}: ${err.message || err}`);
+              }
             }
