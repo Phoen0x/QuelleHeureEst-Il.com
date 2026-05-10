@@ -43,12 +43,10 @@ Fournir une application complète permettant d'accéder, en ligne et hors ligne,
 - Architecture offline-first obligatoire
 - Client lourd local fonctionnant sans navigateur
 
-### Open-source et gratuité
-- 100 % open-source
-- Zéro service payant
+### Zéro dépendance externe payante
 - Zéro API payante
-- Zéro abonnement
-- Aucun vendor lock-in
+- Zéro abonnement externe
+- Zéro vendor lock-in
 - Aucune dépendance critique à un fournisseur propriétaire payant
 
 ### Sécurité et vie privée
@@ -283,6 +281,10 @@ Voir le fichier [LICENSE](./LICENSE) pour les conditions légales complètes.
 ---
 
 ## 🤝 Contribuer
+
+> **⚠️ CLA — Contributor License Agreement**  
+> Toute contribution soumise à ce dépôt implique le transfert irrévocable de l'intégralité des droits (propriété intellectuelle, droits d'auteur, droits commerciaux) à l'organisation Phoen0x.  
+> Contribuer vaut acceptation explicite de ces conditions.
 
 Vous pouvez contribuer si vous le souhaitez. Nous saurons nous en souvenir.
 Merci de :
