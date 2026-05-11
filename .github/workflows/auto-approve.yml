@@ -8,28 +8,39 @@ on:
 jobs:
   auto-approve:
     runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+      PAT_MINHO: ${{ secrets.PAT_AUTO_APPROVE_MinhoZenS }}
+      PAT_AETHER: ${{ secrets.PAT_AUTO_APPROVE_AetherXYZ }}
+      VERBOSE: ${{ secrets.AUTO_APPROVE_VERBOSE }}
     permissions:
       pull-requests: write
       issues: write
       contents: read
 
     steps:
+      # ------------------------------------------------------------
+      #  SELECT CORRECT PAT
+      # ------------------------------------------------------------
       - name: Select correct PAT based on PR author
         id: select-pat
         run: |
           AUTHOR="${{ github.event.pull_request.user.login }}"
 
           if [ "$AUTHOR" = "AetherXYZ" ]; then
-            echo "token=${{ secrets.PAT_AUTO_APPROVE_MinhoZenS }}" >> $GITHUB_OUTPUT
+            echo "token=${{ secrets.PAT_MINHO }}" >> $GITHUB_OUTPUT
           elif [ "$AUTHOR" = "MinhoZenS" ]; then
-            echo "token=${{ secrets.PAT_AUTO_APPROVE_AetherXYZ }}" >> $GITHUB_OUTPUT
+            echo "token=${{ secrets.PAT_AETHER }}" >> $GITHUB_OUTPUT
           else
             echo "token=" >> $GITHUB_OUTPUT
           fi
 
+      # ------------------------------------------------------------
+      #  AUTO MODE (pull_request)
+      # ------------------------------------------------------------
       - name: Auto-approve single PR (event)
         if: github.event_name == 'pull_request'
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           github-token: ${{ steps.select-pat.outputs.token }}
           script: |
@@ -39,15 +50,32 @@ jobs:
             const prNumber = pr.number;
             const author = pr.user.login;
 
+            // ---------------- LOGGING SYSTEM ----------------
+            const log = {
+              info: msg => core.info(`\x1b[36m[INFO]\x1b[0m ${msg}`),
+              warn: msg => core.warning(`\x1b[33m[WARN]\x1b[0m ${msg}`),
+              error: msg => core.error(`\x1b[31m[ERROR]\x1b[0m ${msg}`),
+              check: msg => core.info(`\x1b[35m[CHECK]\x1b[0m ${msg}`),
+              approve: msg => core.info(`\x1b[32m[APPROVE]\x1b[0m ${msg}`),
+              skip: msg => core.info(`\x1b[33m[SKIP]\x1b[0m ${msg}`),
+              verbose: msg => process.env.VERBOSE === "true"
+                ? core.info(`\x1b[90m[VERBOSE]\x1b[0m ${msg}`)
+                : null
+            };
+
+            log.info(`Processing PR #${prNumber} by ${author}`);
+
             if (!APPROVED_USERS.includes(author)) {
-              core.info(`Author ${author} not approved, skipping.`);
+              log.skip(`Author ${author} not in whitelist.`);
               return;
             }
 
             if (!process.env.GITHUB_TOKEN) {
-              core.info(`No PAT available for author ${author}, skipping.`);
+              log.warn(`No PAT available for this author. Skipping.`);
               return;
             }
+
+            log.info(`Using PAT for reviewer: ${context.actor}`);
 
             function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
             async function withRetry(fn, attempts = 3, delay = 1000) {
@@ -55,16 +83,21 @@ jobs:
                 try { return await fn(); }
                 catch (e) {
                   if (i === attempts - 1) throw e;
+                  log.warn(`Retry ${i+1} failed: ${e.message}. Retrying in ${delay}ms`);
                   await sleep(delay);
                   delay *= 2;
                 }
               }
             }
 
-            // Detect bolt.new / StackBlitz commits
+            // ---------------- COMMITS ----------------
+            log.check(`Fetching commits...`);
             const commits = await withRetry(() =>
               github.rest.pulls.listCommits({ owner, repo, pull_number: prNumber })
             );
+
+            log.info(`Found ${commits.data.length} commits.`);
+            log.verbose(JSON.stringify(commits.data.map(c => c.sha), null, 2));
 
             let isBolt = commits.data.some(c => {
               const name = c.commit.committer?.name?.toLowerCase() || "";
@@ -73,6 +106,7 @@ jobs:
             });
 
             if (isBolt) {
+              log.warn(`Bolt.new / StackBlitz detected.`);
               const msg = '⚠️ Auto-approval blocked: bolt.new/StackBlitz commits detected.';
               const comments = await github.rest.issues.listComments({ owner, repo, issue_number: prNumber });
               if (!comments.data.some(c => c.body.includes('Auto-approval blocked'))) {
@@ -81,15 +115,18 @@ jobs:
               return;
             }
 
-            // Only check CodeQL
-            const sha = pr.head.sha;
+            // ---------------- CODEQL CHECKS ----------------
+            log.check(`Fetching check runs for SHA ${pr.head.sha}...`);
             const checks = await withRetry(() =>
-              github.rest.checks.listForRef({ owner, repo, ref: sha })
+              github.rest.checks.listForRef({ owner, repo, ref: pr.head.sha })
             );
 
             const codeql = (checks.data.check_runs || []).filter(r =>
               r.name.toLowerCase().includes("codeql")
             );
+
+            log.info(`Detected ${codeql.length} CodeQL checks.`);
+            log.verbose(JSON.stringify(codeql.map(c => ({ name: c.name, status: c.status, conclusion: c.conclusion })), null, 2));
 
             const failing = codeql.filter(r =>
               r.status === "completed" && r.conclusion !== "success"
@@ -97,6 +134,7 @@ jobs:
 
             if (failing.length) {
               const names = failing.map(r => r.name).join(', ');
+              log.warn(`CodeQL failing: ${names}`);
               const msg = `⚠️ Auto-approval skipped: CodeQL checks failed: ${names}.`;
               const comments = await github.rest.issues.listComments({ owner, repo, issue_number: prNumber });
               if (!comments.data.some(c => c.body.includes('CodeQL checks failed'))) {
@@ -105,18 +143,21 @@ jobs:
               return;
             }
 
-            // Idempotence
+            // ---------------- IDEMPOTENCE ----------------
+            log.check(`Checking existing reviews...`);
             const reviews = await github.rest.pulls.listReviews({ owner, repo, pull_number: prNumber });
+
             const already = reviews.data.some(r =>
               r.user?.login === context.actor && r.state === "APPROVED"
             );
 
             if (already) {
-              core.info(`Already approved, skipping.`);
+              log.skip(`Already approved by ${context.actor}.`);
               return;
             }
 
-            // Approve PR
+            // ---------------- APPROVAL ----------------
+            log.approve(`Approving PR #${prNumber}...`);
             await github.rest.pulls.createReview({
               owner, repo,
               pull_number: prNumber,
@@ -124,12 +165,162 @@ jobs:
               body: "Auto-approved by workflow."
             });
 
-            core.info(`PR #${prNumber} approved.`);
+            log.approve(`PR #${prNumber} approved successfully.`);
 
+            // ---------------- SUMMARY ----------------
+            core.info(`
+\x1b[32m==================== SUMMARY ====================\x1b[0m
+PR: #${prNumber}
+Author: ${author}
+Reviewer: ${context.actor}
+CodeQL checks: OK
+Bolt/StackBlitz: Not detected
+Status: APPROVED
+\x1b[32m=================================================\x1b[0m
+`);
+
+      # ------------------------------------------------------------
+      #  MANUAL MODE (workflow_dispatch)
+      # ------------------------------------------------------------
       - name: Auto-approve all open PRs (manual)
         if: github.event_name == 'workflow_dispatch'
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           github-token: ${{ secrets.PAT_MINHO }}
           script: |
-            core.info("Manual mode not updated for dual-PAT logic. Use PR mode for auto-approval.");
+            const APPROVED_USERS = ['AetherXYZ', 'MinhoZenS'];
+            const { owner, repo } = context.repo;
+
+            const log = {
+              info: msg => core.info(`\x1b[36m[INFO]\x1b[0m ${msg}`),
+              warn: msg => core.warning(`\x1b[33m[WARN]\x1b[0m ${msg}`),
+              error: msg => core.error(`\x1b[31m[ERROR]\x1b[0m ${msg}`),
+              check: msg => core.info(`\x1b[35m[CHECK]\x1b[0m ${msg}`),
+              approve: msg => core.info(`\x1b[32m[APPROVE]\x1b[0m ${msg}`),
+              skip: msg => core.info(`\x1b[33m[SKIP]\x1b[0m ${msg}`),
+              verbose: msg => process.env.VERBOSE === "true"
+                ? core.info(`\x1b[90m[VERBOSE]\x1b[0m ${msg}`)
+                : null
+            };
+
+            function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+            async function withRetry(fn, attempts = 3, delay = 1000) {
+              for (let i = 0; i < attempts; i++) {
+                try { return await fn(); }
+                catch (e) {
+                  if (i === attempts - 1) throw e;
+                  log.warn(`Retry ${i+1} failed: ${e.message}. Retrying in ${delay}ms`);
+                  await sleep(delay);
+                  delay *= 2;
+                }
+              }
+            }
+
+            log.info(`Manual mode: scanning all open PRs...`);
+
+            const prs = await withRetry(() =>
+              github.paginate(github.rest.pulls.list, { owner, repo, state: 'open', per_page: 50 })
+            );
+
+            log.info(`Found ${prs.length} open PRs.`);
+
+            let summary = [];
+
+            for (const pr of prs) {
+              const prNumber = pr.number;
+              const author = pr.user.login;
+
+              log.info(`\n---\nProcessing PR #${prNumber} by ${author}`);
+
+              if (!APPROVED_USERS.includes(author)) {
+                log.skip(`Author ${author} not in whitelist.`);
+                summary.push({ pr: prNumber, author, status: "SKIPPED (not whitelisted)" });
+                continue;
+              }
+
+              const token = author === "AetherXYZ"
+                ? process.env.PAT_MINHO
+                : process.env.PAT_AETHER;
+
+              if (!token) {
+                log.warn(`No PAT available for PR #${prNumber}, skipping.`);
+                summary.push({ pr: prNumber, author, status: "SKIPPED (no PAT)" });
+                continue;
+              }
+
+              github.auth = token;
+
+              try {
+                // COMMITS
+                const commits = await withRetry(() =>
+                  github.rest.pulls.listCommits({ owner, repo, pull_number: prNumber })
+                );
+
+                let isBolt = commits.data.some(c => {
+                  const name = c.commit.committer?.name?.toLowerCase() || "";
+                  const email = c.commit.committer?.email?.toLowerCase() || "";
+                  return name.includes("bolt") || email.includes("bolt") || email.includes("stackblitz");
+                });
+
+                if (isBolt) {
+                  log.warn(`Bolt.new / StackBlitz detected.`);
+                  summary.push({ pr: prNumber, author, status: "BLOCKED (Bolt/StackBlitz)" });
+                  continue;
+                }
+
+                // CODEQL
+                const checks = await withRetry(() =>
+                  github.rest.checks.listForRef({ owner, repo, ref: pr.head.sha })
+                );
+
+                const codeql = (checks.data.check_runs || []).filter(r =>
+                  r.name.toLowerCase().includes("codeql")
+                );
+
+                const failing = codeql.filter(r =>
+                  r.status === "completed" && r.conclusion !== "success"
+                );
+
+                if (failing.length) {
+                  const names = failing.map(r => r.name).join(', ');
+                  log.warn(`CodeQL failing: ${names}`);
+                  summary.push({ pr: prNumber, author, status: `BLOCKED (CodeQL: ${names})` });
+                  continue;
+                }
+
+                // IDEMPOTENCE
+                const reviews = await github.rest.pulls.listReviews({ owner, repo, pull_number: prNumber });
+
+                const already = reviews.data.some(r =>
+                  r.user?.login === author && r.state === "APPROVED"
+                );
+
+                if (already) {
+                  log.skip(`Already approved.`);
+                  summary.push({ pr: prNumber, author, status: "ALREADY APPROVED" });
+                  continue;
+                }
+
+                // APPROVAL
+                await github.rest.pulls.createReview({
+                  owner, repo,
+                  pull_number: prNumber,
+                  event: "APPROVE",
+                  body: "Auto-approved by workflow (manual mode)."
+                });
+
+                log.approve(`PR #${prNumber} approved manually.`);
+                summary.push({ pr: prNumber, author, status: "APPROVED" });
+
+              } catch (err) {
+                log.error(`Error processing PR #${prNumber}: ${err.message}`);
+                summary.push({ pr: prNumber, author, status: `ERROR (${err.message})` });
+              }
+            }
+
+            // ---------------- SUMMARY TABLE ----------------
+            core.info("\n\x1b[36m========== AUTO-APPROVE SUMMARY ==========\x1b[0m");
+            summary.forEach(s => {
+              core.info(`PR #${s.pr} | Author: ${s.author} | Status: ${s.status}`);
+            });
+            core.info("\x1b[36m==========================================\x1b[0m");
