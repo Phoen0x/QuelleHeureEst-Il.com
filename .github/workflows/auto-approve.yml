@@ -427,10 +427,32 @@ jobs:
                 continue;
               }
 
-              // Instanciation d'un client Octokit authentifié avec le bon PAT
-              // Instantiate an Octokit client authenticated with the correct PAT
-              const { getOctokit } = require('@actions/github');
-              const altGithub = getOctokit(token);
+              // ----------------------------------------------------------------
+              //  CLIENT FETCH LÉGER AVEC LE BON PAT / LIGHTWEIGHT FETCH CLIENT
+              //
+              //  require('@actions/github') n'est pas accessible dans github-script.
+              //  On utilise fetch (toujours disponible) pour appeler l'API GitHub
+              //  directement avec le token cross-review approprié.
+              //
+              //  require('@actions/github') is not accessible inside github-script.
+              //  We use fetch (always available) to call the GitHub API directly
+              //  with the appropriate cross-review token.
+              // ----------------------------------------------------------------
+              async function ghFetch(method, path, body = null) {
+                const opts = {
+                  method,
+                  headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Accept': 'application/vnd.github+json',
+                    'X-GitHub-Api-Version': '2022-11-28',
+                    'Content-Type': 'application/json'
+                  }
+                };
+                if (body) opts.body = JSON.stringify(body);
+                const res = await fetch(`https://api.github.com${path}`, opts);
+                if (!res.ok) throw new Error(`GitHub API ${res.status} on ${method} ${path}: ${await res.text()}`);
+                return res.json();
+              }
 
               try {
 
@@ -440,16 +462,16 @@ jobs:
                 //  per_page: 100 to cover large PRs without additional paging
                 // ------------------------------------------------------------
                 log.check(`Récupération des commits... / Fetching commits...`);
-                const commits = await withRetry(() =>
-                  altGithub.rest.pulls.listCommits({ owner, repo, pull_number: prNumber, per_page: 100 })
+                const commitsData = await withRetry(() =>
+                  ghFetch('GET', `/repos/${owner}/${repo}/pulls/${prNumber}/commits?per_page=100`)
                 );
 
-                log.info(`${commits.data.length} commit(s). `);
-                log.verbose(JSON.stringify(commits.data.map(c => c.sha), null, 2));
+                log.info(`${commitsData.length} commit(s).`);
+                log.verbose(JSON.stringify(commitsData.map(c => c.sha), null, 2));
 
                 // Détection bolt.new / StackBlitz (insensible à la casse)
                 // Bolt.new / StackBlitz detection (case-insensitive)
-                const isBolt = commits.data.some(c => {
+                const isBolt = commitsData.some(c => {
                   const name  = c.commit.committer?.name?.toLowerCase()  || "";
                   const email = c.commit.committer?.email?.toLowerCase() || "";
                   return name.includes("bolt") || email.includes("bolt") || email.includes("stackblitz");
@@ -457,14 +479,15 @@ jobs:
 
                 if (isBolt) {
                   log.warn(`Bolt.new / StackBlitz détecté. / Bolt.new / StackBlitz detected.`);
-                  // Anti-doublon commentaire / Dedup comment
-                  const comments = await withRetry(() =>
-                    altGithub.rest.issues.listComments({ owner, repo, issue_number: prNumber, per_page: 100 })
+                  // Anti-doublon : vérifie avant de poster le commentaire
+                  // Dedup: check before posting the comment
+                  const existingComments = await withRetry(() =>
+                    ghFetch('GET', `/repos/${owner}/${repo}/issues/${prNumber}/comments?per_page=100`)
                   );
-                  if (!comments.data.some(c => c.body && c.body.includes('Auto-approval blocked'))) {
+                  if (!existingComments.some(c => c.body && c.body.includes('Auto-approval blocked'))) {
                     const msg = '⚠️ **Auto-approval blocked** : commits bolt.new/StackBlitz détectés. Revue manuelle requise.\n⚠️ **Auto-approval blocked**: bolt.new/StackBlitz commits detected. Manual review required.';
                     await withRetry(() =>
-                      altGithub.rest.issues.createComment({ owner, repo, issue_number: prNumber, body: msg })
+                      ghFetch('POST', `/repos/${owner}/${repo}/issues/${prNumber}/comments`, { body: msg })
                     );
                   }
                   summary.push({ pr: prNumber, author, status: "BLOCKED (Bolt/StackBlitz)" });
@@ -473,13 +496,15 @@ jobs:
 
                 // ------------------------------------------------------------
                 //  VÉRIFICATION CODEQL / CODEQL CHECK
+                //  success, neutral et skipped sont acceptés
+                //  success, neutral and skipped are accepted
                 // ------------------------------------------------------------
                 log.check(`Vérification CodeQL pour SHA ${pr.head.sha}... / Checking CodeQL for SHA ${pr.head.sha}...`);
-                const checks = await withRetry(() =>
-                  altGithub.rest.checks.listForRef({ owner, repo, ref: pr.head.sha, per_page: 100 })
+                const checksData = await withRetry(() =>
+                  ghFetch('GET', `/repos/${owner}/${repo}/commits/${pr.head.sha}/check-runs?per_page=100`)
                 );
 
-                const codeqlRuns = (checks.data.check_runs || []).filter(r =>
+                const codeqlRuns = (checksData.check_runs || []).filter(r =>
                   r.name.toLowerCase().includes("codeql")
                 );
 
@@ -494,13 +519,13 @@ jobs:
                   const names = failingCodeql.map(r => r.name).join(', ');
                   log.warn(`CodeQL échoué : ${names} / CodeQL failing: ${names}`);
                   // Anti-doublon commentaire / Dedup comment
-                  const comments = await withRetry(() =>
-                    altGithub.rest.issues.listComments({ owner, repo, issue_number: prNumber, per_page: 100 })
+                  const existingComments = await withRetry(() =>
+                    ghFetch('GET', `/repos/${owner}/${repo}/issues/${prNumber}/comments?per_page=100`)
                   );
-                  if (!comments.data.some(c => c.body && c.body.includes('CodeQL checks failed'))) {
+                  if (!existingComments.some(c => c.body && c.body.includes('CodeQL checks failed'))) {
                     const body = `⚠️ Approbation ignorée : CodeQL échoué : ${names}.\n⚠️ Auto-approval skipped: CodeQL checks failed: ${names}.`;
                     await withRetry(() =>
-                      altGithub.rest.issues.createComment({ owner, repo, issue_number: prNumber, body })
+                      ghFetch('POST', `/repos/${owner}/${repo}/issues/${prNumber}/comments`, { body })
                     );
                   }
                   summary.push({ pr: prNumber, author, status: `BLOCKED (CodeQL: ${names})` });
@@ -512,13 +537,13 @@ jobs:
                 //  Evite d'approuver une PR déjà approuvée
                 //  Avoids approving an already-approved PR
                 // ------------------------------------------------------------
-                const reviews = await withRetry(() =>
-                  altGithub.rest.pulls.listReviews({ owner, repo, pull_number: prNumber, per_page: 100 })
-                );
-
                 // En mode dispatch on vérifie s'il existe une approbation quelconque
                 // In dispatch mode we check for any existing approval
-                const alreadyApproved = reviews.data.some(r => r.state === "APPROVED");
+                const reviewsData = await withRetry(() =>
+                  ghFetch('GET', `/repos/${owner}/${repo}/pulls/${prNumber}/reviews?per_page=100`)
+                );
+
+                const alreadyApproved = reviewsData.some(r => r.state === "APPROVED");
 
                 if (alreadyApproved) {
                   log.skip(`Déjà approuvée. / Already approved.`);
@@ -530,9 +555,7 @@ jobs:
                 //  APPROBATION / APPROVAL
                 // ------------------------------------------------------------
                 await withRetry(() =>
-                  altGithub.rest.pulls.createReview({
-                    owner, repo,
-                    pull_number: prNumber,
+                  ghFetch('POST', `/repos/${owner}/${repo}/pulls/${prNumber}/reviews`, {
                     event: "APPROVE",
                     body: "✅ Auto-approuvé par workflow (mode manuel). / Auto-approved by workflow (manual mode)."
                   })
@@ -557,3 +580,4 @@ jobs:
               core.info(`PR #${s.pr} | Auteur/Author: ${s.author} | Statut/Status: ${s.status}`);
             });
             core.info("\x1b[36m================================================================\x1b[0m");
+            
