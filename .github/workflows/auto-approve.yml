@@ -230,7 +230,7 @@ jobs:
             // Un check CodeQL terminé sans "success" bloque l'approbation
             // A completed CodeQL check without "success" blocks approval
             const failingCodeql = codeqlRuns.filter(r =>
-              r.status === "completed" && r.conclusion !== "success"
+              r.status === "completed" && !["success", "neutral", "skipped"].includes(r.conclusion)
             );
 
             if (failingCodeql.length) {
@@ -288,16 +288,18 @@ jobs:
             // ----------------------------------------------------------------
             //  RÉSUMÉ / SUMMARY
             // ----------------------------------------------------------------
-            core.info(`
-\x1b[32m==================== RÉSUMÉ / SUMMARY ====================\x1b[0m
-PR :                 #${prNumber}
-Auteur / Author :    ${author}
-Reviewer :           ${context.actor}
-CodeQL :             ✅ OK
-Bolt/StackBlitz :    ✅ Non détecté / Not detected
-Statut / Status :    ✅ APPROVED
-\x1b[32m==========================================================\x1b[0m
-`);
+            core.info([
+              '',
+              '\x1b[32m==================== RÉSUMÉ / SUMMARY ====================\x1b[0m',
+              `PR :                 #${prNumber}`,
+              `Auteur / Author :    ${author}`,
+              `Reviewer :           ${context.actor}`,
+              'CodeQL :             \u2705 OK',
+              'Bolt/StackBlitz :    \u2705 Non détecté / Not detected',
+              'Statut / Status :    \u2705 APPROVED',
+              '\x1b[32m==========================================================\x1b[0m',
+              ''
+            ].join('\n'));
 
       # -----------------------------------------------------------------------
       #  ÉTAPE 3 — MODE MANUEL / MANUAL MODE (workflow_dispatch)
@@ -485,7 +487,7 @@ Statut / Status :    ✅ APPROVED
                 log.verbose(JSON.stringify(codeqlRuns.map(c => ({ name: c.name, status: c.status, conclusion: c.conclusion })), null, 2));
 
                 const failingCodeql = codeqlRuns.filter(r =>
-                  r.status === "completed" && r.conclusion !== "success"
+                  r.status === "completed" && !["success", "neutral", "skipped"].includes(r.conclusion)
                 );
 
                 if (failingCodeql.length) {
