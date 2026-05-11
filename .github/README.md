@@ -24,13 +24,14 @@ Fournir une application complète permettant d'accéder, en ligne et hors ligne,
 ## 🌍 Plateformes cibles
 
 - **Android** (priorité absolue, publication Google Play)
+- **Web** (site web accessible via navigateur)
 - Windows
-- Linux
-- macOS
 - iOS
+- Linux
+- Self-host (Docker, VM, Proxmox, Qubes OS)
+- MacOS
 - Smartwatch (WearOS, watchOS)
 - TV (Android TV, Apple TV)
-- Self-host (Docker, VM, Proxmox, Qubes OS)
 
 ---
 
@@ -304,7 +305,10 @@ Pour toute question, suggestion, ou autre, ouvrez une issue sur ce dépôt.
 
 ## 🎯 Priorités de développement
 
-1. **Android d'abord**, avec publication Google Play comme objectif principal
-2. Ensuite : desktop (Windows, Linux, macOS)
-3. Puis : iOS, wearable, TV, self-host
-4. Toujours : Rust d'abord, local d'abord, offline d'abord, sécurité d'abord.
+1. **Android d'abord**, avec publication Google Play comme objectif principal, en français.
+2. **Web** (site web accessible via navigateur).
+3. Desktop (Windows, Linux, MacOS), et autres langues.
+4. Fonctionnalités secondaire.
+5. iOS, Wearable (WearOS, WatchOS), TV (Android TV, Apple TV, Amazon TV), Self-Host (Docker, VM, Proxmox, Qubes OS).
+
+**Toujours** : Rust d'abord, local d'abord, offline d'abord, sécurité d'abord.
