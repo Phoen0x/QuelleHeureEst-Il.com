@@ -31,8 +31,8 @@ jobs:
 
       # PATs chargés en variables d'environnement pour le mode dispatch
       # PATs loaded as env vars for dispatch mode (cross-review)
-      PAT_MINHO:  ${{ secrets.PAT_AUTO_APPROVE_MinhoZenS }}
-      PAT_AETHER: ${{ secrets.PAT_AUTO_APPROVE_AetherXYZ }}
+      PAT_MINHO:  ${{ secrets.PAT_AUTO_APPROVE_MINHOZENS }}
+      PAT_AETHER: ${{ secrets.PAT_AUTO_APPROVE_AETHERXYZ }}
 
       # Activer les logs VERBOSE via le secret AUTO_APPROVE_VERBOSE="true"
       # Enable VERBOSE logs via the secret AUTO_APPROVE_VERBOSE="true"
@@ -46,7 +46,7 @@ jobs:
     steps:
 
       # -----------------------------------------------------------------------
-      #  ÉTAPE 1 — SÉLECTION DU PAT / SELECT CORRECT PAT
+      #  ÉTAPE 1 — SÉLECTION DU PAT / SELECT CORRECT PAT (Insensible à la casse)
       #
       #  GitHub interdit à un utilisateur d'approuver sa propre PR.
       #  On utilise donc un PAT croisé : la PR d'AetherXYZ est approuvée
@@ -59,17 +59,18 @@ jobs:
       - name: Sélection du PAT selon l'auteur / Select correct PAT based on PR author
         id: select-pat
         run: |
-          AUTHOR="${{ github.event.pull_request.user.login }}"
+          AUTHOR=$(echo "${{ github.event.pull_request.user.login }}" | tr '[:upper:]' '[:lower:]')
+          echo "Auteur détecté (minuscules) : '$AUTHOR'"
 
           # AetherXYZ → approuvé par le PAT de MinhoZenS
           # AetherXYZ → approved using MinhoZenS's PAT
-          if [ "$AUTHOR" = "AetherXYZ" ]; then
-            echo "token=${{ secrets.PAT_AUTO_APPROVE_MinhoZenS }}" >> $GITHUB_OUTPUT
+          if [ "$AUTHOR" = "aetherxyz" ]; then
+            echo "token=${{ secrets.PAT_AUTO_APPROVE_MINHOZENS }}" >> $GITHUB_OUTPUT
 
           # MinhoZenS → approuvé par le PAT de AetherXYZ
           # MinhoZenS → approved using AetherXYZ's PAT
-          elif [ "$AUTHOR" = "MinhoZenS" ]; then
-            echo "token=${{ secrets.PAT_AUTO_APPROVE_AetherXYZ }}" >> $GITHUB_OUTPUT
+          elif [ "$AUTHOR" = "minhozens" ]; then
+            echo "token=${{ secrets.PAT_AUTO_APPROVE_AETHERXYZ }}" >> $GITHUB_OUTPUT
 
           # Auteur non reconnu → pas de token, le step suivant skipera proprement
           # Unknown author → no token, the next step will skip cleanly
@@ -269,7 +270,7 @@ jobs:
             }
 
             // ----------------------------------------------------------------
-            //  IDEMPOTENCE
+            // Idempotence
             //  Vérifie si la PR est déjà approuvée par ce reviewer
             //  afin d'éviter des approbations en double.
             //  Checks if the PR is already approved by this reviewer
@@ -321,7 +322,7 @@ jobs:
             ].join('\n'));
 
       # -----------------------------------------------------------------------
-      #  ÉTAPE 3 — MODE MANUEL / MANUAL MODE (workflow_dispatch)
+      #  ÉTAPE 3 — Mode Manuel / Manual Mode (workflow_dispatch)
       #
       #  Scanne TOUTES les PRs ouvertes (y compris les anciennes) et les
       #  approuve si elles passent tous les filtres.
@@ -341,7 +342,7 @@ jobs:
         with:
           # Token de base pour lister les PRs (lecture seule)
           # Base token to list PRs (read-only)
-          github-token: ${{ secrets.PAT_AUTO_APPROVE_MinhoZenS }}
+          github-token: ${{ secrets.PAT_AUTO_APPROVE_MINHOZENS }}
           script: |
 
             // ----------------------------------------------------------------
@@ -432,11 +433,13 @@ jobs:
               //  (the client is initialized once at script entry).
               //  We therefore instantiate a dedicated Octokit client with
               //  the correct PAT for each PR.
+              // Sélection du PAT correct pour chaque auteur de Pull Request (Insensible à la casse)
+              const authorLower = author.toLowerCase();
               // --------------------------------------------------------------
 
               // AetherXYZ → approuvé par PAT Minho / approved by Minho's PAT
               // MinhoZenS → approuvé par PAT Aether / approved by Aether's PAT
-              const token = author === "AetherXYZ"
+              const token = authorLower === "aetherxyz"
                 ? process.env.PAT_MINHO
                 : process.env.PAT_AETHER;
 
@@ -578,7 +581,7 @@ jobs:
                 }
 
                 // ------------------------------------------------------------
-                //  IDEMPOTENCE
+                // Idempotence
                 //  Evite d'approuver une PR déjà approuvée
                 //  Avoids approving an already-approved PR
                 // ------------------------------------------------------------
