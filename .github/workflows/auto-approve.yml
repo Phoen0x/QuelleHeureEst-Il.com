@@ -209,28 +209,47 @@ jobs:
             }
 
             // ----------------------------------------------------------------
-            //  VÉRIFICATION CODEQL / CODEQL CHECK
-            //  Seuls les checks CodeQL sont considérés — tous doivent passer
-            //  Only CodeQL checks are considered — all must pass
+            //  VÉRIFICATION CODEQL AVEC ATTENTE / CODEQL CHECK WITH POLLING
+            //  Attend que tous les checks CodeQL soient terminés, puis vérifie
+            //  qu'aucun n'a échoué.
+            //  Waits for all CodeQL checks to complete, then verifies none failed.
             // ----------------------------------------------------------------
-            log.check(`Récupération des checks pour SHA ${pr.head.sha}... / Fetching check runs for SHA ${pr.head.sha}...`);
-            const checks = await withRetry(() =>
-              github.rest.checks.listForRef({ owner, repo, ref: pr.head.sha, per_page: 100 })
-            );
+            log.check(`Attente de la fin des checks CodeQL... / Waiting for CodeQL runs to complete...`);
 
-            // Filtre : uniquement les checks dont le nom contient "codeql"
-            // Filter: only checks whose name contains "codeql"
-            const codeqlRuns = (checks.data.check_runs || []).filter(r =>
-              r.name.toLowerCase().includes("codeql")
-            );
+            const MAX_WAIT_MS = 10 * 60 * 1000;   // 10 minutes
+            const POLL_INTERVAL_MS = 30 * 1000;   // 30 secondes
+            const waitStart = Date.now();
 
-            log.info(`${codeqlRuns.length} check(s) CodeQL détecté(s). / Detected ${codeqlRuns.length} CodeQL check(s).`);
+            let codeqlRuns = [];  // sera rempli après l'attente
+
+            while (true) {
+              const checks = await withRetry(() =>
+                github.rest.checks.listForRef({ owner, repo, ref: pr.head.sha, per_page: 100 })
+              );
+
+              codeqlRuns = (checks.data.check_runs || []).filter(r =>
+                r.name.toLowerCase().includes("codeql")
+              );
+
+              const pending = codeqlRuns.filter(r => r.status !== "completed");
+
+              if (pending.length === 0) break;   // tous terminés
+
+              if (Date.now() - waitStart > MAX_WAIT_MS) {
+                log.warn(`Timeout atteint en attendant CodeQL. Le workflow va s'arrêter sans approuver. / Timeout waiting for CodeQL. Stopping without approving.`);
+                return;
+              }
+
+              log.info(`En attente de ${pending.length} check(s) CodeQL... / Waiting for ${pending.length} CodeQL check(s)...`);
+              await sleep(POLL_INTERVAL_MS);
+            }
+
+            log.info(`${codeqlRuns.length} check(s) CodeQL terminé(s). / Detected ${codeqlRuns.length} completed CodeQL check(s).`);
             log.verbose(JSON.stringify(codeqlRuns.map(c => ({ name: c.name, status: c.status, conclusion: c.conclusion })), null, 2));
 
-            // Un check CodeQL terminé sans "success" bloque l'approbation
-            // A completed CodeQL check without "success" blocks approval
+            // Vérification qu'aucun check n'est en échec
             const failingCodeql = codeqlRuns.filter(r =>
-              r.status === "completed" && !["success", "neutral", "skipped"].includes(r.conclusion)
+              !["success", "neutral", "skipped"].includes(r.conclusion)
             );
 
             if (failingCodeql.length) {
@@ -495,24 +514,50 @@ jobs:
                 }
 
                 // ------------------------------------------------------------
-                //  VÉRIFICATION CODEQL / CODEQL CHECK
-                //  success, neutral et skipped sont acceptés
-                //  success, neutral and skipped are accepted
+                //  VÉRIFICATION CODEQL AVEC ATTENTE / CODEQL CHECK WITH POLLING
                 // ------------------------------------------------------------
-                log.check(`Vérification CodeQL pour SHA ${pr.head.sha}... / Checking CodeQL for SHA ${pr.head.sha}...`);
-                const checksData = await withRetry(() =>
-                  ghFetch('GET', `/repos/${owner}/${repo}/commits/${pr.head.sha}/check-runs?per_page=100`)
-                );
+                log.check(`Attente de la fin des checks CodeQL pour SHA ${pr.head.sha}... / Waiting for CodeQL runs to complete for SHA ${pr.head.sha}...`);
 
-                const codeqlRuns = (checksData.check_runs || []).filter(r =>
-                  r.name.toLowerCase().includes("codeql")
-                );
+                const MAX_WAIT_MS = 10 * 60 * 1000;   // 10 minutes
+                const POLL_INTERVAL_MS = 30 * 1000;   // 30 secondes
+                const waitStart = Date.now();
 
-                log.info(`${codeqlRuns.length} check(s) CodeQL.`);
+                let codeqlRuns = [];
+
+                while (true) {
+                  const checksData = await withRetry(() =>
+                    ghFetch('GET', `/repos/${owner}/${repo}/commits/${pr.head.sha}/check-runs?per_page=100`)
+                  );
+
+                  codeqlRuns = (checksData.check_runs || []).filter(r =>
+                    r.name.toLowerCase().includes("codeql")
+                  );
+
+                  const pending = codeqlRuns.filter(r => r.status !== "completed");
+
+                  if (pending.length === 0) break;   // tous terminés
+
+                  if (Date.now() - waitStart > MAX_WAIT_MS) {
+                    log.warn(`Timeout atteint en attendant CodeQL pour PR #${prNumber}. / Timeout waiting for CodeQL for PR #${prNumber}.`);
+                    summary.push({ pr: prNumber, author, status: "TIMEOUT (CodeQL waiting)" });
+                    break; // sort de la boucle d'attente
+                  }
+
+                  log.info(`En attente de ${pending.length} check(s) CodeQL... / Waiting for ${pending.length} CodeQL check(s)...`);
+                  await sleep(POLL_INTERVAL_MS);
+                }
+
+                // Si on est sorti par timeout, on passe à la PR suivante
+                if (codeqlRuns.some(r => r.status !== "completed")) {
+                  continue;
+                }
+
+                log.info(`${codeqlRuns.length} check(s) CodeQL terminé(s). / ${codeqlRuns.length} completed CodeQL check(s).`);
                 log.verbose(JSON.stringify(codeqlRuns.map(c => ({ name: c.name, status: c.status, conclusion: c.conclusion })), null, 2));
 
+                // Vérification des échecs
                 const failingCodeql = codeqlRuns.filter(r =>
-                  r.status === "completed" && !["success", "neutral", "skipped"].includes(r.conclusion)
+                  !["success", "neutral", "skipped"].includes(r.conclusion)
                 );
 
                 if (failingCodeql.length) {
@@ -580,4 +625,3 @@ jobs:
               core.info(`PR #${s.pr} | Auteur/Author: ${s.author} | Statut/Status: ${s.status}`);
             });
             core.info("\x1b[36m================================================================\x1b[0m");
-            
