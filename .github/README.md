@@ -162,6 +162,9 @@ Fournir une application complète permettant d'accéder, en ligne et hors ligne,
 - Itinéraires vélo, promenade de chien, jogging
 - Agenda
 - Système d'amis et d'envoi de messages / planning.
+- Récents changements d'heure, prochains changement d'heure, calcul de différences d'heure/date/fuseau.
+- Lever et coucher du soleil.
+- Comparaisons suggérées et personnalisées, en recherche ou en page d'accueil.
 
 ---
 
