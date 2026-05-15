@@ -211,9 +211,9 @@ jobs:
             }
 
             // ----------------------------------------------------------------
-            //  VÉRIFICATION CODEQL AVEC COOLDOWN SIMPLE
-            //  Attend que tous les checks CodeQL connus soient terminés,
-            //  puis patiente 90 secondes sans aucun changement.
+            //  VÉRIFICATION CODEQL AVEC COOLDOWN STABLE
+            //  Attend que le nombre de checks CodeQL reste inchangé pendant
+            //  90 secondes et que tous soient terminés.
             // ----------------------------------------------------------------
             log.check(`Attente de la fin des checks CodeQL... / Waiting for CodeQL runs to complete...`);
 
@@ -223,7 +223,8 @@ jobs:
             const waitStart = Date.now();
 
             let codeqlRuns = [];
-            let cooldownStart = null;   // null = pas en cooldown
+            let cooldownStart = null;      // timestamp de début du cooldown, ou null
+            let lastCheckCount = 0;        // nombre de checks lors du dernier démarrage du cooldown
 
             while (true) {
               const checks = await withRetry(() =>
@@ -237,19 +238,20 @@ jobs:
               const currentCount = codeqlRuns.length;
               const pending = codeqlRuns.filter(r => r.status !== "completed");
 
+              // Si au moins un check et tous sont terminés
               if (currentCount > 0 && pending.length === 0) {
-                // Tous les checks actuels sont terminés
-                if (cooldownStart === null) {
-                  // Démarre le cooldown
+                if (cooldownStart === null || currentCount !== lastCheckCount) {
+                  // Démarre ou redémarre le cooldown car le nombre de checks a changé
                   cooldownStart = Date.now();
-                  log.info(`Tous les checks CodeQL sont terminés (${currentCount}). Démarrage du cooldown de 90 secondes.`);
+                  lastCheckCount = currentCount;
+                  log.info(`Tous les checks CodeQL sont terminés (${currentCount}). Démarrage/redémarrage du cooldown de 90 secondes.`);
                 } else if (Date.now() - cooldownStart >= COOLDOWN_MS) {
-                  // Cooldown terminé sans interruption → on approuve
+                  // Cooldown terminé sans changement du nombre de checks
                   log.info(`Cooldown terminé. Aucun nouveau check détecté.`);
                   break;
                 }
               } else {
-                // Soit aucun check, soit certains sont encore en cours → réinitialise le cooldown
+                // Soit aucun check, soit certains sont en cours → réinitialise le cooldown
                 if (cooldownStart !== null) {
                   log.info(`Changement détecté (checks: ${currentCount}, en cours: ${pending.length}). Réinitialisation du cooldown.`);
                   cooldownStart = null;
@@ -265,7 +267,7 @@ jobs:
               await sleep(POLL_INTERVAL_MS);
             }
 
-            log.info(`${codeqlRuns.length} check(s) CodeQL terminé(s) après cooldown. / Detected ${codeqlRuns.length} completed CodeQL check(s) after cooldown.`);
+            log.info(`${codeqlRuns.length} check(s) CodeQL terminé(s) après cooldown stable. / Detected ${codeqlRuns.length} completed CodeQL check(s) after stable cooldown.`);
             log.verbose(JSON.stringify(codeqlRuns.map(c => ({ name: c.name, status: c.status, conclusion: c.conclusion })), null, 2));
 
             // Vérification qu'aucun check n'est en échec
