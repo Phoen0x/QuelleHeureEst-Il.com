@@ -11,9 +11,9 @@
 name: Auto Approve PR (Approved Users Only)
 
 on:
-  # Déclenché à chaque ouverture ou mise à jour d'une PR
-  # Triggered on PR open or new commits pushed
-  pull_request:
+  # Déclenché à chaque ouverture ou mise à jour d'une PR (même depuis un fork)
+  # Triggered on PR open or new commits pushed (works even from forks)
+  pull_request_target:
     types: [opened, synchronize]
 
   # Déclenché manuellement depuis l'onglet Actions (scanne toutes les PRs ouvertes)
