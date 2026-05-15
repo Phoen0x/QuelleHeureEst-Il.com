@@ -115,9 +115,6 @@ jobs:
             const prNumber = pr.number;
             const author   = pr.user.login;
 
-            // Le commit sur lequel tournent les checks (merge commit simulé)
-            const checkRef = pr.merge_commit_sha || pr.head.sha;
-
             // ----------------------------------------------------------------
             //  SYSTÈME DE LOGS COLORÉS AVEC TIMESTAMPS
             //  Utilise les codes ANSI pour colorer les logs dans Actions
@@ -232,8 +229,9 @@ jobs:
             let lastCheckCount = 0;        // nombre de checks lors du dernier démarrage du cooldown
 
             while (true) {
+              // Les checks sont cherchés sur le commit de la branche (head.sha)
               const checks = await withRetry(() =>
-                github.rest.checks.listForRef({ owner, repo, ref: checkRef, per_page: 100 })
+                github.rest.checks.listForRef({ owner, repo, ref: pr.head.sha, per_page: 100 })
               );
 
               codeqlRuns = (checks.data.check_runs || []).filter(r =>
@@ -439,9 +437,6 @@ jobs:
               const prNumber = pr.number;
               const author   = pr.user.login;
 
-              // Le commit sur lequel tournent les checks (merge commit simulé)
-              const checkRef = pr.merge_commit_sha || pr.head.sha;
-
               log.info(`\n--- PR #${prNumber} par/by ${author} ---`);
 
               // --------------------------------------------------------------
@@ -550,7 +545,7 @@ jobs:
                 // ------------------------------------------------------------
                 //  VÉRIFICATION CODEQL AVEC ATTENTE / CODEQL CHECK WITH POLLING
                 // ------------------------------------------------------------
-                log.check(`Attente de la fin des checks CodeQL pour SHA ${checkRef}... / Waiting for CodeQL runs to complete for SHA ${checkRef}...`);
+                log.check(`Attente de la fin des checks CodeQL pour SHA ${pr.head.sha}... / Waiting for CodeQL runs to complete for SHA ${pr.head.sha}...`);
 
                 const MAX_WAIT_MS = 10 * 60 * 1000;   // 10 minutes
                 const POLL_INTERVAL_MS = 30 * 1000;   // 30 secondes
@@ -559,8 +554,9 @@ jobs:
                 let codeqlRuns = [];
 
                 while (true) {
+                  // Les checks sont cherchés sur le commit de la branche (head.sha)
                   const checksData = await withRetry(() =>
-                    ghFetch('GET', `/repos/${owner}/${repo}/commits/${checkRef}/check-runs?per_page=100`)
+                    ghFetch('GET', `/repos/${owner}/${repo}/commits/${pr.head.sha}/check-runs?per_page=100`)
                   );
 
                   codeqlRuns = (checksData.check_runs || []).filter(r =>
