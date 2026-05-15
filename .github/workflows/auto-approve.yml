@@ -211,19 +211,20 @@ jobs:
             }
 
             // ----------------------------------------------------------------
-            //  VÉRIFICATION CODEQL AVEC COOLDOWN / CODEQL CHECK WITH STABLE POLLING
-            //  Attend qu'au moins un check CodeQL soit terminé, puis patiente
-            //  90 secondes supplémentaires pour laisser le temps à d'éventuels
-            //  checks retardataires d'apparaître.
+            //  VÉRIFICATION CODEQL AVEC STABILITÉ DU NOMBRE DE CHECKS
+            //  Attend que le nombre de checks CodeQL reste identique pendant
+            //  4 itérations consécutives (2 minutes) et que tous soient terminés.
             // ----------------------------------------------------------------
             log.check(`Attente de la fin des checks CodeQL... / Waiting for CodeQL runs to complete...`);
 
-            const MAX_WAIT_MS = 10 * 60 * 1000;   // 10 minutes
+            const MAX_WAIT_MS = 10 * 60 * 1000;   // 10 minutes timeout global
             const POLL_INTERVAL_MS = 30 * 1000;   // 30 secondes
-            const COOLDOWN_MS = 90 * 1000;        // 1 minute 30 après le dernier check terminé
+            const STABILITY_ITERATIONS = 4;       // nombre d'itérations sans changement
             const waitStart = Date.now();
 
             let codeqlRuns = [];
+            let stableCount = 0;
+            let lastCheckCount = -1;
 
             while (true) {
               const checks = await withRetry(() =>
@@ -234,40 +235,21 @@ jobs:
                 r.name.toLowerCase().includes("codeql")
               );
 
-              const pending = currentRuns.filter(r => r.status !== "completed");
               const currentCount = currentRuns.length;
+              const pending = currentRuns.filter(r => r.status !== "completed");
 
-              // Condition : au moins un check CodeQL, tous terminés
-              if (currentCount > 0 && pending.length === 0) {
-                // Délai de grâce : on attend COOLDOWN_MS en surveillant l'apparition de nouveaux checks
-                const cooldownStart = Date.now();
-                let newChecksAppeared = false;
+              // Si le nombre de checks n'a pas changé et qu'ils sont tous terminés, on incrémente la stabilité
+              if (currentCount === lastCheckCount && currentCount > 0 && pending.length === 0) {
+                stableCount++;
+              } else {
+                stableCount = 0; // reset si changement ou pas encore tous terminés
+              }
 
-                while (Date.now() - cooldownStart < COOLDOWN_MS) {
-                  await sleep(POLL_INTERVAL_MS);
+              lastCheckCount = currentCount;
 
-                  // Vérifier si de nouveaux checks sont apparus
-                  const recheck = await withRetry(() =>
-                    github.rest.checks.listForRef({ owner, repo, ref: pr.head.sha, per_page: 100 })
-                  );
-                  const recheckRuns = (recheck.data.check_runs || []).filter(r =>
-                    r.name.toLowerCase().includes("codeql")
-                  );
-                  const recheckPending = recheckRuns.filter(r => r.status !== "completed");
-
-                  if (recheckRuns.length > currentCount || recheckPending.length > 0) {
-                    // Un nouveau check est apparu ou un check est repassé en attente
-                    newChecksAppeared = true;
-                    log.info(`Nouveau(x) check(s) CodeQL détecté(s) pendant le cooldown. On reprend l'attente.`);
-                    break; // sortir du cooldown, la boucle principale va reprendre
-                  }
-                }
-
-                if (!newChecksAppeared) {
-                  // Aucun nouveau check pendant le cooldown → on peut approuver
-                  codeqlRuns = currentRuns;
-                  break;
-                }
+              if (stableCount >= STABILITY_ITERATIONS) {
+                codeqlRuns = currentRuns;
+                break;
               }
 
               if (Date.now() - waitStart > MAX_WAIT_MS) {
@@ -275,11 +257,11 @@ jobs:
                 return;
               }
 
-              log.info(`En attente des checks CodeQL (trouvés: ${currentCount}, en cours: ${pending.length})...`);
+              log.info(`En attente des checks CodeQL (trouvés: ${currentCount}, en cours: ${pending.length}, stabilité: ${stableCount}/${STABILITY_ITERATIONS})...`);
               await sleep(POLL_INTERVAL_MS);
             }
 
-            log.info(`${codeqlRuns.length} check(s) CodeQL terminé(s) après cooldown. / Detected ${codeqlRuns.length} completed CodeQL check(s) after cooldown.`);
+            log.info(`${codeqlRuns.length} check(s) CodeQL terminé(s) et stables. / Detected ${codeqlRuns.length} completed and stable CodeQL check(s).`);
             log.verbose(JSON.stringify(codeqlRuns.map(c => ({ name: c.name, status: c.status, conclusion: c.conclusion })), null, 2));
 
             // Vérification qu'aucun check n'est en échec
