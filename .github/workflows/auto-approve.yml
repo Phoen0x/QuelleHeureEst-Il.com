@@ -211,77 +211,49 @@ jobs:
             }
 
             // ----------------------------------------------------------------
-            //  VÉRIFICATION CODEQL AVEC COOLDOWN RAPIDE
-            //  Attend qu'au moins un check CodeQL soit terminé, puis patiente
-            //  90 secondes sans voir apparaître de nouveau check ni de check
-            //  en attente. Si un changement survient, le délai est réinitialisé.
+            //  VÉRIFICATION CODEQL AVEC COOLDOWN SIMPLE
+            //  Attend que tous les checks CodeQL connus soient terminés,
+            //  puis patiente 90 secondes sans aucun changement.
             // ----------------------------------------------------------------
             log.check(`Attente de la fin des checks CodeQL... / Waiting for CodeQL runs to complete...`);
 
             const MAX_WAIT_MS = 15 * 60 * 1000;  // 15 minutes timeout global
             const POLL_INTERVAL_MS = 30 * 1000;  // 30 secondes
-            const COOLDOWN_MS = 90 * 1000;       // 1 minute 30 sans nouveau check
+            const COOLDOWN_MS = 90 * 1000;       // 1 minute 30 sans changement
             const waitStart = Date.now();
 
             let codeqlRuns = [];
-            let lastKnownCount = 0;
+            let cooldownStart = null;   // null = pas en cooldown
 
             while (true) {
               const checks = await withRetry(() =>
                 github.rest.checks.listForRef({ owner, repo, ref: pr.head.sha, per_page: 100 })
               );
 
-              const currentRuns = (checks.data.check_runs || []).filter(r =>
+              codeqlRuns = (checks.data.check_runs || []).filter(r =>
                 r.name.toLowerCase().includes("codeql")
               );
 
-              const currentCount = currentRuns.length;
-              const pending = currentRuns.filter(r => r.status !== "completed");
+              const currentCount = codeqlRuns.length;
+              const pending = codeqlRuns.filter(r => r.status !== "completed");
 
-              // Si au moins un check CodeQL et tous sont terminés
               if (currentCount > 0 && pending.length === 0) {
-                // Vérifier si le nombre de checks a changé depuis la dernière fois
-                if (currentCount !== lastKnownCount) {
-                  lastKnownCount = currentCount;
-                  // Un nouveau check est apparu, on (re)démarre le cooldown
-                  log.info(`Nouveau check CodeQL détecté (total: ${currentCount}). Démarrage/redémarrage du cooldown de 90 secondes.`);
-                  const cooldownStart = Date.now();
-
-                  // Période de cooldown
-                  let cooldownElapsed = false;
-                  while (!cooldownElapsed) {
-                    await sleep(POLL_INTERVAL_MS);
-
-                    // Vérifier si de nouveaux checks sont apparus ou si certains sont repassés en attente
-                    const recheck = await withRetry(() =>
-                      github.rest.checks.listForRef({ owner, repo, ref: pr.head.sha, per_page: 100 })
-                    );
-                    const recheckRuns = (recheck.data.check_runs || []).filter(r =>
-                      r.name.toLowerCase().includes("codeql")
-                    );
-                    const recheckPending = recheckRuns.filter(r => r.status !== "completed");
-
-                    if (recheckRuns.length !== lastKnownCount || recheckPending.length > 0) {
-                      // Changement détecté, on sort du cooldown pour reprendre la boucle principale
-                      lastKnownCount = recheckRuns.length;
-                      log.info(`Changement détecté pendant le cooldown (nouveau total: ${lastKnownCount}). Reprise de l'attente.`);
-                      break;
-                    }
-
-                    if (Date.now() - cooldownStart >= COOLDOWN_MS) {
-                      cooldownElapsed = true;
-                    }
-                  }
-
-                  // Si le cooldown est arrivé à son terme sans interruption, on a fini
-                  if (cooldownElapsed) {
-                    codeqlRuns = currentRuns;
-                    break;
-                  }
+                // Tous les checks actuels sont terminés
+                if (cooldownStart === null) {
+                  // Démarre le cooldown
+                  cooldownStart = Date.now();
+                  log.info(`Tous les checks CodeQL sont terminés (${currentCount}). Démarrage du cooldown de 90 secondes.`);
+                } else if (Date.now() - cooldownStart >= COOLDOWN_MS) {
+                  // Cooldown terminé sans interruption → on approuve
+                  log.info(`Cooldown terminé. Aucun nouveau check détecté.`);
+                  break;
                 }
               } else {
-                // Pas encore tous terminés, on met à jour lastKnownCount pour le prochain tour
-                lastKnownCount = currentCount;
+                // Soit aucun check, soit certains sont encore en cours → réinitialise le cooldown
+                if (cooldownStart !== null) {
+                  log.info(`Changement détecté (checks: ${currentCount}, en cours: ${pending.length}). Réinitialisation du cooldown.`);
+                  cooldownStart = null;
+                }
               }
 
               if (Date.now() - waitStart > MAX_WAIT_MS) {
@@ -289,7 +261,7 @@ jobs:
                 return;
               }
 
-              log.info(`En attente des checks CodeQL (trouvés: ${currentCount}, en cours: ${pending.length})...`);
+              log.info(`En attente des checks CodeQL (trouvés: ${currentCount}, en cours: ${pending.length}, cooldown: ${cooldownStart ? Math.round((Date.now() - cooldownStart)/1000) + 's' : 'non'})...`);
               await sleep(POLL_INTERVAL_MS);
             }
 
