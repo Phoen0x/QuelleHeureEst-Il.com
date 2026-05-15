@@ -62,21 +62,24 @@ jobs:
           AUTHOR=$(echo "${{ github.event.pull_request.user.login }}" | tr '[:upper:]' '[:lower:]')
           echo "Auteur détecté (minuscules) : '$AUTHOR'"
 
-          # AetherXYZ → approuvé par le PAT de MinhoZenS
-          # AetherXYZ → approved using MinhoZenS's PAT
           if [ "$AUTHOR" = "aetherxyz" ]; then
-            echo "token=${{ secrets.PAT_AUTO_APPROVE_MINHOZENS }}" >> $GITHUB_OUTPUT
-
-          # MinhoZenS → approuvé par le PAT de AetherXYZ
-          # MinhoZenS → approved using AetherXYZ's PAT
+            echo "Branche : AetherXYZ → PAT MINHOZENS"
+            TOKEN="${{ secrets.PAT_AUTO_APPROVE_MINHOZENS }}"
           elif [ "$AUTHOR" = "minhozens" ]; then
-            echo "token=${{ secrets.PAT_AUTO_APPROVE_AETHERXYZ }}" >> $GITHUB_OUTPUT
-
-          # Auteur non reconnu → pas de token, le step suivant skipera proprement
-          # Unknown author → no token, the next step will skip cleanly
+            echo "Branche : MinhoZenS → PAT AETHERXYZ"
+            TOKEN="${{ secrets.PAT_AUTO_APPROVE_AETHERXYZ }}"
           else
-            echo "token=" >> $GITHUB_OUTPUT
+            echo "Auteur non reconnu, token vide"
+            TOKEN=""
           fi
+
+          if [ -z "$TOKEN" ]; then
+            echo "⚠️ Le token est vide (secret manquant ou non défini ?)" >&2
+          else
+            echo "✅ Token récupéré (longueur : ${#TOKEN})"
+          fi
+
+          echo "token=$TOKEN" >> $GITHUB_OUTPUT
 
       # -----------------------------------------------------------------------
       #  ÉTAPE 2 — MODE AUTOMATIQUE / AUTO MODE (pull_request_target event)
