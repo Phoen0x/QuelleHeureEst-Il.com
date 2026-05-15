@@ -1,8 +1,6 @@
 FR :
 .
-.
 Quelle Heure Est-Il ? 🤔
-.
 .
 ```markdown
 # QuelleHeureEst-Il?.com
