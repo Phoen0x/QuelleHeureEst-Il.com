@@ -116,21 +116,23 @@ jobs:
             const author   = pr.user.login;
 
             // ----------------------------------------------------------------
-            //  SYSTÈME DE LOGS COLORÉS / COLORED LOGGING SYSTEM
+            //  SYSTÈME DE LOGS COLORÉS AVEC TIMESTAMPS
             //  Utilise les codes ANSI pour colorer les logs dans Actions
-            //  Uses ANSI color codes to colorize logs in Actions
+            //  et préfixe chaque message par un timestamp ISO 8601.
+            //  Uses ANSI color codes and prefixes each message with an ISO 8601 timestamp.
             // ----------------------------------------------------------------
             const log = {
-              info:    msg => core.info(`\x1b[36m[INFO]\x1b[0m ${msg}`),
-              warn:    msg => core.warning(`\x1b[33m[WARN]\x1b[0m ${msg}`),
-              error:   msg => core.error(`\x1b[31m[ERROR]\x1b[0m ${msg}`),
-              check:   msg => core.info(`\x1b[35m[CHECK]\x1b[0m ${msg}`),
-              approve: msg => core.info(`\x1b[32m[APPROVE]\x1b[0m ${msg}`),
-              skip:    msg => core.info(`\x1b[33m[SKIP]\x1b[0m ${msg}`),
+              _ts: () => new Date().toISOString(),
+              info:    msg => core.info(`\x1b[36m[${log._ts()} INFO]\x1b[0m ${msg}`),
+              warn:    msg => core.warning(`\x1b[33m[${log._ts()} WARN]\x1b[0m ${msg}`),
+              error:   msg => core.error(`\x1b[31m[${log._ts()} ERROR]\x1b[0m ${msg}`),
+              check:   msg => core.info(`\x1b[35m[${log._ts()} CHECK]\x1b[0m ${msg}`),
+              approve: msg => core.info(`\x1b[32m[${log._ts()} APPROVE]\x1b[0m ${msg}`),
+              skip:    msg => core.info(`\x1b[33m[${log._ts()} SKIP]\x1b[0m ${msg}`),
               // Logs détaillés activables via le secret VERBOSE="true"
               // Detailed logs activatable via the VERBOSE="true" secret
               verbose: msg => process.env.VERBOSE === "true"
-                ? core.info(`\x1b[90m[VERBOSE]\x1b[0m ${msg}`)
+                ? core.info(`\x1b[90m[${log._ts()} VERBOSE]\x1b[0m ${msg}`)
                 : null
             };
 
@@ -377,17 +379,18 @@ jobs:
             const { owner, repo } = context.repo;
 
             // ----------------------------------------------------------------
-            //  SYSTÈME DE LOGS COLORÉS / COLORED LOGGING SYSTEM
+            //  SYSTÈME DE LOGS COLORÉS AVEC TIMESTAMPS
             // ----------------------------------------------------------------
             const log = {
-              info:    msg => core.info(`\x1b[36m[INFO]\x1b[0m ${msg}`),
-              warn:    msg => core.warning(`\x1b[33m[WARN]\x1b[0m ${msg}`),
-              error:   msg => core.error(`\x1b[31m[ERROR]\x1b[0m ${msg}`),
-              check:   msg => core.info(`\x1b[35m[CHECK]\x1b[0m ${msg}`),
-              approve: msg => core.info(`\x1b[32m[APPROVE]\x1b[0m ${msg}`),
-              skip:    msg => core.info(`\x1b[33m[SKIP]\x1b[0m ${msg}`),
+              _ts: () => new Date().toISOString(),
+              info:    msg => core.info(`\x1b[36m[${log._ts()} INFO]\x1b[0m ${msg}`),
+              warn:    msg => core.warning(`\x1b[33m[${log._ts()} WARN]\x1b[0m ${msg}`),
+              error:   msg => core.error(`\x1b[31m[${log._ts()} ERROR]\x1b[0m ${msg}`),
+              check:   msg => core.info(`\x1b[35m[${log._ts()} CHECK]\x1b[0m ${msg}`),
+              approve: msg => core.info(`\x1b[32m[${log._ts()} APPROVE]\x1b[0m ${msg}`),
+              skip:    msg => core.info(`\x1b[33m[${log._ts()} SKIP]\x1b[0m ${msg}`),
               verbose: msg => process.env.VERBOSE === "true"
-                ? core.info(`\x1b[90m[VERBOSE]\x1b[0m ${msg}`)
+                ? core.info(`\x1b[90m[${log._ts()} VERBOSE]\x1b[0m ${msg}`)
                 : null
             };
 
