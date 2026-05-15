@@ -213,14 +213,14 @@ jobs:
             // ----------------------------------------------------------------
             //  VÉRIFICATION CODEQL AVEC COOLDOWN / CODEQL CHECK WITH STABLE POLLING
             //  Attend qu'au moins un check CodeQL soit terminé, puis patiente
-            //  60 secondes supplémentaires pour laisser le temps à d'éventuels
+            //  90 secondes supplémentaires pour laisser le temps à d'éventuels
             //  checks retardataires d'apparaître.
             // ----------------------------------------------------------------
             log.check(`Attente de la fin des checks CodeQL... / Waiting for CodeQL runs to complete...`);
 
             const MAX_WAIT_MS = 10 * 60 * 1000;   // 10 minutes
             const POLL_INTERVAL_MS = 30 * 1000;   // 30 secondes
-            const COOLDOWN_MS = 60 * 1000;        // 1 minute après le dernier check terminé
+            const COOLDOWN_MS = 90 * 1000;        // 1 minute 30 après le dernier check terminé
             const waitStart = Date.now();
 
             let codeqlRuns = [];
