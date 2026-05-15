@@ -211,43 +211,67 @@ jobs:
             }
 
             // ----------------------------------------------------------------
-            //  VÉRIFICATION CODEQL AVEC ATTENTE / CODEQL CHECK WITH POLLING
-            //  Attend qu'au moins un check CodeQL soit détecté ET que tous
-            //  soient terminés avant de continuer.
-            //  Waits for all CodeQL checks to complete, then verifies none failed.
+            //  VÉRIFICATION CODEQL AVEC ATTENTE STABLE / CODEQL CHECK WITH STABLE POLLING
+            //  Attend que le nombre de checks CodeQL reste identique pendant
+            //  3 itérations consécutives ET que tous soient terminés.
+            //  Ce délai (3 x 30 sec = 1 min 30 s) permet aux checks retardataires
+            //  d'apparaître et d'être pris en compte.
+			//  Waits for all CodeQL checks to complete, then verifies none failed.
             // ----------------------------------------------------------------
             log.check(`Attente de la fin des checks CodeQL... / Waiting for CodeQL runs to complete...`);
 
             const MAX_WAIT_MS = 10 * 60 * 1000;   // 10 minutes
             const POLL_INTERVAL_MS = 30 * 1000;   // 30 secondes
+            const STABILITY_ITERATIONS = 3;       // nombre d'itérations sans changement
             const waitStart = Date.now();
 
-            let codeqlRuns = [];  // sera rempli pendant l'attente
+            let codeqlRuns = [];
+            let stableCount = 0;
+            let lastCheckCount = -1;
 
-            while (codeqlRuns.length === 0 || codeqlRuns.some(r => r.status !== "completed")) {
+            while (true) {
               const checks = await withRetry(() =>
                 github.rest.checks.listForRef({ owner, repo, ref: pr.head.sha, per_page: 100 })
               );
 
-              codeqlRuns = (checks.data.check_runs || []).filter(r =>
+              const currentRuns = (checks.data.check_runs || []).filter(r =>
                 r.name.toLowerCase().includes("codeql")
               );
 
-              const pending = codeqlRuns.filter(r => r.status !== "completed");
+              const pending = currentRuns.filter(r => r.status !== "completed");
+              const currentCount = currentRuns.length;
 
-              // Au moins un check CodeQL est apparu et tous sont terminés → on sort
-              if (codeqlRuns.length > 0 && pending.length === 0) break;
+              // Tous les checks actuels sont terminés ?
+              if (currentCount > 0 && pending.length === 0) {
+                // Vérifier la stabilité du nombre de checks
+                if (currentCount === lastCheckCount) {
+                  stableCount++;
+                } else {
+                  stableCount = 1; // reset
+                }
+                lastCheckCount = currentCount;
+
+                // Si stable depuis STABILITY_ITERATIONS, on considère que c'est complet
+                if (stableCount >= STABILITY_ITERATIONS) {
+                  codeqlRuns = currentRuns;
+                  break;
+                }
+              } else {
+                // Encore des checks en attente ou aucun check, réinitialiser la stabilité
+                stableCount = 0;
+                lastCheckCount = currentCount;
+              }
 
               if (Date.now() - waitStart > MAX_WAIT_MS) {
                 log.warn(`Timeout atteint en attendant CodeQL. Aucune approbation.`);
                 return;
               }
 
-              log.info(`En attente des checks CodeQL (trouvés: ${codeqlRuns.length}, en cours: ${pending.length})...`);
+              log.info(`En attente des checks CodeQL (trouvés: ${currentCount}, en cours: ${pending.length}, stabilité: ${stableCount}/${STABILITY_ITERATIONS})...`);
               await sleep(POLL_INTERVAL_MS);
             }
 
-            log.info(`${codeqlRuns.length} check(s) CodeQL terminé(s). / Detected ${codeqlRuns.length} completed CodeQL check(s).`);
+            log.info(`${codeqlRuns.length} check(s) CodeQL terminé(s) et stable. / Detected ${codeqlRuns.length} completed and stable CodeQL check(s).`);
             log.verbose(JSON.stringify(codeqlRuns.map(c => ({ name: c.name, status: c.status, conclusion: c.conclusion })), null, 2));
 
             // Vérification qu'aucun check n'est en échec
