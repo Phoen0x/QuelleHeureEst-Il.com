@@ -216,7 +216,7 @@ jobs:
             //  3 itérations consécutives ET que tous soient terminés.
             //  Ce délai (3 x 30 sec = 1 min 30 s) permet aux checks retardataires
             //  d'apparaître et d'être pris en compte.
-			//  Waits for all CodeQL checks to complete, then verifies none failed.
+            //  Waits for all CodeQL checks to complete, then verifies none failed.
             // ----------------------------------------------------------------
             log.check(`Attente de la fin des checks CodeQL... / Waiting for CodeQL runs to complete...`);
 
