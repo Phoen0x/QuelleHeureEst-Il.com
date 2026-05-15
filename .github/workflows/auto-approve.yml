@@ -62,12 +62,20 @@ jobs:
           AUTHOR=$(echo "${{ github.event.pull_request.user.login }}" | tr '[:upper:]' '[:lower:]')
           echo "Auteur détecté (minuscules) : '$AUTHOR'"
 
+          # AetherXYZ → approuvé par le PAT de MinhoZenS
+          # AetherXYZ → approved using MinhoZenS's PAT
           if [ "$AUTHOR" = "aetherxyz" ]; then
             echo "Branche : AetherXYZ → PAT MINHOZENS"
             TOKEN="${{ secrets.PAT_AUTO_APPROVE_MINHOZENS }}"
+
+          # MinhoZenS → approuvé par le PAT de AetherXYZ
+          # MinhoZenS → approved using AetherXYZ's PAT
           elif [ "$AUTHOR" = "minhozens" ]; then
             echo "Branche : MinhoZenS → PAT AETHERXYZ"
             TOKEN="${{ secrets.PAT_AUTO_APPROVE_AETHERXYZ }}"
+
+          # Auteur non reconnu → pas de token, le step suivant skipera proprement
+          # Unknown author → no token, the next step will skip cleanly
           else
             echo "Auteur non reconnu, token vide"
             TOKEN=""
@@ -204,8 +212,8 @@ jobs:
 
             // ----------------------------------------------------------------
             //  VÉRIFICATION CODEQL AVEC ATTENTE / CODEQL CHECK WITH POLLING
-            //  Attend que tous les checks CodeQL soient terminés, puis vérifie
-            //  qu'aucun n'a échoué.
+            //  Attend qu'au moins un check CodeQL soit détecté ET que tous
+            //  soient terminés avant de continuer.
             //  Waits for all CodeQL checks to complete, then verifies none failed.
             // ----------------------------------------------------------------
             log.check(`Attente de la fin des checks CodeQL... / Waiting for CodeQL runs to complete...`);
@@ -214,9 +222,9 @@ jobs:
             const POLL_INTERVAL_MS = 30 * 1000;   // 30 secondes
             const waitStart = Date.now();
 
-            let codeqlRuns = [];  // sera rempli après l'attente
+            let codeqlRuns = [];  // sera rempli pendant l'attente
 
-            while (true) {
+            while (codeqlRuns.length === 0 || codeqlRuns.some(r => r.status !== "completed")) {
               const checks = await withRetry(() =>
                 github.rest.checks.listForRef({ owner, repo, ref: pr.head.sha, per_page: 100 })
               );
@@ -227,14 +235,15 @@ jobs:
 
               const pending = codeqlRuns.filter(r => r.status !== "completed");
 
-              if (pending.length === 0) break;   // tous terminés
+              // Au moins un check CodeQL est apparu et tous sont terminés → on sort
+              if (codeqlRuns.length > 0 && pending.length === 0) break;
 
               if (Date.now() - waitStart > MAX_WAIT_MS) {
-                log.warn(`Timeout atteint en attendant CodeQL. Le workflow va s'arrêter sans approuver. / Timeout waiting for CodeQL. Stopping without approving.`);
+                log.warn(`Timeout atteint en attendant CodeQL. Aucune approbation.`);
                 return;
               }
 
-              log.info(`En attente de ${pending.length} check(s) CodeQL... / Waiting for ${pending.length} CodeQL check(s)...`);
+              log.info(`En attente des checks CodeQL (trouvés: ${codeqlRuns.length}, en cours: ${pending.length})...`);
               await sleep(POLL_INTERVAL_MS);
             }
 
@@ -621,4 +630,3 @@ jobs:
               core.info(`PR #${s.pr} | Auteur/Author: ${s.author} | Statut/Status: ${s.status}`);
             });
             core.info("\x1b[36m================================================================\x1b[0m");
-            
