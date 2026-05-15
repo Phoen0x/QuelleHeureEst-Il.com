@@ -79,13 +79,13 @@ jobs:
           fi
 
       # -----------------------------------------------------------------------
-      #  ÉTAPE 2 — MODE AUTOMATIQUE / AUTO MODE (pull_request event)
+      #  ÉTAPE 2 — MODE AUTOMATIQUE / AUTO MODE (pull_request_target event)
       #
       #  Déclenché à chaque PR ouverte ou mise à jour.
       #  Triggered on every PR opened or updated.
       # -----------------------------------------------------------------------
       - name: Approbation automatique d'une PR / Auto-approve single PR (event)
-        if: github.event_name == 'pull_request'
+        if: github.event_name == 'pull_request_target'
         uses: actions/github-script@v8
         with:
           github-token: ${{ steps.select-pat.outputs.token }}
@@ -628,3 +628,4 @@ jobs:
               core.info(`PR #${s.pr} | Auteur/Author: ${s.author} | Statut/Status: ${s.status}`);
             });
             core.info("\x1b[36m================================================================\x1b[0m");
+            
