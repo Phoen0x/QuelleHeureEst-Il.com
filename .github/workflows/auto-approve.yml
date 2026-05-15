@@ -138,16 +138,6 @@ jobs:
               return;
             }
 
-            // ----------------------------------------------------------------
-            //  VÉRIFICATION DU PAT / PAT AVAILABILITY CHECK
-            //  Si aucun PAT n'a été sélectionné à l'étape précédente, on skip
-            //  If no PAT was selected in the previous step, skip cleanly
-            // ----------------------------------------------------------------
-            if (!process.env.GITHUB_TOKEN) {
-              log.warn(`Aucun PAT disponible pour cet auteur, skip. / No PAT available for this author. Skipping.`);
-              return;
-            }
-
             log.info(`PAT actif — reviewer : ${context.actor} / Active PAT — reviewer: ${context.actor}`);
 
             // ----------------------------------------------------------------
