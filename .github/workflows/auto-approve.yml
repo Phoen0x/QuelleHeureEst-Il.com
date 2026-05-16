@@ -1,23 +1,24 @@
-# =============================================================================#
-# Workflow : Auto Approve PR (Approved Users Only)                             #
-# Approuve automatiquement les PRs des utilisateurs de la whitelist,           #
-# sous réserve qu'aucun commit bolt.new/StackBlitz ne soit détecté             #
-# et que les checks CodeQL soient en succès.                                   #
-#                                                                              #
-# Auto-approves PRs from whitelisted users, provided no bolt.new/StackBlitz    #
-# commit is detected and all CodeQL checks pass.                               #
-# =============================================================================#
+﻿#-----------------------------------------------------------------------------#
+#              WorkFlow : Auto Approve PR (Approved Users Only)               #
+#                                                                             #
+#   FR//  Approuve automatiquement les PRs des utilisateurs de la whitelist,  #
+#  sous réserve qu'aucun commit bolt.new/StackBlitz ne soit détecté           #
+#  et que les checks CodeQL soient en succès.                                 #
+#                                                                             #
+#  ENG//  Auto-approves PRs from whitelisted users, provided no               #
+#  bolt.new/StackBlitz commit is detected and all CodeQL checks pass.         #
+#-----------------------------------------------------------------------------#
 
 name: Auto Approve PR (Approved Users Only)
 
 on:
-  # Déclenché à chaque ouverture ou mise à jour d'une PR (même depuis un fork)
-  # Triggered on PR open or new commits pushed (works even from forks)
+  # FR// Déclenché à chaque ouverture ou mise à jour d'une PR (même depuis un fork)
+  # ENG// Triggered on PR open or new commits pushed (works even from forks)
   pull_request_target:
     types: [opened, synchronize]
 
-  # Déclenché manuellement depuis l'onglet Actions (scanne toutes les PRs ouvertes)
-  # Manually triggered from the Actions tab (scans all open PRs)
+  # FR// Déclenché manuellement depuis l'onglet Actions (scanne toutes les PRs ouvertes)
+  # ENG// Manually triggered from the Actions tab (scans all open PRs)
   workflow_dispatch: {}
 
 jobs:
@@ -25,76 +26,110 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      # Force l'exécution des actions JavaScript sous Node.js 24
-      # Forces JavaScript actions to run under Node.js 24
+      # FR// Force l'exécution des actions JavaScript sous Node.js 24
+      # ENG// Forces JavaScript actions to run under Node.js 24
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
-      # PATs chargés en variables d'environnement pour le mode dispatch
-      # PATs loaded as env vars for dispatch mode (cross-review)
+      # FR// PATs chargés en variables d'environnement pour le mode dispatch
+      # ENG// PATs loaded as env vars for dispatch mode (cross-review)
       PAT_MINHO:  ${{ secrets.PAT_AUTO_APPROVE_MINHOZENS }}
       PAT_AETHER: ${{ secrets.PAT_AUTO_APPROVE_AETHERXYZ }}
 
-      # Activer les logs VERBOSE via le secret AUTO_APPROVE_VERBOSE="true"
-      # Enable VERBOSE logs via the secret AUTO_APPROVE_VERBOSE="true"
+      # FR// Activer les logs VERBOSE via le secret AUTO_APPROVE_VERBOSE="true"
+      # ENG// Enable VERBOSE logs via the secret AUTO_APPROVE_VERBOSE="true"
       VERBOSE: ${{ secrets.AUTO_APPROVE_VERBOSE }}
 
+      # FR// Utilisateurs autorisés (séparés par des virgules, insensible à la casse)
+      # ENG// Authorized users (comma-separated, case-insensitive)
+      APPROVED_USERS: "AetherXYZ,MinhoZenS"
+
+      # FR// Mapping auteur → nom de variable d'environnement contenant le PAT
+      # FR// Format JSON : {"auteur_en_minuscules":"NOM_VARIABLE_PAT"}
+      # ENG// Author → PAT env var mapping (JSON, lowercase author)
+      PAT_MAP: '{"aetherxyz":"PAT_MINHO","minhozens":"PAT_AETHER"}'
+
     permissions:
-      pull-requests: write  # Nécessaire pour approuver / Required to approve PRs
-      issues: write         # Nécessaire pour commenter / Required to post comments
-      contents: read        # Nécessaire pour lire les checks / Required to read checks
+      # FR// Nécessaire pour approuver
+      # ENG// Required to approve PRs
+      pull-requests: write
+
+      # FR// Nécessaire pour commenter
+      # ENG// Required to post comments
+      issues: write
+
+      # FR// Nécessaire pour lire les checks
+      # ENG// Required to read checks
+      contents: read
 
     steps:
 
-      # -------------------------------------------------------------------------#
-      #  ÉTAPE 1 — SÉLECTION DU PAT / SELECT CORRECT PAT (Insensible à la casse) #
-      #                                                                          #
-      #  GitHub interdit à un utilisateur d'approuver sa propre PR.              #
-      #  On utilise donc un PAT croisé : la PR d'AetherXYZ est approuvée         #
-      #  via le PAT de MinhoZenS, et vice-versa.                                 #
-      #                                                                          #
-      #  GitHub prevents a user from approving their own PR.                     #
-      #  We use cross-review PATs: AetherXYZ's PR is approved using              #
-      #  MinhoZenS's PAT, and vice-versa.                                        #
-      # -------------------------------------------------------------------------#
+      #-----------------------------------------------------------------------#
+      #   FR//  ÉTAPE 1 — SÉLECTION DU PAT (insensible à la casse)            #
+      #                                                                       #
+      #        GitHub interdit à un utilisateur d'approuver sa propre PR.     #
+      #        On utilise un PAT croisé : la PR d'un utilisateur whitelisté   #
+      #        est approuvée via le PAT d'un autre utilisateur whitelisté.    #
+      #                                                                       #
+      #  ENG//  STEP 1 — PAT SELECTION (case‑insensitive)                     #
+      #                                                                       #
+      #        GitHub prevents a user from approving their own PR.            #
+      #        We use cross‑review PATs: a whitelisted user's PR is approved  #
+      #        using another whitelisted user's PAT.                          #
+      #-----------------------------------------------------------------------#
       - name: Sélection du PAT selon l'auteur / Select correct PAT based on PR author
         id: select-pat
         run: |
           AUTHOR=$(echo "${{ github.event.pull_request.user.login }}" | tr '[:upper:]' '[:lower:]')
           echo "Auteur détecté (minuscules) : '$AUTHOR'"
 
-          # AetherXYZ → approuvé par le PAT de MinhoZenS
-          # AetherXYZ → approved using MinhoZenS's PAT
-          if [ "$AUTHOR" = "aetherxyz" ]; then
-            echo "Branche : AetherXYZ → PAT MINHOZENS"
-            TOKEN="${{ secrets.PAT_AUTO_APPROVE_MINHOZENS }}"
+          # FR// Extraire le mapping depuis la variable d'environnement
+          # ENG// Extract the mapping from the environment variable
+          PAT_MAP_JSON='${{ env.PAT_MAP }}'
+          # FR// Extraire le nom de la variable PAT pour cet auteur (jq serait plus simple mais pas installé par défaut)
+          #      On utilise grep + cut ou awk (awk est disponible)
+          # ENG// Extract the PAT variable name for this author (jq would be easier but not installed by default)
+          #       We use grep + cut or awk (awk is available)
+          PAT_VAR=$(echo "$PAT_MAP_JSON" | awk -v author="$AUTHOR" '{
+            # FR// suppression des accolades et guillemets, découpage
+            # ENG// remove braces and quotes, split
+            gsub(/[{}"]/, "");
+            split($0, pairs, ",");
+            for (i in pairs) {
+              split(pairs[i], kv, ":");
+              if (kv[1] == author) {
+                print kv[2];
+                exit;
+              }
+            }
+          }')
 
-          # MinhoZenS → approuvé par le PAT de AetherXYZ
-          # MinhoZenS → approved using AetherXYZ's PAT
-          elif [ "$AUTHOR" = "minhozens" ]; then
-            echo "Branche : MinhoZenS → PAT AETHERXYZ"
-            TOKEN="${{ secrets.PAT_AUTO_APPROVE_AETHERXYZ }}"
+          if [ -n "$PAT_VAR" ]; then
 
-          # Auteur non reconnu → pas de token, le step suivant skipera proprement
-          # Unknown author → no token, the next step will skip cleanly
+            # FR//  Récupération dynamique de la valeur de la variable dont le nom est dans PAT_VAR
+            # ENG//  Dynamically fetch the value of the variable whose name is in PAT_VAR
+            TOKEN="${!PAT_VAR}"
+            if [ -z "$TOKEN" ]; then
+              echo "⚠️ La variable $PAT_VAR est vide (secret manquant ou non défini ?)" >&2
+            else
+              echo "✅ Token récupéré via $PAT_VAR (longueur : ${#TOKEN})"
+            fi
           else
             echo "Auteur non reconnu, token vide"
             TOKEN=""
           fi
 
-          if [ -z "$TOKEN" ]; then
-            echo "⚠️ Le token est vide (secret manquant ou non défini ?)" >&2
-          else
-            echo "✅ Token récupéré (longueur : ${#TOKEN})"
-          fi
-
           echo "token=$TOKEN" >> $GITHUB_OUTPUT
 
-      # ------------------------------------------------------------------------#
-      #  ÉTAPE 2 — MODE AUTOMATIQUE / AUTO MODE (pull_request_target event)     #
-      #                                                                         #
-      #  Déclenché à chaque PR ouverte ou mise à jour.                          #
-      #  Triggered on every PR opened or updated.                               #
-      # ------------------------------------------------------------------------#
+      #------------------------------------------------------------#
+      #   FR//   ÉTAPE 2 — MODE AUTOMATIQUE (pull_request_target)  #
+      #                                                            #
+      #           Déclenché à chaque PR ouverte ou mise à jour.    #
+      #                                                            #
+      #                                                            #
+      #  ENG//  STEP 2 — AUTOMATIC MODE (pull_request_target)      #
+      #                                                            #
+      #           Triggered on every PR opened or updated.         #
+      #------------------------------------------------------------#
       - name: Approbation automatique d'une PR / Auto-approve single PR (event)
         if: github.event_name == 'pull_request_target'
         uses: actions/github-script@v8
@@ -102,25 +137,30 @@ jobs:
           github-token: ${{ steps.select-pat.outputs.token }}
           script: |
 
-            // ----------------------------------------------------------------
-            //  CONFIGURATION
-            // ----------------------------------------------------------------
+            //-----------------------//
+            //  FR//  CONFIGURATION  //
+            // ENG//  CONFIGURATION  //
+            //-----------------------//
 
-            // Utilisateurs autorisés à recevoir une approbation automatique
-            // Users allowed to receive auto-approval
-            const APPROVED_USERS = ['AetherXYZ', 'MinhoZenS'];
+            //  FR// Récupération des utilisateurs autorisés depuis la variable d'environnement
+            // ENG// Fetch authorized users from the environment variable
+            const approvedUsersStr = process.env.APPROVED_USERS || '';
+            const APPROVED_USERS = approvedUsersStr.split(',').map(u => u.trim()).filter(u => u.length > 0);
 
             const { owner, repo } = context.repo;
             const pr       = context.payload.pull_request;
             const prNumber = pr.number;
             const author   = pr.user.login;
 
-            // ----------------------------------------------------------------
-            //  SYSTÈME DE LOGS COLORÉS AVEC TIMESTAMPS
-            //  Utilise les codes ANSI pour colorer les logs dans Actions
-            //  et préfixe chaque message par un timestamp ISO 8601.
-            //  Uses ANSI color codes and prefixes each message with an ISO 8601 timestamp.
-            // ----------------------------------------------------------------
+            //-------------------------------------------------------------------//
+            //   FR//  SYSTÈME DE LOGS COLORÉS AVEC TIMESTAMPS                   //
+            //        Utilise les codes ANSI pour colorer les logs dans Actions  //
+            //        et préfixe chaque message par un timestamp ISO 8601.       //
+            //  ENG//  COLORED LOGGING SYSTEM WITH TIMESTAMPS                    //
+            //        Uses ANSI color codes to colorize logs in Actions          //
+            //        and prefixes each message with an ISO 8601 timestamp.      //
+            //-------------------------------------------------------------------//
+
             const log = {
               _ts: () => new Date().toISOString(),
               info:    msg => core.info(`\x1b[36m[${log._ts()} INFO]\x1b[0m ${msg}`),
@@ -129,8 +169,8 @@ jobs:
               check:   msg => core.info(`\x1b[35m[${log._ts()} CHECK]\x1b[0m ${msg}`),
               approve: msg => core.info(`\x1b[32m[${log._ts()} APPROVE]\x1b[0m ${msg}`),
               skip:    msg => core.info(`\x1b[33m[${log._ts()} SKIP]\x1b[0m ${msg}`),
-              // Logs détaillés activables via le secret VERBOSE="true"
-              // Detailed logs activatable via the VERBOSE="true" secret
+              //  FR//  Logs détaillés activables via le secret VERBOSE="true"
+              // ENG//  Detailed logs activatable via the VERBOSE="true" secret
               verbose: msg => process.env.VERBOSE === "true"
                 ? core.info(`\x1b[90m[${log._ts()} VERBOSE]\x1b[0m ${msg}`)
                 : null
@@ -138,11 +178,14 @@ jobs:
 
             log.info(`Traitement de la PR #${prNumber} par ${author} / Processing PR #${prNumber} by ${author}`);
 
-            // ----------------------------------------------------------------
-            //  FILTRE AUTEUR / AUTHOR FILTER
-            //  Seuls les utilisateurs de la whitelist sont traités
-            //  Only whitelisted users are processed
-            // ----------------------------------------------------------------
+            //--------------------------------------------------------------//
+            //   FR//  FILTRE AUTEUR                                        //
+            //        Seuls les utilisateurs de la whitelist sont traités.  //
+            //                                                              //
+            //  ENG//  AUTHOR FILTER                                        //
+            //        Only whitelisted users are processed.                 //
+            //--------------------------------------------------------------//
+
             if (!APPROVED_USERS.includes(author)) {
               log.skip(`Auteur "${author}" non autorisé, PR ignorée. / Author "${author}" not in whitelist, skipping.`);
               return;
@@ -150,14 +193,15 @@ jobs:
 
             log.info(`PAT actif — reviewer : ${context.actor} / Active PAT — reviewer: ${context.actor}`);
 
-            // ----------------------------------------------------------------
-            //  UTILITAIRES / UTILITIES
-            // ----------------------------------------------------------------
+            //----------------------//
+            //   FR//  UTILITAIRES  //
+            //  ENG//  UTILITIES    //
+            //----------------------//
 
             function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
 
-            // Retry avec backoff exponentiel — évite les échecs transitoires de l'API
-            // Retry with exponential backoff — avoids transient API failures
+            //   FR//  Retry avec backoff exponentiel — évite les échecs transitoires de l'API
+            //  ENG//  Retry with exponential backoff — avoids transient API failures
             async function withRetry(fn, attempts = 3, delay = 1000) {
               for (let i = 0; i < attempts; i++) {
                 try { return await fn(); }
@@ -170,16 +214,19 @@ jobs:
               }
             }
 
-            // ----------------------------------------------------------------
-            //  ANALYSE DES COMMITS / COMMIT SCAN
-            //  Détecte les commits provenant de bolt.new ou StackBlitz
-            //  Detects commits originating from bolt.new or StackBlitz
-            //
-            //  per_page: 100 — sans ça, l'API retourne 30 commits max par défaut.
-            //  Un commit bolt.new au-delà du 30ème passerait inaperçu.
-            //  per_page: 100 — without this, the API returns max 30 commits.
-            //  A bolt.new commit beyond the 30th would go undetected.
-            // ----------------------------------------------------------------
+            //----------------------------------------------------------------------------//
+            //   FR//  ANALYSE DES COMMITS                                                //
+            //        Détecte les commits provenant de bolt.new ou StackBlitz             //
+            //                                                                            //
+            //        per_page: 100 — sans ça, l'API retourne 30 commits max par défaut.  //
+            //        Un commit bolt.new au-delà du 30ème passerait inaperçu.             //
+            //                                                                            //
+            //  ENG//  COMMIT SCAN                                                        //
+            //        Detects commits originating from bolt.new or StackBlitz             //
+            //                                                                            //
+            //        per_page: 100 — without this, the API returns max 30 commits.       //
+            //----------------------------------------------------------------------------//
+
             log.check(`Récupération des commits... / Fetching commits...`);
             const commits = await withRetry(() =>
               github.rest.pulls.listCommits({ owner, repo, pull_number: prNumber, per_page: 100 })
@@ -188,8 +235,8 @@ jobs:
             log.info(`${commits.data.length} commit(s) trouvé(s). / Found ${commits.data.length} commit(s).`);
             log.verbose(JSON.stringify(commits.data.map(c => c.sha), null, 2));
 
-            // Détection par nom ou email du committer (insensible à la casse)
-            // Detection via committer name or email (case-insensitive)
+            //   FR//  Détection par nom ou email du committer (insensible à la casse)
+            //  ENG//  Detection via committer name or email (case-insensitive)
             const isBolt = commits.data.some(c => {
               const name  = c.commit.committer?.name?.toLowerCase()  || "";
               const email = c.commit.committer?.email?.toLowerCase() || "";
@@ -199,8 +246,8 @@ jobs:
             if (isBolt) {
               log.warn(`Bolt.new / StackBlitz détecté — approbation bloquée. / Bolt.new / StackBlitz detected — approval blocked.`);
               const msg = '⚠️ **Auto-approval blocked** : commits bolt.new/StackBlitz détectés. Revue manuelle requise.\n⚠️ **Auto-approval blocked**: bolt.new/StackBlitz commits detected. Manual review required.';
-              // Anti-doublon : ne poste le commentaire que s'il n'existe pas déjà
-              // Dedup: only post comment if not already present
+              //   FR//  Anti-doublon : ne poste le commentaire que s'il n'existe pas déjà
+              //  ENG//  Dedup: only post comment if not already present
               const comments = await withRetry(() =>
                 github.rest.issues.listComments({ owner, repo, issue_number: prNumber, per_page: 100 })
               );
@@ -212,10 +259,18 @@ jobs:
               return;
             }
 
-            // ----------------------------------------------------------------
-            //  VÉRIFICATION CODEQL AVEC COOLDOWN STABLE (head + merge)
-            //  Combine les checks du commit de branche et du merge commit.
-            // ----------------------------------------------------------------
+            //----------------------------------------------------------------------//
+            //   FR//  VÉRIFICATION CODEQL AVEC COOLDOWN STABLE (via Check Suites)  //
+            //        Récupère la dernière check suite pour le head.sha, puis tous  //
+            //        les check runs de cette suite. Cela capture tous les checks   //
+            //        de la PR, quel que soit le workflow.                          //
+            //                                                                      //
+            //  ENG//  CODEQL CHECK WITH STABLE COOLDOWN (via Check Suites)         //
+            //        Fetches the latest check suite for head.sha, then all         //
+            //        check runs of that suite. This captures all checks of         //
+            //        the PR, regardless of the workflow.                           //
+            //----------------------------------------------------------------------//
+
             log.check(`Attente de la fin des checks CodeQL... / Waiting for CodeQL runs to complete...`);
 
             const MAX_WAIT_MS = 15 * 60 * 1000;  // 15 minutes timeout global
@@ -223,52 +278,71 @@ jobs:
             const COOLDOWN_MS = 90 * 1000;       // 1 minute 30 sans changement
             const waitStart = Date.now();
 
-            const shaList = [pr.head.sha];
-            if (pr.merge_commit_sha && pr.merge_commit_sha !== pr.head.sha) {
-              shaList.push(pr.merge_commit_sha);
-            }
-
             let codeqlRuns = [];
             let cooldownStart = null;      // timestamp de début du cooldown, ou null
             let lastCheckCount = 0;        // nombre de checks lors du dernier démarrage du cooldown
 
             while (true) {
-              // Récupère les checks pour chaque SHA et les fusionne
-              const allRuns = [];
-              for (const sha of shaList) {
-                const checks = await withRetry(() =>
-                  github.rest.checks.listForRef({ owner, repo, ref: sha, per_page: 100 })
-                );
-                allRuns.push(...(checks.data.check_runs || []));
-              }
-              // Déduplication par id de check
-              const uniqueMap = new Map();
-              for (const run of allRuns) {
-                uniqueMap.set(run.id, run);
-              }
-              const uniqueRuns = Array.from(uniqueMap.values());
+              //   FR//  1. Récupérer la dernière check suite pour ce commit
+              //  ENG//  1. Fetch the latest check suite for this commit
+              const suites = await withRetry(() =>
+                github.rest.checks.listSuitesForRef({
+                  owner,
+                  repo,
+                  ref: pr.head.sha,
+                  per_page: 1 // la plus récente suffit
+                })
+              );
 
-              codeqlRuns = uniqueRuns.filter(r =>
+              if (suites.data.total_count === 0) {
+                //   FR//  Aucune check suite encore créée → attendre
+                //  ENG//  No check suite created yet → wait
+                log.verbose(`Aucune check suite trouvée pour le commit. Attente...`);
+                await sleep(POLL_INTERVAL_MS);
+                continue;
+              }
+
+              const suiteId = suites.data.check_suites[0].id;
+
+              //   FR//  2. Récupérer tous les check runs de cette suite
+              //  ENG//  2. Fetch all check runs of this suite
+              const runs = await withRetry(() =>
+                github.rest.checks.listForSuite({
+                  owner,
+                  repo,
+                  check_suite_id: suiteId,
+                  per_page: 100
+                })
+              );
+
+              codeqlRuns = (runs.data.check_runs || []).filter(r =>
                 r.name.toLowerCase().includes("codeql")
               );
 
               const currentCount = codeqlRuns.length;
               const pending = codeqlRuns.filter(r => r.status !== "completed");
 
-              // Si au moins un check et tous sont terminés
+              //   FR//  Si au moins un check et tous sont terminés
+              //  ENG//  If at least one check and all are completed
               if (currentCount > 0 && pending.length === 0) {
                 if (cooldownStart === null || currentCount !== lastCheckCount) {
-                  // Démarre ou redémarre le cooldown car le nombre de checks a changé
+
+                  //   FR//  Démarre ou redémarre le cooldown car le nombre de checks a changé
+                  //  ENG//  Start or restart the cooldown because the check count changed
                   cooldownStart = Date.now();
                   lastCheckCount = currentCount;
                   log.info(`Tous les checks CodeQL sont terminés (${currentCount}). Démarrage/redémarrage du cooldown de 90 secondes.`);
                 } else if (Date.now() - cooldownStart >= COOLDOWN_MS) {
-                  // Cooldown terminé sans changement du nombre de checks
+
+                  //   FR//  Cooldown terminé sans changement du nombre de checks
+                  //  ENG//  Cooldown finished without any change in check count
                   log.info(`Cooldown terminé. Aucun nouveau check détecté.`);
                   break;
                 }
               } else {
-                // Soit aucun check, soit certains sont en cours → réinitialise le cooldown
+
+                //   FR//  Soit aucun check, soit certains sont en cours → réinitialise le cooldown
+                //  ENG//  Either no checks or some are still in progress → reset cooldown
                 if (cooldownStart !== null) {
                   log.info(`Changement détecté (checks: ${currentCount}, en cours: ${pending.length}). Réinitialisation du cooldown.`);
                   cooldownStart = null;
@@ -287,7 +361,8 @@ jobs:
             log.info(`${codeqlRuns.length} check(s) CodeQL terminé(s) après cooldown stable. / Detected ${codeqlRuns.length} completed CodeQL check(s) after stable cooldown.`);
             log.verbose(JSON.stringify(codeqlRuns.map(c => ({ name: c.name, status: c.status, conclusion: c.conclusion })), null, 2));
 
-            // Vérification qu'aucun check n'est en échec
+            //   FR//  Vérification qu'aucun check n'est en échec
+            //  ENG//  Verification that no check has failed
             const failingCodeql = codeqlRuns.filter(r =>
               !["success", "neutral", "skipped"].includes(r.conclusion)
             );
@@ -296,7 +371,8 @@ jobs:
               const names = failingCodeql.map(r => r.name).join(', ');
               log.warn(`CodeQL échoué : ${names} / CodeQL failing: ${names}`);
               const msg = `⚠️ Approbation automatique ignorée : les checks CodeQL ont échoué : ${names}.\n⚠️ Auto-approval skipped: CodeQL checks failed: ${names}.`;
-              // Anti-doublon commentaire / Dedup comment
+              //   FR//  Anti-doublon commentaire
+              //  ENG//  Dedup comment
               const comments = await withRetry(() =>
                 github.rest.issues.listComments({ owner, repo, issue_number: prNumber, per_page: 100 })
               );
@@ -308,13 +384,15 @@ jobs:
               return;
             }
 
-            // ----------------------------------------------------------------
-            // Idempotence
-            //  Vérifie si la PR est déjà approuvée par ce reviewer
-            //  afin d'éviter des approbations en double.
-            //  Checks if the PR is already approved by this reviewer
-            //  to avoid duplicate approvals.
-            // ----------------------------------------------------------------
+            //---------------------------------------------------------------//
+            //   FR//  Idempotence                                           //
+            //        Vérifie si la PR est déjà approuvée par ce reviewer    //
+            //        afin d'éviter des approbations en double.              //
+            //                                                               //
+            //  ENG//  Idempotence                                           //
+            //        Checks if the PR is already approved by this reviewer  //
+            //        to avoid duplicate approvals.                          //
+            //---------------------------------------------------------------//
             log.check(`Vérification des reviews existantes... / Checking existing reviews...`);
             const reviews = await withRetry(() =>
               github.rest.pulls.listReviews({ owner, repo, pull_number: prNumber, per_page: 100 })
@@ -329,9 +407,10 @@ jobs:
               return;
             }
 
-            // ----------------------------------------------------------------
-            //  APPROBATION / APPROVAL
-            // ----------------------------------------------------------------
+            //----------------------//
+            //   FR//  APPROBATION  //
+            //  ENG//  APPROVAL     //
+            //----------------------//
             log.approve(`Approbation de la PR #${prNumber}... / Approving PR #${prNumber}...`);
             await withRetry(() =>
               github.rest.pulls.createReview({
@@ -344,9 +423,10 @@ jobs:
 
             log.approve(`PR #${prNumber} approuvée avec succès. / PR #${prNumber} approved successfully.`);
 
-            // ----------------------------------------------------------------
-            //  RÉSUMÉ / SUMMARY
-            // ----------------------------------------------------------------
+            //------------------//
+            //   FR//  RÉSUMÉ   //
+            //  ENG//  SUMMARY  //
+            //------------------//
             core.info([
               '',
               '\x1b[32m==================== RÉSUMÉ / SUMMARY ====================\x1b[0m',
@@ -360,42 +440,49 @@ jobs:
               ''
             ].join('\n'));
 
-      # -------------------------------------------------------------------------#
-      #  ÉTAPE 3 — Mode Manuel / Manual Mode (workflow_dispatch)                 #
-      #                                                                          #
-      #  FR// Scanne TOUTES les PRs ouvertes (y compris les anciennes) et les    #
-      #  approuve si elles passent tous les filtres.                             #
-      #  Pour le cross-review, on instancie un client Octokit dédié avec         #
-      #  le bon PAT pour chaque PR — contrairement à github.auth = token         #
-      #  qui ne fonctionne pas dans github-script.                               #
-      #                                                                          #
-      #  ENG// Scans ALL open PRs (including older ones) and approves them if    #
-      #  they pass all filters.                                                  #
-      #  For cross-review, a dedicated Octokit client is instantiated with       #
-      #  the correct PAT per PR — unlike github.auth = token which does          #
-      #  not work inside github-script.                                          #
-      # -------------------------------------------------------------------------#
+      #----------------------------------------------------------------------------#
+      #   FR//          ÉTAPE 3 — Mode Manuel (workflow_dispatch)                  #
+      #                                                                            #
+      #         Scanne TOUTES les PRs ouvertes (y compris les anciennes) et les    #
+      #         approuve si elles passent tous les filtres.                        #
+      #         Pour le cross-review, on instancie un client Octokit dédié avec    #
+      #         le bon PAT pour chaque PR — contrairement à github.auth = token    #
+      #         qui ne fonctionne pas dans github-script.                          #
+      #                                                                            #
+      #  ENG//          STEP 3 — Manual Mode (workflow_dispatch)                   #
+      #                                                                            #
+      #         Scans ALL open PRs (including older ones) and approves them if     #
+      #         they pass all filters.                                             #
+      #         For cross-review, a dedicated Octokit client is instantiated with  #
+      #         the correct PAT per PR — unlike github.auth = token which does     #
+      #         not work inside github-script.                                     #
+      #----------------------------------------------------------------------------#
+
       - name: Approbation manuelle de toutes les PRs ouvertes / Auto-approve all open PRs (manual)
         if: github.event_name == 'workflow_dispatch'
         uses: actions/github-script@v8
         with:
-          # Token de base pour lister les PRs (lecture seule)
-          # Base token to list PRs (read-only)
+          #   FR//  Token de base pour lister les PRs (lecture seule)
+          #  ENG//  Base token to list PRs (read-only)
           github-token: ${{ secrets.PAT_AUTO_APPROVE_MINHOZENS }}
           script: |
 
-            // ----------------------------------------------------------------
-            //  CONFIGURATION
-            // ----------------------------------------------------------------
+            //------------------------//
+            //   FR//  CONFIGURATION  //
+            //  ENG//  CONFIGURATION  //
+            //------------------------//
 
-            // Utilisateurs autorisés / Authorized users
-            const APPROVED_USERS = ['AetherXYZ', 'MinhoZenS'];
+            //   FR//  Récupération des utilisateurs autorisés depuis la variable d'environnement
+            //  ENG//  Fetch authorized users from the environment variable
+            const approvedUsersStr = process.env.APPROVED_USERS || '';
+            const APPROVED_USERS = approvedUsersStr.split(',').map(u => u.trim()).filter(u => u.length > 0);
 
             const { owner, repo } = context.repo;
 
-            // ----------------------------------------------------------------
-            //  SYSTÈME DE LOGS COLORÉS AVEC TIMESTAMPS
-            // ----------------------------------------------------------------
+            //--------------------------------------------------//
+            //   FR//  SYSTÈME DE LOGS COLORÉS AVEC TIMESTAMPS  //
+            //  ENG//  COLORED LOGGING SYSTEM WITH TIMESTAMPS   //
+            //--------------------------------------------------//
             const log = {
               _ts: () => new Date().toISOString(),
               info:    msg => core.info(`\x1b[36m[${log._ts()} INFO]\x1b[0m ${msg}`),
@@ -404,18 +491,22 @@ jobs:
               check:   msg => core.info(`\x1b[35m[${log._ts()} CHECK]\x1b[0m ${msg}`),
               approve: msg => core.info(`\x1b[32m[${log._ts()} APPROVE]\x1b[0m ${msg}`),
               skip:    msg => core.info(`\x1b[33m[${log._ts()} SKIP]\x1b[0m ${msg}`),
+              //   FR//  Logs détaillés activables via le secret VERBOSE="true"
+              //  ENG//  Detailed logs activatable via the VERBOSE="true" secret
               verbose: msg => process.env.VERBOSE === "true"
                 ? core.info(`\x1b[90m[${log._ts()} VERBOSE]\x1b[0m ${msg}`)
                 : null
             };
 
-            // ----------------------------------------------------------------
-            //  UTILITAIRES / UTILITIES
-            // ----------------------------------------------------------------
+            //----------------------//
+            //   FR//  UTILITAIRES  //
+            //  ENG//  UTILITIES    //
+            //----------------------//
 
             function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
 
-            // Retry avec backoff exponentiel / Retry with exponential backoff
+            //   FR//  Retry avec backoff exponentiel
+            //  ENG//  Retry with exponential backoff
             async function withRetry(fn, attempts = 3, delay = 1000) {
               for (let i = 0; i < attempts; i++) {
                 try { return await fn(); }
@@ -430,21 +521,23 @@ jobs:
 
             log.info(`Mode manuel : scan de toutes les PRs ouvertes... / Manual mode: scanning all open PRs...`);
 
-            // ----------------------------------------------------------------
-            //  RÉCUPÉRATION DE TOUTES LES PRs OUVERTES / FETCH ALL OPEN PRs
-            //  github.paginate parcourt automatiquement toutes les pages,
-            //  ce qui inclut les PRs anciennes.
-            //  github.paginate automatically walks through all pages,
-            //  which includes older PRs.
-            // ----------------------------------------------------------------
+            //---------------------------------------------------------------------//
+            //   FR//  RÉCUPÉRATION DE TOUTES LES PRs OUVERTES                     //
+            //        github.paginate parcourt automatiquement toutes les pages,   //
+            //        ce qui inclut les PRs anciennes.                             //
+            //                                                                     //
+            //  ENG//  FETCH ALL OPEN PRs                                          //
+            //        github.paginate automatically walks through all pages,       //
+            //        which includes older PRs.                                    //
+            //---------------------------------------------------------------------//
             const prs = await withRetry(() =>
               github.paginate(github.rest.pulls.list, { owner, repo, state: 'open', per_page: 100 })
             );
 
             log.info(`${prs.length} PR(s) ouverte(s) trouvée(s). / Found ${prs.length} open PR(s).`);
 
-            // Tableau récapitulatif rempli au fil du traitement
-            // Summary table filled as PRs are processed
+            //   FR//  Tableau récapitulatif rempli au fil du traitement
+            //  ENG//  Summary table filled as PRs are processed
             const summary = [];
 
             for (const pr of prs) {
@@ -453,53 +546,64 @@ jobs:
 
               log.info(`\n--- PR #${prNumber} par/by ${author} ---`);
 
-              // --------------------------------------------------------------
-              //  FILTRE WHITELIST / WHITELIST FILTER
-              // --------------------------------------------------------------
+              //---------------------------//
+              //   FR//  FILTRE WHITELIST  //
+              //  ENG//  WHITELIST FILTER  //
+              //---------------------------//
               if (!APPROVED_USERS.includes(author)) {
                 log.skip(`Auteur "${author}" non autorisé. / Author "${author}" not whitelisted.`);
                 summary.push({ pr: prNumber, author, status: "SKIPPED (not whitelisted)" });
                 continue;
               }
 
-              // --------------------------------------------------------------
-              //  SÉLECTION DU PAT CROSS-REVIEW / CROSS-REVIEW PAT SELECTION
-              //
-              //  On ne peut pas utiliser github.auth = token dans github-script
-              //  (le client est initialisé une seule fois à l'entrée du script).
-              //  On instancie donc un client Octokit dédié avec le bon PAT.
-              //
-              //  github.auth = token does not work inside github-script
-              //  (the client is initialized once at script entry).
-              //  We therefore instantiate a dedicated Octokit client with
-              //  the correct PAT for each PR.
-              // Sélection du PAT correct pour chaque auteur de Pull Request (Insensible à la casse)
-              const authorLower = author.toLowerCase();
-              // --------------------------------------------------------------
+              //----------------------------------------------------------------------//
+              //   FR//      SÉLECTION DU PAT CROSS-REVIEW                            //
+              //                                                                      //
+              //     On ne peut pas utiliser github.auth = token dans github-script   //
+              //     (le client est initialisé une seule fois à l'entrée du script).  //
+              //     On instancie donc un client Octokit dédié avec le bon PAT.       //
+              //                                                                      //
+              //  ENG//      CROSS-REVIEW PAT SELECTION                               //
+              //                                                                      //
+              //     github.auth = token does not work inside github-script           //
+              //     (the client is initialized once at script entry).                //
+              //     We therefore instantiate a dedicated Octokit client with         //
+              //     the correct PAT for each PR.                                     //
+              //----------------------------------------------------------------------//
 
-              // AetherXYZ → approuvé par PAT Minho / approved by Minho's PAT
-              // MinhoZenS → approuvé par PAT Aether / approved by Aether's PAT
-              const token = authorLower === "aetherxyz"
-                ? process.env.PAT_MINHO
-                : process.env.PAT_AETHER;
+              const authorLower = author.toLowerCase();
+
+              //   FR//  Récupération du mapping PAT depuis la variable d'environnement
+              //  ENG//  Fetch PAT mapping from the environment variable
+              let patMap = {};
+              try {
+                patMap = JSON.parse(process.env.PAT_MAP || '{}');
+              } catch (e) {
+                log.error(`Erreur de parsing du PAT_MAP : ${e.message}`);
+              }
+              const patVarName = patMap[authorLower];
+              const token = patVarName ? process.env[patVarName] : null;
 
               if (!token) {
-                log.warn(`Aucun PAT disponible pour PR #${prNumber}. / No PAT available for PR #${prNumber}, skipping.`);
+                log.warn(`Aucun PAT disponible pour PR #${prNumber} (auteur: ${author}). / No PAT available for PR #${prNumber} (author: ${author}), skipping.`);
                 summary.push({ pr: prNumber, author, status: "SKIPPED (no PAT)" });
                 continue;
               }
 
-              // ----------------------------------------------------------------
-              //  CLIENT FETCH LÉGER AVEC LE BON PAT / LIGHTWEIGHT FETCH CLIENT
-              //
-              //  require('@actions/github') n'est pas accessible dans github-script.
-              //  On utilise fetch (toujours disponible) pour appeler l'API GitHub
-              //  directement avec le token cross-review approprié.
-              //
-              //  require('@actions/github') is not accessible inside github-script.
-              //  We use fetch (always available) to call the GitHub API directly
-              //  with the appropriate cross-review token.
-              // ----------------------------------------------------------------
+              //--------------------------------------------------------------------------//
+              //   FR//             CLIENT FETCH LÉGER AVEC LE BON PAT                    //
+              //                                                                          //
+              //     require('@actions/github') n'est pas accessible dans github-script.  //
+              //     On utilise fetch (toujours disponible) pour appeler l'API GitHub     //
+              //     directement avec le token cross-review approprié.                    //
+              //                                                                          //
+              //  ENG//      LIGHTWEIGHT FETCH CLIENT WITH THE CORRECT PAT                //
+              //                                                                          //
+              //     require('@actions/github') is not accessible inside github-script.   //
+              //     We use fetch (always available) to call the GitHub API directly      //
+              //     with the appropriate cross-review token.                             //
+              //--------------------------------------------------------------------------//
+
               async function ghFetch(method, path, body = null) {
                 const opts = {
                   method,
@@ -518,11 +622,13 @@ jobs:
 
               try {
 
-                // ------------------------------------------------------------
-                //  ANALYSE DES COMMITS / COMMIT SCAN
-                //  per_page: 100 pour couvrir les grosses PRs sans pagination
-                //  per_page: 100 to cover large PRs without additional paging
-                // ------------------------------------------------------------
+                //--------------------------------------------------------------------//
+                //   FR//              ANALYSE DES COMMITS                            //
+                //        per_page: 100 pour couvrir les grosses PRs sans pagination  //
+                //                                                                    //
+                //  ENG//                 COMMIT SCAN                                 //
+                //        per_page: 100 to cover large PRs without additional paging  //
+                //--------------------------------------------------------------------//
                 log.check(`Récupération des commits... / Fetching commits...`);
                 const commitsData = await withRetry(() =>
                   ghFetch('GET', `/repos/${owner}/${repo}/pulls/${prNumber}/commits?per_page=100`)
@@ -531,8 +637,8 @@ jobs:
                 log.info(`${commitsData.length} commit(s).`);
                 log.verbose(JSON.stringify(commitsData.map(c => c.sha), null, 2));
 
-                // Détection bolt.new / StackBlitz (insensible à la casse)
-                // Bolt.new / StackBlitz detection (case-insensitive)
+                //   FR//  Détection bolt.new / StackBlitz (insensible à la casse)
+                //  ENG//  Bolt.new / StackBlitz detection (case-insensitive)
                 const isBolt = commitsData.some(c => {
                   const name  = c.commit.committer?.name?.toLowerCase()  || "";
                   const email = c.commit.committer?.email?.toLowerCase() || "";
@@ -541,8 +647,8 @@ jobs:
 
                 if (isBolt) {
                   log.warn(`Bolt.new / StackBlitz détecté. / Bolt.new / StackBlitz detected.`);
-                  // Anti-doublon : vérifie avant de poster le commentaire
-                  // Dedup: check before posting the comment
+                  //   FR//  Anti-doublon : vérifie avant de poster le commentaire
+                  //  ENG//  Dedup: check before posting the comment
                   const existingComments = await withRetry(() =>
                     ghFetch('GET', `/repos/${owner}/${repo}/issues/${prNumber}/comments?per_page=100`)
                   );
@@ -556,15 +662,12 @@ jobs:
                   continue;
                 }
 
-                // ------------------------------------------------------------
-                //  VÉRIFICATION CODEQL AVEC ATTENTE (head + merge)
-                // ------------------------------------------------------------
-                log.check(`Attente de la fin des checks CodeQL pour PR #${prNumber}... / Waiting for CodeQL runs to complete for PR #${prNumber}...`);
+                //-------------------------------------------------------------//
+                //   FR//  VÉRIFICATION CODEQL AVEC ATTENTE (via Check Suite)  //
+                //  ENG//  CODEQL CHECK WITH WAIT (via Check Suite)            //
+                //-------------------------------------------------------------//
 
-                const shaList = [pr.head.sha];
-                if (pr.merge_commit_sha && pr.merge_commit_sha !== pr.head.sha) {
-                  shaList.push(pr.merge_commit_sha);
-                }
+                log.check(`Attente de la fin des checks CodeQL pour PR #${prNumber}... / Waiting for CodeQL runs to complete for PR #${prNumber}...`);
 
                 const MAX_WAIT_MS = 10 * 60 * 1000;
                 const POLL_INTERVAL_MS = 30 * 1000;
@@ -573,20 +676,33 @@ jobs:
                 let codeqlRuns = [];
 
                 while (true) {
-                  const allRuns = [];
-                  for (const sha of shaList) {
-                    const checksData = await withRetry(() =>
-                      ghFetch('GET', `/repos/${owner}/${repo}/commits/${sha}/check-runs?per_page=100`)
-                    );
-                    allRuns.push(...(checksData.check_runs || []));
-                  }
-                  const uniqueMap = new Map();
-                  for (const run of allRuns) {
-                    uniqueMap.set(run.id, run);
-                  }
-                  const uniqueRuns = Array.from(uniqueMap.values());
 
-                  codeqlRuns = uniqueRuns.filter(r =>
+                  //   FR//  Récupérer la dernière check suite pour le head.sha
+                  //  ENG//  Fetch the latest check suite for head.sha
+                  const suitesData = await withRetry(() =>
+                    ghFetch('GET', `/repos/${owner}/${repo}/commits/${pr.head.sha}/check-suites?per_page=1`)
+                  );
+
+                  if (!suitesData.check_suites || suitesData.check_suites.length === 0) {
+
+                    //   FR//  Pas encore de suite, attendre
+                    //  ENG//  No suite yet, wait
+                    if (Date.now() - waitStart > MAX_WAIT_MS) {
+                      log.warn(`Timeout atteint en attendant une check suite pour PR #${prNumber}.`);
+                      summary.push({ pr: prNumber, author, status: "TIMEOUT (no check suite)" });
+                      break;
+                    }
+                    log.verbose(`Aucune check suite pour le commit. Attente...`);
+                    await sleep(POLL_INTERVAL_MS);
+                    continue;
+                  }
+
+                  const suiteId = suitesData.check_suites[0].id;
+                  const runsData = await withRetry(() =>
+                    ghFetch('GET', `/repos/${owner}/${repo}/check-suites/${suiteId}/check-runs?per_page=100`)
+                  );
+
+                  codeqlRuns = (runsData.check_runs || []).filter(r =>
                     r.name.toLowerCase().includes("codeql")
                   );
 
@@ -595,16 +711,17 @@ jobs:
                   if (pending.length === 0) break;   // tous terminés
 
                   if (Date.now() - waitStart > MAX_WAIT_MS) {
-                    log.warn(`Timeout atteint en attendant CodeQL pour PR #${prNumber}. / Timeout waiting for CodeQL for PR #${prNumber}.`);
+                    log.warn(`Timeout atteint en attendant CodeQL pour PR #${prNumber}.`);
                     summary.push({ pr: prNumber, author, status: "TIMEOUT (CodeQL waiting)" });
-                    break; // sort de la boucle d'attente
+                    break;
                   }
 
                   log.info(`En attente de ${pending.length} check(s) CodeQL... / Waiting for ${pending.length} CodeQL check(s)...`);
                   await sleep(POLL_INTERVAL_MS);
                 }
 
-                // Si on est sorti par timeout, on passe à la PR suivante
+                //   FR//  Si on est sorti par timeout, on passe à la PR suivante
+                //  ENG//  If we exited because of timeout, skip to the next PR
                 if (codeqlRuns.some(r => r.status !== "completed")) {
                   continue;
                 }
@@ -612,7 +729,8 @@ jobs:
                 log.info(`${codeqlRuns.length} check(s) CodeQL terminé(s). / ${codeqlRuns.length} completed CodeQL check(s).`);
                 log.verbose(JSON.stringify(codeqlRuns.map(c => ({ name: c.name, status: c.status, conclusion: c.conclusion })), null, 2));
 
-                // Vérification des échecs
+                //   FR//  Vérification des échecs
+                //  ENG//  Failure verification
                 const failingCodeql = codeqlRuns.filter(r =>
                   !["success", "neutral", "skipped"].includes(r.conclusion)
                 );
@@ -620,7 +738,9 @@ jobs:
                 if (failingCodeql.length) {
                   const names = failingCodeql.map(r => r.name).join(', ');
                   log.warn(`CodeQL échoué : ${names} / CodeQL failing: ${names}`);
-                  // Anti-doublon commentaire / Dedup comment
+
+                  //   FR//  Anti-doublon commentaire
+                  //  ENG//  Dedup comment
                   const existingComments = await withRetry(() =>
                     ghFetch('GET', `/repos/${owner}/${repo}/issues/${prNumber}/comments?per_page=100`)
                   );
@@ -634,13 +754,15 @@ jobs:
                   continue;
                 }
 
-                // ------------------------------------------------------------
-                // Idempotence
-                //  Evite d'approuver une PR déjà approuvée
-                //  Avoids approving an already-approved PR
-                // ------------------------------------------------------------
-                // En mode dispatch on vérifie s'il existe une approbation quelconque
-                // In dispatch mode we check for any existing approval
+                //-------------------------------------------------//
+                //   FR//  Idempotence                             //
+                //        Evite d'approuver une PR déjà approuvée  //
+                //  ENG//  Idempotence                             //
+                //        Avoids approving an already-approved PR  //
+                //-------------------------------------------------//
+
+                //   FR//  En mode dispatch on vérifie s'il existe une approbation quelconque
+                //  ENG//  In dispatch mode we check for any existing approval
                 const reviewsData = await withRetry(() =>
                   ghFetch('GET', `/repos/${owner}/${repo}/pulls/${prNumber}/reviews?per_page=100`)
                 );
@@ -653,9 +775,10 @@ jobs:
                   continue;
                 }
 
-                // ------------------------------------------------------------
-                //  APPROBATION / APPROVAL
-                // ------------------------------------------------------------
+                //----------------------//
+                //   FR//  APPROBATION  //
+                //  ENG//  APPROVAL     //
+                //----------------------//
                 await withRetry(() =>
                   ghFetch('POST', `/repos/${owner}/${repo}/pulls/${prNumber}/reviews`, {
                     event: "APPROVE",
@@ -667,16 +790,17 @@ jobs:
                 summary.push({ pr: prNumber, author, status: "APPROVED" });
 
               } catch (err) {
-                // Capture les erreurs par PR sans interrompre la boucle
-                // Catches per-PR errors without interrupting the loop
+                //   FR//  Capture les erreurs par PR sans interrompre la boucle
+                //  ENG//  Catches per-PR errors without interrupting the loop
                 log.error(`Erreur sur PR #${prNumber} : ${err.message} / Error processing PR #${prNumber}: ${err.message}`);
                 summary.push({ pr: prNumber, author, status: `ERROR (${err.message})` });
               }
             }
 
-            // ----------------------------------------------------------------
-            //  TABLEAU RÉCAPITULATIF / SUMMARY TABLE
-            // ----------------------------------------------------------------
+            //--------------------------------//
+            //   FR//  TABLEAU RÉCAPITULATIF  //
+            //  ENG//  SUMMARY TABLE          //
+            //--------------------------------//
             core.info("\n\x1b[36m========== RÉSUMÉ AUTO-APPROVE / AUTO-APPROVE SUMMARY ==========\x1b[0m");
             summary.forEach(s => {
               core.info(`PR #${s.pr} | Auteur/Author: ${s.author} | Statut/Status: ${s.status}`);
