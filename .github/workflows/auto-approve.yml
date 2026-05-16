@@ -1,5 +1,4 @@
-﻿﻿
-# -----------------------------------------------------------------------------#
+﻿#-----------------------------------------------------------------------------#
 #              WorkFlow : Auto Approve PR (Approved Users Only)               #
 #                                                                             #
 #   FR//  Approuve automatiquement les PRs des utilisateurs de la whitelist,  #
