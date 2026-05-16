@@ -350,14 +350,55 @@ jobs:
                   log.verbose(`listForRef(${ref}) ignoré : ${e.message} / listForRef(${ref}) skipped: ${e.message}`);
                 }
               }
-              //   FR//  Déduplication par ID de check
-              //  ENG//  Deduplication by check ID
+
+              //   FR//  1d. Récupérer les workflow runs associés à la PR via l'API Actions
+              //            (cela permet de capturer tous les workflows CodeQL, même si leurs
+              //            check runs ont un nom qui ne contient pas "codeql").
+              //  ENG//  1d. Fetch workflow runs associated to the PR via Actions API
+              //            (this captures all CodeQL workflows, even if their check runs
+              //            names don't contain "codeql").
+              let workflowRuns = [];
+              try {
+                const wfRuns = await withRetry(() =>
+                  github.rest.actions.listWorkflowRunsForRepo({
+                    owner,
+                    repo,
+                    head_sha: pr.head.sha,
+                    event: 'pull_request',
+                    per_page: 100
+                  })
+                );
+                workflowRuns = (wfRuns.data.workflow_runs || []).filter(r =>
+                  r.name && r.name.toLowerCase().includes("codeql")
+                );
+                log.verbose(`Workflow runs CodeQL trouvés : ${workflowRuns.map(r => r.name).join(', ')} / CodeQL workflow runs found: ${workflowRuns.map(r => r.name).join(', ')}`);
+              } catch (e) {
+                log.verbose(`listWorkflowRunsForRepo ignoré : ${e.message} / listWorkflowRunsForRepo skipped: ${e.message}`);
+              }
+
+              //   FR//  1e. Convertir les workflow runs en pseudo‑check runs pour le cooldown
+              //            (on utilise leur conclusion comme statut).
+              //  ENG//  1e. Convert workflow runs to pseudo‑check runs for the cooldown
+              //            (using their conclusion as status).
+              const wfCheckRuns = workflowRuns.map(r => ({
+                name: r.name,
+                status: "completed",
+                conclusion: r.conclusion,
+                id: `wf-${r.id}` // id unique préfixé pour éviter les collisions
+              }));
+
+              //   FR//  1f. Fusionner les check runs réels et les pseudo‑check runs,
+              //            puis dédupliquer par id.
+              //  ENG//  1f. Merge real check runs and pseudo‑check runs, then deduplicate by id.
+              const combined = [...allRuns, ...wfCheckRuns];
               const uniqueMap = new Map();
-              for (const run of allRuns) {
+              for (const run of combined) {
                 uniqueMap.set(run.id, run);
               }
               const uniqueRuns = Array.from(uniqueMap.values());
 
+              //   FR//  1g. Filtrer pour ne garder que ceux dont le nom contient "codeql"
+              //  ENG//  1g. Filter to keep only those whose name contains "codeql"
               codeqlRuns = uniqueRuns.filter(r =>
                 r.name.toLowerCase().includes("codeql")
               );
@@ -753,6 +794,8 @@ jobs:
                   if (knownMergeSha) refsToQuery.add(knownMergeSha);
                   log.verbose(`Refs scrutés : ${[...refsToQuery].join(', ')} / Refs queried: ${[...refsToQuery].join(', ')}`);
 
+                  //   FR//  1c. Récupérer les check runs pour chaque ref et les fusionner
+                  //  ENG//  1c. Fetch check runs for each ref and merge them
                   const allRuns = [];
                   for (const sha of refsToQuery) {
                     try {
@@ -764,12 +807,44 @@ jobs:
                       log.verbose(`check-runs(${sha}) ignoré : ${e.message}`);
                     }
                   }
+
+                  //   FR//  1d. Récupérer les workflow runs associés à la PR via l'API Actions
+                  //  ENG//  1d. Fetch workflow runs associated to the PR via Actions API
+                  let workflowRuns = [];
+                  try {
+                    // FR// Note : en mode manuel on utilise ghFetch avec le PAT cross-review
+                    //      (qui a normalement les droits nécessaires sur le dépôt)
+                    const wfData = await withRetry(() =>
+                      ghFetch('GET', `/repos/${owner}/${repo}/actions/runs?head_sha=${pr.head.sha}&event=pull_request&per_page=100`)
+                    );
+                    workflowRuns = (wfData.workflow_runs || []).filter(r =>
+                      r.name && r.name.toLowerCase().includes("codeql")
+                    );
+                    log.verbose(`Workflow runs CodeQL trouvés : ${workflowRuns.map(r => r.name).join(', ')} / CodeQL workflow runs found: ${workflowRuns.map(r => r.name).join(', ')}`);
+                  } catch (e) {
+                    log.verbose(`actions/runs ignoré : ${e.message}`);
+                  }
+
+                  //   FR//  1e. Convertir les workflow runs en pseudo‑check runs
+                  //  ENG//  1e. Convert workflow runs to pseudo‑check runs
+                  const wfCheckRuns = workflowRuns.map(r => ({
+                    name: r.name,
+                    status: "completed",
+                    conclusion: r.conclusion,
+                    id: `wf-${r.id}`
+                  }));
+
+                  //   FR//  1f. Fusionner et dédupliquer
+                  //  ENG//  1f. Merge and deduplicate
+                  const combined = [...allRuns, ...wfCheckRuns];
                   const uniqueMap = new Map();
-                  for (const run of allRuns) {
+                  for (const run of combined) {
                     uniqueMap.set(run.id, run);
                   }
                   const uniqueRuns = Array.from(uniqueMap.values());
 
+                  //   FR//  1g. Filtrer sur "codeql"
+                  //  ENG//  1g. Filter on "codeql"
                   codeqlRuns = uniqueRuns.filter(r =>
                     r.name.toLowerCase().includes("codeql")
                   );
