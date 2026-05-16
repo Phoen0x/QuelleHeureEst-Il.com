@@ -1,4 +1,4 @@
-﻿#-----------------------------------------------------------------------------#
+#-----------------------------------------------------------------------------#
 #              WorkFlow : Auto Approve PR (Approved Users Only)               #
 #                                                                             #
 #   FR//  Approuve automatiquement les PRs des utilisateurs de la whitelist,  #
@@ -259,17 +259,19 @@ jobs:
               return;
             }
 
-            //----------------------------------------------------------------------//
-            //   FR//  VÉRIFICATION CODEQL AVEC COOLDOWN STABLE (via Check Suites)  //
-            //        Récupère la dernière check suite pour le head.sha, puis tous  //
-            //        les check runs de cette suite. Cela capture tous les checks   //
-            //        de la PR, quel que soit le workflow.                          //
-            //                                                                      //
-            //  ENG//  CODEQL CHECK WITH STABLE COOLDOWN (via Check Suites)         //
-            //        Fetches the latest check suite for head.sha, then all         //
-            //        check runs of that suite. This captures all checks of         //
-            //        the PR, regardless of the workflow.                           //
-            //----------------------------------------------------------------------//
+            //------------------------------------------------------------------//
+            //   FR//  VÉRIFICATION CODEQL AVEC COOLDOWN STABLE (head + merge)  //
+            //        Récupère les check runs sur le commit de branche et       //
+            //        le merge commit (si disponible).                          //
+            //        Attends que le nombre de checks CodeQL reste stable       //
+            //        pendant 90 secondes et que tous soient terminés.          //
+            //                                                                  //
+            //  ENG//  CODEQL CHECK WITH STABLE COOLDOWN (head + merge)         //
+            //        Fetches check runs for the branch commit and              //
+            //        the merge commit (if available).                          //
+            //        Waits for the number of CodeQL checks to remain stable    //
+            //        for 90 seconds and all to be completed.                   //
+            //------------------------------------------------------------------//
 
             log.check(`Attente de la fin des checks CodeQL... / Waiting for CodeQL runs to complete...`);
 
@@ -278,44 +280,37 @@ jobs:
             const COOLDOWN_MS = 90 * 1000;       // 1 minute 30 sans changement
             const waitStart = Date.now();
 
+            //   FR//  Définir la liste des SHAs à scruter
+            //  ENG//  Define the list of SHAs to watch
+            const shaList = [pr.head.sha];
+            if (pr.merge_commit_sha && pr.merge_commit_sha !== pr.head.sha) {
+              shaList.push(pr.merge_commit_sha);
+            }
+            log.verbose(`SHA scrutés : ${shaList.join(', ')}`);
+
             let codeqlRuns = [];
             let cooldownStart = null;      // timestamp de début du cooldown, ou null
             let lastCheckCount = 0;        // nombre de checks lors du dernier démarrage du cooldown
 
             while (true) {
-              //   FR//  1. Récupérer la dernière check suite pour ce commit
-              //  ENG//  1. Fetch the latest check suite for this commit
-              const suites = await withRetry(() =>
-                github.rest.checks.listSuitesForRef({
-                  owner,
-                  repo,
-                  ref: pr.head.sha,
-                  per_page: 1 // la plus récente suffit
-                })
-              );
-
-              if (suites.data.total_count === 0) {
-                //   FR//  Aucune check suite encore créée → attendre
-                //  ENG//  No check suite created yet → wait
-                log.verbose(`Aucune check suite trouvée pour le commit. Attente...`);
-                await sleep(POLL_INTERVAL_MS);
-                continue;
+              //   FR//  1. Récupérer les check runs pour chaque SHA et les fusionner
+              //  ENG//  1. Fetch the latest check suite for each SHA and fuse them
+              const allRuns = [];
+              for (const sha of shaList) {
+                const checks = await withRetry(() =>
+                  github.rest.checks.listForRef({ owner, repo, ref: sha, per_page: 100 })
+                );
+                allRuns.push(...(checks.data.check_runs || []));
               }
+              //   FR//  Déduplication par ID de check
+              //  ENG//  Deduplication by check ID
+              const uniqueMap = new Map();
+              for (const run of allRuns) {
+                uniqueMap.set(run.id, run);
+              }
+              const uniqueRuns = Array.from(uniqueMap.values());
 
-              const suiteId = suites.data.check_suites[0].id;
-
-              //   FR//  2. Récupérer tous les check runs de cette suite
-              //  ENG//  2. Fetch all check runs of this suite
-              const runs = await withRetry(() =>
-                github.rest.checks.listForSuite({
-                  owner,
-                  repo,
-                  check_suite_id: suiteId,
-                  per_page: 100
-                })
-              );
-
-              codeqlRuns = (runs.data.check_runs || []).filter(r =>
+              codeqlRuns = uniqueRuns.filter(r =>
                 r.name.toLowerCase().includes("codeql")
               );
 
@@ -326,21 +321,21 @@ jobs:
               //  ENG//  If at least one check and all are completed
               if (currentCount > 0 && pending.length === 0) {
                 if (cooldownStart === null || currentCount !== lastCheckCount) {
-
+                
                   //   FR//  Démarre ou redémarre le cooldown car le nombre de checks a changé
                   //  ENG//  Start or restart the cooldown because the check count changed
                   cooldownStart = Date.now();
                   lastCheckCount = currentCount;
                   log.info(`Tous les checks CodeQL sont terminés (${currentCount}). Démarrage/redémarrage du cooldown de 90 secondes.`);
                 } else if (Date.now() - cooldownStart >= COOLDOWN_MS) {
-
+                
                   //   FR//  Cooldown terminé sans changement du nombre de checks
                   //  ENG//  Cooldown finished without any change in check count
                   log.info(`Cooldown terminé. Aucun nouveau check détecté.`);
                   break;
                 }
               } else {
-
+              
                 //   FR//  Soit aucun check, soit certains sont en cours → réinitialise le cooldown
                 //  ENG//  Either no checks or some are still in progress → reset cooldown
                 if (cooldownStart !== null) {
@@ -663,11 +658,16 @@ jobs:
                 }
 
                 //-------------------------------------------------------------//
-                //   FR//  VÉRIFICATION CODEQL AVEC ATTENTE (via Check Suite)  //
-                //  ENG//  CODEQL CHECK WITH WAIT (via Check Suite)            //
+                //   FR//  VÉRIFICATION CODEQL AVEC ATTENTE (head + merge)     //
+                //  ENG//  CODEQL CHECK WITH WAIT (head + merge)               //
                 //-------------------------------------------------------------//
 
                 log.check(`Attente de la fin des checks CodeQL pour PR #${prNumber}... / Waiting for CodeQL runs to complete for PR #${prNumber}...`);
+
+                const shaList = [pr.head.sha];
+                if (pr.merge_commit_sha && pr.merge_commit_sha !== pr.head.sha) {
+                  shaList.push(pr.merge_commit_sha);
+                }
 
                 const MAX_WAIT_MS = 10 * 60 * 1000;
                 const POLL_INTERVAL_MS = 30 * 1000;
@@ -676,33 +676,20 @@ jobs:
                 let codeqlRuns = [];
 
                 while (true) {
-
-                  //   FR//  Récupérer la dernière check suite pour le head.sha
-                  //  ENG//  Fetch the latest check suite for head.sha
-                  const suitesData = await withRetry(() =>
-                    ghFetch('GET', `/repos/${owner}/${repo}/commits/${pr.head.sha}/check-suites?per_page=1`)
-                  );
-
-                  if (!suitesData.check_suites || suitesData.check_suites.length === 0) {
-
-                    //   FR//  Pas encore de suite, attendre
-                    //  ENG//  No suite yet, wait
-                    if (Date.now() - waitStart > MAX_WAIT_MS) {
-                      log.warn(`Timeout atteint en attendant une check suite pour PR #${prNumber}.`);
-                      summary.push({ pr: prNumber, author, status: "TIMEOUT (no check suite)" });
-                      break;
-                    }
-                    log.verbose(`Aucune check suite pour le commit. Attente...`);
-                    await sleep(POLL_INTERVAL_MS);
-                    continue;
+                  const allRuns = [];
+                  for (const sha of shaList) {
+                    const checksData = await withRetry(() =>
+                      ghFetch('GET', `/repos/${owner}/${repo}/commits/${sha}/check-runs?per_page=100`)
+                    );
+                    allRuns.push(...(checksData.check_runs || []));
                   }
+                  const uniqueMap = new Map();
+                  for (const run of allRuns) {
+                    uniqueMap.set(run.id, run);
+                  }
+                  const uniqueRuns = Array.from(uniqueMap.values());
 
-                  const suiteId = suitesData.check_suites[0].id;
-                  const runsData = await withRetry(() =>
-                    ghFetch('GET', `/repos/${owner}/${repo}/check-suites/${suiteId}/check-runs?per_page=100`)
-                  );
-
-                  codeqlRuns = (runsData.check_runs || []).filter(r =>
+                  codeqlRuns = uniqueRuns.filter(r =>
                     r.name.toLowerCase().includes("codeql")
                   );
 
