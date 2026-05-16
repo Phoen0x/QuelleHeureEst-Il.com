@@ -280,27 +280,75 @@ jobs:
             const COOLDOWN_MS = 90 * 1000;       // 1 minute 30 sans changement
             const waitStart = Date.now();
 
-            //   FR//  Définir la liste des SHAs à scruter
-            //  ENG//  Define the list of SHAs to watch
-            const shaList = [pr.head.sha];
-            if (pr.merge_commit_sha && pr.merge_commit_sha !== pr.head.sha) {
-              shaList.push(pr.merge_commit_sha);
-            }
-            log.verbose(`SHA scrutés : ${shaList.join(', ')}`);
+            //   FR//  merge_commit_sha connu à ce stade (souvent null au démarrage : GitHub n'a pas encore
+            //        calculé le merge commit quand pull_request_target se déclenche).
+            //        On le rafraîchit à chaque itération via l'API pour le récupérer dès qu'il est dispo.
+            //  ENG//  merge_commit_sha known at this point (often null at startup: GitHub hasn't yet
+            //        computed the merge commit when pull_request_target fires).
+            //        Refreshed each iteration via the API so we catch it as soon as it's available.
+            let knownMergeSha = (pr.merge_commit_sha && pr.merge_commit_sha !== pr.head.sha)
+              ? pr.merge_commit_sha : null;
+
+            //   FR//  Ref synthétique maintenu par GitHub — toujours disponible une fois la PR mergeable.
+            //        Ce ref pointe exactement sur le merge commit qui porte les check runs CodeQL Advanced
+            //        (Analyze (javascript-typescript), Analyze (rust), etc.).
+            //        C'est le seul ref fiable quand merge_commit_sha est encore null dans le payload.
+            //  ENG//  Synthetic ref maintained by GitHub — always available once the PR is mergeable.
+            //        This ref points exactly to the merge commit that holds CodeQL Advanced check runs
+            //        (Analyze (javascript-typescript), Analyze (rust), etc.).
+            //        It's the only reliable ref when merge_commit_sha is still null in the payload.
+            const prMergeRef = `refs/pull/${prNumber}/merge`;
+
+            log.verbose(`head.sha=${pr.head.sha} | mergeRef=${prMergeRef} | mergeSha=${knownMergeSha || '(inconnu/unknown)'}`);
 
             let codeqlRuns = [];
             let cooldownStart = null;      // timestamp de début du cooldown, ou null
             let lastCheckCount = 0;        // nombre de checks lors du dernier démarrage du cooldown
 
             while (true) {
-              //   FR//  1. Récupérer les check runs pour chaque SHA et les fusionner
-              //  ENG//  1. Fetch the latest check suite for each SHA and fuse them
-              const allRuns = [];
-              for (const sha of shaList) {
-                const checks = await withRetry(() =>
-                  github.rest.checks.listForRef({ owner, repo, ref: sha, per_page: 100 })
+              //   FR//  1a. Rafraîchir merge_commit_sha à chaque itération via l'API
+              //            (il peut être null au démarrage puis apparaître quelques secondes plus tard)
+              //  ENG//  1a. Refresh merge_commit_sha each iteration via the API
+              //             (it can be null at startup and appear a few seconds later)
+              try {
+                const freshPr = await withRetry(() =>
+                  github.rest.pulls.get({ owner, repo, pull_number: prNumber })
                 );
-                allRuns.push(...(checks.data.check_runs || []));
+                const freshSha = freshPr.data.merge_commit_sha;
+                if (freshSha && freshSha !== pr.head.sha && freshSha !== knownMergeSha) {
+                  knownMergeSha = freshSha;
+                  log.info(`merge_commit_sha obtenu/rafraîchi : ${knownMergeSha} / merge_commit_sha obtained/refreshed: ${knownMergeSha}`);
+                }
+              } catch (e) {
+                log.verbose(`pulls.get refresh ignoré : ${e.message} / pulls.get refresh skipped: ${e.message}`);
+              }
+
+              //   FR//  1b. Construire dynamiquement la liste des refs à scruter :
+              //            — pr.head.sha  : check runs sur la branche source (ex. "Code scanning results")
+              //            — prMergeRef   : merge commit synthétique GitHub → porte les checks CodeQL Advanced
+              //            — knownMergeSha: même commit résolu en SHA (triple-vérification, dédup par id)
+              //  ENG//  1b. Dynamically build the list of refs to query:
+              //            — pr.head.sha  : check runs on the source branch (e.g. "Code scanning results")
+              //            — prMergeRef   : GitHub synthetic merge commit → holds CodeQL Advanced checks
+              //            — knownMergeSha: same commit resolved to SHA (triple-check, deduped by id)
+              const refsToQuery = new Set([pr.head.sha, prMergeRef]);
+              if (knownMergeSha) refsToQuery.add(knownMergeSha);
+              log.verbose(`Refs scrutés : ${[...refsToQuery].join(', ')} / Refs queried: ${[...refsToQuery].join(', ')}`);
+
+              //   FR//  1c. Récupérer les check runs pour chaque ref et les fusionner
+              //  ENG//  1c. Fetch check runs for each ref and merge them
+              const allRuns = [];
+              for (const ref of refsToQuery) {
+                try {
+                  const checks = await withRetry(() =>
+                    github.rest.checks.listForRef({ owner, repo, ref, per_page: 100 })
+                  );
+                  allRuns.push(...(checks.data.check_runs || []));
+                } catch (e) {
+                  //   FR//  refs/pull/N/merge peut être temporairement absent (PR en conflit ou pas encore calculé)
+                  //  ENG//  refs/pull/N/merge may be temporarily absent (conflicting PR or not yet computed)
+                  log.verbose(`listForRef(${ref}) ignoré : ${e.message} / listForRef(${ref}) skipped: ${e.message}`);
+                }
               }
               //   FR//  Déduplication par ID de check
               //  ENG//  Deduplication by check ID
@@ -664,10 +712,14 @@ jobs:
 
                 log.check(`Attente de la fin des checks CodeQL pour PR #${prNumber}... / Waiting for CodeQL runs to complete for PR #${prNumber}...`);
 
-                const shaList = [pr.head.sha];
-                if (pr.merge_commit_sha && pr.merge_commit_sha !== pr.head.sha) {
-                  shaList.push(pr.merge_commit_sha);
-                }
+                //   FR//  merge_commit_sha peut être null au moment du déclenchement —
+                //        même logique que le mode auto : on le rafraîchit à chaque itération.
+                //  ENG//  merge_commit_sha may be null at trigger time —
+                //        same logic as auto mode: refreshed each iteration.
+                let knownMergeSha = (pr.merge_commit_sha && pr.merge_commit_sha !== pr.head.sha)
+                  ? pr.merge_commit_sha : null;
+
+                log.verbose(`head.sha=${pr.head.sha} | mergeSha=${knownMergeSha || '(inconnu/unknown)'}`);
 
                 const MAX_WAIT_MS = 10 * 60 * 1000;
                 const POLL_INTERVAL_MS = 30 * 1000;
@@ -676,12 +728,41 @@ jobs:
                 let codeqlRuns = [];
 
                 while (true) {
-                  const allRuns = [];
-                  for (const sha of shaList) {
-                    const checksData = await withRetry(() =>
-                      ghFetch('GET', `/repos/${owner}/${repo}/commits/${sha}/check-runs?per_page=100`)
+                  //   FR//  Rafraîchir merge_commit_sha via l'API à chaque itération
+                  //  ENG//  Refresh merge_commit_sha via API each iteration
+                  try {
+                    const freshPrData = await withRetry(() =>
+                      ghFetch('GET', `/repos/${owner}/${repo}/pulls/${prNumber}`)
                     );
-                    allRuns.push(...(checksData.check_runs || []));
+                    const freshSha = freshPrData.merge_commit_sha;
+                    if (freshSha && freshSha !== pr.head.sha && freshSha !== knownMergeSha) {
+                      knownMergeSha = freshSha;
+                      log.info(`merge_commit_sha obtenu/rafraîchi : ${knownMergeSha} / merge_commit_sha obtained/refreshed: ${knownMergeSha}`);
+                    }
+                  } catch (e) {
+                    log.verbose(`pulls.get refresh ignoré : ${e.message}`);
+                  }
+
+                  //   FR//  Construire la liste des SHAs (uniquement des SHAs résolus ici,
+                  //        car ghFetch encode le chemin en brut et refs/pull/N/merge serait mal interprété).
+                  //        En pratique, knownMergeSha devient disponible rapidement après le premier refresh.
+                  //  ENG//  Build the SHA list (only resolved SHAs here, because ghFetch encodes the path
+                  //        raw and refs/pull/N/merge would be misinterpreted as path segments).
+                  //        In practice, knownMergeSha becomes available quickly after the first refresh.
+                  const refsToQuery = new Set([pr.head.sha]);
+                  if (knownMergeSha) refsToQuery.add(knownMergeSha);
+                  log.verbose(`Refs scrutés : ${[...refsToQuery].join(', ')} / Refs queried: ${[...refsToQuery].join(', ')}`);
+
+                  const allRuns = [];
+                  for (const sha of refsToQuery) {
+                    try {
+                      const checksData = await withRetry(() =>
+                        ghFetch('GET', `/repos/${owner}/${repo}/commits/${sha}/check-runs?per_page=100`)
+                      );
+                      allRuns.push(...(checksData.check_runs || []));
+                    } catch (e) {
+                      log.verbose(`check-runs(${sha}) ignoré : ${e.message}`);
+                    }
                   }
                   const uniqueMap = new Map();
                   for (const run of allRuns) {
