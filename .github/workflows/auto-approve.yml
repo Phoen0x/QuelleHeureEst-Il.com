@@ -134,13 +134,14 @@ jobs:
       #                                                            #
       #           Triggered on every PR opened or updated.         #
       #------------------------------------------------------------#
+
       - name: Approbation automatique d'une PR / Auto-approve single PR (event)
         if: github.event_name == 'pull_request_target'
         uses: actions/github-script@v8
         with:
           github-token: ${{ steps.select-pat.outputs.token }}
           script: |
-          
+
             //-----------------------//
             //  FR//  CONFIGURATION  //
             // ENG//  CONFIGURATION  //
@@ -591,12 +592,12 @@ jobs:
         if: github.event_name == 'workflow_dispatch'
         uses: actions/github-script@v8
         with:
-        
+
           #   FR//  Token de base pour lister les PRs (lecture seule)
           #  ENG//  Base token to list PRs (read-only)
           github-token: ${{ secrets.PAT_AUTO_APPROVE_MINHOZENS }}
           script: |
-          
+
             //------------------------//
             //   FR//  CONFIGURATION  //
             //  ENG//  CONFIGURATION  //
@@ -1032,4 +1033,3 @@ jobs:
               core.info(`PR #${s.pr} | Auteur/Author: ${s.author} | Statut/Status: ${s.status}`);
             });
             core.info("\x1b[36m================================================================\x1b[0m");
-            
