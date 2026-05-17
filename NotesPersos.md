@@ -236,7 +236,7 @@ utilité
 identité forte
 ou viralité
 
-Sinon tu fais juste… une horloge. Félicitations, t'as reinventé Windows 95.
+Sinon tu fais juste… une horloge. Félicitations, t'as réinventé Windows 95.
 
 Si t'es malin (et t'as l'air de l'être malgré tes choix), le meilleur move c'est :
 👉 prendre le 3 ou le 4
