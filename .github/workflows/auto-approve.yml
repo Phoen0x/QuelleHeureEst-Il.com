@@ -1,4 +1,4 @@
-#-----------------------------------------------------------------------------#
+﻿#-----------------------------------------------------------------------------#
 #              WorkFlow : Auto Approve PR (Approved Users Only)               #
 #                                                                             #
 #   FR//  Approuve automatiquement les PRs des utilisateurs de la whitelist,  #
@@ -60,6 +60,10 @@ jobs:
       # FR// Nécessaire pour lire les checks
       # ENG// Required to read checks
       contents: read
+
+      # FR// Nécessaire pour lire les workflow runs (listWorkflowRunsForRepo / actions/runs)
+      # ENG// Required to read workflow runs (listWorkflowRunsForRepo / actions/runs)
+      actions: read
 
     steps:
 
@@ -169,6 +173,7 @@ jobs:
               check:   msg => core.info(`\x1b[35m[${log._ts()} CHECK]\x1b[0m ${msg}`),
               approve: msg => core.info(`\x1b[32m[${log._ts()} APPROVE]\x1b[0m ${msg}`),
               skip:    msg => core.info(`\x1b[33m[${log._ts()} SKIP]\x1b[0m ${msg}`),
+              
               //  FR//  Logs détaillés activables via le secret VERBOSE="true"
               // ENG//  Detailed logs activatable via the VERBOSE="true" secret
               verbose: msg => process.env.VERBOSE === "true"
@@ -343,20 +348,24 @@ jobs:
                   const checks = await withRetry(() =>
                     github.rest.checks.listForRef({ owner, repo, ref, per_page: 100 })
                   );
-                  allRuns.push(...(checks.data.check_runs || []));
+                  const runs = checks.data.check_runs || [];
+                  //   FR//  Log du nombre brut de check runs par ref (utile pour diagnostiquer les problèmes de SHA)
+                  //  ENG//  Log raw check run count per ref (useful to diagnose SHA-related issues)
+                  log.verbose(`${runs.length} check run(s) brut(s) pour ${ref} / ${runs.length} raw check run(s) for ${ref} : ${runs.map(r => r.name).join(', ')}`);
+                  allRuns.push(...runs);
                 } catch (e) {
                   //   FR//  refs/pull/N/merge peut être temporairement absent (PR en conflit ou pas encore calculé)
                   //  ENG//  refs/pull/N/merge may be temporarily absent (conflicting PR or not yet computed)
                   log.verbose(`listForRef(${ref}) ignoré : ${e.message} / listForRef(${ref}) skipped: ${e.message}`);
                 }
               }
-
-              //   FR//  1d. Récupérer les workflow runs associés à la PR via l'API Actions
-              //            (cela permet de capturer tous les workflows CodeQL, même si leurs
-              //            check runs ont un nom qui ne contient pas "codeql").
-              //  ENG//  1d. Fetch workflow runs associated to the PR via Actions API
-              //            (this captures all CodeQL workflows, even if their check runs
-              //            names don't contain "codeql").
+              
+              //   FR//  1d. Récupérer les workflow runs CodeQL associés à la PR via l'API Actions
+              //            Capture les workflows CodeQL même si leurs check runs ont un nom court
+              //            ne contenant pas "codeql" (ex: "Analyze (rust)").
+              //  ENG//  1d. Fetch CodeQL workflow runs for this PR via the Actions API
+              //            Captures CodeQL workflows even if their check run names are short
+              //            and don't contain "codeql" (e.g. "Analyze (rust)").
               let workflowRuns = [];
               try {
                 const wfRuns = await withRetry(() =>
@@ -371,25 +380,30 @@ jobs:
                 workflowRuns = (wfRuns.data.workflow_runs || []).filter(r =>
                   r.name && r.name.toLowerCase().includes("codeql")
                 );
-                log.verbose(`Workflow runs CodeQL trouvés : ${workflowRuns.map(r => r.name).join(', ')} / CodeQL workflow runs found: ${workflowRuns.map(r => r.name).join(', ')}`);
+                log.verbose(`Workflow runs CodeQL (event=pull_request, head_sha=${pr.head.sha}) : ${workflowRuns.map(r => `${r.name} [${r.status}/${r.conclusion}]`).join(', ') || '(aucun/none)'} / CodeQL workflow runs found: ${workflowRuns.length}`);
               } catch (e) {
                 log.verbose(`listWorkflowRunsForRepo ignoré : ${e.message} / listWorkflowRunsForRepo skipped: ${e.message}`);
               }
 
-              //   FR//  1e. Convertir les workflow runs en pseudo‑check runs pour le cooldown
-              //            (on utilise leur conclusion comme statut).
-              //  ENG//  1e. Convert workflow runs to pseudo‑check runs for the cooldown
-              //            (using their conclusion as status).
+              //   FR//  1e. Convertir les workflow runs en pseudo-check runs
+              //            IMPORTANT : utiliser r.status réel, pas "completed" hardcodé.
+              //            Un workflow encore in_progress aurait conclusion=null → faux échec si hardcodé.
+              //  ENG//  1e. Convert workflow runs to pseudo-check runs
+              //            IMPORTANT: use real r.status, NOT hardcoded "completed".
+              //            An in_progress workflow has conclusion=null → false failure if hardcoded.
               const wfCheckRuns = workflowRuns.map(r => ({
                 name: r.name,
-                status: "completed",
-                conclusion: r.conclusion,
-                id: `wf-${r.id}` // id unique préfixé pour éviter les collisions
+                status: r.status,         //   FR//  statut réel (queued/in_progress/completed)
+                                          //  ENG//  real status (queued/in_progress/completed)
+                conclusion: r.conclusion, //   FR//  conclusion réelle (null si pas encore terminé)
+                                          //  ENG//  real conclusion (null if not yet done)
+                id: `wf-${r.id}`,         //   FR//  préfixé pour éviter collision avec les check run ids
+                                          //  ENG//  prefixed to avoid collision with check run ids
+                app: { slug: 'github-actions-workflow' }
               }));
 
-              //   FR//  1f. Fusionner les check runs réels et les pseudo‑check runs,
-              //            puis dédupliquer par id.
-              //  ENG//  1f. Merge real check runs and pseudo‑check runs, then deduplicate by id.
+              //   FR//  1f. Fusionner check runs réels + pseudo-check runs, dédupliquer par ID
+              //  ENG//  1f. Merge real check runs + pseudo-check runs, deduplicate by ID
               const combined = [...allRuns, ...wfCheckRuns];
               const uniqueMap = new Map();
               for (const run of combined) {
@@ -397,11 +411,17 @@ jobs:
               }
               const uniqueRuns = Array.from(uniqueMap.values());
 
-              //   FR//  1g. Filtrer pour ne garder que ceux dont le nom contient "codeql"
-              //  ENG//  1g. Filter to keep only those whose name contains "codeql"
-              codeqlRuns = uniqueRuns.filter(r =>
-                r.name.toLowerCase().includes("codeql")
-              );
+              //   FR//  1g. Filtrer par nom ou app.slug contenant "codeql"
+              //  ENG//  1g. Filter by name or app.slug containing "codeql"
+              codeqlRuns = uniqueRuns.filter(r => {
+                const name = (r.name || "").toLowerCase();
+                const slug = (r.app && r.app.slug ? r.app.slug : "").toLowerCase();
+                return name.includes("codeql") || slug.includes("codeql");
+              });
+              
+              //   FR//  Log des checks CodeQL détectés après filtrage (diagnostic)
+              //  ENG//  Log CodeQL checks detected after filtering (diagnostic)
+              log.verbose(`Checks CodeQL après filtrage (${codeqlRuns.length}) : ${codeqlRuns.map(r => `${r.name} [${r.status}/${r.conclusion}]`).join(', ') || '(aucun/none)'} / CodeQL checks after filtering (${codeqlRuns.length})`);
 
               const currentCount = codeqlRuns.length;
               const pending = codeqlRuns.filter(r => r.status !== "completed");
@@ -794,22 +814,26 @@ jobs:
                   if (knownMergeSha) refsToQuery.add(knownMergeSha);
                   log.verbose(`Refs scrutés : ${[...refsToQuery].join(', ')} / Refs queried: ${[...refsToQuery].join(', ')}`);
 
-                  //   FR//  1c. Récupérer les check runs pour chaque ref et les fusionner
-                  //  ENG//  1c. Fetch check runs for each ref and merge them
+                  //   FR//  Récupérer les check runs pour chaque SHA
+                  //  ENG//  Fetch check runs for each SHA
                   const allRuns = [];
                   for (const sha of refsToQuery) {
                     try {
                       const checksData = await withRetry(() =>
                         ghFetch('GET', `/repos/${owner}/${repo}/commits/${sha}/check-runs?per_page=100`)
                       );
-                      allRuns.push(...(checksData.check_runs || []));
+                      const runs = checksData.check_runs || [];
+                      log.verbose(`${runs.length} check run(s) brut(s) pour ${sha} / ${runs.length} raw check run(s) for ${sha} : ${runs.map(r => r.name).join(', ')}`);
+                      allRuns.push(...runs);
                     } catch (e) {
                       log.verbose(`check-runs(${sha}) ignoré : ${e.message}`);
                     }
                   }
-
-                  //   FR//  1d. Récupérer les workflow runs associés à la PR via l'API Actions
-                  //  ENG//  1d. Fetch workflow runs associated to the PR via Actions API
+                  
+                  //   FR//  Récupérer les workflow runs CodeQL via l'API Actions
+                  //        (en mode dispatch on utilise ghFetch avec le PAT cross-review)
+                  //  ENG//  Fetch CodeQL workflow runs via the Actions API
+                  //        (in dispatch mode we use ghFetch with the cross-review PAT)
                   let workflowRuns = [];
                   try {
                     // FR// Note : en mode manuel on utilise ghFetch avec le PAT cross-review
@@ -820,22 +844,25 @@ jobs:
                     workflowRuns = (wfData.workflow_runs || []).filter(r =>
                       r.name && r.name.toLowerCase().includes("codeql")
                     );
-                    log.verbose(`Workflow runs CodeQL trouvés : ${workflowRuns.map(r => r.name).join(', ')} / CodeQL workflow runs found: ${workflowRuns.map(r => r.name).join(', ')}`);
+                    log.verbose(`Workflow runs CodeQL trouvés (step3) : ${workflowRuns.map(r => `${r.name} [${r.status}/${r.conclusion}]`).join(', ') || '(aucun/none)'} / CodeQL workflow runs found (step3): ${workflowRuns.length}`);
                   } catch (e) {
-                    log.verbose(`actions/runs ignoré : ${e.message}`);
+                    log.verbose(`actions/runs ignoré : ${e.message} / actions/runs skipped: ${e.message}`);
                   }
 
-                  //   FR//  1e. Convertir les workflow runs en pseudo‑check runs
-                  //  ENG//  1e. Convert workflow runs to pseudo‑check runs
+                  //   FR//  Convertir les workflow runs en pseudo-check runs
+                  //            IMPORTANT : utiliser r.status réel, pas "completed" hardcodé
+                  //  ENG//  Convert workflow runs to pseudo-check runs
+                  //            IMPORTANT: use real r.status, not hardcoded "completed"
                   const wfCheckRuns = workflowRuns.map(r => ({
                     name: r.name,
-                    status: "completed",
-                    conclusion: r.conclusion,
-                    id: `wf-${r.id}`
+                    status: r.status,         // FR// statut réel / ENG// real status
+                    conclusion: r.conclusion, // FR// conclusion réelle / ENG// real conclusion
+                    id: `wf-${r.id}`,
+                    app: { slug: 'github-actions-workflow' }
                   }));
 
-                  //   FR//  1f. Fusionner et dédupliquer
-                  //  ENG//  1f. Merge and deduplicate
+                  //   FR//  Fusionner et dédupliquer
+                  //  ENG//  Merge and deduplicate
                   const combined = [...allRuns, ...wfCheckRuns];
                   const uniqueMap = new Map();
                   for (const run of combined) {
@@ -843,11 +870,15 @@ jobs:
                   }
                   const uniqueRuns = Array.from(uniqueMap.values());
 
-                  //   FR//  1g. Filtrer sur "codeql"
-                  //  ENG//  1g. Filter on "codeql"
-                  codeqlRuns = uniqueRuns.filter(r =>
-                    r.name.toLowerCase().includes("codeql")
-                  );
+                  //   FR//  Filtrer par nom ou app.slug contenant "codeql"
+                  //  ENG//  Filter by name or app.slug containing "codeql"
+                  codeqlRuns = uniqueRuns.filter(r => {
+                    const name = (r.name || "").toLowerCase();
+                    const slug = (r.app && r.app.slug ? r.app.slug : "").toLowerCase();
+                    return name.includes("codeql") || slug.includes("codeql");
+                  });
+                  
+                  log.verbose(`Checks CodeQL après filtrage (${codeqlRuns.length}) : ${codeqlRuns.map(r => `${r.name} [${r.status}/${r.conclusion}]`).join(', ') || '(aucun/none)'} / CodeQL checks after filtering (${codeqlRuns.length})`);
 
                   const pending = codeqlRuns.filter(r => r.status !== "completed");
 
