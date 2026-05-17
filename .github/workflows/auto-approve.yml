@@ -340,23 +340,48 @@ jobs:
               if (knownMergeSha) refsToQuery.add(knownMergeSha);
               log.verbose(`Refs scrutés : ${[...refsToQuery].join(', ')} / Refs queried: ${[...refsToQuery].join(', ')}`);
 
-              //   FR//  1c. Récupérer les check runs pour chaque ref et les fusionner
-              //  ENG//  1c. Fetch check runs for each ref and merge them
+              //   FR//  1c. Récupérer les check runs CodeQL via les check suites (capture aussi les jobs individuels)
+              //  ENG//  1c. Fetch CodeQL check runs via check suites (also captures individual jobs)
               const allRuns = [];
               for (const ref of refsToQuery) {
                 try {
-                  const checks = await withRetry(() =>
-                    github.rest.checks.listForRef({ owner, repo, ref, per_page: 100 })
+                
+                  //   FR//  Récupérer les check suites pour ce ref
+                  //  ENG//  Fetch check suites for this ref
+                  const suitesResp = await withRetry(() =>
+                    github.rest.checks.listSuitesForRef({ owner, repo, ref, per_page: 100 })
                   );
-                  const runs = checks.data.check_runs || [];
-                  //   FR//  Log du nombre brut de check runs par ref (utile pour diagnostiquer les problèmes de SHA)
-                  //  ENG//  Log raw check run count per ref (useful to diagnose SHA-related issues)
-                  log.verbose(`${runs.length} check run(s) brut(s) pour ${ref} / ${runs.length} raw check run(s) for ${ref} : ${runs.map(r => r.name).join(', ')}`);
-                  allRuns.push(...runs);
+                  const suites = suitesResp.data.check_suites || [];
+                  log.verbose(`${suites.length} check suite(s) trouvée(s) pour ${ref} / ${suites.length} check suite(s) found for ${ref}`);
+
+                  //   FR//  Filtrer les suites CodeQL (app.slug = "github-code-scanning" ou nom de l'app contenant "codeql")
+                  //  ENG//  Filter CodeQL suites (app.slug = "github-code-scanning" or app name containing "codeql")
+                  const codeqlSuites = suites.filter(s => {
+                    const appSlug = (s.app && s.app.slug) ? s.app.slug.toLowerCase() : "";
+                    const appName = (s.app && s.app.name) ? s.app.name.toLowerCase() : "";
+                    return appSlug === "github-code-scanning" || appSlug === "codeql" || appName.includes("codeql");
+                  });
+
+                  log.verbose(`${codeqlSuites.length} suite(s) CodeQL pour ${ref} / ${codeqlSuites.length} CodeQL suite(s) for ${ref}`);
+
+                  //   FR//  Récupérer les check runs de chaque suite CodeQL
+                  //  ENG//  Fetch check runs from each CodeQL suite
+                  for (const suite of codeqlSuites) {
+                    try {
+                      const runsResp = await withRetry(() =>
+                        github.rest.checks.listForSuite({ owner, repo, check_suite_id: suite.id, per_page: 100 })
+                      );
+                      const runs = runsResp.data.check_runs || [];
+                      log.verbose(`${runs.length} check run(s) dans la suite ${suite.app?.name || suite.id} / ${runs.length} check run(s) in suite ${suite.app?.name || suite.id} : ${runs.map(r => r.name).join(', ')}`);
+                      allRuns.push(...runs);
+                    } catch (e) {
+                      log.verbose(`listForSuite(${suite.id}) ignoré : ${e.message} / listForSuite(${suite.id}) skipped: ${e.message}`);
+                    }
+                  }
                 } catch (e) {
                   //   FR//  refs/pull/N/merge peut être temporairement absent (PR en conflit ou pas encore calculé)
                   //  ENG//  refs/pull/N/merge may be temporarily absent (conflicting PR or not yet computed)
-                  log.verbose(`listForRef(${ref}) ignoré : ${e.message} / listForRef(${ref}) skipped: ${e.message}`);
+                  log.verbose(`listSuitesForRef(${ref}) ignoré : ${e.message} / listSuitesForRef(${ref}) skipped: ${e.message}`);
                 }
               }
               
@@ -416,7 +441,7 @@ jobs:
               codeqlRuns = uniqueRuns.filter(r => {
                 const name = (r.name || "").toLowerCase();
                 const slug = (r.app && r.app.slug ? r.app.slug : "").toLowerCase();
-                return name.includes("codeql") || slug.includes("codeql");
+                return name.includes("codeql") || slug.includes("codeql") || slug.includes("code-scanning");
               });
               
               //   FR//  Log des checks CodeQL détectés après filtrage (diagnostic)
@@ -814,19 +839,45 @@ jobs:
                   if (knownMergeSha) refsToQuery.add(knownMergeSha);
                   log.verbose(`Refs scrutés : ${[...refsToQuery].join(', ')} / Refs queried: ${[...refsToQuery].join(', ')}`);
 
-                  //   FR//  Récupérer les check runs pour chaque SHA
-                  //  ENG//  Fetch check runs for each SHA
+                  //   FR//  Récupérer les check runs CodeQL via les check suites (jobs individuels inclus)
+                  //  ENG//  Fetch CodeQL check runs via check suites (individual jobs included)
                   const allRuns = [];
                   for (const sha of refsToQuery) {
                     try {
-                      const checksData = await withRetry(() =>
-                        ghFetch('GET', `/repos/${owner}/${repo}/commits/${sha}/check-runs?per_page=100`)
+                      //   FR//  Récupérer les check suites pour ce SHA
+                      //  ENG//  Fetch check suites for this SHA
+                      const suitesData = await withRetry(() =>
+                        ghFetch('GET', `/repos/${owner}/${repo}/commits/${sha}/check-suites?per_page=100`)
                       );
-                      const runs = checksData.check_runs || [];
-                      log.verbose(`${runs.length} check run(s) brut(s) pour ${sha} / ${runs.length} raw check run(s) for ${sha} : ${runs.map(r => r.name).join(', ')}`);
-                      allRuns.push(...runs);
+                      const suites = suitesData.check_suites || [];
+                      log.verbose(`${suites.length} check suite(s) trouvée(s) pour ${sha} / ${suites.length} check suite(s) found for ${sha}`);
+
+                      //   FR//  Filtrer les suites CodeQL
+                      //  ENG//  Filter CodeQL suites
+                      const codeqlSuites = suites.filter(s => {
+                        const appSlug = (s.app && s.app.slug) ? s.app.slug.toLowerCase() : "";
+                        const appName = (s.app && s.app.name) ? s.app.name.toLowerCase() : "";
+                        return appSlug === "github-code-scanning" || appSlug === "codeql" || appName.includes("codeql");
+                      });
+
+                      log.verbose(`${codeqlSuites.length} suite(s) CodeQL pour ${sha} / ${codeqlSuites.length} CodeQL suite(s) for ${sha}`);
+
+                      //   FR//  Récupérer les check runs de chaque suite retenue
+                      //  ENG//  Fetch check runs from each retained suite
+                      for (const suite of codeqlSuites) {
+                        try {
+                          const runsData = await withRetry(() =>
+                            ghFetch('GET', `/repos/${owner}/${repo}/check-suites/${suite.id}/check-runs?per_page=100`)
+                          );
+                          const runs = runsData.check_runs || [];
+                          log.verbose(`${runs.length} check run(s) dans la suite ${suite.app?.name || suite.id} / ${runs.length} check run(s) in suite ${suite.app?.name || suite.id} : ${runs.map(r => r.name).join(', ')}`);
+                          allRuns.push(...runs);
+                        } catch (e) {
+                          log.verbose(`check-runs for suite ${suite.id} ignoré : ${e.message}`);
+                        }
+                      }
                     } catch (e) {
-                      log.verbose(`check-runs(${sha}) ignoré : ${e.message}`);
+                      log.verbose(`check-suites(${sha}) ignoré : ${e.message}`);
                     }
                   }
                   
@@ -875,7 +926,7 @@ jobs:
                   codeqlRuns = uniqueRuns.filter(r => {
                     const name = (r.name || "").toLowerCase();
                     const slug = (r.app && r.app.slug ? r.app.slug : "").toLowerCase();
-                    return name.includes("codeql") || slug.includes("codeql");
+                    return name.includes("codeql") || slug.includes("codeql") || slug.includes("code-scanning");
                   });
                   
                   log.verbose(`Checks CodeQL après filtrage (${codeqlRuns.length}) : ${codeqlRuns.map(r => `${r.name} [${r.status}/${r.conclusion}]`).join(', ') || '(aucun/none)'} / CodeQL checks after filtering (${codeqlRuns.length})`);
@@ -980,3 +1031,4 @@ jobs:
               core.info(`PR #${s.pr} | Auteur/Author: ${s.author} | Statut/Status: ${s.status}`);
             });
             core.info("\x1b[36m================================================================\x1b[0m");
+			
