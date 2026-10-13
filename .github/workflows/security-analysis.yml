@@ -77,30 +77,36 @@ jobs:
   # =============================================================================
   semgrep-scan:
     name: "🔎 Semgrep Security Patterns"
+    # FR// Le service externe doit être explicitement configuré ; aucun succès factice.
+    # EN// The external service must be explicitly configured; no false success.
+    if: ${{ vars.SEMGREP_ENABLED == 'true' }}
     runs-on: ubuntu-latest
+    env:
+      SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}
     permissions:
       contents: read
       security-events: write
       actions: read
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v6
-
-      - name: Run Semgrep scan
-        uses: returntocorp/semgrep-action@v1
-        with:
-          publishToken: ${{ secrets.SEMGREP_APP_TOKEN }}
-          publishDeployment: ${{ secrets.SEMGREP_DEPLOYMENT_ID }}
-          generateSarif: "1"
-        continue-on-error: true
-
+      - name: Vérifier le jeton Semgrep / Check Semgrep token
+        run: |
+          if [ -z "$SEMGREP_APP_TOKEN" ]; then
+            echo "::error::SEMGREP_APP_TOKEN requis / SEMGREP_APP_TOKEN required"
+            exit 1
+          fi
+      # FR// L'ancienne action v1 et ses paramètres sont archivés dans docs/history.
+      # EN// The former v1 action and inputs are archived under docs/history.
+      - name: Installer Semgrep / Install Semgrep
+        run: python3 -m pip install 'semgrep==1.180.0'
+      - name: Exécuter Semgrep / Run Semgrep
+        run: semgrep ci --metrics=off --exclude=docs/history --sarif --output=semgrep.sarif
       - name: Upload Semgrep SARIF results
         uses: github/codeql-action/upload-sarif@v4
-        if: always()
+        if: ${{ !cancelled() && hashFiles('semgrep.sarif') != '' }}
         with:
           sarif_file: semgrep.sarif
-        continue-on-error: true
 
   # =============================================================================
   # 3. SonarCloud - Code Quality & Coverage
@@ -387,17 +393,29 @@ jobs:
           project: 'QuelleHeureEst-Il'
           path: '.'
           format: 'SARIF'
+          # FR// Le pnpm v6 est audité dans js-security avec pnpm 8 ; le parseur du conteneur est incompatible.
+          # EN// js-security audits the v6 lockfile with pnpm 8; the container's parser is incompatible.
+          # FR// Exclure uniquement les références historiques et les anciens verrouillages npm.
+          # EN// Exclude only historical references and former npm lockfiles.
+          out: reports
           args: >
             --enableExperimental
             --enableRetired
-        continue-on-error: true
+            --disablePnpmAudit
+            --exclude "**/docs/history/**"
+            --exclude "**/package-lock*.json"
+        # FR// Ancienne tolérance conservée ; une erreur de l'outil reste bloquante.
+        # EN// Former tolerance retained; tool failures remain blocking.
+        # continue-on-error: true
 
       - name: Upload OWASP results
         uses: github/codeql-action/upload-sarif@v4
-        if: always()
+        if: ${{ !cancelled() && hashFiles('reports/dependency-check-report.sarif') != '' }}
         with:
-          sarif_file: 'dependency-check-report.sarif'
-        continue-on-error: true
+          sarif_file: 'reports/dependency-check-report.sarif'
+        # FR// Ancienne tolérance conservée ; une erreur de l'outil reste bloquante.
+        # EN// Former tolerance retained; tool failures remain blocking.
+        # continue-on-error: true
 
   # =============================================================================
   # 11. Analysis Summary Report
@@ -436,7 +454,7 @@ jobs:
           ✅ Semgrep (Pattern-Based Security Scanning)
              • Scans: Custom security patterns across all languages
              • Status: ${{ needs.semgrep-scan.result }}
-             • Config: Requires SEMGREP_APP_TOKEN & SEMGREP_DEPLOYMENT_ID
+             • Config: Requires SEMGREP_ENABLED=true & SEMGREP_APP_TOKEN
           
           ✅ SonarCloud (Code Quality & Hotspots)
              • Coverage: Multi-language quality metrics
@@ -497,7 +515,7 @@ jobs:
           
           📌 Semgrep:
              • SEMGREP_APP_TOKEN (get at: https://semgrep.dev)
-             • SEMGREP_DEPLOYMENT_ID
+             • Actions variable SEMGREP_ENABLED=true
           
           📌 SonarCloud:
              • SONAR_TOKEN (get at: https://sonarcloud.io)
