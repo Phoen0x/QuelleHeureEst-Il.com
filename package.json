@@ -2,6 +2,7 @@
   "name": "quelle-heure-est-il?.com",
   "private": true,
   "version": "0.1.0",
+  "packageManager": "pnpm@8.15.9",
   "type": "module",
   "scripts": {
     "dev": "vite",
