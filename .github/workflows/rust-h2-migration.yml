@@ -18,6 +18,9 @@ jobs:
       CARGO_TERM_COLOR: never
     steps:
       - uses: actions/checkout@v6
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
       - name: Dépendances Linux / Linux dependencies
         run: |
           sudo apt-get update

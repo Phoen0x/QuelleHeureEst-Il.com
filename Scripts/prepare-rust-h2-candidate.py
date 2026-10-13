@@ -24,11 +24,8 @@ for name in missing:
         "cfg(target_os = \"windows\")" if name == "winreg" else
         "cfg(target_os = \"macos\")" if name.startswith("system-configuration") else None
     )
-    table = f"[target.'{target}'.dependencies]" if target else "[dependencies." + name + "]"
-    if target:
-        block = f'\n{table}\n{name} = {{ version = "={version}", optional = true }}\n'
-    else:
-        block = f'\n{table}\nversion = "={version}"\noptional = true\n'
+    table = f"[target.'{target}'.dependencies.{name}]" if target else "[dependencies." + name + "]"
+    block = f'\n{table}\nversion = "={version}"\noptional = true\n'
     with manifest.open("a") as output:
         output.write("\n# FR// Dépendance historique conservée en option, sans activation en production.\n")
         output.write("# EN// Historical dependency retained as optional, without production activation.\n")
