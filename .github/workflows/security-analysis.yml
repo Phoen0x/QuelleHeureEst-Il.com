@@ -201,7 +201,19 @@ jobs:
         uses: Swatinem/rust-cache@v2
 
       - name: Check code format (rustfmt)
-        run: cargo fmt -- --check
+        id: format
+        run: cargo fmt --all -- --check
+
+      # FR// Export de diagnostic pour corriger le format sans altérer les sources historiques.
+      # EN// Diagnostic export to fix formatting without altering historical sources.
+      - name: Format Rust proposé / Proposed Rust formatting
+        if: failure() && steps.format.outcome == 'failure'
+        run: |
+          for source in src-tauri/src/*.rs; do
+            echo "RUSTFMT_BEGIN:$source"
+            rustfmt --edition 2021 --emit stdout < "$source"
+            echo "RUSTFMT_END:$source"
+          done
 
       - name: Run clippy lints
         run: cargo clippy --all-targets --all-features -- -D warnings
@@ -293,7 +305,6 @@ jobs:
 
       - name: Run pnpm audit
         run: pnpm audit --audit-level=moderate
-        continue-on-error: true
 
   # =============================================================================
   # 9. Kotlin/Android Security (Android Lint)

@@ -3,10 +3,10 @@
 name: Maintenance du verrouillage pnpm
 on:
   workflow_dispatch:
-  # FR// Déclencheur provisoire de réparation pour la PR 153.
-  # EN// Temporary repair trigger for PR 153.
-  push:
-    branches: [ "chore/ci-phase1-reliability-20261013" ]
+  # FR// Ancien déclencheur de réparation, conservé désactivé après validation.
+  # EN// Former repair trigger, retained disabled after validation.
+  # push:
+  #   branches: [ "chore/ci-phase1-reliability-20261013" ]
 permissions:
   contents: read
 jobs:

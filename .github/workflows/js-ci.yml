@@ -36,3 +36,17 @@ jobs:
         run: pnpm run typecheck
       - name: Web build
         run: pnpm run vite:build
+
+  workflows:
+    name: Valider les workflows / Validate workflows
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.24'
+          cache: false
+      # FR// Vérifier la syntaxe et les expressions Actions ; les scripts historiques restent intacts.
+      # EN// Check Actions syntax and expressions; historical scripts remain intact.
+      - name: actionlint
+        run: go run github.com/rhysd/actionlint/cmd/actionlint@v1.7.7 -shellcheck=
