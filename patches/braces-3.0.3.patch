@@ -166,4 +166,3 @@ diff --git a/lib/stringify.js b/lib/stringify.js
        }
      }
      return output;
-
