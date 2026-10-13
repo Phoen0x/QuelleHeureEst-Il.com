@@ -1,0 +1,9 @@
+[workspace]
+members = ["src-tauri"]
+resolver = "2"
+
+# FR// Cargo applique les profils au workspace ; le profil historique reste dans src-tauri.
+# EN// Cargo applies workspace profiles; the historical profile remains in src-tauri.
+[profile.release]
+opt-level = "z"
+lto = true
