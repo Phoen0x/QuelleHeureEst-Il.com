@@ -3,8 +3,8 @@
 # Please see the documentation for all configuration options:
 # https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
 
-# FR// Configuration Dependabot – mises à jour quotidiennes, sans limite de PRs
-# ENG// Dependabot configuration – daily updates, no PR limit
+# FR// Configuration Dependabot – mises à jour quotidiennes, avec plafonds de PR
+# ENG// Dependabot configuration – daily updates, bounded PR counts
 
 version: 2
 updates:
@@ -14,9 +14,14 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
-    # FR// Pas de limite de PRs ouvertes (0 = illimité)
-    # ENG// No limit on open PRs (0 = unlimited)
-    open-pull-requests-limit: 0
+    # FR// 0 désactive les mises à jour de versions, pas illimité.
+    # ENG// 0 disables version updates, not unlimited.
+    open-pull-requests-limit: 10
+    groups:
+      minor-patch:
+        applies-to: version-updates
+        patterns: ["*"]
+        update-types: ["minor", "patch"]
     labels:
       - "dependencies"
       - "javascript"
@@ -28,7 +33,12 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
-    open-pull-requests-limit: 0
+    open-pull-requests-limit: 5
+    groups:
+      minor-patch-actions:
+        applies-to: version-updates
+        patterns: ["*"]
+        update-types: ["minor", "patch"]
     labels:
       - "dependencies"
       - "github-actions"
