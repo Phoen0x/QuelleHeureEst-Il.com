@@ -2,6 +2,7 @@
 # EN// Read-only guard; historical scripts are allowed only against their exact baselines.
 import hashlib
 import json
+import locale
 from pathlib import Path
 import sys
 
@@ -25,7 +26,7 @@ def check(profile):
     if Path.cwd().resolve() != ROOT:
         raise ValueError("Exécuter depuis la racine du dépôt / Run from repository root")
     regular(BASELINES)
-    data = json.loads(BASELINES.read_text())
+    data = json.loads(BASELINES.read_text(encoding="utf-8-sig"))
     if profile not in data["profiles"]:
         raise ValueError("Profil inconnu / Unknown profile")
     rule = data["profiles"][profile]
@@ -61,6 +62,10 @@ def require_compatible(profile):
     print(f"Référence compatible sans écriture / Compatible baseline without writes: {profile}")
     if args != ["--generate"]:
         raise SystemExit(0)
+    # FR// Les corps historiques écrivent sans encoding explicite : refuser un défaut non UTF-8.
+    # EN// Historical bodies write without explicit encoding: reject a non-UTF-8 default.
+    if locale.getpreferredencoding(False).replace("-", "").replace("_", "").lower() != "utf8":
+        raise SystemExit("Génération refusée avant écriture ; utiliser Python -X utf8 / Generation refused before writes; use Python -X utf8")
 
 if __name__ == "__main__":
     if len(sys.argv) != 3 or sys.argv[1] != "--check":

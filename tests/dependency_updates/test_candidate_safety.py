@@ -130,6 +130,13 @@ class CandidateSafetyTests(unittest.TestCase):
         path.write_text('// FR// Test conservé.\n// EN// Retained test.\n')
         self.run_guard([sys.executable, "Scripts/prepare-rust-h2-candidate.py", "--generate"], False, "already present")
 
+    def test_non_utf8_generation_is_refused_before_historical_body(self):
+        self.rust_baseline("rust-h2")
+        # FR// Simuler le défaut d'un ancien poste Windows, sans changer sa configuration.
+        # EN// Simulate an older Windows default without changing machine configuration.
+        code = "import locale,runpy,sys;sys.path.insert(0,'Scripts');locale.getpreferredencoding=lambda _:'cp1252';sys.argv=['prepare-rust-h2-candidate.py','--generate'];runpy.run_path('Scripts/prepare-rust-h2-candidate.py',run_name='__main__')"
+        self.run_guard([sys.executable, "-c", code], False, "use Python -X utf8")
+
     def test_current_js_candidate_blocks_before_literal_manifest_replacement(self):
         self.run_guard(self.node("--generate", "js-security"), False, "Incompatible state")
         # FR// Exécuter aussi une écriture sentinelle derrière la vraie garde inline, sur la copie seulement.

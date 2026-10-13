@@ -20,6 +20,8 @@ jobs:
         os: [ubuntu-latest, windows-latest]
     runs-on: ${{ matrix.os }}
     timeout-minutes: 15
+    env:
+      PYTHONUTF8: '1'
     steps:
       - uses: actions/checkout@v6
         with:
@@ -47,6 +49,8 @@ jobs:
     name: Vérifications JS et workflows / JS and workflow checks
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    env:
+      PYTHONUTF8: '1'
     steps:
       - uses: actions/checkout@v6
         with:
