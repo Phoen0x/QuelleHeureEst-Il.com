@@ -1,12 +1,16 @@
+// Fichier principal de l'application Tauri.
 // Tauri main application file
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
 mod cache;
-mod weather;
 mod geocoding;
+mod weather;
 
+// FR// Import historique redondant conservé hors compilation.
+// EN// Redundant historical import retained outside compilation.
+// use serde_json;
+#[cfg(debug_assertions)]
 use tauri::Manager;
-use serde_json;
 
 #[tauri::command]
 fn greet(name: &str) -> String {
@@ -45,10 +49,10 @@ fn cache_location(location: serde_json::Value) -> Result<(), String> {
 
 fn main() {
     tauri::Builder::default()
-        .setup(|app| {
+        .setup(|_app| {
             #[cfg(debug_assertions)]
             {
-                let window = app.get_webview_window("main").unwrap();
+                let window = _app.get_webview_window("main").unwrap();
                 window.open_devtools();
             }
             Ok(())

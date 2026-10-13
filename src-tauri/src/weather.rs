@@ -1,4 +1,7 @@
-use serde_json::{json, Value};
+// FR// Import historique conservé hors compilation ; seul Value est utilisé ici.
+// EN// Historical import retained outside compilation; only Value is used here.
+// use serde_json::{json, Value};
+use serde_json::Value;
 
 pub async fn get_weather(lat: f64, lon: f64) -> Result<Value, String> {
     let url = format!(

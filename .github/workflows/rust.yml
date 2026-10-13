@@ -43,3 +43,20 @@ jobs:
         run: cargo build --workspace --verbose
       - name: Test Rust
         run: cargo test --workspace --verbose
+
+      # FR// Garder la résolution exacte pour revue et reproduction des résultats.
+      # EN// Retain the exact resolution for review and reproducing results.
+      - name: Verrouillage Rust utilisé / Rust lockfile used
+        if: always()
+        run: |
+          if [ -f Cargo.lock ]; then
+            echo CARGO_LOCK_BEGIN
+            cat Cargo.lock
+            echo CARGO_LOCK_END
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: rust-lockfile
+          path: Cargo.lock
+          if-no-files-found: ignore

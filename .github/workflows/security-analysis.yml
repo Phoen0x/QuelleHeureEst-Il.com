@@ -135,8 +135,10 @@ jobs:
         run: cargo install cargo-audit
 
       - name: Run cargo-audit (vulnerability scan)
+        # FR// Ancienne tolérance conservée en référence ; les alertes restent désormais bloquantes.
+        # EN// Former tolerance retained as reference; advisories now remain blocking.
+        # continue-on-error: true
         run: cargo audit --deny warnings
-        continue-on-error: true
 
   # =============================================================================
   # 5. Rust Dependency Scanning (cargo-deny)
@@ -154,8 +156,13 @@ jobs:
         with:
           log-level: warn
           command: check
-          arguments: --all-targets
-        continue-on-error: true
+          # FR// --all-targets n'est pas une option cargo-deny ; toutes les cibles sont analysées par défaut.
+          # EN// --all-targets is not a cargo-deny option; all targets are analyzed by default.
+          # arguments: --all-targets
+          arguments: ''
+        # FR// Ancienne tolérance : les erreurs de l'outil ne doivent pas apparaître en succès.
+        # EN// Former tolerance: tool errors must not appear successful.
+        # continue-on-error: true
 
   # =============================================================================
   # 6. Rust Code Quality (Clippy + Format Check)
