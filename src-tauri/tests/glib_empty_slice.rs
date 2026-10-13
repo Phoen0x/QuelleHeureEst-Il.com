@@ -2,9 +2,13 @@
 // EN// Regressions for upstream backport b31265df: empty conversion, ownership and reuse.
 #![cfg(target_os = "linux")]
 use glib::prelude::*;
-use glib::{GStringPtr, PtrSlice, Slice};
+use glib::{Error, FileError, PtrSlice, Slice};
 
-fn check_empty_string_slice_can_be_reused(source: Slice<GStringPtr>) {
+fn item(message: &str) -> Error {
+    Error::new(FileError::Failed, message)
+}
+
+fn check_empty_error_slice_can_be_reused(source: Slice<Error>) {
     let mut converted = PtrSlice::from(source);
     assert!(converted.is_empty());
     assert_eq!(converted.capacity(), 0);
@@ -12,62 +16,62 @@ fn check_empty_string_slice_can_be_reused(source: Slice<GStringPtr>) {
     // EN// as_ptr supplies a readable sentinel even for an empty container.
     assert!(unsafe { (*converted.as_ptr()).is_null() });
 
-    converted.push(GStringPtr::from("réutilisation"));
+    converted.push(item("réutilisation"));
     assert_eq!(converted.len(), 1);
-    assert_eq!(converted[0].as_str(), "réutilisation");
+    assert_eq!(converted[0].message(), "réutilisation");
     assert!(unsafe { (*converted.as_ptr().add(converted.len())).is_null() });
-    assert_eq!(converted.pop().unwrap().as_str(), "réutilisation");
-    converted.push(GStringPtr::from("second cycle"));
-    assert_eq!(converted[0].as_str(), "second cycle");
+    assert_eq!(converted.pop().unwrap().message(), "réutilisation");
+    converted.push(item("second cycle"));
+    assert_eq!(converted[0].message(), "second cycle");
     drop(converted);
 }
 
 #[test]
 fn empty_slice_conversion_returns_fresh_reusable_storage() {
-    check_empty_string_slice_can_be_reused(Slice::new());
+    check_empty_error_slice_can_be_reused(Slice::new());
 }
 
 #[test]
 fn reserved_empty_slice_conversion_discards_freed_capacity() {
-    let source = Slice::<GStringPtr>::with_capacity(4);
+    let source = Slice::<Error>::with_capacity(4);
     assert!(source.is_empty());
     assert!(source.capacity() >= 4);
-    check_empty_string_slice_can_be_reused(source);
+    check_empty_error_slice_can_be_reused(source);
 }
 
 #[test]
 fn emptied_reserved_slice_conversion_is_reusable() {
-    let mut source = Slice::from(vec![GStringPtr::from("ancien élément")]);
+    let mut source = Slice::from(vec![item("ancien élément")]);
     let capacity = source.capacity();
     drop(source.pop().unwrap());
     assert!(source.is_empty());
     assert_eq!(source.capacity(), capacity);
-    check_empty_string_slice_can_be_reused(source);
+    check_empty_error_slice_can_be_reused(source);
 }
 
 #[test]
 fn nonempty_slice_preserves_contents_and_null_termination() {
-    // FR// Les trois chaînes correspondent au cas non vide du test amont.
-    // EN// The three strings match the nonempty case of the upstream test.
+    // FR// Les mêmes messages que dans le test amont, avec Error disponible dans glib 0.18.5.
+    // EN// The same messages as the upstream test, using Error available in glib 0.18.5.
     let items = [
-        GStringPtr::from("one"),
-        GStringPtr::from("two"),
-        GStringPtr::from("three"),
+        item("one"),
+        item("two"),
+        item("three"),
     ];
     let source = Slice::from(&items[..]);
-    let mut converted: PtrSlice<GStringPtr> = PtrSlice::from(source);
+    let mut converted: PtrSlice<Error> = PtrSlice::from(source);
     drop(items);
     assert_eq!(converted.len(), 3);
-    assert_eq!(converted[0].as_str(), "one");
-    assert_eq!(converted[1].as_str(), "two");
-    assert_eq!(converted[2].as_str(), "three");
+    assert_eq!(converted[0].message(), "one");
+    assert_eq!(converted[1].message(), "two");
+    assert_eq!(converted[2].message(), "three");
     assert!(unsafe { (*converted.as_ptr().add(converted.len())).is_null() });
 
     converted.truncate(1);
-    converted.push(GStringPtr::from("four"));
+    converted.push(item("four"));
     assert_eq!(converted.len(), 2);
-    assert_eq!(converted[0].as_str(), "one");
-    assert_eq!(converted[1].as_str(), "four");
+    assert_eq!(converted[0].message(), "one");
+    assert_eq!(converted[1].message(), "four");
     assert!(unsafe { (*converted.as_ptr().add(converted.len())).is_null() });
     drop(converted);
 }
