@@ -91,12 +91,9 @@ jobs:
         id: audit
         continue-on-error: true
         run: |
-          set +e
-          cargo audit --deny warnings --json > "$RUNNER_TEMP/rust-warnings-audit.json"
-          status=$?
-          set -e
+          cargo audit --json > "$RUNNER_TEMP/rust-warnings-audit.json"
           cat "$RUNNER_TEMP/rust-warnings-audit.json"
-          exit "$status"
+          cargo audit --deny warnings
       - name: Cargo-deny sans changement de politique / Cargo-deny without policy change
         id: deny
         continue-on-error: true
@@ -112,7 +109,7 @@ jobs:
           python3 - <<'PY'
           from pathlib import Path
           import base64, gzip, json
-          paths = [Path(p) for p in ('Cargo.lock', 'Cargo.toml', 'src-tauri/Cargo.toml', 'src-tauri/tests/glib_variant_str_iter.rs', 'docs/history/rust-warnings-20261013/glib-0.18.5.crate')]
+          paths = [Path(p) for p in ('Cargo.lock', 'Cargo.toml', 'src-tauri/Cargo.toml', 'src-tauri/tests/glib_variant_str_iter.rs', '.cargo/config.toml', 'docs/history/rust-warnings-20261013/glib-0.18.5.crate')]
           paths += sorted(Path('vendor/glib-0.18.5').rglob('*'))
           files = {}
           for path in paths:
@@ -132,6 +129,7 @@ jobs:
           path: |
             Cargo.lock
             Cargo.toml
+            .cargo/config.toml
             src-tauri/Cargo.toml
             src-tauri/tests/glib_variant_str_iter.rs
             vendor/glib-0.18.5

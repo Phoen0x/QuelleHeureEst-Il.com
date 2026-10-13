@@ -33,8 +33,13 @@ with tarfile.open(fileobj=io.BytesIO(archive), mode="r:gz") as source:
         assert (vendor / relative).read_bytes() == expected, str(relative)
 assert {p.relative_to(vendor).as_posix() for p in vendor.rglob("*") if p.is_file()} == original_files
 glib = next(p for p in lock["package"] if p["name"] == "glib")
-assert glib["version"] == "0.18.5" and "source" not in glib
-assert tomllib.loads(Path("Cargo.toml").read_text())["patch"]["crates-io"]["glib"]["path"] == "vendor/glib-0.18.5"
+assert glib == original_glib
+assert tomllib.loads(Path(".cargo/config.toml").read_text())["paths"] == ["vendor/glib-0.18.5"]
+import json
+import subprocess
+metadata = json.loads(subprocess.check_output(["cargo", "metadata", "--locked", "--format-version", "1"]))
+resolved = [p for p in metadata["packages"] if p["name"] == "glib" and p["version"] == "0.18.5"]
+assert len(resolved) == 1 and Path(resolved[0]["manifest_path"]).resolve() == (vendor / "Cargo.toml").resolve()
 for name, version in (("proc-macro-error", "1.0.4"), ("rustls-pemfile", "1.0.4")):
     assert any(p["name"] == name and p["version"] == version for p in lock["package"])
 assert manifest["dependencies"]["rustls-pemfile"]["optional"]

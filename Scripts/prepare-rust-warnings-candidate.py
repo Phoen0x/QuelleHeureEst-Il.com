@@ -34,7 +34,10 @@ variant.write_text(text)
 root = Path("Cargo.toml")
 content = root.read_text()
 content = content.replace('members = ["src-tauri"]', 'members = ["src-tauri"]\n# FR// Le paquet tiers corrigé reste une dépendance, hors membres du workspace.\n# EN// The patched third-party package remains a dependency, outside workspace members.\nexclude = ["vendor/glib-0.18.5"]')
-content += '\n# FR// Rétroport exact du correctif amont ; nom et version inchangés pour garder l\'avis visible.\n# EN// Exact upstream backport; unchanged name and version keep the advisory visible.\n[patch.crates-io]\nglib = { path = "vendor/glib-0.18.5" }\n'
+configuration = Path(".cargo/config.toml")
+configuration.parent.mkdir(exist_ok=True)
+assert not configuration.exists()
+configuration.write_text('# FR// Substituer uniquement le code ; conserver la résolution de registre pour les audits.\n# EN// Override only source code; preserve registry resolution for audits.\npaths = ["vendor/glib-0.18.5"]\n')
 root.write_text(content)
 manifest = Path("src-tauri/Cargo.toml")
 with manifest.open("a") as output:
