@@ -1,5 +1,11 @@
 # FR// Générer un candidat dans le runner ; aucun push automatique.
 # EN// Generate a runner-local candidate; no automatic push.
+# FR// Par défaut, contrôler seulement ; --generate exige la référence historique intacte.
+# EN// Check only by default; --generate requires an intact historical baseline.
+import sys
+sys.dont_write_bytecode = True
+from candidate_safety import require_compatible
+require_compatible("rust-h2")
 from pathlib import Path
 import subprocess
 import tomllib

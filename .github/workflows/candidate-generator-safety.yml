@@ -1,0 +1,40 @@
+# FR// Tests isolés des gardes ; aucune installation du projet ni génération mutatrice.
+# EN// Isolated guard tests; no project installation or mutating generation.
+name: Sécurité des générateurs de candidats
+on:
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  guards:
+    name: Gardes isolées / Isolated guards (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 8.15.9
+          run_install: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Régressions sur copies isolées / Regressions on isolated copies
+        run: python -m unittest discover -s tests/dependency_updates -p test_candidate_safety.py -v
+      - name: Contrôle actuel sans écriture / Current check without writes
+        run: |
+          python Scripts/candidate_safety.py --check current-conservation
+          node Scripts/candidate-safety.cjs --check current-conservation
+          node Scripts/candidate-safety.cjs --check-pnpm
+          git diff --exit-code -- package.json pnpm-lock.yaml Cargo.toml Cargo.lock src-tauri/Cargo.toml .cargo/config.toml vendor/glib-0.18.5

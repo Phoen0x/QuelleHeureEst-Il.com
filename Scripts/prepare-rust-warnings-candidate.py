@@ -1,5 +1,11 @@
 # FR// Préparer un rétroport vérifiable ; tous les paquets historiques restent présents.
 # EN// Prepare a verifiable backport; all historical packages remain present.
+# FR// Par défaut, contrôler seulement ; --generate exige la référence historique intacte.
+# EN// Check only by default; --generate requires an intact historical baseline.
+import sys
+sys.dont_write_bytecode = True
+from candidate_safety import require_compatible
+require_compatible("rust-warnings")
 from pathlib import Path
 import hashlib
 import io

@@ -1,0 +1,114 @@
+# FR// Valider le candidat h2 dans le runner avant de commiter la migration active.
+# EN// Validate the runner-local h2 candidate before committing the active migration.
+name: Validation de migration Rust h2
+on:
+  workflow_dispatch:
+  # FR// Déclencheur initial conservé désactivé après validation du candidat.
+  # EN// Initial trigger retained disabled after candidate validation.
+  # push:
+  #   branches: [ "chore/ci-phase1-reliability-20261013" ]
+  #   paths:
+  #     - '.github/workflows/rust-h2-migration.yml'
+  #     - 'Scripts/prepare-rust-h2-candidate.py'
+permissions:
+  contents: read
+jobs:
+  candidate:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 45
+    env:
+      CARGO_TERM_COLOR: never
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Dépendances Linux / Linux dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            build-essential libwebkit2gtk-4.1-dev libayatana-appindicator3-dev \
+            librsvg2-dev patchelf libssl-dev libxdo-dev
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+      - uses: Swatinem/rust-cache@v2
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 8.15.9
+          run_install: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'pnpm'
+      - name: Frontend embarqué / Embedded frontend
+        run: |
+          pnpm install --frozen-lockfile
+          pnpm run vite:build
+      # FR// Rejouer la migration depuis la référence archivée, seulement dans le runner.
+      # EN// Replay migration from the archived reference, only in the runner.
+      - name: Référence initiale isolée / Isolated original reference
+        run: |
+          cp docs/history/rust-h2-20261013/Cargo.lock Cargo.lock
+          cp docs/history/rust-h2-20261013/src-tauri/Cargo.toml src-tauri/Cargo.toml
+      - name: Chaîne initiale / Original dependency chain
+        run: cargo tree --locked --target all -i h2@0.3.27
+      - name: Préparer le candidat isolé / Prepare isolated candidate
+        run: python3 Scripts/prepare-rust-h2-candidate.py
+      - name: Formater les nouveaux tests / Format new tests
+        run: rustfmt --edition 2021 src-tauri/tests/http_client.rs
+      - name: Dépendances conservées / Preserved dependencies
+        run: |
+          python3 Scripts/check-rust-h2-migration.py
+          cargo tree --locked --target all -i h2
+          cargo tree --locked -e features -p reqwest@0.12.28
+      - name: Format Rust / Rust formatting
+        run: cargo fmt --all -- --check
+      - name: Compilation debug / Debug build
+        run: cargo build --workspace --locked
+      - name: Tests Rust / Rust tests
+        run: cargo test --workspace --locked
+      - name: Clippy strict / Strict Clippy
+        run: cargo clippy --workspace --locked --all-targets --all-features -- -D warnings
+      - name: Compilation release / Release build
+        run: cargo build --workspace --release --locked
+      - name: Exclusion historique / Historical exclusion
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          markers = (b'RUST_H2_CANDIDATE_BEGIN', b'LOCKFILE_CANDIDATE_BEGIN', b'RUSTFMT_BEGIN:', b'lockfileVersion:', b'https://brokencrystals.com')
+          for path in list(Path('dist').rglob('*')) + [Path('target/release/quelleheureest')]:
+              if path.is_file():
+                  assert not any(marker in path.read_bytes() for marker in markers), str(path)
+          PY
+      - name: Installer cargo-audit / Install cargo-audit
+        run: cargo install cargo-audit --locked
+      - name: Audit Rust sans exclusion / Rust audit without exclusion
+        id: audit
+        continue-on-error: true
+        run: cargo audit
+      - name: Exporter le candidat / Export candidate
+        if: always()
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          for name in ('Cargo.lock', 'src-tauri/Cargo.toml', 'src-tauri/tests/http_client.rs'):
+              path = Path(name)
+              if path.exists():
+                  print('RUST_H2_CANDIDATE_BEGIN:' + name)
+                  print(path.read_text(), end='')
+                  print('\nRUST_H2_CANDIDATE_END:' + name)
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: rust-h2-candidate
+          path: |
+            Cargo.lock
+            src-tauri/Cargo.toml
+            src-tauri/tests/http_client.rs
+      - name: Résultat de l'audit / Audit result
+        if: always()
+        env:
+          AUDIT_RESULT: ${{ steps.audit.outcome }}
+        run: test "$AUDIT_RESULT" = success

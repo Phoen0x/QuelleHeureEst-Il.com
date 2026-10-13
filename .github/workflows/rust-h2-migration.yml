@@ -23,6 +23,10 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      # FR// Refuser l’état incompatible avant toute restauration ou opération de génération.
+      # EN// Refuse incompatible state before any restoration or generation operation.
+      - name: Référence compatible sans écriture / Compatible baseline without writes
+        run: python3 Scripts/candidate_safety.py --check rust-h2
       - name: Dépendances Linux / Linux dependencies
         run: |
           sudo apt-get update
@@ -54,7 +58,7 @@ jobs:
       - name: Chaîne initiale / Original dependency chain
         run: cargo tree --locked --target all -i h2@0.3.27
       - name: Préparer le candidat isolé / Prepare isolated candidate
-        run: python3 Scripts/prepare-rust-h2-candidate.py
+        run: python3 Scripts/prepare-rust-h2-candidate.py --generate
       - name: Formater les nouveaux tests / Format new tests
         run: rustfmt --edition 2021 src-tauri/tests/http_client.rs
       - name: Dépendances conservées / Preserved dependencies

@@ -21,13 +21,23 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      # FR// Vérifier l’état et pnpm avant installation ou remplacement des fichiers.
+      # EN// Check state and pnpm before installation or file replacement.
+      - name: Référence et gestionnaire compatibles / Compatible baseline and manager
+        run: node Scripts/candidate-safety.cjs --check lockfile-maintenance
       # FR// Résoudre réellement les deux paquets corrompus sans changer les autres dépendances.
       # EN// Resolve the two corrupted packages without changing other dependencies.
       - name: Régénérer le candidat / Regenerate candidate
         run: |
+          node Scripts/candidate-safety.cjs --generate lockfile-maintenance
           pnpm add --save-dev @vitejs/plugin-react@6.0.2 vite@8.0.16 --lockfile-only --ignore-scripts
           git show HEAD:package.json > package.json
+          node Scripts/candidate-safety.cjs --check-pnpm
           pnpm install --lockfile-only --ignore-scripts --no-frozen-lockfile
+      # FR// Ce rejeu borné ne doit modifier ni la résolution ni les conservations actuelles.
+      # EN// This bounded replay must change neither resolution nor current preservation.
+      - name: Conservation du candidat avant export / Candidate preservation before export
+        run: node Scripts/candidate-safety.cjs --check lockfile-maintenance
       - name: Exporter le candidat pour revue / Export candidate for review
         run: |
           echo LOCKFILE_CANDIDATE_BEGIN
