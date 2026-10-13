@@ -20,7 +20,7 @@ env:
 
 jobs:
   # =============================================================================
-  # 1. CodeQL - Multi-language SAST (Rust, JS/TS, Kotlin, Actions)
+  # 1. CodeQL - Multi-language SAST (Rust, JS/TS, Actions)
   # =============================================================================
   codeql-analysis:
     name: "🔍 CodeQL Analysis"
@@ -35,8 +35,6 @@ jobs:
           - language: javascript-typescript
             build-mode: none
           - language: rust
-            build-mode: none
-          - language: java-kotlin
             build-mode: none
 
     steps:
@@ -90,6 +88,11 @@ jobs:
   # =============================================================================
   sonarcloud-analysis:
     name: "📊 SonarCloud Code Quality"
+    # FR// Analyse externe uniquement quand elle est configurée.
+    # ENG// Run external analysis only when configured.
+    if: ${{ vars.SONAR_PROJECT_KEY != '' && vars.SONAR_ORG != '' }}
+    env:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
     runs-on: ubuntu-latest
     permissions:
       pull-requests: read
@@ -101,15 +104,15 @@ jobs:
           fetch-depth: 0
 
       - name: Run SonarCloud analysis
-        uses: SonarSource/sonarcloud-github-action@master
+        if: ${{ env.SONAR_TOKEN != '' }}
+        uses: SonarSource/sonarcloud-github-action@4006f663ecaf1f8093e8e4abb9227f6041f52216
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: >
-            -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
-            -Dsonar.organization=${{ secrets.SONAR_ORG }}
-        continue-on-error: true
+            -Dsonar.projectKey=${{ vars.SONAR_PROJECT_KEY }}
+            -Dsonar.organization=${{ vars.SONAR_ORG }}
 
   # =============================================================================
   # 4. Rust Security - Dependency & Vulnerability Scanning
@@ -211,7 +214,7 @@ jobs:
         continue-on-error: true
 
   # =============================================================================
-  # 8. JavaScript/TypeScript Security (npm audit)
+  # 8. JavaScript/TypeScript Security (pnpm audit)
   # =============================================================================
   js-security:
     name: "📦 JS/TS: Dependency Security"
@@ -221,18 +224,25 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v6
 
+      # FR// pnpm 8 est compatible avec le lockfile v6.
+      # ENG// pnpm 8 supports the v6 lockfile.
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 8.15.9
+          run_install: false
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
-          cache: 'npm'
+          node-version: '22'
+          cache: 'pnpm'
 
       - name: Install dependencies
-        run: npm install
-        continue-on-error: true
+        run: pnpm install --frozen-lockfile
 
-      - name: Run npm audit
-        run: npm audit --audit-level=moderate
+      - name: Run ppnpm audit
+        run: ppnpm audit --audit-level=moderate
         continue-on-error: true
 
   # =============================================================================
@@ -325,7 +335,7 @@ jobs:
           📊 SECURITY & SAST TOOLS:
           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
           ✅ CodeQL (GitHub Native SAST)
-             • Languages: Rust, Java/Kotlin, JavaScript/TypeScript, GitHub Actions
+             • Languages: Rust, JavaScript/TypeScript, GitHub Actions
              • Status: ${{ needs.codeql-analysis.result }}
           
           ✅ Semgrep (Pattern-Based Security Scanning)
@@ -366,8 +376,8 @@ jobs:
           
           📦 JAVASCRIPT/TYPESCRIPT SECURITY:
           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-          ✅ npm audit
-             • Checks: Vulnerable packages in npm dependencies
+          ✅ pnpm audit
+             • Checks: Vulnerable packages in pnpm dependencies
              • Status: ${{ needs.js-security.result }}
           
           📱 KOTLIN/ANDROID SECURITY:
