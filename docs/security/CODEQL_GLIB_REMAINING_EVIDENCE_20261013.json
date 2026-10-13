@@ -1,0 +1,5791 @@
+{
+  "source_commit": "d5e75292ed3caca6110c9ab4f740df33d5b096d8",
+  "workflow_run": 38425272324,
+  "workflow_job": 115392909513,
+  "cli": "2.27.2",
+  "artifact_id": 11828886142,
+  "artifact_digest_sha256": "4772fa6e1b0cf0767ea89172b14e1c9aef4054ea118d28f9986a76c561baf540",
+  "provenance": "Exact records re-extracted from the full, unfiltered SARIF export in the diagnostic job log; seven total records verified against the previous extraction.",
+  "scope": "Three remaining results; the other four records are preserved in CODEQL_GLIB_EVIDENCE_20261013.json.",
+  "results": [
+    {
+      "rule": {},
+      "result": {
+        "ruleId": "rust/access-invalid-pointer",
+        "rule": {
+          "id": "rust/access-invalid-pointer",
+          "index": 6,
+          "toolComponent": {
+            "index": 0
+          }
+        },
+        "message": {
+          "text": "This operation dereferences a pointer that may be [invalid](1).\nThis operation dereferences a pointer that may be [invalid](2).\nThis operation dereferences a pointer that may be [invalid](3).\nThis operation dereferences a pointer that may be [invalid](4).\nThis operation dereferences a pointer that may be [invalid](5).\nThis operation dereferences a pointer that may be [invalid](6).\nThis operation dereferences a pointer that may be [invalid](7).\nThis operation dereferences a pointer that may be [invalid](8).\nThis operation dereferences a pointer that may be [invalid](9).\nThis operation dereferences a pointer that may be [invalid](10).\nThis operation dereferences a pointer that may be [invalid](11).\nThis operation dereferences a pointer that may be [invalid](12).\nThis operation dereferences a pointer that may be [invalid](13).\nThis operation dereferences a pointer that may be [invalid](14).\nThis operation dereferences a pointer that may be [invalid](15).\nThis operation dereferences a pointer that may be [invalid](16).\nThis operation dereferences a pointer that may be [invalid](17).\nThis operation dereferences a pointer that may be [invalid](18).\nThis operation dereferences a pointer that may be [invalid](19).\nThis operation dereferences a pointer that may be [invalid](20).\nThis operation dereferences a pointer that may be [invalid](21).\nThis operation dereferences a pointer that may be [invalid](22).\nThis operation dereferences a pointer that may be [invalid](23).\nThis operation dereferences a pointer that may be [invalid](24).\nThis operation dereferences a pointer that may be [invalid](25).\nThis operation dereferences a pointer that may be [invalid](26).\nThis operation dereferences a pointer that may be [invalid](27).\nThis operation dereferences a pointer that may be [invalid](28).\nThis operation dereferences a pointer that may be [invalid](29).\nThis operation dereferences a pointer that may be [invalid](30).\nThis operation dereferences a pointer that may be [invalid](31).\nThis operation dereferences a pointer that may be [invalid](32).\nThis operation dereferences a pointer that may be [invalid](33).\nThis operation dereferences a pointer that may be [invalid](34).\nThis operation dereferences a pointer that may be [invalid](35).\nThis operation dereferences a pointer that may be [invalid](36).\nThis operation dereferences a pointer that may be [invalid](37).\nThis operation dereferences a pointer that may be [invalid](38).\nThis operation dereferences a pointer that may be [invalid](39).\nThis operation dereferences a pointer that may be [invalid](40).\nThis operation dereferences a pointer that may be [invalid](41).\nThis operation dereferences a pointer that may be [invalid](42).\nThis operation dereferences a pointer that may be [invalid](43).\nThis operation dereferences a pointer that may be [invalid](44).\nThis operation dereferences a pointer that may be [invalid](45).\nThis operation dereferences a pointer that may be [invalid](46).\nThis operation dereferences a pointer that may be [invalid](47).\nThis operation dereferences a pointer that may be [invalid](48).\nThis operation dereferences a pointer that may be [invalid](49).\nThis operation dereferences a pointer that may be [invalid](50).\nThis operation dereferences a pointer that may be [invalid](51).\nThis operation dereferences a pointer that may be [invalid](52).\nThis operation dereferences a pointer that may be [invalid](53).\nThis operation dereferences a pointer that may be [invalid](54).\nThis operation dereferences a pointer that may be [invalid](55).\nThis operation dereferences a pointer that may be [invalid](56).\nThis operation dereferences a pointer that may be [invalid](57).\nThis operation dereferences a pointer that may be [invalid](58).\nThis operation dereferences a pointer that may be [invalid](59).\nThis operation dereferences a pointer that may be [invalid](60).\nThis operation dereferences a pointer that may be [invalid](61).\nThis operation dereferences a pointer that may be [invalid](62).\nThis operation dereferences a pointer that may be [invalid](63).\nThis operation dereferences a pointer that may be [invalid](64).\nThis operation dereferences a pointer that may be [invalid](65).\nThis operation dereferences a pointer that may be [invalid](66).\nThis operation dereferences a pointer that may be [invalid](67).\nThis operation dereferences a pointer that may be [invalid](68).\nThis operation dereferences a pointer that may be [invalid](69).\nThis operation dereferences a pointer that may be [invalid](70).\nThis operation dereferences a pointer that may be [invalid](71).\nThis operation dereferences a pointer that may be [invalid](72).\nThis operation dereferences a pointer that may be [invalid](73).\nThis operation dereferences a pointer that may be [invalid](74).\nThis operation dereferences a pointer that may be [invalid](75).\nThis operation dereferences a pointer that may be [invalid](76).\nThis operation dereferences a pointer that may be [invalid](77).\nThis operation dereferences a pointer that may be [invalid](78).\nThis operation dereferences a pointer that may be [invalid](79).\nThis operation dereferences a pointer that may be [invalid](80).\nThis operation dereferences a pointer that may be [invalid](81).\nThis operation dereferences a pointer that may be [invalid](82).\nThis operation dereferences a pointer that may be [invalid](83).\nThis operation dereferences a pointer that may be [invalid](84).\nThis operation dereferences a pointer that may be [invalid](85)."
+        },
+        "locations": [
+          {
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/object.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 0
+              },
+              "region": {
+                "startLine": 470,
+                "startColumn": 28,
+                "endColumn": 31
+              }
+            }
+          }
+        ],
+        "partialFingerprints": {
+          "primaryLocationLineHash": "9d89516e21e3187e:1",
+          "primaryLocationStartColumnFingerprint": "19"
+        },
+        "codeFlows": [
+          {
+            "threadFlows": [
+              {
+                "locations": [
+                  {
+                    "location": {
+                      "physicalLocation": {
+                        "artifactLocation": {
+                          "uri": "vendor/glib-0.18.5/src/auto/functions.rs",
+                          "uriBaseId": "%SRCROOT%",
+                          "index": 1
+                        },
+                        "region": {
+                          "startLine": 344,
+                          "startColumn": 27,
+                          "endColumn": 38
+                        }
+                      },
+                      "message": {
+                        "text": "...::null(...)"
+                      }
+                    },
+                    "taxa": [
+                      {
+                        "index": 0,
+                        "toolComponent": {
+                          "index": 1
+                        },
+                        "properties": {
+                          "CodeQL/DataflowRole": "source"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "location": {
+                      "physicalLocation": {
+                        "artifactLocation": {
+                          "uri": "vendor/glib-0.18.5/src/auto/functions.rs",
+                          "uriBaseId": "%SRCROOT%",
+                          "index": 1
+                        },
+                        "region": {
+                          "startLine": 344,
+                          "startColumn": 13,
+                          "endColumn": 24
+                        }
+                      },
+                      "message": {
+                        "text": "mut charset"
+                      }
+                    }
+                  },
+                  {
+                    "location": {
+                      "physicalLocation": {
+                        "artifactLocation": {
+                          "uri": "vendor/glib-0.18.5/src/auto/functions.rs",
+                          "uriBaseId": "%SRCROOT%",
+                          "index": 1
+                        },
+                        "region": {
+                          "startLine": 347,
+                          "startColumn": 33,
+                          "endColumn": 40
+                        }
+                      },
+                      "message": {
+                        "text": "charset"
+                      }
+                    }
+                  },
+                  {
+                    "location": {
+                      "physicalLocation": {
+                        "artifactLocation": {
+                          "uri": "vendor/glib-0.18.5/src/translate.rs",
+                          "uriBaseId": "%SRCROOT%",
+                          "index": 2
+                        },
+                        "region": {
+                          "startLine": 1621,
+                          "startColumn": 61,
+                          "endColumn": 67
+                        }
+                      },
+                      "message": {
+                        "text": "...: P"
+                      }
+                    }
+                  },
+                  {
+                    "location": {
+                      "physicalLocation": {
+                        "artifactLocation": {
+                          "uri": "vendor/glib-0.18.5/src/translate.rs",
+                          "uriBaseId": "%SRCROOT%",
+                          "index": 2
+                        },
+                        "region": {
+                          "startLine": 1622,
+                          "startColumn": 37,
+                          "endColumn": 40
+                        }
+                      },
+                      "message": {
+                        "text": "ptr"
+                      }
+                    }
+                  },
+                  {
+                    "location": {
+                      "physicalLocation": {
+                        "artifactLocation": {
+                          "uri": "vendor/glib-0.18.5/src/object.rs",
+                          "uriBaseId": "%SRCROOT%",
+                          "index": 0
+                        },
+                        "region": {
+                          "startLine": 468,
+                          "startColumn": 30,
+                          "endColumn": 60
+                        }
+                      },
+                      "message": {
+                        "text": "...: ..."
+                      }
+                    }
+                  },
+                  {
+                    "location": {
+                      "physicalLocation": {
+                        "artifactLocation": {
+                          "uri": "vendor/glib-0.18.5/src/object.rs",
+                          "uriBaseId": "%SRCROOT%",
+                          "index": 0
+                        },
+                        "region": {
+                          "startLine": 470,
+                          "startColumn": 28,
+                          "endColumn": 31
+                        }
+                      },
+                      "message": {
+                        "text": "ptr"
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "threadFlows": [
+              {
+                "locations": [
+                  {
+                    "location": {
+                      "physicalLocation": {
+                        "artifactLocation": {
+                          "uri": "vendor/glib-0.18.5/src/manual_functions.rs",
+                          "uriBaseId": "%SRCROOT%",
+                          "index": 3
+                        },
+                        "region": {
+                          "startLine": 217,
+                          "startColumn": 31,
+                          "endColumn": 42
+                        }
+                      },
+                      "message": {
+                        "text": "...::null(...)"
+                      }
+                    },
+                    "taxa": [
+                      {
+                        "index": 0,
+                        "toolComponent": {
+                          "index": 1
+                        },
+                        "properties": {
+                          "CodeQL/DataflowRole": "source"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "location": {
+                      "physicalLocation": {
+                        "artifactLocation": {
+                          "uri": "vendor/glib-0.18.5/src/manual_functions.rs",
+                          "uriBaseId": "%SRCROOT%",
+                          "index": 3
+                        },
+                        "region": {
+                          "startLine": 217,
+                          "startColumn": 13,
+                          "endColumn": 28
+                        }
+                      },
+                      "message": {
+                        "text": "mut out_charset"
+                      }
+                    }
+                  },
+                  {
+                    "location": {
+                      "physicalLocation": {
+                        "artifactLocation": {
+                          "uri": "vendor/glib-0.18.5/src/manual_functions.rs",
+                          "uriBaseId": "%SRCROOT%",
+                          "index": 3
+                        },
+                        "region": {
+                          "startLine": 219,
+                          "startColumn": 38,
+                          "endColumn": 49
+                        }
+                      },
+                      "message": {
+                        "text": "out_charset"
+                      }
+                    }
+                  },
+                  {
+                    "location": {
+                      "physicalLocation": {
+                        "artifactLocation": {
+                          "uri": "vendor/glib-0.18.5/src/translate.rs",
+                          "uriBaseId": "%SRCROOT%",
+                          "index": 2
+                        },
+                        "region": {
+                          "startLine": 1621,
+                          "startColumn": 61,
+                          "endColumn": 67
+                        }
+                      },
+                      "message": {
+                        "text": "...: P"
+                      }
+                    }
+                  },
+                  {
+                    "location": {
+                      "physicalLocation": {
+                        "artifactLocation": {
+                          "uri": "vendor/glib-0.18.5/src/translate.rs",
+                          "uriBaseId": "%SRCROOT%",
+                          "index": 2
+                        },
+                        "region": {
+                          "startLine": 1622,
+                          "startColumn": 37,
+                          "endColumn": 40
+                        }
+                      },
+                      "message": {
+                        "text": "ptr"
+                      }
+                    }
+                  },
+                  {
+                    "location": {
+                      "physicalLocation": {
+                        "artifactLocation": {
+                          "uri": "vendor/glib-0.18.5/src/object.rs",
+                          "uriBaseId": "%SRCROOT%",
+                          "index": 0
+                        },
+                        "region": {
+                          "startLine": 468,
+                          "startColumn": 30,
+                          "endColumn": 60
+                        }
+                      },
+                      "message": {
+                        "text": "...: ..."
+                      }
+                    }
+                  },
+                  {
+                    "location": {
+                      "physicalLocation": {
+                        "artifactLocation": {
+                          "uri": "vendor/glib-0.18.5/src/object.rs",
+                          "uriBaseId": "%SRCROOT%",
+                          "index": 0
+                        },
+                        "region": {
+                          "startLine": 470,
+                          "startColumn": 28,
+                          "endColumn": 31
+                        }
+                      },
+                      "message": {
+                        "text": "ptr"
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "threadFlows": [
+              {
+                "locations": [
+                  {
+                    "location": {
+                      "physicalLocation": {
+                        "artifactLocation": {
+                          "uri": "vendor/glib-0.18.5/src/auto/functions.rs",
+                          "uriBaseId": "%SRCROOT%",
+                          "index": 1
+                        },
+                        "region": {
+                          "startLine": 197,
+                          "startColumn": 25,
+                          "endColumn": 40
+                        }
+                      },
+                      "message": {
+                        "text": "...::null_mut(...)"
+                      }
+                    },
+                    "taxa": [
+                      {
+                        "index": 1,
+                        "toolComponent": {
+                          "index": 1
+                        },
+                        "properties": {
+                          "CodeQL/DataflowRole": "source"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "location": {
+                      "physicalLocation": {
+                        "artifactLocation": {
+                          "uri": "vendor/glib-0.18.5/src/auto/functions.rs",
+                          "uriBaseId": "%SRCROOT%",
+                          "index": 1
+                        },
+                        "region": {
+                          "startLine": 197,
+                          "startColumn": 13,
+                          "endColumn": 22
+                        }
+                      },
+                      "message": {
+                        "text": "mut error"
+                      }
+                    }
+                  },
+                  {
+                    "location": {
+                      "physicalLocation": {
+                        "artifactLocation": {
+                          "uri": "vendor/glib-0.18.5/src/auto/functions.rs",
+                          "uriBaseId": "%SRCROOT%",
+                          "index": 1
+                        },
+                        "region": {
+                          "startLine": 208,
+                          "startColumn": 32,
+                          "endColumn": 37
+                        }
+                      },
+                      "message": {
+                        "text": "error"
+                      }
+                    }
+                  },
+                  {
+                    "location": {
+                      "physicalLocation": {
+                        "artifactLocation": {
+                          "uri": "vendor/glib-0.18.5/src/translate.rs",
+                          "uriBaseId": "%SRCROOT%",
+                          "index": 2
+                        },
+                        "region": {
+                          "startLine": 1630,
+                          "startColumn": 61,
+                          "endColumn": 67
+                        }
+                      },
+                      "message": {
+                        "text": "...: P"
+                      }
+                    }
+                  },
+                  {
+                    "location": {
+                      "physicalLocation": {
+                        "artifactLocation": {
+                          "uri": "vendor/glib-0.18.5/src/translate.rs",
+                          "uriBaseId": "%SRCROOT%",
+                          "index": 2
+                        },
+                        "region": {
+                          "startLine": 1631,
+                          "startColumn": 37,
+                          "endColumn": 40
+                        }
+                      },
+                      "message": {
+                        "text": "ptr"
+                      }
+                    }
+                  },
+                  {
+                    "location": {
+                      "physicalLocation": {
+                        "artifactLocation": {
+                          "uri": "vendor/glib-0.18.5/src/translate.rs",
+                          "uriBaseId": "%SRCROOT%",
+                          "index": 2
+                        },
+                        "region": {
+                          "startLine": 1688,
+                          "startColumn": 30,
+                          "endColumn": 48
+                        }
+                      },
+                      "message": {
+                        "text": "...: ..."
+                      }
+                    }
+                  },
+                  {
+                    "location": {
+                      "physicalLocation": {
+                        "artifactLocation": {
+                          "uri": "vendor/glib-0.18.5/src/translate.rs",
+                          "uriBaseId": "%SRCROOT%",
+                          "index": 2
+                        },
+                        "region": {
+                          "startLine": 1689,
+                          "startColumn": 34,
+                          "endColumn": 37
+                        }
+                      },
+                      "message": {
+                        "text": "ptr"
+                      }
+                    }
+                  },
+                  {
+                    "location": {
+                      "physicalLocation": {
+                        "artifactLocation": {
+                          "uri": "vendor/glib-0.18.5/src/translate.rs",
+                          "uriBaseId": "%SRCROOT%",
+                          "index": 2
+                        },
+                        "region": {
+                          "startLine": 1621,
+                          "startColumn": 61,
+                          "endColumn": 67
+                        }
+                      },
+                      "message": {
+                        "text": "...: P"
+                      }
+                    }
+                  },
+                  {
+                    "location": {
+                      "physicalLocation": {
+                        "artifactLocation": {
+                          "uri": "vendor/glib-0.18.5/src/translate.rs",
+                          "uriBaseId": "%SRCROOT%",
+                          "index": 2
+                        },
+                        "region": {
+                          "startLine": 1622,
+                          "startColumn": 37,
+                          "endColumn": 40
+                        }
+                      },
+                      "message": {
+                        "text": "ptr"
+                      }
+                    }
+                  },
+                  {
+                    "location": {
+                      "physicalLocation": {
+                        "artifactLocation": {
+                          "uri": "vendor/glib-0.18.5/src/object.rs",
+                          "uriBaseId": "%SRCROOT%",
+                          "index": 0
+                        },
+                        "region": {
+                          "startLine": 468,
+                          "startColumn": 30,
+                          "endColumn": 60
+                        }
+                      },
+                      "message": {
+                        "text": "...: ..."
+                      }
+                    }
+                  },
+                  {
+                    "location": {
+                      "physicalLocation": {
+                        "artifactLocation": {
+                          "uri": "vendor/glib-0.18.5/src/object.rs",
+                          "uriBaseId": "%SRCROOT%",
+                          "index": 0
+                        },
+                        "region": {
+                          "startLine": 470,
+                          "startColumn": 28,
+                          "endColumn": 31
+                        }
+                      },
+                      "message": {
+                        "text": "ptr"
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "threadFlows": [
+              {
+                "locations": [
+                  {
+                    "location": {
+                      "physicalLocation": {
+                        "artifactLocation": {
+                          "uri": "vendor/glib-0.18.5/src/auto/functions.rs",
+                          "uriBaseId": "%SRCROOT%",
+                          "index": 1
+                        },
+                        "region": {
+                          "startLine": 224,
+                          "startColumn": 25,
+                          "endColumn": 40
+                        }
+                      },
+                      "message": {
+                        "text": "...::null_mut(...)"
+                      }
+                    },
+                    "taxa": [
+                      {
+                        "index": 1,
+                        "toolComponent": {
+                          "index": 1
+                        },
+                        "properties": {
+                          "CodeQL/DataflowRole": "source"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "location": {
+                      "physicalLocation": {
+                        "artifactLocation": {
+                          "uri": "vendor/glib-0.18.5/src/auto/functions.rs",
+                          "uriBaseId": "%SRCROOT%",
+                          "index": 1
+                        },
+                        "region": {
+                          "startLine": 224,
+                          "startColumn": 13,
+                          "endColumn": 22
+                        }
+                      },
+                      "message": {
+                        "text": "mut error"
+                      }
+                    }
+                  },
+                  {
+                    "location": {
+                      "physicalLocation": {
+                        "artifactLocation": {
+                          "uri": "vendor/glib-0.18.5/src/auto/functions.rs",
+                          "uriBaseId": "%SRCROOT%",
+                          "index": 1
+                        },
+                        "region": {
+                          "startLine": 237,
+                          "startColumn": 32,
+                          "endColumn": 37
+                        }
+                      },
+                      "message": {
+                        "text": "error"
+                      }
+                    }
+                  },
+                  {
+                    "location": {
+                      "physicalLocation": {
+                        "artifactLocation": {
+                          "uri": "vendor/glib-0.18.5/src/translate.rs",
+                          "uriBaseId": "%SRCROOT%",
+                          "index": 2
+                        },
+                        "region": {
+                          "startLine": 1630,
+                          "startColumn": 61,
+                          "endColumn": 67
+                        }
+                      },
+                      "message": {
+                        "text": "...: P"
+                      }
+                    }
+                  },
+                  {
+                    "location": {
+                      "physicalLocation": {
+                        "artifactLocation": {
+                          "uri": "vendor/glib-0.18.5/src/translate.rs",
+                          "uriBaseId": "%SRCROOT%",
+                          "index": 2
+                        },
+                        "region": {
+                          "startLine": 1631,
+                          "startColumn": 37,
+                          "endColumn": 40
+                        }
+                      },
+                      "message": {
+                        "text": "ptr"
+                      }
+                    }
+                  },
+                  {
+                    "location": {
+                      "physicalLocation": {
+                        "artifactLocation": {
+                          "uri": "vendor/glib-0.18.5/src/translate.rs",
+                          "uriBaseId": "%SRCROOT%",
+                          "index": 2
+                        },
+                        "region": {
+                          "startLine": 1688,
+                          "startColumn": 30,
+                          "endColumn": 48
+                        }
+                      },
+                      "message": {
+                        "text": "...: ..."
+                      }
+                    }
+                  },
+                  {
+                    "location": {
+                      "physicalLocation": {
+                        "artifactLocation": {
+                          "uri": "vendor/glib-0.18.5/src/translate.rs",
+                          "uriBaseId": "%SRCROOT%",
+                          "index": 2
+                        },
+                        "region": {
+                          "startLine": 1689,
+                          "startColumn": 34,
+                          "endColumn": 37
+                        }
+                      },
+                      "message": {
+                        "text": "ptr"
+                      }
+                    }
+                  },
+                  {
+                    "location": {
+                      "physicalLocation": {
+                        "artifactLocation": {
+                          "uri": "vendor/glib-0.18.5/src/translate.rs",
+                          "uriBaseId": "%SRCROOT%",
+                          "index": 2
+                        },
+                        "region": {
+                          "startLine": 1621,
+                          "startColumn": 61,
+                          "endColumn": 67
+                        }
+                      },
+                      "message": {
+                        "text": "...: P"
+                      }
+                    }
+                  },
+                  {
+                    "location": {
+                      "physicalLocation": {
+                        "artifactLocation": {
+                          "uri": "vendor/glib-0.18.5/src/translate.rs",
+                          "uriBaseId": "%SRCROOT%",
+                          "index": 2
+                        },
+                        "region": {
+                          "startLine": 1622,
+                          "startColumn": 37,
+                          "endColumn": 40
+                        }
+                      },
+                      "message": {
+                        "text": "ptr"
+                      }
+                    }
+                  },
+                  {
+                    "location": {
+                      "physicalLocation": {
+                        "artifactLocation": {
+                          "uri": "vendor/glib-0.18.5/src/object.rs",
+                          "uriBaseId": "%SRCROOT%",
+                          "index": 0
+                        },
+                        "region": {
+                          "startLine": 468,
+                          "startColumn": 30,
+                          "endColumn": 60
+                        }
+                      },
+                      "message": {
+                        "text": "...: ..."
+                      }
+                    }
+                  },
+                  {
+                    "location": {
+                      "physicalLocation": {
+                        "artifactLocation": {
+                          "uri": "vendor/glib-0.18.5/src/object.rs",
+                          "uriBaseId": "%SRCROOT%",
+                          "index": 0
+                        },
+                        "region": {
+                          "startLine": 470,
+                          "startColumn": 28,
+                          "endColumn": 31
+                        }
+                      },
+                      "message": {
+                        "text": "ptr"
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "relatedLocations": [
+          {
+            "id": 1,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/functions.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 1
+              },
+              "region": {
+                "startLine": 344,
+                "startColumn": 27,
+                "endColumn": 38
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 2,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/manual_functions.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 3
+              },
+              "region": {
+                "startLine": 217,
+                "startColumn": 31,
+                "endColumn": 42
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 3,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/functions.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 1
+              },
+              "region": {
+                "startLine": 197,
+                "startColumn": 25,
+                "endColumn": 40
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 4,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/functions.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 1
+              },
+              "region": {
+                "startLine": 224,
+                "startColumn": 25,
+                "endColumn": 40
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 5,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/functions.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 1
+              },
+              "region": {
+                "startLine": 276,
+                "startColumn": 28,
+                "endColumn": 43
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 6,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/functions.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 1
+              },
+              "region": {
+                "startLine": 277,
+                "startColumn": 25,
+                "endColumn": 40
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 7,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/functions.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 1
+              },
+              "region": {
+                "startLine": 293,
+                "startColumn": 25,
+                "endColumn": 40
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 8,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/functions.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 1
+              },
+              "region": {
+                "startLine": 655,
+                "startColumn": 25,
+                "endColumn": 40
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 9,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/functions.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 1
+              },
+              "region": {
+                "startLine": 688,
+                "startColumn": 25,
+                "endColumn": 40
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 10,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/functions.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 1
+              },
+              "region": {
+                "startLine": 725,
+                "startColumn": 25,
+                "endColumn": 40
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 11,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/functions.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 1
+              },
+              "region": {
+                "startLine": 761,
+                "startColumn": 25,
+                "endColumn": 40
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 12,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/functions.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 1
+              },
+              "region": {
+                "startLine": 777,
+                "startColumn": 25,
+                "endColumn": 40
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 13,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/functions.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 1
+              },
+              "region": {
+                "startLine": 795,
+                "startColumn": 25,
+                "endColumn": 40
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 14,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/key_file.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 4
+              },
+              "region": {
+                "startLine": 33,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 15,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/key_file.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 4
+              },
+              "region": {
+                "startLine": 52,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 16,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/key_file.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 4
+              },
+              "region": {
+                "startLine": 72,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 17,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/key_file.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 4
+              },
+              "region": {
+                "startLine": 95,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 18,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/key_file.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 4
+              },
+              "region": {
+                "startLine": 114,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 19,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/key_file.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 4
+              },
+              "region": {
+                "startLine": 134,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 20,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/key_file.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 4
+              },
+              "region": {
+                "startLine": 181,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 21,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/key_file.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 4
+              },
+              "region": {
+                "startLine": 200,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 22,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/key_file.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 4
+              },
+              "region": {
+                "startLine": 228,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 23,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/key_file.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 4
+              },
+              "region": {
+                "startLine": 248,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 24,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/key_file.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 4
+              },
+              "region": {
+                "startLine": 272,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 25,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/key_file.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 4
+              },
+              "region": {
+                "startLine": 295,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 26,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/key_file.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 4
+              },
+              "region": {
+                "startLine": 314,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 27,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/key_file.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 4
+              },
+              "region": {
+                "startLine": 332,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 28,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/key_file.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 4
+              },
+              "region": {
+                "startLine": 373,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 29,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/markup_parse_context.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 5
+              },
+              "region": {
+                "startLine": 28,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 30,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/markup_parse_context.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 5
+              },
+              "region": {
+                "startLine": 74,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 31,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 6
+              },
+              "region": {
+                "startLine": 89,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 32,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 6
+              },
+              "region": {
+                "startLine": 204,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 33,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 6
+              },
+              "region": {
+                "startLine": 282,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 34,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 6
+              },
+              "region": {
+                "startLine": 314,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 35,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 6
+              },
+              "region": {
+                "startLine": 346,
+                "startColumn": 30,
+                "endColumn": 45
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 36,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 6
+              },
+              "region": {
+                "startLine": 347,
+                "startColumn": 32,
+                "endColumn": 47
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 37,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 6
+              },
+              "region": {
+                "startLine": 348,
+                "startColumn": 28,
+                "endColumn": 43
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 38,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 6
+              },
+              "region": {
+                "startLine": 350,
+                "startColumn": 28,
+                "endColumn": 43
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 39,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 6
+              },
+              "region": {
+                "startLine": 351,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 40,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 6
+              },
+              "region": {
+                "startLine": 352,
+                "startColumn": 32,
+                "endColumn": 47
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 41,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 6
+              },
+              "region": {
+                "startLine": 353,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 42,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 6
+              },
+              "region": {
+                "startLine": 389,
+                "startColumn": 30,
+                "endColumn": 45
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 43,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 6
+              },
+              "region": {
+                "startLine": 390,
+                "startColumn": 28,
+                "endColumn": 43
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 44,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 6
+              },
+              "region": {
+                "startLine": 392,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 45,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 6
+              },
+              "region": {
+                "startLine": 433,
+                "startColumn": 30,
+                "endColumn": 45
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 46,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 6
+              },
+              "region": {
+                "startLine": 434,
+                "startColumn": 28,
+                "endColumn": 43
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 47,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 6
+              },
+              "region": {
+                "startLine": 435,
+                "startColumn": 32,
+                "endColumn": 47
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 48,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 6
+              },
+              "region": {
+                "startLine": 436,
+                "startColumn": 35,
+                "endColumn": 50
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 49,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 6
+              },
+              "region": {
+                "startLine": 437,
+                "startColumn": 28,
+                "endColumn": 43
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 50,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 6
+              },
+              "region": {
+                "startLine": 439,
+                "startColumn": 28,
+                "endColumn": 43
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 51,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 6
+              },
+              "region": {
+                "startLine": 440,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 52,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 6
+              },
+              "region": {
+                "startLine": 441,
+                "startColumn": 32,
+                "endColumn": 47
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 53,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 6
+              },
+              "region": {
+                "startLine": 442,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 54,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 6
+              },
+              "region": {
+                "startLine": 483,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 55,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/convert.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 7
+              },
+              "region": {
+                "startLine": 47,
+                "startColumn": 21,
+                "endColumn": 36
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 56,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/convert.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 7
+              },
+              "region": {
+                "startLine": 79,
+                "startColumn": 21,
+                "endColumn": 36
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 57,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/convert.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 7
+              },
+              "region": {
+                "startLine": 141,
+                "startColumn": 25,
+                "endColumn": 40
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 58,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/convert.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 7
+              },
+              "region": {
+                "startLine": 226,
+                "startColumn": 21,
+                "endColumn": 36
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 59,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/convert.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 7
+              },
+              "region": {
+                "startLine": 259,
+                "startColumn": 21,
+                "endColumn": 36
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 60,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/convert.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 7
+              },
+              "region": {
+                "startLine": 285,
+                "startColumn": 21,
+                "endColumn": 36
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 61,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/convert.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 7
+              },
+              "region": {
+                "startLine": 315,
+                "startColumn": 21,
+                "endColumn": 36
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 62,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/key_file.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 8
+              },
+              "region": {
+                "startLine": 11,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 63,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/key_file.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 8
+              },
+              "region": {
+                "startLine": 32,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 64,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/key_file.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 8
+              },
+              "region": {
+                "startLine": 33,
+                "startColumn": 52,
+                "endColumn": 67
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 65,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/key_file.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 8
+              },
+              "region": {
+                "startLine": 60,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 66,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/key_file.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 8
+              },
+              "region": {
+                "startLine": 61,
+                "startColumn": 52,
+                "endColumn": 67
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 67,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/key_file.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 8
+              },
+              "region": {
+                "startLine": 103,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 68,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/key_file.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 8
+              },
+              "region": {
+                "startLine": 125,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 69,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/key_file.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 8
+              },
+              "region": {
+                "startLine": 143,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 70,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/key_file.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 8
+              },
+              "region": {
+                "startLine": 163,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 71,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/key_file.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 8
+              },
+              "region": {
+                "startLine": 185,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 72,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/key_file.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 8
+              },
+              "region": {
+                "startLine": 206,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 73,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/key_file.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 8
+              },
+              "region": {
+                "startLine": 235,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 74,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/key_file.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 8
+              },
+              "region": {
+                "startLine": 262,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 75,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/manual_functions.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 3
+              },
+              "region": {
+                "startLine": 51,
+                "startColumn": 25,
+                "endColumn": 40
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 76,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/manual_functions.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 3
+              },
+              "region": {
+                "startLine": 164,
+                "startColumn": 25,
+                "endColumn": 40
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 77,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/manual_functions.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 3
+              },
+              "region": {
+                "startLine": 229,
+                "startColumn": 25,
+                "endColumn": 40
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 78,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/manual_functions.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 3
+              },
+              "region": {
+                "startLine": 248,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 79,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/manual_functions.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 3
+              },
+              "region": {
+                "startLine": 249,
+                "startColumn": 25,
+                "endColumn": 40
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 80,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/thread_pool.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 9
+              },
+              "region": {
+                "startLine": 44,
+                "startColumn": 27,
+                "endColumn": 42
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 81,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/thread_pool.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 9
+              },
+              "region": {
+                "startLine": 63,
+                "startColumn": 27,
+                "endColumn": 42
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 82,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/thread_pool.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 9
+              },
+              "region": {
+                "startLine": 90,
+                "startColumn": 27,
+                "endColumn": 42
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 83,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/thread_pool.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 9
+              },
+              "region": {
+                "startLine": 124,
+                "startColumn": 27,
+                "endColumn": 42
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 84,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/utils.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 10
+              },
+              "region": {
+                "startLine": 109,
+                "startColumn": 25,
+                "endColumn": 40
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 85,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/variant.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 11
+              },
+              "region": {
+                "startLine": 580,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/functions.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 1
+              },
+              "region": {
+                "startLine": 344,
+                "startColumn": 27,
+                "endColumn": 38
+              }
+            }
+          },
+          {
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/manual_functions.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 3
+              },
+              "region": {
+                "startLine": 217,
+                "startColumn": 31,
+                "endColumn": 42
+              }
+            }
+          },
+          {
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/functions.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 1
+              },
+              "region": {
+                "startLine": 197,
+                "startColumn": 25,
+                "endColumn": 40
+              }
+            }
+          },
+          {
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/functions.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 1
+              },
+              "region": {
+                "startLine": 224,
+                "startColumn": 25,
+                "endColumn": 40
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "rule": {},
+      "result": {
+        "ruleId": "rust/access-invalid-pointer",
+        "rule": {
+          "id": "rust/access-invalid-pointer",
+          "index": 6,
+          "toolComponent": {
+            "index": 0
+          }
+        },
+        "message": {
+          "text": "This operation dereferences a pointer that may be [invalid](1).\nThis operation dereferences a pointer that may be [invalid](2).\nThis operation dereferences a pointer that may be [invalid](3).\nThis operation dereferences a pointer that may be [invalid](4).\nThis operation dereferences a pointer that may be [invalid](5).\nThis operation dereferences a pointer that may be [invalid](6).\nThis operation dereferences a pointer that may be [invalid](7).\nThis operation dereferences a pointer that may be [invalid](8).\nThis operation dereferences a pointer that may be [invalid](9).\nThis operation dereferences a pointer that may be [invalid](10).\nThis operation dereferences a pointer that may be [invalid](11).\nThis operation dereferences a pointer that may be [invalid](12).\nThis operation dereferences a pointer that may be [invalid](13).\nThis operation dereferences a pointer that may be [invalid](14).\nThis operation dereferences a pointer that may be [invalid](15).\nThis operation dereferences a pointer that may be [invalid](16).\nThis operation dereferences a pointer that may be [invalid](17).\nThis operation dereferences a pointer that may be [invalid](18).\nThis operation dereferences a pointer that may be [invalid](19).\nThis operation dereferences a pointer that may be [invalid](20).\nThis operation dereferences a pointer that may be [invalid](21).\nThis operation dereferences a pointer that may be [invalid](22).\nThis operation dereferences a pointer that may be [invalid](23).\nThis operation dereferences a pointer that may be [invalid](24).\nThis operation dereferences a pointer that may be [invalid](25).\nThis operation dereferences a pointer that may be [invalid](26).\nThis operation dereferences a pointer that may be [invalid](27).\nThis operation dereferences a pointer that may be [invalid](28).\nThis operation dereferences a pointer that may be [invalid](29).\nThis operation dereferences a pointer that may be [invalid](30).\nThis operation dereferences a pointer that may be [invalid](31).\nThis operation dereferences a pointer that may be [invalid](32).\nThis operation dereferences a pointer that may be [invalid](33).\nThis operation dereferences a pointer that may be [invalid](34).\nThis operation dereferences a pointer that may be [invalid](35).\nThis operation dereferences a pointer that may be [invalid](36).\nThis operation dereferences a pointer that may be [invalid](37).\nThis operation dereferences a pointer that may be [invalid](38).\nThis operation dereferences a pointer that may be [invalid](39).\nThis operation dereferences a pointer that may be [invalid](40).\nThis operation dereferences a pointer that may be [invalid](41).\nThis operation dereferences a pointer that may be [invalid](42).\nThis operation dereferences a pointer that may be [invalid](43).\nThis operation dereferences a pointer that may be [invalid](44).\nThis operation dereferences a pointer that may be [invalid](45).\nThis operation dereferences a pointer that may be [invalid](46).\nThis operation dereferences a pointer that may be [invalid](47).\nThis operation dereferences a pointer that may be [invalid](48).\nThis operation dereferences a pointer that may be [invalid](49).\nThis operation dereferences a pointer that may be [invalid](50).\nThis operation dereferences a pointer that may be [invalid](51).\nThis operation dereferences a pointer that may be [invalid](52).\nThis operation dereferences a pointer that may be [invalid](53).\nThis operation dereferences a pointer that may be [invalid](54).\nThis operation dereferences a pointer that may be [invalid](55).\nThis operation dereferences a pointer that may be [invalid](56).\nThis operation dereferences a pointer that may be [invalid](57).\nThis operation dereferences a pointer that may be [invalid](58).\nThis operation dereferences a pointer that may be [invalid](59).\nThis operation dereferences a pointer that may be [invalid](60).\nThis operation dereferences a pointer that may be [invalid](61).\nThis operation dereferences a pointer that may be [invalid](62).\nThis operation dereferences a pointer that may be [invalid](63).\nThis operation dereferences a pointer that may be [invalid](64).\nThis operation dereferences a pointer that may be [invalid](65).\nThis operation dereferences a pointer that may be [invalid](66).\nThis operation dereferences a pointer that may be [invalid](67).\nThis operation dereferences a pointer that may be [invalid](68).\nThis operation dereferences a pointer that may be [invalid](69).\nThis operation dereferences a pointer that may be [invalid](70).\nThis operation dereferences a pointer that may be [invalid](71).\nThis operation dereferences a pointer that may be [invalid](72).\nThis operation dereferences a pointer that may be [invalid](73).\nThis operation dereferences a pointer that may be [invalid](74).\nThis operation dereferences a pointer that may be [invalid](75).\nThis operation dereferences a pointer that may be [invalid](76).\nThis operation dereferences a pointer that may be [invalid](77).\nThis operation dereferences a pointer that may be [invalid](78).\nThis operation dereferences a pointer that may be [invalid](79).\nThis operation dereferences a pointer that may be [invalid](80).\nThis operation dereferences a pointer that may be [invalid](81).\nThis operation dereferences a pointer that may be [invalid](82).\nThis operation dereferences a pointer that may be [invalid](83)."
+        },
+        "locations": [
+          {
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/object.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 0
+              },
+              "region": {
+                "startLine": 493,
+                "startColumn": 28,
+                "endColumn": 31
+              }
+            }
+          }
+        ],
+        "partialFingerprints": {
+          "primaryLocationLineHash": "49a3ef8b9a01f93c:1",
+          "primaryLocationStartColumnFingerprint": "19"
+        },
+        "codeFlows": [
+          {
+            "threadFlows": [
+              {
+                "locations": [
+                  {
+                    "location": {
+                      "physicalLocation": {
+                        "artifactLocation": {
+                          "uri": "vendor/glib-0.18.5/src/auto/functions.rs",
+                          "uriBaseId": "%SRCROOT%",
+                          "index": 1
+                        },
+                        "region": {
+                          "startLine": 197,
+                          "startColumn": 25,
+                          "endColumn": 40
+                        }
+                      },
+                      "message": {
+                        "text": "...::null_mut(...)"
+                      }
+                    },
+                    "taxa": [
+                      {
+                        "index": 1,
+                        "toolComponent": {
+                          "index": 1
+                        },
+                        "properties": {
+                          "CodeQL/DataflowRole": "source"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "location": {
+                      "physicalLocation": {
+                        "artifactLocation": {
+                          "uri": "vendor/glib-0.18.5/src/auto/functions.rs",
+                          "uriBaseId": "%SRCROOT%",
+                          "index": 1
+                        },
+                        "region": {
+                          "startLine": 197,
+                          "startColumn": 13,
+                          "endColumn": 22
+                        }
+                      },
+                      "message": {
+                        "text": "mut error"
+                      }
+                    }
+                  },
+                  {
+                    "location": {
+                      "physicalLocation": {
+                        "artifactLocation": {
+                          "uri": "vendor/glib-0.18.5/src/auto/functions.rs",
+                          "uriBaseId": "%SRCROOT%",
+                          "index": 1
+                        },
+                        "region": {
+                          "startLine": 208,
+                          "startColumn": 32,
+                          "endColumn": 37
+                        }
+                      },
+                      "message": {
+                        "text": "error"
+                      }
+                    }
+                  },
+                  {
+                    "location": {
+                      "physicalLocation": {
+                        "artifactLocation": {
+                          "uri": "vendor/glib-0.18.5/src/translate.rs",
+                          "uriBaseId": "%SRCROOT%",
+                          "index": 2
+                        },
+                        "region": {
+                          "startLine": 1630,
+                          "startColumn": 61,
+                          "endColumn": 67
+                        }
+                      },
+                      "message": {
+                        "text": "...: P"
+                      }
+                    }
+                  },
+                  {
+                    "location": {
+                      "physicalLocation": {
+                        "artifactLocation": {
+                          "uri": "vendor/glib-0.18.5/src/translate.rs",
+                          "uriBaseId": "%SRCROOT%",
+                          "index": 2
+                        },
+                        "region": {
+                          "startLine": 1631,
+                          "startColumn": 37,
+                          "endColumn": 40
+                        }
+                      },
+                      "message": {
+                        "text": "ptr"
+                      }
+                    }
+                  },
+                  {
+                    "location": {
+                      "physicalLocation": {
+                        "artifactLocation": {
+                          "uri": "vendor/glib-0.18.5/src/object.rs",
+                          "uriBaseId": "%SRCROOT%",
+                          "index": 0
+                        },
+                        "region": {
+                          "startLine": 491,
+                          "startColumn": 30,
+                          "endColumn": 60
+                        }
+                      },
+                      "message": {
+                        "text": "...: ..."
+                      }
+                    }
+                  },
+                  {
+                    "location": {
+                      "physicalLocation": {
+                        "artifactLocation": {
+                          "uri": "vendor/glib-0.18.5/src/object.rs",
+                          "uriBaseId": "%SRCROOT%",
+                          "index": 0
+                        },
+                        "region": {
+                          "startLine": 493,
+                          "startColumn": 28,
+                          "endColumn": 31
+                        }
+                      },
+                      "message": {
+                        "text": "ptr"
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "threadFlows": [
+              {
+                "locations": [
+                  {
+                    "location": {
+                      "physicalLocation": {
+                        "artifactLocation": {
+                          "uri": "vendor/glib-0.18.5/src/auto/functions.rs",
+                          "uriBaseId": "%SRCROOT%",
+                          "index": 1
+                        },
+                        "region": {
+                          "startLine": 224,
+                          "startColumn": 25,
+                          "endColumn": 40
+                        }
+                      },
+                      "message": {
+                        "text": "...::null_mut(...)"
+                      }
+                    },
+                    "taxa": [
+                      {
+                        "index": 1,
+                        "toolComponent": {
+                          "index": 1
+                        },
+                        "properties": {
+                          "CodeQL/DataflowRole": "source"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "location": {
+                      "physicalLocation": {
+                        "artifactLocation": {
+                          "uri": "vendor/glib-0.18.5/src/auto/functions.rs",
+                          "uriBaseId": "%SRCROOT%",
+                          "index": 1
+                        },
+                        "region": {
+                          "startLine": 224,
+                          "startColumn": 13,
+                          "endColumn": 22
+                        }
+                      },
+                      "message": {
+                        "text": "mut error"
+                      }
+                    }
+                  },
+                  {
+                    "location": {
+                      "physicalLocation": {
+                        "artifactLocation": {
+                          "uri": "vendor/glib-0.18.5/src/auto/functions.rs",
+                          "uriBaseId": "%SRCROOT%",
+                          "index": 1
+                        },
+                        "region": {
+                          "startLine": 237,
+                          "startColumn": 32,
+                          "endColumn": 37
+                        }
+                      },
+                      "message": {
+                        "text": "error"
+                      }
+                    }
+                  },
+                  {
+                    "location": {
+                      "physicalLocation": {
+                        "artifactLocation": {
+                          "uri": "vendor/glib-0.18.5/src/translate.rs",
+                          "uriBaseId": "%SRCROOT%",
+                          "index": 2
+                        },
+                        "region": {
+                          "startLine": 1630,
+                          "startColumn": 61,
+                          "endColumn": 67
+                        }
+                      },
+                      "message": {
+                        "text": "...: P"
+                      }
+                    }
+                  },
+                  {
+                    "location": {
+                      "physicalLocation": {
+                        "artifactLocation": {
+                          "uri": "vendor/glib-0.18.5/src/translate.rs",
+                          "uriBaseId": "%SRCROOT%",
+                          "index": 2
+                        },
+                        "region": {
+                          "startLine": 1631,
+                          "startColumn": 37,
+                          "endColumn": 40
+                        }
+                      },
+                      "message": {
+                        "text": "ptr"
+                      }
+                    }
+                  },
+                  {
+                    "location": {
+                      "physicalLocation": {
+                        "artifactLocation": {
+                          "uri": "vendor/glib-0.18.5/src/object.rs",
+                          "uriBaseId": "%SRCROOT%",
+                          "index": 0
+                        },
+                        "region": {
+                          "startLine": 491,
+                          "startColumn": 30,
+                          "endColumn": 60
+                        }
+                      },
+                      "message": {
+                        "text": "...: ..."
+                      }
+                    }
+                  },
+                  {
+                    "location": {
+                      "physicalLocation": {
+                        "artifactLocation": {
+                          "uri": "vendor/glib-0.18.5/src/object.rs",
+                          "uriBaseId": "%SRCROOT%",
+                          "index": 0
+                        },
+                        "region": {
+                          "startLine": 493,
+                          "startColumn": 28,
+                          "endColumn": 31
+                        }
+                      },
+                      "message": {
+                        "text": "ptr"
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "threadFlows": [
+              {
+                "locations": [
+                  {
+                    "location": {
+                      "physicalLocation": {
+                        "artifactLocation": {
+                          "uri": "vendor/glib-0.18.5/src/auto/functions.rs",
+                          "uriBaseId": "%SRCROOT%",
+                          "index": 1
+                        },
+                        "region": {
+                          "startLine": 276,
+                          "startColumn": 28,
+                          "endColumn": 43
+                        }
+                      },
+                      "message": {
+                        "text": "...::null_mut(...)"
+                      }
+                    },
+                    "taxa": [
+                      {
+                        "index": 1,
+                        "toolComponent": {
+                          "index": 1
+                        },
+                        "properties": {
+                          "CodeQL/DataflowRole": "source"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "location": {
+                      "physicalLocation": {
+                        "artifactLocation": {
+                          "uri": "vendor/glib-0.18.5/src/auto/functions.rs",
+                          "uriBaseId": "%SRCROOT%",
+                          "index": 1
+                        },
+                        "region": {
+                          "startLine": 276,
+                          "startColumn": 13,
+                          "endColumn": 25
+                        }
+                      },
+                      "message": {
+                        "text": "mut hostname"
+                      }
+                    }
+                  },
+                  {
+                    "location": {
+                      "physicalLocation": {
+                        "artifactLocation": {
+                          "uri": "vendor/glib-0.18.5/src/auto/functions.rs",
+                          "uriBaseId": "%SRCROOT%",
+                          "index": 1
+                        },
+                        "region": {
+                          "startLine": 280,
+                          "startColumn": 53,
+                          "endColumn": 61
+                        }
+                      },
+                      "message": {
+                        "text": "hostname"
+                      }
+                    }
+                  },
+                  {
+                    "location": {
+                      "physicalLocation": {
+                        "artifactLocation": {
+                          "uri": "vendor/glib-0.18.5/src/translate.rs",
+                          "uriBaseId": "%SRCROOT%",
+                          "index": 2
+                        },
+                        "region": {
+                          "startLine": 1630,
+                          "startColumn": 61,
+                          "endColumn": 67
+                        }
+                      },
+                      "message": {
+                        "text": "...: P"
+                      }
+                    }
+                  },
+                  {
+                    "location": {
+                      "physicalLocation": {
+                        "artifactLocation": {
+                          "uri": "vendor/glib-0.18.5/src/translate.rs",
+                          "uriBaseId": "%SRCROOT%",
+                          "index": 2
+                        },
+                        "region": {
+                          "startLine": 1631,
+                          "startColumn": 37,
+                          "endColumn": 40
+                        }
+                      },
+                      "message": {
+                        "text": "ptr"
+                      }
+                    }
+                  },
+                  {
+                    "location": {
+                      "physicalLocation": {
+                        "artifactLocation": {
+                          "uri": "vendor/glib-0.18.5/src/object.rs",
+                          "uriBaseId": "%SRCROOT%",
+                          "index": 0
+                        },
+                        "region": {
+                          "startLine": 491,
+                          "startColumn": 30,
+                          "endColumn": 60
+                        }
+                      },
+                      "message": {
+                        "text": "...: ..."
+                      }
+                    }
+                  },
+                  {
+                    "location": {
+                      "physicalLocation": {
+                        "artifactLocation": {
+                          "uri": "vendor/glib-0.18.5/src/object.rs",
+                          "uriBaseId": "%SRCROOT%",
+                          "index": 0
+                        },
+                        "region": {
+                          "startLine": 493,
+                          "startColumn": 28,
+                          "endColumn": 31
+                        }
+                      },
+                      "message": {
+                        "text": "ptr"
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "threadFlows": [
+              {
+                "locations": [
+                  {
+                    "location": {
+                      "physicalLocation": {
+                        "artifactLocation": {
+                          "uri": "vendor/glib-0.18.5/src/auto/functions.rs",
+                          "uriBaseId": "%SRCROOT%",
+                          "index": 1
+                        },
+                        "region": {
+                          "startLine": 277,
+                          "startColumn": 25,
+                          "endColumn": 40
+                        }
+                      },
+                      "message": {
+                        "text": "...::null_mut(...)"
+                      }
+                    },
+                    "taxa": [
+                      {
+                        "index": 1,
+                        "toolComponent": {
+                          "index": 1
+                        },
+                        "properties": {
+                          "CodeQL/DataflowRole": "source"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "location": {
+                      "physicalLocation": {
+                        "artifactLocation": {
+                          "uri": "vendor/glib-0.18.5/src/auto/functions.rs",
+                          "uriBaseId": "%SRCROOT%",
+                          "index": 1
+                        },
+                        "region": {
+                          "startLine": 277,
+                          "startColumn": 13,
+                          "endColumn": 22
+                        }
+                      },
+                      "message": {
+                        "text": "mut error"
+                      }
+                    }
+                  },
+                  {
+                    "location": {
+                      "physicalLocation": {
+                        "artifactLocation": {
+                          "uri": "vendor/glib-0.18.5/src/auto/functions.rs",
+                          "uriBaseId": "%SRCROOT%",
+                          "index": 1
+                        },
+                        "region": {
+                          "startLine": 282,
+                          "startColumn": 32,
+                          "endColumn": 37
+                        }
+                      },
+                      "message": {
+                        "text": "error"
+                      }
+                    }
+                  },
+                  {
+                    "location": {
+                      "physicalLocation": {
+                        "artifactLocation": {
+                          "uri": "vendor/glib-0.18.5/src/translate.rs",
+                          "uriBaseId": "%SRCROOT%",
+                          "index": 2
+                        },
+                        "region": {
+                          "startLine": 1630,
+                          "startColumn": 61,
+                          "endColumn": 67
+                        }
+                      },
+                      "message": {
+                        "text": "...: P"
+                      }
+                    }
+                  },
+                  {
+                    "location": {
+                      "physicalLocation": {
+                        "artifactLocation": {
+                          "uri": "vendor/glib-0.18.5/src/translate.rs",
+                          "uriBaseId": "%SRCROOT%",
+                          "index": 2
+                        },
+                        "region": {
+                          "startLine": 1631,
+                          "startColumn": 37,
+                          "endColumn": 40
+                        }
+                      },
+                      "message": {
+                        "text": "ptr"
+                      }
+                    }
+                  },
+                  {
+                    "location": {
+                      "physicalLocation": {
+                        "artifactLocation": {
+                          "uri": "vendor/glib-0.18.5/src/object.rs",
+                          "uriBaseId": "%SRCROOT%",
+                          "index": 0
+                        },
+                        "region": {
+                          "startLine": 491,
+                          "startColumn": 30,
+                          "endColumn": 60
+                        }
+                      },
+                      "message": {
+                        "text": "...: ..."
+                      }
+                    }
+                  },
+                  {
+                    "location": {
+                      "physicalLocation": {
+                        "artifactLocation": {
+                          "uri": "vendor/glib-0.18.5/src/object.rs",
+                          "uriBaseId": "%SRCROOT%",
+                          "index": 0
+                        },
+                        "region": {
+                          "startLine": 493,
+                          "startColumn": 28,
+                          "endColumn": 31
+                        }
+                      },
+                      "message": {
+                        "text": "ptr"
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "relatedLocations": [
+          {
+            "id": 1,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/functions.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 1
+              },
+              "region": {
+                "startLine": 197,
+                "startColumn": 25,
+                "endColumn": 40
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 2,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/functions.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 1
+              },
+              "region": {
+                "startLine": 224,
+                "startColumn": 25,
+                "endColumn": 40
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 3,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/functions.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 1
+              },
+              "region": {
+                "startLine": 276,
+                "startColumn": 28,
+                "endColumn": 43
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 4,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/functions.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 1
+              },
+              "region": {
+                "startLine": 277,
+                "startColumn": 25,
+                "endColumn": 40
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 5,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/functions.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 1
+              },
+              "region": {
+                "startLine": 293,
+                "startColumn": 25,
+                "endColumn": 40
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 6,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/functions.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 1
+              },
+              "region": {
+                "startLine": 655,
+                "startColumn": 25,
+                "endColumn": 40
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 7,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/functions.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 1
+              },
+              "region": {
+                "startLine": 688,
+                "startColumn": 25,
+                "endColumn": 40
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 8,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/functions.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 1
+              },
+              "region": {
+                "startLine": 725,
+                "startColumn": 25,
+                "endColumn": 40
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 9,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/functions.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 1
+              },
+              "region": {
+                "startLine": 761,
+                "startColumn": 25,
+                "endColumn": 40
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 10,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/functions.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 1
+              },
+              "region": {
+                "startLine": 777,
+                "startColumn": 25,
+                "endColumn": 40
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 11,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/functions.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 1
+              },
+              "region": {
+                "startLine": 795,
+                "startColumn": 25,
+                "endColumn": 40
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 12,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/key_file.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 4
+              },
+              "region": {
+                "startLine": 33,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 13,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/key_file.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 4
+              },
+              "region": {
+                "startLine": 52,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 14,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/key_file.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 4
+              },
+              "region": {
+                "startLine": 72,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 15,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/key_file.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 4
+              },
+              "region": {
+                "startLine": 95,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 16,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/key_file.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 4
+              },
+              "region": {
+                "startLine": 114,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 17,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/key_file.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 4
+              },
+              "region": {
+                "startLine": 134,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 18,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/key_file.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 4
+              },
+              "region": {
+                "startLine": 181,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 19,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/key_file.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 4
+              },
+              "region": {
+                "startLine": 200,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 20,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/key_file.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 4
+              },
+              "region": {
+                "startLine": 228,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 21,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/key_file.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 4
+              },
+              "region": {
+                "startLine": 248,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 22,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/key_file.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 4
+              },
+              "region": {
+                "startLine": 272,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 23,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/key_file.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 4
+              },
+              "region": {
+                "startLine": 295,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 24,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/key_file.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 4
+              },
+              "region": {
+                "startLine": 314,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 25,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/key_file.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 4
+              },
+              "region": {
+                "startLine": 332,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 26,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/key_file.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 4
+              },
+              "region": {
+                "startLine": 373,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 27,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/markup_parse_context.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 5
+              },
+              "region": {
+                "startLine": 28,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 28,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/markup_parse_context.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 5
+              },
+              "region": {
+                "startLine": 74,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 29,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 6
+              },
+              "region": {
+                "startLine": 89,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 30,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 6
+              },
+              "region": {
+                "startLine": 204,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 31,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 6
+              },
+              "region": {
+                "startLine": 282,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 32,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 6
+              },
+              "region": {
+                "startLine": 314,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 33,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 6
+              },
+              "region": {
+                "startLine": 346,
+                "startColumn": 30,
+                "endColumn": 45
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 34,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 6
+              },
+              "region": {
+                "startLine": 347,
+                "startColumn": 32,
+                "endColumn": 47
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 35,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 6
+              },
+              "region": {
+                "startLine": 348,
+                "startColumn": 28,
+                "endColumn": 43
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 36,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 6
+              },
+              "region": {
+                "startLine": 350,
+                "startColumn": 28,
+                "endColumn": 43
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 37,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 6
+              },
+              "region": {
+                "startLine": 351,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 38,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 6
+              },
+              "region": {
+                "startLine": 352,
+                "startColumn": 32,
+                "endColumn": 47
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 39,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 6
+              },
+              "region": {
+                "startLine": 353,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 40,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 6
+              },
+              "region": {
+                "startLine": 389,
+                "startColumn": 30,
+                "endColumn": 45
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 41,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 6
+              },
+              "region": {
+                "startLine": 390,
+                "startColumn": 28,
+                "endColumn": 43
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 42,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 6
+              },
+              "region": {
+                "startLine": 392,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 43,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 6
+              },
+              "region": {
+                "startLine": 433,
+                "startColumn": 30,
+                "endColumn": 45
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 44,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 6
+              },
+              "region": {
+                "startLine": 434,
+                "startColumn": 28,
+                "endColumn": 43
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 45,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 6
+              },
+              "region": {
+                "startLine": 435,
+                "startColumn": 32,
+                "endColumn": 47
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 46,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 6
+              },
+              "region": {
+                "startLine": 436,
+                "startColumn": 35,
+                "endColumn": 50
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 47,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 6
+              },
+              "region": {
+                "startLine": 437,
+                "startColumn": 28,
+                "endColumn": 43
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 48,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 6
+              },
+              "region": {
+                "startLine": 439,
+                "startColumn": 28,
+                "endColumn": 43
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 49,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 6
+              },
+              "region": {
+                "startLine": 440,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 50,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 6
+              },
+              "region": {
+                "startLine": 441,
+                "startColumn": 32,
+                "endColumn": 47
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 51,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 6
+              },
+              "region": {
+                "startLine": 442,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 52,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 6
+              },
+              "region": {
+                "startLine": 483,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 53,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/convert.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 7
+              },
+              "region": {
+                "startLine": 47,
+                "startColumn": 21,
+                "endColumn": 36
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 54,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/convert.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 7
+              },
+              "region": {
+                "startLine": 79,
+                "startColumn": 21,
+                "endColumn": 36
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 55,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/convert.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 7
+              },
+              "region": {
+                "startLine": 141,
+                "startColumn": 25,
+                "endColumn": 40
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 56,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/convert.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 7
+              },
+              "region": {
+                "startLine": 226,
+                "startColumn": 21,
+                "endColumn": 36
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 57,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/convert.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 7
+              },
+              "region": {
+                "startLine": 259,
+                "startColumn": 21,
+                "endColumn": 36
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 58,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/convert.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 7
+              },
+              "region": {
+                "startLine": 285,
+                "startColumn": 21,
+                "endColumn": 36
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 59,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/convert.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 7
+              },
+              "region": {
+                "startLine": 315,
+                "startColumn": 21,
+                "endColumn": 36
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 60,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/key_file.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 8
+              },
+              "region": {
+                "startLine": 11,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 61,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/key_file.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 8
+              },
+              "region": {
+                "startLine": 32,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 62,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/key_file.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 8
+              },
+              "region": {
+                "startLine": 33,
+                "startColumn": 52,
+                "endColumn": 67
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 63,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/key_file.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 8
+              },
+              "region": {
+                "startLine": 60,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 64,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/key_file.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 8
+              },
+              "region": {
+                "startLine": 61,
+                "startColumn": 52,
+                "endColumn": 67
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 65,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/key_file.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 8
+              },
+              "region": {
+                "startLine": 103,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 66,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/key_file.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 8
+              },
+              "region": {
+                "startLine": 125,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 67,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/key_file.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 8
+              },
+              "region": {
+                "startLine": 143,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 68,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/key_file.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 8
+              },
+              "region": {
+                "startLine": 163,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 69,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/key_file.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 8
+              },
+              "region": {
+                "startLine": 185,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 70,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/key_file.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 8
+              },
+              "region": {
+                "startLine": 206,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 71,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/key_file.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 8
+              },
+              "region": {
+                "startLine": 235,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 72,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/key_file.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 8
+              },
+              "region": {
+                "startLine": 262,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 73,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/manual_functions.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 3
+              },
+              "region": {
+                "startLine": 51,
+                "startColumn": 25,
+                "endColumn": 40
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 74,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/manual_functions.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 3
+              },
+              "region": {
+                "startLine": 164,
+                "startColumn": 25,
+                "endColumn": 40
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 75,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/manual_functions.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 3
+              },
+              "region": {
+                "startLine": 229,
+                "startColumn": 25,
+                "endColumn": 40
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 76,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/manual_functions.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 3
+              },
+              "region": {
+                "startLine": 248,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 77,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/manual_functions.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 3
+              },
+              "region": {
+                "startLine": 249,
+                "startColumn": 25,
+                "endColumn": 40
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 78,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/thread_pool.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 9
+              },
+              "region": {
+                "startLine": 44,
+                "startColumn": 27,
+                "endColumn": 42
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 79,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/thread_pool.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 9
+              },
+              "region": {
+                "startLine": 63,
+                "startColumn": 27,
+                "endColumn": 42
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 80,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/thread_pool.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 9
+              },
+              "region": {
+                "startLine": 90,
+                "startColumn": 27,
+                "endColumn": 42
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 81,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/thread_pool.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 9
+              },
+              "region": {
+                "startLine": 124,
+                "startColumn": 27,
+                "endColumn": 42
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 82,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/utils.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 10
+              },
+              "region": {
+                "startLine": 109,
+                "startColumn": 25,
+                "endColumn": 40
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "id": 83,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/variant.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 11
+              },
+              "region": {
+                "startLine": 580,
+                "startColumn": 29,
+                "endColumn": 44
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/functions.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 1
+              },
+              "region": {
+                "startLine": 197,
+                "startColumn": 25,
+                "endColumn": 40
+              }
+            }
+          },
+          {
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/functions.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 1
+              },
+              "region": {
+                "startLine": 224,
+                "startColumn": 25,
+                "endColumn": 40
+              }
+            }
+          },
+          {
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/functions.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 1
+              },
+              "region": {
+                "startLine": 276,
+                "startColumn": 28,
+                "endColumn": 43
+              }
+            }
+          },
+          {
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/auto/functions.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 1
+              },
+              "region": {
+                "startLine": 277,
+                "startColumn": 25,
+                "endColumn": 40
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "rule": {},
+      "result": {
+        "ruleId": "rust/access-invalid-pointer",
+        "rule": {
+          "id": "rust/access-invalid-pointer",
+          "index": 6,
+          "toolComponent": {
+            "index": 0
+          }
+        },
+        "message": {
+          "text": "This operation dereferences a pointer that may be [invalid](1)."
+        },
+        "locations": [
+          {
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/collections/ptr_slice.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 14
+              },
+              "region": {
+                "startLine": 900,
+                "startColumn": 21,
+                "endColumn": 22
+              }
+            }
+          }
+        ],
+        "partialFingerprints": {
+          "primaryLocationLineHash": "f0389e3887603b54:1",
+          "primaryLocationStartColumnFingerprint": "0"
+        },
+        "codeFlows": [
+          {
+            "threadFlows": [
+              {
+                "locations": [
+                  {
+                    "location": {
+                      "physicalLocation": {
+                        "artifactLocation": {
+                          "uri": "vendor/glib-0.18.5/src/collections/ptr_slice.rs",
+                          "uriBaseId": "%SRCROOT%",
+                          "index": 14
+                        },
+                        "region": {
+                          "startLine": 898,
+                          "startColumn": 41,
+                          "endColumn": 52
+                        }
+                      },
+                      "message": {
+                        "text": "p as ..."
+                      }
+                    },
+                    "taxa": [
+                      {
+                        "index": 2,
+                        "toolComponent": {
+                          "index": 1
+                        },
+                        "properties": {
+                          "CodeQL/DataflowRole": "source"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "location": {
+                      "physicalLocation": {
+                        "artifactLocation": {
+                          "uri": "vendor/glib-0.18.5/src/collections/ptr_slice.rs",
+                          "uriBaseId": "%SRCROOT%",
+                          "index": 14
+                        },
+                        "region": {
+                          "startLine": 900,
+                          "startColumn": 21,
+                          "endColumn": 22
+                        }
+                      },
+                      "message": {
+                        "text": "p"
+                      }
+                    },
+                    "taxa": [
+                      {
+                        "index": 3,
+                        "toolComponent": {
+                          "index": 1
+                        },
+                        "properties": {
+                          "CodeQL/DataflowRole": "sink"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "relatedLocations": [
+          {
+            "id": 1,
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/collections/ptr_slice.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 14
+              },
+              "region": {
+                "startLine": 898,
+                "startColumn": 41,
+                "endColumn": 52
+              }
+            },
+            "message": {
+              "text": "invalid"
+            }
+          },
+          {
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "vendor/glib-0.18.5/src/collections/ptr_slice.rs",
+                "uriBaseId": "%SRCROOT%",
+                "index": 14
+              },
+              "region": {
+                "startLine": 898,
+                "startColumn": 41,
+                "endColumn": 52
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "related_source_locations_reviewed": [
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/auto/functions.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 1
+      },
+      "region": {
+        "startLine": 344,
+        "startColumn": 27,
+        "endColumn": 38
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/manual_functions.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 3
+      },
+      "region": {
+        "startLine": 217,
+        "startColumn": 31,
+        "endColumn": 42
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/auto/functions.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 1
+      },
+      "region": {
+        "startLine": 197,
+        "startColumn": 25,
+        "endColumn": 40
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/auto/functions.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 1
+      },
+      "region": {
+        "startLine": 224,
+        "startColumn": 25,
+        "endColumn": 40
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/auto/functions.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 1
+      },
+      "region": {
+        "startLine": 276,
+        "startColumn": 28,
+        "endColumn": 43
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/auto/functions.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 1
+      },
+      "region": {
+        "startLine": 277,
+        "startColumn": 25,
+        "endColumn": 40
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/auto/functions.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 1
+      },
+      "region": {
+        "startLine": 293,
+        "startColumn": 25,
+        "endColumn": 40
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/auto/functions.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 1
+      },
+      "region": {
+        "startLine": 655,
+        "startColumn": 25,
+        "endColumn": 40
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/auto/functions.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 1
+      },
+      "region": {
+        "startLine": 688,
+        "startColumn": 25,
+        "endColumn": 40
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/auto/functions.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 1
+      },
+      "region": {
+        "startLine": 725,
+        "startColumn": 25,
+        "endColumn": 40
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/auto/functions.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 1
+      },
+      "region": {
+        "startLine": 761,
+        "startColumn": 25,
+        "endColumn": 40
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/auto/functions.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 1
+      },
+      "region": {
+        "startLine": 777,
+        "startColumn": 25,
+        "endColumn": 40
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/auto/functions.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 1
+      },
+      "region": {
+        "startLine": 795,
+        "startColumn": 25,
+        "endColumn": 40
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/auto/key_file.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 4
+      },
+      "region": {
+        "startLine": 33,
+        "startColumn": 29,
+        "endColumn": 44
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/auto/key_file.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 4
+      },
+      "region": {
+        "startLine": 52,
+        "startColumn": 29,
+        "endColumn": 44
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/auto/key_file.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 4
+      },
+      "region": {
+        "startLine": 72,
+        "startColumn": 29,
+        "endColumn": 44
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/auto/key_file.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 4
+      },
+      "region": {
+        "startLine": 95,
+        "startColumn": 29,
+        "endColumn": 44
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/auto/key_file.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 4
+      },
+      "region": {
+        "startLine": 114,
+        "startColumn": 29,
+        "endColumn": 44
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/auto/key_file.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 4
+      },
+      "region": {
+        "startLine": 134,
+        "startColumn": 29,
+        "endColumn": 44
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/auto/key_file.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 4
+      },
+      "region": {
+        "startLine": 181,
+        "startColumn": 29,
+        "endColumn": 44
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/auto/key_file.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 4
+      },
+      "region": {
+        "startLine": 200,
+        "startColumn": 29,
+        "endColumn": 44
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/auto/key_file.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 4
+      },
+      "region": {
+        "startLine": 228,
+        "startColumn": 29,
+        "endColumn": 44
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/auto/key_file.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 4
+      },
+      "region": {
+        "startLine": 248,
+        "startColumn": 29,
+        "endColumn": 44
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/auto/key_file.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 4
+      },
+      "region": {
+        "startLine": 272,
+        "startColumn": 29,
+        "endColumn": 44
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/auto/key_file.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 4
+      },
+      "region": {
+        "startLine": 295,
+        "startColumn": 29,
+        "endColumn": 44
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/auto/key_file.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 4
+      },
+      "region": {
+        "startLine": 314,
+        "startColumn": 29,
+        "endColumn": 44
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/auto/key_file.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 4
+      },
+      "region": {
+        "startLine": 332,
+        "startColumn": 29,
+        "endColumn": 44
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/auto/key_file.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 4
+      },
+      "region": {
+        "startLine": 373,
+        "startColumn": 29,
+        "endColumn": 44
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/auto/markup_parse_context.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 5
+      },
+      "region": {
+        "startLine": 28,
+        "startColumn": 29,
+        "endColumn": 44
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/auto/markup_parse_context.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 5
+      },
+      "region": {
+        "startLine": 74,
+        "startColumn": 29,
+        "endColumn": 44
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 6
+      },
+      "region": {
+        "startLine": 89,
+        "startColumn": 29,
+        "endColumn": 44
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 6
+      },
+      "region": {
+        "startLine": 204,
+        "startColumn": 29,
+        "endColumn": 44
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 6
+      },
+      "region": {
+        "startLine": 282,
+        "startColumn": 29,
+        "endColumn": 44
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 6
+      },
+      "region": {
+        "startLine": 314,
+        "startColumn": 29,
+        "endColumn": 44
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 6
+      },
+      "region": {
+        "startLine": 346,
+        "startColumn": 30,
+        "endColumn": 45
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 6
+      },
+      "region": {
+        "startLine": 347,
+        "startColumn": 32,
+        "endColumn": 47
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 6
+      },
+      "region": {
+        "startLine": 348,
+        "startColumn": 28,
+        "endColumn": 43
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 6
+      },
+      "region": {
+        "startLine": 350,
+        "startColumn": 28,
+        "endColumn": 43
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 6
+      },
+      "region": {
+        "startLine": 351,
+        "startColumn": 29,
+        "endColumn": 44
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 6
+      },
+      "region": {
+        "startLine": 352,
+        "startColumn": 32,
+        "endColumn": 47
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 6
+      },
+      "region": {
+        "startLine": 353,
+        "startColumn": 29,
+        "endColumn": 44
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 6
+      },
+      "region": {
+        "startLine": 389,
+        "startColumn": 30,
+        "endColumn": 45
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 6
+      },
+      "region": {
+        "startLine": 390,
+        "startColumn": 28,
+        "endColumn": 43
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 6
+      },
+      "region": {
+        "startLine": 392,
+        "startColumn": 29,
+        "endColumn": 44
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 6
+      },
+      "region": {
+        "startLine": 433,
+        "startColumn": 30,
+        "endColumn": 45
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 6
+      },
+      "region": {
+        "startLine": 434,
+        "startColumn": 28,
+        "endColumn": 43
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 6
+      },
+      "region": {
+        "startLine": 435,
+        "startColumn": 32,
+        "endColumn": 47
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 6
+      },
+      "region": {
+        "startLine": 436,
+        "startColumn": 35,
+        "endColumn": 50
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 6
+      },
+      "region": {
+        "startLine": 437,
+        "startColumn": 28,
+        "endColumn": 43
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 6
+      },
+      "region": {
+        "startLine": 439,
+        "startColumn": 28,
+        "endColumn": 43
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 6
+      },
+      "region": {
+        "startLine": 440,
+        "startColumn": 29,
+        "endColumn": 44
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 6
+      },
+      "region": {
+        "startLine": 441,
+        "startColumn": 32,
+        "endColumn": 47
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 6
+      },
+      "region": {
+        "startLine": 442,
+        "startColumn": 29,
+        "endColumn": 44
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/auto/uri.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 6
+      },
+      "region": {
+        "startLine": 483,
+        "startColumn": 29,
+        "endColumn": 44
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/convert.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 7
+      },
+      "region": {
+        "startLine": 47,
+        "startColumn": 21,
+        "endColumn": 36
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/convert.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 7
+      },
+      "region": {
+        "startLine": 79,
+        "startColumn": 21,
+        "endColumn": 36
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/convert.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 7
+      },
+      "region": {
+        "startLine": 141,
+        "startColumn": 25,
+        "endColumn": 40
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/convert.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 7
+      },
+      "region": {
+        "startLine": 226,
+        "startColumn": 21,
+        "endColumn": 36
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/convert.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 7
+      },
+      "region": {
+        "startLine": 259,
+        "startColumn": 21,
+        "endColumn": 36
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/convert.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 7
+      },
+      "region": {
+        "startLine": 285,
+        "startColumn": 21,
+        "endColumn": 36
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/convert.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 7
+      },
+      "region": {
+        "startLine": 315,
+        "startColumn": 21,
+        "endColumn": 36
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/key_file.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 8
+      },
+      "region": {
+        "startLine": 11,
+        "startColumn": 29,
+        "endColumn": 44
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/key_file.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 8
+      },
+      "region": {
+        "startLine": 32,
+        "startColumn": 29,
+        "endColumn": 44
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/key_file.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 8
+      },
+      "region": {
+        "startLine": 33,
+        "startColumn": 52,
+        "endColumn": 67
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/key_file.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 8
+      },
+      "region": {
+        "startLine": 60,
+        "startColumn": 29,
+        "endColumn": 44
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/key_file.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 8
+      },
+      "region": {
+        "startLine": 61,
+        "startColumn": 52,
+        "endColumn": 67
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/key_file.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 8
+      },
+      "region": {
+        "startLine": 103,
+        "startColumn": 29,
+        "endColumn": 44
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/key_file.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 8
+      },
+      "region": {
+        "startLine": 125,
+        "startColumn": 29,
+        "endColumn": 44
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/key_file.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 8
+      },
+      "region": {
+        "startLine": 143,
+        "startColumn": 29,
+        "endColumn": 44
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/key_file.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 8
+      },
+      "region": {
+        "startLine": 163,
+        "startColumn": 29,
+        "endColumn": 44
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/key_file.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 8
+      },
+      "region": {
+        "startLine": 185,
+        "startColumn": 29,
+        "endColumn": 44
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/key_file.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 8
+      },
+      "region": {
+        "startLine": 206,
+        "startColumn": 29,
+        "endColumn": 44
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/key_file.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 8
+      },
+      "region": {
+        "startLine": 235,
+        "startColumn": 29,
+        "endColumn": 44
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/key_file.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 8
+      },
+      "region": {
+        "startLine": 262,
+        "startColumn": 29,
+        "endColumn": 44
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/manual_functions.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 3
+      },
+      "region": {
+        "startLine": 51,
+        "startColumn": 25,
+        "endColumn": 40
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/manual_functions.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 3
+      },
+      "region": {
+        "startLine": 164,
+        "startColumn": 25,
+        "endColumn": 40
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/manual_functions.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 3
+      },
+      "region": {
+        "startLine": 229,
+        "startColumn": 25,
+        "endColumn": 40
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/manual_functions.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 3
+      },
+      "region": {
+        "startLine": 248,
+        "startColumn": 29,
+        "endColumn": 44
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/manual_functions.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 3
+      },
+      "region": {
+        "startLine": 249,
+        "startColumn": 25,
+        "endColumn": 40
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/thread_pool.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 9
+      },
+      "region": {
+        "startLine": 44,
+        "startColumn": 27,
+        "endColumn": 42
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/thread_pool.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 9
+      },
+      "region": {
+        "startLine": 63,
+        "startColumn": 27,
+        "endColumn": 42
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/thread_pool.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 9
+      },
+      "region": {
+        "startLine": 90,
+        "startColumn": 27,
+        "endColumn": 42
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/thread_pool.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 9
+      },
+      "region": {
+        "startLine": 124,
+        "startColumn": 27,
+        "endColumn": 42
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/utils.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 10
+      },
+      "region": {
+        "startLine": 109,
+        "startColumn": 25,
+        "endColumn": 40
+      }
+    },
+    {
+      "artifactLocation": {
+        "uri": "vendor/glib-0.18.5/src/variant.rs",
+        "uriBaseId": "%SRCROOT%",
+        "index": 11
+      },
+      "region": {
+        "startLine": 580,
+        "startColumn": 29,
+        "endColumn": 44
+      }
+    }
+  ],
+  "upstream_review": {
+    "panic_hardening": {
+      "sha": "3971101c82643035c15380c3f4af19ecccd09bb2",
+      "url": "https://github.com/gtk-rs/gtk-rs-core/commit/3971101c82643035c15380c3f4af19ecccd09bb2",
+      "date": "2026-04-29T08:11:41Z",
+      "message": "glib: collections: Fix theoretical use-after-frees if dropping an item panics\n\nThis is currently not a problem because all collections require the item\ntype to implement `TransparentType` or `TransparentPtrType`, which are\nunsafe traits that are only implemented by the `glib::wrapper!` macro\nand require the `Drop` impl to not panic (among other things).\n\nAs such this has no effect right now but is cleaner and might avoid bugs\nin the future if the requirements of the two traits are ever weakened.\n\nThanks to JuHyung Son for reporting.",
+      "ptr_slice_patch": "@@ -83,13 +83,15 @@ impl<T: TransparentPtrType> Drop for PtrSlice<T> {\n     #[inline]\n     fn drop(&mut self) {\n         unsafe {\n+            let len = mem::replace(&mut self.len, 0);\n             if mem::needs_drop::<T>() {\n-                for i in 0..self.len {\n+                for i in 0..len {\n                     ptr::drop_in_place::<T>(self.ptr.as_ptr().add(i) as *mut T);\n                 }\n             }\n \n-            if self.capacity != 0 {\n+            let capacity = mem::replace(&mut self.capacity, 0);\n+            if capacity != 0 {\n                 ffi::g_free(self.ptr.as_ptr() as ffi::gpointer);\n             }\n         }\n@@ -263,13 +265,15 @@ impl<T: TransparentPtrType> Drop for IntoIter<T> {\n     #[inline]\n     fn drop(&mut self) {\n         unsafe {\n+            let len = mem::replace(&mut self.len, 0);\n             if mem::needs_drop::<T>() {\n-                for i in 0..self.len {\n+                for i in 0..len {\n                     ptr::drop_in_place::<T>(self.idx.as_ptr().add(i) as *mut T);\n                 }\n             }\n \n-            if !self.empty {\n+            let empty = mem::replace(&mut self.empty, true);\n+            if !empty {\n                 ffi::g_free(self.ptr.as_ptr() as ffi::gpointer);\n             }\n         }\n@@ -789,13 +793,12 @@ impl<T: TransparentPtrType> PtrSlice<T> {\n     #[inline]\n     pub fn clear(&mut self) {\n         unsafe {\n+            let len = mem::replace(&mut self.len, 0);\n             if mem::needs_drop::<T>() {\n-                for i in 0..self.len {\n+                for i in 0..len {\n                     ptr::drop_in_place::<T>(self.ptr.as_ptr().add(i) as *mut T);\n                 }\n             }\n-\n-            self.len = 0;\n         }\n     }\n \n@@ -929,14 +932,18 @@ impl<T: TransparentPtrType> PtrSlice<T> {\n         }\n \n         unsafe {\n-            while self.len > len {\n-                self.len -= 1;\n-                let p = self.ptr.as_ptr().add(self.len);\n-                ptr::drop_in_place::<T>(p as *mut T);\n-                ptr::write(\n-                    p,\n-                    Ptr::from(ptr::null_mut::<<T as GlibPtrDefault>::GlibType>()),\n-                );\n+            if mem::needs_drop::<T>() {\n+                while self.len > len {\n+                    self.len -= 1;\n+                    let p = self.ptr.as_ptr().add(self.len);\n+                    ptr::drop_in_place::<T>(p as *mut T);\n+                    ptr::write(\n+                        p,\n+                        Ptr::from(ptr::null_mut::<<T as GlibPtrDefault>::GlibType>()),\n+                    );\n+                }\n+            } else {\n+                self.len = len;\n             }\n         }\n     }"
+    },
+    "comparison_ref": "gtk-rs/gtk-rs-core 0.22.10",
+    "other_checked_fixes": [
+      {
+        "sha": "2477663dbf34cd75d879e0ace53fd0a4e4e6f857",
+        "url": "https://github.com/gtk-rs/gtk-rs-core/commit/2477663dbf34cd75d879e0ace53fd0a4e4e6f857",
+        "message": "glib: Avoid more integer overflows when reserving space in `PtrSlice` / `Slice` / `StrV`",
+        "ptr_slice_patch": "@@ -713,7 +713,7 @@ impl<T: TransparentPtrType> PtrSlice<T> {\n     #[allow(clippy::int_plus_one)]\n     pub fn reserve(&mut self, additional: usize) {\n         // Nothing new to reserve as there's still enough space\n-        if self.len + additional + 1 <= self.capacity {\n+        if additional < self.capacity - self.len {\n             return;\n         }\n \n@@ -788,7 +788,7 @@ impl<T: TransparentPtrType> PtrSlice<T> {\n     #[inline]\n     pub fn extend_from_slice(&mut self, other: &[T]) {\n         // Nothing new to reserve as there's still enough space\n-        if self.len + other.len() + 1 > self.capacity {\n+        if other.len() >= self.capacity - self.len {\n             self.reserve(other.len());\n         }\n \n@@ -815,7 +815,7 @@ impl<T: TransparentPtrType> PtrSlice<T> {\n         assert!(index <= self.len);\n \n         // Nothing new to reserve as there's still enough space\n-        if self.len + 1 + 1 > self.capacity {\n+        if 1 >= self.capacity - self.len {\n             self.reserve(1);\n         }\n \n@@ -842,7 +842,7 @@ impl<T: TransparentPtrType> PtrSlice<T> {\n     #[inline]\n     pub fn push(&mut self, item: T) {\n         // Nothing new to reserve as there's still enough space\n-        if self.len + 1 + 1 > self.capacity {\n+        if 1 >= self.capacity - self.len {\n             self.reserve(1);\n         }\n "
+      },
+      {
+        "sha": "b31265df94876febf259089a19de9c23d2468214",
+        "url": "https://github.com/gtk-rs/gtk-rs-core/commit/b31265df94876febf259089a19de9c23d2468214",
+        "message": "glib: Fix `PtrSlice::from(Slice)` on empty ptr slices\n\nFixes https://github.com/gtk-rs/gtk-rs-core/issues/2042",
+        "ptr_slice_patch": "@@ -1093,24 +1093,31 @@ impl<T: TransparentPtrType> From<super::Slice<T>> for PtrSlice<T> {\n         let len = value.len();\n         let capacity = value.capacity();\n         unsafe {\n+            // `into_raw()` returns `null` for an empty slice; in that case\n+            // any reserved buffer has already been freed.\n             let ptr = value.into_raw();\n-            let mut s = PtrSlice::<T> {\n-                ptr: ptr::NonNull::new_unchecked(ptr),\n-                len,\n-                capacity,\n-            };\n+            if ptr.is_null() {\n+                debug_assert_eq!(len, 0);\n+                PtrSlice::new()\n+            } else {\n+                let mut s = PtrSlice::<T> {\n+                    ptr: ptr::NonNull::new_unchecked(ptr),\n+                    len,\n+                    capacity,\n+                };\n \n-            // Reserve space for the `NULL`-terminator if needed\n-            if len == capacity {\n-                s.reserve(0);\n-            }\n+                // Reserve space for the `NULL`-terminator if needed\n+                if len == capacity {\n+                    s.reserve(0);\n+                }\n \n-            ptr::write(\n-                s.ptr.as_ptr().add(s.len()),\n-                Ptr::from(ptr::null_mut::<<T as GlibPtrDefault>::GlibType>()),\n-            );\n+                ptr::write(\n+                    s.ptr.as_ptr().add(s.len()),\n+                    Ptr::from(ptr::null_mut::<<T as GlibPtrDefault>::GlibType>()),\n+                );\n \n-            s\n+                s\n+            }\n         }\n     }\n }\n@@ -1412,4 +1419,33 @@ mod test {\n             }\n         });\n     }\n+\n+    #[test]\n+    fn test_from_slice_empty() {\n+        let items = [\n+            crate::GStringPtr::from(\"one\"),\n+            crate::GStringPtr::from(\"two\"),\n+            crate::GStringPtr::from(\"three\"),\n+        ];\n+\n+        // Non-empty slice, the common path.\n+        let slice = crate::Slice::from(&items[..]);\n+        let ptr_slice: PtrSlice<crate::GStringPtr> = PtrSlice::from(slice);\n+        assert_eq!(ptr_slice.len(), items.len());\n+        for (a, b) in Iterator::zip(items.iter(), ptr_slice.iter()) {\n+            assert_eq!(a, b);\n+        }\n+\n+        // `Slice::into_raw()` returns `null` for an empty slice, so the\n+        // conversion must not build an invalid `NonNull` from it.\n+        let empty: crate::Slice<crate::GStringPtr> = crate::Slice::new();\n+        let ptr_slice: PtrSlice<crate::GStringPtr> = PtrSlice::from(empty);\n+        assert!(ptr_slice.is_empty());\n+\n+        // Reserved but empty: the buffer is freed by the `Slice` and must\n+        // not be used or freed again through the `null` pointer.\n+        let reserved: crate::Slice<crate::GStringPtr> = crate::Slice::with_capacity(4);\n+        let ptr_slice: PtrSlice<crate::GStringPtr> = PtrSlice::from(reserved);\n+        assert!(ptr_slice.is_empty());\n+    }\n }"
+      }
+    ]
+  },
+  "separate_confirmed_issue": {
+    "classification": "Real third-party safe-constructor defect; no application exposure or connection to the reported truncate path demonstrated",
+    "vendor_location": "vendor/glib-0.18.5/src/collections/ptr_slice.rs:1047-1070",
+    "upstream_fix_sha": "b31265df94876febf259089a19de9c23d2468214",
+    "status": "Not applied; reviewable proposal only. git apply --check succeeds; no runtime backport validation performed.",
+    "proposal_path": "docs/security/proposals/UNAPPLIED_GLIB_EMPTY_SLICE_UPSTREAM_20261013.patch",
+    "before_function": "impl<T: TransparentPtrType> From<super::Slice<T>> for PtrSlice<T> {\n    fn from(value: super::Slice<T>) -> Self {\n        let len = value.len();\n        let capacity = value.capacity();\n        unsafe {\n            let ptr = value.into_raw();\n            let mut s = PtrSlice::<T> {\n                ptr: ptr::NonNull::new_unchecked(ptr),\n                len,\n                capacity,\n            };\n\n            // Reserve space for the `NULL`-terminator if needed\n            if len == capacity {\n                s.reserve(0);\n            }\n\n            ptr::write(\n                s.ptr.as_ptr().add(s.len()),\n                Ptr::from(ptr::null_mut::<<T as GlibPtrDefault>::GlibType>()),\n            );\n\n            s\n        }\n    }\n}\n",
+    "proposed_function": "impl<T: TransparentPtrType> From<super::Slice<T>> for PtrSlice<T> {\n    fn from(value: super::Slice<T>) -> Self {\n        let len = value.len();\n        let capacity = value.capacity();\n        unsafe {\n            // FR// Une Slice vide renvoie NULL ; son éventuel tampon réservé est déjà libéré.\n            // EN// `into_raw()` returns `null` for an empty slice; in that case\n            // any reserved buffer has already been freed.\n            let ptr = value.into_raw();\n            if ptr.is_null() {\n                debug_assert_eq!(len, 0);\n                PtrSlice::new()\n            } else {\n                let mut s = PtrSlice::<T> {\n                    ptr: ptr::NonNull::new_unchecked(ptr),\n                    len,\n                    capacity,\n                };\n\n                // Reserve space for the `NULL`-terminator if needed\n                if len == capacity {\n                    s.reserve(0);\n                }\n\n                ptr::write(\n                    s.ptr.as_ptr().add(s.len()),\n                    Ptr::from(ptr::null_mut::<<T as GlibPtrDefault>::GlibType>()),\n                );\n\n                s\n            }\n        }\n    }\n}\n"
+  }
+}
