@@ -24,6 +24,10 @@ class HistoricalGapsTests(unittest.TestCase):
         shutil.copyfile(ROOT / "docs/history/pnpm-lock.before-phase1-repair.yaml", self.base / "pnpm-lock.yaml")
         shutil.copyfile(ROOT / "docs/history/before-ci-phase1/src-tauri/Cargo.toml", self.base / "src-tauri/Cargo.toml")
         shutil.copyfile(ROOT / "docs/history/dependency-gaps-20261013/main/package.json", self.base / "package.json")
+        # FR// Les anciens verrous npm existent dans la vraie base ; ils ne sont pas de nouveaux gestionnaires.
+        # EN// Legacy npm locks exist in the actual base; they are not newly introduced managers.
+        for path in ROOT.glob("package-lock*.json"):
+            shutil.copyfile(path, self.base / path.name)
 
     def test_actual_historical_base_is_qualified_with_two_visible_transitions(self):
         count, reachable, transitions = gaps.check(self.base, self.candidate)
