@@ -24,7 +24,10 @@ jobs:
       # FR// Résoudre réellement les deux paquets corrompus sans changer les autres dépendances.
       # EN// Resolve the two corrupted packages without changing other dependencies.
       - name: Régénérer le candidat / Regenerate candidate
-        run: pnpm update @vitejs/plugin-react vite --lockfile-only --ignore-scripts
+        run: |
+          pnpm add --save-dev @vitejs/plugin-react@6.0.2 vite@8.0.16 --lockfile-only --ignore-scripts
+          git show HEAD:package.json > package.json
+          pnpm install --lockfile-only --ignore-scripts --no-frozen-lockfile
       - name: Exporter le candidat pour revue / Export candidate for review
         run: |
           echo LOCKFILE_CANDIDATE_BEGIN

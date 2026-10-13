@@ -168,21 +168,43 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v6
 
+      # FR// Préparer Tauri sur Linux ; les échecs de compilation restent bloquants.
+      # EN// Prepare Tauri on Linux; compilation failures remain blocking.
+      - name: Dépendances natives Linux / Linux native dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            build-essential libwebkit2gtk-4.1-dev libayatana-appindicator3-dev \
+            librsvg2-dev patchelf libssl-dev libxdo-dev
+
       - name: Install Rust with clippy and rustfmt
         uses: dtolnay/rust-toolchain@stable
         with:
           components: rustfmt, clippy
+
+      # FR// generate_context! embarque le frontend ; construire les sources actives.
+      # EN// generate_context! embeds the frontend; build active sources.
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 8.15.9
+          run_install: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'pnpm'
+      - name: Frontend embarqué / Embedded frontend
+        run: |
+          pnpm install --frozen-lockfile
+          pnpm run vite:build
 
       - name: Cache Rust dependencies
         uses: Swatinem/rust-cache@v2
 
       - name: Check code format (rustfmt)
         run: cargo fmt -- --check
-        continue-on-error: true
 
       - name: Run clippy lints
         run: cargo clippy --all-targets --all-features -- -D warnings
-        continue-on-error: true
 
   # =============================================================================
   # 7. Rust Build & Test
@@ -195,23 +217,51 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v6
 
+      # FR// Préparer Tauri sur Linux ; les échecs de compilation restent bloquants.
+      # EN// Prepare Tauri on Linux; compilation failures remain blocking.
+      - name: Dépendances natives Linux / Linux native dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            build-essential libwebkit2gtk-4.1-dev libayatana-appindicator3-dev \
+            librsvg2-dev patchelf libssl-dev libxdo-dev
+
       - name: Install Rust
         uses: dtolnay/rust-toolchain@stable
+
+      # FR// generate_context! embarque le frontend ; construire les sources actives.
+      # EN// generate_context! embeds the frontend; build active sources.
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 8.15.9
+          run_install: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'pnpm'
+      - name: Frontend embarqué / Embedded frontend
+        run: |
+          pnpm install --frozen-lockfile
+          pnpm run vite:build
 
       - name: Cache Rust dependencies
         uses: Swatinem/rust-cache@v2
 
       - name: Build Rust project
-        run: cargo build --verbose
-        continue-on-error: true
+        run: cargo build --workspace --verbose
 
       - name: Run unit tests
-        run: cargo test --verbose
-        continue-on-error: true
+        run: cargo test --workspace --verbose
 
       - name: Run doc tests
-        run: cargo test --doc --verbose
-        continue-on-error: true
+        # FR// Le paquet est actuellement binaire ; signaler l'absence de doctests.
+        # EN// The package is currently binary-only; report absent doctests.
+        run: |
+          if cargo metadata --no-deps --format-version 1 | python3 -c 'import json,sys; d=json.load(sys.stdin); sys.exit(0 if any("lib" in t["kind"] for p in d["packages"] for t in p["targets"]) else 1)'; then
+            cargo test --workspace --doc --verbose
+          else
+            echo "Doctests ignorés : aucune bibliothèque Rust / Doctests skipped: no Rust library" >> "$GITHUB_STEP_SUMMARY"
+          fi
 
   # =============================================================================
   # 8. JavaScript/TypeScript Security (pnpm audit)
@@ -241,8 +291,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Run ppnpm audit
-        run: ppnpm audit --audit-level=moderate
+      - name: Run pnpm audit
+        run: pnpm audit --audit-level=moderate
         continue-on-error: true
 
   # =============================================================================

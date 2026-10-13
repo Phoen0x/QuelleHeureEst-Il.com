@@ -33,21 +33,21 @@ const POLLEN_KEYS = {
 export function PollenCard({ airQuality }: PollenCardProps) {
   const hourly = airQuality.hourly;
 
-  function getCurrentPollen(key: string): number | null {
-    const arr = (hourly as Record<string, number[]>)[key];
+  function getCurrentPollen(key: keyof typeof POLLEN_KEYS): number | null {
+    const arr = hourly[key];
     if (!arr || arr.length === 0) return null;
     const now = new Date();
     const nowHour = now.getHours();
     return arr[nowHour] ?? arr[0] ?? null;
   }
 
-  const items = POLLEN_ITEMS.map(item => {
+  const items = POLLEN_ITEMS.filter(item => POLLEN_KEYS[item.key]).map(item => {
     const value = getCurrentPollen(item.key);
     const level = getPollenLevel(value);
     return { ...item, value, level };
   });
 
-  const anyActive = items.some(i => i.level !== 'none' && i.value !== null);
+  const anyActive = items.some(i => i.level !== 'aucun' && i.value !== null);
 
   return (
     <div className="card-glass rounded-3xl p-6 flex flex-col gap-5">
