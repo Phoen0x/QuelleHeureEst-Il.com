@@ -31,19 +31,34 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha }}
           path: candidate
           persist-credentials: false
-      - name: Comparer à la vraie base / Compare against actual base
+      # FR// Amorçage limité à #153 : les migrations antérieures restent documentées, sans réactivation.
+      # EN// Bootstrap limited to #153: earlier migrations stay documented without reactivation.
+      - uses: actions/checkout@v6
+        if: ${{ hashFiles('reference/Scripts/check-dependency-update-preservation.py') == '' && github.event.pull_request.number == 153 && github.event.pull_request.base.sha == 'c39a87e1d693382f34ca38bcaa68e032a9bcbc29' }}
+        with:
+          ref: c0169878bbd24ba28bc17c1886bb4eada464bf39
+          path: bootstrap
+          persist-credentials: false
+      - name: Comparer à la référence contrôlée / Compare against controlled reference
         env:
           PR_ACTOR_TYPE: ${{ github.event.pull_request.user.type }}
           PR_HEAD_BRANCH: ${{ github.event.pull_request.head.ref }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
         run: |
           checker=reference/Scripts/check-dependency-update-preservation.py
+          comparison_base=reference
           if [ ! -f "$checker" ]; then
-            # FR// Amorçage explicite : la première PR doit être relue, la base ne possède pas encore le contrôleur.
-            # EN// Explicit bootstrap: the first PR needs review because the base does not contain the checker yet.
+            # FR// La vraie base reste obligatoire hors de l'unique amorçage explicitement borné.
+            # EN// The actual base remains mandatory outside the single explicitly bounded bootstrap.
+            test "$PR_NUMBER" = 153
+            test "$PR_BASE_SHA" = c39a87e1d693382f34ca38bcaa68e032a9bcbc29
+            test -f bootstrap/package.json
             checker=candidate/Scripts/check-dependency-update-preservation.py
-            echo "::warning::Amorçage du contrôleur depuis la PR / Bootstrapping checker from the PR"
+            comparison_base=bootstrap
+            echo "::warning::Amorçage #153 sur c016987 ; écarts antérieurs à relire / Bootstrap #153 against c016987; review earlier differences"
           fi
-          python "$checker" --base reference --candidate candidate --actor-type "$PR_ACTOR_TYPE" --branch "$PR_HEAD_BRANCH"
+          python "$checker" --base "$comparison_base" --candidate candidate --actor-type "$PR_ACTOR_TYPE" --branch "$PR_HEAD_BRANCH"
       - name: Régressions du contrôleur / Checker regressions
         run: python -m unittest discover -s candidate/tests/dependency_updates -p 'test_*.py' -v
 
