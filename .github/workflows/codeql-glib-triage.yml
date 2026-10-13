@@ -3,9 +3,11 @@
 name: Diagnostic CodeQL glib
 on:
   workflow_dispatch:
-  push:
-    branches: [ "chore/ci-phase1-reliability-20261013" ]
-    paths: [ ".github/workflows/codeql-glib-triage.yml" ]
+  # FR// Déclencheur initial conservé désactivé après export des preuves.
+  # EN// Initial trigger retained disabled after evidence export.
+  # push:
+  #   branches: [ "chore/ci-phase1-reliability-20261013" ]
+  #   paths: [ ".github/workflows/codeql-glib-triage.yml" ]
 permissions:
   contents: read
   packages: read
