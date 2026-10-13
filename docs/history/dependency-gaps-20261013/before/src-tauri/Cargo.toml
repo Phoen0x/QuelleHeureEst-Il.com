@@ -1,0 +1,64 @@
+[package]
+name = "quelleheureest"
+version = "0.0.1"
+description = "QuelleHeureEst-Il - A native cross-platform weather and time application"
+authors = ["Your Name"]
+edition = "2021"
+publish = false
+
+[build-dependencies]
+tauri-build = { version = "2.0", features = [] }
+
+[dependencies]
+tauri = { version = "2.0", features = [] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+tokio = { version = "1", features = ["full"] }
+# FR// Référence historique conservée ; la branche 0.11 impose h2 0.3 vulnérable.
+# EN// Historical reference retained; the 0.11 line requires vulnerable h2 0.3.
+# reqwest = { version = "0.11", features = ["json"] }
+# FR// 0.12 conserve TLS natif, JSON et HTTP/2 tout en passant à h2 0.4.
+# EN// 0.12 retains native TLS, JSON and HTTP/2 while migrating to h2 0.4.
+reqwest = { version = "0.12.28", features = ["json"] }
+chrono = { version = "0.4", features = ["serde"] }
+chrono-tz = "0.8"
+rusqlite = { version = "0.29", features = ["bundled", "chrono"] }
+uuid = { version = "1.0", features = ["v4", "serde"] }
+log = "0.4"
+env_logger = "0.11"
+urlencoding = "2.1"
+
+[features]
+default = ["custom-protocol"]
+custom-protocol = ["tauri/custom-protocol"]
+
+[profile.release]
+opt-level = "z"
+lto = true
+
+
+# FR// Tests locaux de migration ; h2 impose aussi le minimum corrigé pour HTTP/2.
+# EN// Local migration tests; h2 also enforces the patched HTTP/2 minimum.
+[dev-dependencies]
+h2 = "0.4.16"
+http = "1"
+bytes = "1"
+
+# FR// Dépendance historique conservée en option, sans activation en production.
+# EN// Historical dependency retained as optional, without production activation.
+
+[dependencies.httpdate]
+version = "=1.0.3"
+optional = true
+
+# FR// Dépendance historique conservée en option, sans activation en production.
+# EN// Historical dependency retained as optional, without production activation.
+
+[dependencies.rustls-pemfile]
+version = "=1.0.4"
+optional = true
+
+# FR// Régressions Linux du paquet glib déjà utilisé par Tauri.
+# EN// Linux regressions for the glib package already used by Tauri.
+[target.'cfg(target_os = "linux")'.dev-dependencies]
+glib = "=0.18.5"

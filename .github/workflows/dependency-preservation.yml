@@ -61,6 +61,38 @@ jobs:
           python "$checker" --base "$comparison_base" --candidate candidate --actor-type "$PR_ACTOR_TYPE" --branch "$PR_HEAD_BRANCH"
       - name: Régressions du contrôleur / Checker regressions
         run: python -m unittest discover -s candidate/tests/dependency_updates -p 'test_*.py' -v
+      # FR// La vraie base est aussi contrôlée ; l'amorçage ne valide aucune perte antérieure.
+      # EN// Also check the actual base; bootstrap validates no earlier removal.
+      - name: Écarts historiques contre la vraie base / Historical gaps against actual base
+        run: python candidate/Scripts/check-historical-dependency-gaps.py --base reference --candidate candidate
+
+  historical-tools:
+    name: Outils historiques et verrou reproductible / Historical tools and reproducible lock
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 8.15.9
+          run_install: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Installation gelée / Frozen install
+        run: pnpm install --frozen-lockfile
+      - name: Conservation JS / JS preservation
+        run: pnpm run check:dependencies
+      - name: Outils et modules compilés / Tools and compiled modules
+        run: node --test tests/dependency_updates/historical-tools.test.cjs
+      # FR// Une résolution pnpm réelle doit reproduire exactement le verrou, sans scripts.
+      # EN// Actual pnpm resolution must reproduce the exact lock without scripts.
+      - name: Reproductibilité du verrou / Lock reproducibility
+        run: |
+          pnpm install --lockfile-only --ignore-scripts --no-frozen-lockfile
+          git diff --exit-code -- package.json pnpm-lock.yaml
 
   renovate:
     name: Valider la configuration Renovate / Validate Renovate configuration
