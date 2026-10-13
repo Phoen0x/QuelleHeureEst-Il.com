@@ -45,7 +45,9 @@ jobs:
         with:
           python-version: '3.12'
       - name: Migration h2 vérifiée / Verified h2 migration
-        run: python3 Scripts/check-rust-h2-migration.py
+        run: |
+          python3 Scripts/check-rust-h2-migration.py
+          python3 Scripts/check-rust-warnings-backport.py
       - name: Build Rust
         run: cargo build --workspace --locked --verbose
       - name: Test Rust
@@ -54,6 +56,10 @@ jobs:
 
       - name: Build Rust de production / Production Rust build
         run: cargo build --workspace --release --locked --verbose
+      # FR// Le défaut glib dépend des optimisations ; conserver les régressions release.
+      # EN// The glib defect depends on optimization; retain release regressions.
+      - name: Tests Rust release / Release Rust tests
+        run: cargo test --workspace --release --locked --verbose
       # FR// Contrôler les marqueurs des sources neutralisées dans les artefacts réels.
       # EN// Check disabled-source markers in actual artifacts.
       - name: Exclusion du code désactivé / Disabled code exclusion

@@ -1,0 +1,17 @@
+[workspace]
+members = ["src-tauri"]
+# FR// Le paquet tiers corrigé reste une dépendance, hors membres du workspace.
+# EN// The patched third-party package remains a dependency, outside workspace members.
+exclude = ["vendor/glib-0.18.5"]
+resolver = "2"
+
+# FR// Cargo applique les profils au workspace ; le profil historique reste dans src-tauri.
+# EN// Cargo applies workspace profiles; the historical profile remains in src-tauri.
+[profile.release]
+opt-level = "z"
+lto = true
+
+# FR// Rétroport exact du correctif amont ; nom et version inchangés pour garder l'avis visible.
+# EN// Exact upstream backport; unchanged name and version keep the advisory visible.
+[patch.crates-io]
+glib = { path = "vendor/glib-0.18.5" }

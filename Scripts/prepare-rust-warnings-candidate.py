@@ -14,8 +14,9 @@ subprocess.run(["cargo", "fetch", "--locked"], check=True)
 import os
 cargo_dir = Path(os.environ.get("CARGO_HOME", str(Path.home() / ".cargo")))
 archives = list((cargo_dir / "registry/cache").glob("*/glib-0.18.5.crate"))
-assert archives
-archive = archives[0].read_bytes()
+reference = Path("docs/history/rust-warnings-20261013/glib-0.18.5.crate")
+assert reference.exists() or archives
+archive = reference.read_bytes() if reference.exists() else archives[0].read_bytes()
 assert hashlib.sha256(archive).hexdigest() == package["checksum"]
 history = Path("docs/history/rust-warnings-20261013")
 history.mkdir(parents=True, exist_ok=True)
@@ -36,7 +37,7 @@ content = root.read_text()
 content = content.replace('members = ["src-tauri"]', 'members = ["src-tauri"]\n# FR// Le paquet tiers corrigé reste une dépendance, hors membres du workspace.\n# EN// The patched third-party package remains a dependency, outside workspace members.\nexclude = ["vendor/glib-0.18.5"]')
 configuration = Path(".cargo/config.toml")
 configuration.parent.mkdir(exist_ok=True)
-assert not configuration.exists()
+assert not configuration.exists() or tomllib.loads(configuration.read_text()) == {"paths": ["vendor/glib-0.18.5"]}
 configuration.write_text('# FR// Substituer uniquement le code ; conserver la résolution de registre pour les audits.\n# EN// Override only source code; preserve registry resolution for audits.\npaths = ["vendor/glib-0.18.5"]\n')
 root.write_text(content)
 manifest = Path("src-tauri/Cargo.toml")

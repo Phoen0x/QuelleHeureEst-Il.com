@@ -57,3 +57,8 @@ optional = true
 [dependencies.rustls-pemfile]
 version = "=1.0.4"
 optional = true
+
+# FR// Régressions Linux du paquet glib déjà utilisé par Tauri.
+# EN// Linux regressions for the glib package already used by Tauri.
+[target.'cfg(target_os = "linux")'.dev-dependencies]
+glib = "=0.18.5"

@@ -3,11 +3,13 @@
 name: Validation des avertissements Rust
 on:
   workflow_dispatch:
-  push:
-    branches: [ "chore/ci-phase1-reliability-20261013" ]
-    paths:
-      - '.github/workflows/rust-warnings-migration.yml'
-      - 'Scripts/prepare-rust-warnings-candidate.py'
+  # FR// Déclencheur initial conservé désactivé après validation du candidat.
+  # EN// Initial trigger retained disabled after candidate validation.
+  # push:
+  #   branches: [ "chore/ci-phase1-reliability-20261013" ]
+  #   paths:
+  #     - '.github/workflows/rust-warnings-migration.yml'
+  #     - 'Scripts/prepare-rust-warnings-candidate.py'
 permissions:
   contents: read
 jobs:
@@ -43,6 +45,13 @@ jobs:
         run: |
           pnpm install --frozen-lockfile
           pnpm run vite:build
+      # FR// Rejouer la migration depuis les références, seulement dans le runner.
+      # EN// Replay migration from references, only in the runner.
+      - name: Références initiales / Original references
+        run: |
+          cp docs/history/rust-warnings-20261013/Cargo.lock Cargo.lock
+          cp docs/history/rust-warnings-20261013/Cargo.toml Cargo.toml
+          cp docs/history/rust-warnings-20261013/src-tauri/Cargo.toml src-tauri/Cargo.toml
       - name: Chaînes initiales et incompatibilité / Original chains and incompatibility
         run: |
           cargo tree --locked --target all --all-features -i proc-macro-error

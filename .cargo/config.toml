@@ -1,0 +1,3 @@
+# FR// Substituer uniquement le code ; conserver la résolution de registre pour les audits.
+# EN// Override only source code; preserve registry resolution for audits.
+paths = ["vendor/glib-0.18.5"]
