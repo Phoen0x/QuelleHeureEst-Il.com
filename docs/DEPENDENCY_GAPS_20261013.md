@@ -79,6 +79,33 @@ EN: full upstream copies and SHA-256 digests are retained and pinned by the chec
 
 FR : le workflow de conservation exécute désormais une comparaison **supplémentaire contre la vraie base**. Les deux écarts de schéma sont qualifiés seulement si leurs preuves et archives sont intactes et si la base correspond exactement aux fichiers historiques examinés. Ils restent affichés comme avertissements explicites. Aucune autre disparition n'est acceptée ; le contrôleur générique refuse toujours ces transitions sans cette qualification. Aucune règle d'audit, licence, approbation automatique ou workflow de sécurité n'est modifiée. Les fichiers antérieurs remplacés dans cette mission sont entièrement archivés dans `before/`.
 
-FR : la reproductibilité est vérifiée avec pnpm 8.15.9 / Node 22 : installation gelée puis résolution réelle sans scripts et diff nul des manifestes/verrous. Les tests comprennent huit régressions supplémentaires du contrôle historique et trois tests d'outils/modules. Les résultats GitHub Actions seront consignés après exécution. Les audits connus hors mission restent visibles.
+FR : la reproductibilité est vérifiée avec pnpm 8.15.9 / Node 22 : installation gelée puis résolution réelle sans scripts et diff nul des manifestes/verrous. Les tests comprennent huit régressions supplémentaires du contrôle historique et trois tests d'outils/modules. Les résultats GitHub Actions vérifiés figurent ci-dessous. Les audits connus hors mission restent visibles.
 
-EN: a separate check uses the actual PR base and qualifies only two verified schema transitions, with explicit warnings. Generic checks, audit and licensing rules, automatic approval and security workflows are unchanged. Frozen installation and an unchanged lock after actual pnpm resolution verify reproducibility. Eight checker regressions and three tool/module tests are added; CI results are recorded after execution. Known unrelated audit findings remain visible.
+EN: a separate check uses the actual PR base and qualifies only two verified schema transitions, with explicit warnings. Generic checks, audit and licensing rules, automatic approval and security workflows are unchanged. Frozen installation and an unchanged lock after actual pnpm resolution verify reproducibility. Eight checker regressions and three tool/module tests are added; Verified CI results are recorded below. Known unrelated audit findings remain visible.
+
+## Résultats vérifiés sur GitHub Actions
+
+FR : source validée `03785527621149a1f75f6e31075b45340ed5a71e`. Le commit ultérieur de compte-rendu ne change que la documentation. Les résultats ci-dessous sont ceux des commandes exécutées, et non une déduction à partir de l'amorçage.
+
+EN: validated source `03785527621149a1f75f6e31075b45340ed5a71e`. The following report commit changes documentation only. These results come from executed commands, not bootstrap assumptions.
+
+| Contrôle | Résultat et preuve |
+|---|---|
+| Conservation contre la vraie base + 20 tests Python | Succès, deux transitions qualifiées restent visibles comme avertissements. [Job 115517579198](https://github.com/Phoen0x/QuelleHeureEst-Il.com/actions/runs/38461512094/job/115517579198) |
+| Installation gelée pnpm 8.15.9 / Node 22 | Succès. 335 entrées accessibles, 324 noms au total ; les 288 noms de main et les 95 noms optionnels actifs sont conservés. |
+| Outils Babel, React Refresh, exclusion du graphe de production | 3/3 tests ; 53 modules de production contrôlés. [Job 115517579531](https://github.com/Phoen0x/QuelleHeureEst-Il.com/actions/runs/38461512094/job/115517579531) |
+| Résolution pnpm et diff de reproductibilité | Succès ; `pnpm install --lockfile-only --ignore-scripts --no-frozen-lockfile`, puis diff nul de `package.json` et `pnpm-lock.yaml`. Même job. |
+| Lint, typecheck, Vite et régressions braces | Succès. [Job 115517579300](https://github.com/Phoen0x/QuelleHeureEst-Il.com/actions/runs/38461512173/job/115517579300) |
+| actionlint | Succès. [Job 115517579591](https://github.com/Phoen0x/QuelleHeureEst-Il.com/actions/runs/38461512173/job/115517579591) |
+| Validateur Renovate officiel | Succès. [Job 115517579795](https://github.com/Phoen0x/QuelleHeureEst-Il.com/actions/runs/38461512094/job/115517579795) |
+| Rust debug/release, tests debug/release, conservation et artefacts | Succès ; 24 tests dans chaque profil, 446 noms historiques Cargo et 121 fichiers GLib conservés. [Job 115517577926](https://github.com/Phoen0x/QuelleHeureEst-Il.com/actions/runs/38461511882/job/115517577926) |
+| rustfmt et Clippy all-targets/all-features avec `-D warnings` | Succès ; 34 avertissements du paquet GLib tiers restent affichés. [Job 115517578293](https://github.com/Phoen0x/QuelleHeureEst-Il.com/actions/runs/38461511808/job/115517578293) |
+| `pnpm audit --audit-level=moderate` | Échec connu : 1 alerte élevée `braces@3.0.3`, GHSA-vfj7-8cjw-p6xm. Aucune nouvelle alerte Babel. [Job 115517578626](https://github.com/Phoen0x/QuelleHeureEst-Il.com/actions/runs/38461511808/job/115517578626) |
+| `cargo audit --deny warnings` | Échec connu : RUSTSEC-2024-0370, RUSTSEC-2025-0134, RUSTSEC-2024-0429. [Job 115517578357](https://github.com/Phoen0x/QuelleHeureEst-Il.com/actions/runs/38461511808/job/115517578357) |
+| cargo-deny | Échec connu des advisories/licences ; bans et sources passent. Politique inchangée. [Job 115517578321](https://github.com/Phoen0x/QuelleHeureEst-Il.com/actions/runs/38461511808/job/115517578321) |
+
+FR : la première exécution des tests sur le dépôt complet a révélé une fixture incomplète : les quatre anciens verrous npm n'étaient pas copiés dans la base simulée. Elle les signalait donc à tort comme nouveaux verrous concurrents. La fixture a été corrigée et sa version initiale conservée dans `initial-test-fixture.py` ; les 20 tests passent sur le dépôt complet. Les règles de conservation n'ont pas été relâchées.
+
+FR : toutes les autres sources et tous les fichiers existants hors des quatre fichiers actifs ciblés gardent leurs identifiants de blob Git, notamment les archives préexistantes, `Cargo.lock`, `vendor/glib-0.18.5`, les contrôleurs d'audit, les workflows de sécurité et d'approbation et les fichiers de politique de licences. Aucun fichier n'est supprimé. Lightning CSS conserve ses **11** variantes natives optionnelles, dont Android arm64. Ces vérifications portent sur les verrous et builds Linux exécutés ; aucun packaging Android ou lancement graphique n'est revendiqué.
+
+EN: an incomplete test fixture was fixed by retaining all four legacy npm locks; its initial version is archived and all 20 tests pass on the complete repository. No preservation rule was relaxed. All existing files outside the four targeted active files retain their Git blob IDs; no file was deleted. Lightning CSS retains all 11 native optional variants, including Android arm64. Linux builds and lock checks were executed; Android packaging and graphical launch were not tested. Known unrelated audit failures remain visible and unchanged.

@@ -487,5 +487,121 @@
     "before/.github/workflows/dependency-preservation.yml": "48319595e4fb0f49feb7287b111c59536bc3fab3cbae40d6931f007f860519b3"
   },
   "bootstrap_is_evidence_of_preservation": false,
-  "validation_status": "pending-github-actions"
+  "validation_status": "scope-validated-existing-audit-failures-visible",
+  "validated_source": "03785527621149a1f75f6e31075b45340ed5a71e",
+  "validations": {
+    "historical_preservation": {
+      "run": 38461512094,
+      "job": 115517579198,
+      "result": "success",
+      "python_tests": 20,
+      "qualified_warnings": [
+        "vite/lightningcss optional peer became required dependency",
+        "invalid Tauri 1 shell-open retained as archive and comment"
+      ],
+      "babel_root_graph_entries": 47
+    },
+    "historical_tools": {
+      "run": 38461512094,
+      "job": 115517579531,
+      "result": "success",
+      "tests": 3,
+      "production_modules": 53,
+      "lock_reproduction_diff": "empty"
+    },
+    "js": {
+      "run": 38461512173,
+      "job": 115517579300,
+      "result": "success",
+      "commands": [
+        "pnpm install --frozen-lockfile",
+        "pnpm run check:dependencies",
+        "pnpm run test:security",
+        "pnpm run lint",
+        "pnpm run typecheck",
+        "pnpm run vite:build"
+      ]
+    },
+    "actionlint": {
+      "run": 38461512173,
+      "job": 115517579591,
+      "result": "success"
+    },
+    "renovate": {
+      "run": 38461512094,
+      "job": 115517579795,
+      "result": "success"
+    },
+    "rust": {
+      "run": 38461511882,
+      "job": 115517577926,
+      "result": "success",
+      "profiles": [
+        "debug",
+        "release"
+      ],
+      "tests_per_profile": 24,
+      "historical_names_retained": 446,
+      "glib_files_retained": 121
+    },
+    "clippy": {
+      "run": 38461511808,
+      "job": 115517578293,
+      "result": "success",
+      "command": "cargo clippy --workspace --locked --all-targets --all-features -- -D warnings",
+      "visible_third_party_glib_warnings": 34
+    },
+    "pnpm_audit": {
+      "run": 38461511808,
+      "job": 115517578626,
+      "result": "failure",
+      "remaining": [
+        "GHSA-vfj7-8cjw-p6xm"
+      ],
+      "new_alerts": 0
+    },
+    "cargo_audit": {
+      "run": 38461511808,
+      "job": 115517578357,
+      "result": "failure",
+      "remaining": [
+        "RUSTSEC-2024-0370",
+        "RUSTSEC-2025-0134",
+        "RUSTSEC-2024-0429"
+      ]
+    },
+    "cargo_deny": {
+      "run": 38461511808,
+      "job": 115517578321,
+      "result": "failure",
+      "checks": {
+        "advisories": "failure",
+        "licenses": "failure",
+        "bans": "success",
+        "sources": "success"
+      }
+    }
+  },
+  "tree_comparison": {
+    "baseline": "a42475b25bd13d2803d0d32b9c3a71d4256170f0",
+    "candidate": "03785527621149a1f75f6e31075b45340ed5a71e",
+    "deleted_files": [],
+    "changed_existing_files": [
+      ".github/workflows/dependency-preservation.yml",
+      "package.json",
+      "pnpm-lock.yaml",
+      "src-tauri/Cargo.toml"
+    ],
+    "cargo_manifest_semantics_changed": false,
+    "existing_lock_package_records_changed": false
+  },
+  "upstream_refs": {
+    "plugin-react-4.7.0": "https://github.com/vitejs/vite-plugin-react/blob/plugin-react%404.7.0/packages/plugin-react/package.json",
+    "plugin-react-6.0.2": "https://github.com/vitejs/vite-plugin-react/blob/plugin-react%406.0.2/packages/plugin-react/package.json",
+    "vite-7.3.5": "https://github.com/vitejs/vite/blob/v7.3.5/packages/vite/package.json",
+    "vite-8.0.16": "https://github.com/vitejs/vite/blob/v8.0.16/packages/vite/package.json",
+    "tauri-1.8.3": "https://github.com/tauri-apps/tauri/blob/tauri-v1.8.3/core/tauri/Cargo.toml",
+    "tauri-2.12.3": "https://github.com/tauri-apps/tauri/blob/tauri-v2.12.3/crates/tauri/Cargo.toml",
+    "tauri-v2-migration": "https://github.com/tauri-apps/tauri-docs/blob/86f23966da282a29c7ec27e18ce540be70988091/src/content/docs/start/migrate/from-tauri-1.mdx"
+  }
 }
