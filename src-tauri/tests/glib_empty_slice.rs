@@ -53,11 +53,7 @@ fn emptied_reserved_slice_conversion_is_reusable() {
 fn nonempty_slice_preserves_contents_and_null_termination() {
     // FR// Les mêmes messages que dans le test amont, avec Error disponible dans glib 0.18.5.
     // EN// The same messages as the upstream test, using Error available in glib 0.18.5.
-    let items = [
-        item("one"),
-        item("two"),
-        item("three"),
-    ];
+    let items = [item("one"), item("two"), item("three")];
     let source = Slice::from(&items[..]);
     let mut converted: PtrSlice<Error> = PtrSlice::from(source);
     drop(items);
