@@ -19,6 +19,25 @@ env:
   RUST_BACKTRACE: 1
 
 jobs:
+  # FR// Détecter les cibles existantes pour signaler les contrôles Android réellement ignorés.
+  # EN// Detect existing targets to report Android checks that are genuinely skipped.
+  project-layout:
+    name: Cibles présentes / Existing targets
+    runs-on: ubuntu-latest
+    outputs:
+      android: ${{ steps.targets.outputs.android }}
+    steps:
+      - uses: actions/checkout@v6
+      - name: Projet Gradle présent / Gradle project present
+        id: targets
+        run: |
+          if [ -f gradlew ]; then
+            echo "android=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "android=false" >> "$GITHUB_OUTPUT"
+            echo "Android Lint ignore : aucun projet Gradle / Android Lint skipped: no Gradle project" >> "$GITHUB_STEP_SUMMARY"
+          fi
+
   # =============================================================================
   # 1. CodeQL - Multi-language SAST (Rust, JS/TS, Actions)
   # =============================================================================
@@ -95,6 +114,7 @@ jobs:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
     runs-on: ubuntu-latest
     permissions:
+      contents: read
       pull-requests: read
 
     steps:
@@ -152,9 +172,13 @@ jobs:
         uses: actions/checkout@v6
 
       - name: Run cargo-deny (dependency check)
-        uses: EmbarkStudios/cargo-deny-action@v1
+        # FR// Ancienne action incompatible avec les éditions Rust récentes.
+        # EN// Former action incompatible with recent Rust editions.
+        # uses: EmbarkStudios/cargo-deny-action@v1
+        uses: EmbarkStudios/cargo-deny-action@v2
         with:
           log-level: warn
+          rust-version: stable
           command: check
           # FR// --all-targets n'est pas une option cargo-deny ; toutes les cibles sont analysées par défaut.
           # EN// --all-targets is not a cargo-deny option; all targets are analyzed by default.
@@ -223,7 +247,7 @@ jobs:
           done
 
       - name: Run clippy lints
-        run: cargo clippy --all-targets --all-features -- -D warnings
+        run: cargo clippy --workspace --locked --all-targets --all-features -- -D warnings
 
   # =============================================================================
   # 7. Rust Build & Test
@@ -267,17 +291,18 @@ jobs:
         uses: Swatinem/rust-cache@v2
 
       - name: Build Rust project
-        run: cargo build --workspace --verbose
+        run: cargo build --workspace --locked --verbose
 
       - name: Run unit tests
-        run: cargo test --workspace --verbose
+        run: cargo test --workspace --locked --verbose
 
       - name: Run doc tests
         # FR// Le paquet est actuellement binaire ; signaler l'absence de doctests.
         # EN// The package is currently binary-only; report absent doctests.
         run: |
-          if cargo metadata --no-deps --format-version 1 | python3 -c 'import json,sys; d=json.load(sys.stdin); sys.exit(0 if any("lib" in t["kind"] for p in d["packages"] for t in p["targets"]) else 1)'; then
-            cargo test --workspace --doc --verbose
+          cargo metadata --no-deps --locked --format-version 1 > "$RUNNER_TEMP/rust-metadata.json"
+          if python3 -c 'import json,sys; d=json.load(open(sys.argv[1])); sys.exit(0 if any("lib" in t["kind"] for p in d["packages"] for t in p["targets"]) else 1)' "$RUNNER_TEMP/rust-metadata.json"; then
+            cargo test --workspace --locked --doc --verbose
           else
             echo "Doctests ignorés : aucune bibliothèque Rust / Doctests skipped: no Rust library" >> "$GITHUB_STEP_SUMMARY"
           fi
@@ -317,6 +342,8 @@ jobs:
   # 9. Kotlin/Android Security (Android Lint)
   # =============================================================================
   android-lint:
+    needs: project-layout
+    if: ${{ needs.project-layout.outputs.android == 'true' }}
     name: "📱 Kotlin/Android: Lint Analysis"
     runs-on: ubuntu-latest
 

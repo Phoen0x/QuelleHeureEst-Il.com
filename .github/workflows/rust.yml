@@ -40,10 +40,34 @@ jobs:
           pnpm install --frozen-lockfile
           pnpm run vite:build
       - name: Build Rust
-        run: cargo build --workspace --verbose
+        run: cargo build --workspace --locked --verbose
       - name: Test Rust
-        run: cargo test --workspace --verbose
+        run: cargo test --workspace --locked --verbose
 
+
+      - name: Build Rust de production / Production Rust build
+        run: cargo build --workspace --release --locked --verbose
+      # FR// Contrôler les marqueurs des sources neutralisées dans les artefacts réels.
+      # EN// Check disabled-source markers in actual artifacts.
+      - name: Exclusion du code désactivé / Disabled code exclusion
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          markers = (
+              b'LOCKFILE_CANDIDATE_BEGIN',
+              b'RUSTFMT_BEGIN:',
+              b'lockfileVersion:',
+              b'https://brokencrystals.com',
+          )
+          paths = list(Path('dist').rglob('*')) + [Path('target/release/quelleheureest')]
+          for path in paths:
+              if path.is_file():
+                  content = path.read_bytes()
+                  for marker in markers:
+                      if marker in content:
+                          raise SystemExit(f'Reference historique dans un artefact / Historical reference in artifact: {path}')
+          print('References historiques exclues / Historical references excluded')
+          PY
       # FR// Garder la résolution exacte pour revue et reproduction des résultats.
       # EN// Retain the exact resolution for review and reproducing results.
       - name: Verrouillage Rust utilisé / Rust lockfile used
