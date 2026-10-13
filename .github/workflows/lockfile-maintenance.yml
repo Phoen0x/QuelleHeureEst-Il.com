@@ -1,0 +1,61 @@
+# FR// Régénération manuelle du verrouillage ; le candidat doit être revu et commité.
+# EN// Manual lockfile regeneration; the candidate must be reviewed and committed.
+name: Maintenance du verrouillage pnpm
+on:
+  workflow_dispatch:
+  # FR// Déclencheur provisoire de réparation pour la PR 153.
+  # EN// Temporary repair trigger for PR 153.
+  push:
+    branches: [ "chore/ci-phase1-reliability-20261013" ]
+permissions:
+  contents: read
+jobs:
+  candidate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 8.15.9
+          run_install: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      # FR// Résoudre réellement les deux paquets corrompus sans changer les autres dépendances.
+      # EN// Resolve the two corrupted packages without changing other dependencies.
+      - name: Régénérer le candidat / Regenerate candidate
+        run: pnpm update @vitejs/plugin-react vite --lockfile-only --ignore-scripts
+      - name: Exporter le candidat pour revue / Export candidate for review
+        run: |
+          echo LOCKFILE_CANDIDATE_BEGIN
+          cat pnpm-lock.yaml
+          echo LOCKFILE_CANDIDATE_END
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pnpm-lockfile-candidate
+          path: pnpm-lock.yaml
+      - name: Vérifier le candidat gelé / Verify frozen candidate
+        run: pnpm install --frozen-lockfile
+      - name: Lint diagnostique / Diagnostic lint
+        id: lint
+        continue-on-error: true
+        run: pnpm run lint
+      - name: Types diagnostiques / Diagnostic types
+        id: types
+        continue-on-error: true
+        run: pnpm run typecheck
+      - name: Build Vite diagnostique / Diagnostic Vite build
+        id: build
+        continue-on-error: true
+        run: pnpm run vite:build
+      - name: Résultats diagnostiques / Diagnostic results
+        if: always()
+        env:
+          LINT_RESULT: ${{ steps.lint.outcome }}
+          TYPES_RESULT: ${{ steps.types.outcome }}
+          BUILD_RESULT: ${{ steps.build.outcome }}
+        run: |
+          echo "Lint: $LINT_RESULT; types: $TYPES_RESULT; Vite: $BUILD_RESULT" >> "$GITHUB_STEP_SUMMARY"
+          test "$LINT_RESULT" = success
+          test "$TYPES_RESULT" = success
+          test "$BUILD_RESULT" = success
