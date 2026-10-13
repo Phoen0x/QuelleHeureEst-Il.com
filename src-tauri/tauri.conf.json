@@ -3,8 +3,8 @@
   "version": "0.0.1",
   "identifier": "com.quelleheureest.app",
   "build": {
-    "beforeBuildCommand": "npm run vite:build",
-    "beforeDevCommand": "npm run vite:dev",
+    "beforeBuildCommand": "pnpm run vite:build",
+    "beforeDevCommand": "pnpm run vite:dev",
     "devUrl": "http://localhost:5173",
     "frontendDist": "../dist"
   },
@@ -20,5 +20,6 @@
     "security": {
       "csp": null
     }
-  }
+  },
+  "$schema": "https://schema.tauri.app/config/2"
 }
