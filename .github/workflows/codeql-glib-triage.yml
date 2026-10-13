@@ -1,0 +1,55 @@
+# FR// Diagnostic isolé : exporter les preuves CodeQL sans modifier les analyses existantes.
+# EN// Isolated diagnostic: export CodeQL evidence without changing existing analyses.
+name: Diagnostic CodeQL glib
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "chore/ci-phase1-reliability-20261013" ]
+    paths: [ ".github/workflows/codeql-glib-triage.yml" ]
+permissions:
+  contents: read
+  packages: read
+jobs:
+  triage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v6
+      - name: Initialiser l'analyse Rust existante / Initialize existing Rust analysis
+        uses: github/codeql-action/init@v4
+        with:
+          languages: rust
+          build-mode: none
+      - name: Analyser sans publier de nouveaux états / Analyze without publishing new states
+        uses: github/codeql-action/analyze@v4
+        with:
+          output: ${{ runner.temp }}/codeql-glib-triage
+          upload: false
+          add-snippets: true
+      - name: Exporter les résultats et traces / Export results and traces
+        run: |
+          python3 - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+          root = Path(os.environ['RUNNER_TEMP']) / 'codeql-glib-triage'
+          for path in sorted(root.glob('*.sarif')):
+              sarif = json.loads(path.read_text())
+              for run in sarif['runs']:
+                  rules = {r['id']: r for r in run['tool']['driver'].get('rules', [])}
+                  print('CODEQL_TOOL', json.dumps(run['tool']['driver'], ensure_ascii=False))
+                  for result in run.get('results', []):
+                      record = {
+                          'rule': rules.get(result.get('ruleId'), {}),
+                          'result': result,
+                      }
+                      print('CODEQL_RESULT_BEGIN')
+                      print(json.dumps(record, ensure_ascii=False, separators=(',', ':')))
+                      print('CODEQL_RESULT_END')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: codeql-glib-triage-sarif
+          path: ${{ runner.temp }}/codeql-glib-triage/*.sarif
+          if-no-files-found: error
