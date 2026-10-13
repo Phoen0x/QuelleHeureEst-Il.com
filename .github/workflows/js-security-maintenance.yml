@@ -3,10 +3,10 @@
 name: Candidat de sécurité JavaScript
 on:
   workflow_dispatch:
-  # FR// Déclencheur provisoire pour la correction des alertes de la PR 153.
-  # EN// Temporary trigger for fixing PR 153 advisories.
-  push:
-    branches: [ "chore/ci-phase1-reliability-20261013" ]
+  # FR// Ancien déclencheur provisoire conservé désactivé après vérification.
+  # EN// Former temporary trigger retained disabled after verification.
+  # push:
+  #   branches: [ "chore/ci-phase1-reliability-20261013" ]
 permissions:
   contents: read
 jobs:
