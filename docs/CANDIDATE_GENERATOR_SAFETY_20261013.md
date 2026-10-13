@@ -52,6 +52,39 @@ FR : La suite de régressions utilise exclusivement des copies temporaires : ref
 
 EN: Temporary-copy tests cover incompatible states/managers, dependency/backport loss, existing outputs/configs, altered archives, wrong cwd, symlinks and bypass arguments. Full-file fingerprints prove no writes; sentinel executables detect mutating tool calls. Temporary Git checks HEAD safety; CRLF checks write nothing. Dedicated Ubuntu/Windows CI uses pnpm 8.15.9/Node 22 without project installation.
 
-FR : Résultats CI à consigner après exécution. Localement, les contrôles de conservation et refus actuels passent ; le sandbox refuse les processus enfants de Node (EPERM), donc les tests exigeant la sonde pnpm/Git restent à vérifier sur CI. Les anciennes données manquantes ou divergentes du dossier partiel ne sont pas réécrites : le dépôt distant complet sert de référence. Aucun corps mutateur historique n'est exécuté pour ces tests, même sur une référence positive.
+FR : Les résultats CI vérifiés sont consignés ci-dessous. Localement, les contrôles de conservation et refus actuels passent ; le sandbox refuse les processus enfants de Node (EPERM), donc les tests exigeant la sonde pnpm/Git restent à vérifier sur CI. Les anciennes données manquantes ou divergentes du dossier partiel ne sont pas réécrites : le dépôt distant complet sert de référence. Aucun corps mutateur historique n'est exécuté pour ces tests, même sur une référence positive.
 
-EN: CI results will be recorded after execution. Local current checks/refusals pass; Node child processes are denied by the sandbox (EPERM), so pnpm/Git probe tests need CI. Missing/divergent historical materializations are not rewritten; the complete remote repository is authoritative. No mutating historical body is executed, including positive-baseline tests.
+EN: Verified CI results are recorded below. Local current checks/refusals pass; Node child processes are denied by the sandbox (EPERM), so pnpm/Git probe tests need CI. Missing/divergent historical materializations are not rewritten; the complete remote repository is authoritative. No mutating historical body is executed, including positive-baseline tests.
+
+## Encodage des générations historiques
+
+FR : Les corps historiques utilisent write_text sans encoding explicite. La garde exige donc un encodage Python par défaut UTF-8 **avant d'autoriser --generate**, sans modifier ces corps. Si ce n'est pas le cas, elle refuse avant écriture et indique Python -X utf8. Le contrôle seul reste possible. Le workflow dédié définit PYTHONUTF8=1 ; un test simule cp1252 sur une référence compatible et prouve que le corps ne s'exécute pas. La première variante de la garde et du workflow reste archivée. Les messages Python Windows de la première exécution étaient mal rendus ; la dernière exécution les affiche correctement.
+
+EN: Historical bodies use write_text without explicit encoding, so --generate requires a UTF-8 Python default before any body executes. Non-UTF-8 defaults are rejected; check-only remains available. Dedicated CI sets PYTHONUTF8=1; an isolated cp1252 test proves refusal without writes. Previous guard/workflow versions are archived. Windows messages render correctly in the final run.
+
+## Résultats réellement vérifiés
+
+FR : Source validée **32b646058f64890d072118f41736e27b602093d5**. Le commit de compte-rendu suivant ne modifie que la documentation. Aucun générateur mutateur n'a été exécuté : les références positives ont été contrôlées avec --check ou le mode par défaut ; les appels --generate testés ont été refusés sur leurs copies.
+
+EN: Validated source **32b646058f64890d072118f41736e27b602093d5**. The following report commit changes documentation only. No mutating generator ran: positive baselines used checks/default mode; tested --generate calls were refused on copies.
+
+| Contrôle | Résultat |
+|---|---|
+| Gardes Ubuntu, snapshots avant/après et sentinelles | **21 tests réussis**, puis vrais contrôles Node/Python et pnpm 8.15.9 sans diff des manifestes/verrous. [Job 115558934745](https://github.com/Phoen0x/QuelleHeureEst-Il.com/actions/runs/38473687697/job/115558934745) |
+| Gardes Windows, CRLF, Git HEAD, pnpm et UTF-8 | **21 tests réussis**, mêmes contrôles sans diff. [Job 115558934819](https://github.com/Phoen0x/QuelleHeureEst-Il.com/actions/runs/38473687697/job/115558934819) |
+| Ensemble des contrôleurs | **41 tests Python réussis**. [Job 115558934423](https://github.com/Phoen0x/QuelleHeureEst-Il.com/actions/runs/38473687697/job/115558934423) |
+| Installation JS gelée, conservation et tests | Succès : 335 entrées accessibles, 95 noms optionnels ; **10 tests braces + 3 tests Babel/Refresh/bundle**, 53 modules de production contrôlés. Même job. |
+| ESLint, typecheck, Vite et actionlint | Succès. Même job. |
+| Rust debug et tests du workflow de sécurité existant | Succès, **24 tests**. [Job 115558933907](https://github.com/Phoen0x/QuelleHeureEst-Il.com/actions/runs/38473687561/job/115558933907) |
+| rustfmt et Clippy existants | Succès ; avertissements tiers GLib visibles. [Job 115558934586](https://github.com/Phoen0x/QuelleHeureEst-Il.com/actions/runs/38473687561/job/115558934586) |
+| Audits existants | Échecs inchangés : braces, 3 avertissements Rust, advisories/licences cargo-deny. [JS](https://github.com/Phoen0x/QuelleHeureEst-Il.com/actions/runs/38473687561/job/115558934136), [Rust](https://github.com/Phoen0x/QuelleHeureEst-Il.com/actions/runs/38473687561/job/115558933738), [cargo-deny](https://github.com/Phoen0x/QuelleHeureEst-Il.com/actions/runs/38473687561/job/115558934042) |
+
+FR : Localement, **17 tests** ont passé sur une copie utilisant les archives exactes distantes, puis le nouveau test non UTF-8 a passé. Les sondes enfant Node ne pouvaient pas être validées dans le sandbox EPERM ; elles sont entièrement validées par les jobs Ubuntu/Windows ci-dessus. Une archive du dossier local partiel différait d'un saut de ligne de la version distante ; elle n'a pas été réécrite. Les tests CI utilisent le dépôt complet.
+
+FR : L'API GitHub a annoncé mergeable:false / dirty et les jobs pull_request attendus ne sont pas apparus pour ces pushes. Le diagnostic de cet état n'est pas revendiqué ici ; la comparaison API indiquait aussi une branche ahead sans commit behind. Une validation push **bornée à la branche de #153** a donc été ajoutée au seul nouveau workflow de tests. Aucune fusion, rebase ou modification des règles d'approbation n'a été tentée. Ce statut devra être réexaminé séparément avant une éventuelle fusion, qui reste exclue de cette mission.
+
+EN: Seventeen isolated local tests and the additional non-UTF-8 test passed; Node subprocess probes were blocked locally but fully passed in Ubuntu/Windows CI. A local historical materialization differed by a newline and was not rewritten. GitHub reported mergeable:false/dirty while its compare endpoint reported ahead with no behind commits; no conflict diagnosis is claimed. The new test workflow therefore has a push trigger limited to #153's branch. No merge/rebase/approval-policy change was attempted.
+
+FR : Les blobs Git des huit entrées actives protégées, des configurations parallèles et de toutes les archives préexistantes restent ceux du commit de départ. Seuls les deux scripts de préparation et les quatre workflows de génération existants changent ; les gardes, tests, preuves et archives sont ajoutés. Aucun fichier ni dépendance n'est supprimé. Le build release, un APK, une session réelle StackBlitz/Bolt/Cursor/Claude et les écritures des anciens corps sur un état historique ne sont pas prétendus testés dans cette mission.
+
+EN: Protected active inputs, parallel configurations and all pre-existing archives retain their original Git blobs. Only two existing preparers and four candidate workflows change; guards/tests/evidence/archives are added. No dependency or file is deleted. This task does not claim release/Android packaging, actual client sessions, or mutating historical replay validation.
