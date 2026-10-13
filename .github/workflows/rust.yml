@@ -39,6 +39,13 @@ jobs:
         run: |
           pnpm install --frozen-lockfile
           pnpm run vite:build
+      # FR// Préserver les dépendances et empêcher le retour d'une version h2 vulnérable.
+      # EN// Preserve dependencies and prevent a vulnerable h2 version from returning.
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Migration h2 vérifiée / Verified h2 migration
+        run: python3 Scripts/check-rust-h2-migration.py
       - name: Build Rust
         run: cargo build --workspace --locked --verbose
       - name: Test Rust

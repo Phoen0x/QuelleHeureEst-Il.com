@@ -3,11 +3,13 @@
 name: Validation de migration Rust h2
 on:
   workflow_dispatch:
-  push:
-    branches: [ "chore/ci-phase1-reliability-20261013" ]
-    paths:
-      - '.github/workflows/rust-h2-migration.yml'
-      - 'Scripts/prepare-rust-h2-candidate.py'
+  # FR// Déclencheur initial conservé désactivé après validation du candidat.
+  # EN// Initial trigger retained disabled after candidate validation.
+  # push:
+  #   branches: [ "chore/ci-phase1-reliability-20261013" ]
+  #   paths:
+  #     - '.github/workflows/rust-h2-migration.yml'
+  #     - 'Scripts/prepare-rust-h2-candidate.py'
 permissions:
   contents: read
 jobs:
@@ -43,6 +45,12 @@ jobs:
         run: |
           pnpm install --frozen-lockfile
           pnpm run vite:build
+      # FR// Rejouer la migration depuis la référence archivée, seulement dans le runner.
+      # EN// Replay migration from the archived reference, only in the runner.
+      - name: Référence initiale isolée / Isolated original reference
+        run: |
+          cp docs/history/rust-h2-20261013/Cargo.lock Cargo.lock
+          cp docs/history/rust-h2-20261013/src-tauri/Cargo.toml src-tauri/Cargo.toml
       - name: Chaîne initiale / Original dependency chain
         run: cargo tree --locked --target all -i h2@0.3.27
       - name: Préparer le candidat isolé / Prepare isolated candidate
