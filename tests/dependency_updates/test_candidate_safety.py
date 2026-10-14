@@ -205,7 +205,9 @@ class CandidateSafetyTests(unittest.TestCase):
     def test_lockfile_check_accepts_only_matching_git_head_and_pnpm(self):
         hooks = Path(self.temp.name) / "empty-hooks"
         hooks.mkdir()
-        options = ["git", "-c", "core.hooksPath=" + str(hooks), "-c", "commit.gpgSign=false", "-c", "user.name=Candidate test", "-c", "user.email=candidate-test@example.invalid"]
+        # FR// Désactiver la maintenance Git asynchrone dans cette fixture seulement : elle crée/retire des verrous pendant les snapshots.
+        # EN// Disable asynchronous Git maintenance in this fixture only: it creates/removes locks during snapshots.
+        options = ["git", "-c", "maintenance.auto=false", "-c", "gc.auto=0", "-c", "core.hooksPath=" + str(hooks), "-c", "commit.gpgSign=false", "-c", "user.name=Candidate test", "-c", "user.email=candidate-test@example.invalid"]
         subprocess.run([*options, "-c", "init.templateDir=", "init", "--quiet"], cwd=self.root, env=self.env, check=True, capture_output=True)
         subprocess.run([*options, "add", "package.json"], cwd=self.root, env=self.env, check=True, capture_output=True)
         subprocess.run([*options, "commit", "--quiet", "--no-verify", "-m", "isolated fixture"], cwd=self.root, env=self.env, check=True, capture_output=True)
