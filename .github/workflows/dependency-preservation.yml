@@ -34,7 +34,7 @@ jobs:
       # FR// Amorçage limité à #153 : les migrations antérieures restent documentées, sans réactivation.
       # EN// Bootstrap limited to #153: earlier migrations stay documented without reactivation.
       - uses: actions/checkout@v6
-        if: ${{ hashFiles('reference/Scripts/check-dependency-update-preservation.py') == '' && github.event.pull_request.number == 153 && github.event.pull_request.base.sha == 'c39a87e1d693382f34ca38bcaa68e032a9bcbc29' }}
+        if: ${{ hashFiles('reference/Scripts/check-dependency-update-preservation.py') == '' && github.event.pull_request.number == 153 && (github.event.pull_request.base.sha == 'c39a87e1d693382f34ca38bcaa68e032a9bcbc29' || github.event.pull_request.base.sha == '235194a6fe825a6dac27012f07cbac2cc5d86794') }}
         with:
           ref: c0169878bbd24ba28bc17c1886bb4eada464bf39
           path: bootstrap
@@ -52,7 +52,12 @@ jobs:
             # FR// La vraie base reste obligatoire hors de l'unique amorçage explicitement borné.
             # EN// The actual base remains mandatory outside the single explicitly bounded bootstrap.
             test "$PR_NUMBER" = 153
-            test "$PR_BASE_SHA" = c39a87e1d693382f34ca38bcaa68e032a9bcbc29
+            # FR// Seules les deux bases relues : main avance uniquement par renovate.json, sans perte.
+            # EN// Only the two reviewed bases: main advances solely through renovate.json, with no loss.
+            case "$PR_BASE_SHA" in
+              c39a87e1d693382f34ca38bcaa68e032a9bcbc29|235194a6fe825a6dac27012f07cbac2cc5d86794) ;;
+              *) echo "::error::Base non examinée / Unreviewed base"; exit 1 ;;
+            esac
             test -f bootstrap/package.json
             checker=candidate/Scripts/check-dependency-update-preservation.py
             comparison_base=bootstrap
