@@ -1,0 +1,703 @@
+{
+  "date": "2026-10-14",
+  "repository": "Phoen0x/QuelleHeureEst-Il.com",
+  "analyzed_sha": "a3a523b3a87f72ec18bcd90563ecc3701859a25c",
+  "check": {
+    "id": 115661038804,
+    "head_sha": "a3a523b3a87f72ec18bcd90563ecc3701859a25c",
+    "conclusion": "failure",
+    "output": {
+      "title": "1 new alert including 1 high severity security vulnerability",
+      "summary": "### New alerts in code changed by this pull request\n\nSecurity Alerts:\n * 1 high\n\n\n_Alerts not introduced by this pull request might have been detected because the code changes were too large._\n\nSee annotations below for details.\n\n[View all branch alerts](/Phoen0x/QuelleHeureEst-Il.com/security/code-scanning?query=pr%3A153+tool%3ACodeQL+is%3Aopen).",
+      "text": null,
+      "annotations_count": 1,
+      "annotations_url": "https://api.github.com/repos/Phoen0x/QuelleHeureEst-Il.com/check-runs/115661038804/annotations"
+    },
+    "html_url": "https://github.com/Phoen0x/QuelleHeureEst-Il.com/runs/115661038804"
+  },
+  "annotation": {
+    "path": "docs/history/glib-empty-slice-20261013/vendor/glib-0.18.5/src/collections/ptr_slice.rs",
+    "blob_href": "https://github.com/Phoen0x/QuelleHeureEst-Il.com/blob/a3a523b3a87f72ec18bcd90563ecc3701859a25c/docs/history/glib-empty-slice-20261013/vendor/glib-0.18.5/src/collections/ptr_slice.rs",
+    "start_line": 900,
+    "start_column": 21,
+    "end_line": 900,
+    "end_column": 22,
+    "annotation_level": "failure",
+    "title": "Access of invalid pointer",
+    "message": "This operation dereferences a pointer that may be [invalid](1).",
+    "raw_details": null
+  },
+  "github_alert_attribution": {
+    "number": 13,
+    "url": "https://github.com/Phoen0x/QuelleHeureEst-Il.com/security/code-scanning/13",
+    "method": "Exact unique PR comment match: path, line, title, message and alert link; API alert enumeration unavailable",
+    "comment": {
+      "id": 4262273803,
+      "path": "docs/history/glib-empty-slice-20261013/vendor/glib-0.18.5/src/collections/ptr_slice.rs",
+      "line": 900,
+      "body": "## CodeQL / Access of invalid pointer\n\nThis operation dereferences a pointer that may be [invalid](1).\n\n[Show more details](https://github.com/Phoen0x/QuelleHeureEst-Il.com/security/code-scanning/13)",
+      "html_url": "https://github.com/Phoen0x/QuelleHeureEst-Il.com/pull/153#discussion_r4262273803",
+      "created_at": "2026-10-13T18:07:43Z"
+    }
+  },
+  "rule": {
+    "id": "rust/access-invalid-pointer",
+    "shortDescription": {
+      "text": "Access of invalid pointer"
+    },
+    "defaultConfiguration": {
+      "enabled": true,
+      "level": "error"
+    },
+    "properties": {
+      "tags": [
+        "reliability",
+        "security",
+        "external/cwe/cwe-476",
+        "external/cwe/cwe-825"
+      ],
+      "description": "Dereferencing an invalid or dangling pointer causes undefined behavior and may result in memory corruption.",
+      "id": "rust/access-invalid-pointer",
+      "kind": "path-problem",
+      "name": "Access of invalid pointer",
+      "precision": "high",
+      "problem.severity": "error",
+      "security-severity": "7.5"
+    }
+  },
+  "matched_sarif_result": {
+    "ruleId": "rust/access-invalid-pointer",
+    "rule": {
+      "id": "rust/access-invalid-pointer",
+      "index": 6,
+      "toolComponent": {
+        "index": 0
+      }
+    },
+    "message": {
+      "text": "This operation dereferences a pointer that may be [invalid](1)."
+    },
+    "locations": [
+      {
+        "physicalLocation": {
+          "artifactLocation": {
+            "uri": "docs/history/glib-empty-slice-20261013/vendor/glib-0.18.5/src/collections/ptr_slice.rs",
+            "uriBaseId": "%SRCROOT%",
+            "index": 14
+          },
+          "region": {
+            "startLine": 900,
+            "startColumn": 21,
+            "endColumn": 22
+          }
+        }
+      }
+    ],
+    "partialFingerprints": {
+      "primaryLocationLineHash": "f0389e3887603b54:1",
+      "primaryLocationStartColumnFingerprint": "0"
+    },
+    "codeFlows": [
+      {
+        "threadFlows": [
+          {
+            "locations": [
+              {
+                "location": {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "docs/history/glib-empty-slice-20261013/vendor/glib-0.18.5/src/collections/ptr_slice.rs",
+                      "uriBaseId": "%SRCROOT%",
+                      "index": 14
+                    },
+                    "region": {
+                      "startLine": 898,
+                      "startColumn": 41,
+                      "endColumn": 52
+                    }
+                  },
+                  "message": {
+                    "text": "p as ..."
+                  }
+                },
+                "taxa": [
+                  {
+                    "index": 2,
+                    "toolComponent": {
+                      "index": 1
+                    },
+                    "properties": {
+                      "CodeQL/DataflowRole": "source"
+                    }
+                  }
+                ]
+              },
+              {
+                "location": {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "docs/history/glib-empty-slice-20261013/vendor/glib-0.18.5/src/collections/ptr_slice.rs",
+                      "uriBaseId": "%SRCROOT%",
+                      "index": 14
+                    },
+                    "region": {
+                      "startLine": 900,
+                      "startColumn": 21,
+                      "endColumn": 22
+                    }
+                  },
+                  "message": {
+                    "text": "p"
+                  }
+                },
+                "taxa": [
+                  {
+                    "index": 3,
+                    "toolComponent": {
+                      "index": 1
+                    },
+                    "properties": {
+                      "CodeQL/DataflowRole": "sink"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "relatedLocations": [
+      {
+        "id": 1,
+        "physicalLocation": {
+          "artifactLocation": {
+            "uri": "docs/history/glib-empty-slice-20261013/vendor/glib-0.18.5/src/collections/ptr_slice.rs",
+            "uriBaseId": "%SRCROOT%",
+            "index": 14
+          },
+          "region": {
+            "startLine": 898,
+            "startColumn": 41,
+            "endColumn": 52
+          }
+        },
+        "message": {
+          "text": "invalid"
+        }
+      },
+      {
+        "physicalLocation": {
+          "artifactLocation": {
+            "uri": "docs/history/glib-empty-slice-20261013/vendor/glib-0.18.5/src/collections/ptr_slice.rs",
+            "uriBaseId": "%SRCROOT%",
+            "index": 14
+          },
+          "region": {
+            "startLine": 898,
+            "startColumn": 41,
+            "endColumn": 52
+          }
+        }
+      }
+    ]
+  },
+  "tool": {
+    "name": "CodeQL",
+    "semanticVersion": "2.27.2",
+    "extensions": [
+      {
+        "name": "codeql/rust-queries",
+        "semanticVersion": "0.1.44+a7057b836bf29767461026718b14d20790b9085f"
+      },
+      {
+        "name": "codeql/rust-all",
+        "semanticVersion": "0.2.23+a7057b836bf29767461026718b14d20790b9085f"
+      },
+      {
+        "name": "codeql/threat-models",
+        "semanticVersion": "1.0.59+a7057b836bf29767461026718b14d20790b9085f"
+      }
+    ]
+  },
+  "diagnostic": {
+    "commit": "87b551e85af2256c12cf8a804524540279aa9cda",
+    "run": 38507354862,
+    "upload": false,
+    "permissions": {
+      "contents": "read",
+      "packages": "read"
+    },
+    "artifacts": [
+      {
+        "id": 11869070736,
+        "name": "codeql-high-sarif-rust",
+        "digest": "sha256:51b0f726587b554042c6bbb24b5cc70ad33a2bf625d32abf3e5f482374e935bb",
+        "size": 33552,
+        "expires_at": "2027-01-12T03:39:11Z"
+      },
+      {
+        "id": 11868745550,
+        "name": "codeql-high-rest-evidence",
+        "digest": "sha256:aeec00284c97de11043af97497ad43773d86c9628c5ef80d5d485258303ad88f",
+        "size": 15131,
+        "expires_at": "2027-01-12T03:39:11Z"
+      },
+      {
+        "id": 11868586630,
+        "name": "codeql-high-sarif-javascript-typescript",
+        "digest": "sha256:0bb4b291df944ea534aa7580b623ff30f4da0941986d8d874190accb7433c2a8",
+        "size": 72499,
+        "expires_at": "2027-01-12T03:39:11Z"
+      },
+      {
+        "id": 11868476801,
+        "name": "codeql-high-sarif-actions",
+        "digest": "sha256:1f7b1c7b0de957bbfee387609cdd3082667a5e17ad2ebcbb009a557bcd5c1e6a",
+        "size": 14775,
+        "expires_at": "2027-01-12T03:39:11Z"
+      }
+    ],
+    "documents": [
+      {
+        "language": "rust",
+        "bytes": 497599,
+        "sha256": "73f5c03fda27b8bda583f1f42aaa93c12c8e7a9d29b546167e1774a5d1970185",
+        "results": 8
+      },
+      {
+        "language": "javascript-typescript",
+        "bytes": 557197,
+        "sha256": "39d439c04c26ff9e2c8eb270df6dfece946f529da3f7f229a39d8af884cc3c53",
+        "results": 0
+      },
+      {
+        "language": "actions",
+        "bytes": 147176,
+        "sha256": "a44c3bf9c1dce6415fa97cf6f58d0bb818f65c028b982f791d6c5b54b95389dd",
+        "results": 0
+      }
+    ],
+    "all_rust_primary_locations": [
+      {
+        "rule": "rust/access-invalid-pointer",
+        "uri": "vendor/glib-0.18.5/src/object.rs",
+        "region": {
+          "startLine": 470,
+          "startColumn": 28,
+          "endColumn": 31
+        }
+      },
+      {
+        "rule": "rust/access-invalid-pointer",
+        "uri": "vendor/glib-0.18.5/src/object.rs",
+        "region": {
+          "startLine": 493,
+          "startColumn": 28,
+          "endColumn": 31
+        }
+      },
+      {
+        "rule": "rust/access-invalid-pointer",
+        "uri": "vendor/glib-0.18.5/src/subclass/boxed.rs",
+        "region": {
+          "startLine": 76,
+          "startColumn": 7,
+          "endColumn": 55
+        }
+      },
+      {
+        "rule": "rust/access-invalid-pointer",
+        "uri": "vendor/glib-0.18.5/src/value.rs",
+        "region": {
+          "startLine": 462,
+          "startColumn": 39,
+          "endColumn": 42
+        }
+      },
+      {
+        "rule": "rust/access-invalid-pointer",
+        "uri": "vendor/glib-0.18.5/src/value.rs",
+        "region": {
+          "startLine": 470,
+          "startColumn": 10,
+          "endColumn": 15
+        }
+      },
+      {
+        "rule": "rust/access-invalid-pointer",
+        "uri": "docs/history/glib-empty-slice-20261013/vendor/glib-0.18.5/src/collections/ptr_slice.rs",
+        "region": {
+          "startLine": 900,
+          "startColumn": 21,
+          "endColumn": 22
+        }
+      },
+      {
+        "rule": "rust/access-invalid-pointer",
+        "uri": "vendor/glib-0.18.5/src/collections/ptr_slice.rs",
+        "region": {
+          "startLine": 900,
+          "startColumn": 21,
+          "endColumn": 22
+        }
+      },
+      {
+        "rule": "rust/cleartext-logging",
+        "uri": "vendor/glib-0.18.5/src/log.rs",
+        "region": {
+          "startLine": 85,
+          "startColumn": 20,
+          "endColumn": 48
+        }
+      }
+    ],
+    "api_attempts": [
+      {
+        "label": "check",
+        "document_sha256": "a024571ce8c4d8d48a181f847db9b0284fa80052ef3c29e9d487bce96fcb21f0",
+        "url": "https://api.github.com/repos/Phoen0x/QuelleHeureEst-Il.com/check-runs/115661038804",
+        "attempts": [
+          {
+            "mode": "anonymous",
+            "status": 200,
+            "error": null
+          }
+        ]
+      },
+      {
+        "label": "annotations",
+        "document_sha256": "2c6aa9e4203cc79f86b42649c1ea47d361fd72804bc0623280f7605fdc745ef4",
+        "url": "https://api.github.com/repos/Phoen0x/QuelleHeureEst-Il.com/check-runs/115661038804/annotations?per_page=100",
+        "attempts": [
+          {
+            "mode": "anonymous",
+            "status": 200,
+            "error": null
+          }
+        ]
+      },
+      {
+        "label": "open-pr-alerts",
+        "document_sha256": "95150b7a8d021cfd138a2d2c553bf1e5ec2e93455fd621a3e3b54b6c02f78fe0",
+        "url": "https://api.github.com/repos/Phoen0x/QuelleHeureEst-Il.com/code-scanning/alerts?ref=refs%2Fpull%2F153%2Fmerge&state=open&per_page=100",
+        "attempts": [
+          {
+            "mode": "anonymous",
+            "status": 401,
+            "error": null
+          },
+          {
+            "mode": "existing-read-token",
+            "status": 403,
+            "error": null
+          }
+        ]
+      },
+      {
+        "label": "pr-comments",
+        "document_sha256": "4bf13e8336e84a1b4fa396cfb223a971e1ad6f3517638c74b9ccb6dad3814d8e",
+        "url": "https://api.github.com/repos/Phoen0x/QuelleHeureEst-Il.com/pulls/153/comments?per_page=100",
+        "attempts": [
+          {
+            "mode": "anonymous",
+            "status": 200,
+            "error": null
+          }
+        ]
+      }
+    ]
+  },
+  "prior_diagnostic": {
+    "run": 38425272324,
+    "job": 115392909513,
+    "sha": "d5e75292ed3caca6110c9ab4f740df33d5b096d8",
+    "ql7_result": {
+      "ruleId": "rust/access-invalid-pointer",
+      "rule": {
+        "id": "rust/access-invalid-pointer",
+        "index": 6,
+        "toolComponent": {
+          "index": 0
+        }
+      },
+      "message": {
+        "text": "This operation dereferences a pointer that may be [invalid](1)."
+      },
+      "locations": [
+        {
+          "physicalLocation": {
+            "artifactLocation": {
+              "uri": "vendor/glib-0.18.5/src/collections/ptr_slice.rs",
+              "uriBaseId": "%SRCROOT%",
+              "index": 14
+            },
+            "region": {
+              "startLine": 900,
+              "startColumn": 21,
+              "endColumn": 22
+            }
+          }
+        }
+      ],
+      "partialFingerprints": {
+        "primaryLocationLineHash": "f0389e3887603b54:1",
+        "primaryLocationStartColumnFingerprint": "0"
+      },
+      "codeFlows": [
+        {
+          "threadFlows": [
+            {
+              "locations": [
+                {
+                  "location": {
+                    "physicalLocation": {
+                      "artifactLocation": {
+                        "uri": "vendor/glib-0.18.5/src/collections/ptr_slice.rs",
+                        "uriBaseId": "%SRCROOT%",
+                        "index": 14
+                      },
+                      "region": {
+                        "startLine": 898,
+                        "startColumn": 41,
+                        "endColumn": 52
+                      }
+                    },
+                    "message": {
+                      "text": "p as ..."
+                    }
+                  },
+                  "taxa": [
+                    {
+                      "index": 2,
+                      "toolComponent": {
+                        "index": 1
+                      },
+                      "properties": {
+                        "CodeQL/DataflowRole": "source"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "location": {
+                    "physicalLocation": {
+                      "artifactLocation": {
+                        "uri": "vendor/glib-0.18.5/src/collections/ptr_slice.rs",
+                        "uriBaseId": "%SRCROOT%",
+                        "index": 14
+                      },
+                      "region": {
+                        "startLine": 900,
+                        "startColumn": 21,
+                        "endColumn": 22
+                      }
+                    },
+                    "message": {
+                      "text": "p"
+                    }
+                  },
+                  "taxa": [
+                    {
+                      "index": 3,
+                      "toolComponent": {
+                        "index": 1
+                      },
+                      "properties": {
+                        "CodeQL/DataflowRole": "sink"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "relatedLocations": [
+        {
+          "id": 1,
+          "physicalLocation": {
+            "artifactLocation": {
+              "uri": "vendor/glib-0.18.5/src/collections/ptr_slice.rs",
+              "uriBaseId": "%SRCROOT%",
+              "index": 14
+            },
+            "region": {
+              "startLine": 898,
+              "startColumn": 41,
+              "endColumn": 52
+            }
+          },
+          "message": {
+            "text": "invalid"
+          }
+        },
+        {
+          "physicalLocation": {
+            "artifactLocation": {
+              "uri": "vendor/glib-0.18.5/src/collections/ptr_slice.rs",
+              "uriBaseId": "%SRCROOT%",
+              "index": 14
+            },
+            "region": {
+              "startLine": 898,
+              "startColumn": 41,
+              "endColumn": 52
+            }
+          }
+        }
+      ]
+    }
+  },
+  "comparison": {
+    "unique_sarif_match": true,
+    "annotation_location_and_message_match": true,
+    "old_ql7_flow_identical_after_archive_prefix_normalization": true,
+    "normalized_flow": {
+      "ruleId": "rust/access-invalid-pointer",
+      "message": {
+        "text": "This operation dereferences a pointer that may be [invalid](1)."
+      },
+      "flows": [
+        [
+          [
+            {
+              "uri": "vendor/glib-0.18.5/src/collections/ptr_slice.rs",
+              "region": {
+                "startLine": 898,
+                "startColumn": 41,
+                "endColumn": 52
+              },
+              "message": {
+                "text": "p as ..."
+              }
+            },
+            {
+              "uri": "vendor/glib-0.18.5/src/collections/ptr_slice.rs",
+              "region": {
+                "startLine": 900,
+                "startColumn": 21,
+                "endColumn": 22
+              },
+              "message": {
+                "text": "p"
+              }
+            }
+          ]
+        ]
+      ]
+    },
+    "fingerprints": {
+      "primaryLocationLineHash": "f0389e3887603b54:1",
+      "primaryLocationStartColumnFingerprint": "0"
+    }
+  },
+  "sources": {
+    "blobs": {
+      "docs/history/glib-empty-slice-20261013/vendor/glib-0.18.5/src/collections/ptr_slice.rs": {
+        "blob": "e925d98413cb8562d5db9307d6e6491ba294c180"
+      },
+      "vendor/glib-0.18.5/src/collections/ptr_slice.rs": {
+        "blob": "7ee731fa8bb9ebd8e8f64029d29bd1d86a145604"
+      },
+      "vendor/glib-0.18.5/src/translate.rs": {
+        "blob": "11cfec05f01bc90b7ace7d60a688c6d8bfdc9f10"
+      }
+    },
+    "archive_equals_old_ql7_complete_source_blob": true,
+    "truncate_881_909_identical": true,
+    "truncate_region_sha256": "d8d162214677508740716cef361e456c7b479b27636e2b13831910c72fe4d5e1",
+    "application_source_scan": [
+      {
+        "path": "src-tauri/build.rs",
+        "blob": "d860e1e6a7cac333c3cc0bc9cb67faf286b07d69",
+        "historicalReferences": []
+      },
+      {
+        "path": "src-tauri/src/cache.rs",
+        "blob": "10a6f11832e0692594d15c5a5bf9461843777f49",
+        "historicalReferences": []
+      },
+      {
+        "path": "src-tauri/src/geocoding.rs",
+        "blob": "6f567c1e89294d3b0e6d4781e4d3caf9d072f8ba",
+        "historicalReferences": []
+      },
+      {
+        "path": "src-tauri/src/main.rs",
+        "blob": "f11d6bd5d3d97058577d75a79f9e1f226d20eb5a",
+        "historicalReferences": []
+      },
+      {
+        "path": "src-tauri/src/weather.rs",
+        "blob": "ae0d45e44a69a020fbe6b43000bfe8b70151fd5f",
+        "historicalReferences": []
+      },
+      {
+        "path": "src-tauri/tests/glib_codeql_contracts.rs",
+        "blob": "0b40a28899b51622991c89dd5c7c9e83df9fab0f",
+        "historicalReferences": []
+      },
+      {
+        "path": "src-tauri/tests/glib_codeql_remaining_contracts.rs",
+        "blob": "e66802e17a93e8214200577148a055060f6cfde3",
+        "historicalReferences": []
+      },
+      {
+        "path": "src-tauri/tests/glib_empty_slice.rs",
+        "blob": "588a6bdb906106c3e78a9043c47e8e8955ec56bb",
+        "historicalReferences": []
+      },
+      {
+        "path": "src-tauri/tests/glib_variant_str_iter.rs",
+        "blob": "1d9f632b7566c7f7d05180d6c952744521a4136e",
+        "historicalReferences": []
+      },
+      {
+        "path": "src-tauri/tests/http_client.rs",
+        "blob": "0056f9d27e1601ff9c027a619075dfd19d5298dc",
+        "historicalReferences": []
+      }
+    ],
+    "resolved_active_glib_manifest": "vendor/glib-0.18.5/Cargo.toml",
+    "resolution_verified_by_job": 115660568480,
+    "workspace_and_override_unchanged": true
+  },
+  "upstream": {
+    "sha": "3971101c82643035c15380c3f4af19ecccd09bb2",
+    "message": "glib: collections: Fix theoretical use-after-frees if dropping an item panics\n\nThis is currently not a problem because all collections require the item\ntype to implement `TransparentType` or `TransparentPtrType`, which are\nunsafe traits that are only implemented by the `glib::wrapper!` macro\nand require the `Drop` impl to not panic (among other things).\n\nAs such this has no effect right now but is cleaner and might avoid bugs\nin the future if the requirements of the two traits are ever weakened.\n\nThanks to JuHyung Son for reporting.",
+    "ptr_slice_patch": "@@ -83,13 +83,15 @@ impl<T: TransparentPtrType> Drop for PtrSlice<T> {\n     #[inline]\n     fn drop(&mut self) {\n         unsafe {\n+            let len = mem::replace(&mut self.len, 0);\n             if mem::needs_drop::<T>() {\n-                for i in 0..self.len {\n+                for i in 0..len {\n                     ptr::drop_in_place::<T>(self.ptr.as_ptr().add(i) as *mut T);\n                 }\n             }\n \n-            if self.capacity != 0 {\n+            let capacity = mem::replace(&mut self.capacity, 0);\n+            if capacity != 0 {\n                 ffi::g_free(self.ptr.as_ptr() as ffi::gpointer);\n             }\n         }\n@@ -263,13 +265,15 @@ impl<T: TransparentPtrType> Drop for IntoIter<T> {\n     #[inline]\n     fn drop(&mut self) {\n         unsafe {\n+            let len = mem::replace(&mut self.len, 0);\n             if mem::needs_drop::<T>() {\n-                for i in 0..self.len {\n+                for i in 0..len {\n                     ptr::drop_in_place::<T>(self.idx.as_ptr().add(i) as *mut T);\n                 }\n             }\n \n-            if !self.empty {\n+            let empty = mem::replace(&mut self.empty, true);\n+            if !empty {\n                 ffi::g_free(self.ptr.as_ptr() as ffi::gpointer);\n             }\n         }\n@@ -789,13 +793,12 @@ impl<T: TransparentPtrType> PtrSlice<T> {\n     #[inline]\n     pub fn clear(&mut self) {\n         unsafe {\n+            let len = mem::replace(&mut self.len, 0);\n             if mem::needs_drop::<T>() {\n-                for i in 0..self.len {\n+                for i in 0..len {\n                     ptr::drop_in_place::<T>(self.ptr.as_ptr().add(i) as *mut T);\n                 }\n             }\n-\n-            self.len = 0;\n         }\n     }\n \n@@ -929,14 +932,18 @@ impl<T: TransparentPtrType> PtrSlice<T> {\n         }\n \n         unsafe {\n-            while self.len > len {\n-                self.len -= 1;\n-                let p = self.ptr.as_ptr().add(self.len);\n-                ptr::drop_in_place::<T>(p as *mut T);\n-                ptr::write(\n-                    p,\n-                    Ptr::from(ptr::null_mut::<<T as GlibPtrDefault>::GlibType>()),\n-                );\n+            if mem::needs_drop::<T>() {\n+                while self.len > len {\n+                    self.len -= 1;\n+                    let p = self.ptr.as_ptr().add(self.len);\n+                    ptr::drop_in_place::<T>(p as *mut T);\n+                    ptr::write(\n+                        p,\n+                        Ptr::from(ptr::null_mut::<<T as GlibPtrDefault>::GlibType>()),\n+                    );\n+                }\n+            } else {\n+                self.len = len;\n             }\n         }\n     }"
+  },
+  "tests": {
+    "existing_source_sha": "a3a523b3a87f72ec18bcd90563ecc3701859a25c",
+    "run": 38505064460,
+    "job": 115660568480,
+    "debug_passed": 24,
+    "release_passed": 24,
+    "specific_regressions": [
+      "ptr_slice_truncate_drops_objects_and_preserves_array_storage",
+      "ptr_slice_truncate_handles_empty_zero_and_repeated_calls"
+    ],
+    "diagnostic_commit_validation": {
+      "sha": "87b551e85af2256c12cf8a804524540279aa9cda",
+      "rust_job": 115667809936,
+      "javascript_job": 115667809990,
+      "actionlint_job": 115667810382,
+      "preservation_job": 115667809925,
+      "result": "success"
+    },
+    "historical_source_executed": false,
+    "miri_run": false
+  },
+  "verdict": {
+    "classification": "verifiable false positive for the specific slot-invalidation path, duplicated in inactive historical source",
+    "application_exposure": "The annotated archive is not selected by Cargo nor included by active application Rust sources",
+    "source_patch_applied": false,
+    "alert_state_changed_by_this_mission": false,
+    "policies_changed": false,
+    "dependencies_changed": false,
+    "merge_performed": false,
+    "limit": "Not a claim that all historical GLib APIs are free from defects; the archived empty-Slice conversion contains a distinct already-backported historical defect."
+  }
+}
