@@ -1,0 +1,86 @@
+{
+  "version": 1,
+  "source_commit": "f308ee1b97cc53bdadaf87041f82a5198b6b07e0",
+  "fingerprint": "sha256 with CRLF normalized to LF for active text; exact bytes for script archives",
+  "profiles": {
+    "rust-h2": {
+      "files": {
+        "Cargo.toml": "c841cd3f819baa3703645f5eee228d0b7e6a2a4b9f3e39fa6794f50f7643959f",
+        "src-tauri/Cargo.toml": "6fc9a5d27d76bbcbf7f07bb44d9fbc96e23a8ef6378c059916cfe4176d83bd39",
+        "Cargo.lock": "d7ecf5a020fda182c8a684144c53dd5323c3985cb658382041e4890e6869e71a"
+      },
+      "absent": [
+        ".cargo/config.toml",
+        ".cargo/config",
+        "vendor/glib-0.18.5",
+        "src-tauri/tests/http_client.rs"
+      ],
+      "archives": {
+        "docs/history/candidate-generators-20261013/Scripts/prepare-rust-h2-candidate.py": "0346d4ad2791486be90904dec1f651c2ae6b7f403b7a869ed83e62b136e9a559"
+      }
+    },
+    "rust-warnings": {
+      "files": {
+        "Cargo.toml": "c841cd3f819baa3703645f5eee228d0b7e6a2a4b9f3e39fa6794f50f7643959f",
+        "src-tauri/Cargo.toml": "35877201d042d2b4e11f83254e636091495ebae4faa4ba97e301191763328e15",
+        "Cargo.lock": "8b5849558770b478b6f7545405c43467035427f70c5f529949fd4dfce1f761f5"
+      },
+      "absent": [
+        ".cargo/config.toml",
+        ".cargo/config",
+        "vendor/glib-0.18.5",
+        "src-tauri/tests/glib_variant_str_iter.rs"
+      ],
+      "archives": {
+        "docs/history/candidate-generators-20261013/Scripts/prepare-rust-warnings-candidate.py": "f088098c21757b2568ed3b70eb9e0cdfd58805aa6bb8559115017beb915bf36b"
+      }
+    },
+    "js-security": {
+      "files": {
+        "package.json": "6c8872840a20c1e6c2b955d3d6f2943f3bfdd3f884396f0691ff99f091a5fcce",
+        "pnpm-lock.yaml": "4e234cdb7d4b68d6f0dda05096a9ad6ed70a5c8d79aa68ee9b309b876f55c09c"
+      },
+      "pnpm": true,
+      "archives": {
+        "docs/history/candidate-generators-20261013/.github/workflows/js-security-maintenance.yml": "34134faaf0715fcd477798a7b62c4b065120fd25c1eca5bbcf1d40fb752155f1"
+      }
+    },
+    "current-conservation": {
+      "files": {
+        "package.json": "cb24650b1c5880293e521ce0d783ba14b1afa07f81a5a28f8bb86769b233fad3",
+        "pnpm-lock.yaml": "7eee3c948e8ff5051c2552f49f5878386fd5f9de1c57295283f00060d4af1fb9",
+        "Cargo.toml": "67a377f90a64f1f97c4d87ce98ff049c5b5e777e5600f10f7a2bbe0013c2338f",
+        "src-tauri/Cargo.toml": "a2dca0e6adfb328e678a3063e4cb3bb322f3bddacf13d88e962711c7fa8eb4bc",
+        "Cargo.lock": "c8d70e7d10c9a046fbbdcadb0a4e8dc622ebbd1f9c21ce97e5dd05ccab63ddc3",
+        ".cargo/config.toml": "478a96f7112fa5696dbebf9e61feb565d4b801e1ea1c0a6bb1ab9d096ba4e4d8",
+        "vendor/glib-0.18.5/src/variant_iter.rs": "a0f5ee8acb8faa089bcdfbc9a57372609fce7654026ccef7d9a224d05a654ccc",
+        "vendor/glib-0.18.5/src/collections/ptr_slice.rs": "61a21d91d35627d30d8596390aa8ea4276e2731c1bc794aaf1b7c8b7e3209684"
+      }
+    },
+    "lockfile-maintenance": {
+      "files": {
+        "package.json": "cb24650b1c5880293e521ce0d783ba14b1afa07f81a5a28f8bb86769b233fad3",
+        "pnpm-lock.yaml": "7eee3c948e8ff5051c2552f49f5878386fd5f9de1c57295283f00060d4af1fb9",
+        "Cargo.toml": "67a377f90a64f1f97c4d87ce98ff049c5b5e777e5600f10f7a2bbe0013c2338f",
+        "src-tauri/Cargo.toml": "a2dca0e6adfb328e678a3063e4cb3bb322f3bddacf13d88e962711c7fa8eb4bc",
+        "Cargo.lock": "c8d70e7d10c9a046fbbdcadb0a4e8dc622ebbd1f9c21ce97e5dd05ccab63ddc3",
+        ".cargo/config.toml": "478a96f7112fa5696dbebf9e61feb565d4b801e1ea1c0a6bb1ab9d096ba4e4d8",
+        "vendor/glib-0.18.5/src/variant_iter.rs": "a0f5ee8acb8faa089bcdfbc9a57372609fce7654026ccef7d9a224d05a654ccc",
+        "vendor/glib-0.18.5/src/collections/ptr_slice.rs": "61a21d91d35627d30d8596390aa8ea4276e2731c1bc794aaf1b7c8b7e3209684"
+      },
+      "pnpm": true,
+      "headManifest": true,
+      "archives": {
+        "docs/history/candidate-generators-20261013/.github/workflows/lockfile-maintenance.yml": "3635aff5d6e8fdf670fbd5499bda816ca505d9c999c9c2f7e6ce14b94c9703f4"
+      }
+    }
+  },
+  "archives": {
+    "docs/history/candidate-generators-20261013/Scripts/prepare-rust-h2-candidate.py": "0346d4ad2791486be90904dec1f651c2ae6b7f403b7a869ed83e62b136e9a559",
+    "docs/history/candidate-generators-20261013/Scripts/prepare-rust-warnings-candidate.py": "f088098c21757b2568ed3b70eb9e0cdfd58805aa6bb8559115017beb915bf36b",
+    "docs/history/candidate-generators-20261013/.github/workflows/js-security-maintenance.yml": "34134faaf0715fcd477798a7b62c4b065120fd25c1eca5bbcf1d40fb752155f1",
+    "docs/history/candidate-generators-20261013/.github/workflows/lockfile-maintenance.yml": "3635aff5d6e8fdf670fbd5499bda816ca505d9c999c9c2f7e6ce14b94c9703f4",
+    "docs/history/candidate-generators-20261013/.github/workflows/rust-h2-migration.yml": "8257dd6f92b39765e8a6fc887ebed92f8dd32c0d2dc5f6a0611d40e2aa0b1b08",
+    "docs/history/candidate-generators-20261013/.github/workflows/rust-warnings-migration.yml": "05cfd8f98714309ac14be20f8e75eded5b5984ab2c70beafc2df9da7f54b0301"
+  }
+}

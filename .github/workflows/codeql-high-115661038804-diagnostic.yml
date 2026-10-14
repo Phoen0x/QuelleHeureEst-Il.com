@@ -1,0 +1,137 @@
+# FR// Diagnostic ponctuel, source immuable ; aucun état Code Scanning n'est publié.
+# EN// One-off diagnostic, immutable source; no Code Scanning state is published.
+name: Diagnostic HIGH CodeQL 115661038804
+on:
+  push:
+    branches: [ "chore/ci-phase1-reliability-20261013" ]
+    paths: [ ".github/workflows/codeql-high-115661038804-diagnostic.yml" ]
+  workflow_dispatch:
+# FR// Mêmes droits de lecture que le diagnostic existant, aucun nouveau droit d'écriture.
+# EN// Same read permissions as the existing diagnostic, no new write permission.
+permissions:
+  contents: read
+  packages: read
+env:
+  TARGET_SHA: a3a523b3a87f72ec18bcd90563ecc3701859a25c
+jobs:
+  annotations:
+    name: Preuves REST sans mutation / Read-only REST evidence
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Lire le check et ses annotations / Read check and annotations
+        env:
+          GH_READ_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PY'
+          import base64, gzip, hashlib, json, os, re, urllib.error, urllib.request
+          from pathlib import Path
+          root = Path(os.environ["RUNNER_TEMP"]) / "codeql-high-rest"
+          root.mkdir()
+          base = "https://api.github.com/repos/Phoen0x/QuelleHeureEst-Il.com"
+          def read(path, label):
+              attempts = []
+              for mode, token in (("anonymous", None), ("existing-read-token", os.environ.get("GH_READ_TOKEN"))):
+                  headers = {"Accept": "application/vnd.github+json", "User-Agent": "PR153-read-only-codeql-diagnostic", "X-GitHub-Api-Version": "2022-11-28"}
+                  if token:
+                      headers["Authorization"] = "Bearer " + token
+                  try:
+                      with urllib.request.urlopen(urllib.request.Request(base + path, headers=headers), timeout=30) as response:
+                          status, raw = response.status, response.read()
+                  except urllib.error.HTTPError as error:
+                      status, raw = error.code, error.read()
+                  except (urllib.error.URLError, TimeoutError) as error:
+                      attempts.append({"mode": mode, "error": type(error).__name__})
+                      continue
+                  try:
+                      body = json.loads(raw)
+                  except ValueError:
+                      body = {"non_json_sha256": hashlib.sha256(raw).hexdigest(), "bytes": len(raw)}
+                  attempts.append({"mode": mode, "status": status, "body": body})
+                  if status == 200:
+                      break
+              record = {"url": base + path, "attempts": attempts}
+              (root / (label + ".json")).write_text(json.dumps(record, ensure_ascii=False, indent=2), encoding="utf-8")
+              raw = json.dumps(record, ensure_ascii=False, separators=(",", ":")).encode()
+              encoded = base64.b64encode(gzip.compress(raw, mtime=0)).decode()
+              print("REST_DOCUMENT_BEGIN", json.dumps({"label": label, "bytes": len(raw), "sha256": hashlib.sha256(raw).hexdigest()}, separators=(",", ":")))
+              for i in range(0, len(encoded), 4000):
+                  print("REST_DOCUMENT_CHUNK", encoded[i:i+4000])
+              print("REST_DOCUMENT_END")
+              return next((a["body"] for a in attempts if a.get("status") == 200), None)
+          read("/check-runs/115661038804", "check")
+          annotations = read("/check-runs/115661038804/annotations?per_page=100", "annotations")
+          alerts = read("/code-scanning/alerts?ref=refs%2Fpull%2F153%2Fmerge&state=open&per_page=100", "open-pr-alerts")
+          read("/pulls/153/comments?per_page=100", "pr-comments")
+          ids = set(re.findall(r"security/code-scanning/(\d+)", json.dumps(annotations or [])))
+          if isinstance(alerts, list):
+              ids.update(str(a["number"]) for a in alerts if "number" in a)
+          for alert_id in sorted(ids):
+              read("/code-scanning/alerts/" + alert_id, "alert-" + alert_id)
+              read("/code-scanning/alerts/" + alert_id + "/instances?per_page=100", "instances-" + alert_id)
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: codeql-high-rest-evidence
+          path: ${{ runner.temp }}/codeql-high-rest/*.json
+          if-no-files-found: error
+
+  replay:
+    name: SARIF sans publication / SARIF without upload (${{ matrix.language }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [rust, javascript-typescript, actions]
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: a3a523b3a87f72ec18bcd90563ecc3701859a25c
+          persist-credentials: false
+      - name: Vérifier le SHA analysé / Verify analyzed SHA
+        run: test "$(git rev-parse HEAD)" = "$TARGET_SHA"
+      - uses: github/codeql-action/init@v4
+        with:
+          languages: ${{ matrix.language }}
+          build-mode: none
+          tools: ${{ matrix.language == 'rust' && 'https://github.com/github/codeql-action/releases/download/codeql-bundle-v2.27.2/codeql-bundle-rust-linux64.tar.zst' || matrix.language == 'actions' && 'https://github.com/github/codeql-action/releases/download/codeql-bundle-v2.27.2/codeql-bundle-actions-linux64.tar.zst' || 'https://github.com/github/codeql-action/releases/download/codeql-bundle-v2.27.2/codeql-bundle-javascript-linux64.tar.zst' }}
+      - name: Analyser sans modifier les alertes / Analyze without modifying alerts
+        uses: github/codeql-action/analyze@v4
+        with:
+          output: ${{ runner.temp }}/codeql-high-replay
+          upload: false
+          add-snippets: true
+      - name: Exporter chaque SARIF complet et vérifier les sources / Export every complete SARIF and verify sources
+        env:
+          DIAGNOSTIC_LANGUAGE: ${{ matrix.language }}
+        run: |
+          git diff --exit-code
+          python3 - <<'PY'
+          import base64, gzip, hashlib, json, os
+          from pathlib import Path
+          root = Path(os.environ["RUNNER_TEMP"]) / "codeql-high-replay"
+          paths = sorted(root.glob("*.sarif"))
+          if not paths:
+              raise SystemExit("SARIF absent / Missing SARIF")
+          for path in paths:
+              raw = path.read_bytes()
+              data = json.loads(raw)
+              record = {"file": path.name, "sha256": hashlib.sha256(raw).hexdigest(), "bytes": len(raw), "source_sha": os.environ["TARGET_SHA"], "language": os.environ["DIAGNOSTIC_LANGUAGE"]}
+              encoded = base64.b64encode(gzip.compress(raw, mtime=0)).decode()
+              print("SARIF_DOCUMENT_BEGIN", json.dumps(record, separators=(",", ":")))
+              for i in range(0, len(encoded), 4000):
+                  print("SARIF_DOCUMENT_CHUNK", encoded[i:i+4000])
+              print("SARIF_DOCUMENT_END")
+              for run in data["runs"]:
+                  rules = {r["id"]: r for r in run["tool"]["driver"].get("rules", [])}
+                  for result in run.get("results", []):
+                      print("SARIF_RESULT_SUMMARY", json.dumps({"rule": rules.get(result.get("ruleId"), {}), "ruleId": result.get("ruleId"), "locations": result.get("locations"), "message": result.get("message"), "partialFingerprints": result.get("partialFingerprints"), "codeFlows": len(result.get("codeFlows", []))}, ensure_ascii=False, separators=(",", ":")))
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: codeql-high-sarif-${{ matrix.language }}
+          path: ${{ runner.temp }}/codeql-high-replay/*.sarif
+          if-no-files-found: error

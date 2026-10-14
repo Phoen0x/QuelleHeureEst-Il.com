@@ -1,0 +1,607 @@
+{
+  "historical_base": "c39a87e1d693382f34ca38bcaa68e032a9bcbc29",
+  "task_baseline": "a42475b25bd13d2803d0d32b9c3a71d4256170f0",
+  "inconsistent_manifest_migration": "9ff648dc66e1ca83bf564f26a172540cd825ba25",
+  "lock_repair_removal": "076b523ba719aa4c4bd0dd2f2c34807824602195",
+  "shell_feature_removal": "4e126a1265931c4032d6b31d06886d4acface5ea",
+  "babel_packages": [
+    {
+      "name": "@babel/code-frame",
+      "role_fr": "Cadres d’erreur et extraits de code",
+      "historical_entries": [
+        "/@babel/code-frame@7.29.7"
+      ],
+      "historical_parents": [
+        "/@babel/core@7.29.7",
+        "/@babel/template@7.29.7",
+        "/@babel/traverse@7.29.7"
+      ],
+      "active_entries": [
+        "/@babel/code-frame@7.29.7"
+      ],
+      "decision": "restored-development-only"
+    },
+    {
+      "name": "@babel/compat-data",
+      "role_fr": "Données de compatibilité JavaScript",
+      "historical_entries": [
+        "/@babel/compat-data@7.29.7"
+      ],
+      "historical_parents": [
+        "/@babel/helper-compilation-targets@7.29.7"
+      ],
+      "active_entries": [
+        "/@babel/compat-data@7.29.7"
+      ],
+      "decision": "restored-development-only"
+    },
+    {
+      "name": "@babel/core",
+      "role_fr": "API et pipeline de transformation Babel",
+      "historical_entries": [
+        "/@babel/core@7.29.7"
+      ],
+      "historical_parents": [
+        "/@babel/helper-module-transforms@7.29.7(@babel/core@7.29.7)",
+        "/@babel/plugin-transform-react-jsx-self@7.29.7(@babel/core@7.29.7)",
+        "/@babel/plugin-transform-react-jsx-source@7.29.7(@babel/core@7.29.7)",
+        "/@vitejs/plugin-react@4.7.0(vite@7.3.5)"
+      ],
+      "active_entries": [
+        "/@babel/core@7.29.7"
+      ],
+      "decision": "restored-development-only"
+    },
+    {
+      "name": "@babel/generator",
+      "role_fr": "Génération de code JavaScript",
+      "historical_entries": [
+        "/@babel/generator@7.29.7"
+      ],
+      "historical_parents": [
+        "/@babel/core@7.29.7",
+        "/@babel/traverse@7.29.7"
+      ],
+      "active_entries": [
+        "/@babel/generator@7.29.7"
+      ],
+      "decision": "restored-development-only"
+    },
+    {
+      "name": "@babel/helper-compilation-targets",
+      "role_fr": "Sélection des cibles navigateur",
+      "historical_entries": [
+        "/@babel/helper-compilation-targets@7.29.7"
+      ],
+      "historical_parents": [
+        "/@babel/core@7.29.7"
+      ],
+      "active_entries": [
+        "/@babel/helper-compilation-targets@7.29.7"
+      ],
+      "decision": "restored-development-only"
+    },
+    {
+      "name": "@babel/helper-globals",
+      "role_fr": "Globals connus lors du parcours AST",
+      "historical_entries": [
+        "/@babel/helper-globals@7.29.7"
+      ],
+      "historical_parents": [
+        "/@babel/traverse@7.29.7"
+      ],
+      "active_entries": [
+        "/@babel/helper-globals@7.29.7"
+      ],
+      "decision": "restored-development-only"
+    },
+    {
+      "name": "@babel/helper-module-imports",
+      "role_fr": "Construction des imports de modules",
+      "historical_entries": [
+        "/@babel/helper-module-imports@7.29.7"
+      ],
+      "historical_parents": [
+        "/@babel/helper-module-transforms@7.29.7(@babel/core@7.29.7)"
+      ],
+      "active_entries": [
+        "/@babel/helper-module-imports@7.29.7"
+      ],
+      "decision": "restored-development-only"
+    },
+    {
+      "name": "@babel/helper-module-transforms",
+      "role_fr": "Transformation des modules",
+      "historical_entries": [
+        "/@babel/helper-module-transforms@7.29.7(@babel/core@7.29.7)"
+      ],
+      "historical_parents": [
+        "/@babel/core@7.29.7"
+      ],
+      "active_entries": [
+        "/@babel/helper-module-transforms@7.29.7(@babel/core@7.29.7)"
+      ],
+      "decision": "restored-development-only"
+    },
+    {
+      "name": "@babel/helper-plugin-utils",
+      "role_fr": "Utilitaires des plugins Babel",
+      "historical_entries": [
+        "/@babel/helper-plugin-utils@7.29.7"
+      ],
+      "historical_parents": [
+        "/@babel/plugin-transform-react-jsx-self@7.29.7(@babel/core@7.29.7)",
+        "/@babel/plugin-transform-react-jsx-source@7.29.7(@babel/core@7.29.7)"
+      ],
+      "active_entries": [
+        "/@babel/helper-plugin-utils@7.29.7"
+      ],
+      "decision": "restored-development-only"
+    },
+    {
+      "name": "@babel/helper-string-parser",
+      "role_fr": "Analyse des chaînes littérales",
+      "historical_entries": [
+        "/@babel/helper-string-parser@7.29.7"
+      ],
+      "historical_parents": [
+        "/@babel/types@7.29.7"
+      ],
+      "active_entries": [
+        "/@babel/helper-string-parser@7.29.7"
+      ],
+      "decision": "restored-development-only"
+    },
+    {
+      "name": "@babel/helper-validator-identifier",
+      "role_fr": "Validation des identifiants",
+      "historical_entries": [
+        "/@babel/helper-validator-identifier@7.29.7"
+      ],
+      "historical_parents": [
+        "/@babel/code-frame@7.29.7",
+        "/@babel/helper-module-transforms@7.29.7(@babel/core@7.29.7)",
+        "/@babel/types@7.29.7"
+      ],
+      "active_entries": [
+        "/@babel/helper-validator-identifier@7.29.7"
+      ],
+      "decision": "restored-development-only"
+    },
+    {
+      "name": "@babel/helper-validator-option",
+      "role_fr": "Validation des options des cibles",
+      "historical_entries": [
+        "/@babel/helper-validator-option@7.29.7"
+      ],
+      "historical_parents": [
+        "/@babel/helper-compilation-targets@7.29.7"
+      ],
+      "active_entries": [
+        "/@babel/helper-validator-option@7.29.7"
+      ],
+      "decision": "restored-development-only"
+    },
+    {
+      "name": "@babel/helpers",
+      "role_fr": "Helpers nécessaires aux transformations",
+      "historical_entries": [
+        "/@babel/helpers@7.29.7"
+      ],
+      "historical_parents": [
+        "/@babel/core@7.29.7"
+      ],
+      "active_entries": [
+        "/@babel/helpers@7.29.7"
+      ],
+      "decision": "restored-development-only"
+    },
+    {
+      "name": "@babel/parser",
+      "role_fr": "Analyse JavaScript et JSX",
+      "historical_entries": [
+        "/@babel/parser@7.29.7"
+      ],
+      "historical_parents": [
+        "/@babel/core@7.29.7",
+        "/@babel/generator@7.29.7",
+        "/@babel/template@7.29.7",
+        "/@babel/traverse@7.29.7",
+        "/@types/babel__core@7.20.5",
+        "/@types/babel__template@7.4.4"
+      ],
+      "active_entries": [
+        "/@babel/parser@7.29.7"
+      ],
+      "decision": "restored-development-only"
+    },
+    {
+      "name": "@babel/plugin-transform-react-jsx-self",
+      "role_fr": "Ajout du marqueur JSX __self en développement",
+      "historical_entries": [
+        "/@babel/plugin-transform-react-jsx-self@7.29.7(@babel/core@7.29.7)"
+      ],
+      "historical_parents": [
+        "/@vitejs/plugin-react@4.7.0(vite@7.3.5)"
+      ],
+      "active_entries": [
+        "/@babel/plugin-transform-react-jsx-self@7.29.7(@babel/core@7.29.7)"
+      ],
+      "decision": "restored-development-only"
+    },
+    {
+      "name": "@babel/plugin-transform-react-jsx-source",
+      "role_fr": "Ajout du marqueur JSX __source en développement",
+      "historical_entries": [
+        "/@babel/plugin-transform-react-jsx-source@7.29.7(@babel/core@7.29.7)"
+      ],
+      "historical_parents": [
+        "/@vitejs/plugin-react@4.7.0(vite@7.3.5)"
+      ],
+      "active_entries": [
+        "/@babel/plugin-transform-react-jsx-source@7.29.7(@babel/core@7.29.7)"
+      ],
+      "decision": "restored-development-only"
+    },
+    {
+      "name": "@babel/template",
+      "role_fr": "Construction de fragments AST",
+      "historical_entries": [
+        "/@babel/template@7.29.7"
+      ],
+      "historical_parents": [
+        "/@babel/core@7.29.7",
+        "/@babel/helpers@7.29.7",
+        "/@babel/traverse@7.29.7"
+      ],
+      "active_entries": [
+        "/@babel/template@7.29.7"
+      ],
+      "decision": "restored-development-only"
+    },
+    {
+      "name": "@babel/traverse",
+      "role_fr": "Parcours et transformation AST",
+      "historical_entries": [
+        "/@babel/traverse@7.29.7"
+      ],
+      "historical_parents": [
+        "/@babel/core@7.29.7",
+        "/@babel/helper-module-imports@7.29.7",
+        "/@babel/helper-module-transforms@7.29.7(@babel/core@7.29.7)"
+      ],
+      "active_entries": [
+        "/@babel/traverse@7.29.7"
+      ],
+      "decision": "restored-development-only"
+    },
+    {
+      "name": "@babel/types",
+      "role_fr": "Types et constructeurs AST",
+      "historical_entries": [
+        "/@babel/types@7.29.7"
+      ],
+      "historical_parents": [
+        "/@babel/core@7.29.7",
+        "/@babel/generator@7.29.7",
+        "/@babel/helper-module-imports@7.29.7",
+        "/@babel/helpers@7.29.7",
+        "/@babel/parser@7.29.7",
+        "/@babel/template@7.29.7",
+        "/@babel/traverse@7.29.7",
+        "/@types/babel__core@7.20.5",
+        "/@types/babel__generator@7.27.0",
+        "/@types/babel__template@7.4.4",
+        "/@types/babel__traverse@7.28.0"
+      ],
+      "active_entries": [
+        "/@babel/types@7.29.7"
+      ],
+      "decision": "restored-development-only"
+    },
+    {
+      "name": "@jridgewell/remapping",
+      "role_fr": "Composition des source maps",
+      "historical_entries": [
+        "/@jridgewell/remapping@2.3.5"
+      ],
+      "historical_parents": [
+        "/@babel/core@7.29.7"
+      ],
+      "active_entries": [
+        "/@jridgewell/remapping@2.3.5"
+      ],
+      "decision": "restored-development-only"
+    },
+    {
+      "name": "@types/babel__core",
+      "role_fr": "Types TypeScript de Babel Core",
+      "historical_entries": [
+        "/@types/babel__core@7.20.5"
+      ],
+      "historical_parents": [
+        "/@vitejs/plugin-react@4.7.0(vite@7.3.5)"
+      ],
+      "active_entries": [
+        "/@types/babel__core@7.20.5"
+      ],
+      "decision": "restored-development-only"
+    },
+    {
+      "name": "@types/babel__generator",
+      "role_fr": "Types TypeScript du générateur",
+      "historical_entries": [
+        "/@types/babel__generator@7.27.0"
+      ],
+      "historical_parents": [
+        "/@types/babel__core@7.20.5"
+      ],
+      "active_entries": [
+        "/@types/babel__generator@7.27.0"
+      ],
+      "decision": "restored-development-only"
+    },
+    {
+      "name": "@types/babel__template",
+      "role_fr": "Types TypeScript des templates",
+      "historical_entries": [
+        "/@types/babel__template@7.4.4"
+      ],
+      "historical_parents": [
+        "/@types/babel__core@7.20.5"
+      ],
+      "active_entries": [
+        "/@types/babel__template@7.4.4"
+      ],
+      "decision": "restored-development-only"
+    },
+    {
+      "name": "@types/babel__traverse",
+      "role_fr": "Types TypeScript du parcours AST",
+      "historical_entries": [
+        "/@types/babel__traverse@7.28.0"
+      ],
+      "historical_parents": [
+        "/@types/babel__core@7.20.5"
+      ],
+      "active_entries": [
+        "/@types/babel__traverse@7.28.0"
+      ],
+      "decision": "restored-development-only"
+    },
+    {
+      "name": "convert-source-map",
+      "role_fr": "Lecture et écriture des source maps inline",
+      "historical_entries": [
+        "/convert-source-map@2.0.0"
+      ],
+      "historical_parents": [
+        "/@babel/core@7.29.7"
+      ],
+      "active_entries": [
+        "/convert-source-map@2.0.0"
+      ],
+      "decision": "restored-development-only"
+    },
+    {
+      "name": "gensync",
+      "role_fr": "Exécution synchrone/asynchrone des transformations",
+      "historical_entries": [
+        "/gensync@1.0.0-beta.2"
+      ],
+      "historical_parents": [
+        "/@babel/core@7.29.7"
+      ],
+      "active_entries": [
+        "/gensync@1.0.0-beta.2"
+      ],
+      "decision": "restored-development-only"
+    },
+    {
+      "name": "jsesc",
+      "role_fr": "Échappement des littéraux générés",
+      "historical_entries": [
+        "/jsesc@3.1.0"
+      ],
+      "historical_parents": [
+        "/@babel/generator@7.29.7"
+      ],
+      "active_entries": [
+        "/jsesc@3.1.0"
+      ],
+      "decision": "restored-development-only"
+    },
+    {
+      "name": "json5",
+      "role_fr": "Lecture des configurations JSON5",
+      "historical_entries": [
+        "/json5@2.2.3"
+      ],
+      "historical_parents": [
+        "/@babel/core@7.29.7"
+      ],
+      "active_entries": [
+        "/json5@2.2.3"
+      ],
+      "decision": "restored-development-only"
+    },
+    {
+      "name": "lru-cache",
+      "role_fr": "Cache des cibles de compilation",
+      "historical_entries": [
+        "/lru-cache@5.1.1"
+      ],
+      "historical_parents": [
+        "/@babel/helper-compilation-targets@7.29.7"
+      ],
+      "active_entries": [
+        "/lru-cache@5.1.1"
+      ],
+      "decision": "restored-development-only"
+    },
+    {
+      "name": "react-refresh",
+      "role_fr": "Runtime Fast Refresh de développement",
+      "historical_entries": [
+        "/react-refresh@0.17.0"
+      ],
+      "historical_parents": [
+        "/@vitejs/plugin-react@4.7.0(vite@7.3.5)"
+      ],
+      "active_entries": [
+        "/react-refresh@0.17.0"
+      ],
+      "decision": "restored-development-only"
+    },
+    {
+      "name": "yallist",
+      "role_fr": "Liste chaînée du cache LRU",
+      "historical_entries": [
+        "/yallist@3.1.1"
+      ],
+      "historical_parents": [
+        "/lru-cache@5.1.1"
+      ],
+      "active_entries": [
+        "/yallist@3.1.1"
+      ],
+      "decision": "restored-development-only"
+    }
+  ],
+  "active_package_names": 324,
+  "active_lock_entries": 335,
+  "proof_sha256": {
+    "README.md": "a65790bb79efda77c82a3f1bba6a3f73aa6b6606dd233f34323bf6cb8de11b54",
+    "main/package.json": "1c33cec28f9f473b0f6ef0ad774bfb84a20aa07e55038d98d6dd7238fe42e119",
+    "upstream/tauri-v2-migration.mdx": "f6c921fad5eb890550da1793a0b8f1d9baffd5f29afa51e470190e33e7372116",
+    "upstream/vite-8-migration.md": "595e8f8217e27d360bc33ad6114202f0fb7235e02b11272bce6fe62b60791adc",
+    "upstream/tauri-1.8.3.Cargo.toml": "748a71444a0eba78c2b732e04615c646d3daf8920b02ce891167e5409502d735",
+    "upstream/plugin-react-6.0.2.package.json": "4cd7456c1d01b92b6a983ccec4916d55ae21a512608ea4087d8acf96c5327699",
+    "upstream/plugin-react-4.7.0.package.json": "d608755568d9d654c34e9e2da06659df9122fa89d2604ee09cdeda457a20c035",
+    "upstream/vite-8.0.16.package.json": "342571e744d0ef3c2d2c9720c70609764d58c2c6a0f4f03951c7b977a1eb38cb",
+    "upstream/tauri-2.12.3.Cargo.toml": "0ff76a923f11e0082b1711c7ec42ce2021bf462e9aca378cbbc954a5645799d5",
+    "upstream/vite-7.3.5.package.json": "395305f4d5ce7ca1bd4aebdd130e4e7527009fb2ba9b7378f5f07bf734f81ca6",
+    "before/pnpm-lock.yaml": "52555889141e9ce139806fb86aaa245b974e90cc1cc2a715bf70fdf143692dbf",
+    "before/package.json": "0b1907be8f6fd3ee4362b3571675a382698f4bd2e7428e02ad4fe9ccb562e869",
+    "before/src-tauri/Cargo.toml": "078c2fc9fab48dde09a4f8f5163daa46e6bfe5ac212cd5d93b74d44e2eedc2f9",
+    "before/.github/workflows/dependency-preservation.yml": "48319595e4fb0f49feb7287b111c59536bc3fab3cbae40d6931f007f860519b3"
+  },
+  "bootstrap_is_evidence_of_preservation": false,
+  "validation_status": "scope-validated-existing-audit-failures-visible",
+  "validated_source": "03785527621149a1f75f6e31075b45340ed5a71e",
+  "validations": {
+    "historical_preservation": {
+      "run": 38461512094,
+      "job": 115517579198,
+      "result": "success",
+      "python_tests": 20,
+      "qualified_warnings": [
+        "vite/lightningcss optional peer became required dependency",
+        "invalid Tauri 1 shell-open retained as archive and comment"
+      ],
+      "babel_root_graph_entries": 47
+    },
+    "historical_tools": {
+      "run": 38461512094,
+      "job": 115517579531,
+      "result": "success",
+      "tests": 3,
+      "production_modules": 53,
+      "lock_reproduction_diff": "empty"
+    },
+    "js": {
+      "run": 38461512173,
+      "job": 115517579300,
+      "result": "success",
+      "commands": [
+        "pnpm install --frozen-lockfile",
+        "pnpm run check:dependencies",
+        "pnpm run test:security",
+        "pnpm run lint",
+        "pnpm run typecheck",
+        "pnpm run vite:build"
+      ]
+    },
+    "actionlint": {
+      "run": 38461512173,
+      "job": 115517579591,
+      "result": "success"
+    },
+    "renovate": {
+      "run": 38461512094,
+      "job": 115517579795,
+      "result": "success"
+    },
+    "rust": {
+      "run": 38461511882,
+      "job": 115517577926,
+      "result": "success",
+      "profiles": [
+        "debug",
+        "release"
+      ],
+      "tests_per_profile": 24,
+      "historical_names_retained": 446,
+      "glib_files_retained": 121
+    },
+    "clippy": {
+      "run": 38461511808,
+      "job": 115517578293,
+      "result": "success",
+      "command": "cargo clippy --workspace --locked --all-targets --all-features -- -D warnings",
+      "visible_third_party_glib_warnings": 34
+    },
+    "pnpm_audit": {
+      "run": 38461511808,
+      "job": 115517578626,
+      "result": "failure",
+      "remaining": [
+        "GHSA-vfj7-8cjw-p6xm"
+      ],
+      "new_alerts": 0
+    },
+    "cargo_audit": {
+      "run": 38461511808,
+      "job": 115517578357,
+      "result": "failure",
+      "remaining": [
+        "RUSTSEC-2024-0370",
+        "RUSTSEC-2025-0134",
+        "RUSTSEC-2024-0429"
+      ]
+    },
+    "cargo_deny": {
+      "run": 38461511808,
+      "job": 115517578321,
+      "result": "failure",
+      "checks": {
+        "advisories": "failure",
+        "licenses": "failure",
+        "bans": "success",
+        "sources": "success"
+      }
+    }
+  },
+  "tree_comparison": {
+    "baseline": "a42475b25bd13d2803d0d32b9c3a71d4256170f0",
+    "candidate": "03785527621149a1f75f6e31075b45340ed5a71e",
+    "deleted_files": [],
+    "changed_existing_files": [
+      ".github/workflows/dependency-preservation.yml",
+      "package.json",
+      "pnpm-lock.yaml",
+      "src-tauri/Cargo.toml"
+    ],
+    "cargo_manifest_semantics_changed": false,
+    "existing_lock_package_records_changed": false
+  },
+  "upstream_refs": {
+    "plugin-react-4.7.0": "https://github.com/vitejs/vite-plugin-react/blob/plugin-react%404.7.0/packages/plugin-react/package.json",
+    "plugin-react-6.0.2": "https://github.com/vitejs/vite-plugin-react/blob/plugin-react%406.0.2/packages/plugin-react/package.json",
+    "vite-7.3.5": "https://github.com/vitejs/vite/blob/v7.3.5/packages/vite/package.json",
+    "vite-8.0.16": "https://github.com/vitejs/vite/blob/v8.0.16/packages/vite/package.json",
+    "tauri-1.8.3": "https://github.com/tauri-apps/tauri/blob/tauri-v1.8.3/core/tauri/Cargo.toml",
+    "tauri-2.12.3": "https://github.com/tauri-apps/tauri/blob/tauri-v2.12.3/crates/tauri/Cargo.toml",
+    "tauri-v2-migration": "https://github.com/tauri-apps/tauri-docs/blob/86f23966da282a29c7ec27e18ce540be70988091/src/content/docs/start/migrate/from-tauri-1.mdx"
+  }
+}

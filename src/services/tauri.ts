@@ -1,4 +1,4 @@
-import { invoke } from '@tauri-apps/api/tauri';
+import { invoke } from '@tauri-apps/api/core';
 import type { GeoLocation, WeatherData, AirQualityData } from '../types';
 
 export const tauriApi = {
@@ -19,7 +19,7 @@ export const tauriApi = {
   },
 
   async getCachedLocation(): Promise<GeoLocation | null> {
-    return invoke('get_cached_location') || null;
+    return (await invoke<GeoLocation | null>('get_cached_location')) ?? null;
   },
 
   async cacheLocation(location: GeoLocation): Promise<void> {

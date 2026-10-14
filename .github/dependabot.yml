@@ -3,20 +3,35 @@
 # Please see the documentation for all configuration options:
 # https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
 
-# FR// Configuration Dependabot – mises à jour quotidiennes, sans limite de PRs
-# ENG// Dependabot configuration – daily updates, no PR limit
+# FR// Configuration Dependabot – mises à jour quotidiennes, avec plafonds de PR
+# ENG// Dependabot configuration – daily updates, bounded PR counts
 
 version: 2
 updates:
+  # FR// pnpm utilise la valeur d’écosystème npm ; les verrous npm historiques restent inactifs.
+  # EN// pnpm uses the npm ecosystem value; historical npm locks remain inactive.
   # FR// Écosystème npm (ou yarn, vérifie si tu as un yarn.lock)
   # ENG// npm ecosystem (or yarn, check if you have a yarn.lock)
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
       interval: "daily"
-    # FR// Pas de limite de PRs ouvertes (0 = illimité)
-    # ENG// No limit on open PRs (0 = unlimited)
-    open-pull-requests-limit: 0
+      time: "07:00"
+      timezone: "Etc/UTC"
+    # FR// 0 désactive les mises à jour de versions, pas illimité.
+    # ENG// 0 disables version updates, not unlimited.
+    open-pull-requests-limit: 10
+    # FR// Ces exclusions concernent les mises à jour de versions ; la CI protège aussi les PR de sécurité.
+    # EN// These exclusions cover version updates; CI also protects security-update PRs.
+    exclude-paths:
+      - "package-lock*.json"
+      - "docs/**"
+      - "vendor/**"
+    groups:
+      minor-patch:
+        applies-to: version-updates
+        patterns: ["*"]
+        update-types: ["minor", "patch"]
     labels:
       - "dependencies"
       - "javascript"
@@ -28,7 +43,40 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
-    open-pull-requests-limit: 0
+      time: "08:00"
+      timezone: "Etc/UTC"
+    open-pull-requests-limit: 5
+    exclude-paths:
+      - "docs/**"
+      - "vendor/**"
+      - ".github/workflows/auto-approve.yml"
+    groups:
+      minor-patch-actions:
+        applies-to: version-updates
+        patterns: ["*"]
+        update-types: ["minor", "patch"]
     labels:
       - "dependencies"
       - "github-actions"
+
+  # FR// Cargo est géré à la racine du workspace, où se trouve Cargo.lock.
+  # EN// Cargo is managed at the workspace root, where Cargo.lock lives.
+  - package-ecosystem: "cargo"
+    directory: "/"
+    schedule:
+      interval: "daily"
+      time: "06:00"
+      timezone: "Etc/UTC"
+    open-pull-requests-limit: 5
+    exclude-paths:
+      - "docs/**"
+      - "vendor/**"
+    groups:
+      minor-patch-rust:
+        applies-to: version-updates
+        patterns: ["*"]
+        update-types: ["minor", "patch"]
+    labels:
+      - "dependencies"
+      - "rust"
+    rebase-strategy: "auto"

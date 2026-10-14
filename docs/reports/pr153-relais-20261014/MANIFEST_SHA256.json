@@ -1,0 +1,2099 @@
+{
+  "generated_at_utc": "2026-10-14T21:51:06.242390+00:00",
+  "pr": 153,
+  "head": "138f029e44c4b63abef8d5315845b360814f76f3",
+  "main": "235194a6fe825a6dac27012f07cbac2cc5d86794",
+  "file_count": 418,
+  "files": [
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/CANDIDATE_GENERATOR_SAFETY_20261013.md",
+      "bytes": 14967,
+      "sha256": "2fae59e0d507915c92ff684f23eefd86ba8d7576b9e6346fc757bbedf9401f20"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/CANDIDATE_GENERATOR_SAFETY_EVIDENCE_20261013.json",
+      "bytes": 3649,
+      "sha256": "929c43081df7d22fa678d7dd7b7165761d958a2fa2a62d0ea584cd048a1bd2c5"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/CI_SETUP.md",
+      "bytes": 6688,
+      "sha256": "290c296f7c4d0e241cfbf54edf05ff3feb69cd013e31549aee552fdbf07bf5bb"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/DEPENDENCY_BOTS_20261013.md",
+      "bytes": 17892,
+      "sha256": "e63e7eb81e7e4fc762dcc89ca00a1768588cae1437558fc71ac0425ebc29ecd4"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/DEPENDENCY_GAPS_20261013.md",
+      "bytes": 16478,
+      "sha256": "99024941354f4bb2ac1f063717a1196e8f10826de629af24697a0b5c989e0975"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/DEPENDENCY_GAPS_EVIDENCE_20261013.json",
+      "bytes": 18921,
+      "sha256": "4483d72f4cc4601303e440598eb0a79ce1f704136156f28d8e2f36c2b082c483"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/GLIB_EMPTY_SLICE_BACKPORT_20261013.md",
+      "bytes": 13486,
+      "sha256": "602e2183cda55e643356ca86bf6a63321e9c4699156244c9d1bb55e35b59e25b"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/JS_SECURITY_AUDIT_20261013.md",
+      "bytes": 6377,
+      "sha256": "08b203c4e44b0febcb9760b69c0557aeaa5622a081725bb970681540a27f2e58"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/RUST_H2_MIGRATION_20261013.md",
+      "bytes": 8456,
+      "sha256": "e1081febc913344ff98eea94d5e7a8e2fa42f6259c8ed691f09ca90c1da21909"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/RUST_WARNINGS_20261013.md",
+      "bytes": 10982,
+      "sha256": "6208a7f5dabf8e36975b5ba19d3b8cdc67a4ed725738639ed8dad7b163cc638d"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/history/README.md",
+      "bytes": 1536,
+      "sha256": "096eedbed952fcddc129169ef9a74af5eacb48b6d761ac5f8953ddcb51f3b20e"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/history/before-ci-phase1/.github/dependabot.yml",
+      "bytes": 1197,
+      "sha256": "e4f4544e23586fbef83f06a1be657bb51b60f6dc0baa50c09cd2527f78ad9516"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/history/before-ci-phase1/.github/workflows/apisec-scan.yml",
+      "bytes": 3009,
+      "sha256": "6153e18cab2f69140430d8476a1d6970ef364549b4b28ce48fae2c6c3e450535"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/history/before-ci-phase1/.github/workflows/neuralegion.yml",
+      "bytes": 6196,
+      "sha256": "54b35581e01ac8447698534d85755aac605cd392cccc68b6e189851d710c84b5"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/history/before-ci-phase1/.github/workflows/rust.yml",
+      "bytes": 347,
+      "sha256": "e2238de12c2dc4cf26ac75600923cd477f40023e75fab4445ce5f9e41d429483"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/history/before-ci-phase1/.github/workflows/security-analysis.yml",
+      "bytes": 17067,
+      "sha256": "ac710f31de7603d95e17b8ba719ed44078504fea5c55511984915e1b5f48e345"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/history/before-ci-phase1/.github/workflows/semgrep.yml",
+      "bytes": 1540,
+      "sha256": "1149e5b4fd5232fe358ac15cf841a0df2eac007b9e603fac6c8819817b363fbb"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/history/before-ci-phase1/.github/workflows/sonarcloud.yml",
+      "bytes": 3418,
+      "sha256": "8463252cae0a5c9599c40319d4fd3a982f00a061dec202cdeeeafa38acc161f2"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/history/before-ci-phase1/src/services/tauri.ts",
+      "bytes": 860,
+      "sha256": "e56e50b79ad0f92eca5708c5d2e4b12bd3b8932fd6a98564162f37efdb7907a1"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/history/before-ci-phase1/src-tauri/Cargo.toml",
+      "bytes": 883,
+      "sha256": "fe2afa9dd9260e21636200bd3558aadc7ebe61cc22b71fc6eb7742f20ef17ce9"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/history/before-ci-phase1/src-tauri/build.rs",
+      "bytes": 37,
+      "sha256": "b01bb80b64916f502a3033afdb4567227ef2abcc3b938889f02283aefa780fbe"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/history/before-ci-phase1/src-tauri/src/main.rs",
+      "bytes": 1693,
+      "sha256": "53afa352fbaf84d66debde52ccd83e94a738467194d269dd12590f21ec91673f"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/history/candidate-generators-20261013/.github/workflows/js-security-maintenance.yml",
+      "bytes": 6347,
+      "sha256": "34134faaf0715fcd477798a7b62c4b065120fd25c1eca5bbcf1d40fb752155f1"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/history/candidate-generators-20261013/.github/workflows/lockfile-maintenance.yml",
+      "bytes": 2587,
+      "sha256": "3635aff5d6e8fdf670fbd5499bda816ca505d9c999c9c2f7e6ce14b94c9703f4"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/history/candidate-generators-20261013/.github/workflows/rust-h2-migration.yml",
+      "bytes": 4812,
+      "sha256": "8257dd6f92b39765e8a6fc887ebed92f8dd32c0d2dc5f6a0611d40e2aa0b1b08"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/history/candidate-generators-20261013/.github/workflows/rust-warnings-migration.yml",
+      "bytes": 7070,
+      "sha256": "05cfd8f98714309ac14be20f8e75eded5b5984ab2c70beafc2df9da7f54b0301"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/history/candidate-generators-20261013/README.md",
+      "bytes": 1367,
+      "sha256": "df20e5532edcf73f72a3974b985bb252a086542fe70cb4060e851644376e225d"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/history/candidate-generators-20261013/Scripts/prepare-rust-h2-candidate.py",
+      "bytes": 6767,
+      "sha256": "0346d4ad2791486be90904dec1f651c2ae6b7f403b7a869ed83e62b136e9a559"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/history/candidate-generators-20261013/Scripts/prepare-rust-warnings-candidate.py",
+      "bytes": 5032,
+      "sha256": "f088098c21757b2568ed3b70eb9e0cdfd58805aa6bb8559115017beb915bf36b"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/history/candidate-generators-20261013/document-before-results.md",
+      "bytes": 9048,
+      "sha256": "32aac5dbc79c4c7293c884475b5be3d94daf4b61d0ea6799370dc21ef8047f1b"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/history/candidate-generators-20261013/guard-workflow-before-utf8.yml",
+      "bytes": 3215,
+      "sha256": "99ff14b9f9b3a373acd54bbbc90ec7a4307d12b3e94244fe8009d0419866626a"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/history/candidate-generators-20261013/guards-before-utf8/candidate_safety.py",
+      "bytes": 3339,
+      "sha256": "fe24b83b239daf66479854cd1f74fcff6e56472ef5999a67585a612a326d6189"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/history/candidate-generators-20261013/initial-guard-workflow.yml",
+      "bytes": 1523,
+      "sha256": "9f05dd69fd912400cb3c586602205c98eeac6090fa1ecc4a510a580f4113a833"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/history/dependency-bots-20261013/README.md",
+      "bytes": 999,
+      "sha256": "9d287320e3e54a44fca03f3f7c6a089a274e81e959e799e1c9b6b6d179a8af3d"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/history/dependency-gaps-20261013/README.md",
+      "bytes": 1150,
+      "sha256": "a65790bb79efda77c82a3f1bba6a3f73aa6b6606dd233f34323bf6cb8de11b54"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/history/dependency-gaps-20261013/before/.github/workflows/dependency-preservation.yml",
+      "bytes": 4067,
+      "sha256": "48319595e4fb0f49feb7287b111c59536bc3fab3cbae40d6931f007f860519b3"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/history/dependency-gaps-20261013/before/package.json",
+      "bytes": 1945,
+      "sha256": "0b1907be8f6fd3ee4362b3571675a382698f4bd2e7428e02ad4fe9ccb562e869"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/history/dependency-gaps-20261013/before/pnpm-lock.yaml",
+      "bytes": 87568,
+      "sha256": "52555889141e9ce139806fb86aaa245b974e90cc1cc2a715bf70fdf143692dbf"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/history/dependency-gaps-20261013/before/src-tauri/Cargo.toml",
+      "bytes": 2126,
+      "sha256": "078c2fc9fab48dde09a4f8f5163daa46e6bfe5ac212cd5d93b74d44e2eedc2f9"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/history/dependency-gaps-20261013/evidence-before-results.json",
+      "bytes": 15243,
+      "sha256": "bbbb1c210dea5668695b371006411273518ccd3a23dd56849e6afc43444ac467"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/history/dependency-gaps-20261013/initial-test-fixture.py",
+      "bytes": 4191,
+      "sha256": "e0f04d0a851ee9383813e075662acad91a322f90f8e278c0f5925242c4f3d494"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/history/dependency-gaps-20261013/main/package.json",
+      "bytes": 1174,
+      "sha256": "1c33cec28f9f473b0f6ef0ad774bfb84a20aa07e55038d98d6dd7238fe42e119"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/history/dependency-gaps-20261013/report-before-results.md",
+      "bytes": 11854,
+      "sha256": "701e0873cc357cf5859f579be03d4fc6c9b78b8f5148dbfcc213850a654067f8"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/history/dependency-gaps-20261013/upstream/plugin-react-4.7.0.package.json",
+      "bytes": 1743,
+      "sha256": "d608755568d9d654c34e9e2da06659df9122fa89d2604ee09cdeda457a20c035"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/history/dependency-gaps-20261013/upstream/plugin-react-6.0.2.package.json",
+      "bytes": 2114,
+      "sha256": "4cd7456c1d01b92b6a983ccec4916d55ae21a512608ea4087d8acf96c5327699"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/history/dependency-gaps-20261013/upstream/tauri-1.8.3.Cargo.toml",
+      "bytes": 11415,
+      "sha256": "748a71444a0eba78c2b732e04615c646d3daf8920b02ce891167e5409502d735"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/history/dependency-gaps-20261013/upstream/tauri-2.12.3.Cargo.toml",
+      "bytes": 7668,
+      "sha256": "0ff76a923f11e0082b1711c7ec42ce2021bf462e9aca378cbbc954a5645799d5"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/history/dependency-gaps-20261013/upstream/tauri-v2-migration.mdx",
+      "bytes": 37663,
+      "sha256": "f6c921fad5eb890550da1793a0b8f1d9baffd5f29afa51e470190e33e7372116"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/history/dependency-gaps-20261013/upstream/vite-7.3.5.package.json",
+      "bytes": 5187,
+      "sha256": "395305f4d5ce7ca1bd4aebdd130e4e7527009fb2ba9b7378f5f07bf734f81ca6"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/history/dependency-gaps-20261013/upstream/vite-8-migration.md",
+      "bytes": 21359,
+      "sha256": "595e8f8217e27d360bc33ad6114202f0fb7235e02b11272bce6fe62b60791adc"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/history/dependency-gaps-20261013/upstream/vite-8.0.16.package.json",
+      "bytes": 5046,
+      "sha256": "342571e744d0ef3c2d2c9720c70609764d58c2c6a0f4f03951c7b977a1eb38cb"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/history/glib-empty-slice-20261013/README.md",
+      "bytes": 1581,
+      "sha256": "29312cd41966ab2fb36a8bc1c205f52297a1ed03cb7bc7d895a3c1b545a4d0e2"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/history/glib-empty-slice-20261013/Scripts/check-rust-warnings-backport.py",
+      "bytes": 2867,
+      "sha256": "85d3ee652cc2f4d599169eb0bade457ea55c42a975dd7904f33a8bc5f375d9c4"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/history/glib-empty-slice-20261013/conversion-after.rs.txt",
+      "bytes": 1178,
+      "sha256": "e94c60ac93ae6f6b5d9a8db9785a00e09fb4c350c72f35f6a7ee9a2663cb6c32"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/history/glib-empty-slice-20261013/conversion-before.rs.txt",
+      "bytes": 740,
+      "sha256": "48b2d568c92705e783bbd071c3dcc0083b27fad1e2ea6c3dd9bf3d585d5e59d3"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/history/glib-empty-slice-20261013/src-tauri/tests/glib_empty_slice.upstream-api-incompatible.rs",
+      "bytes": 4665,
+      "sha256": "8373f70ee261284d126cd28bcfa048d105964365bab685f4cb383e6ea033e1d6"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/history/glib-empty-slice-20261013/upstream-verification.json",
+      "bytes": 7005,
+      "sha256": "02deb5064cf709c5bad9ee57fefbfabcf8ff628fb9442591445d81045d2433c0"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/history/glib-empty-slice-20261013/vendor/glib-0.18.5/src/collections/ptr_slice.rs",
+      "bytes": 41267,
+      "sha256": "6fcb10ac7d9b4ba58cdbed9dc0ad40a4f4d4f608a3572403f8a7c77fc99c2221"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/history/js-security-20261013/js-ci.yml",
+      "bytes": 1541,
+      "sha256": "5141c05e8468760b828219105c5a57f3b1b85dcd97bc5ccc200af717f5c0a10e"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/history/js-security-20261013/package.json",
+      "bytes": 1173,
+      "sha256": "6c8872840a20c1e6c2b955d3d6f2943f3bfdd3f884396f0691ff99f091a5fcce"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/history/js-security-20261013/pnpm-lock.yaml",
+      "bytes": 86728,
+      "sha256": "4e234cdb7d4b68d6f0dda05096a9ad6ed70a5c8d79aa68ee9b309b876f55c09c"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/history/pnpm-lock.before-phase1-repair.yaml",
+      "bytes": 84273,
+      "sha256": "685f622bd59421fe48e40007d35e707b361af14900e79f80dc69cd1cf06682a4"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/history/rust-h2-20261013/Cargo.lock",
+      "bytes": 126606,
+      "sha256": "d7ecf5a020fda182c8a684144c53dd5323c3985cb658382041e4890e6869e71a"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/history/rust-h2-20261013/src-tauri/Cargo.toml",
+      "bytes": 871,
+      "sha256": "6fc9a5d27d76bbcbf7f07bb44d9fbc96e23a8ef6378c059916cfe4176d83bd39"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/history/rust-warnings-20261013/Cargo.lock",
+      "bytes": 125585,
+      "sha256": "daac36cf6c981af4cf3dc9462344499793e1766199f585273be4ea3bfccc1bbd"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/history/rust-warnings-20261013/Cargo.toml",
+      "bytes": 275,
+      "sha256": "c841cd3f819baa3703645f5eee228d0b7e6a2a4b9f3e39fa6794f50f7643959f"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/history/rust-warnings-20261013/experiments/Cargo.patch-crates-io.toml",
+      "bytes": 721,
+      "sha256": "5f06163fd561eaddaaaebbe182d7b72db2e1b3e998f718a91953a1e22d1c621c"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/history/rust-warnings-20261013/glib-0.18.5.crate",
+      "bytes": 267679,
+      "sha256": "233daaf6e83ae6a12a52055f568f9d7cf4671dabb78ff9560ab6da230ce00ee5"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/history/rust-warnings-20261013/src-tauri/Cargo.toml",
+      "bytes": 1919,
+      "sha256": "e194e5267a35e3f22bd9f066d391049c7714d0f09cd2e7b236ce2c966f2269f9"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/security/DEPENDENCY_BOTS_EVIDENCE_20261013.json",
+      "bytes": 6243,
+      "sha256": "dceea0bc5903bab5eb78b2a322b8b59691321fd3cb591cbbf26e3f294e4fbb11"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/security/GLIB_EMPTY_SLICE_BACKPORT_EVIDENCE_20261013.json",
+      "bytes": 11254,
+      "sha256": "035d2f5086f94fc0d51ac2037cdfeb6278e9b276463987155d35a526f69683fd"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/docs/security/proposals/UNAPPLIED_GLIB_EMPTY_SLICE_UPSTREAM_20261013.patch",
+      "bytes": 1724,
+      "sha256": "b2424a736bae6af917113f0b216cd2c26bfcc0f0fe5a89282489b475d359eeb4"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/js-security/braces-3.0.3.patch",
+      "bytes": 4808,
+      "sha256": "0798420c485a08534083b6eba2d8d8f50888716f40e1f5fc9883c43a38419619"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/js-security/original/index.js",
+      "bytes": 4380,
+      "sha256": "332ea07c7b006361aad12aa994ca75dc1db8e8382b884909e2f38f10b85c88a4"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/js-security/original/lib/compile.js",
+      "bytes": 1501,
+      "sha256": "dc98f22eee3d511785d92a00758d5f0d48efed5f5813bdecc2de430c529b5c9f"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/js-security/original/lib/constants.js",
+      "bytes": 1589,
+      "sha256": "c18ac5adb57308f1ce42a28552da3a31f5d83709743ebd9a636336813a744d4b"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/js-security/original/lib/expand.js",
+      "bytes": 2797,
+      "sha256": "41ccc196ebfa7b7781a634e721eb744e4e7bcb54cba427a7e3d6806a1b9e58f7"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/js-security/original/lib/parse.js",
+      "bytes": 6899,
+      "sha256": "e572166565f15fa6ad9865ae49d678218e32aabfd1b3720f6d0d43d39800d310"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/js-security/original/lib/stringify.js",
+      "bytes": 708,
+      "sha256": "379f22d77bfa1478341ccd49c5e4267464aabcbba03558bab332aac23fc6f23a"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/js-security/original/lib/utils.js",
+      "bytes": 2518,
+      "sha256": "b5a7596aa67730412b3c029ef09e84e6b67b8e445cffd35d1d295549c89066c7"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/js-security/patched/index.js",
+      "bytes": 4380,
+      "sha256": "332ea07c7b006361aad12aa994ca75dc1db8e8382b884909e2f38f10b85c88a4"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/js-security/patched/lib/compile.js",
+      "bytes": 1553,
+      "sha256": "88cf20f18b59c9b2741c2d9b0f0ac6b2967d8e174667edf817133ca57d76809e"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/js-security/patched/lib/constants.js",
+      "bytes": 1759,
+      "sha256": "ee7cbbaff6e658c5d54fb6bb3b3a0f267bd294017e3dfcf69085d520ec8220d9"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/js-security/patched/lib/expand.js",
+      "bytes": 2910,
+      "sha256": "edee455eb3ab49d5cf50c3b9ea2ce244382cbfb532148a20cc5f965d08aca192"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/js-security/patched/lib/parse.js",
+      "bytes": 7011,
+      "sha256": "e0fefce6fcc15f9251b6d396cec5ed2a0399a291bb2e8ac66c8bcd5d26224126"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/js-security/patched/lib/stringify.js",
+      "bytes": 764,
+      "sha256": "a3b8b5e7567ff9bfdbe155479fbdd92d5a924c3919adf05316f8f0c4f6330332"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/js-security/patched/lib/utils.js",
+      "bytes": 2991,
+      "sha256": "34c878b147c125e694ff70490e7d1188bfee9214f47bca7b4ed46662bfdddec1"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-bundle.b64",
+      "bytes": 1041676,
+      "sha256": "94333c0bd1b29595bf1ca8d8f814c3661355ade6e6da0b7f2e288399eb9c6ca1"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-bundle2.b64",
+      "bytes": 1041648,
+      "sha256": "e41c223f5752de7c9fa4e3fdd1d616fba80884a6b7d7dac7807642036f4e23eb"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/Cargo.lock",
+      "bytes": 125450,
+      "sha256": "a315226be8477e6ea242d07190a7a82317ad50956acb004a51861ee72c484712"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/Cargo.toml",
+      "bytes": 721,
+      "sha256": "5f06163fd561eaddaaaebbe182d7b72db2e1b3e998f718a91953a1e22d1c621c"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/docs/history/rust-warnings-20261013/glib-0.18.5.crate",
+      "bytes": 267679,
+      "sha256": "233daaf6e83ae6a12a52055f568f9d7cf4671dabb78ff9560ab6da230ce00ee5"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/src-tauri/Cargo.toml",
+      "bytes": 2126,
+      "sha256": "078c2fc9fab48dde09a4f8f5163daa46e6bfe5ac212cd5d93b74d44e2eedc2f9"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/src-tauri/tests/glib_variant_str_iter.rs",
+      "bytes": 2080,
+      "sha256": "524e788e0a5f07307d172a9e2c90935e20dfe94d1b86a2fa92c5fea74ab0cee3"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/.cargo_vcs_info.json",
+      "bytes": 98,
+      "sha256": "b301b45387ec3b66f1eace44a21991aaeac83e3140dab4faa0f6b9f7f0ec445b"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/COPYRIGHT",
+      "bytes": 651,
+      "sha256": "dae402989de65164815b7e2b6bc2b9576285434c3785934c8b6ece0fa055960d"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/Cargo.toml",
+      "bytes": 3127,
+      "sha256": "bcd52d812b4c111864ae8e88ba6c0a8311eb0cf781b5e81634950b4619592132"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/Cargo.toml.orig",
+      "bytes": 2197,
+      "sha256": "677a6833293bfb48a855a5965aa2616e5a8a67cfe32b348454aa90c829a138f0"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/Gir.toml",
+      "bytes": 22016,
+      "sha256": "c09a2a77e6b5872c356f158db02fb02a91d238acc2b3d74dac527ae113e9a9f3"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/Gir_GObject.toml",
+      "bytes": 3640,
+      "sha256": "02eca96b8fc6fe0e7b36407b91e4e91a5e1662bcdef9b4bbe4ab34744182e8a7"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/LICENSE",
+      "bytes": 1024,
+      "sha256": "8cf56d10131ce201cf69ab74b111d3ebac1acca3833d7efb39ae357224b70edb"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/README.md",
+      "bytes": 3720,
+      "sha256": "31d662868efe1db14c1ae19dc99c0352266dd6f6b2db31d4079cbb162268a819"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/benches/gstring.rs",
+      "bytes": 1164,
+      "sha256": "17387e7dab0bd4002cc8b4bac315e60a171a271b152acaebe709551f4d494589"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/auto/alias.rs",
+      "bytes": 332,
+      "sha256": "55c23867766bc1f570c9d51dd165eb0f96ba606eae6ee4c15d9f3c7a8ccd19e5"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/auto/checksum.rs",
+      "bytes": 1368,
+      "sha256": "2c7f7d139aff5a28ba1672f633e0f76a79e4527e5abed0d9d588d823a3002646"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/auto/constants.rs",
+      "bytes": 6264,
+      "sha256": "c2fa5757279dcc2a357daa56cef643c622b2c387ddc48f88024f67bb72a4cd00"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/auto/date_time.rs",
+      "bytes": 16318,
+      "sha256": "fc05d7c90e522d5ef1cb7cef6d41de49b8357a8349c48745dff3f769b42d0fda"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/auto/enums.rs",
+      "bytes": 102752,
+      "sha256": "70685084d7462df9cf4f9a1a5254b298f0de8ea587cbd7f8ff28e468c306386a"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/auto/flags.rs",
+      "bytes": 19925,
+      "sha256": "c2f77a0bdeeea8af3d0a39d7afeb2b75affae58905522b5fa65922d460052d4e"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/auto/functions.rs",
+      "bytes": 26604,
+      "sha256": "e9b0cd6ddde7a2fcb157221e712d9f33f419aeae1aa3d206987ebce526152e7e"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/auto/key_file.rs",
+      "bytes": 15314,
+      "sha256": "263c41a0df370671ef65dbf77f4a1311c349ebbb2a7b6d0a4a19525d57788e9d"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/auto/main_context.rs",
+      "bytes": 4947,
+      "sha256": "6c8d3b897b821e73e1653aeff2ddfcffcfd7dd3805bb1d850656c1b8100cab84"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/auto/main_loop.rs",
+      "bytes": 1557,
+      "sha256": "79d3273a2e8357b7d1cf2e3d53ed98e85f3260ae9780a7a559234c0d2d797b57"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/auto/markup_parse_context.rs",
+      "bytes": 3567,
+      "sha256": "979a1e49c8cd5cbca751d40cb37defe20c2f0a72dd9e4b65838c527d0ae0d291"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/auto/mod.rs",
+      "bytes": 4239,
+      "sha256": "74aa2e241ebca146a4843974b2c83087bc93fb71e70d86d2011172cbc5616ce4"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/auto/source.rs",
+      "bytes": 4434,
+      "sha256": "b2360784363f49c9a2e63e2e7873bc478d93eb09dda22f0018ee69b84a5f92b8"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/auto/time_zone.rs",
+      "bytes": 3092,
+      "sha256": "62a86aac66665ec0843bb0ad0d202d72b03224b4b072895034c7daf1f09aba81"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/auto/uri.rs",
+      "bytes": 16960,
+      "sha256": "dd30e5981df044c95a3900c983da28c06fd8fa399b03c76acb45ec2f6c59fcae"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/auto/versions.txt",
+      "bytes": 132,
+      "sha256": "035a7287797d47bfbc9811abee3a8bbae5f5e6ec7dab72ec394a123ddb88c4c2"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/boxed.rs",
+      "bytes": 24430,
+      "sha256": "1bb1a003c82fc5903b398aef6f07d8f828446eff0a793e4aa94abbadff79f3fa"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/boxed_any_object.rs",
+      "bytes": 6519,
+      "sha256": "bd11c46e03dea925ae9b15ba6c2c70f38e207aa70530f30c4a1e7b7322f19404"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/boxed_inline.rs",
+      "bytes": 29709,
+      "sha256": "9dd644d5be6a11e8a56dbb16f70c1570affdeceaaf2622f88d661fa5769b487d"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/bridged_logging.rs",
+      "bytes": 13937,
+      "sha256": "a74ff5afc558ac072d083703d234bb79d77362d56c6a2b50934c49a7abfe0eb1"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/byte_array.rs",
+      "bytes": 3991,
+      "sha256": "b859699a50b69878cbf4d7d83c25a3e34402147bc7febe481e92c6d01e31898c"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/bytes.rs",
+      "bytes": 7205,
+      "sha256": "2c4d37050af422a475380fdc05dda58a5179b7a54ac67d14e8ab1131833f5619"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/char.rs",
+      "bytes": 5624,
+      "sha256": "edb208444ce0760c6b52a86e90db0fe2b18472c2436f75b2d241acfaeb89c3f6"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/checksum.rs",
+      "bytes": 1987,
+      "sha256": "fc98c34788d878d2461a394b442a4d8797602b3d380d96260c71160c552faa6f"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/clone.rs",
+      "bytes": 2073,
+      "sha256": "87ff5bf8fca591fb8236d61c8b1bee0db54c645b0af1c1f97dd36298c4f0f79b"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/closure.rs",
+      "bytes": 14750,
+      "sha256": "2008243add8ac242fad14e79626ba4fcf3eac2eed72666ae9f9936bad163714a"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/collections/list.rs",
+      "bytes": 27224,
+      "sha256": "53887e634a8dc22fd79ad7d38f9e914d06a013061831f5e4bd2ba9095c668220"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/collections/mod.rs",
+      "bytes": 275,
+      "sha256": "0a6967d4d9f22bcfa6dcc35b2ce4f26ce1cc82f83111812ab0815f4b33e2c81f"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/collections/ptr_slice.rs",
+      "bytes": 41267,
+      "sha256": "6fcb10ac7d9b4ba58cdbed9dc0ad40a4f4d4f608a3572403f8a7c77fc99c2221"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/collections/slice.rs",
+      "bytes": 27475,
+      "sha256": "64d450ea2799db681a2d8d505bcac94c9f3a9ab0e52deb8c7ad0eada7d9b15a8"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/collections/slist.rs",
+      "bytes": 27177,
+      "sha256": "15b7ae76a09001e2df9c43feed8f28e06385d6032d53010358e58eb4a693e54b"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/collections/strv.rs",
+      "bytes": 44165,
+      "sha256": "e519528d5006592cf682be0ddca09a7eb2b5997115df28184b19e81881c03f03"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/control_flow.rs",
+      "bytes": 2480,
+      "sha256": "9610f16228f2f57a426fbb0c8a9513cb22631d0dc52fa65dfdc5f5372757a40e"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/convert.rs",
+      "bytes": 13755,
+      "sha256": "78fb8fa4fcc6d4c42be9eacb782f456daa35fdab20698dbcc1b67c11e66cb05a"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/date.rs",
+      "bytes": 13749,
+      "sha256": "bed49f44abb204d94c062f137f7a39e3ad722adf90b11b833aaae12733871650"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/date_time.rs",
+      "bytes": 366,
+      "sha256": "99cff4cd4e19d57bf81187bc6e74fe7f6936cbb6575728027bfe16595ec478d4"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/enums.rs",
+      "bytes": 30879,
+      "sha256": "a436d253d4f03bffacb488a890784304f231297607460c49ceab64bef21e5338"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/error.rs",
+      "bytes": 9227,
+      "sha256": "7350aca6f26e415d3fe653c6ec94e1e6b735d3f2cefbdae7131cb1342762b29a"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/exit_code.rs",
+      "bytes": 680,
+      "sha256": "a3de4048a143860c2d38dd1067b91bc52da9c3994491d5f8ca5187100739ff48"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/future_with_timeout.rs",
+      "bytes": 2950,
+      "sha256": "59c508f47dd247b680ed4a31f05124ae753845a5416c8fec0e31f6218849972c"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/gobject/auto/binding.rs",
+      "bytes": 1579,
+      "sha256": "9fcf34d5a4e30234890ecf00af8c7b73362597d12007483d630c6fa94099106b"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/gobject/auto/binding_group.rs",
+      "bytes": 2647,
+      "sha256": "fa4186b216f273ad2d7d531018d60a4b2a68243e1c1526f20d11bc10dc45b662"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/gobject/auto/flags.rs",
+      "bytes": 4598,
+      "sha256": "9a900bdfccfa61f6b222df9cc2bd1859438f72fc17cbe807a268a17079599af3"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/gobject/auto/mod.rs",
+      "bytes": 687,
+      "sha256": "71208f4ba80a250bd47ea5216e17da250b344f6e5c8cbd2fc154771bab0f1124"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/gobject/auto/signal_group.rs",
+      "bytes": 2045,
+      "sha256": "5ccbc1ee15564464d8107baf2631daa5dd426f8649d9710679f49f1407797a2b"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/gobject/binding.rs",
+      "bytes": 9508,
+      "sha256": "ff7537c94681056aba4cdb603653e1d781ae2d2c6728d55fc5b8b9786b13758a"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/gobject/binding_group.rs",
+      "bytes": 16670,
+      "sha256": "79705410a96508115ab8a601e13251a27a62507e93b1c88f9c90c590ed6f302b"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/gobject/flags.rs",
+      "bytes": 1909,
+      "sha256": "6c2bb2afff339f54225ebbe9d4ab7ef06e8f783612e1e079bc18a3be6ef0ba1d"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/gobject/mod.rs",
+      "bytes": 573,
+      "sha256": "ad5a8530e2bb7e3a4e49d9d78f66451b0aa8c5b16b88e7185c4a8759d5aa3329"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/gobject/signal_group.rs",
+      "bytes": 8181,
+      "sha256": "17eb4995d8f13d37d25d3a0465ca135d69fc4e548db712c2bd80c5419d8812e6"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/gstring.rs",
+      "bytes": 73945,
+      "sha256": "f3fe8d70bd1e58b070d4ed9d34cdd3e39f511f341424a632b9d8acdf2aec8741"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/gstring_builder.rs",
+      "bytes": 9407,
+      "sha256": "bfb1b131433531af2efa8765853ef35bbe02dc86120a04b55e6ec97e60cc8fac"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/key_file.rs",
+      "bytes": 9335,
+      "sha256": "018b398bc1bd50fd0f9925408d6898d2974c7f510d79575cb655dad7e17243de"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/lib.rs",
+      "bytes": 6621,
+      "sha256": "70abc92bf0d02f3c4989034501065cdf64d70901e511f6720d8cd65fcbb662e1"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/log.rs",
+      "bytes": 34213,
+      "sha256": "d5458fa20083efdd1f46bc1464d46fcd32fb1af926f3151881f0c0ec37e330e1"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/main_context.rs",
+      "bytes": 9513,
+      "sha256": "a1dc45489f318659f0c4a94d3143807270e6cce6a8d127afa25944838ce66b25"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/main_context_channel.rs",
+      "bytes": 30419,
+      "sha256": "e619173fc993bb1ffa350ef692b50b3b268ed5b294208caede8271ae742d80e8"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/main_context_futures.rs",
+      "bytes": 26537,
+      "sha256": "49a56a433d4f57929d7ced0d438b8dcdbe05b78d097e28d27ead09821cb802be"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/manual_functions.rs",
+      "bytes": 9914,
+      "sha256": "8e9bea0686535b5a464c82fe8b0356734e82c6aafe8bec9c717d208a6fb76059"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/object.rs",
+      "bytes": 160705,
+      "sha256": "61304201fc2dd2ec7d0e8db7343bc62db6e9c81be07b2b16ad3f530a8972f017"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/param_spec.rs",
+      "bytes": 69707,
+      "sha256": "3ffc0efc67226b180ae4f625d6579749c1d74e58fc8790d4ad837697a65ea3ff"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/prelude.rs",
+      "bytes": 374,
+      "sha256": "75479bc1c16d719f472d44f08450b6972af5b4b18a77bcba381fa34428b0a567"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/property.rs",
+      "bytes": 8863,
+      "sha256": "c35ba9d518b0866f4bd07de5b2433fd70ef0ed38a1fb68839d2e481ab77bd887"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/quark.rs",
+      "bytes": 2514,
+      "sha256": "edfba293a1a4fcce1d057f961a182fd6aa5bfe142ecf03a692593d6951a1af5c"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/shared.rs",
+      "bytes": 23665,
+      "sha256": "24678285b9553298767c5a866aa9005dd84e0b3dae4760fcbbc6d3bf32adab8a"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/signal.rs",
+      "bytes": 5933,
+      "sha256": "09af50bf7e406b7c36f0fcbcfdb2855d6db259ca14fd4922c25c13b62db45b1d"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/source.rs",
+      "bytes": 40158,
+      "sha256": "2b5ed41c030a532be71b8525f73e6097d43380899e352dc2b1db07e4ff2d4cc5"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/source_futures.rs",
+      "bytes": 15661,
+      "sha256": "7d2fde280f9830916e3392eb7cdb69e1dd731084089699a2ad1bc0ddcb7dbcd6"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/subclass/basic.rs",
+      "bytes": 2092,
+      "sha256": "e671bd06f057c34b0b0b1dbb8c2b49c1d088b8697a0143d592969162744601ae"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/subclass/boxed.rs",
+      "bytes": 3346,
+      "sha256": "77825d5f8f7c6a2c78e10a696bbcd379984c1174ab9e3ce5a67d0942c38c4d16"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/subclass/interface.rs",
+      "bytes": 7121,
+      "sha256": "7ce87736717fdba007b649501e6cd4121c69e18a6cf0bcaf79a5512b4864ca53"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/subclass/mod.rs",
+      "bytes": 9355,
+      "sha256": "c3b6cb807d4e5ba7bd88153fedff76de11bcd53797905fc94d1dfadc51caa3c9"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/subclass/object.rs",
+      "bytes": 24414,
+      "sha256": "77da557b5e346ae3cde5ddfe525eeba22054b5beeb8335ae4a54a95cafab8701"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/subclass/object_impl_ref.rs",
+      "bytes": 4279,
+      "sha256": "7395e7e9bd5f8e6221883daaf2918758171bd75a002c5ec45b3099449a088c5d"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/subclass/shared.rs",
+      "bytes": 9284,
+      "sha256": "d60b0164b5d71412d9e7ef7a405cf730eecc3825dea2889810512124f50aae80"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/subclass/signal.rs",
+      "bytes": 21430,
+      "sha256": "006c9ad5a763fa2922b933f18b19b253d771f4a89e3115acca9c445c26c361b2"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/subclass/types.rs",
+      "bytes": 38914,
+      "sha256": "a2ad0aa5a551d95e73eb31d0339007bc615ebcbdf72953a92ddcc66ba09f4e4e"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/thread_guard.rs",
+      "bytes": 3336,
+      "sha256": "33995f6ba5bb78698ce049be3129579b9d7cc7d101b64bc8252e2d46150369a8"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/thread_pool.rs",
+      "bytes": 7750,
+      "sha256": "82766026df3d2f06fc4917eab56c4c205d95eaebd46b06f3c53ec4b406b2b050"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/time_span.rs",
+      "bytes": 2734,
+      "sha256": "7c0ca119e080a460d2e2f4d92d0e4b2909e215b52126351a74d2c4f2a0d94857"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/time_zone.rs",
+      "bytes": 460,
+      "sha256": "8f54373db83b228a3459d71c18b3229fe37646fe3deeba23ad5592f6f5aad9d9"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/translate.rs",
+      "bytes": 94681,
+      "sha256": "f7b8c4b8a778e02d9ab18a1e018c27504e79e77b78353805bce156c694a0e85f"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/types.rs",
+      "bytes": 18400,
+      "sha256": "37137fe328dd321ceb4c9bfb439b40c630204711d4b24cc78c31800f539be4af"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/unichar.rs",
+      "bytes": 7864,
+      "sha256": "b489b849e3d7fbfd6563f43526d07647c5344e25f3a0a27803294f2695b7b9ce"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/unicollate.rs",
+      "bytes": 2752,
+      "sha256": "0bf8fe3d5aca3dc7f9ebba97984b775f0bcbf3b158cdfac03fc71c5b2a11f77d"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/utils.rs",
+      "bytes": 8574,
+      "sha256": "3c05a182c7e19409198d560e04de9136d3dbbb6beba166def08a76c181be75df"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/value.rs",
+      "bytes": 45287,
+      "sha256": "37eb2396c22f6eec372da9561d2c1651e4a9aff1f5fc634ac6db78f885f8be80"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/value_array.rs",
+      "bytes": 7064,
+      "sha256": "61b40654fe0771b5fafde9b54f2fba8db9c81cb27f114376024b66b775a785e7"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/variant.rs",
+      "bytes": 77401,
+      "sha256": "b48295eca732e862b2c5347ee431c2f800c7b0c6b30f6a0f0879cd16fe13eb9b"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/variant_dict.rs",
+      "bytes": 10269,
+      "sha256": "7b22eeb2804a2ec07d32612b712374559f23ed1e2cc59f0d05b7f28e168d706b"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/variant_iter.rs",
+      "bytes": 9882,
+      "sha256": "a0f5ee8acb8faa089bcdfbc9a57372609fce7654026ccef7d9a224d05a654ccc"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/variant_type.rs",
+      "bytes": 33192,
+      "sha256": "3e0ed2dd6119876bac19599b3aa729d5252d5449fe7f40329fb702c8f224c6b8"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/win32.rs",
+      "bytes": 3385,
+      "sha256": "a221643d9be5f9cee911fad60890d3727fdd700f70da6dcf947b2631be2fcee6"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/src/wrapper.rs",
+      "bytes": 14934,
+      "sha256": "1356b5423ac469b1778a6f06d3855251f5f8f5246bbbe05812502deeadadca54"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/tests/check_gir.rs",
+      "bytes": 230,
+      "sha256": "8984c8e380221bb61475e329b6206eaa5702efe7e3501ec14e56e0e7773e0101"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/tests/clone.rs",
+      "bytes": 19802,
+      "sha256": "2aee80da279e7072e853bcf15088e56748aebad3c9e15d1c3c62db0c0541f3d5"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/tests/derive.rs",
+      "bytes": 679,
+      "sha256": "59ec971ff0de81728ddd8c528f590e962090a0eadda276b75951745b0aaf6b40"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/tests/log.rs",
+      "bytes": 3681,
+      "sha256": "04bb3d80acd39e8f58660ec590087e8a3f414794be97fcbe86535f6356182204"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/tests/print.rs",
+      "bytes": 1713,
+      "sha256": "07baf16c95976c35723a9e0ba4fe1b5d1916f22887a358a76b1010ade6aa4d87"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/tests/structured_log.rs",
+      "bytes": 4485,
+      "sha256": "023503c632375ce1f3196fa1249e1b7a79aedfa28b458036657ea0b389064b05"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/tests/subclass_compiletest/01-auto-send-sync.rs",
+      "bytes": 615,
+      "sha256": "8ff975b8f4b5c94c4cb823f27668446e3f8da5c0cf359e1bd8ac6a86334d1aa4"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/tests/subclass_compiletest/02-no-auto-send-sync.rs",
+      "bytes": 645,
+      "sha256": "39d1a1dd156bc2eaaf6a5ca57525b1f9c5b069ac6ee70ecea9455138c2eebe13"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/tests/subclass_compiletest/02-no-auto-send-sync.stderr",
+      "bytes": 1266,
+      "sha256": "064b2d5b0dceb949c288fe09cb056f870a34c0ae5a65a33ea2e827f6ef9725ad"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/tests/subclass_compiletest/03-object-no-auto-send-sync.rs",
+      "bytes": 125,
+      "sha256": "f7d3ae563cbb02b07253b396bb9af5fa31394e4d64ee9b6d4ffa1641e1a50b52"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/tests/subclass_compiletest/03-object-no-auto-send-sync.stderr",
+      "bytes": 1811,
+      "sha256": "3e0ea73faa979d9ab9ddcc5c3a2824592378f53e4894d029572cddbf6e6f816f"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/tests/subclass_compiletest/04-auto-send-sync-with-send-sync-parent.rs",
+      "bytes": 1489,
+      "sha256": "6832dc8851d0fdabc906acc1af8234d8ae1143a1fe8f7d7f2134e706538b6dbe"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/tests/subclass_compiletest/05-no-auto-send-sync-with-non-send-sync-parent.rs",
+      "bytes": 1457,
+      "sha256": "2b05fad36e3311bd1f6bef737431b96bbbb579b3071aef685debaaa16b95cbda"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/tests/subclass_compiletest/05-no-auto-send-sync-with-non-send-sync-parent.stderr",
+      "bytes": 1775,
+      "sha256": "9cff33355447a4c18610a211ad2ee58b87536720e0685e44c8212992ef687f77"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/tests/subclass_compiletest/06-no-auto-send-sync-with-non-send-sync-ffi-parent.rs",
+      "bytes": 1218,
+      "sha256": "a37119bff708de5c84e8a82affa6cc9abe73595b08c9e0539d9cbe33af5e9f7a"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/tests/subclass_compiletest/06-no-auto-send-sync-with-non-send-sync-ffi-parent.stderr",
+      "bytes": 2887,
+      "sha256": "808ac199325749e28e4c5ea6a459463d87c375443dc73c143a8fc1032575895f"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/tests/subclass_compiletest.rs",
+      "bytes": 590,
+      "sha256": "06fd13974d96c0a21ce9a906010f82db1fdf1b17c192716510cc93ed2ef79547"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate1/vendor/glib-0.18.5/tests/value.rs",
+      "bytes": 1707,
+      "sha256": "c796ea2b30559e9c8ab6ebbb6c59c575d365a27b461c20f9ca0b1989dbe01d79"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/.cargo/config.toml",
+      "bytes": 199,
+      "sha256": "478a96f7112fa5696dbebf9e61feb565d4b801e1ea1c0a6bb1ab9d096ba4e4d8"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/Cargo.lock",
+      "bytes": 125593,
+      "sha256": "c8d70e7d10c9a046fbbdcadb0a4e8dc622ebbd1f9c21ce97e5dd05ccab63ddc3"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/Cargo.toml",
+      "bytes": 478,
+      "sha256": "67a377f90a64f1f97c4d87ce98ff049c5b5e777e5600f10f7a2bbe0013c2338f"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/docs/history/rust-warnings-20261013/glib-0.18.5.crate",
+      "bytes": 267679,
+      "sha256": "233daaf6e83ae6a12a52055f568f9d7cf4671dabb78ff9560ab6da230ce00ee5"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/src-tauri/Cargo.toml",
+      "bytes": 2126,
+      "sha256": "078c2fc9fab48dde09a4f8f5163daa46e6bfe5ac212cd5d93b74d44e2eedc2f9"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/src-tauri/tests/glib_variant_str_iter.rs",
+      "bytes": 2080,
+      "sha256": "524e788e0a5f07307d172a9e2c90935e20dfe94d1b86a2fa92c5fea74ab0cee3"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/.cargo_vcs_info.json",
+      "bytes": 98,
+      "sha256": "b301b45387ec3b66f1eace44a21991aaeac83e3140dab4faa0f6b9f7f0ec445b"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/COPYRIGHT",
+      "bytes": 651,
+      "sha256": "dae402989de65164815b7e2b6bc2b9576285434c3785934c8b6ece0fa055960d"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/Cargo.toml",
+      "bytes": 3127,
+      "sha256": "bcd52d812b4c111864ae8e88ba6c0a8311eb0cf781b5e81634950b4619592132"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/Cargo.toml.orig",
+      "bytes": 2197,
+      "sha256": "677a6833293bfb48a855a5965aa2616e5a8a67cfe32b348454aa90c829a138f0"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/Gir.toml",
+      "bytes": 22016,
+      "sha256": "c09a2a77e6b5872c356f158db02fb02a91d238acc2b3d74dac527ae113e9a9f3"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/Gir_GObject.toml",
+      "bytes": 3640,
+      "sha256": "02eca96b8fc6fe0e7b36407b91e4e91a5e1662bcdef9b4bbe4ab34744182e8a7"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/LICENSE",
+      "bytes": 1024,
+      "sha256": "8cf56d10131ce201cf69ab74b111d3ebac1acca3833d7efb39ae357224b70edb"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/README.md",
+      "bytes": 3720,
+      "sha256": "31d662868efe1db14c1ae19dc99c0352266dd6f6b2db31d4079cbb162268a819"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/benches/gstring.rs",
+      "bytes": 1164,
+      "sha256": "17387e7dab0bd4002cc8b4bac315e60a171a271b152acaebe709551f4d494589"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/auto/alias.rs",
+      "bytes": 332,
+      "sha256": "55c23867766bc1f570c9d51dd165eb0f96ba606eae6ee4c15d9f3c7a8ccd19e5"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/auto/checksum.rs",
+      "bytes": 1368,
+      "sha256": "2c7f7d139aff5a28ba1672f633e0f76a79e4527e5abed0d9d588d823a3002646"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/auto/constants.rs",
+      "bytes": 6264,
+      "sha256": "c2fa5757279dcc2a357daa56cef643c622b2c387ddc48f88024f67bb72a4cd00"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/auto/date_time.rs",
+      "bytes": 16318,
+      "sha256": "fc05d7c90e522d5ef1cb7cef6d41de49b8357a8349c48745dff3f769b42d0fda"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/auto/enums.rs",
+      "bytes": 102752,
+      "sha256": "70685084d7462df9cf4f9a1a5254b298f0de8ea587cbd7f8ff28e468c306386a"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/auto/flags.rs",
+      "bytes": 19925,
+      "sha256": "c2f77a0bdeeea8af3d0a39d7afeb2b75affae58905522b5fa65922d460052d4e"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/auto/functions.rs",
+      "bytes": 26604,
+      "sha256": "e9b0cd6ddde7a2fcb157221e712d9f33f419aeae1aa3d206987ebce526152e7e"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/auto/key_file.rs",
+      "bytes": 15314,
+      "sha256": "263c41a0df370671ef65dbf77f4a1311c349ebbb2a7b6d0a4a19525d57788e9d"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/auto/main_context.rs",
+      "bytes": 4947,
+      "sha256": "6c8d3b897b821e73e1653aeff2ddfcffcfd7dd3805bb1d850656c1b8100cab84"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/auto/main_loop.rs",
+      "bytes": 1557,
+      "sha256": "79d3273a2e8357b7d1cf2e3d53ed98e85f3260ae9780a7a559234c0d2d797b57"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/auto/markup_parse_context.rs",
+      "bytes": 3567,
+      "sha256": "979a1e49c8cd5cbca751d40cb37defe20c2f0a72dd9e4b65838c527d0ae0d291"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/auto/mod.rs",
+      "bytes": 4239,
+      "sha256": "74aa2e241ebca146a4843974b2c83087bc93fb71e70d86d2011172cbc5616ce4"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/auto/source.rs",
+      "bytes": 4434,
+      "sha256": "b2360784363f49c9a2e63e2e7873bc478d93eb09dda22f0018ee69b84a5f92b8"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/auto/time_zone.rs",
+      "bytes": 3092,
+      "sha256": "62a86aac66665ec0843bb0ad0d202d72b03224b4b072895034c7daf1f09aba81"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/auto/uri.rs",
+      "bytes": 16960,
+      "sha256": "dd30e5981df044c95a3900c983da28c06fd8fa399b03c76acb45ec2f6c59fcae"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/auto/versions.txt",
+      "bytes": 132,
+      "sha256": "035a7287797d47bfbc9811abee3a8bbae5f5e6ec7dab72ec394a123ddb88c4c2"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/boxed.rs",
+      "bytes": 24430,
+      "sha256": "1bb1a003c82fc5903b398aef6f07d8f828446eff0a793e4aa94abbadff79f3fa"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/boxed_any_object.rs",
+      "bytes": 6519,
+      "sha256": "bd11c46e03dea925ae9b15ba6c2c70f38e207aa70530f30c4a1e7b7322f19404"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/boxed_inline.rs",
+      "bytes": 29709,
+      "sha256": "9dd644d5be6a11e8a56dbb16f70c1570affdeceaaf2622f88d661fa5769b487d"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/bridged_logging.rs",
+      "bytes": 13937,
+      "sha256": "a74ff5afc558ac072d083703d234bb79d77362d56c6a2b50934c49a7abfe0eb1"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/byte_array.rs",
+      "bytes": 3991,
+      "sha256": "b859699a50b69878cbf4d7d83c25a3e34402147bc7febe481e92c6d01e31898c"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/bytes.rs",
+      "bytes": 7205,
+      "sha256": "2c4d37050af422a475380fdc05dda58a5179b7a54ac67d14e8ab1131833f5619"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/char.rs",
+      "bytes": 5624,
+      "sha256": "edb208444ce0760c6b52a86e90db0fe2b18472c2436f75b2d241acfaeb89c3f6"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/checksum.rs",
+      "bytes": 1987,
+      "sha256": "fc98c34788d878d2461a394b442a4d8797602b3d380d96260c71160c552faa6f"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/clone.rs",
+      "bytes": 2073,
+      "sha256": "87ff5bf8fca591fb8236d61c8b1bee0db54c645b0af1c1f97dd36298c4f0f79b"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/closure.rs",
+      "bytes": 14750,
+      "sha256": "2008243add8ac242fad14e79626ba4fcf3eac2eed72666ae9f9936bad163714a"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/collections/list.rs",
+      "bytes": 27224,
+      "sha256": "53887e634a8dc22fd79ad7d38f9e914d06a013061831f5e4bd2ba9095c668220"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/collections/mod.rs",
+      "bytes": 275,
+      "sha256": "0a6967d4d9f22bcfa6dcc35b2ce4f26ce1cc82f83111812ab0815f4b33e2c81f"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/collections/ptr_slice.rs",
+      "bytes": 41267,
+      "sha256": "6fcb10ac7d9b4ba58cdbed9dc0ad40a4f4d4f608a3572403f8a7c77fc99c2221"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/collections/slice.rs",
+      "bytes": 27475,
+      "sha256": "64d450ea2799db681a2d8d505bcac94c9f3a9ab0e52deb8c7ad0eada7d9b15a8"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/collections/slist.rs",
+      "bytes": 27177,
+      "sha256": "15b7ae76a09001e2df9c43feed8f28e06385d6032d53010358e58eb4a693e54b"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/collections/strv.rs",
+      "bytes": 44165,
+      "sha256": "e519528d5006592cf682be0ddca09a7eb2b5997115df28184b19e81881c03f03"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/control_flow.rs",
+      "bytes": 2480,
+      "sha256": "9610f16228f2f57a426fbb0c8a9513cb22631d0dc52fa65dfdc5f5372757a40e"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/convert.rs",
+      "bytes": 13755,
+      "sha256": "78fb8fa4fcc6d4c42be9eacb782f456daa35fdab20698dbcc1b67c11e66cb05a"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/date.rs",
+      "bytes": 13749,
+      "sha256": "bed49f44abb204d94c062f137f7a39e3ad722adf90b11b833aaae12733871650"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/date_time.rs",
+      "bytes": 366,
+      "sha256": "99cff4cd4e19d57bf81187bc6e74fe7f6936cbb6575728027bfe16595ec478d4"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/enums.rs",
+      "bytes": 30879,
+      "sha256": "a436d253d4f03bffacb488a890784304f231297607460c49ceab64bef21e5338"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/error.rs",
+      "bytes": 9227,
+      "sha256": "7350aca6f26e415d3fe653c6ec94e1e6b735d3f2cefbdae7131cb1342762b29a"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/exit_code.rs",
+      "bytes": 680,
+      "sha256": "a3de4048a143860c2d38dd1067b91bc52da9c3994491d5f8ca5187100739ff48"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/future_with_timeout.rs",
+      "bytes": 2950,
+      "sha256": "59c508f47dd247b680ed4a31f05124ae753845a5416c8fec0e31f6218849972c"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/gobject/auto/binding.rs",
+      "bytes": 1579,
+      "sha256": "9fcf34d5a4e30234890ecf00af8c7b73362597d12007483d630c6fa94099106b"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/gobject/auto/binding_group.rs",
+      "bytes": 2647,
+      "sha256": "fa4186b216f273ad2d7d531018d60a4b2a68243e1c1526f20d11bc10dc45b662"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/gobject/auto/flags.rs",
+      "bytes": 4598,
+      "sha256": "9a900bdfccfa61f6b222df9cc2bd1859438f72fc17cbe807a268a17079599af3"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/gobject/auto/mod.rs",
+      "bytes": 687,
+      "sha256": "71208f4ba80a250bd47ea5216e17da250b344f6e5c8cbd2fc154771bab0f1124"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/gobject/auto/signal_group.rs",
+      "bytes": 2045,
+      "sha256": "5ccbc1ee15564464d8107baf2631daa5dd426f8649d9710679f49f1407797a2b"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/gobject/binding.rs",
+      "bytes": 9508,
+      "sha256": "ff7537c94681056aba4cdb603653e1d781ae2d2c6728d55fc5b8b9786b13758a"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/gobject/binding_group.rs",
+      "bytes": 16670,
+      "sha256": "79705410a96508115ab8a601e13251a27a62507e93b1c88f9c90c590ed6f302b"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/gobject/flags.rs",
+      "bytes": 1909,
+      "sha256": "6c2bb2afff339f54225ebbe9d4ab7ef06e8f783612e1e079bc18a3be6ef0ba1d"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/gobject/mod.rs",
+      "bytes": 573,
+      "sha256": "ad5a8530e2bb7e3a4e49d9d78f66451b0aa8c5b16b88e7185c4a8759d5aa3329"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/gobject/signal_group.rs",
+      "bytes": 8181,
+      "sha256": "17eb4995d8f13d37d25d3a0465ca135d69fc4e548db712c2bd80c5419d8812e6"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/gstring.rs",
+      "bytes": 73945,
+      "sha256": "f3fe8d70bd1e58b070d4ed9d34cdd3e39f511f341424a632b9d8acdf2aec8741"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/gstring_builder.rs",
+      "bytes": 9407,
+      "sha256": "bfb1b131433531af2efa8765853ef35bbe02dc86120a04b55e6ec97e60cc8fac"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/key_file.rs",
+      "bytes": 9335,
+      "sha256": "018b398bc1bd50fd0f9925408d6898d2974c7f510d79575cb655dad7e17243de"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/lib.rs",
+      "bytes": 6621,
+      "sha256": "70abc92bf0d02f3c4989034501065cdf64d70901e511f6720d8cd65fcbb662e1"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/log.rs",
+      "bytes": 34213,
+      "sha256": "d5458fa20083efdd1f46bc1464d46fcd32fb1af926f3151881f0c0ec37e330e1"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/main_context.rs",
+      "bytes": 9513,
+      "sha256": "a1dc45489f318659f0c4a94d3143807270e6cce6a8d127afa25944838ce66b25"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/main_context_channel.rs",
+      "bytes": 30419,
+      "sha256": "e619173fc993bb1ffa350ef692b50b3b268ed5b294208caede8271ae742d80e8"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/main_context_futures.rs",
+      "bytes": 26537,
+      "sha256": "49a56a433d4f57929d7ced0d438b8dcdbe05b78d097e28d27ead09821cb802be"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/manual_functions.rs",
+      "bytes": 9914,
+      "sha256": "8e9bea0686535b5a464c82fe8b0356734e82c6aafe8bec9c717d208a6fb76059"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/object.rs",
+      "bytes": 160705,
+      "sha256": "61304201fc2dd2ec7d0e8db7343bc62db6e9c81be07b2b16ad3f530a8972f017"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/param_spec.rs",
+      "bytes": 69707,
+      "sha256": "3ffc0efc67226b180ae4f625d6579749c1d74e58fc8790d4ad837697a65ea3ff"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/prelude.rs",
+      "bytes": 374,
+      "sha256": "75479bc1c16d719f472d44f08450b6972af5b4b18a77bcba381fa34428b0a567"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/property.rs",
+      "bytes": 8863,
+      "sha256": "c35ba9d518b0866f4bd07de5b2433fd70ef0ed38a1fb68839d2e481ab77bd887"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/quark.rs",
+      "bytes": 2514,
+      "sha256": "edfba293a1a4fcce1d057f961a182fd6aa5bfe142ecf03a692593d6951a1af5c"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/shared.rs",
+      "bytes": 23665,
+      "sha256": "24678285b9553298767c5a866aa9005dd84e0b3dae4760fcbbc6d3bf32adab8a"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/signal.rs",
+      "bytes": 5933,
+      "sha256": "09af50bf7e406b7c36f0fcbcfdb2855d6db259ca14fd4922c25c13b62db45b1d"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/source.rs",
+      "bytes": 40158,
+      "sha256": "2b5ed41c030a532be71b8525f73e6097d43380899e352dc2b1db07e4ff2d4cc5"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/source_futures.rs",
+      "bytes": 15661,
+      "sha256": "7d2fde280f9830916e3392eb7cdb69e1dd731084089699a2ad1bc0ddcb7dbcd6"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/subclass/basic.rs",
+      "bytes": 2092,
+      "sha256": "e671bd06f057c34b0b0b1dbb8c2b49c1d088b8697a0143d592969162744601ae"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/subclass/boxed.rs",
+      "bytes": 3346,
+      "sha256": "77825d5f8f7c6a2c78e10a696bbcd379984c1174ab9e3ce5a67d0942c38c4d16"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/subclass/interface.rs",
+      "bytes": 7121,
+      "sha256": "7ce87736717fdba007b649501e6cd4121c69e18a6cf0bcaf79a5512b4864ca53"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/subclass/mod.rs",
+      "bytes": 9355,
+      "sha256": "c3b6cb807d4e5ba7bd88153fedff76de11bcd53797905fc94d1dfadc51caa3c9"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/subclass/object.rs",
+      "bytes": 24414,
+      "sha256": "77da557b5e346ae3cde5ddfe525eeba22054b5beeb8335ae4a54a95cafab8701"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/subclass/object_impl_ref.rs",
+      "bytes": 4279,
+      "sha256": "7395e7e9bd5f8e6221883daaf2918758171bd75a002c5ec45b3099449a088c5d"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/subclass/shared.rs",
+      "bytes": 9284,
+      "sha256": "d60b0164b5d71412d9e7ef7a405cf730eecc3825dea2889810512124f50aae80"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/subclass/signal.rs",
+      "bytes": 21430,
+      "sha256": "006c9ad5a763fa2922b933f18b19b253d771f4a89e3115acca9c445c26c361b2"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/subclass/types.rs",
+      "bytes": 38914,
+      "sha256": "a2ad0aa5a551d95e73eb31d0339007bc615ebcbdf72953a92ddcc66ba09f4e4e"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/thread_guard.rs",
+      "bytes": 3336,
+      "sha256": "33995f6ba5bb78698ce049be3129579b9d7cc7d101b64bc8252e2d46150369a8"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/thread_pool.rs",
+      "bytes": 7750,
+      "sha256": "82766026df3d2f06fc4917eab56c4c205d95eaebd46b06f3c53ec4b406b2b050"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/time_span.rs",
+      "bytes": 2734,
+      "sha256": "7c0ca119e080a460d2e2f4d92d0e4b2909e215b52126351a74d2c4f2a0d94857"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/time_zone.rs",
+      "bytes": 460,
+      "sha256": "8f54373db83b228a3459d71c18b3229fe37646fe3deeba23ad5592f6f5aad9d9"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/translate.rs",
+      "bytes": 94681,
+      "sha256": "f7b8c4b8a778e02d9ab18a1e018c27504e79e77b78353805bce156c694a0e85f"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/types.rs",
+      "bytes": 18400,
+      "sha256": "37137fe328dd321ceb4c9bfb439b40c630204711d4b24cc78c31800f539be4af"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/unichar.rs",
+      "bytes": 7864,
+      "sha256": "b489b849e3d7fbfd6563f43526d07647c5344e25f3a0a27803294f2695b7b9ce"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/unicollate.rs",
+      "bytes": 2752,
+      "sha256": "0bf8fe3d5aca3dc7f9ebba97984b775f0bcbf3b158cdfac03fc71c5b2a11f77d"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/utils.rs",
+      "bytes": 8574,
+      "sha256": "3c05a182c7e19409198d560e04de9136d3dbbb6beba166def08a76c181be75df"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/value.rs",
+      "bytes": 45287,
+      "sha256": "37eb2396c22f6eec372da9561d2c1651e4a9aff1f5fc634ac6db78f885f8be80"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/value_array.rs",
+      "bytes": 7064,
+      "sha256": "61b40654fe0771b5fafde9b54f2fba8db9c81cb27f114376024b66b775a785e7"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/variant.rs",
+      "bytes": 77401,
+      "sha256": "b48295eca732e862b2c5347ee431c2f800c7b0c6b30f6a0f0879cd16fe13eb9b"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/variant_dict.rs",
+      "bytes": 10269,
+      "sha256": "7b22eeb2804a2ec07d32612b712374559f23ed1e2cc59f0d05b7f28e168d706b"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/variant_iter.rs",
+      "bytes": 9882,
+      "sha256": "a0f5ee8acb8faa089bcdfbc9a57372609fce7654026ccef7d9a224d05a654ccc"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/variant_type.rs",
+      "bytes": 33192,
+      "sha256": "3e0ed2dd6119876bac19599b3aa729d5252d5449fe7f40329fb702c8f224c6b8"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/win32.rs",
+      "bytes": 3385,
+      "sha256": "a221643d9be5f9cee911fad60890d3727fdd700f70da6dcf947b2631be2fcee6"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/src/wrapper.rs",
+      "bytes": 14934,
+      "sha256": "1356b5423ac469b1778a6f06d3855251f5f8f5246bbbe05812502deeadadca54"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/tests/check_gir.rs",
+      "bytes": 230,
+      "sha256": "8984c8e380221bb61475e329b6206eaa5702efe7e3501ec14e56e0e7773e0101"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/tests/clone.rs",
+      "bytes": 19802,
+      "sha256": "2aee80da279e7072e853bcf15088e56748aebad3c9e15d1c3c62db0c0541f3d5"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/tests/derive.rs",
+      "bytes": 679,
+      "sha256": "59ec971ff0de81728ddd8c528f590e962090a0eadda276b75951745b0aaf6b40"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/tests/log.rs",
+      "bytes": 3681,
+      "sha256": "04bb3d80acd39e8f58660ec590087e8a3f414794be97fcbe86535f6356182204"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/tests/print.rs",
+      "bytes": 1713,
+      "sha256": "07baf16c95976c35723a9e0ba4fe1b5d1916f22887a358a76b1010ade6aa4d87"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/tests/structured_log.rs",
+      "bytes": 4485,
+      "sha256": "023503c632375ce1f3196fa1249e1b7a79aedfa28b458036657ea0b389064b05"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/tests/subclass_compiletest/01-auto-send-sync.rs",
+      "bytes": 615,
+      "sha256": "8ff975b8f4b5c94c4cb823f27668446e3f8da5c0cf359e1bd8ac6a86334d1aa4"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/tests/subclass_compiletest/02-no-auto-send-sync.rs",
+      "bytes": 645,
+      "sha256": "39d1a1dd156bc2eaaf6a5ca57525b1f9c5b069ac6ee70ecea9455138c2eebe13"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/tests/subclass_compiletest/02-no-auto-send-sync.stderr",
+      "bytes": 1266,
+      "sha256": "064b2d5b0dceb949c288fe09cb056f870a34c0ae5a65a33ea2e827f6ef9725ad"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/tests/subclass_compiletest/03-object-no-auto-send-sync.rs",
+      "bytes": 125,
+      "sha256": "f7d3ae563cbb02b07253b396bb9af5fa31394e4d64ee9b6d4ffa1641e1a50b52"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/tests/subclass_compiletest/03-object-no-auto-send-sync.stderr",
+      "bytes": 1811,
+      "sha256": "3e0ea73faa979d9ab9ddcc5c3a2824592378f53e4894d029572cddbf6e6f816f"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/tests/subclass_compiletest/04-auto-send-sync-with-send-sync-parent.rs",
+      "bytes": 1489,
+      "sha256": "6832dc8851d0fdabc906acc1af8234d8ae1143a1fe8f7d7f2134e706538b6dbe"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/tests/subclass_compiletest/05-no-auto-send-sync-with-non-send-sync-parent.rs",
+      "bytes": 1457,
+      "sha256": "2b05fad36e3311bd1f6bef737431b96bbbb579b3071aef685debaaa16b95cbda"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/tests/subclass_compiletest/05-no-auto-send-sync-with-non-send-sync-parent.stderr",
+      "bytes": 1775,
+      "sha256": "9cff33355447a4c18610a211ad2ee58b87536720e0685e44c8212992ef687f77"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/tests/subclass_compiletest/06-no-auto-send-sync-with-non-send-sync-ffi-parent.rs",
+      "bytes": 1218,
+      "sha256": "a37119bff708de5c84e8a82affa6cc9abe73595b08c9e0539d9cbe33af5e9f7a"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/tests/subclass_compiletest/06-no-auto-send-sync-with-non-send-sync-ffi-parent.stderr",
+      "bytes": 2887,
+      "sha256": "808ac199325749e28e4c5ea6a459463d87c375443dc73c143a8fc1032575895f"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/tests/subclass_compiletest.rs",
+      "bytes": 590,
+      "sha256": "06fd13974d96c0a21ce9a906010f82db1fdf1b17c192716510cc93ed2ef79547"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-candidate2/vendor/glib-0.18.5/tests/value.rs",
+      "bytes": 1707,
+      "sha256": "c796ea2b30559e9c8ab6ebbb6c59c575d365a27b461c20f9ca0b1989dbe01d79"
+    },
+    {
+      "path": "LOCAL_NON_AUTORITATIVE/scratch/rust-warnings-git-entries.json",
+      "bytes": 2292267,
+      "sha256": "4f56b86da36d1666a54992bc79ba81509d5d3a4831d41ac8664d5412b68526ea"
+    },
+    {
+      "path": "PR153_RELAIS_COMPLET_20261014.md",
+      "bytes": 426340,
+      "sha256": "fb663aa377549eff858198f307a800ad08b93e145fef3ac02dfe0c6f3325e971"
+    },
+    {
+      "path": "README.md",
+      "bytes": 295,
+      "sha256": "c94325ba1f8695cb65d3f9cbad8c95e3a7f74c74c03d5805961b257dd8f19aed"
+    },
+    {
+      "path": "REMOTE_PINNED_138f029/.bolt/prompt",
+      "bytes": 4791,
+      "sha256": "7a27f357c92d3ee5f887edd80e86fa05d2eb78dc831ecda94daaab7364e7a915"
+    },
+    {
+      "path": "REMOTE_PINNED_138f029/.cargo/config.toml",
+      "bytes": 199,
+      "sha256": "478a96f7112fa5696dbebf9e61feb565d4b801e1ea1c0a6bb1ab9d096ba4e4d8"
+    },
+    {
+      "path": "REMOTE_PINNED_138f029/.github/README.md",
+      "bytes": 8851,
+      "sha256": "710eebc94f2de1118683e5292c4bc501a076a536f7defad254262596d1f590fa"
+    },
+    {
+      "path": "REMOTE_PINNED_138f029/AGENTS.md",
+      "bytes": 4690,
+      "sha256": "08b2b36666a76e37e40adcc322bf79cec554f1a16728f8101a4c0f0959a04093"
+    },
+    {
+      "path": "REMOTE_PINNED_138f029/Cargo.toml",
+      "bytes": 478,
+      "sha256": "67a377f90a64f1f97c4d87ce98ff049c5b5e777e5600f10f7a2bbe0013c2338f"
+    },
+    {
+      "path": "REMOTE_PINNED_138f029/LICENSE",
+      "bytes": 914,
+      "sha256": "885e047aba43501743e1ce3ad4557b3b445155c962141c3dda484521459fcedd"
+    },
+    {
+      "path": "REMOTE_PINNED_138f029/docs/CANDIDATE_GENERATOR_SAFETY_20261013.md",
+      "bytes": 14967,
+      "sha256": "2fae59e0d507915c92ff684f23eefd86ba8d7576b9e6346fc757bbedf9401f20"
+    },
+    {
+      "path": "REMOTE_PINNED_138f029/docs/CI_SETUP.md",
+      "bytes": 6688,
+      "sha256": "290c296f7c4d0e241cfbf54edf05ff3feb69cd013e31549aee552fdbf07bf5bb"
+    },
+    {
+      "path": "REMOTE_PINNED_138f029/docs/CODEQL_GLIB_REMAINING_TRIAGE_20261013.md",
+      "bytes": 21117,
+      "sha256": "5128d36a0d68112868d1ec77449041dc7d2b59911c4f35a1308251d433cfc02f"
+    },
+    {
+      "path": "REMOTE_PINNED_138f029/docs/CODEQL_GLIB_TRIAGE_20261013.md",
+      "bytes": 15376,
+      "sha256": "e24c0ac7eed85f0dc0f60e0836f5080744f521bffdf94601466251b3c33da084"
+    },
+    {
+      "path": "REMOTE_PINNED_138f029/docs/DEPENDENCY_BOTS_20261013.md",
+      "bytes": 17892,
+      "sha256": "e63e7eb81e7e4fc762dcc89ca00a1768588cae1437558fc71ac0425ebc29ecd4"
+    },
+    {
+      "path": "REMOTE_PINNED_138f029/docs/DEPENDENCY_GAPS_20261013.md",
+      "bytes": 16478,
+      "sha256": "99024941354f4bb2ac1f063717a1196e8f10826de629af24697a0b5c989e0975"
+    },
+    {
+      "path": "REMOTE_PINNED_138f029/docs/GLIB_EMPTY_SLICE_BACKPORT_20261013.md",
+      "bytes": 13486,
+      "sha256": "602e2183cda55e643356ca86bf6a63321e9c4699156244c9d1bb55e35b59e25b"
+    },
+    {
+      "path": "REMOTE_PINNED_138f029/docs/JS_SECURITY_AUDIT_20261013.md",
+      "bytes": 6377,
+      "sha256": "08b203c4e44b0febcb9760b69c0557aeaa5622a081725bb970681540a27f2e58"
+    },
+    {
+      "path": "REMOTE_PINNED_138f029/docs/RUST_H2_MIGRATION_20261013.md",
+      "bytes": 8456,
+      "sha256": "e1081febc913344ff98eea94d5e7a8e2fa42f6259c8ed691f09ca90c1da21909"
+    },
+    {
+      "path": "REMOTE_PINNED_138f029/docs/RUST_WARNINGS_20261013.md",
+      "bytes": 10982,
+      "sha256": "6208a7f5dabf8e36975b5ba19d3b8cdc67a4ed725738639ed8dad7b163cc638d"
+    },
+    {
+      "path": "REMOTE_PINNED_138f029/docs/security/CODEQL_HIGH_115661038804_20261014.md",
+      "bytes": 12639,
+      "sha256": "b849acbaa767db516ca0938975ba3e697a1ceae31906d4b9ab4c613007bcd81a"
+    },
+    {
+      "path": "REMOTE_PINNED_138f029/package.json",
+      "bytes": 2155,
+      "sha256": "cb24650b1c5880293e521ce0d783ba14b1afa07f81a5a28f8bb86769b233fad3"
+    },
+    {
+      "path": "REMOTE_PINNED_138f029/src-tauri/Cargo.toml",
+      "bytes": 2371,
+      "sha256": "a2dca0e6adfb328e678a3063e4cb3bb322f3bddacf13d88e962711c7fa8eb4bc"
+    },
+    {
+      "path": "REMOTE_PINNED_138f029/vendor/glib-0.18.5/LICENSE",
+      "bytes": 1024,
+      "sha256": "8cf56d10131ce201cf69ab74b111d3ebac1acca3833d7efb39ae357224b70edb"
+    },
+    {
+      "path": "evidence/CODEQL_HIGH_115661038804_20261014.md",
+      "bytes": 12640,
+      "sha256": "c542200eb637108dab27ca14b0f43b77dd45bfe1635f868ab9ef04940b32a83c"
+    },
+    {
+      "path": "evidence/CODEQL_HIGH_115661038804_EVIDENCE_20261014.json",
+      "bytes": 25597,
+      "sha256": "646c861ed2c37b961578e83991e9ffb12365db9b4f20b556352c0b5840705b0d"
+    },
+    {
+      "path": "evidence/build-pr153-handoff.py",
+      "bytes": 18655,
+      "sha256": "3965e1de9feb198d665ea61593aaf82fbd6ef4c30946a8b56421e4948e0d2c5c"
+    },
+    {
+      "path": "evidence/codeql-high-115661038804-diagnostic-validated.yml",
+      "bytes": 7658,
+      "sha256": "33463832ad15b6391eda8c6f84858e0b8a7da58758a83c86f22fc14f8fff4d61"
+    },
+    {
+      "path": "evidence/codeql-high-115661038804-diagnostic.yml",
+      "bytes": 6669,
+      "sha256": "cfcd2c605e3239f5b3bac85384f6e6ea3d091d32698c0acd3ed8b1484b706713"
+    },
+    {
+      "path": "evidence/high-final-evidence-inputs.json",
+      "bytes": 7630,
+      "sha256": "b2ac27905d161e98ce5a564705d1b3d5f32d556c648edfa7179a79d91d9103a1"
+    },
+    {
+      "path": "evidence/high-match-proof.json",
+      "bytes": 1105,
+      "sha256": "bdf56dec0aa10dccec592b136f2a5ca71919874bd006eb889b16f2fc51377abf"
+    },
+    {
+      "path": "evidence/high-matched-result.json",
+      "bytes": 140075,
+      "sha256": "e4e59bd1c5da0b8cf392d0b5fc9d35ee474ffcd5354e0ddcdd13e37799f70ae0"
+    },
+    {
+      "path": "evidence/high-replay-actions.sarif",
+      "bytes": 147176,
+      "sha256": "a44c3bf9c1dce6415fa97cf6f58d0bb818f65c028b982f791d6c5b54b95389dd"
+    },
+    {
+      "path": "evidence/high-replay-javascript-typescript.sarif",
+      "bytes": 557197,
+      "sha256": "39d439c04c26ff9e2c8eb270df6dfece946f529da3f7f229a39d8af884cc3c53"
+    },
+    {
+      "path": "evidence/high-replay-rust-meta.json",
+      "bytes": 195,
+      "sha256": "f07e1bcf9e3c39268e75b352aecc892b95d067ae12c1155fed16f5fdf7af2a4b"
+    },
+    {
+      "path": "evidence/high-replay-rust.sarif",
+      "bytes": 497599,
+      "sha256": "73f5c03fda27b8bda583f1f42aaa93c12c8e7a9d29b546167e1774a5d1970185"
+    },
+    {
+      "path": "evidence/high-rest-annotations.json",
+      "bytes": 693,
+      "sha256": "2c6aa9e4203cc79f86b42649c1ea47d361fd72804bc0623280f7605fdc745ef4"
+    },
+    {
+      "path": "evidence/high-rest-check.json",
+      "bytes": 3276,
+      "sha256": "a024571ce8c4d8d48a181f847db9b0284fa80052ef3c29e9d487bce96fcb21f0"
+    },
+    {
+      "path": "evidence/high-rest-job-115667792848.log",
+      "bytes": 29535,
+      "sha256": "cacd843b2d41d90ede382754580b1c72dfdd81ec582220913b7c7fe49bc0b830"
+    },
+    {
+      "path": "evidence/high-rest-open-pr-alerts.json",
+      "bytes": 542,
+      "sha256": "95150b7a8d021cfd138a2d2c553bf1e5ec2e93455fd621a3e3b54b6c02f78fe0"
+    },
+    {
+      "path": "evidence/high-rest-pr-comments.json",
+      "bytes": 119789,
+      "sha256": "4bf13e8336e84a1b4fa396cfb223a971e1ad6f3517638c74b9ccb6dad3814d8e"
+    },
+    {
+      "path": "evidence/high-rest-records.json",
+      "bytes": 135436,
+      "sha256": "900b5bef09d2da16f557d1d8c39b51f514632c8f5544e488e3a4c2793cb897e1"
+    },
+    {
+      "path": "evidence/high-sarif-job-115667792414.log",
+      "bytes": 321227,
+      "sha256": "a05b6e4b15e1d62921b246bb96f4edb8026119fb41fe601009665d743efadc9b"
+    },
+    {
+      "path": "evidence/high-sarif-job-115667792635.log",
+      "bytes": 182661,
+      "sha256": "bda4e4ac4200236304a48dece8ff93522634020f4cdf0f67608419596011827e"
+    },
+    {
+      "path": "evidence/high-sarif-job-115667792788.log",
+      "bytes": 101953,
+      "sha256": "eea3ccadc38cf6ac47e6cf712bc58c819653a2dd2e767f42de983180601a6590"
+    },
+    {
+      "path": "evidence/high-source-comparison-inputs.json",
+      "bytes": 186351,
+      "sha256": "b8ca672ccce5f3c1a9b1f401c77fbaaa5ffcec5b5cecc753b62be3b09bbf217c"
+    },
+    {
+      "path": "evidence/high-source-comparison-result.json",
+      "bytes": 2442,
+      "sha256": "975a91915f2d90f18491d6e78e95aa37e1c7030a85d93c6676184deae09e461c"
+    },
+    {
+      "path": "evidence/licensing-Cargo.lock",
+      "bytes": 125594,
+      "sha256": "bbe2a1588069e0a7a61ae0b9468b9914a6db202c2e09b16081426d92dd353d4f"
+    },
+    {
+      "path": "evidence/licensing-additional-packages.json",
+      "bytes": 20361,
+      "sha256": "40e362a3dd3c55eb9316d6a95957d0418427087ab9e6ce424ebb7e16bc8cd890"
+    },
+    {
+      "path": "evidence/licensing-analyse.py",
+      "bytes": 7690,
+      "sha256": "d734bdffc4b16a89589e3d465ed8a1ffa72c6018071f664d95f269258b40c8bb"
+    },
+    {
+      "path": "evidence/licensing-cargo-deny-115672063173.log",
+      "bytes": 2360035,
+      "sha256": "6ff93f5bd1dd43a9ee3555c6850c132b3743c858566d0de0174070d2e7baf2cb"
+    },
+    {
+      "path": "evidence/licensing-deny-clean.log",
+      "bytes": 1379487,
+      "sha256": "a4d47316db84f149794522b3a76e61b89126b66628e31d41b4f961b5ec5b72c7"
+    },
+    {
+      "path": "evidence/licensing-evidence-comment.md",
+      "bytes": 8539,
+      "sha256": "0d651e717133dc1fb1b0577d8f7d07d1f75fe32415c21fcd3840affa9ab2c709"
+    },
+    {
+      "path": "evidence/licensing-extra-sources.json",
+      "bytes": 56897,
+      "sha256": "baf07e1a3c659a1d2971c2fa5e5b03326e6bdd06e8d436a7cbe19060083fb4ab"
+    },
+    {
+      "path": "evidence/licensing-inventory-comment.md",
+      "bytes": 14459,
+      "sha256": "4eb35a58fbc9d956963b75479e513a4bd892ccfcd2d566af8cd83d153be94a92"
+    },
+    {
+      "path": "evidence/licensing-lock-packages.json",
+      "bytes": 145503,
+      "sha256": "ea92cdae80c1b64984575ecbc8f29cb2aa180b300a348a0546af5b50a2fb67a5"
+    },
+    {
+      "path": "evidence/licensing-missing.json",
+      "bytes": 8736,
+      "sha256": "391f35da915cd3a394c4d4ede9384fb90e071fc2fded8d90a63b2d9029090965"
+    },
+    {
+      "path": "evidence/licensing-proposed-policy.toml",
+      "bytes": 1057,
+      "sha256": "59ee4a4e21b75690be8aa4df34e10a418092efd0e46cdad16898ac724db3071a"
+    },
+    {
+      "path": "evidence/licensing-rejections.json",
+      "bytes": 1866435,
+      "sha256": "6ac93600cc56256ba23c841aed3337fe344ac7ce48d4ada1ee914fbbc22103f9"
+    },
+    {
+      "path": "evidence/licensing-report-comment.md",
+      "bytes": 426340,
+      "sha256": "fb663aa377549eff858198f307a800ad08b93e145fef3ac02dfe0c6f3325e971"
+    },
+    {
+      "path": "evidence/licensing-report-comment.original-before-handoff.md",
+      "bytes": 22848,
+      "sha256": "1bbc75ba8073c0a0dd16d14e7be18fba8d10b5da283fa5a52e53b8a28d236c20"
+    },
+    {
+      "path": "evidence/licensing-report-prefix.md",
+      "bytes": 14918,
+      "sha256": "1142864731e903712b6f7817c0feef9ac5816f7bfddbc0c1957372438a45d1fa"
+    },
+    {
+      "path": "evidence/licensing-report-suffix.md",
+      "bytes": 6860,
+      "sha256": "33cb574a207c5c7dd5195c3cc404e2a4f5229e16d40a072fa2d804373c3113f3"
+    },
+    {
+      "path": "evidence/licensing-upstream-sources.json",
+      "bytes": 303146,
+      "sha256": "5abb4a08ce4bd8c0a02f50bcf5bc4273f3fc04889e9d77405717b0f957c50a03"
+    },
+    {
+      "path": "evidence/pr153-conflict-proof.txt",
+      "bytes": 749,
+      "sha256": "9901c2649868d3b08c159e374477f2012490deecbf69201161a3aff8b8383bfb"
+    },
+    {
+      "path": "evidence/pr153-final-validation-evidence.json",
+      "bytes": 476932,
+      "sha256": "cef33af075992c59de8289f6e244ba3ca65293ef7020e3ed2b8fe30e72391346"
+    },
+    {
+      "path": "evidence/pr153-handoff-comments.json",
+      "bytes": 365960,
+      "sha256": "4fe819e4543ecf6947a74d8700d00687773bc3eb1de3d611d4e926f755286e5b"
+    },
+    {
+      "path": "evidence/pr153-handoff-introduction.md",
+      "bytes": 33349,
+      "sha256": "26c0f1c9cfbd2b2bfc4fc16d131dc61ee93e9aaca0d922500cfef8113c2798c4"
+    },
+    {
+      "path": "evidence/pr153-handoff-pr.json",
+      "bytes": 8188,
+      "sha256": "c583133aa34c63c1180a307ebf1b3c336fb9d0e2f4377af35629cce5c2a7a5bb"
+    },
+    {
+      "path": "evidence/pr153-handoff-remote-files.json",
+      "bytes": 26109,
+      "sha256": "7c2707c8b9af9315f16b885083293d4360c479045a990ba343e691ae07ce1da3"
+    },
+    {
+      "path": "evidence/pr153-handoff-remote-reports.json",
+      "bytes": 162289,
+      "sha256": "08830ced676c031973866db6518cfb9b6a297dc9d4bd2fcc2ef729c0998730bd"
+    },
+    {
+      "path": "evidence/pr153-handoff-timeline.json",
+      "bytes": 410419,
+      "sha256": "cab2769037fbb582cd1018f9c0f5aea2d9ef03eee1d65d0d27298a7677ef0821"
+    },
+    {
+      "path": "evidence/stabilization-dependency-preservation.yml",
+      "bytes": 6080,
+      "sha256": "331fc6509cc96660f24d6bebe8078d5962b0ad2df9020b98b08974fbb1445e0d"
+    },
+    {
+      "path": "evidence/stabilization-divergences.json",
+      "bytes": 14794,
+      "sha256": "b72204a152f86119e86eb6303577c4b7f570f8aa28c8be807033bfa0b3e296bd"
+    },
+    {
+      "path": "evidence/stabilization-git-inputs.json",
+      "bytes": 30940,
+      "sha256": "a73819737b53f83f7b10b540d99f6241788b45f340af41e1b529a701b6656a4c"
+    },
+    {
+      "path": "evidence/stabilization-head-tree.json",
+      "bytes": 103535,
+      "sha256": "581cc7c7676d1195c0c264e14335973de0574145db01c939c2a726e257164451"
+    },
+    {
+      "path": "evidence/stabilization-test_candidate_safety.py",
+      "bytes": 16386,
+      "sha256": "1e679f474e0fe8518626839189e0b9021d183424feafa413a263ba6e9eed70d5"
+    }
+  ]
+}

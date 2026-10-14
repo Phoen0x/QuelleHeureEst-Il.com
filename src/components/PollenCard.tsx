@@ -1,14 +1,18 @@
 import { Flower2 } from 'lucide-react';
-import type { AirQualityData } from '../types';
+import type { AirQualityData, HourlyPollen } from '../types';
 import { getPollenLevel, getPollenLabel, getPollenColor } from '../utils/formatters';
 
 interface PollenCardProps {
   airQuality: AirQualityData;
 }
 
+// FR// Déduire les clés depuis les données, sans émettre de table de configuration.
+// EN// Derive keys from data without emitting a configuration table.
+type PollenKey = Exclude<keyof HourlyPollen, 'time'>;
+
 interface PollenItem {
   name: string;
-  key: keyof typeof POLLEN_KEYS;
+  key: PollenKey;
   emoji: string;
 }
 
@@ -21,6 +25,9 @@ const POLLEN_ITEMS: PollenItem[] = [
   { name: 'Ragweed', key: 'ragweed_pollen', emoji: '🌻' },
 ];
 
+// FR// Variante historique utilisée uniquement pour le type, conservée hors compilation.
+// EN// Historical type-only variant retained outside compilation.
+/*
 const POLLEN_KEYS = {
   grass_pollen: true,
   birch_pollen: true,
@@ -29,12 +36,13 @@ const POLLEN_KEYS = {
   mugwort_pollen: true,
   ragweed_pollen: true,
 };
+*/
 
 export function PollenCard({ airQuality }: PollenCardProps) {
   const hourly = airQuality.hourly;
 
-  function getCurrentPollen(key: string): number | null {
-    const arr = (hourly as Record<string, number[]>)[key];
+  function getCurrentPollen(key: PollenKey): number | null {
+    const arr = hourly[key];
     if (!arr || arr.length === 0) return null;
     const now = new Date();
     const nowHour = now.getHours();
@@ -47,7 +55,7 @@ export function PollenCard({ airQuality }: PollenCardProps) {
     return { ...item, value, level };
   });
 
-  const anyActive = items.some(i => i.level !== 'none' && i.value !== null);
+  const anyActive = items.some(i => i.level !== 'aucun' && i.value !== null);
 
   return (
     <div className="card-glass rounded-3xl p-6 flex flex-col gap-5">

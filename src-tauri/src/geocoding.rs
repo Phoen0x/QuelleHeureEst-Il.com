@@ -1,5 +1,7 @@
 use serde_json::{json, Value};
-use urlencoding;
+// FR// Import historique redondant conservé hors compilation.
+// EN// Redundant historical import retained outside compilation.
+// use urlencoding;
 
 pub async fn search_locations(query: &str) -> Result<Vec<Value>, String> {
     let url = format!(

@@ -1,0 +1,170 @@
+{
+  "baseline_commit": "c0169878bbd24ba28bc17c1886bb4eada464bf39",
+  "pr_base_commit": "c39a87e1d693382f34ca38bcaa68e032a9bcbc29",
+  "dependabot": {
+    "prior_ecosystems": [
+      "npm",
+      "github-actions"
+    ],
+    "new_ecosystems": [
+      "npm",
+      "github-actions",
+      "cargo"
+    ],
+    "schedule_utc": {
+      "cargo": "06:00",
+      "npm": "07:00",
+      "github-actions": "08:00"
+    },
+    "version_pr_limits": {
+      "npm": 10,
+      "cargo": 5,
+      "github-actions": 5
+    },
+    "security_limit": "Separate fixed limit of 10, not controlled by version-update PR caps",
+    "exclusions_scope": "Version updates only; security PRs still checked by preservation CI",
+    "pnpm_manager": "pnpm@8.15.9"
+  },
+  "renovate": {
+    "open_onboarding_pr": 154,
+    "enabled": false,
+    "automerge": false,
+    "profile_limits": {
+      "prConcurrentLimit": 5,
+      "prHourlyLimit": 2
+    },
+    "validator_version": "4.155.7"
+  },
+  "open_dependency_prs": [
+    {
+      "number": 152,
+      "title": "Bump js-yaml from 4.2.0 to 4.3.2",
+      "head": "063a2039a0c4d6b9c766a8fc49c97b28394d5214"
+    },
+    {
+      "number": 151,
+      "title": "Bump baseline-browser-mapping from 2.10.34 to 2.11.22",
+      "head": "a7746c53b7580a507cd9820ef58090fe63153df7"
+    },
+    {
+      "number": 150,
+      "title": "Bump browserslist from 4.28.2 to 4.28.9",
+      "head": "ebf1c56fb87dc7e28a0645b35a5eac2ad8ea82f7"
+    },
+    {
+      "number": 149,
+      "title": "Bump postcss-selector-parser from 6.1.2 to 6.1.4",
+      "head": "cab12a85a3808d896d808a9eb2daad9e49fbd185"
+    },
+    {
+      "number": 148,
+      "title": "Bump nanoid from 3.3.12 to 3.3.18",
+      "head": "ab93ed37870653ab16e2c854812d998fe9eff83d"
+    },
+    {
+      "number": 146,
+      "title": "Bump postcss from 8.5.15 to 8.5.25",
+      "head": "eff7eeb70203a58c32f71ca0c2483b64503403da"
+    },
+    {
+      "number": 145,
+      "title": "Bump brace-expansion and eslint",
+      "head": "9705959bef388b783b0ddb3cc04f13346bd4bfbe"
+    },
+    {
+      "number": 144,
+      "title": "Bump js-yaml and eslint",
+      "head": "a8d634319331341b194bd8048b267d52f5bede18"
+    },
+    {
+      "number": 138,
+      "title": "Bump esbuild from 0.27.7 to removed in the npm_and_yarn group across 1 directory",
+      "head": "8baca414f242d0c942faa81e6890be36356d38fa"
+    }
+  ],
+  "pr138": {
+    "oldNames": 288,
+    "newNames": 240,
+    "removedNames": 84,
+    "removedOptionalNames": 51,
+    "examples": [
+      "@babel/code-frame",
+      "@babel/compat-data",
+      "@babel/core",
+      "@babel/generator",
+      "@babel/helper-compilation-targets",
+      "@babel/helper-globals",
+      "@babel/helper-module-imports",
+      "@babel/helper-module-transforms"
+    ],
+    "androidRemoved": [
+      "@esbuild/android-arm",
+      "@esbuild/android-arm64",
+      "@esbuild/android-x64",
+      "@rollup/rollup-android-arm-eabi",
+      "@rollup/rollup-android-arm64"
+    ],
+    "qualification": "84 package names and 51 optional package names absent between the recorded PR base/head lockfiles; confirms removals requiring review, not proof that every removal is unjustified."
+  },
+  "bootstrap": {
+    "only_pr": 153,
+    "only_base": "c39a87e1d693382f34ca38bcaa68e032a9bcbc29",
+    "comparison": "c0169878bbd24ba28bc17c1886bb4eada464bf39",
+    "trigger": "Only when the base lacks the new checker",
+    "future_comparison": "Actual PR base with the checker executed from that base",
+    "previous_main_differences": "31 pnpm package names, optional vite/lightningcss peer, tauri shell-open feature; not introduced by this mission, not restored or silently exempted in future checks."
+  },
+  "protection_limitations": {
+    "required_check": "Not configured here; active visible ruleset has review requirement but no required-status rule. Classic protection endpoint is inaccessible (403), so enforceability cannot be certified.",
+    "activation": "Bot configuration effective after adoption on the repository default branch; no merge performed.",
+    "workflow_tampering": "Base checker reduces candidate-script tampering after bootstrap, but mutable pull_request workflow and repository settings still need review/required-check enforcement.",
+    "scope": "Name/options/archive preservation and bot file scopes, not a proof of all ghost-code semantics or dependency compatibility.",
+    "external_apps": "No inventory or changes to external app installation/account settings."
+  },
+  "sources": {
+    "dependabot": "https://github.com/github/docs/blob/main/content/code-security/reference/supply-chain-security/dependabot-options-reference.md",
+    "schema": "https://github.com/SchemaStore/schemastore/blob/master/src/schemas/json/dependabot-2.0.json",
+    "ruleset": "https://github.com/Phoen0x/QuelleHeureEst-Il.com/rules/16192629"
+  },
+  "validation": {
+    "commit": "d6316a5a77f0b4a663996b3c1e6dd0911c2dfed4",
+    "preservation": {
+      "run_id": 38450920280,
+      "job_id": 115481284979,
+      "conclusion": "success",
+      "unit_tests": 12,
+      "base_used": "c0169878bbd24ba28bc17c1886bb4eada464bf39",
+      "bootstrap_warning_visible": true
+    },
+    "renovate": {
+      "run_id": 38450920280,
+      "job_id": 115481284505,
+      "conclusion": "success",
+      "command": "pnpm --package=renovate@44.155.7 dlx renovate-config-validator --strict renovate.json",
+      "tooling_warnings": "7 deprecated transient tooling subdependencies reported, without modifying project dependencies"
+    },
+    "javascript": {
+      "run_id": 38450920067,
+      "jobs": [
+        {
+          "id": 115481281391,
+          "name": "lint/typecheck/Vite",
+          "conclusion": "success"
+        },
+        {
+          "id": 115481281742,
+          "name": "actionlint",
+          "conclusion": "success"
+        }
+      ]
+    },
+    "dependabot_schema": "Local validation passed against SchemaStore dependabot-2.0.json",
+    "manifest_check": "Only packageManager added; every pre-existing field retained"
+  },
+  "previous_migrations_archives": {
+    "pnpm_archive": "docs/history/pnpm-lock.before-phase1-repair.yaml",
+    "same_as_pr138_base_lock": true,
+    "tauri_archive": "docs/history/before-ci-phase1/src-tauri/Cargo.toml",
+    "shell_open_reference_present": true
+  }
+}

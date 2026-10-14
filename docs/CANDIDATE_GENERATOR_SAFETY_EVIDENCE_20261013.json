@@ -1,0 +1,115 @@
+{
+  "baseline": "f308ee1b97cc53bdadaf87041f82a5198b6b07e0",
+  "validated_source": "32b646058f64890d072118f41736e27b602093d5",
+  "scope": "candidate-generator-entrypoint-guards",
+  "original_archives": {
+    "docs/history/candidate-generators-20261013/Scripts/prepare-rust-h2-candidate.py": "0346d4ad2791486be90904dec1f651c2ae6b7f403b7a869ed83e62b136e9a559",
+    "docs/history/candidate-generators-20261013/Scripts/prepare-rust-warnings-candidate.py": "f088098c21757b2568ed3b70eb9e0cdfd58805aa6bb8559115017beb915bf36b",
+    "docs/history/candidate-generators-20261013/.github/workflows/js-security-maintenance.yml": "34134faaf0715fcd477798a7b62c4b065120fd25c1eca5bbcf1d40fb752155f1",
+    "docs/history/candidate-generators-20261013/.github/workflows/lockfile-maintenance.yml": "3635aff5d6e8fdf670fbd5499bda816ca505d9c999c9c2f7e6ce14b94c9703f4",
+    "docs/history/candidate-generators-20261013/.github/workflows/rust-h2-migration.yml": "8257dd6f92b39765e8a6fc887ebed92f8dd32c0d2dc5f6a0611d40e2aa0b1b08",
+    "docs/history/candidate-generators-20261013/.github/workflows/rust-warnings-migration.yml": "05cfd8f98714309ac14be20f8e75eded5b5984ab2c70beafc2df9da7f54b0301"
+  },
+  "protected_active_blobs": [
+    {
+      "path": ".cargo/config.toml",
+      "sha": "0d6e228130cb950a30ce57c19563347a0a60b980"
+    },
+    {
+      "path": "Cargo.lock",
+      "sha": "ed176b14ca1362cf90ff75874754f5d5dccd845f"
+    },
+    {
+      "path": "Cargo.toml",
+      "sha": "ab0048b490cafa9a486ff15f3b0ccf9d4aa25cc3"
+    },
+    {
+      "path": "package.json",
+      "sha": "090db9120cf3107e6392d1b298fad6c8387ccbba"
+    },
+    {
+      "path": "pnpm-lock.yaml",
+      "sha": "d234d59961cbc95c3f58345de2a66333d0a52100"
+    },
+    {
+      "path": "src-tauri/Cargo.toml",
+      "sha": "e6f108cb35478737c829b1b25fc2213346b80aa2"
+    },
+    {
+      "path": "vendor/glib-0.18.5/src/collections/ptr_slice.rs",
+      "sha": "7ee731fa8bb9ebd8e8f64029d29bd1d86a145604"
+    },
+    {
+      "path": "vendor/glib-0.18.5/src/variant_iter.rs",
+      "sha": "e0997f651b103f7b198e528ee41137ad374e19b8"
+    }
+  ],
+  "tests": {
+    "guard_ubuntu": {
+      "run": 38473687697,
+      "job": 115558934745,
+      "passed": 21
+    },
+    "guard_windows": {
+      "run": 38473687697,
+      "job": 115558934819,
+      "passed": 21
+    },
+    "full_python": {
+      "run": 38473687697,
+      "job": 115558934423,
+      "passed": 41
+    },
+    "js_checks": {
+      "run": 38473687697,
+      "job": 115558934423,
+      "braces_tests": 10,
+      "historical_tools_tests": 3,
+      "production_modules": 53,
+      "result": "success"
+    },
+    "rust_debug": {
+      "run": 38473687561,
+      "job": 115558933907,
+      "tests": 24,
+      "result": "success"
+    },
+    "clippy": {
+      "run": 38473687561,
+      "job": 115558934586,
+      "result": "success"
+    }
+  },
+  "local": {
+    "isolated_tests_passed": 17,
+    "utf8_refusal_test_passed": 1,
+    "node_process_probe": "EPERM; validated on CI",
+    "historical_local_difference": "one extra newline, not rewritten"
+  },
+  "known_audit_failures": {
+    "js": {
+      "job": 115558934136,
+      "advisory": "GHSA-vfj7-8cjw-p6xm"
+    },
+    "rust": {
+      "job": 115558933738,
+      "advisories": [
+        "RUSTSEC-2024-0370",
+        "RUSTSEC-2025-0134",
+        "RUSTSEC-2024-0429"
+      ]
+    },
+    "cargo_deny": {
+      "job": 115558934042,
+      "advisories": "failure",
+      "licenses": "failure",
+      "bans": "success",
+      "sources": "success"
+    }
+  },
+  "mutating_generator_bodies_executed": false,
+  "deleted_files": [],
+  "dependencies_changed": false,
+  "approval_or_audit_policies_changed": false,
+  "merge_performed": false
+}

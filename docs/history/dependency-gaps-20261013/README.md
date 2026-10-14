@@ -1,0 +1,5 @@
+# Conservation des écarts historiques du 13 octobre 2026
+
+FR : `before/` conserve intégralement les fichiers actifs du commit a42475b25bd13d2803d0d32b9c3a71d4256170f0 remplacés pendant cette mission. `main/package.json` vient de c39a87e1d693382f34ca38bcaa68e032a9bcbc29. Le verrou initial demeure dans `../pnpm-lock.before-phase1-repair.yaml` et le manifeste Cargo initial dans `../before-ci-phase1/src-tauri/Cargo.toml`. Aucun de ces fichiers n'est une configuration de production. Les fichiers `upstream/` sont des preuves, pas du code importé ou compilé. Voir `docs/DEPENDENCY_GAPS_20261013.md` pour leurs références exactes.
+
+EN: `before/` preserves the complete active files from commit a42475b25bd13d2803d0d32b9c3a71d4256170f0 replaced during this task. `main/package.json` comes from c39a87e1d693382f34ca38bcaa68e032a9bcbc29. The original lock remains in `../pnpm-lock.before-phase1-repair.yaml`, and the original Cargo manifest in `../before-ci-phase1/src-tauri/Cargo.toml`. None is a production configuration. `upstream/` files are evidence, not imported or compiled code. See `docs/DEPENDENCY_GAPS_20261013.md` for exact references.

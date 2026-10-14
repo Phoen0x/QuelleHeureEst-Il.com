@@ -1,25 +1,99 @@
+# FR// Compilation de Tauri 2 avec les bibliothèques système Linux.
+# ENG// Compile Tauri 2 with Linux system libraries.
 name: Rust
-
 on:
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-
 permissions:
   contents: read
-
 env:
   CARGO_TERM_COLOR: always
-
 jobs:
   build:
-
-    runs-on: ubuntu-latest
-
+    runs-on: ubuntu-22.04
     steps:
-    - uses: actions/checkout@v6
-    - name: Build
-      run: cargo build --verbose
-    - name: Run tests
-      run: cargo test --verbose
+      - uses: actions/checkout@v6
+      - name: Linux native dependencies / Dépendances Linux
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            build-essential libwebkit2gtk-4.1-dev libayatana-appindicator3-dev \
+            librsvg2-dev patchelf libssl-dev libxdo-dev
+      - name: Set up Rust
+        uses: dtolnay/rust-toolchain@stable
+      - name: Cache Rust
+        uses: Swatinem/rust-cache@v2
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 8.15.9
+          run_install: false
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'pnpm'
+      - name: Build frontend
+        run: |
+          pnpm install --frozen-lockfile
+          pnpm run vite:build
+      # FR// Préserver les dépendances et empêcher le retour d'une version h2 vulnérable.
+      # EN// Preserve dependencies and prevent a vulnerable h2 version from returning.
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Migration h2 vérifiée / Verified h2 migration
+        run: |
+          python3 Scripts/check-rust-h2-migration.py
+          python3 Scripts/check-rust-warnings-backport.py
+      - name: Build Rust
+        run: cargo build --workspace --locked --verbose
+      - name: Test Rust
+        run: cargo test --workspace --locked --verbose
+
+
+      - name: Build Rust de production / Production Rust build
+        run: cargo build --workspace --release --locked --verbose
+      # FR// Le défaut glib dépend des optimisations ; conserver les régressions release.
+      # EN// The glib defect depends on optimization; retain release regressions.
+      - name: Tests Rust release / Release Rust tests
+        run: cargo test --workspace --release --locked --verbose
+      # FR// Contrôler les marqueurs des sources neutralisées dans les artefacts réels.
+      # EN// Check disabled-source markers in actual artifacts.
+      - name: Exclusion du code désactivé / Disabled code exclusion
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          markers = (
+              b'LOCKFILE_CANDIDATE_BEGIN',
+              b'RUSTFMT_BEGIN:',
+              b'lockfileVersion:',
+              b'https://brokencrystals.com',
+          )
+          paths = list(Path('dist').rglob('*')) + [Path('target/release/quelleheureest')]
+          for path in paths:
+              if path.is_file():
+                  content = path.read_bytes()
+                  for marker in markers:
+                      if marker in content:
+                          raise SystemExit(f'Reference historique dans un artefact / Historical reference in artifact: {path}')
+          print('References historiques exclues / Historical references excluded')
+          PY
+      # FR// Garder la résolution exacte pour revue et reproduction des résultats.
+      # EN// Retain the exact resolution for review and reproducing results.
+      - name: Verrouillage Rust utilisé / Rust lockfile used
+        if: always()
+        run: |
+          if [ -f Cargo.lock ]; then
+            echo CARGO_LOCK_BEGIN
+            cat Cargo.lock
+            echo CARGO_LOCK_END
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: rust-lockfile
+          path: Cargo.lock
+          if-no-files-found: ignore

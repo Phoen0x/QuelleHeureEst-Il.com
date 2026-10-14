@@ -1,0 +1,125 @@
+# FR// Produire et vérifier un candidat de sécurité JS, sans mise à jour automatique de la branche.
+# EN// Produce and verify a JS security candidate without automatically updating the branch.
+name: Candidat de sécurité JavaScript
+on:
+  workflow_dispatch:
+  # FR// Ancien déclencheur provisoire conservé désactivé après vérification.
+  # EN// Former temporary trigger retained disabled after verification.
+  # push:
+  #   branches: [ "chore/ci-phase1-reliability-20261013" ]
+permissions:
+  contents: read
+jobs:
+  candidate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 8.15.9
+          run_install: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Installer la référence gelée / Install frozen baseline
+        run: pnpm install --frozen-lockfile
+      - name: Audit de référence / Baseline audit
+        continue-on-error: true
+        run: pnpm audit --json > baseline-audit.json
+      - name: Versions publiées / Published versions
+        run: |
+          pnpm view braces version
+          pnpm view postcss-selector-parser version
+      - name: Préparer le candidat ciblé / Prepare targeted candidate
+        run: |
+          node <<'JS'
+          const fs = require('node:fs');
+          const manifest = {"name":"quelle-heure-est-il?.com","private":true,"version":"0.1.0","type":"module","scripts":{"dev":"vite","build":"vite build && tauri build","tauri":"tauri","vite:dev":"vite","vite:build":"vite build","lint":"eslint .","preview":"vite preview","typecheck":"tsc --noEmit -p tsconfig.app.json","dev:web":"vite","preinstall":"npx only-allow pnpm","tauri:dev":"tauri dev","test:security":"node --test tests/security/braces-depth.test.cjs","check:dependencies":"node Scripts/check-js-dependency-preservation.cjs"},"dependencies":{"lucide-react":"^0.344.0","react":"^18.3.1","react-dom":"^18.3.1"},"devDependencies":{"@eslint/js":"^9.9.1","@tauri-apps/api":"^2.11.0","@tauri-apps/cli":"^2.11.2","@types/react":"^18.3.5","@types/react-dom":"^18.3.0","@vitejs/plugin-react":"^6.0.2","autoprefixer":"^10.4.18","eslint":"^9.39.4","eslint-plugin-react-hooks":"^5.1.0-rc.0","eslint-plugin-react-refresh":"^0.4.11","globals":"^15.9.0","postcss":"^8.5.25","tailwindcss":"^3.4.1","typescript":"^5.5.3","typescript-eslint":"^8.3.0","vite":"^8.0.16","esbuild":"0.28.1","rollup":"4.61.1"},"stackblitz":{"startCommand":"pnpm run dev"},"pnpm":{"overrides":{"brace-expansion@^1.1.0":"1.1.21","brace-expansion@^5.0.0":"5.0.12","js-yaml@^4.0.0":"4.3.2","nanoid@^3.0.0":"3.3.18","postcss@^8.0.0":"8.5.25","browserslist@^4.0.0":"4.28.9","baseline-browser-mapping@^2.0.0":"2.11.22","source-map-js@^1.0.0":"1.2.2","postcss-selector-parser@^6.0.0":"7.1.6","esbuild@>=0.27.3 <0.28.1":"0.28.1"},"patchedDependencies":{"braces@3.0.3":"patches/braces-3.0.3.patch"}}};
+          fs.writeFileSync('package.json', JSON.stringify(manifest, null, 2) + '\n');
+          JS
+          pnpm install --lockfile-only --no-frozen-lockfile
+      - name: Exporter le candidat / Export candidate
+        run: |
+          echo JS_MANIFEST_BEGIN
+          cat package.json
+          echo JS_MANIFEST_END
+          echo JS_LOCKFILE_BEGIN
+          cat pnpm-lock.yaml
+          echo JS_LOCKFILE_END
+      - uses: actions/upload-artifact@v4
+        with:
+          name: js-security-candidate
+          path: |
+            package.json
+            pnpm-lock.yaml
+            baseline-audit.json
+      - name: Installer le candidat gelé / Install frozen candidate
+        run: pnpm install --frozen-lockfile
+      - name: Dépendances conservées / Dependencies retained
+        id: preservation
+        continue-on-error: true
+        run: pnpm run check:dependencies
+      - name: Régressions de sécurité / Security regressions
+        id: security
+        continue-on-error: true
+        run: pnpm run test:security
+      - name: Audit du candidat / Candidate audit
+        id: audit
+        continue-on-error: true
+        run: pnpm audit --json > candidate-audit.json
+      - name: Rapports d'audit / Audit reports
+        if: always()
+        run: |
+          node <<'JS'
+          const fs = require('node:fs');
+          for (const [file, tag] of [['baseline-audit.json', 'BASELINE'], ['candidate-audit.json', 'CANDIDATE']]) {
+            if (!fs.existsSync(file)) continue;
+            const audit = JSON.parse(fs.readFileSync(file, 'utf8'));
+            const summary = {
+              metadata: audit.metadata,
+              advisories: Object.values(audit.advisories || {}).map(a => ({
+                name: a.module_name, severity: a.severity, title: a.title,
+                ghsa: a.github_advisory_id, patched: a.patched_versions,
+                findings: a.findings, url: a.url
+              }))
+            };
+            console.log('JS_' + tag + '_SUMMARY_BEGIN');
+            console.log(JSON.stringify(summary));
+            console.log('JS_' + tag + '_SUMMARY_END');
+          }
+          JS
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: js-security-audits
+          path: |
+            baseline-audit.json
+            candidate-audit.json
+      - name: Lint
+        id: lint
+        continue-on-error: true
+        run: pnpm run lint
+      - name: Typecheck
+        id: types
+        continue-on-error: true
+        run: pnpm run typecheck
+      - name: Vite
+        id: build
+        continue-on-error: true
+        run: pnpm run vite:build
+      # FR// Exécuter tous les diagnostics, puis propager leurs vrais échecs.
+      # EN// Run all diagnostics, then propagate their actual failures.
+      - name: Résultats / Results
+        if: always()
+        env:
+          PRESERVATION: ${{ steps.preservation.outcome }}
+          SECURITY: ${{ steps.security.outcome }}
+          AUDIT: ${{ steps.audit.outcome }}
+          LINT: ${{ steps.lint.outcome }}
+          TYPES: ${{ steps.types.outcome }}
+          BUILD: ${{ steps.build.outcome }}
+        run: |
+          echo "Preservation=$PRESERVATION; security=$SECURITY; audit=$AUDIT; lint=$LINT; types=$TYPES; Vite=$BUILD" >> "$GITHUB_STEP_SUMMARY"
+          for result in "$PRESERVATION" "$SECURITY" "$AUDIT" "$LINT" "$TYPES" "$BUILD"; do
+            test "$result" = success
+          done

@@ -1,0 +1,83 @@
+# FR// Tests isolés des gardes ; aucune installation du projet ni génération mutatrice.
+# EN// Isolated guard tests; no project installation or mutating generation.
+name: Sécurité des générateurs de candidats
+on:
+  # FR// Validation bornée à la branche #153, même si GitHub suspend les événements PR.
+  # EN// Validation limited to branch #153, even when GitHub suspends PR events.
+  push:
+    branches: [ "chore/ci-phase1-reliability-20261013" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  guards:
+    name: Gardes isolées / Isolated guards (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 8.15.9
+          run_install: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Régressions sur copies isolées / Regressions on isolated copies
+        run: python -m unittest discover -s tests/dependency_updates -p test_candidate_safety.py -v
+      - name: Contrôle actuel sans écriture / Current check without writes
+        run: |
+          python Scripts/candidate_safety.py --check current-conservation
+          node Scripts/candidate-safety.cjs --check current-conservation
+          node Scripts/candidate-safety.cjs --check-pnpm
+          git diff --exit-code -- package.json pnpm-lock.yaml Cargo.toml Cargo.lock src-tauri/Cargo.toml .cargo/config.toml vendor/glib-0.18.5
+
+  javascript:
+    name: Vérifications JS et workflows / JS and workflow checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 8.15.9
+          run_install: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Parseur YAML du contrôleur / Checker YAML parser
+        run: 'python -m pip install --disable-pip-version-check --only-binary=:all: --no-deps PyYAML==6.0.3'
+      - name: Contrôleurs de conservation / Preservation checkers
+        run: python -m unittest discover -s tests/dependency_updates -p 'test_*.py' -v
+      - name: Installation gelée et contrôles JS / Frozen install and JS checks
+        run: |
+          node Scripts/candidate-safety.cjs --check-pnpm
+          pnpm install --frozen-lockfile
+          pnpm run check:dependencies
+          pnpm run test:security
+          node --test tests/dependency_updates/historical-tools.test.cjs
+          pnpm run lint
+          pnpm run typecheck
+          pnpm run vite:build
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.24'
+          cache: false
+      - name: actionlint
+        run: go run github.com/rhysd/actionlint/cmd/actionlint@v1.7.7 -shellcheck=
