@@ -8,7 +8,7 @@ EN: Inactive proposal replacing #162's global suspension. Both tools remain inte
 
 **Déploiement bloqué tant que la conservation intégrale des huit PR/branches et la coordination des correctifs de sécurité ne sont pas validées.** Un test du nettoyage seul ne prouve pas l'immuabilité de toutes les métadonnées/branches dans le worker complet ni dans l'app installée.
 
-L'utilisateur a demandé d'étudier notamment Dependabot pour npm/Actions et Renovate pour Cargo. La recommandation préparée réserve les **versions Cargo** à Renovate mais garde **tous les correctifs de sécurité dans Dependabot**, y compris Cargo. Cette exception évite de désactiver une couverture transitive avant preuve de son remplacement. Une question facultative a été présentée à l'utilisatrice ; faute de réponse lors de la préparation, ce profil reste une recommandation **inactive**, pas une décision de déploiement.
+**Choix explicitement confirmé par l'utilisatrice : « Dependabot pour toute la sécurité ; Renovate pour les versions Cargo ».** Dependabot possède donc les versions npm/Actions et tous les correctifs de sécurité, y compris Cargo/transitifs ; Renovate possède les versions Cargo ordinaires. Cette répartition est approuvée pour la préparation. Elle reste **inactive** jusqu'à validation des conditions de déploiement ci-dessous ; ce choix ne vaut ni fusion ni autorisation de modifier les huit PR historiques.
 
 Les anciens chevauchements doivent être conservés comme historiques. Une configuration d'écosystèmes ne fournit pas une transaction inter-bots : une mise à jour Cargo ordinaire peut aussi viser le correctif que Dependabot propose en urgence. Aucun engagement de « zéro nouveau doublon » n'est pris sans coordination supplémentaire validée.
 
@@ -32,7 +32,7 @@ AGENTS.md de #153, .github/README.md et .bolt/prompt ont été lus. AGENTS.md es
 | GitHub Actions : versions | Responsable exclusif | Manager github-actions exclu | Préserver auto-approve.yml ; contrôler les paths y compris lors des mises à jour de sécurité |
 | Rust / Cargo : versions | Limite de versions à 0 | Responsable exclusif, manager cargo | Lock --locked, dépendances historiques/optionnelles et deux rétroports GLib |
 | JavaScript / Actions : correctifs de sécurité | Responsable | Pas de PR de remédiation Renovate | Alertes et services GitHub doivent rester activés |
-| Cargo : correctifs de sécurité | Responsable recommandé, y compris transitifs | Versions ordinaires seulement | Coordination avec une éventuelle PR Cargo ordinaire déjà ouverte |
+| Cargo : correctifs de sécurité | Responsable confirmé, y compris transitifs | Versions ordinaires seulement | Coordination avec une éventuelle PR Cargo ordinaire déjà ouverte |
 | Alertes GitHub / RustSec / audits / CodeQL | Surveillance inchangée | Aucun état d'alerte modifié | Aucun ignore d'advisory ni seuil modifié |
 | Merges | Décision humaine après CI | automerge et platformAutomerge false | Ne pas confondre approbation automatique existante et fusion |
 
@@ -46,7 +46,7 @@ Le seul open-pull-requests-limit:0 ne bloque pas ces PR de sécurité : elles di
 
 Les indicateurs Renovate vulnerabilityAlerts.enabled=false et osvVulnerabilityAlerts=false du candidat désignent ici **le producteur de PR de remédiation Renovate**, pas la désactivation des alertes GitHub, RustSec, CodeQL ou cargo audit. Ils sont inactifs tant que le profil n'est pas déployé. La couverture Dependabot doit être confirmée avant tout transfert ; aucune permission/règle de sécurité n'est modifiée.
 
-Une variante « Renovate possède toute la sécurité Cargo » reste à étudier si choisie : ne pas désactiver Dependabot Cargo avant preuve de détection et remédiation équivalentes. OSV côté Renovate documente une couverture des dépendances **directes** ; cela ne suffit pas à garantir la couverture de tout Cargo.lock. La présence d'un mapping rust→crate pour les alertes GitHub n'est pas, à elle seule, une preuve de remédiation de tous les transitifs ni des migrations contraintes comme h2.
+La variante non retenue « Renovate possède toute la sécurité Cargo » ne doit pas être activée : ne pas désactiver Dependabot Cargo avant preuve de détection et remédiation équivalentes. OSV côté Renovate documente une couverture des dépendances **directes** ; cela ne suffit pas à garantir la couverture de tout Cargo.lock. La présence d'un mapping rust→crate pour les alertes GitHub n'est pas, à elle seule, une preuve de remédiation de tous les transitifs ni des migrations contraintes comme h2.
 
 ## Horaires et limites réelles
 
@@ -105,7 +105,7 @@ Il faut également une coordination capable de détecter les propositions inter-
 - YAML Dependabot et schéma **communautaire SchemaStore**, blob 1184c6f768ae117c3f4ea7cf3e1dca6d5e7fe76a : réussite Python locale. Ce schéma n'est pas présenté comme un validateur officiel GitHub.
 - Implémentations publiées de schedule et prune : tests locaux réussis ; dépendances de calendrier réelles, heure simulée, appels plateforme/Git entièrement simulés, aucune écriture réelle sur le dépôt/GitHub.
 - Un nouveau workflow de validation à permissions **contents:read seulement**, limité à la branche #162 et aux fichiers de proposition, vérifie à nouveau les candidats en copies temporaires. Il ne lance jamais Renovate contre le dépôt ni un updater Dependabot.
-- Il exécute le parseur officiel **dependabot-core au commit abffc3c9512f572b6bfc36202442975efb700ea3**, avec ses trois fichiers Ruby vérifiés par blob SHA, ainsi que le validateur Renovate officiel. **Le résultat CI doit être lu après exécution ; sa seule présence n'est pas un succès.**
+- Il exécute le parseur officiel **dependabot-core au commit abffc3c9512f572b6bfc36202442975efb700ea3**, avec ses trois fichiers Ruby vérifiés par blob SHA, ainsi que le validateur Renovate officiel. **Résultat vérifié : réussite du [run 38823476702](https://github.com/Phoen0x/QuelleHeureEst-Il.com/actions/runs/38823476702), [job 116725336880](https://github.com/Phoen0x/QuelleHeureEst-Il.com/actions/runs/38823476702/job/116725336880), au SHA befbab99990c787770b4ca0beb0f9093ee5904a0.** Les journaux confirment le validateur Renovate, les 16 cas horaires, les deux scénarios de nettoyage simulé, SchemaStore/contrat, le parseur officiel et git diff sans changement. Ruby 3.2.3 et sorbet-runtime 0.6.13566 réellement utilisés ; la gem d’outil est installée sans version épinglée, donc cet environnement n’est pas hermétique. Le fichier local-test-results.json conserve son état antérieur à cette exécution et ne doit pas être lu comme son verdict actuel.
 - Le parseur officiel ne prouve ni l'acceptation du service hébergé ni le support de toutes ses options dans tous les déploiements. La validation du service réel et ses paramètres administratifs demeurent à confirmer.
 - Ruby est absent localement. L'helper Node du schéma communautaire a d'abord échoué faute d'Ajv dans l'outil ; le workflow installe explicitement Ajv 8.17.1 et js-yaml 4.1.1 dans son environnement privé. Aucun paquet du projet n'est ajouté/remplacé. L'échec initial n'est pas un succès revendiqué.
 - Aucun build Rust/JS, audit de dépendances ou validation Android/StackBlitz/Cursor/Claude n'est refait pour ces documents et fixtures. Les CI/audits existants restent requis, avec leurs échecs connus ; aucun seuil, ignore, licence ou workflow de sécurité existant n'est modifié.
@@ -134,7 +134,7 @@ Il faut également une coordination capable de détecter les propositions inter-
 
 ## English — secondary
 
-The inactive shared proposal assigns npm/Actions version updates to Dependabot and Cargo versions to Renovate, while recommending Dependabot keep all security-fix PRs, including transitive Cargo dependencies. Renovate's 18:00–23:00 Europe/Paris schedule, DST boundaries and isolated pruning guard are tested; scheduling is not a trigger or a cross-bot lock.
+The inactive shared proposal assigns npm/Actions version updates to Dependabot and Cargo versions to Renovate, with the user explicitly confirming Dependabot owns all security-fix PRs, including transitive Cargo dependencies. The isolated official-validator/parser CI passed on befbab99990c787770b4ca0beb0f9093ee5904a0; this does not validate the hosted services or full worker. Renovate's 18:00–23:00 Europe/Paris schedule, DST boundaries and isolated pruning guard are tested; scheduling is not a trigger or a cross-bot lock.
 
 The eight legacy PRs are examined and remain unchanged. Six npm locks lose 84 package names including 51 optional names; Vite is proposed back to 7 and chrono-tz to 0.10 in the other two PRs. Default cleanup is dangerous. Disabling pruning in its normal path does not prove that every other worker path leaves legacy Cargo PR #164 untouched. Full worker/app write-free replay and inter-bot security coordination remain deployment prerequisites.
 
