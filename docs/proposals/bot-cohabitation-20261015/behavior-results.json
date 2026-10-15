@@ -1,0 +1,182 @@
+{
+  "renovate_version": "44.155.7",
+  "schedule": [
+    {
+      "local": "2026-01-15 17:59",
+      "utc": "2026-01-15T16:59:00.000Z",
+      "expected": false,
+      "actual": false
+    },
+    {
+      "local": "2026-01-15 18:00",
+      "utc": "2026-01-15T17:00:00.000Z",
+      "expected": true,
+      "actual": true
+    },
+    {
+      "local": "2026-01-15 22:59",
+      "utc": "2026-01-15T21:59:00.000Z",
+      "expected": true,
+      "actual": true
+    },
+    {
+      "local": "2026-01-15 23:00",
+      "utc": "2026-01-15T22:00:00.000Z",
+      "expected": false,
+      "actual": false
+    },
+    {
+      "local": "2026-07-15 17:59",
+      "utc": "2026-07-15T15:59:00.000Z",
+      "expected": false,
+      "actual": false
+    },
+    {
+      "local": "2026-07-15 18:00",
+      "utc": "2026-07-15T16:00:00.000Z",
+      "expected": true,
+      "actual": true
+    },
+    {
+      "local": "2026-07-15 22:59",
+      "utc": "2026-07-15T20:59:00.000Z",
+      "expected": true,
+      "actual": true
+    },
+    {
+      "local": "2026-07-15 23:00",
+      "utc": "2026-07-15T21:00:00.000Z",
+      "expected": false,
+      "actual": false
+    },
+    {
+      "local": "2026-03-29 17:59",
+      "utc": "2026-03-29T15:59:00.000Z",
+      "expected": false,
+      "actual": false
+    },
+    {
+      "local": "2026-03-29 18:00",
+      "utc": "2026-03-29T16:00:00.000Z",
+      "expected": true,
+      "actual": true
+    },
+    {
+      "local": "2026-03-29 22:59",
+      "utc": "2026-03-29T20:59:00.000Z",
+      "expected": true,
+      "actual": true
+    },
+    {
+      "local": "2026-03-29 23:00",
+      "utc": "2026-03-29T21:00:00.000Z",
+      "expected": false,
+      "actual": false
+    },
+    {
+      "local": "2026-10-25 17:59",
+      "utc": "2026-10-25T16:59:00.000Z",
+      "expected": false,
+      "actual": false
+    },
+    {
+      "local": "2026-10-25 18:00",
+      "utc": "2026-10-25T17:00:00.000Z",
+      "expected": true,
+      "actual": true
+    },
+    {
+      "local": "2026-10-25 22:59",
+      "utc": "2026-10-25T21:59:00.000Z",
+      "expected": true,
+      "actual": true
+    },
+    {
+      "local": "2026-10-25 23:00",
+      "utc": "2026-10-25T22:00:00.000Z",
+      "expected": false,
+      "actual": false
+    }
+  ],
+  "default_cleanup": [
+    [
+      "updatePr",
+      159,
+      "closed"
+    ],
+    [
+      "deleteBranch",
+      "renovate/autoprefixer-10.x-lockfile"
+    ],
+    [
+      "updatePr",
+      164,
+      "closed"
+    ],
+    [
+      "deleteBranch",
+      "renovate/chrono-tz-0.x"
+    ],
+    [
+      "updatePr",
+      158,
+      "closed"
+    ],
+    [
+      "deleteBranch",
+      "renovate/eslint-monorepo"
+    ],
+    [
+      "updatePr",
+      160,
+      "closed"
+    ],
+    [
+      "deleteBranch",
+      "renovate/eslint-plugin-react-refresh-0.x"
+    ],
+    [
+      "updatePr",
+      161,
+      "closed"
+    ],
+    [
+      "deleteBranch",
+      "renovate/lucide-monorepo"
+    ],
+    [
+      "updatePr",
+      155,
+      "closed"
+    ],
+    [
+      "deleteBranch",
+      "renovate/npm-postcss-vulnerability"
+    ],
+    [
+      "updatePr",
+      163,
+      "closed"
+    ],
+    [
+      "deleteBranch",
+      "renovate/typescript-eslint-monorepo"
+    ],
+    [
+      "updatePr",
+      156,
+      "closed"
+    ],
+    [
+      "deleteBranch",
+      "renovate/vite-7.x"
+    ]
+  ],
+  "protected_cleanup": [],
+  "assertions": "PASS",
+  "limits": [
+    "Pruning function isolated with platform/git mocks, not the full worker or installed app",
+    "No proof that existing Cargo PR bodies or branches remain unmodified by other update paths",
+    "Security producer handoff is not activated; GitHub administrative settings and live Dependabot service are not validated"
+  ]
+}
