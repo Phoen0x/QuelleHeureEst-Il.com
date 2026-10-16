@@ -1,0 +1,116 @@
+{
+  "source_main": "235194a6fe825a6dac27012f07cbac2cc5d86794",
+  "source_153": "0ebc167c8febf1b61752d1114f8135a59400c5f1",
+  "source_162": "d4f67fe4b3af62e3261fc7c35e33c9dfae6addfc",
+  "official_dependabot_core_commit": "abffc3c9512f572b6bfc36202442975efb700ea3",
+  "core_file_blobs": {
+    "common/lib/dependabot/config/file.rb": "4395c50a1d308fa194968f65cc16ac23e4716377",
+    "common/lib/dependabot/config/update_config.rb": "d2739e27fc2494810f78c4e5cd4af7baae345154",
+    "common/lib/dependabot/config/ignore_condition.rb": "a56c4f35b12484b14e582da1896d6605123ebda7"
+  },
+  "community_schema_blob": "1184c6f768ae117c3f4ea7cf3e1dca6d5e7fe76a",
+  "local_results": {
+    "local_renovate_validator": 0,
+    "local_schema": "PASS, SchemaStore community schema + Python jsonschema",
+    "local_schedule_and_prune": "PASS, 16 schedule instants + isolated pruning cases",
+    "warning": "RE2 fallback; no regular expressions configured",
+    "hosted_dependabot_validation": "NOT RUN",
+    "official_ruby_parser": "CI PENDING; Ruby unavailable locally",
+    "full_legacy_preservation": "NOT PROVEN, deployment blocked",
+    "security_assignment": "PROPOSED: Dependabot all security, Renovate Cargo regular versions; no live handoff"
+  },
+  "legacy_prs": [
+    {
+      "number": 164,
+      "branch": "renovate/chrono-tz-0.x",
+      "sha": "fa6635d2f912efb3637ebe20bebef99ce272ac7c",
+      "title": "Update Rust crate chrono-tz to 0.10"
+    },
+    {
+      "number": 163,
+      "branch": "renovate/typescript-eslint-monorepo",
+      "sha": "ad838ab5ea5bdc0d807459e1b65729c50237ebe2",
+      "title": "Update dependency typescript-eslint to v8.71.2"
+    },
+    {
+      "number": 161,
+      "branch": "renovate/lucide-monorepo",
+      "sha": "21a01d82de23e8a314546d77222fef459a1a313c",
+      "title": "Update dependency lucide-react to ^0.577.0"
+    },
+    {
+      "number": 160,
+      "branch": "renovate/eslint-plugin-react-refresh-0.x",
+      "sha": "d02e76399a078d514aadd576e58ab48c1cda8b95",
+      "title": "Update dependency eslint-plugin-react-refresh to ^0.5.0"
+    },
+    {
+      "number": 159,
+      "branch": "renovate/autoprefixer-10.x-lockfile",
+      "sha": "d6cc1d2560f80a2dc57c38170ba63c8c6a9e8b39",
+      "title": "Update dependency autoprefixer to v10.6.1"
+    },
+    {
+      "number": 158,
+      "branch": "renovate/eslint-monorepo",
+      "sha": "a4fcede4cc0da3f81cdc0bcd3b7b883012cb8da3",
+      "title": "Update eslint monorepo to v9.39.5"
+    },
+    {
+      "number": 156,
+      "branch": "renovate/vite-7.x",
+      "sha": "f1c3ac3057d4456d7115e7720d3b6c3f0e6dcd20",
+      "title": "Update dependency vite to v7.3.7"
+    },
+    {
+      "number": 155,
+      "branch": "renovate/npm-postcss-vulnerability",
+      "sha": "abbfbb53c703b44779016fa63531d8693b1673f7",
+      "title": "Update dependency postcss to v8.5.23 [SECURITY]"
+    }
+  ],
+  "archives": {
+    "before-162/renovate.json.txt": "ea5c90ebc66b1ddf626ada0d82dc7122924fa64d",
+    "before-153/renovate.json.txt": "4aabea2969f50e117e3040db4a25dfae17580943",
+    "before-153/dependabot.yml.txt": "b151720f91ce15cf058f3c8714e3bc8ffb123bab"
+  },
+  "scope": "Inactive proposal only; all deployment prerequisites remain blocking",
+  "file_hashes": {
+    "renovate.candidate.json": {
+      "sha256": "9013c4e2607ea83feb68407e475d5790a2e62de87542aa10ffd5cb9e5640900d",
+      "blob": "5e0dbf6f5daeb165c2cd04f0d79e100b93550ec6"
+    },
+    "dependabot.candidate.yml": {
+      "sha256": "d52c8d848760151c4e30b958f4edb37050fd7c9fe847dda0e7474fd57fb441a5",
+      "blob": "59258a28e2a4cfc0123a2afd0bc8129e5fffdede"
+    },
+    "legacy-prs.json": {
+      "sha256": "f40fb13233bfabacd90bef1f2c25025ee7c0b2f7118cea7eaddf2190a3101e3e",
+      "blob": "16a1a9975eed69417237ccfbc5fa15347e441b29"
+    },
+    "behavior-results.json": {
+      "sha256": "52708b6836dc7660e88d2516ddd46e8fc53b21a0e6309585d5065636db48a5fb",
+      "blob": "ef2eccfeb4958d51bbecfa44efdd76d5d6728827"
+    },
+    "test-behavior.cjs": {
+      "sha256": "9fb0ec94b617dae675ea719727f8236c874143f75a2bd4d180e178be8800d7dd",
+      "blob": "10ae496240a98f79d27b97e64caea7036cf51fe3"
+    },
+    "validate-configs.cjs.txt": {
+      "sha256": "89f8f8dd2f7f7dfe19b74f1fce8d37694bdaf8d51bd9f87139dcc3e60407614d",
+      "blob": "7b87856ebac740a6225bdc6f3b5ba025a4cb2a1f"
+    },
+    "test-dependabot.rb.txt": {
+      "sha256": "aaf2e8864460f4b7832cb300ee0e1ce66bb04cfcdad501aa70ecdc0a00666e0e",
+      "blob": "b9be7d2a770bb8675b4a452c4c4c762563af87ea"
+    },
+    "pr-name-differences.json": {
+      "sha256": "cd35ce0a19292c1bb3a9a3fde2fa506ced722b8855724689ac9a065b1faf3945",
+      "blob": "fd687cfcc480e7a2f9e7d0b000508702c25ca881"
+    },
+    "renovate-validator.log": {
+      "sha256": "83cb35fdad2206e1985b4161f34fef32523f7f82366d6bf1b0fee4eae0203ef9",
+      "blob": "7a0ac13f0be38974c5529b18a1491ddab4f0f12b"
+    }
+  }
+}
