@@ -1,0 +1,30 @@
+{
+  "verdict": "BLOQUÉ — aucune activation",
+  "scenarios": 40,
+  "replays": 80,
+  "native": {
+    "PASS": 22,
+    "FAIL": 18
+  },
+  "barrierContainment": {
+    "PASS": 40,
+    "FAIL": 0
+  },
+  "calendarInstants": 16,
+  "coverage": {
+    "renovateRepository": 80,
+    "initRepo": 80,
+    "extractDependencies": 76,
+    "writeUpdates": 76,
+    "processBranch": 222,
+    "ensurePr": 39,
+    "pruneStaleBranches": 74,
+    "finalizeRepo": 72
+  },
+  "limits": [
+    "La barrière rejette toute écriture et peut interrompre le worker.",
+    "Le transport GitHub réel et Mend ne sont pas exécutés.",
+    "Les arbres Git et releases Cargo sont des fixtures synthétiques.",
+    "Aucun succès de cohabitation en production démontré."
+  ]
+}
