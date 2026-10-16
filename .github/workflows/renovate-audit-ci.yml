@@ -1,0 +1,89 @@
+name: Renovate 44.164.1 - reproduction indépendante
+
+on:
+  pull_request:
+    branches: [test/renovate-full-worker-168]
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    permissions:
+      contents: read
+    env:
+      AUDITED_SHA: ddcef79479a6804ed52c8cf92710f87d4d5404f9
+      CI_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+      CI_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+      AUDIT_TOOLS: ${{ runner.temp }}/renovate-ci-tools
+      AUDIT_UPSTREAM: ${{ runner.temp }}/renovate-ci-upstream
+      AUDIT_OUTPUT: ${{ runner.temp }}/renovate-ci-proof
+      CI_SCRIPTS: docs/audits/renovate-ci-170
+      HISTORICAL_AUDIT: docs/audits/renovate-worker-168
+    steps:
+      # FR : checkout du head exact, sans conserver de credential dans Git.
+      # EN: Check out the exact head without persisting Git credentials.
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: 24.19.0
+          check-latest: false
+      - name: Sources historiques et SHA du head
+        id: source
+        run: |
+          set -euo pipefail
+          mkdir -p "$AUDIT_OUTPUT"
+          python3 "$CI_SCRIPTS/integrity.py" source 2>&1 | tee "$AUDIT_OUTPUT/source-before.log"
+      - name: Instantané GitHub en lecture seule avant rejeu
+        id: before
+        run: python3 "$CI_SCRIPTS/github-readonly.py" before
+      - name: Préparer les outils épinglés hors dépôt
+        id: prepare
+        run: |
+          set -euo pipefail
+          bash "$HISTORICAL_AUDIT/prepare-tools.sh" 2>&1 | tee "$AUDIT_OUTPUT/prepare.log"
+      - name: Vérifier npm, verrou, archive, tag et commit amont
+        id: integrity
+        run: |
+          set -euo pipefail
+          python3 "$CI_SCRIPTS/integrity.py" tools 2>&1 | tee "$AUDIT_OUTPUT/tools-integrity.log"
+      # FR : aucune route réseau, aucun token, capacités retirées et sources en lecture seule.
+      # EN: No network route or token; capabilities dropped and sources read-only.
+      - name: Rejouer les 80 exécutions hors réseau et vérifier indépendamment
+        id: replay
+        run: |
+          set -euo pipefail
+          bash "$CI_SCRIPTS/offline-run.sh" 2>&1 | tee "$AUDIT_OUTPUT/offline-run.log"
+      - name: Instantané GitHub après rejeu et comparaison
+        id: after
+        if: always() && steps.before.outcome == 'success'
+        run: python3 "$CI_SCRIPTS/github-readonly.py" after
+      - name: Vérifier à nouveau la conservation des sources
+        id: source_after
+        if: always() && steps.source.outcome == 'success'
+        run: python3 "$CI_SCRIPTS/integrity.py" source
+      - name: Exiger la réussite de toutes les étapes obligatoires
+        if: always()
+        env:
+          STEP_OUTCOMES: ${{ toJSON(steps) }}
+        run: python3 "$CI_SCRIPTS/finalize.py"
+      - name: Publier journaux, snapshots et preuves, même en cas d'échec
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: renovate-44.164.1-${{ github.event.pull_request.head.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/renovate-ci-proof
+          if-no-files-found: error
+          compression-level: 9
+          retention-days: 14
