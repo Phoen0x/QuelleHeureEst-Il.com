@@ -45,3 +45,14 @@ This repository is for **QuelleHeureEst-Il.com**, an **Android-first**, privacy-
 - No mandatory paid APIs, avoid unnecessary tracking, minimize permissions, target GrapheneOS compatibility.
 - Distinguish intended features from implemented features and verify CI before merging.
 - Preserve historical Windows scripts, alternative configurations and reference files without explicit authorization.
+
+## Complément de collaboration — lecture obligatoire à chaque reprise
+
+Les règles ci-dessus restent intégralement applicables. Avant toute mission, lire le [contrat IA](docs/ai/WORKING_CONTRACT.md), notamment ses sections 7 à 13, puis l'[index de reprise](docs/ai/README.md). Ces règles concernent ChatGPT, Codex et tout sous-agent, dans les limites du périmètre autorisé par l'utilisatrice.
+
+- Identifier le point de départ réel (dépôt, branche, SHA, répertoire ou conversation), vérifier les consignes effectivement accessibles et l'état GitHub courant. Si les règles restent dans une PR non fusionnée et absentes de `main`, annoncer cette limite ; leur publication ne garantit pas leur découverte automatique. Ne rien fusionner sans autorisation.
+- Terminer chaque mission par un mini-bilan : statut réel, liens, SHA exact, tests exécutés et non exécutés, blocages et destinataire du relais. Prévenir clairement l'utilisatrice de la fin et de la prochaine action. Pour une mission Codex pilotée par ChatGPT, la dernière phrase est exactement : « Mission terminée. Reviens voir ChatGPT avec le numéro de cette PR pour sa revue indépendante. » Un statut bloqué doit rester explicite ; cette phrase ne certifie aucune réussite technique ni autorisation de fusion.
+- La règle **français puis anglais** s'applique uniquement aux commentaires et annotations techniques du code ainsi qu'aux fichiers README du dépôt. Conversations, prompts, comptes rendus et passages de relais sont en français, sauf demande contraire de l'utilisatrice ; aucun doublage anglais systématique des messages.
+- Préférer le connecteur GitHub disponible et adapté aux opérations GitHub. Toute requête externe nécessaire doit avoir un délai maximal explicite, des tentatives limitées et un mécanisme d'arrêt ; ne pas attendre indéfiniment ni multiplier les accès réseau directs depuis le terminal.
+- Après panne ou résultat incertain, documenter commande/opération, service, erreur et temps écoulé ; vérifier l'état distant avant toute nouvelle écriture ou répétition susceptible d'écrire. Un autre accès doit être autorisé et la résolution doit être testée.
+- Une seule action demandée à l'utilisatrice à la fois. L'orchestrateur fournit spontanément le prochain mini-bilan et, lorsqu'une délégation à Codex est nécessaire, le prompt prêt à copier avec références GitHub ; ne pas demander de retransmettre un contexte déjà accessible. Les sous-agents respectent les mêmes contraintes et rendent un relais explicite à l'orchestrateur, qui informe l'utilisatrice.
