@@ -34,6 +34,8 @@ Dans l'environnement local, avec les outils épinglés déjà présents : **80 r
 
 Les résultats GitHub Actions doivent être lus dans le run rattaché au **dernier head de cette PR**, puis dans `completion.json`, les contrôles d'isolement et les journaux/artifacts. Les résultats locaux ci-dessus ne remplacent pas une CI exécutée. Aucun succès de CI globale applicative ou des workflows de sécurité préexistants n'est revendiqué par ce dossier.
 
+Premier essai GitHub, [run 38981473720](https://github.com/Phoen0x/QuelleHeureEst-Il.com/actions/runs/38981473720), head `1bfc06557f44e2d07b4db7bafb5f304d9add71f9` : définition rejetée avant création de job, donc **aucun rejeu exécuté**. L'initialisation des chemins `runner.temp` a été déplacée de l'environnement de job vers une étape dédiée utilisant `RUNNER_TEMP`. Ce run n'est pas présenté comme une validation du banc.
+
 Pour examiner hors CI des artifacts téléchargés :
 
 ```bash

@@ -22,9 +22,6 @@ jobs:
       AUDITED_SHA: ddcef79479a6804ed52c8cf92710f87d4d5404f9
       CI_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
       CI_BASE_SHA: ${{ github.event.pull_request.base.sha }}
-      AUDIT_TOOLS: ${{ runner.temp }}/renovate-ci-tools
-      AUDIT_UPSTREAM: ${{ runner.temp }}/renovate-ci-upstream
-      AUDIT_OUTPUT: ${{ runner.temp }}/renovate-ci-proof
       CI_SCRIPTS: docs/audits/renovate-ci-170
       HISTORICAL_AUDIT: docs/audits/renovate-worker-168
     steps:
@@ -39,6 +36,13 @@ jobs:
         with:
           node-version: 24.19.0
           check-latest: false
+      - name: Initialiser les chemins temporaires du runner
+        run: |
+          set -euo pipefail
+          printf 'AUDIT_TOOLS=%s/renovate-ci-tools\n' "$RUNNER_TEMP" >> "$GITHUB_ENV"
+          printf 'AUDIT_UPSTREAM=%s/renovate-ci-upstream\n' "$RUNNER_TEMP" >> "$GITHUB_ENV"
+          printf 'AUDIT_OUTPUT=%s/renovate-ci-proof\n' "$RUNNER_TEMP" >> "$GITHUB_ENV"
+          mkdir -p "$RUNNER_TEMP/renovate-ci-proof"
       - name: Sources historiques et SHA du head
         id: source
         run: |
