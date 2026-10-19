@@ -81,6 +81,37 @@ jobs:
           cp Cargo.lock "$EVIDENCE_DIR/Cargo.lock"
           sha256sum Cargo.lock > "$EVIDENCE_DIR/Cargo.lock.sha256"
 
+      # FR// Préparer les vrais assets avec les versions de #153, sans régénérer les verrous.
+      # EN// Prepare real assets with the #153 versions, without regenerating lockfiles.
+      - name: Préparer pnpm 8.15.9
+        id: pnpm
+        uses: pnpm/action-setup@b906affcce14559ad1aafd4ab0e942779e9f58b1
+        with:
+          version: 8.15.9
+          run_install: false
+
+      - name: Préparer Node 22
+        id: node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+
+      - name: Générer le frontend sans modifier les verrous
+        id: frontend
+        env:
+          NPM_CONFIG_FETCH_TIMEOUT: '20000'
+          NPM_CONFIG_FETCH_RETRIES: '1'
+        run: |
+          set -o pipefail
+          node --version 2>&1 | tee "$EVIDENCE_DIR/frontend.log"
+          pnpm --version 2>&1 | tee -a "$EVIDENCE_DIR/frontend.log"
+          cd "$BUILD_DIR"
+          timeout --kill-after=10s 600s pnpm install --frozen-lockfile \
+            2>&1 | tee -a "$EVIDENCE_DIR/frontend.log"
+          timeout --kill-after=10s 180s pnpm run vite:build \
+            2>&1 | tee -a "$EVIDENCE_DIR/frontend.log"
+          test -f dist/index.html
+
       - name: Compiler Rust debug
         id: build_debug
         if: ${{ !cancelled() && steps.native.outcome == 'success' && steps.lock.outcome == 'success' }}

@@ -11,10 +11,19 @@ import sys
 
 
 SOURCE = "3e1f4177d2c1417b62121559ec9f39e8ca342394"
+# FR// Le relais #177 est immuable, sauf les deux fichiers de validation expressément autorisés.
+# EN// The #177 handoff is immutable except for the two explicitly allowed validation files.
+MISSION_PARENT = "f77ec17c1ce9ef7455122d00427a5e815ae7e1c1"
+VALIDATION_CHANGES = {
+    ".github/workflows/rust-validation-176.yml",
+    "docs/validation/rust-176/check.py",
+}
 ADDITIONS = {
     ".github/workflows/rust-validation-176.yml",
     "docs/validation/rust-176/check.py",
     "docs/validation/rust-176/REPORT.md",
+    "src-tauri/tauri.conf.json",
+    "docs/reports/tauri-config-20261020.md",
 }
 
 
@@ -48,10 +57,23 @@ def verify_checkout():
     assert os.environ["CI_BASE_SHA"] == SOURCE
     assert os.environ["SOURCE_SHA"] == SOURCE
     subprocess.run(["git", "merge-base", "--is-ancestor", SOURCE, "HEAD"], check=True)
+    subprocess.run(["git", "merge-base", "--is-ancestor", MISSION_PARENT, "HEAD"], check=True)
     baseline, current = tree(SOURCE), tree("HEAD")
     assert len(baseline) == 88
     assert all(current.get(path) == item for path, item in baseline.items())
     assert set(current) - set(baseline) == ADDITIONS
+    parent = tree(MISSION_PARENT)
+    assert len(parent) == 91
+    assert all(current.get(path) == item for path, item in parent.items()
+               if path not in VALIDATION_CHANGES)
+    assert set(current) - set(parent) == {
+        "src-tauri/tauri.conf.json", "docs/reports/tauri-config-20261020.md"
+    }
+    # FR// Le schéma est le seul champ ajouté ; tous les réglages racine restent identiques.
+    # EN// The schema is the only added field; all root settings remain identical.
+    expected_config = json.loads(Path("tauri.conf.json").read_text())
+    expected_config["$schema"] = "https://schema.tauri.app/config/2"
+    assert json.loads(Path("src-tauri/tauri.conf.json").read_text()) == expected_config
     assert "Cargo.lock" not in baseline
     for path, (mode, sha) in current.items():
         file = Path(path)
@@ -81,6 +103,9 @@ def before(evidence, build):
         "source_sha": SOURCE,
         "head_sha": os.environ["CI_HEAD_SHA"],
         "base_files_preserved": len(baseline),
+        "mission_parent_sha": MISSION_PARENT,
+        "parent_files_preserved": len(tree(MISSION_PARENT)) - len(VALIDATION_CHANGES),
+        "allowed_validation_changes": sorted(VALIDATION_CHANGES),
         "files": {p: digest(Path(p)) for p in current},
         "additions": sorted(ADDITIONS),
     }
@@ -106,6 +131,8 @@ def after(evidence, build):
         "source_sha": SOURCE,
         "head_sha": os.environ["CI_HEAD_SHA"],
         "base_files_preserved": snapshot["base_files_preserved"],
+        "mission_parent_sha": MISSION_PARENT,
+        "parent_files_preserved": snapshot["parent_files_preserved"],
         "temporary_lock_unchanged": lock_unchanged,
         "temporary_lock_sha256": digest(lock) if lock.is_file() else None,
         "failures": failures,
@@ -118,11 +145,12 @@ def after(evidence, build):
 
 def summary(evidence):
     steps = json.loads(os.environ["STEP_RESULTS"])
-    mandatory = ("source", "native", "lock", "build_debug", "test_debug",
+    mandatory = ("source", "native", "lock", "pnpm", "node", "frontend", "build_debug", "test_debug",
                  "build_release", "test_release", "preservation")
     outcomes = {key: steps.get(key, {}).get("outcome", "missing") for key in mandatory}
     required = ("preservation-before.json", "preservation-after.json", "environment.log",
                 "apt-update.log", "apt-install.log", "resolution.log", "Cargo.lock",
+                "frontend.log",
                 "Cargo.lock.sha256", "build-debug.log", "test-debug.log",
                 "build-release.log", "test-release.log")
     missing = [name for name in required if not (evidence / name).is_file()]
