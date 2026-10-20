@@ -11,9 +11,10 @@ import sys
 
 
 SOURCE = "3e1f4177d2c1417b62121559ec9f39e8ca342394"
-# FR// Le relais #177 est immuable, sauf les deux fichiers de validation expressément autorisés.
-# EN// The #177 handoff is immutable except for the two explicitly allowed validation files.
-MISSION_PARENT = "f77ec17c1ce9ef7455122d00427a5e815ae7e1c1"
+# FR// Le relais #178 est immuable hors des deux corrections et des deux contrôles dédiés.
+# EN// The #178 handoff is immutable except for the two fixes and the two dedicated validation files.
+MISSION_PARENT = "7826f7e10d0a420406a5b8e43a4da92efcea9cd6"
+SOURCE_CHANGES = {"pnpm-lock.yaml", "src-tauri/src/main.rs"}
 VALIDATION_CHANGES = {
     ".github/workflows/rust-validation-176.yml",
     "docs/validation/rust-176/check.py",
@@ -24,6 +25,13 @@ ADDITIONS = {
     "docs/validation/rust-176/REPORT.md",
     "src-tauri/tauri.conf.json",
     "docs/reports/tauri-config-20261020.md",
+    "docs/history/rust-178/pnpm-lock.yaml",
+    "docs/history/rust-178/package.json",
+    "docs/history/rust-178/main.before.rs",
+    "docs/history/rust-178/PORT.json",
+    "docs/validation/rust-178/check-js-dependency-preservation.cjs",
+    "docs/validation/rust-178/check-ported-graph.cjs",
+    "docs/reports/rust-lock-api-20261020.md",
 }
 
 
@@ -60,15 +68,39 @@ def verify_checkout():
     subprocess.run(["git", "merge-base", "--is-ancestor", MISSION_PARENT, "HEAD"], check=True)
     baseline, current = tree(SOURCE), tree("HEAD")
     assert len(baseline) == 88
-    assert all(current.get(path) == item for path, item in baseline.items())
+    assert all(current.get(path) == item for path, item in baseline.items()
+               if path not in SOURCE_CHANGES)
     assert set(current) - set(baseline) == ADDITIONS
     parent = tree(MISSION_PARENT)
-    assert len(parent) == 91
+    assert len(parent) == 93
     assert all(current.get(path) == item for path, item in parent.items()
-               if path not in VALIDATION_CHANGES)
+               if path not in VALIDATION_CHANGES | SOURCE_CHANGES)
     assert set(current) - set(parent) == {
-        "src-tauri/tauri.conf.json", "docs/reports/tauri-config-20261020.md"
+        "docs/history/rust-178/pnpm-lock.yaml", "docs/history/rust-178/package.json",
+        "docs/history/rust-178/main.before.rs", "docs/history/rust-178/PORT.json",
+        "docs/validation/rust-178/check-js-dependency-preservation.cjs",
+        "docs/validation/rust-178/check-ported-graph.cjs",
+        "docs/reports/rust-lock-api-20261020.md",
     }
+    # FR// Les deux anciennes sources restent complètes ; aucune autre variation n'est admise.
+    # EN// Both former sources remain complete; no other variation is accepted.
+    history = Path("docs/history/rust-178")
+    for original, archive in (("pnpm-lock.yaml", "pnpm-lock.yaml"),
+                              ("package.json", "package.json"),
+                              ("src-tauri/src/main.rs", "main.before.rs")):
+        assert (history / archive).read_bytes() == git("show", f"{MISSION_PARENT}:{original}")
+    old_main = (history / "main.before.rs").read_bytes()
+    expected_main = old_main.replace(
+        b'                let window = app.get_window("main").unwrap();',
+        b'                // FR// Appel Tauri 1 historique conserve hors compilation ; adaptation reprise de #153.\n'
+        b'                // EN// Historical Tauri 1 call retained outside compilation; adaptation reused from #153.\n'
+        b'                // let window = app.get_window("main").unwrap();\n'
+        b'                let window = app.get_webview_window("main").unwrap();')
+    assert expected_main != old_main
+    assert Path("src-tauri/src/main.rs").read_bytes() == expected_main
+    assert digest(Path("pnpm-lock.yaml")) == "0537ba2f2914f12ead588afe47b03cb76e76c58f69fb7599460531867e63b09e"
+    assert digest(history / "PORT.json") == "d2adc98e8d632df9baa6be2aa9d7c27193e551f752fd6bb369b9a7f252c50f82"
+    assert current["docs/validation/rust-178/check-js-dependency-preservation.cjs"][1] == "72a00dd767c7761ff9a5aac62d301a004c11c37d"
     # FR// Le schéma est le seul champ ajouté ; tous les réglages racine restent identiques.
     # EN// The schema is the only added field; all root settings remain identical.
     expected_config = json.loads(Path("tauri.conf.json").read_text())
@@ -102,15 +134,16 @@ def before(evidence, build):
     snapshot = {
         "source_sha": SOURCE,
         "head_sha": os.environ["CI_HEAD_SHA"],
-        "base_files_preserved": len(baseline),
+        "base_files_preserved": len(baseline) - len(SOURCE_CHANGES),
+        "base_files_archived_and_corrected": sorted(SOURCE_CHANGES),
         "mission_parent_sha": MISSION_PARENT,
-        "parent_files_preserved": len(tree(MISSION_PARENT)) - len(VALIDATION_CHANGES),
+        "parent_files_preserved": len(tree(MISSION_PARENT)) - len(VALIDATION_CHANGES | SOURCE_CHANGES),
         "allowed_validation_changes": sorted(VALIDATION_CHANGES),
         "files": {p: digest(Path(p)) for p in current},
         "additions": sorted(ADDITIONS),
     }
     write_json(evidence / "preservation-before.json", snapshot)
-    print(f"Conservation initiale : {len(baseline)} fichiers historiques identiques")
+    print(f"Conservation initiale : {len(baseline) - len(SOURCE_CHANGES)} fichiers identiques, deux sources archivées et corrigées")
 
 
 def after(evidence, build):
@@ -145,12 +178,12 @@ def after(evidence, build):
 
 def summary(evidence):
     steps = json.loads(os.environ["STEP_RESULTS"])
-    mandatory = ("source", "native", "lock", "pnpm", "node", "frontend", "build_debug", "test_debug",
+    mandatory = ("source", "native", "lock", "pnpm", "node", "install", "graph", "frontend", "build_debug", "test_debug",
                  "build_release", "test_release", "preservation")
     outcomes = {key: steps.get(key, {}).get("outcome", "missing") for key in mandatory}
     required = ("preservation-before.json", "preservation-after.json", "environment.log",
                 "apt-update.log", "apt-install.log", "resolution.log", "Cargo.lock",
-                "frontend.log",
+                "install.log", "dependency-graph.log", "dependency-graph.json", "frontend.log",
                 "Cargo.lock.sha256", "build-debug.log", "test-debug.log",
                 "build-release.log", "test-release.log")
     missing = [name for name in required if not (evidence / name).is_file()]

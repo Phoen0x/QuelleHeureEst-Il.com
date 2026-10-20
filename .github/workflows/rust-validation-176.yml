@@ -96,20 +96,36 @@ jobs:
         with:
           node-version: '22'
 
-      - name: Générer le frontend sans modifier les verrous
-        id: frontend
+      - name: Installer avec le verrou gelé
+        id: install
         env:
           NPM_CONFIG_FETCH_TIMEOUT: '20000'
           NPM_CONFIG_FETCH_RETRIES: '1'
         run: |
           set -o pipefail
-          node --version 2>&1 | tee "$EVIDENCE_DIR/frontend.log"
-          pnpm --version 2>&1 | tee -a "$EVIDENCE_DIR/frontend.log"
+          node --version 2>&1 | tee "$EVIDENCE_DIR/install.log"
+          pnpm --version 2>&1 | tee -a "$EVIDENCE_DIR/install.log"
           cd "$BUILD_DIR"
           timeout --kill-after=10s 600s pnpm install --frozen-lockfile \
-            2>&1 | tee -a "$EVIDENCE_DIR/frontend.log"
+            2>&1 | tee -a "$EVIDENCE_DIR/install.log"
+
+      # FR// Réutiliser le garde-fou générique intact de #153 et contrôler aussi tous les nœuds orphelins.
+      # EN// Reuse the unchanged generic #153 guard and also check every orphan node.
+      - name: Vérifier le graphe complet et le portage
+        id: graph
+        run: |
+          set -o pipefail
+          cd "$BUILD_DIR"
+          timeout --kill-after=5s 60s node docs/validation/rust-178/check-ported-graph.cjs \
+            2>&1 | tee "$EVIDENCE_DIR/dependency-graph.log"
+
+      - name: Générer le frontend sans modifier les verrous
+        id: frontend
+        run: |
+          set -o pipefail
+          cd "$BUILD_DIR"
           timeout --kill-after=10s 180s pnpm run vite:build \
-            2>&1 | tee -a "$EVIDENCE_DIR/frontend.log"
+            2>&1 | tee "$EVIDENCE_DIR/frontend.log"
           test -f dist/index.html
 
       - name: Compiler Rust debug
