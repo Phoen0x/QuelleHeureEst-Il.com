@@ -1,0 +1,236 @@
+[
+  {
+    "file": "lib/workers/repository/process/write.ts",
+    "line": 11,
+    "source": "import { scm } from '../../../modules/platform/scm.ts';",
+    "classification": "STATIC ONLY — consulter les résultats de couverture pour exécution"
+  },
+  {
+    "file": "lib/workers/repository/process/write.ts",
+    "line": 77,
+    "source": "const branchSha = await scm.getBranchCommit(branchName);",
+    "classification": "STATIC ONLY — consulter les résultats de couverture pour exécution"
+  },
+  {
+    "file": "lib/workers/repository/process/write.ts",
+    "line": 78,
+    "source": "const baseBranchSha = await scm.getBranchCommit(baseBranch);",
+    "classification": "STATIC ONLY — consulter les résultats de couverture pour exécution"
+  },
+  {
+    "file": "lib/workers/repository/process/write.ts",
+    "line": 126,
+    "source": "const commitDate = await scm.getBranchUpdateDate(branchName);",
+    "classification": "STATIC ONLY — consulter les résultats de couverture pour exécution"
+  },
+  {
+    "file": "lib/workers/repository/process/write.ts",
+    "line": 185,
+    "source": "const branchExisted = await scm.branchExists(branchName);",
+    "classification": "STATIC ONLY — consulter les résultats de couverture pour exécution"
+  },
+  {
+    "file": "lib/workers/repository/process/write.ts",
+    "line": 214,
+    "source": "const commitDate = await scm.getBranchUpdateDate(branchName);",
+    "classification": "STATIC ONLY — consulter les résultats de couverture pour exécution"
+  },
+  {
+    "file": "lib/workers/repository/process/write.ts",
+    "line": 224,
+    "source": "if (!branchExisted && (await scm.branchExists(branch.branchName))) {",
+    "classification": "STATIC ONLY — consulter les résultats de couverture pour exécution"
+  },
+  {
+    "file": "lib/workers/repository/update/branch/index.ts",
+    "line": 31,
+    "source": "import { scm } from '../../../../modules/platform/scm.ts';",
+    "classification": "STATIC ONLY — consulter les résultats de couverture pour exécution"
+  },
+  {
+    "file": "lib/workers/repository/update/branch/index.ts",
+    "line": 94,
+    "source": "await platform.deleteLabel(branchPr.number, config.rebaseLabel!);",
+    "classification": "STATIC ONLY — consulter les résultats de couverture pour exécution"
+  },
+  {
+    "file": "lib/workers/repository/update/branch/index.ts",
+    "line": 111,
+    "source": "await scm.deleteBranch(branchName);",
+    "classification": "STATIC ONLY — consulter les résultats de couverture pour exécution"
+  },
+  {
+    "file": "lib/workers/repository/update/branch/index.ts",
+    "line": 142,
+    "source": "let branchExists = await scm.branchExists(config.branchName);",
+    "classification": "STATIC ONLY — consulter les résultats de couverture pour exécution"
+  },
+  {
+    "file": "lib/workers/repository/update/branch/index.ts",
+    "line": 155,
+    "source": "branchExists = await scm.branchExists(branchName);",
+    "classification": "STATIC ONLY — consulter les résultats de couverture pour exécution"
+  },
+  {
+    "file": "lib/workers/repository/update/branch/index.ts",
+    "line": 178,
+    "source": "let branchPr = await platform.getBranchPr(",
+    "classification": "STATIC ONLY — consulter les résultats de couverture pour exécution"
+  },
+  {
+    "file": "lib/workers/repository/update/branch/index.ts",
+    "line": 348,
+    "source": "const branchIsModified = await scm.isBranchModified(",
+    "classification": "STATIC ONLY — consulter les résultats de couverture pour exécution"
+  },
+  {
+    "file": "lib/workers/repository/update/branch/index.ts",
+    "line": 372,
+    "source": "const oldPr = await platform.findPr({",
+    "classification": "STATIC ONLY — consulter les résultats de couverture pour exécution"
+  },
+  {
+    "file": "lib/workers/repository/update/branch/index.ts",
+    "line": 384,
+    "source": "const branchSha = await scm.getBranchCommit(config.branchName);",
+    "classification": "STATIC ONLY — consulter les résultats de couverture pour exécution"
+  },
+  {
+    "file": "lib/workers/repository/update/branch/index.ts",
+    "line": 628,
+    "source": "await scm.checkoutBranch(config.baseBranch);",
+    "classification": "STATIC ONLY — consulter les résultats de couverture pour exécution"
+  },
+  {
+    "file": "lib/workers/repository/update/branch/index.ts",
+    "line": 758,
+    "source": "(await scm.isBranchConflicted(config.baseBranch, config.branchName));",
+    "classification": "STATIC ONLY — consulter les résultats de couverture pour exécution"
+  },
+  {
+    "file": "lib/workers/repository/update/branch/index.ts",
+    "line": 791,
+    "source": "await scm.checkoutBranch(config.baseBranch);",
+    "classification": "STATIC ONLY — consulter les résultats de couverture pour exécution"
+  },
+  {
+    "file": "lib/workers/repository/update/branch/index.ts",
+    "line": 821,
+    "source": "platform.reattemptPlatformAutomerge",
+    "classification": "STATIC ONLY — consulter les résultats de couverture pour exécution"
+  },
+  {
+    "file": "lib/workers/repository/update/branch/index.ts",
+    "line": 828,
+    "source": "await platform.reattemptPlatformAutomerge({",
+    "classification": "STATIC ONLY — consulter les résultats de couverture pour exécution"
+  },
+  {
+    "file": "lib/workers/repository/update/branch/index.ts",
+    "line": 835,
+    "source": "if (platform.refreshPr) {",
+    "classification": "STATIC ONLY — consulter les résultats de couverture pour exécution"
+  },
+  {
+    "file": "lib/workers/repository/update/branch/index.ts",
+    "line": 836,
+    "source": "await platform.refreshPr(branchPr.number);",
+    "classification": "STATIC ONLY — consulter les résultats de couverture pour exécution"
+  },
+  {
+    "file": "lib/workers/repository/update/branch/index.ts",
+    "line": 1127,
+    "source": "content = platform.massageMarkdown(content, config.rebaseLabel);",
+    "classification": "STATIC ONLY — consulter les résultats de couverture pour exécution"
+  },
+  {
+    "file": "lib/workers/repository/update/pr/index.ts",
+    "line": 29,
+    "source": "import { scm } from '../../../../modules/platform/scm.ts';",
+    "classification": "STATIC ONLY — consulter les résultats de couverture pour exécution"
+  },
+  {
+    "file": "lib/workers/repository/update/pr/index.ts",
+    "line": 187,
+    "source": "(await platform.getBranchPr(branchName, config.baseBranch)) ??",
+    "classification": "STATIC ONLY — consulter les résultats de couverture pour exécution"
+  },
+  {
+    "file": "lib/workers/repository/update/pr/index.ts",
+    "line": 485,
+    "source": "// For more details, refer to the updatePr function of each platform.",
+    "classification": "STATIC ONLY — consulter les résultats de couverture pour exécution"
+  },
+  {
+    "file": "lib/workers/repository/update/pr/index.ts",
+    "line": 523,
+    "source": "await platform.updatePr(updatePrConfig);",
+    "classification": "STATIC ONLY — consulter les résultats de couverture pour exécution"
+  },
+  {
+    "file": "lib/workers/repository/update/pr/index.ts",
+    "line": 558,
+    "source": "pr = await platform.createPr({",
+    "classification": "STATIC ONLY — consulter les résultats de couverture pour exécution"
+  },
+  {
+    "file": "lib/workers/repository/update/pr/index.ts",
+    "line": 596,
+    "source": "await scm.deleteBranch(branchName);",
+    "classification": "STATIC ONLY — consulter les résultats de couverture pour exécution"
+  },
+  {
+    "file": "lib/workers/repository/update/pr/index.ts",
+    "line": 619,
+    "source": "content = platform.massageMarkdown(content, config.rebaseLabel);",
+    "classification": "STATIC ONLY — consulter les résultats de couverture pour exécution"
+  },
+  {
+    "file": "lib/workers/repository/finalize/prune.ts",
+    "line": 8,
+    "source": "import { scm } from '../../../modules/platform/scm.ts';",
+    "classification": "STATIC ONLY — consulter les résultats de couverture pour exécution"
+  },
+  {
+    "file": "lib/workers/repository/finalize/prune.ts",
+    "line": 40,
+    "source": "let pr = await platform.findPr({",
+    "classification": "STATIC ONLY — consulter les résultats de couverture pour exécution"
+  },
+  {
+    "file": "lib/workers/repository/finalize/prune.ts",
+    "line": 45,
+    "source": "const branchIsModified = await scm.isBranchModified(",
+    "classification": "STATIC ONLY — consulter les résultats de couverture pour exécution"
+  },
+  {
+    "file": "lib/workers/repository/finalize/prune.ts",
+    "line": 50,
+    "source": "const freshPr = await platform.getPr(pr.number, true);",
+    "classification": "STATIC ONLY — consulter les résultats de couverture pour exécution"
+  },
+  {
+    "file": "lib/workers/repository/finalize/prune.ts",
+    "line": 79,
+    "source": "await platform.updatePr({",
+    "classification": "STATIC ONLY — consulter les résultats de couverture pour exécution"
+  },
+  {
+    "file": "lib/workers/repository/finalize/prune.ts",
+    "line": 107,
+    "source": "await platform.updatePr({",
+    "classification": "STATIC ONLY — consulter les résultats de couverture pour exécution"
+  },
+  {
+    "file": "lib/workers/repository/finalize/prune.ts",
+    "line": 112,
+    "source": "await scm.deleteBranch(branchName);",
+    "classification": "STATIC ONLY — consulter les résultats de couverture pour exécution"
+  },
+  {
+    "file": "lib/workers/repository/finalize/prune.ts",
+    "line": 123,
+    "source": "await scm.deleteBranch(branchName);",
+    "classification": "STATIC ONLY — consulter les résultats de couverture pour exécution"
+  }
+]
