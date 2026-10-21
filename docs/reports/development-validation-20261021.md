@@ -2,7 +2,7 @@
 
 ## Périmètre et base
 
-Base : `main` au SHA `eb3c9403fa97db5ccf1fb4b13e3b0872e36c8228`. Branche : `codex/fix-development-validation-20261021`. Cette mission corrige l'installation pnpm figée, la compilation Tauri 2 et les contrôles Web. Elle ne fusionne ni ne modifie les PR existantes, les workflows, permissions, licences ou configurations de bots.
+Base : `main` au SHA `eb3c9403fa97db5ccf1fb4b13e3b0872e36c8228`. Branche : `codex/fix-development-validation-20261021`. Cette mission corrige l'installation pnpm figée, la compilation Tauri 2 et les contrôles Web. Elle ne fusionne ni ne modifie les PR existantes, les permissions, licences, configurations de bots ou workflows de sécurité. Le workflow Rust reçoit les prérequis indispensables au build depuis un checkout propre ; sa version antérieure est archivée.
 
 ## Réutilisation et conservation
 
@@ -43,6 +43,8 @@ Environnement : Node 24.19.0, pnpm 8.15.9, Rust/Cargo 1.99.1, GTK 3.24.49, WebKi
 | `git diff --check` | PASS |
 
 Les contrôles utilisent les vrais outils et les vrais sources. Les commandes réseau ont des délais explicites ; la compilation Rust est bornée à vingt minutes et réutilise son cache.
+
+Le workflow Rust conserve ses événements et ses permissions contents:read. Il installe les prérequis GTK/WebKit, Node/pnpm et Rust validés, puis exige les contrôles Web et les commandes Cargo figées. Aucun continue-on-error ou filtre de sécurité ne masque un échec.
 
 ## Limites et revue
 
