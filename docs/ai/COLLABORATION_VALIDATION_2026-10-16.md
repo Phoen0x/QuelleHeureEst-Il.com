@@ -12,7 +12,7 @@
 
 Les octets d'origine de `AGENTS.md`, `docs/ai/WORKING_CONTRACT.md` et `docs/ai/README.md` sont conservés en préfixe intégral : seuls des compléments sont ajoutés. Le relais historique `PROJECT_RELAY_2026-10-16.md` reste identique. Le complément README est en français puis anglais ; le contrat, le rapport et les échanges sont en français.
 
-Sept obligations sont explicitées : passage de relais, mini-bilan final, portée des langues, fiabilité réseau, reprise après panne, découverte/persistance des consignes, ergonomie TDAH et prompt de délégation fourni spontanément. Aucun changement aux dépendances, lockfiles, archives, code, CI, sécurité ou configurations des bots. Aucune modification directe des PR #153, #162, #167, #170 et #171 ni de leurs branches ; aucune fusion ou réécriture d'historique.
+Sept obligations sont explicitées : passage de relais, mini-bilan final, portée des langues, fiabilité réseau, reprise après panne, découverte/persistance des consignes, ergonomie des échanges et prompt de délégation fourni spontanément. Aucun changement aux dépendances, lockfiles, archives, code, CI, sécurité ou configurations des bots. Aucune modification directe des PR #153, #162, #167, #170 et #171 ni de leurs branches ; aucune fusion ou réécriture d'historique.
 
 ## Contrôles documentaires
 
@@ -30,3 +30,5 @@ Le schéma du connecteur GitHub utilisé pour cette publication n'expose ni para
 **Persistance partielle :** les règles sont versionnées, mais non présentes sur main. Un agent ouvrant uniquement main ou une ancienne branche ne peut pas les découvrir automatiquement. Les liens de cette PR et son SHA doivent figurer dans le prompt de reprise ; aucune mémoire inter-conversations n'est garantie. Aucune fusion n'est autorisée pour corriger cette limite dans la présente mission.
 
 ChatGPT doit relire indépendamment le diff au head exact, vérifier la conservation intégrale du contrat et des autres blobs, les sept obligations, la portée du bilinguisme, la découvrabilité réelle et les limites d'annulation des outils. Il doit conserver une seule prochaine action pour l'utilisatrice ; toute intégration future requiert une autorisation distincte.
+
+**Note de minimisation du 21 octobre 2026 :** un intitulé décrivant la cause personnelle d'une préférence de travail a été reformulé de manière impersonnelle, sans changer les sept obligations techniques constatées. Le commit historique reste consultable ; aucune réécriture de l'historique Git n'a été effectuée.
