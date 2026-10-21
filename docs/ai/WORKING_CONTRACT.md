@@ -99,9 +99,17 @@ Le mini-bilan final comporte :
 - **Des règles présentes seulement dans une PR non fusionnée ne sont pas automatiquement découvertes depuis `main`**, une ancienne branche, une autre conversation ou un outil qui n'ouvre pas cette PR. Vérifier leur présence sur `main` et annoncer explicitement cette limite à chaque relais pertinent ; ne pas prétendre à une mémoire partagée automatique.
 - Ne pas fusionner pour corriger cette limite sans autorisation de l'utilisatrice. Toute intégration future est une décision distincte après revue indépendante ; préserver entre-temps les références immuables et les versions précédentes.
 
-## 13. Ergonomie TDAH et délégation prête à l'emploi
+## 13. Ergonomie des échanges et délégation prête à l'emploi
 
 - **Une seule action demandée à l'utilisatrice à la fois.** L'orchestrateur prend en charge les recherches, inventaires et liens disponibles dans GitHub ; il ne demande pas de recopier un contexte ou de transférer des fichiers qu'il peut consulter lui-même.
 - L'orchestrateur fournit **spontanément le prochain mini-compte rendu** : résultat, incertitudes et prochaine action. Il ne doit pas attendre que l'utilisatrice demande si l'agent a terminé.
 - Lorsqu'il faut déléguer une mission à Codex, fournir immédiatement **un prompt prêt à copier**, en français, avec une mission unique, les liens GitHub, les SHA et la branche de départ, le périmètre autorisé, les interdictions, les critères, les preuves et le relais attendu. Le prompt renvoie aux documents disponibles plutôt que d'imposer un transfert manuel de contexte.
 - Ne pas cumuler plusieurs demandes, menus de prochaines tâches ou validations humaines dans le même passage de relais. La prochaine mission reste distincte de la revue de la PR livrée.
+
+## 14. Mémoire durable, vie privée et audit de complétude
+
+- Appliquer la [politique de mémoire et de confidentialité](KNOWLEDGE_PRIVACY_POLICY.md) avant toute publication depuis une conversation, un rapport, une PR, un sous-agent ou une application connectée. Le dépôt public n'est pas une mémoire personnelle.
+- Versionner les règles, décisions, preuves publiables, désaccords, problèmes encore ouverts et raisons techniques des choix. Ne pas copier de conversations intégrales ou de données personnelles. **Les préférences de fonctionnement se formulent sans mentionner leur cause personnelle**.
+- Vérifier séparément la complétude de **chaque** session ChatGPT/Codex accessible ; une seule conversation auditée ne garantit pas les autres. Indiquer toute trace perdue et toute preuve CI temporaire ou expirée.
+- Les règles communes sont documentées dans AGENTS.md et le présent contrat, indexées dans docs/ai/README.md ; les constats datés restent des rapports distincts. Aucun document public ne doit inclure de secrets, d'identité civile, de matériel personnel, d'informations de santé ou d'autres détails privés.
+- Une édition documentaire n'efface pas les anciens commits ou descriptions déjà publiés. Toute suppression rétroactive d'informations privées exige une procédure et une autorisation distinctes ; aucune réécriture silencieuse d'historique.
