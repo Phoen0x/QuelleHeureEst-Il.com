@@ -4,9 +4,10 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
+    "test": "node --test tests/*.test.mjs",
     "dev": "vite",
-    "build": "vite build && tauri build",
-    "tauri": "tauri",
+    "build": "pnpm run tauri build",
+    "tauri": "cd src-tauri && tauri",
     "vite:dev": "vite",
     "vite:build": "vite build",
     "lint": "eslint .",
@@ -14,7 +15,7 @@
     "typecheck": "tsc --noEmit -p tsconfig.app.json",
     "dev:web": "vite",
     "preinstall": "npx only-allow pnpm",
-    "tauri:dev": "tauri dev"
+    "tauri:dev": "pnpm run tauri dev"
   },
   "dependencies": {
     "lucide-react": "^0.344.0",
