@@ -30,12 +30,14 @@ At the end of a ChatGPT-directed Codex mission, provide the actual status, links
 
 ## Références de continuité et confidentialité — français
 
+- [Audit de couverture de l'ancienne conversation ChatGPT — 21 octobre 2026](SESSION_CHATGPT_INITIAL_AUDITS_COMPLETENESS_2026-10-21.md) : rapprochement des premiers audits et de la création de #167 avec les documents déjà versionnés, sans données privées ni transcription.
 - [Politique de mémoire technique et de confidentialité](KNOWLEDGE_PRIVACY_POLICY.md) : ce qui est conservé dans GitHub, ce qui doit rester privé, extraction expurgée depuis les conversations et contrôle séparé de chaque session. **Ne jamais publier de données personnelles ou de diagnostic pour expliquer une préférence de travail.**
 - [Relais de complétude Codex — 21 octobre 2026](SESSION_CODEX_COMPLETENESS_2026-10-21.md) : constat daté, limité à une seule conversation ; les preuves à expiration et les traces perdues ne sont pas certifiées récupérables.
 - **État :** la seconde conversation Codex, les autres conversations ChatGPT et les inventaires courants d'alertes privées nécessitent des contrôles distincts ; ne pas annoncer un archivage exhaustif avant ces vérifications.
 
 ## Continuity and privacy references — English
 
+- [Initial ChatGPT conversation coverage audit — October 21, 2026](SESSION_CHATGPT_INITIAL_AUDITS_COMPLETENESS_2026-10-21.md): maps early reviews and the #167 handoff to existing versioned sources, without personal data or transcripts.
 - [Technical knowledge and privacy policy](KNOWLEDGE_PRIVACY_POLICY.md): what belongs in GitHub, what must remain private, redacted extraction from conversations, and separate auditing of each session. **Never publish personal information or diagnoses to explain a workflow preference.**
 - [Codex completeness handoff — October 21, 2026](SESSION_CODEX_COMPLETENESS_2026-10-21.md): a dated report covering one conversation only; expired artifacts and lost traces cannot be certified as recoverable.
 - **Status:** the other Codex conversation, remaining ChatGPT project conversations and current private security alert inventories require separate checks. No comprehensive archival claim is justified yet.
