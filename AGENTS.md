@@ -56,3 +56,11 @@ Les règles ci-dessus restent intégralement applicables. Avant toute mission, l
 - Préférer le connecteur GitHub disponible et adapté aux opérations GitHub. Toute requête externe nécessaire doit avoir un délai maximal explicite, des tentatives limitées et un mécanisme d'arrêt ; ne pas attendre indéfiniment ni multiplier les accès réseau directs depuis le terminal.
 - Après panne ou résultat incertain, documenter commande/opération, service, erreur et temps écoulé ; vérifier l'état distant avant toute nouvelle écriture ou répétition susceptible d'écrire. Un autre accès doit être autorisé et la résolution doit être testée.
 - Une seule action demandée à l'utilisatrice à la fois. L'orchestrateur fournit spontanément le prochain mini-bilan et, lorsqu'une délégation à Codex est nécessaire, le prompt prêt à copier avec références GitHub ; ne pas demander de retransmettre un contexte déjà accessible. Les sous-agents respectent les mêmes contraintes et rendent un relais explicite à l'orchestrateur, qui informe l'utilisatrice.
+
+## Mémoire et confidentialité des agents
+
+Avant de transférer des informations d'une conversation, d'une PR ou d'une application connectée vers ce dépôt **public**, lire [la politique de mémoire et de confidentialité](docs/ai/KNOWLEDGE_PRIVACY_POLICY.md). Conserver les consignes impersonnelles utiles au projet, jamais l'identité, la santé, le matériel privé, les échanges personnels ni les secrets. La complétude de chaque conversation doit être auditée séparément ; ne jamais revendiquer une mémoire exhaustive sans preuve.
+
+## Agent knowledge and privacy
+
+Before moving information from a conversation, PR or connected app into this **public** repository, read the [knowledge and privacy policy](docs/ai/KNOWLEDGE_PRIVACY_POLICY.md). Preserve useful impersonal project rules, not identity, health, private devices, personal exchanges or secrets. Audit each conversation separately; never claim a complete shared memory without evidence.
