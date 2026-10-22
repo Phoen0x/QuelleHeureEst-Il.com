@@ -1,5 +1,10 @@
 # IA — relais et protocole de développement
 
+**Journal commun des IA :** [incidents, solutions, preuves et idées en attente](JOURNAL_DE_BORD_TECHNIQUE.md). Toute IA doit le consulter à la reprise, puis documenter les nouveaux incidents et les résolutions prouvées sur la branche autorisée, sans données privées ni écrasement d'historique. Cette nouvelle entrée documentaire est proposée par la PR #186 et n'est pas encore sur `main`.
+
+**Shared AI engineering log:** [incidents, fixes, evidence, and pending ideas](JOURNAL_DE_BORD_TECHNIQUE.md). Review it at handoff and record confirmed outcomes on the authorized branch, without personal data, history rewrites, or unauthorized edits. This journal is proposed by draft PR #186; it is not yet on `main`.
+
+
 Ce répertoire est la porte d'entrée stable pour reprendre le projet après un changement de conversation ChatGPT ou une compaction/interruption de Codex.
 
 - [Relais vérifié du 16 octobre 2026](PROJECT_RELAY_2026-10-16.md) : photographie datée, décisions, PR, commits, résultats et inconnues. **Ne pas considérer cette photographie comme l'état courant sans nouvel accès à GitHub.**
