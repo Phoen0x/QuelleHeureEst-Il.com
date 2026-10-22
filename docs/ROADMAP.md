@@ -39,7 +39,7 @@ Plus de données météo/environnement, phases lunaires, calendrier et événeme
 
 - **Pour les personnes qui développent ou auditent :** consulter le [backlog technique](TODO_TECHNIQUE.md), où figurent les tâches précises, priorités, critères de sortie, références de PR et blocages.
 - **Pour les agents IA :** commencer par [AGENTS.md](../AGENTS.md), le [contrat](ai/WORKING_CONTRACT.md) et l'[index des relais](ai/README.md), puis le backlog technique ; ne pas inférer qu'une case est cochée parce qu'une PR est ouverte.
-- **Pour les incidents et leurs résolutions :** le [journal technique commun de la PR #186](https://github.com/Phoen0x/QuelleHeureEst-Il.com/blob/59feb3fe814fd0eb866456377d2b568609b655ab/docs/ai/JOURNAL_DE_BORD_TECHNIQUE.md) fait foi pour les problèmes documentés ; il n'est **pas encore sur `main`** à ce relevé.
+- **Pour les incidents et leurs résolutions :** le [journal technique commun de la PR #186](https://github.com/Phoen0x/QuelleHeureEst-Il.com/blob/c56f284dc81d7fd82866a9df98998e5066eac613/docs/ai/JOURNAL_DE_BORD_TECHNIQUE.md) fait foi pour les problèmes documentés ; il n'est **pas encore sur `main`** à ce relevé.
 - **Pour les conditions juridiques :** lire [LICENSE](../LICENSE). L'accès public au dépôt ne signifie pas qu'il soit sous licence libre ; aucune licence n'est modifiée par cette feuille de route.
 
 **Mise à jour :** chaque jalon ne devient terminé qu'après preuves applicables (SHA, tests, environnement et, lorsque nécessaire, validation réelle du produit). Aucun effacement de l'historique lors des mises à jour.
