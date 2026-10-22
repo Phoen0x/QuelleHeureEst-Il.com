@@ -6,6 +6,7 @@
 
 1. Lire depuis `main` : `AGENTS.md`, `docs/ai/WORKING_CONTRACT.md`, `docs/ai/README.md` et `docs/ai/KNOWLEDGE_PRIVACY_POLICY.md`.
 2. Lire le présent relais **sur la branche de la PR documentaire** tant qu'elle n'est pas fusionnée. Ne pas présumer qu'un fichier seulement en PR est présent sur `main`.
+   Lire aussi le [journal de bord technique commun](JOURNAL_DE_BORD_TECHNIQUE.md) : problèmes rencontrés, corrections attestées, avertissements encore ouverts et idées non implémentées, notamment `public/robots.txt` et `sitemap.xml`. Il est indexé dans `docs/ai/README.md`.
 3. Relire les SHA de `main`, #153, #175, #176–#179 et #183 et les contrôles GitHub avant toute conclusion ; les SHA ci-dessous constituent une **photographie**.
 4. **Mission technique suivante proposée, non encore demandée à Codex dans cette conversation :** étudier le portage ciblé des correctifs des cinq avis de sécurité **Vite 8.0.16** sur la PR #183, en commençant par confirmer une version corrigée minimale (candidat évoqué : 8.1.6), **sans dégrader la conservation** ni modifier les politiques de sécurité. Ne pas lancer la migration automatiquement à la lecture du document.
 5. **Aucune fusion vers main n'est autorisée par ce relais.** L'intégration des PR, leurs fermetures et les changements sensibles exigent une décision humaine séparée.
