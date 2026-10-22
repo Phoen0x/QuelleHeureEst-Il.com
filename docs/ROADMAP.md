@@ -1,6 +1,6 @@
 # Feuille de route — QuelleHeureEst-Il.com
 
-> **État public indicatif au 22 octobre 2026.** Ce document expose les objectifs du produit, **pas** une promesse de livraison ni une liste de fonctionnalités déjà validées. Les priorités sont réévaluées sur preuves. Aucun calendrier de sortie n'est annoncé.
+> **État public initial au 22 octobre 2026, références de sécurité et de suivi actualisées le 23 octobre 2026.** Ce document expose les objectifs du produit, **pas** une promesse de livraison ni une liste de fonctionnalités déjà validées. Les priorités sont réévaluées sur preuves. Aucun calendrier de sortie n'est annoncé.
 
 ## Présentation et statut
 
@@ -14,7 +14,7 @@ Une case non cochée signifie que **l'objectif complet n'est pas encore attesté
 
 ### P0 — Fondations indispensables
 
-- [ ] **R-001 · Sécurité et reproductibilité :** fiabiliser les dépendances, les builds et les audits sans masquer les alertes ; vérifier les preuves avant toute diffusion.
+- [ ] **R-001 · Sécurité et reproductibilité :** fiabiliser les dépendances, les builds et les audits sans masquer les alertes ; vérifier les preuves avant toute diffusion. Au 23 octobre, le correctif local `braces` est durci mais son avis reste ouvert, et `tokio 1.54.0` présente la vulnérabilité `RUSTSEC-2026-0384` avec un correctif amont disponible en 1.54.1 ; se référer aux tâches T-002/T-003 du backlog. Le jalon reste non coché, aucune fusion n'est autorisée par la présente mise à jour.
 - [ ] **R-002 · Application Android native :** produire et tester un véritable build Android/Tauri sur la cible, puis vérifier les permissions et comportements requis pour GrapheneOS.
 - [ ] **R-003 · Rust/local/offline-first :** rapprocher logique métier, agrégation, cache et accès aux données du backend local, sans dépendance obligatoire à une API payante.
 
@@ -39,7 +39,7 @@ Plus de données météo/environnement, phases lunaires, calendrier et événeme
 
 - **Pour les personnes qui développent ou auditent :** consulter le [backlog technique](TODO_TECHNIQUE.md), où figurent les tâches précises, priorités, critères de sortie, références de PR et blocages.
 - **Pour les agents IA :** commencer par [AGENTS.md](../AGENTS.md), le [contrat](ai/WORKING_CONTRACT.md) et l'[index des relais](ai/README.md), puis le backlog technique ; ne pas inférer qu'une case est cochée parce qu'une PR est ouverte.
-- **Pour les incidents et leurs résolutions :** le [journal technique commun de la PR #186](https://github.com/Phoen0x/QuelleHeureEst-Il.com/blob/c56f284dc81d7fd82866a9df98998e5066eac613/docs/ai/JOURNAL_DE_BORD_TECHNIQUE.md) fait foi pour les problèmes documentés ; il n'est **pas encore sur `main`** à ce relevé.
+- **Pour les incidents et leurs résolutions :** le [journal technique commun de la PR #186](https://github.com/Phoen0x/QuelleHeureEst-Il.com/blob/568bb986d83d862153349c0c1b09132bc2e868eb/docs/ai/JOURNAL_DE_BORD_TECHNIQUE.md) fait foi pour les problèmes documentés ; il n'est **pas encore sur `main`** à ce relevé.
 - **Pour les conditions juridiques :** lire [LICENSE](../LICENSE). L'accès public au dépôt ne signifie pas qu'il soit sous licence libre ; aucune licence n'est modifiée par cette feuille de route.
 
 **Mise à jour :** chaque jalon ne devient terminé qu'après preuves applicables (SHA, tests, environnement et, lorsque nécessaire, validation réelle du produit). Aucun effacement de l'historique lors des mises à jour.
