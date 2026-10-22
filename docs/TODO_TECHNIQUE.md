@@ -1,0 +1,46 @@
+# Backlog technique commun — développeurs et agents IA
+
+> **Photographie du 22 octobre 2026 — lecture seule de l'état GitHub.** Source opérationnelle des tâches *à mener*, non registre des incidents passés et non autorisation autonome d'écriture. Vérifier les SHA et états GitHub avant toute exécution.
+
+## Usage et règles
+
+- **Une seule tâche à la fois** et un seul agent écrivain par branche/périmètre. ChatGPT cadre et vérifie indépendamment ; Codex exécute une mission autorisée et documente les tests ; la personne responsable décide des fusions et changements sensibles.
+- **Une case cochée = sortie vérifiée**, avec PR/SHA exact, tests pertinents réellement exécutés et limites. Une PR ouverte ou une CI globalement verte mais contournée ne suffit pas.
+- Les corrections d'incidents sont suivies dans le [journal commun de la PR #186](https://github.com/Phoen0x/QuelleHeureEst-Il.com/blob/59feb3fe814fd0eb866456377d2b568609b655ab/docs/ai/JOURNAL_DE_BORD_TECHNIQUE.md) : **QH-001 à QH-018** au relevé. Le journal, encore uniquement sur #186, conserve symptômes, essais, résolutions et preuves ; ne pas dupliquer son historique ici.
+- Aucun nettoyage destructeur des dépendances, options natives/Android/Windows, lockfiles, variantes historiques, commentaires, code fantôme, archives et preuves. Pas de merge/fermeture/suppression, de modification des licences, permissions, bots ou politiques de sécurité sans accord distinct.
+- Les consignes de référence restent [AGENTS.md](../AGENTS.md), [contrat IA](ai/WORKING_CONTRACT.md), [index IA](ai/README.md) et [politique de confidentialité](ai/KNOWLEDGE_PRIVACY_POLICY.md). Ne pas inscrire de données personnelles ou de secrets dans le backlog public.
+- Identifiants **T-001**, etc. permanents. Lorsqu'une tâche est scindée, garder l'ancienne entrée et créer une référence ; ne jamais recycler un ID. Conserver date, statut, dépendances, décision et preuves.
+
+## Priorités de maintenance et de sécurité
+
+- [ ] **T-001 · P0 · Vite : cinq avis GHSA restants — QH-010.** Mission autorisée pour Codex sur la [PR #183](https://github.com/Phoen0x/QuelleHeureEst-Il.com/pull/183), au head initial `bdda4abf3430bc5bda20176538c08533694c83f7`, **non publiée à ce relevé**. Examiner Vite 8.1.6 comme candidat *à valider*, comparer l'audit pnpm avant/après, vérifier la compatibilité et conserver les graphes/archives. **Terminé si :** cinq avis corrigés dans le graphe actif sur un SHA publié, tests et conservation démontrés, revue indépendante passée ; ne pas fusionner automatiquement. [#184](https://github.com/Phoen0x/QuelleHeureEst-Il.com/pull/184) n'est pas un patch de lockfile à reprendre en bloc.
+- [ ] **T-002 · P0 · `braces 3.0.3` — QH-009.** Mitigation locale et dix tests sur #183, avis `GHSA-vfj7-8cjw-p6xm` toujours signalé. **Terminé si :** résolution officiellement corrigée ou diagnostic traçable validé, sans masque ni perte des consommateurs et variantes ; conserver le statut « atténué » tant que l'alerte demeure.
+- [ ] **T-003 · P0 · Audit Rust strict — QH-011.** Neuf avertissements documentés malgré la correction h2 : dépendances non maintenues, GLib `unsound`, Tokio `yanked`. **Terminé si :** remédiations vérifiées et `cargo audit --deny warnings` réellement réussi sans nouvel ignore ni perte des variantes, après mission spécifique autorisée.
+- [ ] **T-004 · P0 · CI de sécurité — QH-012.** Audits `npm audit` incohérents avec pnpm, `only-allow pnpm`, matrice CodeQL Java/Kotlin et intégrations externes en échec. **Terminé si :** chaque contrôle concerné a un périmètre correct, des logs explicites et des résultats fiables sans désactivation de scanner ; séparer les sous-missions.
+- [ ] **T-005 · P1 · Couverture des tests de sécurité en CI — QH-008/QH-012.** Vérifier l'exécution automatique des dix tests `braces`, contrôles de préservation et tests de mutation au SHA exact, en plus des deux tests HTTP en CI. **Terminé si :** couverture réelle établie par journaux GitHub.
+- [ ] **T-006 · P1 · Diagnostic whitespace du patch — QH-017.** Examiner les 21 lignes signalées par `git diff --cached --check`, sans altérer silencieusement le patch ni désactiver le contrôle. **Terminé si :** cause et traitement traçables, reproduction/test et préservation attestées.
+- [ ] **T-007 · P1 · Rapprochement historique de #153 — QH-016.** Identifier les améliorations et preuves encore propres à [#153](https://github.com/Phoen0x/QuelleHeureEst-Il.com/pull/153), distinctes de #183 : CI, GLib, archives, audits et licences. **Terminé si :** inventaire vérifié avec décision humaine spécifique pour chaque intégration, sans fermer/fusionner implicitement les PR antérieures.
+
+## Priorités produit et validation native
+
+- [ ] **T-008 · P0 produit · Android natif — QH-014.** Construire, lancer et tester réellement sur cible compatible, examiner les permissions et exigences GrapheneOS. **Terminé si :** APK/AAB, exécution et tests documentés ; SDK/NDK présents ne suffisent pas.
+- [ ] **T-009 · P1 · Interface graphique native Linux — QH-013.** Résoudre les contraintes WebKit/GTK du lancement natif sans désactiver les sandbox et établir une validation GUI reproductible.
+- [ ] **T-010 · P1 · Architecture Rust/offline-first.** Auditer et transférer progressivement depuis les appels frontend vers le backend Rust local les responsabilités métier, données, cache et agrégation, avec tests et conservation de l'existant. Le code actuel ne démontre pas encore une architecture entièrement offline-first.
+- [ ] **T-011 · P1 · Localisation et accessibilité.** Garantir le français par défaut **dans l'application réellement lancée** (le code `main` affiche encore `language: 'en'` comme valeur initiale), choix de langue et a11y ; tâche distincte de la mise à niveau de Vite.
+- [ ] **T-012 · P2 · SEO Web — IDÉE-001/002.** Étudier `public/robots.txt` et éventuellement `sitemap.xml` selon domaine, URLs publiques et politique d'indexation. **Non commencé ;** `robots.txt` n'est pas un mécanisme de confidentialité.
+
+## Gouvernance et continuité
+
+- [ ] **T-013 · P1 · Botanique des PR de mises à jour — QH-015.** Valider le comportement réel de Renovate/Dependabot et la cohabitation projetée dans [#162](https://github.com/Phoen0x/QuelleHeureEst-Il.com/pull/162), [#170](https://github.com/Phoen0x/QuelleHeureEst-Il.com/pull/170) et [#171](https://github.com/Phoen0x/QuelleHeureEst-Il.com/pull/171) avant toute activation ou changement susceptible de supprimer des branches/PR.
+- [ ] **T-014 · P1 · Vérification des licences et mentions publiques — QH-016.** `LICENSE` stipule **tous droits réservés**, tandis que `.github/README.md` et `.bolt/prompt` parlent aussi d'« open-source ». Établir une décision juridique/documentaire distincte ; ne jamais changer les droits à l'occasion d'une correction technique. Examiner les dépendances et notices avant distribution.
+- [ ] **T-015 · P1 · Intégration documentaire et relais — QH-018.** La [PR #186](https://github.com/Phoen0x/QuelleHeureEst-Il.com/pull/186) fournit le journal commun et le relais V2→V3, **pas encore fusionnés** au relevé. Une éventuelle intégration et le chaînage définitif des index nécessitent revue et accord distincts ; pas de publication implicite sur `main`.
+- [ ] **T-016 · Différé · Revue de confidentialité des archives — IDÉE-005.** Inventaire d'éventuels contenus à stocker ailleurs, uniquement sur décision explicite et sans transfert de données privées vers ce dépôt public. Aucune suppression ni réécriture rétroactive spontanée.
+
+## Procédure de mise à jour (tous publics concernés)
+
+1. **Avant :** vérifier l'état GitHub du dépôt, le HEAD de la PR et le journal, et rechercher si la tâche existe déjà ; déclarer une mission et ses limites.
+2. **Pendant :** mettre les preuves détaillées sur la branche autorisée ; ne pas modifier le présent fichier depuis une branche de code si la mission ne l'autorise pas.
+3. **Après :** mettre à jour l'entrée `T-…` par une PR documentaire séparée si nécessaire, avec date, SHA, tests, limites et lien vers `QH-…` ; la case ne passe à `[x]` qu'après vérification des critères. Ne pas effacer les anciens états datés.
+4. **Reprise IA :** lire ce backlog après les consignes d'agent ; **proposer une seule prochaine mission** et attendre l'autorisation correspondante. Ne pas attribuer à une autre branche les validations faites sur un ancien SHA.
+
+[Feuille de route publique](ROADMAP.md) · [Journal des incidents (PR #186, SHA immuable)](https://github.com/Phoen0x/QuelleHeureEst-Il.com/blob/59feb3fe814fd0eb866456377d2b568609b655ab/docs/ai/JOURNAL_DE_BORD_TECHNIQUE.md)
