@@ -43,3 +43,11 @@ At the end of a ChatGPT-directed Codex mission, provide the actual status, links
 - [Recent Codex handoff — October 21, 2026](SESSION_CODEX_COMPLETENESS_2026-10-21.md): covers the recent Codex session and its stated evidence limits.
 - [Earlier Codex handoff (#153/#162) — October 21, 2026](SESSION_CODEX_PR153_PR162_COMPLETENESS_2026-10-21.md) and [evidence JSON](SESSION_CODEX_PR153_PR162_COMPLETENESS_2026-10-21_EVIDENCE.json): separate audit of the earlier session.
 - **Verified status on October 21, 2026:** the two Codex sessions and the earlier ChatGPT initial-audits conversation each have a separately versioned handoff. Coverage is limited to accessible information and does not certify recovered transcripts, every other conversation, private security inventories or expiring CI artifacts. **No comprehensive archival claim is justified.**
+
+## Reprise multi-dépôts — ChatGPT et Codex uniquement
+
+[Protocole léger Phoen0x](STARTUP_CHATGPT_CODEX_PHOEN0X.md) : à l'initialisation, inventorier tous les dépôts accessibles, lire leurs pages de présentation et leurs README, relever les licences, puis approfondir seulement les dépôts utiles. Synthèse courte par SHA ; **aucune consigne nouvelle pour Claude ou Bolt**. Une PR non fusionnée n'est pas automatiquement lue depuis `main`.
+
+## Multi-repository startup — ChatGPT and Codex only
+
+The [lightweight Phoen0x protocol](STARTUP_CHATGPT_CODEX_PHOEN0X.md) requires initial project-page and README review across accessible repositories, license identification and targeted follow-up. Keep SHA-linked summaries small. It does **not** apply to Claude or Bolt; an unmerged PR is not automatically loaded from `main`.
