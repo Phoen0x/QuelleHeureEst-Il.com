@@ -1,0 +1,717 @@
+{
+  "mission": "QH-010",
+  "base_sha": "bdda4abf3430bc5bda20176538c08533694c83f7",
+  "base_tree": "d2abf9f14b2df9038c34b99ed6f3f592974bad6e",
+  "initial_files": {
+    ".bolt/config.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6b6787dcd124b08cbe754dca375d4780fe93829d"
+    },
+    ".bolt/mcp.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "28c6548f6d0dedf18030ab2979ea57b91395eab4"
+    },
+    ".bolt/prompt": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "50bf7a0a874cbcd5362f338b44602e7e8db16ef5"
+    },
+    ".cursor/settings.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ed5f10d64c619cf59940c14dc632519a5d2f7868"
+    },
+    ".gitattributes": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b46b890a570df1e8694f221da77e958f9449c105"
+    },
+    ".github/README.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5699e0b891211736de6273b4c3167ae92aa96a5b"
+    },
+    ".github/dependabot.yml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c91b6905b78503b435d6a6db5c7bb8652cdaf62a"
+    },
+    ".github/workflows/apisec-scan.yml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "409f7b5479211adc015720fddd26d6e6b0ddf158"
+    },
+    ".github/workflows/auto-approve.yml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2d2995cd9abfd42781a3d0942cc49d836a3d65ea"
+    },
+    ".github/workflows/codeql.yml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6045f8eebddacb766b1163aec67cab3b10613eea"
+    },
+    ".github/workflows/neuralegion.yml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "be9e0f5b13380a20cb857c8b33e6eaf4436bf2ee"
+    },
+    ".github/workflows/rust.yml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7ca5922de2af3774229c699062fbd7992eb4b0fc"
+    },
+    ".github/workflows/security-analysis.yml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "333a21398668fdc3b1e83f39ce60d7b0a349a417"
+    },
+    ".github/workflows/semgrep.yml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d63d51807391674593ebb8414797ba9ac74c9d77"
+    },
+    ".github/workflows/sonarcloud.yml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "07701bef6c6e65143b9b4c1840f4e1349ed36ddc"
+    },
+    ".gitignore": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0a8bcc5aa9d3e0657296d97effca553c3d078b38"
+    },
+    "AGENTS.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3d91e7767ae3d00156f19bf8599ad11ea26e4a46"
+    },
+    "Cargo.lock": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "221de1eaa6950adae5f1b97d7bae06bf6bfdbdb0"
+    },
+    "Cargo.toml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5322fc260c0e9012a3f51a9781b7ff5f8045cc44"
+    },
+    "LICENSE": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "947481855a58de035c7c0d5ec268ccc895a891fc"
+    },
+    "NotesPersos.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3df6142f66603c61f5d5e4625d7ea0ec63fcdb7b"
+    },
+    "README.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "22a76a192e81c7eb8a248f5dcb46b4b565c46414"
+    },
+    "SECURITY.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "390349b667961013e7703536b219eb0fa0a3e897"
+    },
+    "Scripts/DiagComplet_DINGUERIE.ps1": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "afb29a1d89e92001269f1ef173560a17d10cbeb3"
+    },
+    "Scripts/DiagDrivers_20260521_1402.txt": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b06d0ac1f1d0f5a9adbfe233cd6a09e32d305fc1"
+    },
+    "Scripts/EpicGamesLauncherDelete.ps1": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "65411f15f5c9bdca467eed66afca1afba76ab8a8"
+    },
+    "Scripts/IntelDSA_RegistryBackup_2026-05-22_06-36-03.reg": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "960540f95a673676d7ab7641024cc0ab3b74f604"
+    },
+    "Scripts/Maintenance.ps1": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e970f4f4008d254704e93a96d37140100fb2d94b"
+    },
+    "Scripts/Nettoyage_du_Dépôt.sh": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "360d764d4bd275cd0031e7f1ee3e4991b5a09580"
+    },
+    "Scripts/OptiAlimRog.ps1": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "45b8ce74b4d92ed6a8f642246af4355bf97e8b5e"
+    },
+    "Scripts/WindowsFullUpdate.ps1": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f66e871420f97626a4abdcd9a1a0be93fc4edc85"
+    },
+    "Scripts/analyze-lock-duplicates.mjs": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "65406b2ea829a68cbb7353d07f140510315383ce"
+    },
+    "Scripts/antiintelstartup.ps1": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "99d98eafb7f2b758ddd10157d575e7520750ad84"
+    },
+    "Scripts/armourydelete.ps1": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f4e00f8559c6cc01c1454b2fdad673f3b831e235"
+    },
+    "Scripts/check-http2-183-preservation.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9b7656270f3be37e2fb8f445634dae51541114a6"
+    },
+    "Scripts/check-js-security-183.cjs": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d57a80e2fac35d98b2d4b79bdb5d9bc077745bec"
+    },
+    "Scripts/dernier.ps1": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d5efbb7945c5f00cb3e0a5ffa0cb2ed8b92de8ce"
+    },
+    "Scripts/disableasusservices.ps1": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "af3dae46c29051b16f793a839a9a08adffb759c6"
+    },
+    "Scripts/fix-package-lock-merge.mjs": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "edd0922deafc565210e292a68fddfb5023f2eb82"
+    },
+    "Scripts/ghelper.ps1": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e9ee6d6b5dd38aa9f888c0e282a027abc2cc45f3"
+    },
+    "Scripts/logs latencymon.txt": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "97ca8c6907845baaa7263778ec859be888df27d2"
+    },
+    "Scripts/majs prob.ps1": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b78a816915f25031d713e096cf5a4fb517c512e2"
+    },
+    "Scripts/purgewindowsupdate (2).ps1": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "83aa30f9cf03a7f5bbdaa6461437c85d8cb82406"
+    },
+    "Scripts/purgewindowsupdate (3).ps1": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "20bb6352ec9a2b9045a922f862a1a8cd1be7548e"
+    },
+    "Scripts/purgewindowsupdate.ps1": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "eb4e0f015f6b51a88c45b294a92de896f0503139"
+    },
+    "Scripts/reportbsod.txt": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cc6ef87175a17579bb649f0e61f00caeb53b85a2"
+    },
+    "Scripts/scriptantiacronis.ps1": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f65b1cf63f930e72708d394d61708c32341c2a0b"
+    },
+    "Scripts/setup_file_compare_unity_git.ps1": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "51ceee359338b83aecb5dddca7458b0f2907b85d"
+    },
+    "Scripts/transcriptcursor.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "93d53847a19ed12a3c6c7b5ca827ae40e8940514"
+    },
+    "docs/ai/COLLABORATION_VALIDATION_2026-10-16.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d4f7ca5296b45c555f8a3427a92477c93b5d6dac"
+    },
+    "docs/ai/KNOWLEDGE_PRIVACY_POLICY.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9178fd1f5c62c36c6bcae0275c26d26a4a2b533d"
+    },
+    "docs/ai/PROJECT_RELAY_2026-10-16.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "10942af52affcc8966d26528dd32e28bc7f7ab85"
+    },
+    "docs/ai/README.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "10dba29f43c351b18aa68361c4664ce794e9eefb"
+    },
+    "docs/ai/SESSION_CHATGPT_INITIAL_AUDITS_COMPLETENESS_2026-10-21.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d1c835f7a335d492d7de6878601fc30bfe73276e"
+    },
+    "docs/ai/SESSION_CODEX_COMPLETENESS_2026-10-21.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ef1bd7bd159cc10f54ee9e556c477da3cc8de4eb"
+    },
+    "docs/ai/SESSION_CODEX_PR153_PR162_COMPLETENESS_2026-10-21.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8e1ff78c9e0b62028ce538e80992016217efe282"
+    },
+    "docs/ai/SESSION_CODEX_PR153_PR162_COMPLETENESS_2026-10-21_EVIDENCE.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "330343f43b4853b1d9c622055c636c582af3341b"
+    },
+    "docs/ai/WORKING_CONTRACT.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7887de7a084ecc54f789a6dd1156a88907372ddb"
+    },
+    "docs/development/debian13-packages-20261022.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d69dfd8760709232b1e7db0bb4fd52ea32af8438"
+    },
+    "docs/development/linux-environment-20261022.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4d63a41b86115aa9381a6f59f8839b31b7d36cfa"
+    },
+    "docs/history/development-validation-20261021/PollenCard.before.tsx.txt": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5a9d9cbfd67154fcba5349381d22c2a82cc0828c"
+    },
+    "docs/history/development-validation-20261021/pnpm-lock.yaml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "858b1dbf37401218a923096de5a1b9ae6ce1b68a"
+    },
+    "docs/history/development-validation-20261021/rust.before.yml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3ef053317588c180ab33476eb984cac82842c71f"
+    },
+    "docs/history/development-validation-20261021/src-tauri/Cargo.toml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "855908a51b5d5298f69342b4e063ab1fad84e54a"
+    },
+    "docs/history/development-validation-20261021/src-tauri/src/main.rs": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e09a27e4aac5cb00b9369abc31d743c16d0716e6"
+    },
+    "docs/history/development-validation-20261021/src/services/tauri.ts.txt": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "38e968b25fb20203e44959c16bb8bd71de4d3576"
+    },
+    "docs/history/http2-183-20261022/Cargo.lock": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "15fdb22462d6f5e66819afd14bf777c56fe04223"
+    },
+    "docs/history/http2-183-20261022/PR183.before.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0463ca2a04059fbf2f46098d78bfe4e6b0d61c5c"
+    },
+    "docs/history/http2-183-20261022/src-tauri/Cargo.toml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4b256199d65c053699c3ec8dbe852bb44881ad78"
+    },
+    "docs/history/js-security-183-20261022/PORT.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0d6fecc517e11f7a1a38772b7b7ea599593eb9af"
+    },
+    "docs/history/js-security-183-20261022/PR183.before.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1330e86fc6875e9e5eeae126c8fc16f1d4e66827"
+    },
+    "docs/history/js-security-183-20261022/docs/validation/rust-178/check-ported-graph.cjs": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "456e367066b19c52d6b3d40654b3fd7df6c9d245"
+    },
+    "docs/history/js-security-183-20261022/package.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "de94c035ddf132da16b286bd07186e3d3eb92777"
+    },
+    "docs/history/js-security-183-20261022/pnpm-lock.yaml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "62aaa36a21f27bc91b2636e2ede71caec90b38ea"
+    },
+    "docs/history/rust-178/PORT.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "51b4434ae96204934f4ee766e8c273e6901e004d"
+    },
+    "docs/history/rust-178/package.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e1c2d3f28dbff9cc28a420dc000282fc0a8fe83f"
+    },
+    "docs/history/rust-178/pnpm-lock.yaml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "858b1dbf37401218a923096de5a1b9ae6ce1b68a"
+    },
+    "docs/reports/development-validation-20261021.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3196a76ee5c1d9e98128dcda5a3e5621e9813e35"
+    },
+    "docs/reports/http2-183-20261022-evidence.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f47e80088107794514d723092c783a16cbd88816"
+    },
+    "docs/reports/http2-183-20261022.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "774dfc270519ca805ef8e375a71ec58d32c06046"
+    },
+    "docs/reports/js-security-183-20261022-evidence.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9cac43e2ef98c0bab46bf390704250b937ed5e53"
+    },
+    "docs/reports/js-security-183-20261022.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2c4884d605edbe04e8a8882215a852bf2fc1e150"
+    },
+    "docs/validation/rust-178/check-js-dependency-preservation.cjs": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "72a00dd767c7761ff9a5aac62d301a004c11c37d"
+    },
+    "docs/validation/rust-178/check-ported-graph.cjs": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ac48b63d3615944031d039227fb3e57fcf1cb93c"
+    },
+    "eslint.config.js": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "82c2e20ccc2bae01b6589f5f391cb20f34db41fd"
+    },
+    "index.html": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f4bf029a5e77ce1a30a84ff015ce3bd006bdb8a7"
+    },
+    "package-lock.fix-report.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "abc147ffacc282a6084c0dd46a41f20e11b80649"
+    },
+    "package-lock.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fef5ecde2a8b66712345421ed69f408a971a2277"
+    },
+    "package-lock.main.fixed.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "dd43c9bfaa69da4759147e51dcbf26a51bb2889a"
+    },
+    "package-lock.main.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "56007d26d0ed4695cf7ee649493a58c9e2ee95d3"
+    },
+    "package.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5708e9bd06e752fe841945c3d4110b8e91792707"
+    },
+    "patches/braces-3.0.3.patch": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1a0f684bb519b44b5f20a19cfd104525411435d7"
+    },
+    "pnpm-lock.yaml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d5fd998f0f9a965a38625afb369340ce67073318"
+    },
+    "postcss.config.js": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2aa7205d4b402a1bdfbe07110c61df920b370066"
+    },
+    "renovate.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5db72dd6a94fc07d18b0e6c0cf76e67ce982f1f9"
+    },
+    "src-tauri/Cargo.toml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b41853b59061fe3142252fe41069508011ceb1cf"
+    },
+    "src-tauri/build.rs": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "795b9b7c83dbfc6bf454958eef78f93e211703d2"
+    },
+    "src-tauri/icons/icon.png": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fde760bc8173080d1ca767a2cd217c9317e902ab"
+    },
+    "src-tauri/src/cache.rs": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c824258c3d68f78b3bb64f68d2ca755e6ae25326"
+    },
+    "src-tauri/src/geocoding.rs": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "67c6ea3ccdc11156fcd6e12fc3739ce4515f3e7f"
+    },
+    "src-tauri/src/main.rs": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0d28fd07d1a182673460d87162b21a0a016518d2"
+    },
+    "src-tauri/src/weather.rs": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "363e80b2e4ad0302b058cb8d9bbeff50728541fc"
+    },
+    "src-tauri/tauri.conf.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c665218ee8a5da583a67626793f507cad5a0cd90"
+    },
+    "src-tauri/tests/http_client.rs": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "21b9a3885281b586d97434ff1a9e60c05ee73b39"
+    },
+    "src/App.tsx": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0e24651ff2e579c0436955e846187a6e9876ec79"
+    },
+    "src/components/AirQualityCard.tsx": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c00c1967fa32ea28f7c8f8e7b68ed9bb78f5d555"
+    },
+    "src/components/Dashboard.tsx": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "aae65d4c49fa331d3178701b2c51a5a1dcd627f5"
+    },
+    "src/components/ForecastCard.tsx": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6250a7a2e6ab2ebbec22ea4afc63d82191dd30c9"
+    },
+    "src/components/LandingHero.tsx": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8c2cf9673e9ae1897391d9db34e4ce3384459ec3"
+    },
+    "src/components/PollenCard.tsx": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "492e257bd43f7bd8ba8c4315c8363a8f98ade7eb"
+    },
+    "src/components/SearchBar.tsx": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8003a543e006906fa93eb0293868726e997ff265"
+    },
+    "src/components/SettingsBar.tsx": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e5836c60778d3f149f12cac13b86131e4e5a5e3a"
+    },
+    "src/components/TimeCard.tsx": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "72445fd981ae11d808b74bbdf6ceb8f449768e3d"
+    },
+    "src/components/WeatherCard.tsx": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "381b6c50bc3c1acbf7c39e56e601ddd41099af2e"
+    },
+    "src/hooks/useAppState.ts": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "62d3204d2186dc522a7521c75694eeb05cdc2b87"
+    },
+    "src/index.css": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a753a6d4db1f1aae31673389afa22facf7219f2a"
+    },
+    "src/main.tsx": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ea9e3630a4f82a3cc92500297b28fa6f1ff72a75"
+    },
+    "src/services/cache.ts": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1944f3f86512a085893f109e37a38533d792a0d2"
+    },
+    "src/services/geocoding.ts": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "25e9c974bcb5af39f4bf38caf3a7c7a164c20e22"
+    },
+    "src/services/tauri.ts": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a01c33afabd267bfffe12bc79a4102aa0df76e5d"
+    },
+    "src/services/weather.ts": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0a0a2ce7b333c09d78eac125e3f75801e174a2a3"
+    },
+    "src/types/index.ts": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "46f6238fcf4fa66334ef7515fbd949095ba591ce"
+    },
+    "src/utils/formatters.ts": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7f6d534388413dcebc2c4da638a58a05505c1fca"
+    },
+    "src/vite-env.d.ts": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "11f02fe2a0061d6e6e1f271b21da95423b448b32"
+    },
+    "tailwind.config.js": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d21f1cdae70ca548855964467cc032c21ce5c1bb"
+    },
+    "tauri.conf.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "76d38f4eaa8ff42b11c808aa196d203dcf2f04d5"
+    },
+    "tests/dependency_updates/js-security-183.test.cjs": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8faf004298f55b70c1657cef3894535f01ee2896"
+    },
+    "tests/pollen-card.test.mjs": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bd925101de52368ed7129a8e4d14ff57cf25a141"
+    },
+    "tests/security/braces-depth.test.cjs": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b0ce4344d903b2a6b26e995efee91f86a1521747"
+    },
+    "tsconfig.app.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f0a235055d24607ba5e0bedc494ffc35b5956fbb"
+    },
+    "tsconfig.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1ffef600d959ec9e396d5a260bd3f5b927b2cef8"
+    },
+    "tsconfig.node.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0d3d71446a455c5f997e3cffb25099dab0f74a9b"
+    },
+    "vite.config.ts": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ce4f5bd649912d247c7fd18e47153dd021d209cb"
+    }
+  },
+  "archived_files": {
+    "package.json": {
+      "git_blob": "5708e9bd06e752fe841945c3d4110b8e91792707",
+      "sha256": "2221fca11d4db09ca27600517803210555a2fbd6ea141829fe0d801f2a6d1e7c"
+    },
+    "pnpm-lock.yaml": {
+      "git_blob": "d5fd998f0f9a965a38625afb369340ce67073318",
+      "sha256": "f19510e5217b8aa34f9389d12a53f534455b47a7890d5f3ebba2dbcce852e0a8"
+    },
+    "Scripts/check-js-security-183.cjs": {
+      "git_blob": "d57a80e2fac35d98b2d4b79bdb5d9bc077745bec",
+      "sha256": "37d60a74d0ccd0a6fbf2d2657723e64ec80e5282c312eaf48156d9492cc016a3"
+    },
+    "tests/dependency_updates/js-security-183.test.cjs": {
+      "git_blob": "8faf004298f55b70c1657cef3894535f01ee2896",
+      "sha256": "6b9d099b892ab70e70b9d9a1d2d11c94037050c900433221aaa71139e4178517"
+    }
+  },
+  "provenance": "Vite v8.1.6 officiel ; résolution ciblée pnpm 8.15.9 ; aucune reprise du verrou #184 ; contrôleur initial : base 6db8239390b6cf12cb22c0d9ff43ac62c680967b, 122 fichiers, 337 snapshots.",
+  "added_snapshots": {
+    "/@emnapi/core@1.11.1": "f4613f1593d504ffdddfe92e201fc845fa68c56d2dc3d34775e35e3cdfb7b732",
+    "/@emnapi/runtime@1.11.1": "d604c5f6c3478293017671b73b417dc40855035e558de66c6fb0be791c379a01",
+    "/@emnapi/wasi-threads@1.2.2": "8905d71dafcd6ffe083cc064d195ee1da6c8c6e038b5e7fbeaa0bc25115b43a7",
+    "/@napi-rs/wasm-runtime@1.2.5(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)": "b55492bbc60a742086853e66f3a511f50db2364813d1815355aea8c29c0a5989",
+    "/@oxc-project/types@0.139.0": "2daa07dd7b26aeefe1592df5fcdff91e6aeb431e1fea17a40b308605d344d4e4",
+    "/@rolldown/binding-android-arm64@1.1.5": "13738ea81a08d1eb3611b3dc778cedfac92106060654e94f227d206150d189fb",
+    "/@rolldown/binding-darwin-arm64@1.1.5": "bbfaeae64e5e0a4c4ad2972d6c65e2f1b3ae0549a4856c9d30723bce687955f3",
+    "/@rolldown/binding-darwin-x64@1.1.5": "3cd3f82f6a38cb17541a38531e6bb9dab92b27c477805428497e7bfddfa1c350",
+    "/@rolldown/binding-freebsd-x64@1.1.5": "5d3f2aa3b0bd5374cd9049249ff3d239a71846719a4b15a4c5a7134a58835004",
+    "/@rolldown/binding-linux-arm-gnueabihf@1.1.5": "52058e237eef2127403429871fa988958f0da3f3f28bf34db8f3b353b80d5e5c",
+    "/@rolldown/binding-linux-arm64-gnu@1.1.5": "9b46c4ecae5ff5303a11d76611d921892df7e78eb7afce7062f538b5eed726d0",
+    "/@rolldown/binding-linux-arm64-musl@1.1.5": "f6c7878d27b62d40c12997438a5679404131b444ab3c4c0edeba4242cf7d2526",
+    "/@rolldown/binding-linux-ppc64-gnu@1.1.5": "9ec9ae710717fa84e61f6c4ff6a6f9ff50bbc4fb24034ac368546f3e4e3b35fb",
+    "/@rolldown/binding-linux-s390x-gnu@1.1.5": "ccd6b46f58959b2836c1ba13c24cf9e0d6087578d821a3e815c0143434ce1ca9",
+    "/@rolldown/binding-linux-x64-gnu@1.1.5": "22f5b3ff447d25c206ca9f216be57484adde2d5658293ba296a4814794a65aa9",
+    "/@rolldown/binding-linux-x64-musl@1.1.5": "8a5a3d0d83bb9f8037aa2b1c03ebac397dd33a8863960b1dd3acced1c9983dc9",
+    "/@rolldown/binding-openharmony-arm64@1.1.5": "297b5aa0a68b3f38803db46088bb6051765e273756f84a8f3096e16e24b3a5d5",
+    "/@rolldown/binding-wasm32-wasi@1.1.5": "a2786f078bb9441e31ec6528398abc7b01efaef68afd65167a3f357c12a2dca9",
+    "/@rolldown/binding-win32-arm64-msvc@1.1.5": "80cc4aef388f0912a509d607b08b26dc67e289d36a3af5e23d4599a84d8e69c7",
+    "/@rolldown/binding-win32-x64-msvc@1.1.5": "e00c9fa298bef07894dbd03a3466b756dad25b34b4d90ce93ffa06535a251775",
+    "/@vitejs/plugin-react@6.0.2(vite@8.1.6)": "f4450c71d9b650613315ecb0edb84262d9d1cd0666ba027f4323465d3f2e78fe",
+    "/picomatch@4.0.7": "b00642ce6d9ba79388bf3ed71a3dd2d2ecd1a3ce1aca18c4866ac4a2a9cdf6c5",
+    "/rolldown@1.1.5": "bc564ad3d82fd243c4d8e164460535a9ef6f9713396383f0350304028cfbf5c6",
+    "/vite@8.1.6(esbuild@0.28.1)": "cd292a7ea11200fd16d925fe315d5c1fc5ef425fb608e05b2482c9050e9849d1"
+  }
+}

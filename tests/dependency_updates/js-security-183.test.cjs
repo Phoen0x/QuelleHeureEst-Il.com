@@ -58,6 +58,27 @@ test('preservation: initial Git object not required by a shallow checkout', () =
   }
 });
 
+// FR// Modifier uniquement les blocs visés : un reformatage global ne doit pas fausser un test négatif.
+// EN// Change only targeted blocks: global formatting must not cause false-negative-test success.
+function mutatedLockText(lock) {
+  const raw = originalLock.toString(), before = yaml.load(raw);
+  if (JSON.stringify(lock) === JSON.stringify(before)) return raw;
+  const matches = [...raw.matchAll(/^  (\/[^\n]+):\n/gm)];
+  const prefix = value => { const copy = { ...value }; delete copy.packages; return copy; };
+  const header = JSON.stringify(prefix(lock)) === JSON.stringify(prefix(before))
+    ? raw.slice(0, matches[0].index)
+    : yaml.dump(prefix(lock)) + '\npackages:\n\n';
+  return header + matches.map((m, i) => {
+    const key = m[1];
+    if (!lock.packages[key]) return '';
+    if (JSON.stringify(lock.packages[key]) === JSON.stringify(before.packages[key])) return raw.slice(m.index, matches[i + 1]?.index ?? raw.length);
+    return yaml.dump({ [key]: lock.packages[key] }).split('\n').filter(Boolean).map(line => '  ' + line).join('\n') + '\n\n';
+  }).join('');
+}
+test('preservation: no-op mutation serializer preserves lock bytes', () => {
+  assert.equal(mutatedLockText(yaml.load(originalLock.toString())), originalLock.toString());
+});
+
 const mutations = {
   'Android snapshot deletion': lock => { delete lock.packages['/@esbuild/android-arm64@0.27.7']; },
   'optional platform flag removal': lock => { delete lock.packages['/@esbuild/android-arm64@0.27.7'].optional; },
@@ -69,7 +90,7 @@ for (const [name, mutate] of Object.entries(mutations)) test(`preservation rejec
   try {
     const lock = yaml.load(originalLock.toString());
     mutate(lock);
-    fs.writeFileSync(path.join(fixture, 'pnpm-lock.yaml'), yaml.dump(lock));
+    fs.writeFileSync(path.join(fixture, 'pnpm-lock.yaml'), mutatedLockText(lock));
     const result = check();
     assert.equal(result.status, 1, result.stderr || result.stdout);
     assert.match(result.stderr, /AssertionError/);

@@ -15,6 +15,11 @@ const additions = new Set([
   'tests/security/braces-depth.test.cjs', 'tests/dependency_updates/js-security-183.test.cjs',
   ...changedFiles.map(name => `${history}/${name}`), `${history}/PORT.json`, `${history}/PR183.before.md`,
   'docs/reports/js-security-183-20261022.md', 'docs/reports/js-security-183-20261022-evidence.json',
+  'Scripts/check-vite-qh010.cjs', 'tests/dependency_updates/vite-qh010.test.cjs',
+    'tests/security/vite-qh010.test.mjs',
+  'docs/reports/vite-qh010-20261022.md', 'docs/reports/vite-qh010-20261022-evidence.json',
+  'docs/history/vite-qh010-20261022/PORT.json', 'docs/history/vite-qh010-20261022/PR183.before.md',
+  ...['package.json', 'pnpm-lock.yaml', 'Scripts/check-js-security-183.cjs', 'tests/dependency_updates/js-security-183.test.cjs'].map(name => `docs/history/vite-qh010-20261022/${name}`),
 ]);
 const read = name => fs.readFileSync(path.join(root, name), 'utf8');
 const git = args => execFileSync('git', args, { cwd: root, timeout: 30000 });
@@ -63,6 +68,7 @@ function treeIdentity(files) {
 }
 
 function main() {
+  const qh010 = require('./check-vite-qh010.cjs')({ root, treeIdentity, reachable, yaml });
   const reference = JSON.parse(read(`${history}/PORT.json`));
   assert.equal(reference.base_sha, base);
   assert.equal(reference.base_tree, '8a9ae1a5639a047c530136b33cdf8f85c983cc2a');
@@ -93,7 +99,7 @@ function main() {
   assert.equal(afterManifest.scripts['test:security'], 'node --test tests/security/braces-depth.test.cjs');
   assert.equal(afterManifest.scripts['check:dependencies'], 'node docs/validation/rust-178/check-ported-graph.cjs');
   assert.deepEqual(Object.keys(afterManifest.scripts).filter(k => !Object.hasOwn(beforeManifest.scripts, k)).sort(), ['check:dependencies', 'test:security']);
-  for (const [name, value] of Object.entries(beforeManifest.devDependencies)) assert.equal(afterManifest.devDependencies[name], name === 'postcss' ? '^8.5.25' : value, name);
+  for (const [name, value] of Object.entries(beforeManifest.devDependencies)) assert.equal(afterManifest.devDependencies[name], name === 'postcss' ? '^8.5.25' : name === 'vite' ? '8.1.6' : value, name);
   assert.deepEqual(Object.keys(afterManifest.devDependencies).filter(k => !Object.hasOwn(beforeManifest.devDependencies, k)).sort(), ['esbuild', 'rollup']);
   assert.equal(afterManifest.devDependencies.esbuild, '0.28.1');
   assert.equal(afterManifest.devDependencies.rollup, '4.61.1');
@@ -164,13 +170,13 @@ function main() {
   const historyKeys = Object.keys(before.packages).filter(k => !beforeReach.has(k));
   assert.equal(historyKeys.length, 35);
   for (const key of historyKeys) assert.ok(!afterReach.has(key), `Historical variant reactivated ${key}`);
-  for (const [name, entry] of Object.entries(before.devDependencies)) if (name !== 'postcss') {
+  for (const [name, entry] of Object.entries(before.devDependencies)) if (!['postcss', 'vite'].includes(name)) {
     assert.equal(after.devDependencies[name].specifier, entry.specifier, name);
     assert.equal(after.devDependencies[name].version.split('(')[0], entry.version.split('(')[0], `Root version changed ${name}`);
   }
   const generic = spawnSync(process.execPath, [path.join(root, 'docs/validation/rust-178/check-js-dependency-preservation.cjs'), history], { cwd: root, encoding: 'utf8', timeout: 30000 });
   assert.equal(generic.status, 0, generic.stderr || generic.stdout);
-  console.log(JSON.stringify({status:'PASS',base,originalFiles:122,unchangedFiles:119,archivedModifiedFiles:changedFiles,
+  console.log(JSON.stringify({status:'PASS',qh010,base,originalFiles:122,unchangedFiles:119,archivedModifiedFiles:changedFiles,
     initialSnapshots:337,identicalInitialSnapshots:same,adaptedInitialSnapshots:337-same,missingSnapshots:[],
     initialOptional:95,optionalAfter:Object.values(after.packages).filter(x=>x.optional === true).length,
     historicalNotReactivated:historyKeys.length,totalSnapshots:Object.keys(after.packages).length,
