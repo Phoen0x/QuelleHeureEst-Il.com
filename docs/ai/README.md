@@ -43,3 +43,16 @@ At the end of a ChatGPT-directed Codex mission, provide the actual status, links
 - [Recent Codex handoff — October 21, 2026](SESSION_CODEX_COMPLETENESS_2026-10-21.md): covers the recent Codex session and its stated evidence limits.
 - [Earlier Codex handoff (#153/#162) — October 21, 2026](SESSION_CODEX_PR153_PR162_COMPLETENESS_2026-10-21.md) and [evidence JSON](SESSION_CODEX_PR153_PR162_COMPLETENESS_2026-10-21_EVIDENCE.json): separate audit of the earlier session.
 - **Verified status on October 21, 2026:** the two Codex sessions and the earlier ChatGPT initial-audits conversation each have a separately versioned handoff. Coverage is limited to accessible information and does not certify recovered transcripts, every other conversation, private security inventories or expiring CI artifacts. **No comprehensive archival claim is justified.**
+
+## Relais courant ChatGPT V2 → V3 — 22 octobre 2026
+
+- [Relais opérationnel ChatGPT V2 → V3](SESSION_CHATGPT_V2_TO_V3_RELAY_2026-10-22.md) : état vérifié des PR, consolidation de #183 (HTTP/2 et JavaScript), limites CI/sécurité, environnement de développement reproductible, chantiers différés et prochaine mission Vite proposée. **Photographie datée, à vérifier de nouveau avant toute écriture ou fusion.**
+- Mise à jour documentaire : **#175 a été fusionnée dans main le 21 octobre 2026** ; les mentions ci-dessus de documents absents de main concernent le contexte historique de #167/#172, et non l'état actuel.
+- Les comptes rendus #183 cités dans ce relais sont **sur une PR non fusionnée**. Les futurs agents doivent recevoir le SHA et la référence explicite de la PR ; le relais V2 → V3 lui-même reste sur sa branche documentaire avant validation de sa fusion.
+- Ce document ne contient pas les conversations intégrales ni des informations personnelles ; toute opération GitHub nouvelle exige sa propre autorisation.
+
+## Current ChatGPT V2 → V3 handoff — October 22, 2026
+
+- [Current technical handoff](SESSION_CHATGPT_V2_TO_V3_RELAY_2026-10-22.md) covers verified PR state, HTTP/2 and JavaScript work on #183, outstanding CI/security issues, reproducible environment guidance and proposed Vite follow-up. It is **a dated snapshot, not live GitHub state**.
+- **#175 merged into main on October 21, 2026.** Earlier claims that these AI instructions were missing from main describe the historical #167/#172 context.
+- #183's work and this new handoff remain in separate unmerged PR branches until explicit authorization; neither should be treated as already merged. No private conversation transcript or personal data is archived here.
