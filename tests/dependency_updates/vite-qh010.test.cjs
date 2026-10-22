@@ -36,7 +36,7 @@ before(() => {
 after(() => { if (fixture) fs.rmSync(fixture, { recursive: true, force: true }); });
 
 function check() {
-  return spawnSync(process.execPath, ['Scripts/check-js-security-183.cjs'], {
+  return spawnSync(process.execPath, ['docs/validation/rust-178/check-ported-graph.cjs'], {
     cwd: fixture, env: environment, encoding: 'utf8', timeout: 30000,
   });
 }

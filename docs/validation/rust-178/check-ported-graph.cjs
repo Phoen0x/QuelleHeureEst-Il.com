@@ -1,3 +1,3 @@
-// FR// Contrôle adapté au head réel de #183 ; l'ancienne version complète reste archivée.
-// EN// Check adapted to PR183's actual head; the full previous version remains archived.
-require('../../../Scripts/check-js-security-183.cjs');
+// FR// Cumuler les gardes historiques et le contrôle du durcissement QH-009.
+// EN// Combine historical guards with the QH-009 hardening check.
+require('../../../Scripts/check-braces-qh009.cjs');

@@ -1,23 +1,23 @@
 diff --git a/lib/constants.js b/lib/constants.js
 --- a/lib/constants.js
 +++ b/lib/constants.js
-@@ -2,6 +2,10 @@
- 
+@@ -3,6 +3,10 @@
  module.exports = {
    MAX_LENGTH: 10000,
-+
+ 
 +  // FR// Borner la profondeur pour éviter l'épuisement de pile (CVE-2026-93687).
 +  // EN// Bound depth to prevent stack exhaustion (CVE-2026-93687).
 +  MAX_DEPTH: 64,
- 
++
    // Digits
    CHAR_0: '0', /* 0 */
+   CHAR_9: '9', /* 9 */
 diff --git a/lib/utils.js b/lib/utils.js
 --- a/lib/utils.js
 +++ b/lib/utils.js
-@@ -1,4 +1,16 @@
+@@ -1,5 +1,28 @@
  'use strict';
-+
+ 
 +const { MAX_DEPTH } = require('./constants');
 +
 +// FR// Même garde pour l'AST fourni directement et les tableaux intermédiaires.
@@ -29,10 +29,22 @@ diff --git a/lib/utils.js b/lib/utils.js
 +    throw error;
 +  }
 +};
- 
++
++// FR// Détecter les cycles de liens parent par identité, sans limiter les chaînes valides.
++// EN// Detect parent-link cycles by identity without limiting valid chains.
++exports.assertParentCycle = (seen, node) => {
++  if (seen.has(node)) {
++    const error = new SyntaxError('braces parent chain contains a cycle');
++    error.code = 'ERR_BRACES_PARENT_CYCLE';
++    throw error;
++  }
++  seen.add(node);
++};
++
  exports.isInteger = num => {
    if (typeof num === 'number') {
-@@ -101,12 +113,13 @@
+     return Number.isInteger(num);
+@@ -101,12 +124,13 @@
  exports.flatten = (...args) => {
    const result = [];
  
@@ -125,7 +137,7 @@ diff --git a/lib/expand.js b/lib/expand.js
        }
      }
    }
-@@ -33,7 +34,8 @@
+@@ -33,13 +34,16 @@
  const expand = (ast, options = {}) => {
    const rangeLimit = options.rangeLimit === undefined ? 1000 : options.rangeLimit;
  
@@ -135,7 +147,25 @@ diff --git a/lib/expand.js b/lib/expand.js
      node.queue = [];
  
      let p = parent;
-@@ -100,7 +102,7 @@
+     let q = parent.queue;
+ 
++    const seenParents = new Set();
+     while (p.type !== 'brace' && p.type !== 'root' && p.parent) {
++      utils.assertParentCycle(seenParents, p);
+       p = p.parent;
+       q = p.queue;
+     }
+@@ -75,7 +79,9 @@
+     let queue = node.queue;
+     let block = node;
+ 
++    const seenBlocks = new Set();
+     while (block.type !== 'brace' && block.type !== 'root' && block.parent) {
++      utils.assertParentCycle(seenBlocks, block);
+       block = block.parent;
+       queue = block.queue;
+     }
+@@ -100,7 +106,7 @@
        }
  
        if (child.nodes) {
