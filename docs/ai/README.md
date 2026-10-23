@@ -49,6 +49,17 @@ At the end of a ChatGPT-directed Codex mission, provide the actual status, links
 - [Earlier Codex handoff (#153/#162) — October 21, 2026](SESSION_CODEX_PR153_PR162_COMPLETENESS_2026-10-21.md) and [evidence JSON](SESSION_CODEX_PR153_PR162_COMPLETENESS_2026-10-21_EVIDENCE.json): separate audit of the earlier session.
 - **Verified status on October 21, 2026:** the two Codex sessions and the earlier ChatGPT initial-audits conversation each have a separately versioned handoff. Coverage is limited to accessible information and does not certify recovered transcripts, every other conversation, private security inventories or expiring CI artifacts. **No comprehensive archival claim is justified.**
 
+## Nouveau relais ChatGPT V3 → V4 — 23 octobre 2026
+
+- **[Sauvegarde technique intégrale du relais ChatGPT V3 → V4](SESSION_CHATGPT_V3_TO_V4_RELAY_2026-10-23.md)** : photographie vérifiée de main, #183/#186/#187 et des quatre dépôts Phœn0x accessibles, chronologie des correctifs HTTP/2, Vite, braces, Tokio et GLib, inventaires et SHA Git, validations locales/CI distinguées, huit avertissements Rust résiduels, autres chantiers et prochaine étude Unicode non destructive.
+- **À la reprise V4 :** lire ce relais **sur la PR #186 tant qu'elle n'est pas fusionnée**, le journal commun, le contrat et la politique de confidentialité, puis revérifier les SHA. La personne responsable **conserve sa conversation Codex actuelle** et ne crée qu'une nouvelle conversation ChatGPT. Aucune modification de code ni fusion ne découle automatiquement du relais.
+- **Conservation limitée aux faits publics** : pas de transcription de chat, secret, identifiant privé, contenu de fichiers sensibles, garantie de restitution de tous les logs éphémères. Les constats antérieurs restent documentés ci-dessous.
+
+### ChatGPT V3 → V4 technical continuity — 23 October 2026
+
+- [Current V3 → V4 technical handoff](SESSION_CHATGPT_V3_TO_V4_RELAY_2026-10-23.md) documents verified project refs, code/security changes and evidence, pending warnings and workstreams. **A dated public technical snapshot, not a verbatim chat or private-data backup.**
+- Keep the **existing Codex conversation**; restart only ChatGPT, validate GitHub refs, and do not automatically merge or modify code.
+
 ## Relais courant ChatGPT V2 → V3 — 22 octobre 2026
 
 - [Relais opérationnel ChatGPT V2 → V3](SESSION_CHATGPT_V2_TO_V3_RELAY_2026-10-22.md) : état vérifié des PR, consolidation de #183 (HTTP/2 et JavaScript), limites CI/sécurité, environnement de développement reproductible, chantiers différés et prochaine mission Vite proposée. **Photographie datée, à vérifier de nouveau avant toute écriture ou fusion.**
