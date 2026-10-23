@@ -1,0 +1,229 @@
+{
+  "scope": "Contexte accessible de cette conversation : PR153 et PR162. Autres conversations exclues ; pas de transcription.",
+  "date_europe_paris": "2026-10-21",
+  "repository": "Phoen0x/QuelleHeureEst-Il.com",
+  "parent_sha": "8cbdcd7edd38893ba018e6c4ef42e75efa5b8993",
+  "parent_tree": "11dbf71daec68cd93880a2f2c1c11d189cfd9537",
+  "authorized_branch": "docs/ai-consolidated-main-20261019",
+  "allowed_additions": [
+    "docs/ai/SESSION_CODEX_PR153_PR162_COMPLETENESS_2026-10-21.md",
+    "docs/ai/SESSION_CODEX_PR153_PR162_COMPLETENESS_2026-10-21_EVIDENCE.json"
+  ],
+  "initial_file_count": 94,
+  "initial_branch_count": 37,
+  "initial_open_pr_count": 36,
+  "source_files": [
+    {
+      "commit": "8cbdcd7edd38893ba018e6c4ef42e75efa5b8993",
+      "path": "AGENTS.md",
+      "blob": "3d91e7767ae3d00156f19bf8599ad11ea26e4a46"
+    },
+    {
+      "commit": "8cbdcd7edd38893ba018e6c4ef42e75efa5b8993",
+      "path": "docs/ai/WORKING_CONTRACT.md",
+      "blob": "7887de7a084ecc54f789a6dd1156a88907372ddb"
+    },
+    {
+      "commit": "8cbdcd7edd38893ba018e6c4ef42e75efa5b8993",
+      "path": "docs/ai/README.md",
+      "blob": "ad4c93bbb128d7832dbdd4016a044426c6b44d51"
+    },
+    {
+      "commit": "8cbdcd7edd38893ba018e6c4ef42e75efa5b8993",
+      "path": "docs/ai/SESSION_CODEX_COMPLETENESS_2026-10-21.md",
+      "blob": "ef1bd7bd159cc10f54ee9e556c477da3cc8de4eb"
+    },
+    {
+      "commit": "8cbdcd7edd38893ba018e6c4ef42e75efa5b8993",
+      "path": "docs/ai/KNOWLEDGE_PRIVACY_POLICY.md",
+      "blob": "9178fd1f5c62c36c6bcae0275c26d26a4a2b533d"
+    },
+    {
+      "commit": "0ebc167c8febf1b61752d1114f8135a59400c5f1",
+      "path": "docs/reports/pr153-relais-20261014/README.md",
+      "blob": "801e9aaa91b0f2af2440f8d82eb52fcfd61cc3d4"
+    },
+    {
+      "commit": "0ebc167c8febf1b61752d1114f8135a59400c5f1",
+      "path": "docs/reports/pr153-relais-20261014/CHRONOLOGIE_REPRISE.md",
+      "blob": "1bdedb4abd3bb7af91330dbb0fe3defa10abc181"
+    },
+    {
+      "commit": "0ebc167c8febf1b61752d1114f8135a59400c5f1",
+      "path": "docs/reports/pr153-relais-20261014/RELAIS_COMPLET.md",
+      "blob": "153661e3b706ec9c6cde398a2985876b4aac9e9c"
+    },
+    {
+      "commit": "0ebc167c8febf1b61752d1114f8135a59400c5f1",
+      "path": "docs/reports/pr153-relais-20261014/AUDIT_LICENCES.md",
+      "blob": "b07a9418e14ba950e1903051b4cfbd1b3184c119"
+    },
+    {
+      "commit": "0ebc167c8febf1b61752d1114f8135a59400c5f1",
+      "path": "docs/JS_SECURITY_AUDIT_20261013.md",
+      "blob": "fd206fe4fbda64912a0a4aaa76f07393c8d978cf"
+    },
+    {
+      "commit": "0ebc167c8febf1b61752d1114f8135a59400c5f1",
+      "path": "docs/RUST_H2_MIGRATION_20261013.md",
+      "blob": "8a4913cca3f4d8009ecbaf6347ebf2440563777c"
+    },
+    {
+      "commit": "0ebc167c8febf1b61752d1114f8135a59400c5f1",
+      "path": "docs/RUST_WARNINGS_20261013.md",
+      "blob": "9f7c654c0df14ca41256684cc0d6360d3c36e21f"
+    },
+    {
+      "commit": "0ebc167c8febf1b61752d1114f8135a59400c5f1",
+      "path": "docs/CODEQL_GLIB_TRIAGE_20261013.md",
+      "blob": "9ccbecd10921a219e3bc104b630fe0a84781303d"
+    },
+    {
+      "commit": "0ebc167c8febf1b61752d1114f8135a59400c5f1",
+      "path": "docs/CODEQL_GLIB_REMAINING_TRIAGE_20261013.md",
+      "blob": "59b08188ede938eb67bffb48b212441baec7bd37"
+    },
+    {
+      "commit": "0ebc167c8febf1b61752d1114f8135a59400c5f1",
+      "path": "docs/GLIB_EMPTY_SLICE_BACKPORT_20261013.md",
+      "blob": "061b0c9e9253032aaac32365f808d6e87a519ae0"
+    },
+    {
+      "commit": "0ebc167c8febf1b61752d1114f8135a59400c5f1",
+      "path": "docs/DEPENDENCY_GAPS_20261013.md",
+      "blob": "d67658185e25f7b165ea9fd52cd7473ab50f9db5"
+    },
+    {
+      "commit": "0ebc167c8febf1b61752d1114f8135a59400c5f1",
+      "path": "docs/CANDIDATE_GENERATOR_SAFETY_20261013.md",
+      "blob": "bb9d6224d020431817f7d3edc28e2451120f9e19"
+    },
+    {
+      "commit": "0ebc167c8febf1b61752d1114f8135a59400c5f1",
+      "path": "docs/security/CODEQL_HIGH_115661038804_20261014.md",
+      "blob": "63238b87d15453da89799ef723c021e721f3c5f4"
+    },
+    {
+      "commit": "4d4efbb05793bf4bfc0eee8a27eb026cb8f1dd9a",
+      "path": "docs/proposals/bot-cohabitation-20261015/README.md",
+      "blob": "9fd186319015641efdd3ad953ae67c8b183a6c43"
+    },
+    {
+      "commit": "4d4efbb05793bf4bfc0eee8a27eb026cb8f1dd9a",
+      "path": "docs/proposals/bot-cohabitation-20261015/ci-results.json",
+      "blob": "e91a7eff322b6a33398fb2c915d1fe994edf7d84"
+    },
+    {
+      "commit": "4d4efbb05793bf4bfc0eee8a27eb026cb8f1dd9a",
+      "path": "docs/proposals/bot-cohabitation-20261015/local-test-results.json",
+      "blob": "6231036f247df92f54ea2e7280ce3f6ec4a1632b"
+    },
+    {
+      "commit": "4d4efbb05793bf4bfc0eee8a27eb026cb8f1dd9a",
+      "path": "docs/proposals/bot-cohabitation-20261015/evidence.json",
+      "blob": "1ae28effcc3013da71bb907dd7e309824490cd1b"
+    },
+    {
+      "commit": "4d4efbb05793bf4bfc0eee8a27eb026cb8f1dd9a",
+      "path": "docs/proposals/bot-cohabitation-20261015/renovate.candidate.json",
+      "blob": "5e0dbf6f5daeb165c2cd04f0d79e100b93550ec6"
+    },
+    {
+      "commit": "4d4efbb05793bf4bfc0eee8a27eb026cb8f1dd9a",
+      "path": "docs/proposals/bot-cohabitation-20261015/dependabot.candidate.yml",
+      "blob": "59258a28e2a4cfc0123a2afd0bc8129e5fffdede"
+    },
+    {
+      "commit": "4d4efbb05793bf4bfc0eee8a27eb026cb8f1dd9a",
+      "path": "docs/proposals/bot-cohabitation-20261015/behavior-results.json",
+      "blob": "ef2eccfeb4958d51bbecfa44efdd76d5d6728827"
+    }
+  ],
+  "historical_run_rechecked": {
+    "id": 38823878476,
+    "head_sha": "4d4efbb05793bf4bfc0eee8a27eb026cb8f1dd9a",
+    "status": "completed",
+    "conclusion": "success",
+    "html_url": "https://github.com/Phoen0x/QuelleHeureEst-Il.com/actions/runs/38823878476"
+  },
+  "renovate_heads_observed": [
+    {
+      "pr": 169,
+      "branch": "renovate/tauri-monorepo",
+      "head": "97b7e1ca057552d1f2ce0268449e18f60166c17e"
+    },
+    {
+      "pr": 166,
+      "branch": "renovate/rusqlite-0.x",
+      "head": "c03d30824e89d71901677c082f09c5d85ccebcb0"
+    },
+    {
+      "pr": 165,
+      "branch": "renovate/reqwest-0.x",
+      "head": "20de7e9641c5176710b19759b0fc9653d43eb014"
+    },
+    {
+      "pr": 164,
+      "branch": "renovate/chrono-tz-0.x",
+      "head": "fa6635d2f912efb3637ebe20bebef99ce272ac7c"
+    },
+    {
+      "pr": 163,
+      "branch": "renovate/typescript-eslint-monorepo",
+      "head": "8d8e846550628f82a34ab8170aeea9f0452b2f6f"
+    },
+    {
+      "pr": 161,
+      "branch": "renovate/lucide-monorepo",
+      "head": "21a01d82de23e8a314546d77222fef459a1a313c"
+    },
+    {
+      "pr": 160,
+      "branch": "renovate/eslint-plugin-react-refresh-0.x",
+      "head": "d02e76399a078d514aadd576e58ab48c1cda8b95"
+    },
+    {
+      "pr": 159,
+      "branch": "renovate/autoprefixer-10.x-lockfile",
+      "head": "d6cc1d2560f80a2dc57c38170ba63c8c6a9e8b39"
+    },
+    {
+      "pr": 158,
+      "branch": "renovate/eslint-monorepo",
+      "head": "a4fcede4cc0da3f81cdc0bcd3b7b883012cb8da3"
+    },
+    {
+      "pr": 156,
+      "branch": "renovate/vite-7.x",
+      "head": "f1c3ac3057d4456d7115e7720d3b6c3f0e6dcd20"
+    },
+    {
+      "pr": 155,
+      "branch": "renovate/npm-postcss-vulnerability",
+      "head": "abbfbb53c703b44779016fa63531d8693b1673f7"
+    }
+  ],
+  "comment_references": {
+    "pr153": [
+      6154969050,
+      6160210718,
+      6160528214,
+      6179334516,
+      6179348981,
+      6179349436,
+      6179462158,
+      6204530692
+    ],
+    "pr162": [
+      6204527190
+    ]
+  },
+  "limitations": [
+    "No complete conversation/tool transcript",
+    "No other conversation memory",
+    "No raw CI artifacts or full 418-piece ZIP re-audit",
+    "No live hosted-bot, administrative security, Android, application build or dependency audit validation",
+    "No retroactive privacy certification of historical archives",
+    "No distributed branch lock; conditional expected_sha required"
+  ]
+}
