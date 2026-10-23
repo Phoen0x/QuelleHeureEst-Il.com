@@ -10,3 +10,5 @@ EN: **new** folder, no existing repository file is modified. It gathers the audi
 | `VARIANTES.md` | Variantes de `package.json` et lockfiles, questions ouvertes / variants and open questions |
 | `PROMPT_AUDIT_PR.md` | Prompt d'audit auto-adressé (version initiale) / self-addressed audit prompt (initial version) |
 | `patches/` | Patchs C1, C2, C3, C5 et recette C6 / patches C1, C2, C3, C5 and C6 recipe |
+| `SAVE_STATE.md` | **État complet** du travail et reprise / **full save state** and how to resume |
+| `INVENTAIRE_PR.md` | Les 38 PR : chiffres, état, verdict / the 38 PRs: figures, state, verdict |
