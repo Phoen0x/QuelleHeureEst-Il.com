@@ -102,8 +102,8 @@ Voir `VARIANTES.md`. Sur 21 dépendances, 3 diffèrent entre variantes (`esbuild
 | Commentaire explicatif des checks rouges | PR #188, commentaire `issuecomment-6361992346` | Durable |
 | Patchs C1–C3, C5 | `patches/pr-139`, `pr-141`, `lock-resync` (dans #188) | Durable |
 | Recette C6 | `patches/pr-153-merge-main/MERGE.md` (dans #188) | Durable |
-| Branches locales `local/pr-139-fixes` (1868650, f0dc245), `local/pr-141-fixes` (e8701c7), `local/lock-resync-20261023` (b9dc962), `local/pr-153-merge-main` (75ee090) | Sandbox de Claude uniquement | **Perdues** à la fin de la session ; reconstruisibles avec les patchs et la recette |
-| Données brutes de l'audit (JSON des 38 PR, fichiers, checks) | Sandbox (scratchpad) | **Perdues** ; régénérables via l'API (`INVENTAIRE_PR.md` en garde l'essentiel) |
+| Branches locales `local/pr-139-fixes` (1868650, f0dc245), `local/pr-141-fixes` (e8701c7), `local/lock-resync-20261023` (b9dc962), `local/pr-153-merge-main` (75ee090) | Sandbox de Claude uniquement | Perdues à la fin de la session, **mais reconstruisibles à l'identique** : C1–C3 et C5 par `git am` des patchs (réappliqués à froid avec succès), C6 par la recette de `MERGE.md`. Non poussées comme branches, par choix (pas de branches ni de CI supplémentaires sur le dépôt public) |
+| Données brutes de l'audit (JSON des 38 PR, fichiers, checks) | PR #188, `data/audit-data-20261023.tar.gz` (+ `data/README.md`) | **Durable** (ajouté après coup) |
 | Mémoire de Claude | Fichier `quelleheureest-il` (décisions de Sasha + pointeur vers #188) | Durable tant que la mémoire est activée |
 
 ## 8. Incidents et corrections (par honnêteté)

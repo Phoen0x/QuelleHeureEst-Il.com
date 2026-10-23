@@ -12,3 +12,4 @@ EN: **new** folder, no existing repository file is modified. It gathers the audi
 | `patches/` | Patchs C1, C2, C3, C5 et recette C6 / patches C1, C2, C3, C5 and C6 recipe |
 | `SAVE_STATE.md` | **État complet** du travail et reprise / **full save state** and how to resume |
 | `INVENTAIRE_PR.md` | Les 38 PR : chiffres, état, verdict / the 38 PRs: figures, state, verdict |
+| `data/` | Données brutes de l'API (archive) / raw API data (archive) |
