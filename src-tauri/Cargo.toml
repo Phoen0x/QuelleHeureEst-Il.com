@@ -57,3 +57,8 @@ optional = true
 [dependencies.rustls-pemfile]
 version = "=1.0.4"
 optional = true
+
+# FR// Les régressions Linux utilisent exactement le GLib partagé par GTK/Tauri.
+# EN// Linux regressions use the exact GLib shared by GTK/Tauri.
+[target.'cfg(target_os = "linux")'.dev-dependencies]
+glib = "=0.18.5"
