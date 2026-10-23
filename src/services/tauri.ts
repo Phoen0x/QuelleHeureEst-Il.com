@@ -1,4 +1,6 @@
-import { invoke } from '@tauri-apps/api/tauri';
+// FR// Ancien chemin Tauri 1 conservé : import { invoke } from '@tauri-apps/api/tauri';
+// EN// Historical Tauri 1 path retained: import { invoke } from '@tauri-apps/api/tauri';
+import { invoke } from '@tauri-apps/api/core';
 import type { GeoLocation, WeatherData, AirQualityData } from '../types';
 
 export const tauriApi = {
@@ -19,7 +21,7 @@ export const tauriApi = {
   },
 
   async getCachedLocation(): Promise<GeoLocation | null> {
-    return invoke('get_cached_location') || null;
+    return invoke<GeoLocation | null>('get_cached_location');
   },
 
   async cacheLocation(location: GeoLocation): Promise<void> {
