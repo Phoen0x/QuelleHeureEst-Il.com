@@ -1,0 +1,84 @@
+name: Validate inactive bot cohabitation proposals
+
+# FR : Ce workflow ne lance aucun bot ni mise à jour réelle.
+# EN: This workflow runs no bot and performs no real dependency updates.
+on:
+  push:
+    branches: [chore/pause-renovate-preservation-20261015]
+    paths:
+      - docs/proposals/bot-cohabitation-20261015/**
+      - .github/workflows/bot-cohabitation-validation.yml
+
+permissions:
+  contents: read
+
+jobs:
+  validate-isolated-proposals:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '24'
+      - name: Install validator outside project and copy inactive fixtures
+        run: |
+          set -euo pipefail
+          npm install --prefix "$RUNNER_TEMP/renovate-validator" --ignore-scripts --no-audit --no-fund --package-lock=false renovate@44.155.7 ajv@8.17.1 js-yaml@4.1.1
+          mkdir -p "$RUNNER_TEMP/cohab-fixture"
+          cp docs/proposals/bot-cohabitation-20261015/renovate.candidate.json "$RUNNER_TEMP/cohab-fixture/"
+          cp docs/proposals/bot-cohabitation-20261015/dependabot.candidate.yml "$RUNNER_TEMP/cohab-fixture/"
+          cp docs/proposals/bot-cohabitation-20261015/legacy-prs.json "$RUNNER_TEMP/cohab-fixture/"
+          cp docs/proposals/bot-cohabitation-20261015/test-behavior.cjs.txt "$RUNNER_TEMP/cohab-fixture/test-behavior.cjs"
+          cp docs/proposals/bot-cohabitation-20261015/validate-configs.cjs.txt "$RUNNER_TEMP/cohab-fixture/validate-configs.cjs"
+      - name: Validate Renovate and test published scheduler/pruning in isolation
+        run: |
+          set -euo pipefail
+          export RENOVATE_PACKAGE_ROOT="$RUNNER_TEMP/renovate-validator/node_modules/renovate"
+          export COHAB_FIXTURE_DIR="$RUNNER_TEMP/cohab-fixture"
+          node "$RENOVATE_PACKAGE_ROOT/dist/config-validator.js" --strict --no-global "$COHAB_FIXTURE_DIR/renovate.candidate.json"
+          node "$COHAB_FIXTURE_DIR/test-behavior.cjs"
+          cmp docs/proposals/bot-cohabitation-20261015/renovate.candidate.json "$COHAB_FIXTURE_DIR/renovate.candidate.json"
+          cmp docs/proposals/bot-cohabitation-20261015/dependabot.candidate.yml "$COHAB_FIXTURE_DIR/dependabot.candidate.yml"
+      - name: Fetch hash-checked official parser and community schema into runner temp
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import base64, hashlib, json, os, pathlib, urllib.request
+          tmp = pathlib.Path(os.environ['RUNNER_TEMP'])
+          upstream = 'abffc3c9512f572b6bfc36202442975efb700ea3'
+          sources = {
+            'file.rb': '4395c50a1d308fa194968f65cc16ac23e4716377',
+            'update_config.rb': 'd2739e27fc2494810f78c4e5cd4af7baae345154',
+            'ignore_condition.rb': 'a56c4f35b12484b14e582da1896d6605123ebda7',
+          }
+          dest = tmp / 'dependabot-core' / 'dependabot' / 'config'
+          dest.mkdir(parents=True)
+          for name, expected in sources.items():
+              url = f'https://raw.githubusercontent.com/dependabot/dependabot-core/{upstream}/common/lib/dependabot/config/{name}'
+              content = urllib.request.urlopen(url, timeout=30).read()
+              actual = hashlib.sha1(b'blob ' + str(len(content)).encode() + b'\0' + content).hexdigest()
+              assert actual == expected, (name, actual)
+              (dest / name).write_bytes(content)
+          sha = '1184c6f768ae117c3f4ea7cf3e1dca6d5e7fe76a'
+          req = urllib.request.Request(f'https://api.github.com/repos/SchemaStore/schemastore/git/blobs/{sha}', headers={'User-Agent': 'read-only-proposal-validator'})
+          data = json.load(urllib.request.urlopen(req, timeout=30))
+          content = base64.b64decode(data['content'])
+          assert hashlib.sha1(b'blob ' + str(len(content)).encode() + b'\0' + content).hexdigest() == sha
+          (tmp / 'dependabot-schema.json').write_bytes(content)
+          print('Pinned official core sources and community schema: hashes verified')
+          PY
+      - name: Validate Dependabot with schema and official Ruby parser
+        run: |
+          set -euo pipefail
+          export RENOVATE_PACKAGE_ROOT="$RUNNER_TEMP/renovate-validator/node_modules/renovate"
+          export COHAB_FIXTURE_DIR="$RUNNER_TEMP/cohab-fixture"
+          export DEPENDABOT_SCHEMA_FILE="$RUNNER_TEMP/dependabot-schema.json"
+          node "$COHAB_FIXTURE_DIR/validate-configs.cjs"
+          ruby --version
+          gem install sorbet-runtime --no-document --install-dir "$RUNNER_TEMP/gems"
+          GEM_HOME="$RUNNER_TEMP/gems" GEM_PATH="$RUNNER_TEMP/gems" ruby -I "$RUNNER_TEMP/dependabot-core" docs/proposals/bot-cohabitation-20261015/test-dependabot.rb.txt "$COHAB_FIXTURE_DIR/dependabot.candidate.yml"
+      - name: Confirm no tracked file was modified
+        run: git diff --exit-code
