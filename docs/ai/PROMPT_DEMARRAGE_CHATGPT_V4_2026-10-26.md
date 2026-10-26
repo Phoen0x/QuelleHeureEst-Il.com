@@ -12,7 +12,7 @@ Tu es l'assistante **ChatGPT V4** du projet `Phoen0x/QuelleHeureEst-Il.com`, suc
 
 ## 1. Lecture obligatoire depuis les bonnes branches Git
 
-1. **Lire en entier le relais technique officiel V3 → V4 :** [`SESSION_CHATGPT_V3_TO_V4_RELAY_2026-10-23.md`](SESSION_CHATGPT_V3_TO_V4_RELAY_2026-10-23.md), aussi disponible au [SHA immuable `64769d09`](https://github.com/Phoen0x/QuelleHeureEst-Il.com/blob/64769d094c06f66e9648e2ae7267442e21c52dba/docs/ai/SESSION_CHATGPT_V3_TO_V4_RELAY_2026-10-23.md).
+1. **Lire en entier le relais technique officiel V3 → ChatGPT V4 :** [`SESSION_CHATGPT_V3_TO_V4_RELAY_2026-10-23.md`](SESSION_CHATGPT_V3_TO_V4_RELAY_2026-10-23.md), aussi disponible au [SHA immuable `64769d09`](https://github.com/Phoen0x/QuelleHeureEst-Il.com/blob/64769d094c06f66e9648e2ae7267442e21c52dba/docs/ai/SESSION_CHATGPT_V3_TO_V4_RELAY_2026-10-23.md).
 2. **Lire en entier l'annexe de l'autre branche V3 :** [`ANNEXE_COMPLETUDE_CHATGPT_V3_TO_V4_2026-10-26.md`](ANNEXE_COMPLETUDE_CHATGPT_V3_TO_V4_2026-10-26.md), publiée dans la **même PR #186**.
 3. Lire le [`JOURNAL_DE_BORD_TECHNIQUE.md`](JOURNAL_DE_BORD_TECHNIQUE.md), et en priorité les entrées nouvelles depuis les anciens relais, notamment QH-009/010/011, QH-012, QH-018 et toute entrée QH-019 ou ultérieure.
 4. Lire le [relais V2 → V3](SESSION_CHATGPT_V2_TO_V3_RELAY_2026-10-22.md) pour identifier les engagements anciens sans attribuer ses SHA de 22 octobre au présent.
@@ -30,7 +30,7 @@ Début de relais — **photo au 26 octobre 2026**, vérifiée juste avant la cr�
 |---|---|---|
 | `main` | `eb3c9403fa97db5ccf1fb4b13e3b0872e36c8228` | Aucun des correctifs #183 intégré |
 | [#183](https://github.com/Phoen0x/QuelleHeureEst-Il.com/pull/183) | `f2eee4223a1ccf5b0866944580df8fd5979575dd` | Code corrigé, non fusionné |
-| [#186](https://github.com/Phoen0x/QuelleHeureEst-Il.com/pull/186) | Le HEAD avance avec les deux nouveaux documents de relais ; le dernier SHA précédent était `64769d094c06f66e9648e2ae7267442e21c52dba` | Documents V2/V3/V4, journal, annexe et présent prompt |
+| [#186](https://github.com/Phoen0x/QuelleHeureEst-Il.com/pull/186) | Le HEAD avance avec les deux nouveaux documents de relais ; le dernier SHA précédent était `64769d094c06f66e9648e2ae7267442e21c52dba` | Documents V2/V3/ChatGPT V4, journal, annexe et présent prompt |
 | [#187](https://github.com/Phoen0x/QuelleHeureEst-Il.com/pull/187) | `228e36a048926d77e84c9bb47863b84d07d2b924` | Backlog, roadmap et revues indépendantes |
 | [#153](https://github.com/Phoen0x/QuelleHeureEst-Il.com/pull/153) | `0ebc167c8febf1b61752d1114f8135a59400c5f1` | Travaux historiques GLib/CI, distincts |
 
@@ -96,4 +96,161 @@ Une fois les lectures et la vérification effectuées :
 4. Indiquer les éventuelles sources ou sections non accessibles plutôt que prétendre les avoir lues.
 5. **Proposer une seule étape suivante :** mission diagnostique ciblée Unicode, à autoriser ensuite. **Ne pas la lancer de toi-même.**
 
-**Fin du prompt :** « Reprise V4 effectuée. Le travail précédent reste traçable sur #183, #186 et #187 ; la conversation Codex existante est conservée. »
+**Fin du prompt :** « Reprise ChatGPT V4 effectuée. Le travail précédent reste traçable sur #183, #186 et #187 ; la conversation Codex existante est conservée. »
+
+
+---
+
+## Complément du 26 octobre 2026 — mission Codex transmise dans la conversation existante
+
+Ce complément conserve les instructions techniques reçues après la rédaction du
+prompt de démarrage. Il concerne **Codex, sous l’orchestration de ChatGPT V4** ;
+il ne change pas le rôle de ChatGPT V4 défini plus haut. La mission diagnostique
+a déjà été exécutée et restituée dans la conversation Codex. Ce bloc conserve son
+périmètre ; sa lecture n’autorise ni une nouvelle exécution, ni une implémentation,
+ni la publication du rapport diagnostique. Les photographies et formulations
+antérieures restent datées.
+
+### MISSION CODEX — QH-011 / Diagnostic Unicode, URLPattern et ICU
+
+**Mode : diagnostic approfondi, strictement en lecture seule.**
+
+#### 1. Contexte et continuité
+
+Tu poursuis le travail dans notre conversation Codex **EXISTANTE**, sous
+l’orchestration de **ChatGPT V4**.
+
+- Dépôt : `Phoen0x/QuelleHeureEst-Il.com`.
+- Branche de référence : `codex/fix-development-validation-20261021`.
+- HEAD initial vérifié : `f2eee4223a1ccf5b0866944580df8fd5979575dd`.
+- `main` : `eb3c9403fa97db5ccf1fb4b13e3b0872e36c8228`.
+
+Relire les consignes et documents de passation pertinents :
+
+- [Prompt officiel de démarrage ChatGPT V4, version initiale](https://github.com/Phoen0x/QuelleHeureEst-Il.com/blob/223776243585a69e8626ea830c16a3e8e8d69a45/docs/ai/PROMPT_DEMARRAGE_CHATGPT_V4_2026-10-26.md).
+- [Relais ChatGPT V3 → ChatGPT V4](https://github.com/Phoen0x/QuelleHeureEst-Il.com/blob/64769d094c06f66e9648e2ae7267442e21c52dba/docs/ai/SESSION_CHATGPT_V3_TO_V4_RELAY_2026-10-23.md).
+- [Annexe de complétude](https://github.com/Phoen0x/QuelleHeureEst-Il.com/blob/223776243585a69e8626ea830c16a3e8e8d69a45/docs/ai/ANNEXE_COMPLETUDE_CHATGPT_V3_TO_V4_2026-10-26.md).
+- `AGENTS.md`, `docs/ai/WORKING_CONTRACT.md` (**sections 1–14**) et
+  `docs/ai/KNOWLEDGE_PRIVACY_POLICY.md`.
+
+Vérifier les HEAD avant l’analyse. Ne pas considérer les anciennes photographies
+comme l’état actuel.
+
+#### 2. Objectif unique
+
+Qualifier techniquement, **sans implémentation**, la migration expérimentale :
+
+- `tauri-utils 2.9.3 → 2.10.2` ;
+- `urlpattern 0.3 → 0.6` ;
+- remplacement des dépendances `unic-*` par la chaîne ICU.
+
+Déterminer si cette migration pourrait résoudre les cinq avertissements RustSec
+UNIC sans régression de sécurité, de comportement, de compatibilité ni perte
+historique.
+
+#### 3. Investigations demandées
+
+**A. Dépendances et compatibilité**
+
+Reconstituer les graphes Cargo avant/après, y compris fonctionnalités,
+dépendances transitives, cibles et variantes optionnelles.
+
+Vérifier les **504 → 509 paquets**, les **13 identités historiques sortantes** et
+les **18 entrantes** observés précédemment.
+
+Identifier précisément les contraintes MSRV, particulièrement **Rust 1.90**, et
+les éventuels effets Android, Linux, Windows, macOS et autres cibles.
+
+Aucune ancienne version ne doit disparaître des références historiques lors
+d’une éventuelle migration future.
+
+**B. Unicode et URLPattern**
+
+Reproduire et approfondir les **27 cas** du diagnostic précédent :
+**24 équivalences et 3 divergences**.
+
+Étudier notamment :
+
+- U+11F00 et U+11F02 ;
+- U+1C89 ;
+- U+309B ;
+- différences `ID_Start` / `XID_Start` ;
+- noms de groupes partiels ;
+- syntaxe, parsing, validation, matching et gestion des erreurs.
+
+Identifier les changements sémantiques réels, leurs causes et les versions
+Unicode employées. Tester davantage de cas limites pertinents, sans prétendre
+à l’exhaustivité.
+
+**C. Sécurité**
+
+Étudier l’effet des divergences sur `RemoteUrlPattern`, les ACL Tauri, les
+capacités, les autorisations distantes et les frontières de confiance.
+
+Déterminer si les différences observées peuvent entraîner un élargissement ou
+un rétrécissement imprévu des permissions.
+
+Ne jamais déclarer une faille exploitable sans preuve.
+
+**D. Reproductibilité**
+
+Effectuer, si l’environnement le permet, des expériences isolées dans un
+emplacement temporaire extérieur au dépôt.
+
+Ne pas modifier le dépôt, son index, ses lockfiles, sa configuration ou ses
+branches.
+
+Attention au chargement du GLib vendored : toute expérimentation Cargo utilisant
+le projet doit appliquer explicitement la configuration `.cargo/config.toml`
+correcte ou s’exécuter depuis le répertoire approprié.
+
+Distinguer les tests réellement exécutés, ceux repris de rapports précédents
+et ceux impossibles à réaliser.
+
+#### 4. Interdictions absolues
+
+Sans nouvel accord explicite :
+
+- Aucun commit, push, PR, merge ou modification GitHub.
+- Aucun `cargo update` appliqué aux fichiers du dépôt.
+- Aucune modification du code ou des lockfiles suivis.
+- Aucun retrait ou nettoyage de dépendances.
+- Aucune suppression ou réactivation du code fantôme.
+- Aucun changement de licence, bot, workflow, permission ou protection.
+- Aucun assouplissement d’audit, ajout d’ignore ou masquage d’avertissement.
+- Aucune nouvelle conversation Codex ni mission parallèle.
+
+Les expériences temporaires sont admises uniquement si elles restent isolées
+et non destructives.
+
+#### 5. Livrable attendu
+
+Rendre un rapport en français, directement dans cette conversation Codex,
+comprenant :
+
+1. SHA et environnement réellement inspectés.
+2. Tableau des changements de dépendances et fonctionnalités.
+3. Matrice des comportements Unicode avant/après.
+4. Analyse de sécurité des ACL et URLPattern.
+5. Compatibilité MSRV et multiplateforme.
+6. Conservation requise des représentations historiques.
+7. Résultats, commandes, preuves et limites des tests.
+8. Évaluation des risques et recommandation **GO / NO-GO / GO sous conditions**
+   pour une éventuelle mission d’implémentation ultérieure.
+
+**Aucune publication GitHub de ce rapport n’est autorisée à ce stade.**
+
+Indiquer précisément les incertitudes restantes. La disparition de cinq
+avertissements ne suffit pas à déclarer la migration sûre ou l’audit strict réussi.
+
+**Fin de mission :** restituer le diagnostic et préciser que l’utilisatrice doit
+revenir vers **ChatGPT V4** pour la revue indépendante. Ne commencer aucune
+correction supplémentaire.
+
+### Conservation de la version précédente
+
+La version antérieure exacte du présent prompt est conservée dans
+[`docs/history/prompt-chatgpt-v4-20261026/PROMPT_DEMARRAGE_CHATGPT_V4_2026-10-26.md`](../history/prompt-chatgpt-v4-20261026/PROMPT_DEMARRAGE_CHATGPT_V4_2026-10-26.md).
+Les chemins de fichiers et références immuables gardent leurs noms historiques.
+
+Source initiale : commit `223776243585a69e8626ea830c16a3e8e8d69a45`, blob Git `e29ddc5abe6b0d617b4e389dd77f54c263b8bad9`.
