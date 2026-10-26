@@ -1,0 +1,91 @@
+//! FR : sonde expérimentale de construction, pas une couche ACL intégrée.
+//! EN: Experimental construction probe, not an integrated ACL layer.
+use serde_json::{json, Value};
+use std::collections::BTreeMap;
+use tauri::ipc::{Origin, RuntimeAuthority};
+use tauri_utils::{acl::{capability::Capability, manifest::Manifest, resolved::Resolved, RemoteUrlPattern}, platform::Target};
+
+#[derive(Debug, PartialEq)]
+pub enum BuildError { UnknownVersion, HistoricalRemoteUnproven, ReviewRequired, ReviewMismatch, InvalidConfiguration(String), InvalidPattern(String), Resolution(String), ResolutionPanicked }
+
+// FR : l'instantané lie toutes les permissions/scopes, pas seulement les URL.
+// EN: The snapshot binds all permissions/scopes, not just URLs.
+pub fn build_policy(envelope: &Value, reviewed_snapshot: Option<&Value>) -> Result<(BTreeMap<String, Manifest>, Resolved), BuildError> {
+    let config=&envelope["configuration"];
+    let manifests:BTreeMap<String,Manifest>=serde_json::from_value(config["manifests"].clone()).map_err(|e|BuildError::InvalidConfiguration(e.to_string()))?;
+    let caps:BTreeMap<String,Capability>=serde_json::from_value(config["capabilities"].clone()).map_err(|e|BuildError::InvalidConfiguration(e.to_string()))?;
+    let target:Target=serde_json::from_value(config["target"].clone()).map_err(|e|BuildError::InvalidConfiguration(e.to_string()))?;
+    match envelope["version"].as_str() {
+        Some("legacy-urlpattern-0.3") => {
+            // FR : sans preuve de langage, refuser la construction entière.
+            // EN: Without a language proof, reject the entire construction.
+            if caps.values().any(|c|c.remote.as_ref().is_some_and(|r|!r.urls.is_empty())) { return Err(BuildError::HistoricalRemoteUnproven); }
+        }
+        Some("reviewed-urlpattern-0.6") => {
+            let review=reviewed_snapshot.ok_or(BuildError::ReviewRequired)?;
+            if review!=envelope {return Err(BuildError::ReviewMismatch);}
+        }
+        _=>return Err(BuildError::UnknownVersion)
+    }
+    for cap in caps.values() {
+        if let Some(remote)=&cap.remote {for pattern in &remote.urls {
+            pattern.parse::<RemoteUrlPattern>().map_err(|e|BuildError::InvalidPattern(e.to_string()))?;
+        }}
+    }
+    let resolved=std::panic::catch_unwind(std::panic::AssertUnwindSafe(||Resolved::resolve(&manifests,caps,target)))
+        .map_err(|_|BuildError::ResolutionPanicked)?.map_err(|e|BuildError::Resolution(e.to_string()))?;
+    Ok((manifests,resolved))
+}
+
+#[cfg(test)]
+mod tests {
+use super::*;
+use tauri_utils::acl::APP_ACL_KEY;
+fn cases()->Vec<Value>{serde_json::from_str(include_str!("../fixtures/cases.json")).unwrap()}
+fn case(id:&str)->Value{cases().into_iter().find(|x|x["id"]==id).unwrap()}
+fn envelope(c:&Value,version:&str)->Value {
+    let mut permissions=serde_json::Map::new();
+    for (id,allow,deny,scope) in [
+        ("allow-narrow",vec!["probe"],vec![],json!({"allow":[{"path":"safe"}],"deny":[{"path":"secret"}]})),
+        ("allow-wide",vec!["probe"],vec![],json!({"allow":[{"path":"*"}]})),
+        ("deny-probe",vec![],vec!["probe"],json!({})),
+        ("deny-other",vec![],vec!["other"],json!({}))] {
+        permissions.insert(id.into(),json!({"identifier":id,"commands":{"allow":allow,"deny":deny},"scope":scope}));
+    }
+    let mut manifests=serde_json::Map::new();
+    if c["no_manifest"]!=true {manifests.insert(if c["plugin"]==true{"fixture"}else{APP_ACL_KEY}.into(),json!({"permissions":permissions,"permission_sets":{},"default_permission":null,"global_scope_schema":null}));}
+    let mut caps=serde_json::Map::new();for cap in c["caps"].as_array().unwrap(){caps.insert(cap["identifier"].as_str().unwrap().into(),cap.clone());}
+    json!({"version":version,"configuration":{"manifests":manifests,"capabilities":caps,"target":c["target"]}})
+}
+fn modern(id:&str)->Value{envelope(&case(id),"reviewed-urlpattern-0.6")}
+fn observation(c:&Value,mut r:Resolved,manifests:BTreeMap<String,Manifest>)->Value{
+    if c["empty_deny"]==true {r.denied_commands.insert("probe".into(),vec![]);}
+    let scopes=format!("{:?}",r.command_scope);let global=format!("{:?}",r.global_scope);
+    let authority=RuntimeAuthority::new(manifests,r);
+    let origin=if c["local"]==true{Origin::Local}else{Origin::Remote{url:url::Url::parse(c["url"].as_str().unwrap()).unwrap()}};
+    let result=authority.resolve_access(c["command"].as_str().unwrap(),c["window"].as_str().unwrap(),c["webview"].as_str().unwrap(),&origin);
+    let entries=result.as_ref().map(|list|list.iter().map(|v|json!({"scope":v.scope_id,"capability":v.referenced_by.capability,"permission":v.referenced_by.permission})).collect::<Vec<_>>()).unwrap_or_default();
+    json!({"allowed":result.is_some(),"entries":entries,"scopes":scopes,"global":global})
+}
+
+#[test] fn historical_known_expansion_is_controlled_error(){let e=envelope(&case("kawi-partial"),"legacy-urlpattern-0.3");assert!(matches!(build_policy(&e,None),Err(BuildError::HistoricalRemoteUnproven)));}
+#[test] fn historical_local_configuration_preserved(){let c=case("no-remote-local");let e=envelope(&c,"legacy-urlpattern-0.3");let (m,r)=build_policy(&e,None).unwrap();assert_eq!(observation(&c,r,m)["allowed"],true);}
+#[test] fn historical_local_configuration_rejects_remote_origin(){let c=case("no-remote-remote");let e=envelope(&c,"legacy-urlpattern-0.3");let (m,r)=build_policy(&e,None).unwrap();assert_eq!(observation(&c,r,m)["allowed"],false);}
+#[test] fn modern_configuration_requires_explicit_snapshot(){assert!(matches!(build_policy(&modern("same-origin"),None),Err(BuildError::ReviewRequired)));}
+#[test] fn unknown_version_is_error(){let mut e=modern("same-origin");e["version"]=json!("unknown");assert!(matches!(build_policy(&e,None),Err(BuildError::UnknownVersion)));}
+#[test] fn malformed_configuration_is_error(){let mut e=modern("same-origin");e["configuration"]["capabilities"]=json!([]);assert!(matches!(build_policy(&e,Some(&e)),Err(BuildError::InvalidConfiguration(_))));}
+#[test] fn malformed_pattern_is_error_without_panic(){let e=modern("offset-error");assert!(matches!(build_policy(&e,Some(&e)),Err(BuildError::InvalidPattern(_))));}
+#[test] fn modern_unicode_is_supported_with_fixture_review(){for id in ["kawi-start","cyrillic-start","id-not-xid","idn-positive","multilingual-path"]{let c=case(id);let e=modern(id);let (m,r)=build_policy(&e,Some(&e)).unwrap();assert_eq!(observation(&c,r,m)["allowed"],true,"{id}");}}
+#[test] fn control_patterns_require_exact_review(){for id in ["host-tab","host-lf","host-cr"]{let e=modern(id);assert!(matches!(build_policy(&e,None),Err(BuildError::ReviewRequired)));assert!(build_policy(&e,Some(&e)).is_ok());}}
+#[test] fn any_scope_change_invalidates_review(){let e=modern("same-origin");let mut changed=e.clone();changed["configuration"]["manifests"][APP_ACL_KEY]["permissions"]["allow-narrow"]["scope"]["allow"]=json!([{"path":"*"}]);assert!(matches!(build_policy(&changed,Some(&e)),Err(BuildError::ReviewMismatch)));}
+#[test] fn global_scope_change_invalidates_review(){let e=modern("same-origin");let mut changed=e.clone();changed["configuration"]["manifests"][APP_ACL_KEY]["permissions"]["global-only"]=json!({"identifier":"global-only","scope":{"allow":[{"path":"*"}]}});assert!(matches!(build_policy(&changed,Some(&e)),Err(BuildError::ReviewMismatch)));}
+#[test] fn provenance_labels_platform_changes_invalidate_review(){let e=modern("same-origin");for (field,value) in [("windows",json!(["*"])),("webviews",json!(["*"])),("platforms",json!(["android"])),("permissions",json!(["allow-wide"]))]{let mut changed=e.clone();changed["configuration"]["capabilities"]["rule"][field]=value;assert!(matches!(build_policy(&changed,Some(&e)),Err(BuildError::ReviewMismatch)),"{field}");}}
+#[test] fn deny_is_not_silently_discarded(){for id in ["deny-same","deny-different","deny-unicode","deny-empty-entry"]{let c=case(id);let e=modern(id);let (m,r)=build_policy(&e,Some(&e)).unwrap();assert_eq!(observation(&c,r,m)["allowed"],false,"{id}");}}
+#[test] fn scopes_and_provenance_are_observed_beyond_boolean(){let c=case("scope-widening-False");let e=modern("scope-widening-False");let (m,r)=build_policy(&e,Some(&e)).unwrap();let o=observation(&c,r,m);assert_eq!(o["allowed"],true);assert_eq!(o["entries"].as_array().unwrap().len(),2);assert_eq!(o["entries"][0]["capability"],"a");assert_eq!(o["entries"][1]["capability"],"b");assert!(o["scopes"].as_str().unwrap().contains("secret"));assert!(o["scopes"].as_str().unwrap().contains("String(\"*\")"));}
+#[test] fn fixture_matrix_real_resolver_static_cases(){let mut count=0;for c in cases(){if c["dynamic"]==true{continue;}let id=c["id"].as_str().unwrap();let e=envelope(&c,"reviewed-urlpattern-0.6");let result=build_policy(&e,Some(&e));if id=="offset-error"{assert!(matches!(result,Err(BuildError::InvalidPattern(_))));}else{let (m,r)=result.unwrap();let observed=observation(&c,r,m);let prior:Value=serde_json::from_str(include_str!("../fixtures/new-results.json")).unwrap();let expected=prior.as_array().unwrap().iter().find(|r|r["id"]==id).unwrap();assert_eq!(observed["allowed"],expected["result"]["allowed"],"{id}");let entries=expected["result"]["entries"].as_array().unwrap().iter().map(|r|json!({"scope":r["scope_id"],"capability":r["capability"],"permission":r["permission"]})).collect::<Vec<_>>();assert_eq!(observed["entries"],json!(entries),"{id}");assert_eq!(observed["scopes"],expected["result"]["scope_store"],"{id}");}count+=1;}assert_eq!(count,65);}
+
+// FR : critères d'acceptation volontairement stricts ; ne pas les ignorer.
+// EN: Strict acceptance criteria; do not ignore these failing checks.
+#[test] fn acceptance_historical_u309b_remains_available(){let c=case("id-not-xid");let e=envelope(&c,"legacy-urlpattern-0.3");let (m,r)=build_policy(&e,None).expect("historical legitimate Unicode must remain usable");assert_eq!(observation(&c,r,m)["allowed"],true);}
+#[test] fn acceptance_raw_dynamic_api_cannot_bypass_construction_policy(){let c=case("kawi-partial");let mut empty=case("no-capabilities");empty["no_manifest"]=json!(false);let e=envelope(&empty,"legacy-urlpattern-0.3");let (m,r)=build_policy(&e,None).unwrap();let mut authority=RuntimeAuthority::new(m,r);let cap=&c["caps"][0];authority.add_capability(serde_json::to_string(cap).unwrap()).unwrap();let access=authority.resolve_access("probe","main","view",&Origin::Remote{url:url::Url::parse("https://example.invalid/value").unwrap()});assert!(access.is_none(),"unvalidated dynamic rule widened access after a successful legacy construction gate");}
+}

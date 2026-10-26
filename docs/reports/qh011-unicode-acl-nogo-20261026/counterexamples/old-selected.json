@@ -1,0 +1,63 @@
+{
+  "dynamic-kawi-partial": {
+    "allowed": false,
+    "canonical_url": "https://example.invalid/value",
+    "entries": [],
+    "has_app_manifest": true,
+    "scope_store": "{}",
+    "stage": "runtime"
+  },
+  "dynamic-scopes": {
+    "allowed": true,
+    "canonical_url": "https://example.invalid/value",
+    "entries": [
+      {
+        "capability": "a",
+        "context": "Remote { url: RemoteUrlPattern(UrlPattern { protocol: Component { pattern_string: \"https\", regexp: Ok(Regex(\"(?u)^https$\")), group_name_list: [], matcher: Matcher { prefix: \"\", suffix: \"\", inner: Literal { literal: \"https\" }, ignore_case: false }, has_regexp_group: false }, username: Component { pattern_string: \"*\", regexp: Ok(Regex(\"(?u)^(.*)$\")), group_name_list: [\"0\"], matcher: Matcher { prefix: \"\", suffix: \"\", inner: SingleCapture { filter: None, allow_empty: true }, ignore_case: false }, has_regexp_group: false }, password: Component { pattern_string: \"*\", regexp: Ok(Regex(\"(?u)^(.*)$\")), group_name_list: [\"0\"], matcher: Matcher { prefix: \"\", suffix: \"\", inner: SingleCapture { filter: None, allow_empty: true }, ignore_case: false }, has_regexp_group: false }, hostname: Component { pattern_string: \"example.invalid\", regexp: Ok(Regex(\"(?u)^example\\\\.invalid$\")), group_name_list: [], matcher: Matcher { prefix: \"\", suffix: \"\", inner: Literal { literal: \"example.invalid\" }, ignore_case: false }, has_regexp_group: false }, port: Component { pattern_string: \"\", regexp: Ok(Regex(\"(?u)^$\")), group_name_list: [], matcher: Matcher { prefix: \"\", suffix: \"\", inner: Literal { literal: \"\" }, ignore_case: false }, has_regexp_group: false }, pathname: Component { pattern_string: \"/*\", regexp: Ok(Regex(\"(?u)^(?:/(.*))$\")), group_name_list: [\"0\"], matcher: Matcher { prefix: \"/\", suffix: \"\", inner: SingleCapture { filter: None, allow_empty: true }, ignore_case: false }, has_regexp_group: false }, search: Component { pattern_string: \"*\", regexp: Ok(Regex(\"(?u)^(.*)$\")), group_name_list: [\"0\"], matcher: Matcher { prefix: \"\", suffix: \"\", inner: SingleCapture { filter: None, allow_empty: true }, ignore_case: false }, has_regexp_group: false }, hash: Component { pattern_string: \"*\", regexp: Ok(Regex(\"(?u)^(.*)$\")), group_name_list: [\"0\"], matcher: Matcher { prefix: \"\", suffix: \"\", inner: SingleCapture { filter: None, allow_empty: true }, ignore_case: false }, has_regexp_group: false } }, \"https://example.invalid/*\") }",
+        "permission": "allow-narrow",
+        "scope_id": 1
+      }
+    ],
+    "has_app_manifest": true,
+    "scope_store": "{}",
+    "stage": "runtime"
+  },
+  "id-not-xid": {
+    "allowed": true,
+    "canonical_url": "https://example.invalid/value",
+    "entries": [
+      {
+        "capability": "rule",
+        "context": "Remote { url: RemoteUrlPattern(UrlPattern { protocol: Component { pattern_string: \"https\", regexp: Ok(Regex(\"(?u)^https$\")), group_name_list: [], matcher: Matcher { prefix: \"\", suffix: \"\", inner: Literal { literal: \"https\" }, ignore_case: false }, has_regexp_group: false }, username: Component { pattern_string: \"*\", regexp: Ok(Regex(\"(?u)^(.*)$\")), group_name_list: [\"0\"], matcher: Matcher { prefix: \"\", suffix: \"\", inner: SingleCapture { filter: None, allow_empty: true }, ignore_case: false }, has_regexp_group: false }, password: Component { pattern_string: \"*\", regexp: Ok(Regex(\"(?u)^(.*)$\")), group_name_list: [\"0\"], matcher: Matcher { prefix: \"\", suffix: \"\", inner: SingleCapture { filter: None, allow_empty: true }, ignore_case: false }, has_regexp_group: false }, hostname: Component { pattern_string: \"example.invalid\", regexp: Ok(Regex(\"(?u)^example\\\\.invalid$\")), group_name_list: [], matcher: Matcher { prefix: \"\", suffix: \"\", inner: Literal { literal: \"example.invalid\" }, ignore_case: false }, has_regexp_group: false }, port: Component { pattern_string: \"\", regexp: Ok(Regex(\"(?u)^$\")), group_name_list: [], matcher: Matcher { prefix: \"\", suffix: \"\", inner: Literal { literal: \"\" }, ignore_case: false }, has_regexp_group: false }, pathname: Component { pattern_string: \"/:゛\", regexp: Ok(Regex(\"(?u)^(?:/([^/]+?))$\")), group_name_list: [\"゛\"], matcher: Matcher { prefix: \"/\", suffix: \"\", inner: SingleCapture { filter: Some('/'), allow_empty: false }, ignore_case: false }, has_regexp_group: false }, search: Component { pattern_string: \"*\", regexp: Ok(Regex(\"(?u)^(.*)$\")), group_name_list: [\"0\"], matcher: Matcher { prefix: \"\", suffix: \"\", inner: SingleCapture { filter: None, allow_empty: true }, ignore_case: false }, has_regexp_group: false }, hash: Component { pattern_string: \"*\", regexp: Ok(Regex(\"(?u)^(.*)$\")), group_name_list: [\"0\"], matcher: Matcher { prefix: \"\", suffix: \"\", inner: SingleCapture { filter: None, allow_empty: true }, ignore_case: false }, has_regexp_group: false } }, \"https://example.invalid/:゛\") }",
+        "permission": "allow-narrow",
+        "scope_id": 1
+      }
+    ],
+    "has_app_manifest": true,
+    "scope_store": "{1: ResolvedScope { allow: [Map({\"path\": String(\"safe\")})], deny: [Map({\"path\": String(\"secret\")})] }}",
+    "stage": "runtime"
+  },
+  "kawi-partial": {
+    "allowed": false,
+    "canonical_url": "https://example.invalid/value",
+    "entries": [],
+    "has_app_manifest": true,
+    "scope_store": "{1: ResolvedScope { allow: [Map({\"path\": String(\"safe\")})], deny: [Map({\"path\": String(\"secret\")})] }}",
+    "stage": "runtime"
+  },
+  "scope-widening-False": {
+    "allowed": true,
+    "canonical_url": "https://example.invalid/value",
+    "entries": [
+      {
+        "capability": "a",
+        "context": "Remote { url: RemoteUrlPattern(UrlPattern { protocol: Component { pattern_string: \"https\", regexp: Ok(Regex(\"(?u)^https$\")), group_name_list: [], matcher: Matcher { prefix: \"\", suffix: \"\", inner: Literal { literal: \"https\" }, ignore_case: false }, has_regexp_group: false }, username: Component { pattern_string: \"*\", regexp: Ok(Regex(\"(?u)^(.*)$\")), group_name_list: [\"0\"], matcher: Matcher { prefix: \"\", suffix: \"\", inner: SingleCapture { filter: None, allow_empty: true }, ignore_case: false }, has_regexp_group: false }, password: Component { pattern_string: \"*\", regexp: Ok(Regex(\"(?u)^(.*)$\")), group_name_list: [\"0\"], matcher: Matcher { prefix: \"\", suffix: \"\", inner: SingleCapture { filter: None, allow_empty: true }, ignore_case: false }, has_regexp_group: false }, hostname: Component { pattern_string: \"example.invalid\", regexp: Ok(Regex(\"(?u)^example\\\\.invalid$\")), group_name_list: [], matcher: Matcher { prefix: \"\", suffix: \"\", inner: Literal { literal: \"example.invalid\" }, ignore_case: false }, has_regexp_group: false }, port: Component { pattern_string: \"\", regexp: Ok(Regex(\"(?u)^$\")), group_name_list: [], matcher: Matcher { prefix: \"\", suffix: \"\", inner: Literal { literal: \"\" }, ignore_case: false }, has_regexp_group: false }, pathname: Component { pattern_string: \"/*\", regexp: Ok(Regex(\"(?u)^(?:/(.*))$\")), group_name_list: [\"0\"], matcher: Matcher { prefix: \"/\", suffix: \"\", inner: SingleCapture { filter: None, allow_empty: true }, ignore_case: false }, has_regexp_group: false }, search: Component { pattern_string: \"*\", regexp: Ok(Regex(\"(?u)^(.*)$\")), group_name_list: [\"0\"], matcher: Matcher { prefix: \"\", suffix: \"\", inner: SingleCapture { filter: None, allow_empty: true }, ignore_case: false }, has_regexp_group: false }, hash: Component { pattern_string: \"*\", regexp: Ok(Regex(\"(?u)^(.*)$\")), group_name_list: [\"0\"], matcher: Matcher { prefix: \"\", suffix: \"\", inner: SingleCapture { filter: None, allow_empty: true }, ignore_case: false }, has_regexp_group: false } }, \"https://example.invalid/*\") }",
+        "permission": "allow-narrow",
+        "scope_id": 1
+      }
+    ],
+    "has_app_manifest": true,
+    "scope_store": "{1: ResolvedScope { allow: [Map({\"path\": String(\"safe\")})], deny: [Map({\"path\": String(\"secret\")})] }, 2: ResolvedScope { allow: [Map({\"path\": String(\"*\")})], deny: [] }}",
+    "stage": "runtime"
+  }
+}

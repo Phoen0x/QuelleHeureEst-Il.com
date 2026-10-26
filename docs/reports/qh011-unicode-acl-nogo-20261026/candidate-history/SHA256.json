@@ -1,0 +1,9 @@
+{
+  "Cargo.lock.txt": "9487c3bd7fa0f5f59a3c7967cf64e324443e680fee05316db40ab7586e46ccac",
+  "Cargo.lock.raw-resolution.txt": "fa226947759aff667ff88e8a909c4c95347eb93daad7cc08ea83f9a8c19c7051",
+  "dependency-delta.json": "9d4a85b0a75eca4eda9e900a1d16350cdb8355b0b2853b770b651d2d54e5c8b5",
+  "Cargo.toml.txt": "ea3cef566cb6891ccb714d151fc0cf0ee05ee1c0c72fce7e636d6407e115c812",
+  "src-tauri/Cargo.toml.txt": "64ebc5012a8201ca0a0f09ce1d56cdbd611f2cb28210145c429cf28c4c9ee373",
+  "src-tauri/build.rs.txt": "b01bb80b64916f502a3033afdb4567227ef2abcc3b938889f02283aefa780fbe",
+  ".cargo/config.toml.txt": "2925ea66a49f317cbd3d89b3a32eb82a27ec374385025fc59927ea996249dfa0"
+}

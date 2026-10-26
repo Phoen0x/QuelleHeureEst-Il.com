@@ -1,0 +1,5 @@
+
+> quelle-heure-est-il?.com@0.1.0 check:dependencies <EXPERIMENT>/candidate
+> node docs/validation/rust-178/check-ported-graph.cjs
+
+ ELIFECYCLE  Command failed with exit code 1.

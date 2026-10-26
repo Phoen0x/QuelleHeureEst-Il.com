@@ -1,0 +1,110 @@
+
+> quelle-heure-est-il?.com@0.1.0 check:dependencies <EXPERIMENT>/baseline-guard-view
+> node docs/validation/rust-178/check-ported-graph.cjs
+
+{
+  "status": "PASS",
+  "base": "d033c8ea819614b4676f4db057ee3ef62c33f264",
+  "originalFiles": 165,
+  "unchangedFiles": 161,
+  "archivedModifiedFiles": [
+    "Cargo.toml",
+    "Cargo.lock",
+    "src-tauri/Cargo.toml",
+    "docs/validation/rust-178/check-ported-graph.cjs"
+  ],
+  "vendorFiles": 121,
+  "onlyUpstreamVariantStrIterFix": true,
+  "cargoPackages": 504,
+  "onlyAddedEdge": "Linux GLib dev-test dependency",
+  "glibSource": "vendor/glib-0.18.5",
+  "pnpmSnapshotsUnchanged": 409,
+  "optionalSnapshotsUnchanged": 140,
+  "historicalGuards": {
+    "status": "PASS",
+    "base": "fb3ff18a7829a7ac997e7569cabc8ed3a9603aca",
+    "originalFiles": 157,
+    "unchangedFiles": 155,
+    "archivedModifiedFiles": [
+      "Cargo.lock",
+      "docs/validation/rust-178/check-ported-graph.cjs"
+    ],
+    "cargoPackagesBefore": 504,
+    "cargoPackagesAfter": 504,
+    "modifiedDependencies": [
+      "tokio 1.54.0 -> 1.54.1"
+    ],
+    "onlyTokioVersionAndChecksumChanged": true,
+    "manifestsUnchanged": true,
+    "pnpmSnapshotsIdentical": 409,
+    "optionalIdentical": 140,
+    "reachable": 304,
+    "patchHash": "ij22dduv7f6wi3glhwl7jmdbrm",
+    "historicalGuards": {
+      "status": "PASS",
+      "base": "66f4d47f0b10f07c80a3ac257c3f76947bff8051",
+      "originalFiles": 144,
+      "unchangedFiles": 139,
+      "archivedModifiedFiles": [
+        "patches/braces-3.0.3.patch",
+        "pnpm-lock.yaml",
+        "docs/validation/rust-178/check-ported-graph.cjs",
+        "tests/dependency_updates/js-security-183.test.cjs",
+        "tests/dependency_updates/vite-qh010.test.cjs"
+      ],
+      "snapshotsBefore": 408,
+      "snapshotsAfter": 409,
+      "identicalActiveBlocks": 406,
+      "adaptedConsumerEdges": [
+        "/chokidar@3.6.0",
+        "/micromatch@4.0.8"
+      ],
+      "exactOriginalBlocksArchived": 408,
+      "optional": 140,
+      "reachable": 304,
+      "initialInactiveNotReactivated": 104,
+      "historicalGuards": {
+        "status": "PASS",
+        "qh010": {
+          "base": "bdda4abf3430bc5bda20176538c08533694c83f7",
+          "originalFiles": 133,
+          "unchangedFiles": 129,
+          "archivedModifiedFiles": [
+            "package.json",
+            "pnpm-lock.yaml",
+            "Scripts/check-js-security-183.cjs",
+            "tests/dependency_updates/js-security-183.test.cjs"
+          ],
+          "identicalInitialSnapshots": 384,
+          "initialOptionalRetained": 121,
+          "initialInactiveNotReactivated": 81,
+          "addedSnapshots": 24,
+          "totalSnapshots": 408,
+          "reachableEntries": 304,
+          "optionalAfter": 140,
+          "cargoAndHttpTestsUnchanged": true
+        },
+        "base": "6db8239390b6cf12cb22c0d9ff43ac62c680967b",
+        "originalFiles": 122,
+        "unchangedFiles": 119,
+        "archivedModifiedFiles": [
+          "package.json",
+          "pnpm-lock.yaml",
+          "docs/validation/rust-178/check-ported-graph.cjs"
+        ],
+        "initialSnapshots": 337,
+        "identicalInitialSnapshots": 329,
+        "adaptedInitialSnapshots": 8,
+        "missingSnapshots": [],
+        "initialOptional": 95,
+        "optionalAfter": 140,
+        "historicalNotReactivated": 35,
+        "totalSnapshots": 408,
+        "reachableEntries": 304,
+        "missingEdges": [],
+        "cargoAndHttpTestsUnchanged": true
+      },
+      "patchHash": "ij22dduv7f6wi3glhwl7jmdbrm"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+"""FR : commandes bornées et sorties réelles ; EN: bounded commands and real exits."""
+import json,os,subprocess,time
+from pathlib import Path
+w=Path(__file__).parent;r=w/'candidate';status=[]
+commands=[
+('pnpm-graph',['pnpm','list','--depth','Infinity','--json'],90),
+('typescript',['pnpm','typecheck'],90),
+('eslint',['pnpm','lint'],90),
+('web-security',['node','--test','tests/pollen-card.test.mjs','tests/braces-hardening.test.mjs','tests/security/braces-depth.test.cjs','tests/security/vite-qh010.test.mjs'],120),
+('vite-build',['pnpm','vite:build'],120),
+('historical-preservation',['pnpm','check:dependencies'],90),
+('pnpm-audit-full',['pnpm','audit','--json'],60),
+('pnpm-audit-production',['pnpm','audit','--prod','--json'],60)]
+for name,command,limit in commands:
+ start=time.monotonic()
+ try:
+  p=subprocess.run(command,cwd=r,capture_output=True,timeout=limit);code=p.returncode;stdout=p.stdout;stderr=p.stderr
+ except subprocess.TimeoutExpired as e:code=124;stdout=e.stdout or b'';stderr=(e.stderr or b'')+b'\nWALL TIMEOUT\n'
+ (w/'logs'/(name+'.stdout')).write_bytes(stdout);(w/'logs'/(name+'.stderr')).write_bytes(stderr)
+ status.append({'name':name,'command':command,'exit':code,'seconds':round(time.monotonic()-start,3),'wall_limit':limit});(w/'web-status.json').write_text(json.dumps(status,indent=2))
+ print(name,code,flush=True)

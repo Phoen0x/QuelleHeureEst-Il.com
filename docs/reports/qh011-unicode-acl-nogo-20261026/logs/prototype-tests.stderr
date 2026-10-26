@@ -1,0 +1,7 @@
+
+thread 'tests::acceptance_historical_u309b_remains_available' (12515) panicked at src/lib.rs:89:160:
+historical legitimate Unicode must remain usable: HistoricalRemoteUnproven
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+thread 'tests::acceptance_raw_dynamic_api_cannot_bypass_construction_policy' (12516) panicked at src/lib.rs:90:538:
+unvalidated dynamic rule widened access after a successful legacy construction gate

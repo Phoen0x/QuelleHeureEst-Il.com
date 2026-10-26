@@ -81,3 +81,12 @@ Sur #186 uniquement, deux diagnostics Codex du code #183 `f2eee4223a1ccf5b086694
 ## QH-011 archive, October 26, 2026 — English
 
 PR #186 now preserves two historical read-only Codex diagnostics of PR #183 at `f2eee4223a1ccf5b0866944580df8fd5979575dd`: [Unicode / URLPattern / ICU](DIAGNOSTIC_QH011_UNICODE_URLPATTERN_ICU_2026-10-26.md), [ACL and scope compatibility](DIAGNOSTIC_QH011_COMPATIBILITE_ACL_UNICODE_2026-10-26.md), and [evidence, digests and isolated reproduction](../reports/qh011-unicode-acl-20261026/NOTICE.md). No application migration or new native-platform validation is published. QH-011/T-003 remain partial and open; the experimental strict audit still fails with three warnings. **ChatGPT V4** must independently review before any implementation mission. Earlier text and links remain intact.
+
+
+## QH-011 — archivage du NO-GO expérimental — 26 octobre 2026
+
+Le [rapport du prototype Unicode–ACL](EXPERIMENTATION_QH011_UNICODE_ACL_NOGO_2026-10-26.md) et ses [preuves originales, extraits et procédure](../reports/qh011-unicode-acl-nogo-20261026/NOTICE.md) conservent le **NO-GO** : 15 tests réussis, deux échoués, sortie 101. U+309B historique est rejeté ; un ajout dynamique hors validation introduit une autorisation synthétique. Les builds réussis ne rendent pas ce prototype publiable. Le contrôleur historique refuse le candidat ; audit Rust strict en échec avec trois avertissements. QH-011/T-003 restent ouverts. Aucun diagnostic antérieur n'est remplacé, aucune nouvelle expérience n'est exécutée pour cet archivage. Prochaine action : revue indépendante de #186 par **ChatGPT V4**, sans nouvelle implémentation automatique.
+
+## QH-011 — experimental NO-GO archive — October 26, 2026
+
+The [Unicode–ACL prototype report](EXPERIMENTATION_QH011_UNICODE_ACL_NOGO_2026-10-26.md) and [evidence with replay instructions](../reports/qh011-unicode-acl-nogo-20261026/NOTICE.md) preserve its **NO-GO**: 15 passing tests, two failures, exit 101. Historical U+309B is rejected and an unvalidated dynamic addition introduces a synthetic authorization. Passing builds do not make the prototype publishable. The historical guard rejects the candidate and the strict Rust audit fails with three warnings. QH-011/T-003 remain open. Previous diagnostics are preserved; no technical experiment is rerun for this archive. Next step: independent **ChatGPT V4** review of #186, without automatically starting implementation.

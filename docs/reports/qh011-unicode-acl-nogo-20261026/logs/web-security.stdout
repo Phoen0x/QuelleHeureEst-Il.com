@@ -1,0 +1,49 @@
+✔ braces parent cycle: direct (38.161814ms)
+✔ braces parent cycle: indirect (32.439459ms)
+✔ braces parent cycle: prefix-cycle (35.017214ms)
+✔ braces parent cycle: first-loop (31.401542ms)
+✔ braces: valid parent chain of 10000 objects has no arbitrary depth ceiling (40.638841ms)
+✔ braces: root anchor terminates before irrelevant reverse links (32.124465ms)
+✔ braces: malformed non-object parents preserve empty AST behavior (32.417647ms)
+✔ braces: user getter errors remain observable (32.274216ms)
+✔ braces depth guard retained: child-cycle (33.961365ms)
+✔ braces depth guard retained: deep-ast (35.157211ms)
+✔ braces: valid parsed parent backlinks and shared nodes do not trigger a cycle error (5.357669ms)
+✔ braces: bounded measurement of shallow Cartesian expansion 10 (40.901017ms)
+✔ braces: bounded measurement of shallow Cartesian expansion 12 (44.172659ms)
+✔ braces: bounded measurement of shallow Cartesian expansion 14 (66.553624ms)
+✔ braces: rangeLimit and maxLength retain their documented scope (37.041334ms)
+✔ consumers: Micromatch and Chokidar resolve the same hardened braces instance (38.670944ms)
+✔ Chokidar: legitimate fixed brace glob discovers both files (58.092567ms)
+✔ Chokidar residual: hostile direct pattern returns then rejects without an error event (294.407808ms)
+✔ Chokidar residual: instrumentation identifies the unhandled Promise rejection channel (307.529972ms)
+✔ Chokidar residual: hostile directory under fixed glob emits a handled error event (49.963265ms)
+✔ zero pollen concentrations display the all-clear badge (523.881314ms)
+✔ nonzero pollen concentrations remove the all-clear badge (1.438307ms)
+✔ braces : motifs usuels et plages conservés / ordinary patterns and ranges preserved (2.989341ms)
+✔ braces.parse : profondeur hostile rejetée / reject hostile depth (0.44866ms)
+✔ braces.compile : profondeur hostile rejetée / reject hostile depth (0.319741ms)
+✔ braces.expand : profondeur hostile rejetée / reject hostile depth (0.92316ms)
+✔ braces.stringify : profondeur hostile rejetée / reject hostile depth (0.174808ms)
+✔ braces.compile : AST fourni directement borné / bound directly supplied AST (0.595246ms)
+✔ braces.expand : AST fourni directement borné / bound directly supplied AST (0.536961ms)
+✔ braces.stringify : AST fourni directement borné / bound directly supplied AST (0.351548ms)
+✔ braces : tableaux intermédiaires bornés / intermediate arrays bounded (1.14098ms)
+✔ micromatch et chokidar utilisent le correctif / consumers use the patch (2.079752ms)
+✔ GHSA-9jrq: HTML proxy never references an attacker origin from a query (52.991484ms)
+The request id "<SYNTHETIC_TEMP>" is outside of Vite serving allow list.
+
+- <SYNTHETIC_TEMP>
+- <EXPERIMENT>/candidate/node_modules/.pnpm/vite@8.1.6_esbuild@0.28.1/node_modules/vite/dist/client
+
+Refer to docs https://vite.dev/config/server-options.html#server-fs-allow for configurations and more details.
+
+✔ GHSA-rq7h: importing an in-root decoy does not authorize its absolute host path (52.584084ms)
+ℹ tests 34
+ℹ suites 0
+ℹ pass 34
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2479.885372

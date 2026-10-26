@@ -1,0 +1,117 @@
+{
+  "all_other_parent_files": "191 blobs and modes must remain identical, including every previously archived diagnosis",
+  "candidate_source_snapshot": "310 source file hashes compared to recorded after-snapshot; read-only, no recompilation",
+  "external_references": "Known GitHub PR/commit/project-guide references; previous archives present in the parent tree, not replaced. No universal external service availability guarantee.",
+  "links": [
+    {
+      "source": "docs/ai/README.md",
+      "target": "docs/ai/EXPERIMENTATION_QH011_UNICODE_ACL_NOGO_2026-10-26.md"
+    },
+    {
+      "source": "docs/ai/README.md",
+      "target": "docs/reports/qh011-unicode-acl-nogo-20261026/NOTICE.md"
+    },
+    {
+      "source": "docs/ai/README.md",
+      "target": "docs/ai/EXPERIMENTATION_QH011_UNICODE_ACL_NOGO_2026-10-26.md"
+    },
+    {
+      "source": "docs/ai/README.md",
+      "target": "docs/reports/qh011-unicode-acl-nogo-20261026/NOTICE.md"
+    },
+    {
+      "source": "docs/ai/EXPERIMENTATION_QH011_UNICODE_ACL_NOGO_2026-10-26.md",
+      "target": "docs/reports/qh011-unicode-acl-nogo-20261026/original/REPORT.md"
+    },
+    {
+      "source": "docs/ai/EXPERIMENTATION_QH011_UNICODE_ACL_NOGO_2026-10-26.md",
+      "url": "https://github.com/Phoen0x/QuelleHeureEst-Il.com/pull/183"
+    },
+    {
+      "source": "docs/ai/EXPERIMENTATION_QH011_UNICODE_ACL_NOGO_2026-10-26.md",
+      "target": "docs/ai/DIAGNOSTIC_QH011_UNICODE_URLPATTERN_ICU_2026-10-26.md"
+    },
+    {
+      "source": "docs/ai/EXPERIMENTATION_QH011_UNICODE_ACL_NOGO_2026-10-26.md",
+      "target": "docs/ai/DIAGNOSTIC_QH011_COMPATIBILITE_ACL_UNICODE_2026-10-26.md"
+    },
+    {
+      "source": "docs/ai/EXPERIMENTATION_QH011_UNICODE_ACL_NOGO_2026-10-26.md",
+      "target": "docs/reports/qh011-unicode-acl-nogo-20261026/prototype/src/lib.rs.txt"
+    },
+    {
+      "source": "docs/ai/EXPERIMENTATION_QH011_UNICODE_ACL_NOGO_2026-10-26.md",
+      "target": "docs/reports/qh011-unicode-acl-nogo-20261026/prototype/fixtures/cases.json"
+    },
+    {
+      "source": "docs/ai/EXPERIMENTATION_QH011_UNICODE_ACL_NOGO_2026-10-26.md",
+      "target": "docs/reports/qh011-unicode-acl-nogo-20261026/counterexamples/old-selected.json"
+    },
+    {
+      "source": "docs/ai/EXPERIMENTATION_QH011_UNICODE_ACL_NOGO_2026-10-26.md",
+      "target": "docs/reports/qh011-unicode-acl-nogo-20261026/logs/prototype-tests.stdout"
+    },
+    {
+      "source": "docs/ai/EXPERIMENTATION_QH011_UNICODE_ACL_NOGO_2026-10-26.md",
+      "target": "docs/reports/qh011-unicode-acl-nogo-20261026/logs/prototype-tests.stderr"
+    },
+    {
+      "source": "docs/ai/EXPERIMENTATION_QH011_UNICODE_ACL_NOGO_2026-10-26.md",
+      "target": "docs/reports/qh011-unicode-acl-nogo-20261026/counterexamples/failures.json"
+    },
+    {
+      "source": "docs/ai/EXPERIMENTATION_QH011_UNICODE_ACL_NOGO_2026-10-26.md",
+      "target": "docs/reports/qh011-unicode-acl-nogo-20261026/counterexamples/failures.json"
+    },
+    {
+      "source": "docs/ai/EXPERIMENTATION_QH011_UNICODE_ACL_NOGO_2026-10-26.md",
+      "target": "docs/reports/qh011-unicode-acl-nogo-20261026/records/baseline-replay-status.json"
+    },
+    {
+      "source": "docs/ai/EXPERIMENTATION_QH011_UNICODE_ACL_NOGO_2026-10-26.md",
+      "target": "docs/reports/qh011-unicode-acl-nogo-20261026/candidate-history/dependency-delta.json"
+    },
+    {
+      "source": "docs/ai/EXPERIMENTATION_QH011_UNICODE_ACL_NOGO_2026-10-26.md",
+      "target": "docs/reports/qh011-unicode-acl-nogo-20261026/locks/candidate-preserved.lock.txt"
+    },
+    {
+      "source": "docs/ai/EXPERIMENTATION_QH011_UNICODE_ACL_NOGO_2026-10-26.md",
+      "target": "docs/reports/qh011-unicode-acl-nogo-20261026/NOTICE.md"
+    },
+    {
+      "source": "docs/ai/JOURNAL_DE_BORD_TECHNIQUE.md",
+      "target": "docs/ai/EXPERIMENTATION_QH011_UNICODE_ACL_NOGO_2026-10-26.md"
+    },
+    {
+      "source": "docs/ai/JOURNAL_DE_BORD_TECHNIQUE.md",
+      "target": "docs/reports/qh011-unicode-acl-nogo-20261026/NOTICE.md"
+    },
+    {
+      "source": "docs/reports/qh011-unicode-acl-nogo-20261026/NOTICE.md",
+      "target": "docs/ai/EXPERIMENTATION_QH011_UNICODE_ACL_NOGO_2026-10-26.md"
+    },
+    {
+      "source": "docs/reports/qh011-unicode-acl-nogo-20261026/NOTICE.md",
+      "target": "docs/reports/qh011-unicode-acl-20261026/NOTICE.md"
+    },
+    {
+      "source": "docs/reports/qh011-unicode-acl-nogo-20261026/NOTICE.md",
+      "url": "https://github.com/Phoen0x/QuelleHeureEst-Il.com/blob/f2eee4223a1ccf5b0866944580df8fd5979575dd/docs/development/linux-environment-20261022.md"
+    },
+    {
+      "source": "docs/reports/qh011-unicode-acl-nogo-20261026/NOTICE.md",
+      "target": "docs/reports/qh011-unicode-acl-20261026/NOTICE.md"
+    }
+  ],
+  "missing_traces": "No separate JSON dynamic assertion trace or fresh per-row static trace was emitted; source/assertions and golden fixtures are preserved without fabrication",
+  "new_local_markdown_links": "PASS",
+  "original_checkout_integrity": "302 original file hashes and index compared to recorded originals; unchanged",
+  "privacy": "Selected contents and new additions reviewed; secret/private path pattern checks PASS; no binaries, SDKs, cache, private network parameters, complete checkouts or third-party source files included",
+  "python_syntax": "PASS: ast.parse; replay script not executed, including prepare-only mode",
+  "redistribution": "Own prototype/scripts and generated technical data; archived RustSec entries retain CC0-1.0 metadata and public references; repository licenses unchanged",
+  "scope": "Documentary controls only; no technical experiments, Cargo/Node tests, builds or audits rerun.",
+  "source_manifest_integrity": "65/65 existing entries verified, none missing or mismatched",
+  "technical_verdict": "NO-GO, unchanged",
+  "two_document_edits": "Exact old byte prefixes; additions only"
+}

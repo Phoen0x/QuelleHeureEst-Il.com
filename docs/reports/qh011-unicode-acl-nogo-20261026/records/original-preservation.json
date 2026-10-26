@@ -1,0 +1,12 @@
+{
+  "all_original_hashes_still_match": true,
+  "candidate_after_snapshot_sha256": "be04aa8d3ee737052b8f56ca5b0108979130625c37ecb119b900684218bd2e30",
+  "candidate_only_changed_tracked_path": "Cargo.lock",
+  "candidate_unchanged_tracked_files": 301,
+  "currently_rechecked_file_count": 302,
+  "note": "Read-only archival integrity checks. Full original/candidate path snapshots stay temporary; public Git tree and source digests identify the baselines.",
+  "original_index_still_matches_recorded_hash": true,
+  "original_snapshot_sha256": "28db67055c900b998420d8c8b37b98538e4a0f5c9733722f4e4e8bb356537604",
+  "original_tree_reference": "f2eee4223a1ccf5b0866944580df8fd5979575dd",
+  "recorded_file_count": 302
+}

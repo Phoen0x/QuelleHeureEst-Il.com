@@ -1,0 +1,92 @@
+[
+  {
+    "name": "pnpm-graph",
+    "command": [
+      "pnpm",
+      "list",
+      "--depth",
+      "Infinity",
+      "--json"
+    ],
+    "exit": 0,
+    "seconds": 0.436,
+    "wall_limit": 90
+  },
+  {
+    "name": "typescript",
+    "command": [
+      "pnpm",
+      "typecheck"
+    ],
+    "exit": 0,
+    "seconds": 1.585,
+    "wall_limit": 90
+  },
+  {
+    "name": "eslint",
+    "command": [
+      "pnpm",
+      "lint"
+    ],
+    "exit": 0,
+    "seconds": 2.01,
+    "wall_limit": 90
+  },
+  {
+    "name": "web-security",
+    "command": [
+      "node",
+      "--test",
+      "tests/pollen-card.test.mjs",
+      "tests/braces-hardening.test.mjs",
+      "tests/security/braces-depth.test.cjs",
+      "tests/security/vite-qh010.test.mjs"
+    ],
+    "exit": 0,
+    "seconds": 2.514,
+    "wall_limit": 120
+  },
+  {
+    "name": "vite-build",
+    "command": [
+      "pnpm",
+      "vite:build"
+    ],
+    "exit": 0,
+    "seconds": 1.179,
+    "wall_limit": 120
+  },
+  {
+    "name": "historical-preservation",
+    "command": [
+      "pnpm",
+      "check:dependencies"
+    ],
+    "exit": 1,
+    "seconds": 0.687,
+    "wall_limit": 90
+  },
+  {
+    "name": "pnpm-audit-full",
+    "command": [
+      "pnpm",
+      "audit",
+      "--json"
+    ],
+    "exit": 0,
+    "seconds": 0.605,
+    "wall_limit": 60
+  },
+  {
+    "name": "pnpm-audit-production",
+    "command": [
+      "pnpm",
+      "audit",
+      "--prod",
+      "--json"
+    ],
+    "exit": 0,
+    "seconds": 0.525,
+    "wall_limit": 60
+  }
+]

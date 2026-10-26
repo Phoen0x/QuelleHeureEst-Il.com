@@ -1,0 +1,41 @@
+"""FR : garde additive externe ; EN: external additive preservation guard."""
+import hashlib,json,subprocess,tomllib,sys
+from pathlib import Path
+w=Path(__file__).parent;r=Path(sys.argv[1]) if len(sys.argv)>1 else w/'candidate'
+before=json.loads((w/'original-before.json').read_text())
+for path,h in before.items():
+ assert (r/path).is_file(),path
+ if path!='Cargo.lock':assert hashlib.sha256((r/path).read_bytes()).hexdigest()==h,path
+def packages(p):return {x['name']+'@'+x['version']:x for x in tomllib.loads(p.read_text())['package']}
+h=r/'docs/history/unicode-qh011-experimental-20261026';old=packages(h/'Cargo.lock.txt');new=packages(r/'Cargo.lock')
+assert (len(old),len(new))==(504,509)
+out=old.keys()-new.keys();incoming=new.keys()-old.keys();assert (len(out),len(incoming))==(13,18)
+def edges(p,allp):
+ result=set()
+ for dep in p.get('dependencies',[]):
+  parts=dep.split();name=parts[0]
+  if len(parts)>1 and parts[1][0].isdigit():identity=name+'@'+parts[1]
+  else:
+   choices=[x for x in allp if x.split('@')[0]==name];assert len(choices)==1,(name,choices);identity=choices[0]
+  assert identity in allp,identity;result.add(identity)
+ return result
+changes=[]
+for key in old.keys()&new.keys():
+ a,b=old[key],new[key];assert {k:v for k,v in a.items() if k!='dependencies'}=={k:v for k,v in b.items() if k!='dependencies'},key
+ before_edges,after_edges=edges(a,old),edges(b,new)
+ removed,added=before_edges-after_edges,after_edges-before_edges
+ assert removed<=out,(key,removed-out)
+ assert added<=incoming,(key,added-incoming)
+ if removed or added:changes.append({'identity':key,'removed':sorted(removed),'added':sorted(added)})
+delta=json.loads((h/'dependency-delta.json').read_text())
+for key in delta['restored_exact_blocks']:assert old[key]==new[key],key
+for key in out:assert old[key] in delta['outgoing']
+assert not any(x.startswith('unic-') or x=='h2@0.3.27' for x in new)
+for key in ['tauri@2.11.6','tauri-runtime@2.11.3','tauri-build@2.6.3','tauri-codegen@2.6.3','tauri-macros@2.6.3','tokio@1.54.1','reqwest@0.12.28','h2@0.4.20','glib@0.18.5']:assert key in new,key
+for p,sha in json.loads((h/'SHA256.json').read_text()).items():assert hashlib.sha256((h/p).read_bytes()).hexdigest()==sha,p
+extra=subprocess.check_output(['git','-C',str(r),'ls-files','--others','--exclude-standard','-z']).decode().split('\0')[:-1]
+assert all(p.startswith('docs/history/unicode-qh011-experimental-20261026/') for p in extra),extra
+result={'tracked_original_files':len(before),'tracked_files_byte_identical':301,'only_tracked_change':'Cargo.lock','deleted':[],'outgoing':sorted(out),'incoming':sorted(incoming),'six_blocks_restored_exactly':True,'common_package_semantic_edge_changes':sorted(changes,key=lambda x:x['identity']),'all_historical_controllers_unchanged':True,'pnpm_and_platform_variants_byte_identical':True,'status':'PASS: structural conservation; not compatibility or security acceptance'}
+
+if len(sys.argv)==1:(w/'conservation-result.json').write_text(json.dumps(result,indent=2))
+print(json.dumps(result,indent=2))

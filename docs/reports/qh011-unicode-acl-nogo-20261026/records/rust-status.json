@@ -1,0 +1,90 @@
+[
+  {
+    "name": "cargo-tree",
+    "command": [
+      "cargo",
+      "tree",
+      "--workspace",
+      "--locked",
+      "--offline",
+      "--all-features",
+      "--target",
+      "all"
+    ],
+    "exit": 0,
+    "seconds": 0.249,
+    "wall_limit": 90
+  },
+  {
+    "name": "cargo-build-debug",
+    "command": [
+      "cargo",
+      "build",
+      "--workspace",
+      "--locked",
+      "--offline"
+    ],
+    "exit": 0,
+    "seconds": 49.262,
+    "wall_limit": 300
+  },
+  {
+    "name": "cargo-test-debug",
+    "command": [
+      "cargo",
+      "test",
+      "--workspace",
+      "--locked",
+      "--offline"
+    ],
+    "exit": 0,
+    "seconds": 6.361,
+    "wall_limit": 180
+  },
+  {
+    "name": "cargo-build-release",
+    "command": [
+      "cargo",
+      "build",
+      "--workspace",
+      "--release",
+      "--all-features",
+      "--locked",
+      "--offline"
+    ],
+    "exit": 0,
+    "seconds": 94.631,
+    "wall_limit": 300
+  },
+  {
+    "name": "cargo-test-release",
+    "command": [
+      "cargo",
+      "test",
+      "--workspace",
+      "--release",
+      "--all-features",
+      "--locked",
+      "--offline"
+    ],
+    "exit": 0,
+    "seconds": 32.365,
+    "wall_limit": 180
+  },
+  {
+    "name": "cargo-audit",
+    "command": [
+      "<AUDIT_TOOLS>/cargo-audit",
+      "audit",
+      "--deny",
+      "warnings",
+      "--no-fetch",
+      "--db",
+      "<DIAGNOSTIC1>/advisory-db",
+      "--json"
+    ],
+    "exit": 1,
+    "seconds": 0.282,
+    "wall_limit": 90
+  }
+]

@@ -1,0 +1,8 @@
+{
+  "project_commit": "f2eee4223a1ccf5b0866944580df8fd5979575dd",
+  "sha256": {
+    ".cargo/config.toml": "2925ea66a49f317cbd3d89b3a32eb82a27ec374385025fc59927ea996249dfa0",
+    "vendor/glib-0.18.5/Cargo.toml": "bcd52d812b4c111864ae8e88ba6c0a8311eb0cf781b5e81634950b4619592132",
+    "vendor/glib-0.18.5/src/variant_iter.rs": "a0f5ee8acb8faa089bcdfbc9a57372609fce7654026ccef7d9a224d05a654ccc"
+  }
+}

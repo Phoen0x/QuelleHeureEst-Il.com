@@ -1,0 +1,7 @@
+[workspace]
+members = ["src-tauri"]
+resolver = "2"
+
+# FR// Conserver la crate complète sans compiler ses tests et exemples comme membres applicatifs.
+# EN// Preserve the complete crate without making its tests and examples application members.
+exclude = ["vendor/glib-0.18.5"]

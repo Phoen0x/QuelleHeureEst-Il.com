@@ -1,0 +1,32 @@
+Lockfile is up to date, resolution step is skipped
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Packages: +218
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Progress: resolved 218, reused 218, downloaded 0, added 218, done
+
+dependencies:
++ lucide-react 0.344.0
++ react 18.3.1
++ react-dom 18.3.1
+
+devDependencies:
++ @eslint/js 9.39.4
++ @tauri-apps/api 2.11.0
++ @tauri-apps/cli 2.11.2
++ @types/react 18.3.30
++ @types/react-dom 18.3.7
++ @vitejs/plugin-react 6.0.2
++ autoprefixer 10.5.0
++ esbuild 0.28.1
++ eslint 9.39.4
++ eslint-plugin-react-hooks 5.2.0
++ eslint-plugin-react-refresh 0.4.26
++ globals 15.15.0
++ postcss 8.5.25
++ rollup 4.61.1
++ tailwindcss 3.4.19
++ typescript 5.9.3
++ typescript-eslint 8.60.1
++ vite 8.1.6
+
+Done in 1.7s

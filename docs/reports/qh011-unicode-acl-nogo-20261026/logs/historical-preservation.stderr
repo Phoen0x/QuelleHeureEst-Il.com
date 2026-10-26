@@ -1,0 +1,31 @@
+Traceback (most recent call last):
+  File "<EXPERIMENT>/candidate/Scripts/check-glib-qh011.py", line 215, in <module>
+    main()
+  File "<EXPERIMENT>/candidate/Scripts/check-glib-qh011.py", line 134, in main
+    assert read('Cargo.lock') == expected, 'Only the application GLib dev-test edge may change'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Only the application GLib dev-test edge may change
+node:child_process:981
+    throw err;
+    ^
+
+Error: Command failed: python3 <EXPERIMENT>/candidate/Scripts/check-glib-qh011.py
+    at genericNodeError (node:internal/errors:985:15)
+    at wrappedFn (node:internal/errors:539:14)
+    at checkExecSyncError (node:child_process:942:11)
+    at execFileSync (node:child_process:978:15)
+    at Object.<anonymous> (<EXPERIMENT>/candidate/docs/validation/rust-178/check-ported-graph.cjs:4:1)
+    at Module._compile (node:internal/modules/cjs/loader:1872:14)
+    at Object..js (node:internal/modules/cjs/loader:2003:10)
+    at Module.load (node:internal/modules/cjs/loader:1594:32)
+    at Module._load (node:internal/modules/cjs/loader:1396:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19) {
+  status: 1,
+  signal: null,
+  output: [ null, null, null ],
+  pid: 12271,
+  stdout: null,
+  stderr: null
+}
+
+Node.js v24.19.0

@@ -1,0 +1,22 @@
+   Compiling glib v0.18.5 (<EXPERIMENT>/candidate/vendor/glib-0.18.5)
+   Compiling quelleheureest v0.0.1 (<EXPERIMENT>/candidate/src-tauri)
+   Compiling gio v0.18.4
+   Compiling cairo-rs v0.18.5
+   Compiling atk v0.18.2
+   Compiling javascriptcore-rs v1.1.2
+warning: `glib` (lib) generated 34 warnings (run `cargo fix --lib -p glib` to apply 34 suggestions)
+   Compiling pango v0.18.3
+   Compiling gdk-pixbuf v0.18.5
+   Compiling soup3 v0.5.0
+   Compiling gdk v0.18.2
+   Compiling gtk v0.18.2
+   Compiling gdkx11 v0.18.2
+   Compiling webkit2gtk v2.0.2
+   Compiling tao v0.35.3
+   Compiling muda v0.19.3
+   Compiling tauri-runtime v2.11.3
+   Compiling wry v0.55.1
+   Compiling tauri-runtime-wry v2.11.4
+   Compiling tauri v2.11.6
+warning: `quelleheureest` (bin "quelleheureest") generated 8 warnings (run `cargo fix --bin "quelleheureest" -p quelleheureest` to apply 4 suggestions)
+    Finished `release` profile [optimized] target(s) in 1m 34s

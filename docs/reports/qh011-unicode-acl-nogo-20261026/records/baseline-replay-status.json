@@ -1,0 +1,38 @@
+[
+  {
+    "binary": "qualification-old",
+    "sha256": "c90463d53ce0450caf6147b101d66f76bc88ac03ba42902db98c249b405935d4",
+    "exit": 0,
+    "records": 70,
+    "identical_to_archived_results": true,
+    "seconds": 0.428,
+    "wall_limit": 20,
+    "cpu_limit": 10,
+    "address_space": 1073741824,
+    "note": "Replayed cached executable from previous diagnostic; not newly compiled against candidate workspace."
+  },
+  {
+    "binary": "qualification-new",
+    "sha256": "91e874b4a33c584bba8b2b59d1c20a8b1b30b21dcbb73cd0b81cb16dfc411a00",
+    "exit": 0,
+    "records": 70,
+    "identical_to_archived_results": true,
+    "seconds": 0.437,
+    "wall_limit": 20,
+    "cpu_limit": 10,
+    "address_space": 1073741824,
+    "note": "Replayed cached executable from previous diagnostic; not newly compiled against candidate workspace."
+  },
+  {
+    "binary": "qualification-raw",
+    "sha256": "960502e3ad6e1adf81803f9bb248d9bb26c80ef68c215d82dd5fcad9db0e32e2",
+    "exit": 0,
+    "records": 678,
+    "identical_to_archived_results": true,
+    "seconds": 4.152,
+    "wall_limit": 20,
+    "cpu_limit": 10,
+    "address_space": 1073741824,
+    "note": "Replayed cached executable from previous diagnostic; not newly compiled against candidate workspace."
+  }
+]

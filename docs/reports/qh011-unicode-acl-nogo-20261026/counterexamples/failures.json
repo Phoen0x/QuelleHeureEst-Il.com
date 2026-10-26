@@ -1,0 +1,144 @@
+{
+  "classification": "archival synthesis from original fixtures, test source and original failing stdout/stderr; not a newly executed probe",
+  "dynamic": {
+    "decision_provenance": "is_some inferred from the recorded failing assert!(access.is_none()); no separate JSON trace of this test was emitted",
+    "fixture": {
+      "caps": [
+        {
+          "identifier": "rule",
+          "local": false,
+          "permissions": [
+            "allow-narrow"
+          ],
+          "remote": {
+            "urls": [
+              "https://example.invalid/:a𑼀"
+            ]
+          },
+          "windows": [
+            "main"
+          ]
+        }
+      ],
+      "command": "probe",
+      "id": "kawi-partial",
+      "local": false,
+      "target": "linux",
+      "url": "https://example.invalid/value",
+      "webview": "view",
+      "window": "main"
+    },
+    "historical_allowed": false,
+    "initial_fixture": {
+      "caps": [],
+      "command": "probe",
+      "id": "no-capabilities",
+      "local": false,
+      "target": "linux",
+      "url": "https://example.invalid/value",
+      "webview": "view",
+      "window": "main"
+    },
+    "initial_manifests": "four synthetic permissions from envelope() in archived lib.rs; no_manifest explicitly false",
+    "initial_version": "legacy-urlpattern-0.3",
+    "operation": "RuntimeAuthority::add_capability(serialized caps[0])",
+    "prototype_added_rule_allowed": true,
+    "real_application_exploit_demonstrated": false,
+    "test": "acceptance_raw_dynamic_api_cannot_bypass_construction_policy"
+  },
+  "functional": {
+    "fixture": {
+      "caps": [
+        {
+          "identifier": "rule",
+          "local": false,
+          "permissions": [
+            "allow-narrow"
+          ],
+          "remote": {
+            "urls": [
+              "https://example.invalid/:゛"
+            ]
+          },
+          "windows": [
+            "main"
+          ]
+        }
+      ],
+      "command": "probe",
+      "id": "id-not-xid",
+      "local": false,
+      "target": "linux",
+      "url": "https://example.invalid/value",
+      "webview": "view",
+      "window": "main"
+    },
+    "historical_allowed": true,
+    "prototype_result": "HistoricalRemoteUnproven",
+    "test": "acceptance_historical_u309b_remains_available"
+  },
+  "scopes": {
+    "fixture": {
+      "caps": [
+        {
+          "identifier": "a",
+          "local": false,
+          "permissions": [
+            "allow-narrow"
+          ],
+          "remote": {
+            "urls": [
+              "https://example.invalid/*"
+            ]
+          },
+          "windows": [
+            "main"
+          ]
+        },
+        {
+          "identifier": "b",
+          "local": false,
+          "permissions": [
+            "allow-wide"
+          ],
+          "remote": {
+            "urls": [
+              "https://example.invalid/:a𑼀"
+            ]
+          },
+          "windows": [
+            "main"
+          ]
+        }
+      ],
+      "command": "probe",
+      "id": "scope-widening-False",
+      "local": false,
+      "target": "linux",
+      "url": "https://example.invalid/value",
+      "webview": "view",
+      "window": "main"
+    },
+    "new_allowed": true,
+    "new_entries": [
+      {
+        "capability": "a",
+        "permission": "allow-narrow",
+        "scope_id": 1
+      },
+      {
+        "capability": "b",
+        "permission": "allow-wide",
+        "scope_id": 2
+      }
+    ],
+    "old_allowed": true,
+    "old_entries": [
+      {
+        "capability": "a",
+        "permission": "allow-narrow",
+        "scope_id": 1
+      }
+    ]
+  }
+}

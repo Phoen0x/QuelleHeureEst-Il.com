@@ -1,0 +1,28 @@
+
+running 17 tests
+test tests::acceptance_historical_u309b_remains_available ... FAILED
+test tests::acceptance_raw_dynamic_api_cannot_bypass_construction_policy ... FAILED
+test tests::any_scope_change_invalidates_review ... ok
+test tests::control_patterns_require_exact_review ... ok
+test tests::deny_is_not_silently_discarded ... ok
+test tests::fixture_matrix_real_resolver_static_cases ... ok
+test tests::global_scope_change_invalidates_review ... ok
+test tests::historical_known_expansion_is_controlled_error ... ok
+test tests::historical_local_configuration_preserved ... ok
+test tests::historical_local_configuration_rejects_remote_origin ... ok
+test tests::malformed_configuration_is_error ... ok
+test tests::malformed_pattern_is_error_without_panic ... ok
+test tests::modern_configuration_requires_explicit_snapshot ... ok
+test tests::modern_unicode_is_supported_with_fixture_review ... ok
+test tests::provenance_labels_platform_changes_invalidate_review ... ok
+test tests::scopes_and_provenance_are_observed_beyond_boolean ... ok
+test tests::unknown_version_is_error ... ok
+
+failures:
+
+failures:
+    tests::acceptance_historical_u309b_remains_available
+    tests::acceptance_raw_dynamic_api_cannot_bypass_construction_policy
+
+test result: FAILED. 15 passed; 2 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.65s
+
