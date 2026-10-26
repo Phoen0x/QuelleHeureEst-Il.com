@@ -1,0 +1,113 @@
+{
+  "classification": "Documentary checks performed during archival; no Rust/Web/build/audit/CI rerun",
+  "connector_limit": "Connector exposes no configurable cancellation deadline; sequential mutations, no blind retry; refs read before and after. No claim that an interface timeout cancels a remote operation.",
+  "counts_and_exit_codes": "Checked by verify.py against original logs/statuses; 13 runtime PASS and four separate compilation probes",
+  "external_links": [],
+  "links": [
+    {
+      "source": "docs/ai/FAISABILITE_QH011_ADMISSION_ATOMIQUE_TAURI_2026-10-26.md",
+      "target": "docs/reports/qh011-atomic-admission-20261026/original/REPORT.md"
+    },
+    {
+      "source": "docs/ai/FAISABILITE_QH011_ADMISSION_ATOMIQUE_TAURI_2026-10-26.md",
+      "target": "docs/reports/qh011-atomic-admission-20261026/NOTICE.md"
+    },
+    {
+      "source": "docs/ai/FAISABILITE_QH011_ADMISSION_ATOMIQUE_TAURI_2026-10-26.md",
+      "target": "docs/reports/qh011-atomic-admission-20261026/logs/tests.stdout"
+    },
+    {
+      "source": "docs/ai/FAISABILITE_QH011_ADMISSION_ATOMIQUE_TAURI_2026-10-26.md",
+      "target": "docs/reports/qh011-atomic-admission-20261026/VALIDATION.json"
+    },
+    {
+      "source": "docs/ai/FAISABILITE_QH011_ADMISSION_ATOMIQUE_TAURI_2026-10-26.md",
+      "target": "docs/reports/qh011-atomic-admission-20261026/PUBLICATION.json"
+    },
+    {
+      "source": "docs/ai/README.md",
+      "target": "docs/ai/FAISABILITE_QH011_ADMISSION_ATOMIQUE_TAURI_2026-10-26.md"
+    },
+    {
+      "source": "docs/ai/README.md",
+      "target": "docs/reports/qh011-atomic-admission-20261026/NOTICE.md"
+    },
+    {
+      "source": "docs/ai/README.md",
+      "target": "docs/ai/FAISABILITE_QH011_ADMISSION_ATOMIQUE_TAURI_2026-10-26.md"
+    },
+    {
+      "source": "docs/ai/README.md",
+      "target": "docs/reports/qh011-atomic-admission-20261026/NOTICE.md"
+    },
+    {
+      "source": "docs/ai/JOURNAL_DE_BORD_TECHNIQUE.md",
+      "target": "docs/ai/FAISABILITE_QH011_ADMISSION_ATOMIQUE_TAURI_2026-10-26.md"
+    },
+    {
+      "source": "docs/ai/JOURNAL_DE_BORD_TECHNIQUE.md",
+      "target": "docs/reports/qh011-atomic-admission-20261026/NOTICE.md"
+    },
+    {
+      "source": "docs/reports/qh011-atomic-admission-20261026/NOTICE.md",
+      "target": "docs/ai/FAISABILITE_QH011_ADMISSION_ATOMIQUE_TAURI_2026-10-26.md"
+    },
+    {
+      "source": "docs/reports/qh011-atomic-admission-20261026/NOTICE.md",
+      "target": "docs/reports/qh011-atomic-admission-20261026/original/REPORT.md"
+    },
+    {
+      "source": "docs/reports/qh011-atomic-admission-20261026/NOTICE.md",
+      "target": "docs/reports/qh011-atomic-admission-20261026/original/DESIGN.md"
+    },
+    {
+      "source": "docs/reports/qh011-atomic-admission-20261026/NOTICE.md",
+      "target": "docs/reports/qh011-atomic-admission-20261026/source-inventory.json"
+    },
+    {
+      "source": "docs/reports/qh011-atomic-admission-20261026/NOTICE.md",
+      "target": "docs/reports/qh011-atomic-admission-20261026/archive-provenance.json"
+    },
+    {
+      "source": "docs/reports/qh011-atomic-admission-20261026/NOTICE.md",
+      "target": "docs/reports/qh011-atomic-admission-20261026/MANIFEST.json"
+    },
+    {
+      "source": "docs/reports/qh011-atomic-admission-20261026/NOTICE.md",
+      "target": "docs/reports/qh011-atomic-admission-20261026/PUBLICATION.json"
+    },
+    {
+      "source": "docs/reports/qh011-atomic-admission-20261026/NOTICE.md",
+      "target": "docs/reports/qh011-atomic-admission-20261026/VALIDATION.json"
+    }
+  ],
+  "new_markdown_links": "PASS",
+  "original_checkout": "302/302 tracked hashes and index unchanged, git status empty",
+  "preservation": {
+    "deleted": 0,
+    "modified_byte_prefixes": [
+      "docs/ai/README.md",
+      "docs/ai/JOURNAL_DE_BORD_TECHNIQUE.md"
+    ],
+    "other_parent_blobs_and_modes": 261
+  },
+  "privacy": {
+    "manual_scope": "Selected synthetic sources, records, notices and original reports reviewed; no credentials, personal data, private conversations, binaries, dumps or network configuration",
+    "pattern_scan": "PASS",
+    "transformed_logs": "Four explicit generic path substitutions, no removed diagnostic lines; hashes before and after in provenance",
+    "untransformed_generic_machine_paths": [
+      "docs/reports/qh011-atomic-admission-20261026/probe/.cargo/config.toml.txt"
+    ]
+  },
+  "python_syntax": "PASS ast.parse verify.py; no Rust source compiled",
+  "redistribution": "No complete dependency copies. Narrow Tauri experimental differences and original added module are inert text; original MIT/Apache notices retained. Repository licenses unchanged.",
+  "shell_syntax": {
+    "blocks": [
+      "docs/reports/qh011-atomic-admission-20261026/NOTICE.md",
+      "docs/reports/qh011-atomic-admission-20261026/NOTICE.md"
+    ],
+    "status": "PASS bash -n only"
+  },
+  "source_manifest": "179/179 original hashes match, no missing files",
+  "verdict": "GO under conditions for later atomic-admission prototype only; Unicode NO-GO with two blocking failures unchanged; QH-011/T-003 open"
+}

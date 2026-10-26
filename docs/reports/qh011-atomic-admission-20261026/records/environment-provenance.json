@@ -1,0 +1,404 @@
+{
+  "classification": "archival extraction from prior Cargo metadata, report and lock; no build or version probe rerun",
+  "glib_source": "PR #183 f2eee4223a1ccf5b0866944580df8fd5979575dd vendor/glib-0.18.5, explicit Cargo paths configuration; not modified",
+  "metadata_original_sha256": "34b10964be3f93c7b9b434104bedd6ed7754fac0560609e212389b058a4fed7c",
+  "packages": [
+    {
+      "features_available": {
+        "common-controls-v6": [
+          "tray-icon?/common-controls-v6",
+          "muda/common-controls-v6",
+          "tauri-runtime-wry?/common-controls-v6"
+        ],
+        "compression": [
+          "tauri-macros/compression",
+          "tauri-utils/compression"
+        ],
+        "config-json5": [
+          "tauri-macros/config-json5"
+        ],
+        "config-toml": [
+          "tauri-macros/config-toml"
+        ],
+        "custom-protocol": [
+          "tauri-macros/custom-protocol"
+        ],
+        "data-url": [
+          "dep:data-url"
+        ],
+        "dbus": [
+          "tauri-runtime-wry?/dbus"
+        ],
+        "default": [
+          "wry",
+          "compression",
+          "common-controls-v6",
+          "dynamic-acl",
+          "x11",
+          "dbus"
+        ],
+        "devtools": [
+          "tauri-runtime/devtools",
+          "tauri-runtime-wry?/devtools"
+        ],
+        "dynamic-acl": [],
+        "http-range": [
+          "dep:http-range"
+        ],
+        "image": [
+          "dep:image"
+        ],
+        "image-ico": [
+          "image/ico"
+        ],
+        "image-png": [
+          "image/png"
+        ],
+        "isolation": [
+          "tauri-utils/isolation",
+          "tauri-macros/isolation",
+          "uuid"
+        ],
+        "linux-libxdo": [
+          "tray-icon/libxdo",
+          "muda/libxdo"
+        ],
+        "macos-private-api": [
+          "tauri-runtime/macos-private-api",
+          "tauri-runtime-wry?/macos-private-api"
+        ],
+        "macos-proxy": [
+          "tauri-runtime-wry?/macos-proxy"
+        ],
+        "native-tls": [
+          "reqwest/native-tls"
+        ],
+        "native-tls-vendored": [
+          "reqwest/native-tls-vendored"
+        ],
+        "objc-exception": [],
+        "process-relaunch-dangerous-allow-symlink-macos": [
+          "tauri-utils/process-relaunch-dangerous-allow-symlink-macos"
+        ],
+        "protocol-asset": [
+          "http-range"
+        ],
+        "rustls-tls": [
+          "reqwest/rustls-no-provider",
+          "dep:rustls"
+        ],
+        "specta": [
+          "dep:specta"
+        ],
+        "tauri-runtime-wry": [
+          "dep:tauri-runtime-wry"
+        ],
+        "test": [],
+        "tracing": [
+          "dep:tracing",
+          "tauri-macros/tracing",
+          "tauri-runtime-wry?/tracing"
+        ],
+        "tray-icon": [
+          "dep:tray-icon"
+        ],
+        "unstable": [
+          "tauri-runtime-wry?/unstable"
+        ],
+        "uuid": [
+          "dep:uuid"
+        ],
+        "webkit2gtk": [
+          "dep:webkit2gtk"
+        ],
+        "webview-data-url": [
+          "data-url",
+          "tauri-utils/html-manipulation-2"
+        ],
+        "webview2-com": [
+          "dep:webview2-com"
+        ],
+        "wry": [
+          "webview2-com",
+          "webkit2gtk",
+          "tauri-runtime-wry"
+        ],
+        "x11": [
+          "tauri-runtime-wry?/x11"
+        ]
+      },
+      "manifest_path": "<EXPERIMENT>/vendor/tauri-2.11.6/Cargo.toml",
+      "name": "tauri",
+      "source": null,
+      "version": "2.11.6"
+    },
+    {
+      "features_available": {
+        "devtools": [],
+        "macos-private-api": []
+      },
+      "manifest_path": "<CARGO_HOME>/registry/src/index.crates.io-1949cf8c6b5b557f/tauri-runtime-2.11.3/Cargo.toml",
+      "name": "tauri-runtime",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "version": "2.11.3"
+    },
+    {
+      "features_available": {
+        "aes-gcm": [
+          "dep:aes-gcm"
+        ],
+        "brotli": [
+          "dep:brotli"
+        ],
+        "build": [
+          "proc-macro2",
+          "quote",
+          "cargo_metadata",
+          "schema",
+          "swift-rs",
+          "html-manipulation"
+        ],
+        "build-2": [
+          "proc-macro2",
+          "quote",
+          "cargo_metadata",
+          "schema",
+          "swift-rs",
+          "html-manipulation-2"
+        ],
+        "cargo_metadata": [
+          "dep:cargo_metadata"
+        ],
+        "compression": [
+          "brotli"
+        ],
+        "config-json5": [
+          "json5"
+        ],
+        "config-toml": [],
+        "getrandom": [
+          "dep:getrandom"
+        ],
+        "html-manipulation": [
+          "dep:html5ever",
+          "dep:kuchiki"
+        ],
+        "html-manipulation-2": [
+          "dep:dom_query"
+        ],
+        "isolation": [
+          "aes-gcm",
+          "getrandom",
+          "serialize-to-javascript"
+        ],
+        "json5": [
+          "dep:json5"
+        ],
+        "proc-macro2": [
+          "dep:proc-macro2"
+        ],
+        "process-relaunch-dangerous-allow-symlink-macos": [],
+        "quote": [
+          "dep:quote"
+        ],
+        "resources": [
+          "walkdir"
+        ],
+        "schema": [
+          "schemars"
+        ],
+        "schemars": [
+          "dep:schemars"
+        ],
+        "serialize-to-javascript": [
+          "dep:serialize-to-javascript"
+        ],
+        "swift-rs": [
+          "dep:swift-rs"
+        ],
+        "walkdir": [
+          "dep:walkdir"
+        ]
+      },
+      "manifest_path": "<CARGO_HOME>/registry/src/index.crates.io-1949cf8c6b5b557f/tauri-utils-2.9.3/Cargo.toml",
+      "name": "tauri-utils",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "version": "2.9.3"
+    },
+    {
+      "features_available": {
+        "codegen": [
+          "tauri-codegen",
+          "quote"
+        ],
+        "config-json": [],
+        "config-json5": [
+          "tauri-utils/config-json5"
+        ],
+        "config-toml": [
+          "tauri-utils/config-toml"
+        ],
+        "default": [
+          "config-json"
+        ],
+        "isolation": [
+          "tauri-codegen/isolation",
+          "tauri-utils/isolation"
+        ],
+        "quote": [
+          "dep:quote"
+        ],
+        "tauri-codegen": [
+          "dep:tauri-codegen"
+        ]
+      },
+      "manifest_path": "<CARGO_HOME>/registry/src/index.crates.io-1949cf8c6b5b557f/tauri-build-2.6.3/Cargo.toml",
+      "name": "tauri-build",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "version": "2.6.3"
+    },
+    {
+      "features_available": {
+        "brotli": [
+          "dep:brotli"
+        ],
+        "compression": [
+          "brotli",
+          "tauri-utils/compression"
+        ],
+        "config-json5": [
+          "tauri-utils/config-json5"
+        ],
+        "config-toml": [
+          "tauri-utils/config-toml"
+        ],
+        "isolation": [
+          "tauri-utils/isolation"
+        ]
+      },
+      "manifest_path": "<CARGO_HOME>/registry/src/index.crates.io-1949cf8c6b5b557f/tauri-codegen-2.6.3/Cargo.toml",
+      "name": "tauri-codegen",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "version": "2.6.3"
+    },
+    {
+      "features_available": {
+        "compression": [
+          "tauri-codegen/compression"
+        ],
+        "config-json5": [
+          "tauri-codegen/config-json5",
+          "tauri-utils/config-json5"
+        ],
+        "config-toml": [
+          "tauri-codegen/config-toml",
+          "tauri-utils/config-toml"
+        ],
+        "custom-protocol": [],
+        "isolation": [
+          "tauri-codegen/isolation"
+        ],
+        "tracing": []
+      },
+      "manifest_path": "<CARGO_HOME>/registry/src/index.crates.io-1949cf8c6b5b557f/tauri-macros-2.6.3/Cargo.toml",
+      "name": "tauri-macros",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "version": "2.6.3"
+    },
+    {
+      "features_available": {
+        "compiletests": [],
+        "default": [
+          "gio"
+        ],
+        "gio": [
+          "gio_ffi"
+        ],
+        "gio_ffi": [
+          "dep:gio_ffi"
+        ],
+        "log": [
+          "rs-log"
+        ],
+        "log_macros": [
+          "log"
+        ],
+        "rs-log": [
+          "dep:rs-log"
+        ],
+        "v2_58": [
+          "ffi/v2_58",
+          "gobject_ffi/v2_58"
+        ],
+        "v2_60": [
+          "v2_58",
+          "ffi/v2_60"
+        ],
+        "v2_62": [
+          "v2_60",
+          "ffi/v2_62",
+          "gobject_ffi/v2_62"
+        ],
+        "v2_64": [
+          "v2_62",
+          "ffi/v2_64"
+        ],
+        "v2_66": [
+          "v2_64",
+          "ffi/v2_66",
+          "gobject_ffi/v2_66"
+        ],
+        "v2_68": [
+          "v2_66",
+          "ffi/v2_68",
+          "gobject_ffi/v2_68"
+        ],
+        "v2_70": [
+          "v2_68",
+          "ffi/v2_70",
+          "gobject_ffi/v2_70"
+        ],
+        "v2_72": [
+          "v2_70",
+          "ffi/v2_72",
+          "gobject_ffi/v2_72"
+        ],
+        "v2_74": [
+          "v2_72",
+          "ffi/v2_74",
+          "gobject_ffi/v2_74"
+        ],
+        "v2_76": [
+          "v2_74",
+          "ffi/v2_76",
+          "gobject_ffi/v2_76"
+        ],
+        "v2_78": [
+          "v2_76",
+          "ffi/v2_78",
+          "gobject_ffi/v2_78"
+        ]
+      },
+      "manifest_path": "<PROJECT>/vendor/glib-0.18.5/Cargo.toml",
+      "name": "glib",
+      "source": null,
+      "version": "0.18.5"
+    },
+    {
+      "features_available": {},
+      "manifest_path": "<CARGO_HOME>/registry/src/index.crates.io-1949cf8c6b5b557f/urlpattern-0.3.0/Cargo.toml",
+      "name": "urlpattern",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "version": "0.3.0"
+    }
+  ],
+  "reported_environment": {
+    "cargo": "1.99.1",
+    "os": "Debian 13.6 x86_64",
+    "rustc": "1.99.1"
+  },
+  "source_vcs": {
+    "tauri-2.11.6": "9452ddee5ebefd9b678a94ff003521379df6c9ae",
+    "tauri-utils-runtime-build-codegen-macros": "6f6ab1207bb3923c2721fbc67d2fdb1c8deb0c7a"
+  }
+}

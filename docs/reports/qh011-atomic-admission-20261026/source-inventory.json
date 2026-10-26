@@ -1,0 +1,1521 @@
+{
+  "files": [
+    {
+      "bytes": 1302,
+      "omission_reason": null,
+      "original_bytes_published": true,
+      "published_as": [
+        "original/DESIGN.md"
+      ],
+      "sha256": "91acf882c28aa6256807d5f0d1435ab56a43b73cbed75838571e2c6c6bd7f9e2",
+      "source": "DESIGN.md"
+    },
+    {
+      "bytes": 18134,
+      "omission_reason": null,
+      "original_bytes_published": true,
+      "published_as": [
+        "original/REPORT.md"
+      ],
+      "sha256": "81e686f30ce266c70bcd1a50df1af29d5eaf161c2a3cba1c7ebf63f1aeeee579",
+      "source": "REPORT.md"
+    },
+    {
+      "bytes": 2,
+      "omission_reason": null,
+      "original_bytes_published": true,
+      "published_as": [
+        "records/build.exit"
+      ],
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "source": "build.exit"
+    },
+    {
+      "bytes": 453834,
+      "omission_reason": "full Cargo compiler/metadata records or unrelated original checkout inventory omitted; relevant extracts and digests retained",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "bd50971a1e06decf752a882b191afc3bf596d1652247081925ddbe14e77cbb5a",
+      "source": "build.jsonl"
+    },
+    {
+      "bytes": 263,
+      "omission_reason": null,
+      "original_bytes_published": false,
+      "published_as": [
+        "logs/build.stderr"
+      ],
+      "sha256": "2502d7d40e0b5c84d2b3a8546a7c28cd5029bd41fa11d475f994eec9621a16f8",
+      "source": "build.stderr"
+    },
+    {
+      "bytes": 318,
+      "omission_reason": null,
+      "original_bytes_published": true,
+      "published_as": [
+        "records/compile-probes.json"
+      ],
+      "sha256": "2f5ed1b064ab977d4adf9c147254cfd6f6a43da22248d2abaff1ac433eb35f09",
+      "source": "compile-probes.json"
+    },
+    {
+      "bytes": 33947,
+      "omission_reason": null,
+      "original_bytes_published": false,
+      "published_as": [
+        "logs/context_still_open.stderr"
+      ],
+      "sha256": "6899c7a113dd34e9cc7a752377b6230eac09e8b6a9fde8abf7377bebd5c23a44",
+      "source": "context_still_open.stderr"
+    },
+    {
+      "bytes": 0,
+      "omission_reason": null,
+      "original_bytes_published": true,
+      "published_as": [
+        "logs/context_still_open.stdout"
+      ],
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "context_still_open.stdout"
+    },
+    {
+      "bytes": 34235,
+      "omission_reason": null,
+      "original_bytes_published": false,
+      "published_as": [
+        "logs/direct_fence.stderr"
+      ],
+      "sha256": "30606a5a99d610ead1cae1a191e6215d0a28e4ec239173331b80b19c1640f5df",
+      "source": "direct_fence.stderr"
+    },
+    {
+      "bytes": 0,
+      "omission_reason": null,
+      "original_bytes_published": true,
+      "published_as": [
+        "logs/direct_fence.stdout"
+      ],
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "direct_fence.stdout"
+    },
+    {
+      "bytes": 35386,
+      "omission_reason": null,
+      "original_bytes_published": false,
+      "published_as": [
+        "logs/forge_token.stderr"
+      ],
+      "sha256": "5c3b6175ce1978a1e0a64205169b3128b77eaaddb39659736f99db2240a92c83",
+      "source": "forge_token.stderr"
+    },
+    {
+      "bytes": 0,
+      "omission_reason": null,
+      "original_bytes_published": true,
+      "published_as": [
+        "logs/forge_token.stdout"
+      ],
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "forge_token.stdout"
+    },
+    {
+      "bytes": 778,
+      "omission_reason": null,
+      "original_bytes_published": true,
+      "published_as": [
+        "records/github-refs-final.json"
+      ],
+      "sha256": "ac3e0cf58c55822d405db66e9fafb64c1bd1e0c1a1e713eb50d7cbab93efedbb",
+      "source": "github-refs-final.json"
+    },
+    {
+      "bytes": 208,
+      "omission_reason": null,
+      "original_bytes_published": true,
+      "published_as": [
+        "records/local-tauri-changes.json"
+      ],
+      "sha256": "e47885b49ae9edc245f4b198e16fa5b71b78202a49521ba59a1ae744fcbd2ed0",
+      "source": "local-tauri-changes.json"
+    },
+    {
+      "bytes": 1555,
+      "omission_reason": null,
+      "original_bytes_published": true,
+      "published_as": [
+        "experimental/local-tauri.diff.txt"
+      ],
+      "sha256": "c7c27cfe81e268b4601640e40e2bed732128b8770352420f2b2d13af33715cbc",
+      "source": "local-tauri.diff"
+    },
+    {
+      "bytes": 33955,
+      "omission_reason": null,
+      "original_bytes_published": false,
+      "published_as": [
+        "logs/manager_fence.stderr"
+      ],
+      "sha256": "6b487f1a36c0dc24c8f5a04c91b6d4568a1a67932fdf6d80226179c3c0b541f6",
+      "source": "manager_fence.stderr"
+    },
+    {
+      "bytes": 0,
+      "omission_reason": null,
+      "original_bytes_published": true,
+      "published_as": [
+        "logs/manager_fence.stdout"
+      ],
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "manager_fence.stdout"
+    },
+    {
+      "bytes": 1972848,
+      "omission_reason": null,
+      "original_bytes_published": false,
+      "published_as": [
+        "records/environment-provenance.json",
+        "records/resolved-graph.json"
+      ],
+      "sha256": "34b10964be3f93c7b9b434104bedd6ed7754fac0560609e212389b058a4fed7c",
+      "source": "metadata.json"
+    },
+    {
+      "bytes": 0,
+      "omission_reason": null,
+      "original_bytes_published": true,
+      "published_as": [
+        "logs/metadata.stderr"
+      ],
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "metadata.stderr"
+    },
+    {
+      "bytes": 23060,
+      "omission_reason": null,
+      "original_bytes_published": true,
+      "published_as": [
+        "records/observations-before-after.json"
+      ],
+      "sha256": "0fa08faa3445df49bdb86c812756559126353110a9d69d49a044edf77e3cd4a1",
+      "source": "observations-before-after.json"
+    },
+    {
+      "bytes": 330,
+      "omission_reason": null,
+      "original_bytes_published": true,
+      "published_as": [
+        "records/original-after-verification.json"
+      ],
+      "sha256": "3f7d938180e5dfede596922c5c7d2067a629a57a739a1b6ec9737f7cbd75b617",
+      "source": "original-after-verification.json"
+    },
+    {
+      "bytes": 33710,
+      "omission_reason": "full Cargo compiler/metadata records or unrelated original checkout inventory omitted; relevant extracts and digests retained",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "28db67055c900b998420d8c8b37b98538e4a0f5c9733722f4e4e8bb356537604",
+      "source": "original-before.json"
+    },
+    {
+      "bytes": 64,
+      "omission_reason": null,
+      "original_bytes_published": true,
+      "published_as": [
+        "records/original-index-before.sha256"
+      ],
+      "sha256": "6a58a8ff1d91551e381e4e95112581134b9bccf1776437bd9ca0e6bb10f1c9ee",
+      "source": "original-index-before.sha256"
+    },
+    {
+      "bytes": 98,
+      "omission_reason": null,
+      "original_bytes_published": true,
+      "published_as": [
+        "probe/.cargo/config.toml.txt"
+      ],
+      "sha256": "c2106aa39ee5455e95bbf2c7bb5673328d4c159ddd1bb261c67343ebd7532b0f",
+      "source": "probe/.cargo/config.toml"
+    },
+    {
+      "bytes": 95137,
+      "omission_reason": null,
+      "original_bytes_published": true,
+      "published_as": [
+        "probe/Cargo.lock.txt"
+      ],
+      "sha256": "bc81ed13e121bf5e75aeb8b732fb42810c141d7a0ae94b6b9e8d173128f9eae8",
+      "source": "probe/Cargo.lock"
+    },
+    {
+      "bytes": 215,
+      "omission_reason": null,
+      "original_bytes_published": true,
+      "published_as": [
+        "probe/Cargo.toml.txt"
+      ],
+      "sha256": "c8ddac17ef60c9de9685e907fcbb2b425ca00f2b18ed4de576f63477abdb1053",
+      "source": "probe/Cargo.toml"
+    },
+    {
+      "bytes": 250,
+      "omission_reason": null,
+      "original_bytes_published": true,
+      "published_as": [
+        "probe/examples/context_still_open.rs.txt"
+      ],
+      "sha256": "a91bcbcf32391e65f353a547364697959bafb134367aaca7c1afac02ffff6ed3",
+      "source": "probe/examples/context_still_open.rs"
+    },
+    {
+      "bytes": 181,
+      "omission_reason": null,
+      "original_bytes_published": true,
+      "published_as": [
+        "probe/examples/direct_fence.rs.txt"
+      ],
+      "sha256": "b74a0ebf5be95da6feef4116ee1a53723ab169278e39f30efa90f4e65e0fcfa7",
+      "source": "probe/examples/direct_fence.rs"
+    },
+    {
+      "bytes": 184,
+      "omission_reason": null,
+      "original_bytes_published": true,
+      "published_as": [
+        "probe/examples/forge_token.rs.txt"
+      ],
+      "sha256": "0d5889ebe2a1fe5d64f687c865c1f2ed97effdeb0577601143e53e521ab398d6",
+      "source": "probe/examples/forge_token.rs"
+    },
+    {
+      "bytes": 126,
+      "omission_reason": null,
+      "original_bytes_published": true,
+      "published_as": [
+        "probe/examples/manager_fence.rs.txt"
+      ],
+      "sha256": "adf986149ff341ec10386f139fbbf1189dcafd870ea4602cbf99594aff45745e",
+      "source": "probe/examples/manager_fence.rs"
+    },
+    {
+      "bytes": 8992,
+      "omission_reason": null,
+      "original_bytes_published": true,
+      "published_as": [
+        "probe/src/lib.rs.txt"
+      ],
+      "sha256": "83e9d0cdeb178d08605b3a372b89f2f099ca519fc63473a80da8d3ea9827f7ca",
+      "source": "probe/src/lib.rs"
+    },
+    {
+      "bytes": 14873,
+      "omission_reason": null,
+      "original_bytes_published": true,
+      "published_as": [
+        "records/tauri-source-before.json"
+      ],
+      "sha256": "4af050482cc91364f50031bfb346cc5f9e448670b7109f3acc3a3c390ddff260",
+      "source": "tauri-source-before.json"
+    },
+    {
+      "bytes": 126,
+      "omission_reason": null,
+      "original_bytes_published": true,
+      "published_as": [
+        "records/tests-status.json"
+      ],
+      "sha256": "96a26f4c2f9385537881a3d26629c477fb236f55d45b7593b21bcf78a251d731",
+      "source": "tests-status.json"
+    },
+    {
+      "bytes": 0,
+      "omission_reason": null,
+      "original_bytes_published": true,
+      "published_as": [
+        "logs/tests.stderr"
+      ],
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "tests.stderr"
+    },
+    {
+      "bytes": 8647,
+      "omission_reason": null,
+      "original_bytes_published": true,
+      "published_as": [
+        "logs/tests.stdout"
+      ],
+      "sha256": "5e725d2759ab93012147a7d24679b36ff072ebc40e6d26f4000ed490bcc7bdc6",
+      "source": "tests.stdout"
+    },
+    {
+      "bytes": 7,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "afbf9d0f3560b0fd7795e81c42a0a79ee6b6fc67e064f77826aee642cad28d91",
+      "source": "vendor/tauri-2.11.6/.cargo-ok"
+    },
+    {
+      "bytes": 106,
+      "omission_reason": null,
+      "original_bytes_published": true,
+      "published_as": [
+        "third-party-notices/tauri-2.11.6/.cargo_vcs_info.json.txt"
+      ],
+      "sha256": "f091bb3bcace1955fec20c9ea1db42f2981985282eef1d66468b79ada141cd1c",
+      "source": "vendor/tauri-2.11.6/.cargo_vcs_info.json"
+    },
+    {
+      "bytes": 131741,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "9ae096d9d0afb0a3616e2775e718b463c8fc89cfcbc1be2ca7bf89d3908f0622",
+      "source": "vendor/tauri-2.11.6/Cargo.lock"
+    },
+    {
+      "bytes": 8931,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "e9baa3bbf077a841b0d7769573906c3780770336d71f42fda53b4c1d1b0006f3",
+      "source": "vendor/tauri-2.11.6/Cargo.toml"
+    },
+    {
+      "bytes": 7722,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "e739dd5b7d3d90967e91b1c1c0dda75f6efa6580ad5bb04b9dd6a88aea8d7ab1",
+      "source": "vendor/tauri-2.11.6/Cargo.toml.orig"
+    },
+    {
+      "bytes": 10174,
+      "omission_reason": null,
+      "original_bytes_published": true,
+      "published_as": [
+        "third-party-notices/tauri-2.11.6/LICENSE_APACHE-2.0.txt"
+      ],
+      "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+      "source": "vendor/tauri-2.11.6/LICENSE_APACHE-2.0"
+    },
+    {
+      "bytes": 1090,
+      "omission_reason": null,
+      "original_bytes_published": true,
+      "published_as": [
+        "third-party-notices/tauri-2.11.6/LICENSE_MIT.txt"
+      ],
+      "sha256": "9dd42ea92cff2ede5cd477cbfcce051b2d0115c0ac7f368ee88cb545055dff1d",
+      "source": "vendor/tauri-2.11.6/LICENSE_MIT"
+    },
+    {
+      "bytes": 3517,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "d53737b76e569ea9d7af01d69be6fb729959b97bc08d0564a421c3917b584070",
+      "source": "vendor/tauri-2.11.6/README.md"
+    },
+    {
+      "bytes": 15735,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "62d1a1e16affe3c9b59d6766159a568255e385cab969ce4149ad6081276715bd",
+      "source": "vendor/tauri-2.11.6/build.rs"
+    },
+    {
+      "bytes": 1672,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "7c14c42554e4bb4e9bab576307c85c2998e6b3f82397979c547294b26a9e7423",
+      "source": "vendor/tauri-2.11.6/mobile/android-codegen/TauriActivity.kt"
+    },
+    {
+      "bytes": 6,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "5c3174b74edc6f2b9e0743594b8bd3c7f31e4f4405758cc9872b3fe1de1d28b4",
+      "source": "vendor/tauri-2.11.6/mobile/android/.gitignore"
+    },
+    {
+      "bytes": 1248,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "aab1b0ecb929ea70b33ad42d7df55c185a3485f9609ec998047232b45df76a4d",
+      "source": "vendor/tauri-2.11.6/mobile/android/build.gradle.kts"
+    },
+    {
+      "bytes": 984,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "07ae2ffe37f0f484c46401f510ef003e1bbe9f708d1d2597546c729eb9956cca",
+      "source": "vendor/tauri-2.11.6/mobile/android/proguard-rules.pro"
+    },
+    {
+      "bytes": 793,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "1e7c0c6f613431962750a2f80dcf8a0c231c4b5fb2f569bfd55b5fa0e80f2e7d",
+      "source": "vendor/tauri-2.11.6/mobile/android/src/androidTest/java/app/tauri/ExampleInstrumentedTest.kt"
+    },
+    {
+      "bytes": 121,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "8ef94a6aec2218c5fd02408d018f6d52602c0ef4473dd1c115c5c6964f1e63e1",
+      "source": "vendor/tauri-2.11.6/mobile/android/src/main/AndroidManifest.xml"
+    },
+    {
+      "bytes": 1541,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "931d4a7636b75c81e7daed48e1822fa8bf02d2993d620592ed7febca94702555",
+      "source": "vendor/tauri-2.11.6/mobile/android/src/main/java/app/tauri/AppPlugin.kt"
+    },
+    {
+      "bytes": 7219,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "217851c9539c6171c46354fb24c8af9501babd045a122e239f01009794d122c9",
+      "source": "vendor/tauri-2.11.6/mobile/android/src/main/java/app/tauri/FsUtils.kt"
+    },
+    {
+      "bytes": 237,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "ece2f2b7179edeb9cf0a62acb116390f53c23a32e51520b6e4c2d7601a581a88",
+      "source": "vendor/tauri-2.11.6/mobile/android/src/main/java/app/tauri/JniMethod.kt"
+    },
+    {
+      "bytes": 1855,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "771fa4822dec7cc95aab726ee1c176c17970c4ffee737ad53959fea1fa26ef7d",
+      "source": "vendor/tauri-2.11.6/mobile/android/src/main/java/app/tauri/Logger.kt"
+    },
+    {
+      "bytes": 3857,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "2c256a75511aa4509629e55400b7969cbcb3b42079dd8955afe7e78ed7f3f256",
+      "source": "vendor/tauri-2.11.6/mobile/android/src/main/java/app/tauri/PathPlugin.kt"
+    },
+    {
+      "bytes": 4048,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "5c53545d51386be33505084f56145dd364d57fb6623815d50cca83139f8687c1",
+      "source": "vendor/tauri-2.11.6/mobile/android/src/main/java/app/tauri/PermissionHelper.kt"
+    },
+    {
+      "bytes": 554,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "c38e1f200db71faf05f8d7acf643b2f1d6dd8970b8ae51a6a7c842743a596be2",
+      "source": "vendor/tauri-2.11.6/mobile/android/src/main/java/app/tauri/PermissionState.kt"
+    },
+    {
+      "bytes": 281,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "aec0ebccfe66d7b857606a9244e717d5aa3b02324f50fbdfe4b4ee1a67ad8637",
+      "source": "vendor/tauri-2.11.6/mobile/android/src/main/java/app/tauri/annotation/ActivityCallback.kt"
+    },
+    {
+      "bytes": 271,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "6b747509a75a7c8f1c31c03a23a80b4f83cd226f87033a318db1782505b2aeab",
+      "source": "vendor/tauri-2.11.6/mobile/android/src/main/java/app/tauri/annotation/InvokeArg.kt"
+    },
+    {
+      "bytes": 551,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "bca04adb46a3de1c36da755fb62a5efb40481a7a529dd0f727eadd95466ecbd7",
+      "source": "vendor/tauri-2.11.6/mobile/android/src/main/java/app/tauri/annotation/Permission.kt"
+    },
+    {
+      "bytes": 283,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "d0a63179ca048629d37e9efe696d2c6554095b7de64bbbc1450a8f07d3888d8e",
+      "source": "vendor/tauri-2.11.6/mobile/android/src/main/java/app/tauri/annotation/PermissionCallback.kt"
+    },
+    {
+      "bytes": 237,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "aee7aef7a3f59ad67ca3a2cfbcb2a2c2cacfa28bddf4b2f565ed6e930f92c8c1",
+      "source": "vendor/tauri-2.11.6/mobile/android/src/main/java/app/tauri/annotation/PluginMethod.kt"
+    },
+    {
+      "bytes": 516,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "361783a7baf30a33192c22f922f50fb2c97d8a7d9ae9dc774d8b637f9eeea04a",
+      "source": "vendor/tauri-2.11.6/mobile/android/src/main/java/app/tauri/annotation/TauriPlugin.kt"
+    },
+    {
+      "bytes": 1306,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "f6f5c2dcc442b9e81165f55f80d363129bc91b130586abb8489cd3006af00011",
+      "source": "vendor/tauri-2.11.6/mobile/android/src/main/java/app/tauri/plugin/Channel.kt"
+    },
+    {
+      "bytes": 364,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "90d2dddfb918447ed8fd35c44be7f00e41b89fcd586eeca995e0ead56c38b6c4",
+      "source": "vendor/tauri-2.11.6/mobile/android/src/main/java/app/tauri/plugin/InvalidPluginMethodException.kt"
+    },
+    {
+      "bytes": 2131,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "05cadb94907dbd3979d8c7eaad7bd8f540c38cc9d988a5513777eadd18330028",
+      "source": "vendor/tauri-2.11.6/mobile/android/src/main/java/app/tauri/plugin/Invoke.kt"
+    },
+    {
+      "bytes": 1155,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "fca8b72a6bf357b6cc57aa21ac787dbe3d69fca27f927b0c3f598567dc17f52f",
+      "source": "vendor/tauri-2.11.6/mobile/android/src/main/java/app/tauri/plugin/JSArray.kt"
+    },
+    {
+      "bytes": 3569,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "234a9afa4da858b3dbd8d5a688209a640984166482e040ab908b34ed577726b5",
+      "source": "vendor/tauri-2.11.6/mobile/android/src/main/java/app/tauri/plugin/JSObject.kt"
+    },
+    {
+      "bytes": 16880,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "f7a9a1d170177d8c32e729f867ba2adcfb9923cb4e2a38efa312dccfcd506127",
+      "source": "vendor/tauri-2.11.6/mobile/android/src/main/java/app/tauri/plugin/Plugin.kt"
+    },
+    {
+      "bytes": 5607,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "284b3209e2c415b8af9db372f92081b7b4c874a8d921136363cd6d7426b7579f",
+      "source": "vendor/tauri-2.11.6/mobile/android/src/main/java/app/tauri/plugin/PluginHandle.kt"
+    },
+    {
+      "bytes": 7249,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "2b0ef3b8cc92182858456f4b504330d61d23a3fe62a2e4e08c8f5c09cbdb4312",
+      "source": "vendor/tauri-2.11.6/mobile/android/src/main/java/app/tauri/plugin/PluginManager.kt"
+    },
+    {
+      "bytes": 371,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "c3024eb23b038fdd1566e69db725c8c5d39fb66909baf45d258ccfe8449daedf",
+      "source": "vendor/tauri-2.11.6/mobile/android/src/main/java/app/tauri/plugin/PluginMethodData.kt"
+    },
+    {
+      "bytes": 1629,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "437f44a6ccf5354a5ec1a3a3c894609f6df90999f397e52dfaafb6e74d30c006",
+      "source": "vendor/tauri-2.11.6/mobile/android/src/main/java/app/tauri/plugin/PluginResult.kt"
+    },
+    {
+      "bytes": 476,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "c0b0b313769a0e3f519c203bf0862f35bd6128a6eeef67ca4965c12b4ef0ac4b",
+      "source": "vendor/tauri-2.11.6/mobile/android/src/test/java/app/tauri/ExampleUnitTest.kt"
+    },
+    {
+      "bytes": 182,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "bc9466a4cd82cf38d2a4471c15c5c6b8153182f361a72c9926a9f422d966e3b0",
+      "source": "vendor/tauri-2.11.6/mobile/ios-api/.gitignore"
+    },
+    {
+      "bytes": 1142,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "bd322622d84f3538b512646267fcf063734ad3dcede35480950cfd95c2ed392a",
+      "source": "vendor/tauri-2.11.6/mobile/ios-api/Package.swift"
+    },
+    {
+      "bytes": 24,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "a06a181db430708640f970ac98611e3feea64430d5b4ab82c15d778604937591",
+      "source": "vendor/tauri-2.11.6/mobile/ios-api/README.md"
+    },
+    {
+      "bytes": 1821,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "850e8239ccb561ea7177f0f66b33d5b63e97faeefcb79b60640007934c3894a4",
+      "source": "vendor/tauri-2.11.6/mobile/ios-api/Sources/Tauri/Channel.swift"
+    },
+    {
+      "bytes": 2928,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "afc9ee63daafe1754969b6dfd104d49d2ca09fd41e7c6343063c13d9e56f7d3e",
+      "source": "vendor/tauri-2.11.6/mobile/ios-api/Sources/Tauri/Invoke.swift"
+    },
+    {
+      "bytes": 3614,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "bce9da78d74d495a2d05176cb0b68bd9a40ebfcac8c8e9cb1678d4ca142bd653",
+      "source": "vendor/tauri-2.11.6/mobile/ios-api/Sources/Tauri/JSTypes.swift"
+    },
+    {
+      "bytes": 1692,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "a22a4bad5788132955a63160bda00eeb62a6e138993d46504f6f96e2fb94246d",
+      "source": "vendor/tauri-2.11.6/mobile/ios-api/Sources/Tauri/JsonValue.swift"
+    },
+    {
+      "bytes": 3739,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "9624719792f6ce0baf6df0aaf2928efc8c0aef77972a3fb638ce67e3a6dfb918",
+      "source": "vendor/tauri-2.11.6/mobile/ios-api/Sources/Tauri/Logger.swift"
+    },
+    {
+      "bytes": 2036,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "e5d2e0e6f6c178b0ea2745dcd88f68b6a142154c3b245845bb6b9026b3a76d69",
+      "source": "vendor/tauri-2.11.6/mobile/ios-api/Sources/Tauri/Plugin/Plugin.swift"
+    },
+    {
+      "bytes": 4879,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "4c7aa0b830e17851784fd14ca6941d2d53bd3b902e0477e7416f90da4488333c",
+      "source": "vendor/tauri-2.11.6/mobile/ios-api/Sources/Tauri/Tauri.swift"
+    },
+    {
+      "bytes": 742,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "c12b2a5a3bde289c45dd6c348cc41d7072c81a1559eac76339ea061c4fa5d89c",
+      "source": "vendor/tauri-2.11.6/mobile/ios-api/Sources/Tauri/UiUtils.swift"
+    },
+    {
+      "bytes": 476,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "ef1e10dafc147b1d6b145f19ab0a81cb44eb80d7b989abfae4e2447209a88a34",
+      "source": "vendor/tauri-2.11.6/mobile/ios-api/Tests/TauriTests/TauriTests.swift"
+    },
+    {
+      "bytes": 165,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "9f6f2555912c6b984ab9be8e4766da646b175dd33c3a193a4d72c4a56a1b6a2c",
+      "source": "vendor/tauri-2.11.6/mobile/proguard-tauri.pro"
+    },
+    {
+      "bytes": 4556,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "904d5a966cb1b4000f401a29ab734e4dcb2842e9659b8adcf7831167e16ea634",
+      "source": "vendor/tauri-2.11.6/permissions/app/autogenerated/reference.md"
+    },
+    {
+      "bytes": 1303,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "018766e1817884ed384b525480e58e63d1860994441c114d1a2517967a267d49",
+      "source": "vendor/tauri-2.11.6/permissions/event/autogenerated/reference.md"
+    },
+    {
+      "bytes": 1563,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "e3fe93fbb7e62c0139592f4b030d50254c1fbbcc518785bb98ab1f037e251e5c",
+      "source": "vendor/tauri-2.11.6/permissions/image/autogenerated/reference.md"
+    },
+    {
+      "bytes": 6509,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "4bed65930223d505c3fc3295d299f07165d5b355b7a5ba910501fc089b2f0044",
+      "source": "vendor/tauri-2.11.6/permissions/menu/autogenerated/reference.md"
+    },
+    {
+      "bytes": 2452,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "8be6a806aaaf1a081fe25aadabf253b74337c5f31b5f356c078ce43ddd47a098",
+      "source": "vendor/tauri-2.11.6/permissions/path/autogenerated/reference.md"
+    },
+    {
+      "bytes": 506,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "593941263d28df065d95a9db260220fad053d4c5aca3b74a9d58977199127210",
+      "source": "vendor/tauri-2.11.6/permissions/resources/autogenerated/reference.md"
+    },
+    {
+      "bytes": 3834,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "f17969a556be8c3788821cc5eaffa3a2604ab78f647aaae294305a93b67c0178",
+      "source": "vendor/tauri-2.11.6/permissions/tray/autogenerated/reference.md"
+    },
+    {
+      "bytes": 5610,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "5ee143504a878ca35dcd1277310c152fc93668da50573c1acfab051fa9cfe8ec",
+      "source": "vendor/tauri-2.11.6/permissions/webview/autogenerated/reference.md"
+    },
+    {
+      "bytes": 22707,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "11e9af4caef9cec04c891022d3fd9996d7a6f5ece1d55455fe2cf7ff89ee172c",
+      "source": "vendor/tauri-2.11.6/permissions/window/autogenerated/reference.md"
+    },
+    {
+      "bytes": 40695,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "fe12a35f0590762311f4ddc1af023efb6ddc9116095e49828ccc929da69b5518",
+      "source": "vendor/tauri-2.11.6/scripts/bundle.global.js"
+    },
+    {
+      "bytes": 2981,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "71056442a732cca1f03572ccae96d68e16104c3a591c64de9618cd304e063070",
+      "source": "vendor/tauri-2.11.6/scripts/core.js"
+    },
+    {
+      "bytes": 174,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "599745f0da51f0ba6c7dcbb7c770d6f538f337f6df7f1bf420e4043b9e4b6bf9",
+      "source": "vendor/tauri-2.11.6/scripts/freeze_prototype.js"
+    },
+    {
+      "bytes": 300,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "2a062abc65bc99ac458dd9a78701a8a9e3f473aa1f25afa64dc810036932f973",
+      "source": "vendor/tauri-2.11.6/scripts/init.js"
+    },
+    {
+      "bytes": 3390,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "68ae690606006f733bde75dd8bb6748464954a22c7e83914a93b1abc221d7072",
+      "source": "vendor/tauri-2.11.6/scripts/ipc-protocol.js"
+    },
+    {
+      "bytes": 5832,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "3e3766fc90efa68003096cbf0a07c6a00cb31c5756d55b5a68ebbfd2930c4865",
+      "source": "vendor/tauri-2.11.6/scripts/ipc.js"
+    },
+    {
+      "bytes": 584,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "58e79828ba6d68c79eceb276d62f766710f77df70c5fec1f79176bd6aa6d0ae1",
+      "source": "vendor/tauri-2.11.6/scripts/isolation.js"
+    },
+    {
+      "bytes": 558,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "149570459687f1636c02e41ede8b40efe52378965eeddb6dbfebc0c525a3551b",
+      "source": "vendor/tauri-2.11.6/scripts/pattern.js"
+    },
+    {
+      "bytes": 1187,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "d51917f89e4d3d318d63f1f4f5a7ac7ea1399a5b85c81a840c4d606597f29132",
+      "source": "vendor/tauri-2.11.6/scripts/process-ipc-message-fn.js"
+    },
+    {
+      "bytes": 87039,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "50606eba378383efe0bec17c6cc192d8b68769e77fa55258129c0a783b508d08",
+      "source": "vendor/tauri-2.11.6/src/app.rs"
+    },
+    {
+      "bytes": 3820,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "cc0d3d578800388a64f1ec1dec8602923214d19c7e6115a54b2fbac06009480c",
+      "source": "vendor/tauri-2.11.6/src/app/plugin.rs"
+    },
+    {
+      "bytes": 8786,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "ccee9dc653f37366a4060d64c6b447ccb98c08300316298be3afc7a98b1301af",
+      "source": "vendor/tauri-2.11.6/src/async_runtime.rs"
+    },
+    {
+      "bytes": 6410,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "c46648d6df9a3e5f1bd9b27edfcf5a68a689d33d4d0cd2c794a5c6ea24e03332",
+      "source": "vendor/tauri-2.11.6/src/error.rs"
+    },
+    {
+      "bytes": 1003,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "ca15ed691a62d531b790f1fab1d3b07f6e5dad3711c14e6c821d64b802038e02",
+      "source": "vendor/tauri-2.11.6/src/event/event-system-spec.md"
+    },
+    {
+      "bytes": 1920,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "982908c70b4d51378d2298f8446fbbf1dbb253856b46c591c680303affd4765e",
+      "source": "vendor/tauri-2.11.6/src/event/event_name.rs"
+    },
+    {
+      "bytes": 317,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "8946488895cc9879f2bf8fee98be454d0f21949b946c264b47d2a2fc84eb1df0",
+      "source": "vendor/tauri-2.11.6/src/event/init.js"
+    },
+    {
+      "bytes": 11210,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "85ed903eb331f2021ee75453a21f46f3a59e22acd5ef73a4173162446bbfdeae",
+      "source": "vendor/tauri-2.11.6/src/event/listener.rs"
+    },
+    {
+      "bytes": 5953,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "dfcb7cf11d7674903f71196e64ae0fa95286757ac816bfbc3139ebdedcb25dea",
+      "source": "vendor/tauri-2.11.6/src/event/mod.rs"
+    },
+    {
+      "bytes": 2096,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "90f6bb584d14d572ded405942165e38ef4b9be9de68e75ecf19ee83fe2a9091f",
+      "source": "vendor/tauri-2.11.6/src/event/plugin.rs"
+    },
+    {
+      "bytes": 6871,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "85f4f11c242f5ee0def9ef143b728dfdb6469dab84b8fe75f80717aa72c02bc6",
+      "source": "vendor/tauri-2.11.6/src/image/mod.rs"
+    },
+    {
+      "bytes": 2638,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "391e9b92ab344a18a0e61fbf63979fa500ad12484b81fb25e9d4fa72f581c968",
+      "source": "vendor/tauri-2.11.6/src/image/plugin.rs"
+    },
+    {
+      "bytes": 1313,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "a9c1512a4ff26f6a443c04ab2740cac7583b13e2c4288f04a6b631fceece4344",
+      "source": "vendor/tauri-2.11.6/src/ios.rs"
+    },
+    {
+      "bytes": 8334,
+      "omission_reason": null,
+      "original_bytes_published": true,
+      "published_as": [
+        "experimental/atomic_admission_probe.rs.txt"
+      ],
+      "sha256": "6a855ae1f4f1cfdfa079f15d2d70bf1301b39e9e8256f2db9243922ea7de56e3",
+      "source": "vendor/tauri-2.11.6/src/ipc/atomic_admission_probe.rs"
+    },
+    {
+      "bytes": 34581,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "7f4d3f536564728d50db5a58a3b59065953c39a5d50e986df707433f38e4a47a",
+      "source": "vendor/tauri-2.11.6/src/ipc/authority.rs"
+    },
+    {
+      "bytes": 4374,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "9b4ccd15b7aa406950347cce5d5dd234ce44a96c3697316d98e6ae017598cd61",
+      "source": "vendor/tauri-2.11.6/src/ipc/capability_builder.rs"
+    },
+    {
+      "bytes": 13138,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "437ccc8be88f215c092a01ca108ce4a5bfbd96d32fc0f4d7e8c50ae9ff31d980",
+      "source": "vendor/tauri-2.11.6/src/ipc/channel.rs"
+    },
+    {
+      "bytes": 9268,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "d611effb696608cf698d25c203fae99b05f862ef2321fef1d71ee75aa54e470b",
+      "source": "vendor/tauri-2.11.6/src/ipc/command.rs"
+    },
+    {
+      "bytes": 12517,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "e9de68956b9437f440291d37292bb9544b6c0b180029e6d2772685aa768a494d",
+      "source": "vendor/tauri-2.11.6/src/ipc/format_callback.rs"
+    },
+    {
+      "bytes": 15924,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "b91c92756ad5c1c3e90e7f149d360580e1e78903f748199f7b2040e2f8320115",
+      "source": "vendor/tauri-2.11.6/src/ipc/mod.rs"
+    },
+    {
+      "bytes": 24645,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "f9748a000d2946863ed4bad304de9145fb3dc1e87abbe8c0143011e7b9a1e8de",
+      "source": "vendor/tauri-2.11.6/src/ipc/protocol.rs"
+    },
+    {
+      "bytes": 42734,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "dd9d3eeec873339b8fcdd0aa1719e3a875c440462f449a0dc8833685d95996d2",
+      "source": "vendor/tauri-2.11.6/src/lib.rs"
+    },
+    {
+      "bytes": 3108,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "c943562c06dfd799e85a8287615d988bb532b47751e1fac0b896ef6274ac0b30",
+      "source": "vendor/tauri-2.11.6/src/manager/menu.rs"
+    },
+    {
+      "bytes": 29538,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "38130ba3cb4e615efa9280b9b0122190cdc253b5493be00abf9b8eb47268fcbd",
+      "source": "vendor/tauri-2.11.6/src/manager/mod.rs"
+    },
+    {
+      "bytes": 2410,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "615b3f28ee23859eb712600c1fae7f3ca22d40def21eb4e859a5f227d5b9e169",
+      "source": "vendor/tauri-2.11.6/src/manager/tray.rs"
+    },
+    {
+      "bytes": 24161,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "24d3d51920ccd56db5c44db73c0deca09cba4a0811921a2f66b78e6213789f51",
+      "source": "vendor/tauri-2.11.6/src/manager/webview.rs"
+    },
+    {
+      "bytes": 9540,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "882caf1fdd15f3cd93c6b419ae19748d91387ba5e8283ee2b7b89bc7187a1535",
+      "source": "vendor/tauri-2.11.6/src/manager/window.rs"
+    },
+    {
+      "bytes": 2433,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "42161bbfaf3ddeebff6559cb8857aa9a1b03abb1351bcb6fec3e4cff060f5ee0",
+      "source": "vendor/tauri-2.11.6/src/menu/builders/check.rs"
+    },
+    {
+      "bytes": 3435,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "ef2d073d0effc15e3868ff3bc853785cfe55dcca59ae915197cf83873c8f1e0b",
+      "source": "vendor/tauri-2.11.6/src/menu/builders/icon.rs"
+    },
+    {
+      "bytes": 19997,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "76c9e24f9447b5b3476feb2c5959441a4fdd647f1dc973e86aee79145c83e266",
+      "source": "vendor/tauri-2.11.6/src/menu/builders/menu.rs"
+    },
+    {
+      "bytes": 409,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "8e47f079550864a58a0a9b3e0dcce452ccc210ac303861bb91b92b7553b497ea",
+      "source": "vendor/tauri-2.11.6/src/menu/builders/mod.rs"
+    },
+    {
+      "bytes": 2063,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "56e0293e84241b8464eb7c9f1090bff8c0ede32255f30ccddabb36c76cb2dccc",
+      "source": "vendor/tauri-2.11.6/src/menu/builders/normal.rs"
+    },
+    {
+      "bytes": 4163,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "8759713b5e3d15dc48bc9f2e8641b646a9ace5f2b06a76102d865b5c70546323",
+      "source": "vendor/tauri-2.11.6/src/menu/check.rs"
+    },
+    {
+      "bytes": 6635,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "660a87ecc8efe7552aa34c0bffa5100b58cdd1abda05ba2a4959310f176bcb10",
+      "source": "vendor/tauri-2.11.6/src/menu/icon.rs"
+    },
+    {
+      "bytes": 11763,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "72fc8bf0c415cb579631da773ede64f9b92077e0afe09dc41253f42178ca139b",
+      "source": "vendor/tauri-2.11.6/src/menu/menu.rs"
+    },
+    {
+      "bytes": 23637,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "6ac6300fd9709c14e0ee61997f9234cc294383ab107eadbff149e8929659070c",
+      "source": "vendor/tauri-2.11.6/src/menu/mod.rs"
+    },
+    {
+      "bytes": 3673,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "087aec7dbb524767ff5d61ece9f555fe0745b6ee65454c316133354b38e726f6",
+      "source": "vendor/tauri-2.11.6/src/menu/normal.rs"
+    },
+    {
+      "bytes": 25338,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "98f9b904858c579f01cf8d706521ceac64fded612fa38d7576e7f30146a9d116",
+      "source": "vendor/tauri-2.11.6/src/menu/plugin.rs"
+    },
+    {
+      "bytes": 10376,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "b0d12497d743a9f484c2ff848b5d86eb3251b89e7520b701354c86ef4aebd383",
+      "source": "vendor/tauri-2.11.6/src/menu/predefined.rs"
+    },
+    {
+      "bytes": 13093,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "d3c1b060911c9f4294e127a5db7a1161baa25231b8665006c14b0ed115fae41b",
+      "source": "vendor/tauri-2.11.6/src/menu/submenu.rs"
+    },
+    {
+      "bytes": 5342,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "4f9293d2066246707c47a58512d5f2a0bc742b7057ef09f1b91ce0ec77f594a4",
+      "source": "vendor/tauri-2.11.6/src/path/android.rs"
+    },
+    {
+      "bytes": 11499,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "11bb4f74c6053cc0eca33a54da00a4a31aff85c5164e7260cd573b5efec18ebc",
+      "source": "vendor/tauri-2.11.6/src/path/desktop.rs"
+    },
+    {
+      "bytes": 293,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "6ecfef8c9078a591f04c5eb7ed355721efcba1eb820a0b5067be1dcca7748ef3",
+      "source": "vendor/tauri-2.11.6/src/path/init.js"
+    },
+    {
+      "bytes": 12372,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "1876463ce16aa8a0284d437f5efdba579fbb097be195642e222514550174c42b",
+      "source": "vendor/tauri-2.11.6/src/path/mod.rs"
+    },
+    {
+      "bytes": 9346,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "d298631d5494cdf95644d840f9713b52da38fe839a73c7df5d343662864c90bc",
+      "source": "vendor/tauri-2.11.6/src/path/plugin.rs"
+    },
+    {
+      "bytes": 2616,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "2d5bd790939732f66b88966564da8925e4d92c4829122f8f6d246dfad6a8e701",
+      "source": "vendor/tauri-2.11.6/src/pattern.rs"
+    },
+    {
+      "bytes": 34550,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "0a91231b87ba13ed239fa0dbc81155a2bef35f84d0513de85af69354a3890ca0",
+      "source": "vendor/tauri-2.11.6/src/plugin.rs"
+    },
+    {
+      "bytes": 14415,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "b49a4dc644e8e8a2ea2c90305be54b2ec168f7e4daffcf4fa404d03993f69a7c",
+      "source": "vendor/tauri-2.11.6/src/plugin/mobile.rs"
+    },
+    {
+      "bytes": 3794,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "9c413b0b6b74df553028f826ee0bc60164db533dceb96d79bf6c47b6358aa8ba",
+      "source": "vendor/tauri-2.11.6/src/process.rs"
+    },
+    {
+      "bytes": 8073,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "a9dd1849f372444086ccf1e9ac3157106ac88fbb9ed5b654ddcf9a86b8529c10",
+      "source": "vendor/tauri-2.11.6/src/protocol/asset.rs"
+    },
+    {
+      "bytes": 3462,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "22a2bf36732a2659bd927d29ed8094e7a8fbeeab65848764474913d4ce5628de",
+      "source": "vendor/tauri-2.11.6/src/protocol/isolation.rs"
+    },
+    {
+      "bytes": 286,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "269be0cb57035748bde9903c64eac2dd8659923497f4e2bdf7a115e93aeaad6f",
+      "source": "vendor/tauri-2.11.6/src/protocol/mod.rs"
+    },
+    {
+      "bytes": 8039,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "54f375940676fe774a1bc0f2303781472f24de9bc69dcafc32f80025201bc1ea",
+      "source": "vendor/tauri-2.11.6/src/protocol/tauri.rs"
+    },
+    {
+      "bytes": 8332,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "5291a552d5392ba88d821e1f206c2e1e444f848e3766c3b89963de2b6ca96bb7",
+      "source": "vendor/tauri-2.11.6/src/resources/mod.rs"
+    },
+    {
+      "bytes": 808,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "712c19110baa20e9ee59af79322bfc14818b7d622b5140307368e555381ffc49",
+      "source": "vendor/tauri-2.11.6/src/resources/plugin.rs"
+    },
+    {
+      "bytes": 23085,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "52246bc0ac38cd14225838316f8f7a6116647abb67c41aef8e0bc79af18b1039",
+      "source": "vendor/tauri-2.11.6/src/scope/fs.rs"
+    },
+    {
+      "bytes": 1121,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "63118615042cc4f3e053ac8406e8216cf6522396f3a9acda860b074a7dc7e9bb",
+      "source": "vendor/tauri-2.11.6/src/scope/mod.rs"
+    },
+    {
+      "bytes": 9174,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "f4539fb268deffc3a6f2f8d26bb56be1cd5e5650308251e84ad1b56c5c2d19f1",
+      "source": "vendor/tauri-2.11.6/src/state.rs"
+    },
+    {
+      "bytes": 32136,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "ebbb0113cb21cad98780481f671bfe26625c62ab1a9eecba27f6bd6910d782dc",
+      "source": "vendor/tauri-2.11.6/src/test/mock_runtime.rs"
+    },
+    {
+      "bytes": 10262,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "96ccda85b638ebbdb6a7ea30d5cfdf435cc69e62d0bbf7f9bdc03454c7e177fb",
+      "source": "vendor/tauri-2.11.6/src/test/mod.rs"
+    },
+    {
+      "bytes": 20604,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "b17a2039dcc49226cf96d9ace88bef7bc4e019e188c085187568589e6b89e273",
+      "source": "vendor/tauri-2.11.6/src/tray/mod.rs"
+    },
+    {
+      "bytes": 7061,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "ffa5b69f61376cf366b5c696c3fc620bade8f3b86b1322804c2d375ae41f7e84",
+      "source": "vendor/tauri-2.11.6/src/tray/plugin.rs"
+    },
+    {
+      "bytes": 2823,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "787fc8ba6950944434590fc66e3e0ee366da1d78af953ab332501a87c95bc352",
+      "source": "vendor/tauri-2.11.6/src/vibrancy/macos.rs"
+    },
+    {
+      "bytes": 694,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "60ae894de47a232a33e2e095f1f851716d63e00c4d8bc0ca9114cff26141a745",
+      "source": "vendor/tauri-2.11.6/src/vibrancy/mod.rs"
+    },
+    {
+      "bytes": 1742,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "7cc46026788b31a9d08f7820d73fe69957ed5289b7ef6e3692cea885a1245522",
+      "source": "vendor/tauri-2.11.6/src/vibrancy/windows.rs"
+    },
+    {
+      "bytes": 81201,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "954cf212cb79d6b566c10b76d2ff2da05bc637cfc9f666c2f03d4e3dddf35f1c",
+      "source": "vendor/tauri-2.11.6/src/webview/mod.rs"
+    },
+    {
+      "bytes": 7059,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "defea87e3f7e8488a77048432e287f9ed7a45151fe307d5495a3671d83a93bd7",
+      "source": "vendor/tauri-2.11.6/src/webview/plugin.rs"
+    },
+    {
+      "bytes": 240,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "2a7c344c3c7285cc30ae14b741484db1acf24f03a22bda6ffe6c6d16d8acbf0b",
+      "source": "vendor/tauri-2.11.6/src/webview/scripts/print.js"
+    },
+    {
+      "bytes": 864,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "433c08901992823a37396ce72a695636bd034c1b960364b7d9c75f261f771770",
+      "source": "vendor/tauri-2.11.6/src/webview/scripts/toggle-devtools.js"
+    },
+    {
+      "bytes": 1157,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "3a29990c1551bbb7bbca34e318dd6a044963c6d8b7cc14c1600db6e6f45fdc97",
+      "source": "vendor/tauri-2.11.6/src/webview/scripts/zoom-hotkey.js"
+    },
+    {
+      "bytes": 92835,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "00b40c71c0462ea3a714be638d5b76ab47ceddf5f6043e1188ab1e9ea2dcea69",
+      "source": "vendor/tauri-2.11.6/src/webview/webview_window.rs"
+    },
+    {
+      "bytes": 74817,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "2617d73490fbad9c2f9c52b280569b87f1096b7ae6465e89b2fd53ab83ca1cbe",
+      "source": "vendor/tauri-2.11.6/src/window/mod.rs"
+    },
+    {
+      "bytes": 11068,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "4eaed8f66c0d33cccde4b883e277352cca4d9cacb1b0ce7cf940645cfe1c2491",
+      "source": "vendor/tauri-2.11.6/src/window/plugin.rs"
+    },
+    {
+      "bytes": 4367,
+      "omission_reason": "complete third-party dependency bytes omitted; original/modified identities recorded, narrow differences archived",
+      "original_bytes_published": false,
+      "published_as": [],
+      "sha256": "2d47d2e302512024af4ded95b89f8b1f5c8d83530d287c252052112901a59888",
+      "source": "vendor/tauri-2.11.6/src/window/scripts/drag.js"
+    }
+  ],
+  "manifest_sha256": "814784dacebc290ca415d5de07874f6016f2bb0191a859836984dbf6a5c2f331",
+  "mismatched": [],
+  "missing": [],
+  "not_in_original_manifest": {
+    "path": "EVIDENCE_SHA256.json",
+    "reason": "self-reference excluded",
+    "sha256": "814784dacebc290ca415d5de07874f6016f2bb0191a859836984dbf6a5c2f331"
+  },
+  "omissions": "No caches, binaries, memory dumps, complete dependency copies or private conversations. Digests do not preserve omitted bytes. No missing evidence reconstructed.",
+  "verified_entries": 179
+}

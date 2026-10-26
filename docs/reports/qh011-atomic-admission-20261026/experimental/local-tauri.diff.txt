@@ -1,0 +1,51 @@
+--- a/src/ipc/authority.rs
++++ b/src/ipc/authority.rs
+@@ -134,7 +134,7 @@
+   }
+ 
+   #[doc(hidden)]
+-  pub fn __allow_command(&mut self, command: String, context: ExecutionContext) {
++  pub(crate) fn __allow_command(&mut self, command: String, context: ExecutionContext) {
+     self.allowed_commands.insert(
+       command,
+       vec![ResolvedCommand {
+@@ -176,7 +176,7 @@
+       capabilities,
+       tauri_utils::platform::Target::current(),
+     )
+-    .unwrap();
++    .map_err(|e| crate::Error::Io(std::io::Error::new(std::io::ErrorKind::InvalidInput, e.to_string())))?;
+ 
+     // fill global scope
+     for (plugin, global_scope) in resolved.global_scope {
+@@ -1191,3 +1191,8 @@
+     );
+   }
+ }
++
++// FR : sonde externe uniquement. EN: external probe only.
++#[cfg(feature = "dynamic-acl")]
++#[path = "atomic_admission_probe.rs"]
++pub mod atomic_admission_probe;
+--- a/src/ipc/mod.rs
++++ b/src/ipc/mod.rs
+@@ -605,3 +605,8 @@
+     assert_eq!(raw.deserialize::<Vec<u8>>().unwrap(), values);
+   }
+ }
++
++// FR : export de faisabilité uniquement. EN: feasibility-only export.
++#[cfg(feature = "dynamic-acl")]
++#[doc(hidden)]
++pub use authority::atomic_admission_probe;
+--- a/src/manager/mod.rs
++++ b/src/manager/mod.rs
+@@ -182,7 +182,7 @@
+ 
+ #[default_runtime(crate::Wry, wry)]
+ pub struct AppManager<R: Runtime> {
+-  pub runtime_authority: Mutex<RuntimeAuthority>,
++  pub(crate) runtime_authority: Mutex<RuntimeAuthority>,
+   pub window: window::WindowManager<R>,
+   pub webview: webview::WebviewManager<R>,
+   #[cfg(all(desktop, feature = "tray-icon"))]

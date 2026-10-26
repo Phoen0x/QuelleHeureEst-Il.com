@@ -1,0 +1,75 @@
+//! FR : sondes ciblées sur une copie de Tauri ; EN: probes against a Tauri copy.
+#[cfg(test)]
+mod tests {
+use serde_json::{json,Value};
+use std::{collections::BTreeMap,sync::{Arc,Barrier,Mutex,Weak}};
+use tauri::ipc::{Origin,atomic_admission_probe::{PolicyStore,Version,AdmissionError}};
+use tauri_utils::{acl::{APP_ACL_KEY,ExecutionContext,capability::Capability,manifest::Manifest,resolved::Resolved},platform::Target};
+fn version()->Version{Version{format:1,policy:17}}
+fn manifests()->BTreeMap<String,Manifest>{
+ let permissions=[("read-a",json!({"allow":["probe"]}),json!({"allow":[{"path":"a"}],"deny":[{"path":"secret"}]})),("read-b",json!({"allow":["probe"]}),json!({"allow":[{"path":"b"}]})),("read-forbidden",json!({"allow":["probe"]}),json!({"allow":[{"path":"forbidden"}]})),("global",json!({}),json!({"allow":[{"path":"global"}]})),("global-forbidden",json!({}),json!({"allow":[{"path":"forbidden"}]})),("deny",json!({"deny":["probe"]}),json!({}))]
+ .into_iter().map(|(id,commands,scope)|(id.to_string(),json!({"identifier":id,"commands":commands,"scope":scope}))).collect::<serde_json::Map<_,_>>();
+ [(APP_ACL_KEY.to_string(),serde_json::from_value(json!({"default_permission":null,"permissions":permissions,"permission_sets":{},"global_scope_schema":null})).unwrap())].into_iter().collect()
+}
+fn cap(id:&str,permissions:&[&str])->Value{json!({"identifier":id,"local":false,"windows":["main"],"permissions":permissions,"remote":{"urls":["https://example.invalid/*"]}})}
+fn resolve(permission:Option<&str>)->Resolved{
+ let caps=permission.map(|p|{let c:Capability=serde_json::from_value(cap("initial",&[p])).unwrap();[(c.identifier.clone(),c)].into_iter().collect()}).unwrap_or_default();
+ Resolved::resolve(&manifests(),caps,Target::current()).unwrap()
+}
+fn validate(v:&Value)->Result<(),String>{
+ for key in ["allowed","scopes","global"] {if v[key].to_string().contains("forbidden"){return Err("synthetic policy rejection".into());}}
+ Ok(())
+}
+fn store(permission:Option<&str>)->Arc<PolicyStore>{Arc::new(PolicyStore::try_new(manifests(),resolve(permission),version(),Arc::new(validate)).unwrap())}
+fn origin()->Origin{Origin::Remote{url:url::Url::parse("https://example.invalid/value").unwrap()}}
+
+#[test] fn initial_policy_is_validated(){
+ assert!(matches!(PolicyStore::try_new(manifests(),resolve(Some("read-forbidden")),version(),Arc::new(validate)),Err(AdmissionError::Rejected(_))));
+ let s=store(Some("read-a"));assert_eq!(s.pin().unwrap().query("probe","main","view",&origin())["allowed"],true);
+}
+#[test] fn valid_dynamic_policy_is_invisible_until_activation(){
+ let s=store(None);let before=s.pin().unwrap().snapshot();let p=s.prepare_json(&cap("valid",&["read-a","global"]).to_string()).unwrap();assert_eq!(s.pin().unwrap().snapshot(),before);
+ assert_eq!(s.activate(p).unwrap(),1);let pinned=s.pin().unwrap();assert_eq!(pinned.query("probe","main","view",&origin())["allowed"],true);assert!(pinned.snapshot()["state"]["global"][APP_ACL_KEY]["allow"].as_array().unwrap().len()==1);println!("OBSERVATION {}",json!({"case":"valid_dynamic","before":before,"after":pinned.snapshot()}));
+}
+#[test] fn malformed_input_and_pattern_leave_state_unchanged(){
+ let s=store(Some("read-a"));let before=s.pin().unwrap().snapshot();assert!(matches!(s.prepare_json("{"),Err(AdmissionError::Invalid(_))));let mut c=cap("invalid",&["read-b"]);c["remote"]["urls"]=json!(["https://example.invalid/:"]);assert!(matches!(s.prepare_json(&c.to_string()),Err(AdmissionError::Invalid(_))));assert_eq!(s.pin().unwrap().snapshot(),before);
+}
+#[test] fn unknown_permission_is_error_not_panic(){
+ let s=store(None);let before=s.pin().unwrap().snapshot();assert!(matches!(s.prepare_json(&cap("missing",&["not-defined"]).to_string()),Err(AdmissionError::Invalid(_))));assert_eq!(s.pin().unwrap().snapshot(),before);
+}
+#[test] fn rejection_after_staging_does_not_publish_global_or_command_scopes(){
+ let s=store(Some("read-a"));let before=s.pin().unwrap().snapshot();assert!(matches!(s.prepare_json(&cap("bad",&["global","read-forbidden"]).to_string()),Err(AdmissionError::Rejected(_))));assert_eq!(s.pin().unwrap().snapshot(),before);println!("OBSERVATION {}",json!({"case":"rejected_staging","before":before,"after":s.pin().unwrap().snapshot()}));
+}
+#[test] fn stale_concurrent_preparations_cannot_both_commit(){
+ let s=store(None);let barrier=Arc::new(Barrier::new(2));let handles=["read-a","read-b"].into_iter().map(|permission|{let s=s.clone();let b=barrier.clone();std::thread::spawn(move||{let p=s.prepare_json(&cap(permission,&[permission]).to_string()).unwrap();b.wait();(permission,s.activate(p))})}).collect::<Vec<_>>();
+ let results=handles.into_iter().map(|t|t.join().unwrap()).collect::<Vec<_>>();assert_eq!(results.iter().filter(|x|x.1.is_ok()).count(),1);assert_eq!(results.iter().filter(|x|x.1==Err(AdmissionError::Conflict)).count(),1);assert_eq!(s.pin().unwrap().revision(),1);println!("OBSERVATION {}",json!({"case":"concurrent_preparations","successes":1,"conflicts":1,"after":s.pin().unwrap().snapshot()}));
+ let winner=results.iter().find(|x|x.1.is_ok()).unwrap().0;let expected=if winner=="read-a"{"a"}else{"b"};assert_eq!(s.pin().unwrap().scope_allow(1)[0]["path"],expected);
+}
+#[test] fn prepared_policy_is_bound_to_owner(){
+ let a=store(None);let b=store(None);let before=b.pin().unwrap().snapshot();let p=a.prepare_json(&cap("a",&["read-a"]).to_string()).unwrap();assert_eq!(b.activate(p),Err(AdmissionError::WrongOwner));assert_eq!(b.pin().unwrap().snapshot(),before);
+}
+#[test] fn marker_and_matcher_identity_survive_runtime_handoff(){
+ let s=store(None);let p=s.prepare_embedded(version(),manifests(),resolve(Some("read-a"))).unwrap();let identity=p.matcher_identity("probe").unwrap();assert_eq!(p.version(),version());s.activate(p).unwrap();let pin=s.pin().unwrap();assert_eq!(pin.version(),version());assert_eq!(pin.matcher_identity("probe"),Some(identity));
+ let before=pin.snapshot();assert!(matches!(s.prepare_embedded(Version{format:2,policy:17},manifests(),resolve(Some("read-b"))),Err(AdmissionError::Version)));assert_eq!(s.pin().unwrap().snapshot(),before);
+}
+#[test] fn pinned_request_keeps_its_scopes_across_activation(){
+ let s=store(Some("read-a"));let old=s.pin().unwrap();let selected=old.query("probe","main","view",&origin());assert_eq!(selected["entries"][0]["scope_id"],1);
+ let p=s.prepare_embedded(version(),manifests(),resolve(Some("read-b"))).unwrap();s.activate(p).unwrap();let now=s.pin().unwrap();println!("OBSERVATION {}",json!({"case":"pinned_request","selected_before":selected,"old_scope_after":old.scope_allow(1),"current_scope_after":now.scope_allow(1),"old_revision":old.revision(),"current_revision":now.revision()}));assert_eq!(old.scope_allow(1)[0]["path"],"a");assert_eq!(now.scope_allow(1)[0]["path"],"b");assert_eq!(old.query("probe","main","view",&origin())["entries"][0]["allow"][0]["path"],"a");
+ // FR : un lecteur non épinglé peut mélanger les versions.
+ // EN: An unpinned reader can mix revisions.
+ assert_ne!(old.scope_allow(1),now.scope_allow(1));
+}
+#[test] fn rebuilt_caches_do_not_mutate_old_snapshot(){
+ let s=store(Some("read-a"));let old=s.pin().unwrap();old.seed_probe_caches(1);assert_eq!(old.probe_caches(1),(true,true));let p=s.prepare_json(&cap("b",&["read-b","global"]).to_string()).unwrap();s.activate(p).unwrap();assert_eq!(s.pin().unwrap().probe_caches(1),(false,false));assert_eq!(old.probe_caches(1),(true,true));
+}
+#[test] fn validator_can_read_store_without_reentering_publication_lock(){
+ let cell=Arc::new(Mutex::new(None::<Weak<PolicyStore>>));let callback_cell=cell.clone();let validator=Arc::new(move|v:&Value|{let weak=callback_cell.lock().unwrap().clone();if let Some(s)=weak.and_then(|w|w.upgrade()){let _=s.pin().unwrap();}validate(v)});let s=Arc::new(PolicyStore::try_new(manifests(),resolve(None),version(),validator).unwrap());*cell.lock().unwrap()=Some(Arc::downgrade(&s));let p=s.prepare_json(&cap("a",&["read-a"]).to_string()).unwrap();s.activate(p).unwrap();
+}
+#[test] fn global_only_capability_is_validated_before_activation(){
+ let s=store(None);let before=s.pin().unwrap().snapshot();assert!(matches!(s.prepare_json(&cap("global-only",&["global-forbidden"]).to_string()),Err(AdmissionError::Rejected(_))));assert_eq!(s.pin().unwrap().snapshot(),before);println!("OBSERVATION {}",json!({"case":"global_only_rejected","before":before,"after":s.pin().unwrap().snapshot()}));
+}
+#[test] fn deny_semantics_and_direct_grant_policy_are_preserved(){
+ let s=store(Some("read-a"));let mut denied=cap("deny",&["deny"]);denied["remote"]["urls"]=json!(["https://different.invalid/*"]);denied["windows"]=json!(["other"]);let p=s.prepare_json(&denied.to_string()).unwrap();s.activate(p).unwrap();assert_eq!(s.pin().unwrap().query("probe","main","view",&origin())["allowed"],false);
+ let before=s.pin().unwrap().snapshot();assert!(matches!(s.prepare_direct_grant("forbidden".into(),ExecutionContext::Local),Err(AdmissionError::Rejected(_))));assert_eq!(s.pin().unwrap().snapshot(),before);
+}
+}

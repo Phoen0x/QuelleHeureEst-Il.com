@@ -90,3 +90,12 @@ Le [rapport du prototype Unicode–ACL](EXPERIMENTATION_QH011_UNICODE_ACL_NOGO_2
 ## QH-011 — experimental NO-GO archive — October 26, 2026
 
 The [Unicode–ACL prototype report](EXPERIMENTATION_QH011_UNICODE_ACL_NOGO_2026-10-26.md) and [evidence with replay instructions](../reports/qh011-unicode-acl-nogo-20261026/NOTICE.md) preserve its **NO-GO**: 15 passing tests, two failures, exit 101. Historical U+309B is rejected and an unvalidated dynamic addition introduces a synthetic authorization. Passing builds do not make the prototype publishable. The historical guard rejects the candidate and the strict Rust audit fails with three warnings. QH-011/T-003 remain open. Previous diagnostics are preserved; no technical experiment is rerun for this archive. Next step: independent **ChatGPT V4** review of #186, without automatically starting implementation.
+
+
+## QH-011 — faisabilité d'admission atomique archivée — 26 octobre 2026
+
+Le [rapport d'archivage](FAISABILITE_QH011_ADMISSION_ATOMIQUE_TAURI_2026-10-26.md) et les [sources et preuves](../reports/qh011-atomic-admission-20261026/NOTICE.md) conservent le **GO sous conditions pour un prototype ultérieur d'admission atomique seulement** : 13 tests runtime réussis ; trois refus de compilation attendus (101) et une compilation Context réussie (0), voie encore ouverte. Admission obligatoire globale et transport codegen/cible non démontrés. Aucun rejeu technique pendant l'archivage. QH-011/T-003 restent ouverts ; le prototype Unicode précédent reste NO-GO avec deux échecs. Aucun accord d'implémentation ou de fusion ; revue indépendante de #186 par ChatGPT V4.
+
+## QH-011 — atomic-admission feasibility archive — October 26, 2026
+
+The [archival report](FAISABILITE_QH011_ADMISSION_ATOMIQUE_TAURI_2026-10-26.md) and [sources and evidence](../reports/qh011-atomic-admission-20261026/NOTICE.md) preserve a **conditional GO for a later atomic-admission prototype only**: 13 passing runtime tests, three expected compiler rejections (101), and successful Context replacement compilation (0), an open route. Mandatory end-to-end admission and codegen-to-target transport remain unproven. No technical campaign was rerun for archival. QH-011/T-003 remain open; the earlier Unicode prototype remains NO-GO with two failures. No implementation or merge is authorized; independent ChatGPT V4 review of #186 is required.

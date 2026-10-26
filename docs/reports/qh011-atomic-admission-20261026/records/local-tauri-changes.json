@@ -1,0 +1,12 @@
+{
+  "modified": [
+    "src/ipc/authority.rs",
+    "src/ipc/mod.rs",
+    "src/manager/mod.rs"
+  ],
+  "added": [
+    "src/ipc/atomic_admission_probe.rs"
+  ],
+  "deleted": [],
+  "license_files_unchanged": true
+}
