@@ -64,3 +64,18 @@ Avant de transférer des informations d'une conversation, d'une PR ou d'une appl
 ## Agent knowledge and privacy
 
 Before moving information from a conversation, PR or connected app into this **public** repository, read the [knowledge and privacy policy](docs/ai/KNOWLEDGE_PRIVACY_POLICY.md). Preserve useful impersonal project rules, not identity, health, private devices, personal exchanges or secrets. Audit each conversation separately; never claim a complete shared memory without evidence.
+
+## Recherche préalable obligatoire avant correction complexe
+
+- **Avant de concevoir un correctif, un rétroport, une migration de dépendances, un fork ou un prototype de sécurité**, rechercher d'abord les solutions existantes : documentation officielle, changelogs, avis de sécurité, issues/PR amont, correctifs publiés et retours techniques d'autres projets. Cette étape précède la délégation à Codex et toute expérimentation coûteuse.
+- Vérifier les versions et dates exactes, le statut des corrections (proposées, fusionnées, publiées), les tests disponibles et les limites. Distinguer une résolution d'avertissements d'audit de la préservation du comportement, de la sécurité, des permissions et de la compatibilité.
+- Comparer au minimum la solution officielle/amont, le rétroport minimal, les alternatives éprouvées et l'absence de correction sûre ; privilégier la solution la plus simple qui respecte les invariants du projet. Ne pas réinventer une correction existante sans justification documentée.
+- Consigner les liens, preuves, lacunes de recherche, compromis, recommandation et critères de validation dans le rapport ou le journal technique. Si les sources externes sont inaccessibles, le dire clairement et ne pas prétendre avoir effectué l'état de l'art.
+- Cette recherche est **un prérequis**, pas une autorisation d'implémenter, publier, fusionner, supprimer une variante historique ou assouplir un audit. Respecter la lecture seule et les validations humaines propres à chaque mission.
+
+## Mandatory upstream research before complex fixes
+
+- **Before designing a fix, backport, dependency migration, fork, or security prototype**, first review existing solutions: official documentation, changelogs, security advisories, upstream issues/PRs, released fixes and evidence from other projects.
+- Verify exact versions, dates, release/merge status, tests and limitations. Removing audit warnings does not by itself prove semantic or security compatibility.
+- Compare upstream fixes, minimal backports, proven alternatives and safe deferral; document sources, trade-offs, unknowns and validation criteria. Clearly disclose when external research cannot be completed.
+- Research does not authorize implementation, publication, merging, historical-code deletion or audit weakening.
