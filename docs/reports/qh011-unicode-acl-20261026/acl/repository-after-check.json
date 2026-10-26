@@ -1,0 +1,14 @@
+{
+  "repository-before.json": {
+    "files": 302,
+    "changed": []
+  },
+  "original-sha256.json": {
+    "files": 302,
+    "changed": []
+  },
+  "index_unchanged": true,
+  "tracked_paths_unchanged": true,
+  "head": "f2eee4223a1ccf5b0866944580df8fd5979575dd",
+  "status": ""
+}

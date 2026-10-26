@@ -1,0 +1,705 @@
+{
+  "after_count": 509,
+  "before_count": 504,
+  "common_package_edge_changes": [
+    {
+      "added": [
+        "alloc-no-stdlib 2.0.4"
+      ],
+      "identity": "alloc-stdlib@0.2.4",
+      "preserved_variant_dependencies": [
+        "alloc-no-stdlib 2.0.4"
+      ],
+      "removed": [
+        "alloc-no-stdlib"
+      ]
+    },
+    {
+      "added": [
+        "alloc-no-stdlib 2.0.4",
+        "alloc-stdlib 0.2.4"
+      ],
+      "identity": "brotli-decompressor@5.0.3",
+      "preserved_variant_dependencies": [
+        "alloc-no-stdlib 2.0.4",
+        "alloc-stdlib 0.2.4"
+      ],
+      "removed": [
+        "alloc-no-stdlib",
+        "alloc-stdlib"
+      ]
+    },
+    {
+      "added": [
+        "alloc-no-stdlib 2.0.4",
+        "alloc-stdlib 0.2.4",
+        "brotli-decompressor 5.0.3"
+      ],
+      "identity": "brotli@8.0.4",
+      "preserved_variant_dependencies": [
+        "alloc-no-stdlib 2.0.4",
+        "alloc-stdlib 0.2.4",
+        "brotli-decompressor 5.0.3"
+      ],
+      "removed": [
+        "alloc-no-stdlib",
+        "alloc-stdlib",
+        "brotli-decompressor"
+      ]
+    },
+    {
+      "added": [
+        "cssparser-macros 0.6.1"
+      ],
+      "identity": "cssparser@0.36.0",
+      "preserved_variant_dependencies": [
+        "cssparser-macros 0.6.1",
+        "dtoa-short",
+        "itoa",
+        "phf 0.13.1",
+        "smallvec"
+      ],
+      "removed": [
+        "cssparser-macros"
+      ]
+    },
+    {
+      "added": [
+        "windows-sys 0.59.0"
+      ],
+      "identity": "dirs-sys@0.5.0",
+      "preserved_variant_dependencies": [
+        "libc",
+        "option-ext",
+        "redox_users",
+        "windows-sys 0.61.2"
+      ],
+      "removed": [
+        "windows-sys 0.61.2"
+      ]
+    },
+    {
+      "added": [
+        "cssparser 0.36.0",
+        "html5ever 0.38.0",
+        "selectors 0.36.1"
+      ],
+      "identity": "dom_query@0.27.0",
+      "preserved_variant_dependencies": [
+        "bit-set",
+        "cssparser 0.36.0",
+        "foldhash",
+        "html5ever 0.38.0",
+        "precomputed-hash",
+        "selectors 0.36.1",
+        "tendril"
+      ],
+      "removed": [
+        "cssparser",
+        "html5ever",
+        "selectors"
+      ]
+    },
+    {
+      "added": [
+        "windows-sys 0.52.0"
+      ],
+      "identity": "errno@0.3.14",
+      "preserved_variant_dependencies": [
+        "libc",
+        "windows-sys 0.61.2"
+      ],
+      "removed": [
+        "windows-sys 0.61.2"
+      ]
+    },
+    {
+      "added": [
+        "markup5ever 0.38.0"
+      ],
+      "identity": "html5ever@0.38.0",
+      "preserved_variant_dependencies": [
+        "log",
+        "markup5ever 0.38.0"
+      ],
+      "removed": [
+        "markup5ever"
+      ]
+    },
+    {
+      "added": [
+        "jsonptr 0.6.3"
+      ],
+      "identity": "json-patch@3.0.1",
+      "preserved_variant_dependencies": [
+        "jsonptr 0.6.3",
+        "serde",
+        "serde_json",
+        "thiserror 1.0.69"
+      ],
+      "removed": [
+        "jsonptr"
+      ]
+    },
+    {
+      "added": [
+        "windows-sys 0.52.0"
+      ],
+      "identity": "rustix@1.1.5",
+      "preserved_variant_dependencies": [
+        "bitflags 2.13.2",
+        "errno",
+        "libc",
+        "linux-raw-sys",
+        "windows-sys 0.61.2"
+      ],
+      "removed": [
+        "windows-sys 0.61.2"
+      ]
+    },
+    {
+      "added": [
+        "cssparser 0.36.0"
+      ],
+      "identity": "selectors@0.36.1",
+      "preserved_variant_dependencies": [
+        "bitflags 2.13.2",
+        "cssparser 0.36.0",
+        "derive_more",
+        "log",
+        "new_debug_unreachable",
+        "phf 0.13.1",
+        "phf_codegen 0.13.1",
+        "precomputed-hash",
+        "rustc-hash",
+        "servo_arc",
+        "smallvec"
+      ],
+      "removed": [
+        "cssparser"
+      ]
+    },
+    {
+      "added": [
+        "json-patch 3.0.1"
+      ],
+      "identity": "tauri-build@2.6.3",
+      "preserved_variant_dependencies": [
+        "anyhow",
+        "cargo_toml",
+        "dirs",
+        "glob",
+        "heck 0.5.0",
+        "json-patch 3.0.1",
+        "schemars 0.8.22",
+        "semver",
+        "serde",
+        "serde_json",
+        "tauri-utils",
+        "tauri-winres",
+        "walkdir"
+      ],
+      "removed": [
+        "json-patch"
+      ]
+    },
+    {
+      "added": [
+        "brotli 8.0.4",
+        "json-patch 3.0.1"
+      ],
+      "identity": "tauri-codegen@2.6.3",
+      "preserved_variant_dependencies": [
+        "base64 0.22.1",
+        "brotli 8.0.4",
+        "ico",
+        "json-patch 3.0.1",
+        "plist",
+        "png 0.17.16",
+        "proc-macro2",
+        "quote",
+        "semver",
+        "serde",
+        "serde_json",
+        "sha2",
+        "syn 2.0.119",
+        "tauri-utils",
+        "thiserror 2.0.21",
+        "time",
+        "url",
+        "uuid",
+        "walkdir"
+      ],
+      "removed": [
+        "brotli",
+        "json-patch"
+      ]
+    },
+    {
+      "added": [
+        "getrandom 0.3.4",
+        "windows-sys 0.52.0"
+      ],
+      "identity": "tempfile@3.27.0",
+      "preserved_variant_dependencies": [
+        "fastrand",
+        "getrandom 0.4.3",
+        "once_cell",
+        "rustix",
+        "windows-sys 0.61.2"
+      ],
+      "removed": [
+        "getrandom 0.4.3",
+        "windows-sys 0.61.2"
+      ]
+    },
+    {
+      "added": [
+        "windows-sys 0.52.0"
+      ],
+      "identity": "winapi-util@0.1.11",
+      "preserved_variant_dependencies": [
+        "windows-sys 0.61.2"
+      ],
+      "removed": [
+        "windows-sys 0.61.2"
+      ]
+    },
+    {
+      "added": [
+        "windows-sys 0.59.0"
+      ],
+      "identity": "winreg@0.56.0",
+      "preserved_variant_dependencies": [
+        "cfg-if",
+        "windows-sys 0.61.2"
+      ],
+      "removed": [
+        "windows-sys 0.61.2"
+      ]
+    },
+    {
+      "added": [
+        "dom_query 0.27.0"
+      ],
+      "identity": "wry@0.55.1",
+      "preserved_variant_dependencies": [
+        "base64 0.22.1",
+        "block2",
+        "cookie",
+        "crossbeam-channel",
+        "dirs",
+        "dom_query 0.27.0",
+        "dpi",
+        "dunce",
+        "gdkx11",
+        "gtk",
+        "http",
+        "javascriptcore-rs",
+        "jni",
+        "libc",
+        "ndk",
+        "objc2",
+        "objc2-app-kit",
+        "objc2-core-foundation",
+        "objc2-foundation",
+        "objc2-ui-kit",
+        "objc2-web-kit",
+        "once_cell",
+        "percent-encoding",
+        "raw-window-handle",
+        "sha2",
+        "soup3",
+        "tao-macros",
+        "thiserror 2.0.21",
+        "url",
+        "webkit2gtk",
+        "webkit2gtk-sys",
+        "webview2-com",
+        "windows",
+        "windows-core",
+        "windows-version",
+        "x11-dl"
+      ],
+      "removed": [
+        "dom_query"
+      ]
+    }
+  ],
+  "incoming": [
+    {
+      "checksum": "c2fb6cfd47bf496ff64095c20eaba0c201404ee38714d4142fcfa1dc334fcc7a",
+      "name": "alloc-no-stdlib",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "version": "3.0.0"
+    },
+    {
+      "checksum": "0b5c1865780388bfa186411ab5f247819487fc4864c6e9c3106611fa347586e1",
+      "dependencies": [
+        "alloc-no-stdlib 3.0.0"
+      ],
+      "name": "alloc-stdlib",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "version": "0.3.0"
+    },
+    {
+      "checksum": "941cd9bd4ddab83cb46fa5a2d428f1c857b24ac78cb876cf7beb710840934bd7",
+      "dependencies": [
+        "alloc-no-stdlib 3.0.0",
+        "alloc-stdlib 0.3.0"
+      ],
+      "name": "brotli-decompressor",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "version": "6.0.1"
+    },
+    {
+      "checksum": "f8b851b75c23ca7873623d612fe49bd1989aeb03d08fb9432187eb253d3d4c6b",
+      "dependencies": [
+        "alloc-no-stdlib 3.0.0",
+        "alloc-stdlib 0.3.0",
+        "brotli-decompressor 6.0.1"
+      ],
+      "name": "brotli",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "version": "9.0.0"
+    },
+    {
+      "checksum": "a347dcabdae9c31b0825fd6a8bed285ec9c2acb89c47827126d52fa4f59cece3",
+      "dependencies": [
+        "fnv",
+        "uuid",
+        "web-time"
+      ],
+      "name": "cfb",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "version": "0.14.0"
+    },
+    {
+      "checksum": "d045de693cb712d0b22c6a64be5b953f67b3ce00ab5ad3dd5d8b441886ab8e1a",
+      "dependencies": [
+        "quote",
+        "syn 3.0.9"
+      ],
+      "name": "cssparser-macros",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "version": "0.7.1"
+    },
+    {
+      "checksum": "8c9cdaae01d5ed7882b04d795e7f752f46ff52d2fa3b50a20d28c464510bba98",
+      "dependencies": [
+        "cssparser-macros 0.7.1",
+        "dtoa-short",
+        "itoa",
+        "phf 0.13.1",
+        "smallvec"
+      ],
+      "name": "cssparser",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "version": "0.37.0"
+    },
+    {
+      "checksum": "914a755b7c2d4af2bdcff7ce1739e2db9a1b81a9b07123d8015786ae03c0980d",
+      "name": "ctor",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "version": "1.0.13"
+    },
+    {
+      "checksum": "fac5fca71e65e94cc718a6e2af65d6e0f9c6027751c2aa562fbb5087fda639bc",
+      "dependencies": [
+        "bit-set",
+        "cssparser 0.37.0",
+        "foldhash",
+        "html5ever 0.39.0",
+        "precomputed-hash",
+        "selectors 0.38.0",
+        "tendril"
+      ],
+      "name": "dom_query",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "version": "0.28.0"
+    },
+    {
+      "checksum": "46a1761807faccc9a19e86944bbf40610014066306f96edcdedc2fb714bcb7b8",
+      "dependencies": [
+        "log",
+        "markup5ever 0.39.0"
+      ],
+      "name": "html5ever",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "version": "0.39.0"
+    },
+    {
+      "checksum": "f4200d433cbd5178df7797c9c2e75b348b728e39631cf14520d1e2fc424201f4",
+      "dependencies": [
+        "cfb"
+      ],
+      "name": "infer",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "version": "0.22.0"
+    },
+    {
+      "checksum": "7421438de105a0827e44fadd05377727847d717c80ce29a229f85fd04c427b72",
+      "dependencies": [
+        "jsonptr 0.7.1",
+        "serde",
+        "serde_json",
+        "thiserror 2.0.21"
+      ],
+      "name": "json-patch",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "version": "4.2.0"
+    },
+    {
+      "checksum": "a5a3cc660ba5d72bce0b3bb295bf20847ccbb40fd423f3f05b61273672e561fe",
+      "dependencies": [
+        "serde",
+        "serde_json"
+      ],
+      "name": "jsonptr",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "version": "0.7.1"
+    },
+    {
+      "checksum": "7122d987ec5f704ee56f6e5b41a7d93722e9aae27ae07cafa4036c4d3f9757de",
+      "dependencies": [
+        "log",
+        "tendril",
+        "web_atoms"
+      ],
+      "name": "markup5ever",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "version": "0.39.0"
+    },
+    {
+      "checksum": "8adfa1c298912827b8a28b223b3b874357397ae706e6190acd9bf28cee99114d",
+      "dependencies": [
+        "bitflags 2.13.2",
+        "cssparser 0.37.0",
+        "derive_more",
+        "log",
+        "new_debug_unreachable",
+        "phf 0.13.1",
+        "phf_codegen 0.13.1",
+        "precomputed-hash",
+        "rustc-hash",
+        "servo_arc",
+        "smallvec"
+      ],
+      "name": "selectors",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "version": "0.38.0"
+    },
+    {
+      "checksum": "362ab21cd4cc713f2a02b1a9b5688198b1541cfb6907c4281e9190e0f0ef4aa3",
+      "dependencies": [
+        "anyhow",
+        "brotli 9.0.0",
+        "cargo_metadata",
+        "ctor",
+        "dom_query 0.28.0",
+        "dunce",
+        "glob",
+        "http",
+        "infer",
+        "json-patch 4.2.0",
+        "log",
+        "memchr",
+        "phf 0.13.1",
+        "plist",
+        "proc-macro2",
+        "quote",
+        "regex",
+        "schemars 0.8.22",
+        "semver",
+        "serde",
+        "serde-untagged",
+        "serde_json",
+        "serde_with",
+        "swift-rs",
+        "thiserror 2.0.21",
+        "toml 0.9.12+spec-1.1.0",
+        "url",
+        "urlpattern",
+        "uuid",
+        "walkdir"
+      ],
+      "name": "tauri-utils",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "version": "2.10.2"
+    },
+    {
+      "checksum": "df16f50ef4cc145211879a3867ba757076b25dfee812040dcb0658bd9ae7904b",
+      "dependencies": [
+        "icu_properties",
+        "regex",
+        "serde",
+        "url"
+      ],
+      "name": "urlpattern",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "version": "0.6.0"
+    },
+    {
+      "checksum": "5a6580f308b1fad9207618087a65c04e7a10bc77e02c8e84e9b00dd4b12fa0bb",
+      "dependencies": [
+        "js-sys",
+        "wasm-bindgen"
+      ],
+      "name": "web-time",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "version": "1.1.0"
+    }
+  ],
+  "outgoing": [
+    {
+      "checksum": "d38f2da7a0a2c4ccf0065be06397cc26a81f4e528be095826eee9d4adbb8c60f",
+      "dependencies": [
+        "byteorder",
+        "fnv",
+        "uuid"
+      ],
+      "name": "cfb",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "version": "0.7.3"
+    },
+    {
+      "checksum": "52560adf09603e58c9a7ee1fe1dcb95a16927b17c127f0ac02d6e768a0e25bc1",
+      "name": "ctor-proc-macro",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "version": "0.0.7"
+    },
+    {
+      "checksum": "352d39c2f7bef1d6ad73db6f5160efcaed66d94ef8c6c573a8410c00bf909a98",
+      "dependencies": [
+        "ctor-proc-macro",
+        "dtor"
+      ],
+      "name": "ctor",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "version": "0.8.0"
+    },
+    {
+      "checksum": "f678cf4a922c215c63e0de95eb1ff08a958a81d47e485cf9da1e27bf6305cfa5",
+      "name": "dtor-proc-macro",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "version": "0.0.6"
+    },
+    {
+      "checksum": "f1057d6c64987086ff8ed0fd3fbf377a6b7d205cc7715868cd401705f715cbe4",
+      "dependencies": [
+        "dtor-proc-macro"
+      ],
+      "name": "dtor",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "version": "0.3.0"
+    },
+    {
+      "checksum": "a588916bfdfd92e71cacef98a63d9b1f0d74d6599980d11894290e7ddefffcf7",
+      "dependencies": [
+        "cfb"
+      ],
+      "name": "infer",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "version": "0.19.0"
+    },
+    {
+      "checksum": "3e176a18e67764923c4f1ce66f25ae4abe5f688384d5eb1a0fa6c77f3d90f887",
+      "dependencies": [
+        "anyhow",
+        "brotli",
+        "cargo_metadata",
+        "ctor",
+        "dom_query",
+        "dunce",
+        "glob",
+        "http",
+        "infer",
+        "json-patch",
+        "log",
+        "memchr",
+        "phf 0.13.1",
+        "plist",
+        "proc-macro2",
+        "quote",
+        "regex",
+        "schemars 0.8.22",
+        "semver",
+        "serde",
+        "serde-untagged",
+        "serde_json",
+        "serde_with",
+        "swift-rs",
+        "thiserror 2.0.21",
+        "toml 1.1.8+spec-1.1.0",
+        "url",
+        "urlpattern",
+        "uuid",
+        "walkdir"
+      ],
+      "name": "tauri-utils",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "version": "2.9.3"
+    },
+    {
+      "checksum": "a8c57a407d9b6fa02b4795eb81c5b6652060a15a7903ea981f3d723e6c0be221",
+      "dependencies": [
+        "unic-char-range"
+      ],
+      "name": "unic-char-property",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "version": "0.9.0"
+    },
+    {
+      "checksum": "0398022d5f700414f6b899e10b8348231abf9173fa93144cbc1a43b9793c1fbc",
+      "name": "unic-char-range",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "version": "0.9.0"
+    },
+    {
+      "checksum": "80d7ff825a6a654ee85a63e80f92f054f904f21e7d12da4e22f9834a4aaa35bc",
+      "name": "unic-common",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "version": "0.9.0"
+    },
+    {
+      "checksum": "e230a37c0381caa9219d67cf063aa3a375ffed5bf541a452db16e744bdab6987",
+      "dependencies": [
+        "unic-char-property",
+        "unic-char-range",
+        "unic-ucd-version"
+      ],
+      "name": "unic-ucd-ident",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "version": "0.9.0"
+    },
+    {
+      "checksum": "96bd2f2237fe450fcd0a1d2f5f4e91711124f7857ba2e964247776ebeeb7b0c4",
+      "dependencies": [
+        "unic-common"
+      ],
+      "name": "unic-ucd-version",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "version": "0.9.0"
+    },
+    {
+      "checksum": "70acd30e3aa1450bc2eece896ce2ad0d178e9c079493819301573dae3c37ba6d",
+      "dependencies": [
+        "regex",
+        "serde",
+        "unic-ucd-ident",
+        "url"
+      ],
+      "name": "urlpattern",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "version": "0.3.0"
+    }
+  ],
+  "restored_collateral_packages": [
+    "tempfile@3.27.0",
+    "winreg@0.56.0",
+    "dirs-sys@0.5.0",
+    "winapi-util@0.1.11",
+    "rustix@1.1.5",
+    "errno@0.3.14"
+  ]
+}

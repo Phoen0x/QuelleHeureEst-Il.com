@@ -72,3 +72,12 @@ At the end of a ChatGPT-directed Codex mission, provide the actual status, links
 - [Current technical handoff](SESSION_CHATGPT_V2_TO_V3_RELAY_2026-10-22.md) covers verified PR state, HTTP/2 and JavaScript work on #183, outstanding CI/security issues, reproducible environment guidance and proposed Vite follow-up. It is **a dated snapshot, not live GitHub state**.
 - **#175 merged into main on October 21, 2026.** Earlier claims that these AI instructions were missing from main describe the historical #167/#172 context.
 - #183's work and this new handoff remain in separate unmerged PR branches until explicit authorization; neither should be treated as already merged. No private conversation transcript or personal data is archived here.
+
+
+## Archivage QH-011 du 26 octobre 2026 — français
+
+Sur #186 uniquement, deux diagnostics Codex du code #183 `f2eee4223a1ccf5b0866944580df8fd5979575dd` sont désormais conservés : [Unicode / URLPattern / ICU](DIAGNOSTIC_QH011_UNICODE_URLPATTERN_ICU_2026-10-26.md), [compatibilité ACL et scopes](DIAGNOSTIC_QH011_COMPATIBILITE_ACL_UNICODE_2026-10-26.md), [preuves, empreintes et reproduction isolée](../reports/qh011-unicode-acl-20261026/NOTICE.md). Ce sont des diagnostics historiques archivés, pas une migration publiée ou une nouvelle validation native. QH-011/T-003 restent partiels et ouverts ; audit expérimental strict toujours en échec, trois avertissements. Revue indépendante par **ChatGPT V4** avant toute mission d'implémentation. Les textes et liens antérieurs sont conservés.
+
+## QH-011 archive, October 26, 2026 — English
+
+PR #186 now preserves two historical read-only Codex diagnostics of PR #183 at `f2eee4223a1ccf5b0866944580df8fd5979575dd`: [Unicode / URLPattern / ICU](DIAGNOSTIC_QH011_UNICODE_URLPATTERN_ICU_2026-10-26.md), [ACL and scope compatibility](DIAGNOSTIC_QH011_COMPATIBILITE_ACL_UNICODE_2026-10-26.md), and [evidence, digests and isolated reproduction](../reports/qh011-unicode-acl-20261026/NOTICE.md). No application migration or new native-platform validation is published. QH-011/T-003 remain partial and open; the experimental strict audit still fails with three warnings. **ChatGPT V4** must independently review before any implementation mission. Earlier text and links remain intact.

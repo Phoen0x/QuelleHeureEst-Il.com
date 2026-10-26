@@ -1,0 +1,21 @@
+use serde_json::json;
+use tauri::ipc::{RuntimeAuthority,Origin};
+use tauri_utils::acl::{ExecutionContext,resolved::{Resolved,ResolvedCommand}};
+fn main(){
+ let cases:Vec<serde_json::Value>=serde_json::from_str(include_str!("../../cases.json")).unwrap();
+ let mut rows=Vec::new();
+ for c in cases {
+ let pattern=c["pattern"].as_str().unwrap();let url=url::Url::parse(c["url"].as_str().unwrap()).unwrap();
+ let p=match pattern.parse(){Ok(p)=>p,Err(_)=>{rows.push(json!({"id":c["id"],"accepted":false}));continue;}};
+ let command=ResolvedCommand{context:ExecutionContext::Remote{url:p},windows:vec!["main".parse().unwrap()],..Default::default()};
+ let mut variants=Vec::new();
+ for deny in [None,Some(pattern),Some("https://different.invalid/*")] {
+ let allowed_commands=[("probe".to_string(),vec![command.clone()])].into_iter().collect();
+ let denied_commands=if let Some(d)=deny {[("probe".to_string(),vec![ResolvedCommand{context:ExecutionContext::Remote{url:d.parse().unwrap()},..Default::default()}])].into_iter().collect()}else{Default::default()};
+ let authority=RuntimeAuthority::new(Default::default(),Resolved{allowed_commands,denied_commands,has_app_acl:true,..Default::default()});
+ variants.push(json!({"deny":deny,"remote_main":authority.resolve_access("probe","main","webview",&Origin::Remote{url:url.clone()}).is_some(),"remote_other_window":authority.resolve_access("probe","other","webview",&Origin::Remote{url:url.clone()}).is_some(),"local_main":authority.resolve_access("probe","main","webview",&Origin::Local).is_some()}));
+ }
+ rows.push(json!({"id":c["id"],"accepted":true,"variants":variants}));
+ }
+ println!("{}",json!(rows));
+}

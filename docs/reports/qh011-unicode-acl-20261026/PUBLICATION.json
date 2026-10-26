@@ -1,0 +1,625 @@
+{
+  "added": [
+    "docs/ai/DIAGNOSTIC_QH011_COMPATIBILITE_ACL_UNICODE_2026-10-26.md",
+    "docs/ai/DIAGNOSTIC_QH011_UNICODE_URLPATTERN_ICU_2026-10-26.md",
+    "docs/reports/qh011-unicode-acl-20261026/MANIFEST.json",
+    "docs/reports/qh011-unicode-acl-20261026/NOTICE.md",
+    "docs/reports/qh011-unicode-acl-20261026/PUBLICATION.json",
+    "docs/reports/qh011-unicode-acl-20261026/VALIDATION.json",
+    "docs/reports/qh011-unicode-acl-20261026/acl/cases.json",
+    "docs/reports/qh011-unicode-acl-20261026/acl/evidence-sha256.json",
+    "docs/reports/qh011-unicode-acl-20261026/acl/historical-scripts/check-results.py.txt",
+    "docs/reports/qh011-unicode-acl-20261026/acl/historical-scripts/prepare.py.txt",
+    "docs/reports/qh011-unicode-acl-20261026/acl/historical-scripts/run-bounded.py.txt",
+    "docs/reports/qh011-unicode-acl-20261026/acl/index-before.sha256",
+    "docs/reports/qh011-unicode-acl-20261026/acl/new-results.json",
+    "docs/reports/qh011-unicode-acl-20261026/acl/old-results.json",
+    "docs/reports/qh011-unicode-acl-20261026/acl/qualification-new/Cargo.lock.txt",
+    "docs/reports/qh011-unicode-acl-20261026/acl/qualification-new/Cargo.toml.txt",
+    "docs/reports/qh011-unicode-acl-20261026/acl/qualification-new/src/main.rs.txt",
+    "docs/reports/qh011-unicode-acl-20261026/acl/qualification-old/Cargo.lock.txt",
+    "docs/reports/qh011-unicode-acl-20261026/acl/qualification-old/Cargo.toml.txt",
+    "docs/reports/qh011-unicode-acl-20261026/acl/qualification-old/src/main.rs.txt",
+    "docs/reports/qh011-unicode-acl-20261026/acl/qualification-raw/Cargo.lock.txt",
+    "docs/reports/qh011-unicode-acl-20261026/acl/qualification-raw/Cargo.toml.txt",
+    "docs/reports/qh011-unicode-acl-20261026/acl/qualification-raw/src/main.rs.txt",
+    "docs/reports/qh011-unicode-acl-20261026/acl/raw-cases.json",
+    "docs/reports/qh011-unicode-acl-20261026/acl/raw-results.json",
+    "docs/reports/qh011-unicode-acl-20261026/acl/repository-after-check.json",
+    "docs/reports/qh011-unicode-acl-20261026/acl/repository-before.json",
+    "docs/reports/qh011-unicode-acl-20261026/acl/run-status.json",
+    "docs/reports/qh011-unicode-acl-20261026/acl/source-provenance.json",
+    "docs/reports/qh011-unicode-acl-20261026/acl/summary.json",
+    "docs/reports/qh011-unicode-acl-20261026/archive-provenance.json",
+    "docs/reports/qh011-unicode-acl-20261026/reproduce.py",
+    "docs/reports/qh011-unicode-acl-20261026/source-inventory.json",
+    "docs/reports/qh011-unicode-acl-20261026/source-provenance.json",
+    "docs/reports/qh011-unicode-acl-20261026/unicode/acl-new-results.json",
+    "docs/reports/qh011-unicode-acl-20261026/unicode/acl-new/Cargo.lock.txt",
+    "docs/reports/qh011-unicode-acl-20261026/unicode/acl-new/Cargo.toml.txt",
+    "docs/reports/qh011-unicode-acl-20261026/unicode/acl-new/src/main.rs.txt",
+    "docs/reports/qh011-unicode-acl-20261026/unicode/acl-old-results.json",
+    "docs/reports/qh011-unicode-acl-20261026/unicode/acl-old/Cargo.lock.txt",
+    "docs/reports/qh011-unicode-acl-20261026/unicode/acl-old/Cargo.toml.txt",
+    "docs/reports/qh011-unicode-acl-20261026/unicode/acl-old/src/main.rs.txt",
+    "docs/reports/qh011-unicode-acl-20261026/unicode/audit-summary.json",
+    "docs/reports/qh011-unicode-acl-20261026/unicode/bounded-run-status.json",
+    "docs/reports/qh011-unicode-acl-20261026/unicode/cases.json",
+    "docs/reports/qh011-unicode-acl-20261026/unicode/dependency-delta.json",
+    "docs/reports/qh011-unicode-acl-20261026/unicode/diagnostic-summary.json",
+    "docs/reports/qh011-unicode-acl-20261026/unicode/graphs/after-all-metadata.json",
+    "docs/reports/qh011-unicode-acl-20261026/unicode/graphs/after-preserved-metadata.json",
+    "docs/reports/qh011-unicode-acl-20261026/unicode/graphs/before-all-metadata.json",
+    "docs/reports/qh011-unicode-acl-20261026/unicode/graphs/package-catalog-0.json",
+    "docs/reports/qh011-unicode-acl-20261026/unicode/graphs/package-catalog-1.json",
+    "docs/reports/qh011-unicode-acl-20261026/unicode/graphs/target-nodes.json",
+    "docs/reports/qh011-unicode-acl-20261026/unicode/harness/Cargo.lock.txt",
+    "docs/reports/qh011-unicode-acl-20261026/unicode/harness/Cargo.toml.txt",
+    "docs/reports/qh011-unicode-acl-20261026/unicode/harness/src/main.rs.txt",
+    "docs/reports/qh011-unicode-acl-20261026/unicode/historical-scripts/prepare-properties.py.txt",
+    "docs/reports/qh011-unicode-acl-20261026/unicode/historical-scripts/prepare-runtime.py.txt",
+    "docs/reports/qh011-unicode-acl-20261026/unicode/historical-scripts/prepare.py.txt",
+    "docs/reports/qh011-unicode-acl-20261026/unicode/historical-scripts/targets.py.txt",
+    "docs/reports/qh011-unicode-acl-20261026/unicode/index-sha256.txt",
+    "docs/reports/qh011-unicode-acl-20261026/unicode/locks/after-preserved-edges.lock.txt",
+    "docs/reports/qh011-unicode-acl-20261026/unicode/locks/after.lock.txt",
+    "docs/reports/qh011-unicode-acl-20261026/unicode/locks/before.lock.txt",
+    "docs/reports/qh011-unicode-acl-20261026/unicode/logs/application-release-all-tests.excerpt.log",
+    "docs/reports/qh011-unicode-acl-20261026/unicode/logs/application-release-all-tests.exit",
+    "docs/reports/qh011-unicode-acl-20261026/unicode/logs/application-tests.excerpt.log",
+    "docs/reports/qh011-unicode-acl-20261026/unicode/logs/application-tests.exit",
+    "docs/reports/qh011-unicode-acl-20261026/unicode/logs/audit-after.exit",
+    "docs/reports/qh011-unicode-acl-20261026/unicode/logs/audit-after.json",
+    "docs/reports/qh011-unicode-acl-20261026/unicode/logs/audit-before.exit",
+    "docs/reports/qh011-unicode-acl-20261026/unicode/logs/audit-before.json",
+    "docs/reports/qh011-unicode-acl-20261026/unicode/logs/resolution.log",
+    "docs/reports/qh011-unicode-acl-20261026/unicode/logs/runtime-new-unpinned-failure-excerpt.json",
+    "docs/reports/qh011-unicode-acl-20261026/unicode/original-sha256.json",
+    "docs/reports/qh011-unicode-acl-20261026/unicode/properties-results.json",
+    "docs/reports/qh011-unicode-acl-20261026/unicode/properties/Cargo.lock.txt",
+    "docs/reports/qh011-unicode-acl-20261026/unicode/properties/Cargo.toml.txt",
+    "docs/reports/qh011-unicode-acl-20261026/unicode/properties/src/main.rs.txt",
+    "docs/reports/qh011-unicode-acl-20261026/unicode/raw-pattern-results.json",
+    "docs/reports/qh011-unicode-acl-20261026/unicode/runtime-new-results.json",
+    "docs/reports/qh011-unicode-acl-20261026/unicode/runtime-new/Cargo.lock.txt",
+    "docs/reports/qh011-unicode-acl-20261026/unicode/runtime-new/Cargo.toml.txt",
+    "docs/reports/qh011-unicode-acl-20261026/unicode/runtime-new/src/main.rs.txt",
+    "docs/reports/qh011-unicode-acl-20261026/unicode/runtime-old-results.json",
+    "docs/reports/qh011-unicode-acl-20261026/unicode/runtime-old/Cargo.lock.txt",
+    "docs/reports/qh011-unicode-acl-20261026/unicode/runtime-old/Cargo.toml.txt",
+    "docs/reports/qh011-unicode-acl-20261026/unicode/runtime-old/src/main.rs.txt",
+    "docs/reports/qh011-unicode-acl-20261026/unicode/target-summary.json",
+    "docs/reports/qh011-unicode-acl-20261026/verify.py"
+  ],
+  "application_branch": "f2eee4223a1ccf5b0866944580df8fd5979575dd",
+  "deleted": [],
+  "modified": [
+    "docs/ai/README.md",
+    "docs/ai/JOURNAL_DE_BORD_TECHNIQUE.md"
+  ],
+  "notes": [
+    "Only documentary changes on PR186. Archived experimental source/manifest/lock data have inert txt suffixes.",
+    "This inventory lists paths, not an assertion of a published commit. The final commit is verified separately after ref update."
+  ],
+  "parent": "d6ff395753f8af639cac9b7681f40356fbf4b8a3",
+  "parent_files": [
+    {
+      "blob": "6b6787dcd124b08cbe754dca375d4780fe93829d",
+      "mode": "100644",
+      "path": ".bolt/config.json"
+    },
+    {
+      "blob": "28c6548f6d0dedf18030ab2979ea57b91395eab4",
+      "mode": "100644",
+      "path": ".bolt/mcp.json"
+    },
+    {
+      "blob": "50bf7a0a874cbcd5362f338b44602e7e8db16ef5",
+      "mode": "100644",
+      "path": ".bolt/prompt"
+    },
+    {
+      "blob": "ed5f10d64c619cf59940c14dc632519a5d2f7868",
+      "mode": "100644",
+      "path": ".cursor/settings.json"
+    },
+    {
+      "blob": "b46b890a570df1e8694f221da77e958f9449c105",
+      "mode": "100644",
+      "path": ".gitattributes"
+    },
+    {
+      "blob": "5699e0b891211736de6273b4c3167ae92aa96a5b",
+      "mode": "100644",
+      "path": ".github/README.md"
+    },
+    {
+      "blob": "c91b6905b78503b435d6a6db5c7bb8652cdaf62a",
+      "mode": "100644",
+      "path": ".github/dependabot.yml"
+    },
+    {
+      "blob": "409f7b5479211adc015720fddd26d6e6b0ddf158",
+      "mode": "100644",
+      "path": ".github/workflows/apisec-scan.yml"
+    },
+    {
+      "blob": "2d2995cd9abfd42781a3d0942cc49d836a3d65ea",
+      "mode": "100644",
+      "path": ".github/workflows/auto-approve.yml"
+    },
+    {
+      "blob": "6045f8eebddacb766b1163aec67cab3b10613eea",
+      "mode": "100644",
+      "path": ".github/workflows/codeql.yml"
+    },
+    {
+      "blob": "be9e0f5b13380a20cb857c8b33e6eaf4436bf2ee",
+      "mode": "100644",
+      "path": ".github/workflows/neuralegion.yml"
+    },
+    {
+      "blob": "3ef053317588c180ab33476eb984cac82842c71f",
+      "mode": "100644",
+      "path": ".github/workflows/rust.yml"
+    },
+    {
+      "blob": "333a21398668fdc3b1e83f39ce60d7b0a349a417",
+      "mode": "100644",
+      "path": ".github/workflows/security-analysis.yml"
+    },
+    {
+      "blob": "d63d51807391674593ebb8414797ba9ac74c9d77",
+      "mode": "100644",
+      "path": ".github/workflows/semgrep.yml"
+    },
+    {
+      "blob": "07701bef6c6e65143b9b4c1840f4e1349ed36ddc",
+      "mode": "100644",
+      "path": ".github/workflows/sonarcloud.yml"
+    },
+    {
+      "blob": "a534bbc6af45a025c78d8024ac5e3a2350bf490b",
+      "mode": "100644",
+      "path": ".gitignore"
+    },
+    {
+      "blob": "3d91e7767ae3d00156f19bf8599ad11ea26e4a46",
+      "mode": "100644",
+      "path": "AGENTS.md"
+    },
+    {
+      "blob": "5322fc260c0e9012a3f51a9781b7ff5f8045cc44",
+      "mode": "100644",
+      "path": "Cargo.toml"
+    },
+    {
+      "blob": "947481855a58de035c7c0d5ec268ccc895a891fc",
+      "mode": "100644",
+      "path": "LICENSE"
+    },
+    {
+      "blob": "3df6142f66603c61f5d5e4625d7ea0ec63fcdb7b",
+      "mode": "100644",
+      "path": "NotesPersos.md"
+    },
+    {
+      "blob": "22a76a192e81c7eb8a248f5dcb46b4b565c46414",
+      "mode": "100644",
+      "path": "README.md"
+    },
+    {
+      "blob": "390349b667961013e7703536b219eb0fa0a3e897",
+      "mode": "100644",
+      "path": "SECURITY.md"
+    },
+    {
+      "blob": "afb29a1d89e92001269f1ef173560a17d10cbeb3",
+      "mode": "100644",
+      "path": "Scripts/DiagComplet_DINGUERIE.ps1"
+    },
+    {
+      "blob": "b06d0ac1f1d0f5a9adbfe233cd6a09e32d305fc1",
+      "mode": "100644",
+      "path": "Scripts/DiagDrivers_20260521_1402.txt"
+    },
+    {
+      "blob": "65411f15f5c9bdca467eed66afca1afba76ab8a8",
+      "mode": "100644",
+      "path": "Scripts/EpicGamesLauncherDelete.ps1"
+    },
+    {
+      "blob": "960540f95a673676d7ab7641024cc0ab3b74f604",
+      "mode": "100644",
+      "path": "Scripts/IntelDSA_RegistryBackup_2026-05-22_06-36-03.reg"
+    },
+    {
+      "blob": "e970f4f4008d254704e93a96d37140100fb2d94b",
+      "mode": "100644",
+      "path": "Scripts/Maintenance.ps1"
+    },
+    {
+      "blob": "360d764d4bd275cd0031e7f1ee3e4991b5a09580",
+      "mode": "100644",
+      "path": "Scripts/Nettoyage_du_Dépôt.sh"
+    },
+    {
+      "blob": "45b8ce74b4d92ed6a8f642246af4355bf97e8b5e",
+      "mode": "100644",
+      "path": "Scripts/OptiAlimRog.ps1"
+    },
+    {
+      "blob": "f66e871420f97626a4abdcd9a1a0be93fc4edc85",
+      "mode": "100644",
+      "path": "Scripts/WindowsFullUpdate.ps1"
+    },
+    {
+      "blob": "65406b2ea829a68cbb7353d07f140510315383ce",
+      "mode": "100644",
+      "path": "Scripts/analyze-lock-duplicates.mjs"
+    },
+    {
+      "blob": "99d98eafb7f2b758ddd10157d575e7520750ad84",
+      "mode": "100644",
+      "path": "Scripts/antiintelstartup.ps1"
+    },
+    {
+      "blob": "f4e00f8559c6cc01c1454b2fdad673f3b831e235",
+      "mode": "100644",
+      "path": "Scripts/armourydelete.ps1"
+    },
+    {
+      "blob": "d5efbb7945c5f00cb3e0a5ffa0cb2ed8b92de8ce",
+      "mode": "100644",
+      "path": "Scripts/dernier.ps1"
+    },
+    {
+      "blob": "af3dae46c29051b16f793a839a9a08adffb759c6",
+      "mode": "100644",
+      "path": "Scripts/disableasusservices.ps1"
+    },
+    {
+      "blob": "edd0922deafc565210e292a68fddfb5023f2eb82",
+      "mode": "100644",
+      "path": "Scripts/fix-package-lock-merge.mjs"
+    },
+    {
+      "blob": "e9ee6d6b5dd38aa9f888c0e282a027abc2cc45f3",
+      "mode": "100644",
+      "path": "Scripts/ghelper.ps1"
+    },
+    {
+      "blob": "97ca8c6907845baaa7263778ec859be888df27d2",
+      "mode": "100644",
+      "path": "Scripts/logs latencymon.txt"
+    },
+    {
+      "blob": "b78a816915f25031d713e096cf5a4fb517c512e2",
+      "mode": "100644",
+      "path": "Scripts/majs prob.ps1"
+    },
+    {
+      "blob": "83aa30f9cf03a7f5bbdaa6461437c85d8cb82406",
+      "mode": "100644",
+      "path": "Scripts/purgewindowsupdate (2).ps1"
+    },
+    {
+      "blob": "20bb6352ec9a2b9045a922f862a1a8cd1be7548e",
+      "mode": "100644",
+      "path": "Scripts/purgewindowsupdate (3).ps1"
+    },
+    {
+      "blob": "eb4e0f015f6b51a88c45b294a92de896f0503139",
+      "mode": "100644",
+      "path": "Scripts/purgewindowsupdate.ps1"
+    },
+    {
+      "blob": "cc6ef87175a17579bb649f0e61f00caeb53b85a2",
+      "mode": "100644",
+      "path": "Scripts/reportbsod.txt"
+    },
+    {
+      "blob": "f65b1cf63f930e72708d394d61708c32341c2a0b",
+      "mode": "100644",
+      "path": "Scripts/scriptantiacronis.ps1"
+    },
+    {
+      "blob": "51ceee359338b83aecb5dddca7458b0f2907b85d",
+      "mode": "100644",
+      "path": "Scripts/setup_file_compare_unity_git.ps1"
+    },
+    {
+      "blob": "93d53847a19ed12a3c6c7b5ca827ae40e8940514",
+      "mode": "100644",
+      "path": "Scripts/transcriptcursor.md"
+    },
+    {
+      "blob": "8bf9c5166351278c21d9bb3a69781f90f7cc9ebb",
+      "mode": "100644",
+      "path": "docs/ai/ANNEXE_COMPLETUDE_CHATGPT_V3_TO_V4_2026-10-26.md"
+    },
+    {
+      "blob": "d4f7ca5296b45c555f8a3427a92477c93b5d6dac",
+      "mode": "100644",
+      "path": "docs/ai/COLLABORATION_VALIDATION_2026-10-16.md"
+    },
+    {
+      "blob": "91e783f5e798f4abc65ee7850504a17c09c1af78",
+      "mode": "100644",
+      "path": "docs/ai/JOURNAL_DE_BORD_TECHNIQUE.md"
+    },
+    {
+      "blob": "9178fd1f5c62c36c6bcae0275c26d26a4a2b533d",
+      "mode": "100644",
+      "path": "docs/ai/KNOWLEDGE_PRIVACY_POLICY.md"
+    },
+    {
+      "blob": "10942af52affcc8966d26528dd32e28bc7f7ab85",
+      "mode": "100644",
+      "path": "docs/ai/PROJECT_RELAY_2026-10-16.md"
+    },
+    {
+      "blob": "6c9ec221610249b58afd699f6442f28464ebd533",
+      "mode": "100644",
+      "path": "docs/ai/PROMPT_DEMARRAGE_CHATGPT_V4_2026-10-26.md"
+    },
+    {
+      "blob": "26208f3b3fdf29f14822d46c3bbeb3cd6bedc41b",
+      "mode": "100644",
+      "path": "docs/ai/README.md"
+    },
+    {
+      "blob": "d1c835f7a335d492d7de6878601fc30bfe73276e",
+      "mode": "100644",
+      "path": "docs/ai/SESSION_CHATGPT_INITIAL_AUDITS_COMPLETENESS_2026-10-21.md"
+    },
+    {
+      "blob": "2efc5729c028561c3c8806dc49b947a252562bca",
+      "mode": "100644",
+      "path": "docs/ai/SESSION_CHATGPT_V2_TO_V3_RELAY_2026-10-22.md"
+    },
+    {
+      "blob": "cfb55dd52d49692610a032b24812befdfe6f7d42",
+      "mode": "100644",
+      "path": "docs/ai/SESSION_CHATGPT_V3_TO_V4_RELAY_2026-10-23.md"
+    },
+    {
+      "blob": "ef1bd7bd159cc10f54ee9e556c477da3cc8de4eb",
+      "mode": "100644",
+      "path": "docs/ai/SESSION_CODEX_COMPLETENESS_2026-10-21.md"
+    },
+    {
+      "blob": "8e1ff78c9e0b62028ce538e80992016217efe282",
+      "mode": "100644",
+      "path": "docs/ai/SESSION_CODEX_PR153_PR162_COMPLETENESS_2026-10-21.md"
+    },
+    {
+      "blob": "330343f43b4853b1d9c622055c636c582af3341b",
+      "mode": "100644",
+      "path": "docs/ai/SESSION_CODEX_PR153_PR162_COMPLETENESS_2026-10-21_EVIDENCE.json"
+    },
+    {
+      "blob": "7887de7a084ecc54f789a6dd1156a88907372ddb",
+      "mode": "100644",
+      "path": "docs/ai/WORKING_CONTRACT.md"
+    },
+    {
+      "blob": "e29ddc5abe6b0d617b4e389dd77f54c263b8bad9",
+      "mode": "100644",
+      "path": "docs/history/prompt-chatgpt-v4-20261026/PROMPT_DEMARRAGE_CHATGPT_V4_2026-10-26.md"
+    },
+    {
+      "blob": "82c2e20ccc2bae01b6589f5f391cb20f34db41fd",
+      "mode": "100644",
+      "path": "eslint.config.js"
+    },
+    {
+      "blob": "f4bf029a5e77ce1a30a84ff015ce3bd006bdb8a7",
+      "mode": "100644",
+      "path": "index.html"
+    },
+    {
+      "blob": "abc147ffacc282a6084c0dd46a41f20e11b80649",
+      "mode": "100644",
+      "path": "package-lock.fix-report.json"
+    },
+    {
+      "blob": "fef5ecde2a8b66712345421ed69f408a971a2277",
+      "mode": "100644",
+      "path": "package-lock.json"
+    },
+    {
+      "blob": "dd43c9bfaa69da4759147e51dcbf26a51bb2889a",
+      "mode": "100644",
+      "path": "package-lock.main.fixed.json"
+    },
+    {
+      "blob": "56007d26d0ed4695cf7ee649493a58c9e2ee95d3",
+      "mode": "100644",
+      "path": "package-lock.main.json"
+    },
+    {
+      "blob": "e1c2d3f28dbff9cc28a420dc000282fc0a8fe83f",
+      "mode": "100644",
+      "path": "package.json"
+    },
+    {
+      "blob": "858b1dbf37401218a923096de5a1b9ae6ce1b68a",
+      "mode": "100644",
+      "path": "pnpm-lock.yaml"
+    },
+    {
+      "blob": "2aa7205d4b402a1bdfbe07110c61df920b370066",
+      "mode": "100644",
+      "path": "postcss.config.js"
+    },
+    {
+      "blob": "5db72dd6a94fc07d18b0e6c0cf76e67ce982f1f9",
+      "mode": "100644",
+      "path": "renovate.json"
+    },
+    {
+      "blob": "855908a51b5d5298f69342b4e063ab1fad84e54a",
+      "mode": "100644",
+      "path": "src-tauri/Cargo.toml"
+    },
+    {
+      "blob": "795b9b7c83dbfc6bf454958eef78f93e211703d2",
+      "mode": "100644",
+      "path": "src-tauri/build.rs"
+    },
+    {
+      "blob": "c824258c3d68f78b3bb64f68d2ca755e6ae25326",
+      "mode": "100644",
+      "path": "src-tauri/src/cache.rs"
+    },
+    {
+      "blob": "67c6ea3ccdc11156fcd6e12fc3739ce4515f3e7f",
+      "mode": "100644",
+      "path": "src-tauri/src/geocoding.rs"
+    },
+    {
+      "blob": "e09a27e4aac5cb00b9369abc31d743c16d0716e6",
+      "mode": "100644",
+      "path": "src-tauri/src/main.rs"
+    },
+    {
+      "blob": "363e80b2e4ad0302b058cb8d9bbeff50728541fc",
+      "mode": "100644",
+      "path": "src-tauri/src/weather.rs"
+    },
+    {
+      "blob": "0e24651ff2e579c0436955e846187a6e9876ec79",
+      "mode": "100644",
+      "path": "src/App.tsx"
+    },
+    {
+      "blob": "c00c1967fa32ea28f7c8f8e7b68ed9bb78f5d555",
+      "mode": "100644",
+      "path": "src/components/AirQualityCard.tsx"
+    },
+    {
+      "blob": "aae65d4c49fa331d3178701b2c51a5a1dcd627f5",
+      "mode": "100644",
+      "path": "src/components/Dashboard.tsx"
+    },
+    {
+      "blob": "6250a7a2e6ab2ebbec22ea4afc63d82191dd30c9",
+      "mode": "100644",
+      "path": "src/components/ForecastCard.tsx"
+    },
+    {
+      "blob": "8c2cf9673e9ae1897391d9db34e4ce3384459ec3",
+      "mode": "100644",
+      "path": "src/components/LandingHero.tsx"
+    },
+    {
+      "blob": "5a9d9cbfd67154fcba5349381d22c2a82cc0828c",
+      "mode": "100644",
+      "path": "src/components/PollenCard.tsx"
+    },
+    {
+      "blob": "8003a543e006906fa93eb0293868726e997ff265",
+      "mode": "100644",
+      "path": "src/components/SearchBar.tsx"
+    },
+    {
+      "blob": "e5836c60778d3f149f12cac13b86131e4e5a5e3a",
+      "mode": "100644",
+      "path": "src/components/SettingsBar.tsx"
+    },
+    {
+      "blob": "72445fd981ae11d808b74bbdf6ceb8f449768e3d",
+      "mode": "100644",
+      "path": "src/components/TimeCard.tsx"
+    },
+    {
+      "blob": "381b6c50bc3c1acbf7c39e56e601ddd41099af2e",
+      "mode": "100644",
+      "path": "src/components/WeatherCard.tsx"
+    },
+    {
+      "blob": "62d3204d2186dc522a7521c75694eeb05cdc2b87",
+      "mode": "100644",
+      "path": "src/hooks/useAppState.ts"
+    },
+    {
+      "blob": "a753a6d4db1f1aae31673389afa22facf7219f2a",
+      "mode": "100644",
+      "path": "src/index.css"
+    },
+    {
+      "blob": "ea9e3630a4f82a3cc92500297b28fa6f1ff72a75",
+      "mode": "100644",
+      "path": "src/main.tsx"
+    },
+    {
+      "blob": "1944f3f86512a085893f109e37a38533d792a0d2",
+      "mode": "100644",
+      "path": "src/services/cache.ts"
+    },
+    {
+      "blob": "25e9c974bcb5af39f4bf38caf3a7c7a164c20e22",
+      "mode": "100644",
+      "path": "src/services/geocoding.ts"
+    },
+    {
+      "blob": "38e968b25fb20203e44959c16bb8bd71de4d3576",
+      "mode": "100644",
+      "path": "src/services/tauri.ts"
+    },
+    {
+      "blob": "0a0a2ce7b333c09d78eac125e3f75801e174a2a3",
+      "mode": "100644",
+      "path": "src/services/weather.ts"
+    },
+    {
+      "blob": "46f6238fcf4fa66334ef7515fbd949095ba591ce",
+      "mode": "100644",
+      "path": "src/types/index.ts"
+    },
+    {
+      "blob": "7f6d534388413dcebc2c4da638a58a05505c1fca",
+      "mode": "100644",
+      "path": "src/utils/formatters.ts"
+    },
+    {
+      "blob": "11f02fe2a0061d6e6e1f271b21da95423b448b32",
+      "mode": "100644",
+      "path": "src/vite-env.d.ts"
+    },
+    {
+      "blob": "d21f1cdae70ca548855964467cc032c21ce5c1bb",
+      "mode": "100644",
+      "path": "tailwind.config.js"
+    },
+    {
+      "blob": "76d38f4eaa8ff42b11c808aa196d203dcf2f04d5",
+      "mode": "100644",
+      "path": "tauri.conf.json"
+    },
+    {
+      "blob": "f0a235055d24607ba5e0bedc494ffc35b5956fbb",
+      "mode": "100644",
+      "path": "tsconfig.app.json"
+    },
+    {
+      "blob": "1ffef600d959ec9e396d5a260bd3f5b927b2cef8",
+      "mode": "100644",
+      "path": "tsconfig.json"
+    },
+    {
+      "blob": "0d3d71446a455c5f997e3cffb25099dab0f74a9b",
+      "mode": "100644",
+      "path": "tsconfig.node.json"
+    },
+    {
+      "blob": "ce4f5bd649912d247c7fd18e47153dd021d209cb",
+      "mode": "100644",
+      "path": "vite.config.ts"
+    }
+  ],
+  "parent_tree": "a6c40ac1aa43d01df6289c7730204811afb4087e",
+  "preservation_method": "Two edited documents retain the entire old byte sequence as an exact prefix. All other parent blobs and modes must remain identical. Original versions remain at the immutable parent commit; no history rewrite.",
+  "unchanged_parent_files": 101
+}

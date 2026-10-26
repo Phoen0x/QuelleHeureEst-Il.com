@@ -1,0 +1,27 @@
+[
+  {
+    "binary": "acl-old",
+    "exit": 0,
+    "records": 659
+  },
+  {
+    "binary": "acl-new",
+    "exit": 0,
+    "records": 659
+  },
+  {
+    "binary": "runtime-old",
+    "exit": 0,
+    "records": 659
+  },
+  {
+    "binary": "runtime-new",
+    "exit": 0,
+    "records": 659
+  },
+  {
+    "binary": "compat-fixture",
+    "exit": 0,
+    "records": 666
+  }
+]

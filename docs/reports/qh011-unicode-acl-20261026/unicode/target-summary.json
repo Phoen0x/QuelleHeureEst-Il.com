@@ -1,0 +1,322 @@
+[
+  {
+    "side": "before",
+    "target": "x86_64-unknown-linux-gnu",
+    "all_features": false,
+    "exit": 0,
+    "count": 373,
+    "unic": [
+      "unic-char-property@0.9.0",
+      "unic-char-range@0.9.0",
+      "unic-common@0.9.0",
+      "unic-ucd-ident@0.9.0",
+      "unic-ucd-version@0.9.0"
+    ],
+    "glib": [
+      "glib@0.18.5"
+    ],
+    "pem": false
+  },
+  {
+    "side": "before",
+    "target": "x86_64-unknown-linux-gnu",
+    "all_features": true,
+    "exit": 0,
+    "count": 376,
+    "unic": [
+      "unic-char-property@0.9.0",
+      "unic-char-range@0.9.0",
+      "unic-common@0.9.0",
+      "unic-ucd-ident@0.9.0",
+      "unic-ucd-version@0.9.0"
+    ],
+    "glib": [
+      "glib@0.18.5"
+    ],
+    "pem": true
+  },
+  {
+    "side": "before",
+    "target": "aarch64-linux-android",
+    "all_features": false,
+    "exit": 0,
+    "count": 326,
+    "unic": [
+      "unic-char-property@0.9.0",
+      "unic-char-range@0.9.0",
+      "unic-common@0.9.0",
+      "unic-ucd-ident@0.9.0",
+      "unic-ucd-version@0.9.0"
+    ],
+    "glib": [],
+    "pem": false
+  },
+  {
+    "side": "before",
+    "target": "aarch64-linux-android",
+    "all_features": true,
+    "exit": 0,
+    "count": 329,
+    "unic": [
+      "unic-char-property@0.9.0",
+      "unic-char-range@0.9.0",
+      "unic-common@0.9.0",
+      "unic-ucd-ident@0.9.0",
+      "unic-ucd-version@0.9.0"
+    ],
+    "glib": [],
+    "pem": true
+  },
+  {
+    "side": "before",
+    "target": "x86_64-pc-windows-msvc",
+    "all_features": false,
+    "exit": 0,
+    "count": 341,
+    "unic": [
+      "unic-char-property@0.9.0",
+      "unic-char-range@0.9.0",
+      "unic-common@0.9.0",
+      "unic-ucd-ident@0.9.0",
+      "unic-ucd-version@0.9.0"
+    ],
+    "glib": [],
+    "pem": false
+  },
+  {
+    "side": "before",
+    "target": "x86_64-pc-windows-msvc",
+    "all_features": true,
+    "exit": 0,
+    "count": 344,
+    "unic": [
+      "unic-char-property@0.9.0",
+      "unic-char-range@0.9.0",
+      "unic-common@0.9.0",
+      "unic-ucd-ident@0.9.0",
+      "unic-ucd-version@0.9.0"
+    ],
+    "glib": [],
+    "pem": true
+  },
+  {
+    "side": "before",
+    "target": "aarch64-apple-darwin",
+    "all_features": false,
+    "exit": 0,
+    "count": 339,
+    "unic": [
+      "unic-char-property@0.9.0",
+      "unic-char-range@0.9.0",
+      "unic-common@0.9.0",
+      "unic-ucd-ident@0.9.0",
+      "unic-ucd-version@0.9.0"
+    ],
+    "glib": [],
+    "pem": false
+  },
+  {
+    "side": "before",
+    "target": "aarch64-apple-darwin",
+    "all_features": true,
+    "exit": 0,
+    "count": 341,
+    "unic": [
+      "unic-char-property@0.9.0",
+      "unic-char-range@0.9.0",
+      "unic-common@0.9.0",
+      "unic-ucd-ident@0.9.0",
+      "unic-ucd-version@0.9.0"
+    ],
+    "glib": [],
+    "pem": true
+  },
+  {
+    "side": "before",
+    "target": "aarch64-apple-ios",
+    "all_features": false,
+    "exit": 0,
+    "count": 330,
+    "unic": [
+      "unic-char-property@0.9.0",
+      "unic-char-range@0.9.0",
+      "unic-common@0.9.0",
+      "unic-ucd-ident@0.9.0",
+      "unic-ucd-version@0.9.0"
+    ],
+    "glib": [],
+    "pem": false
+  },
+  {
+    "side": "before",
+    "target": "aarch64-apple-ios",
+    "all_features": true,
+    "exit": 0,
+    "count": 332,
+    "unic": [
+      "unic-char-property@0.9.0",
+      "unic-char-range@0.9.0",
+      "unic-common@0.9.0",
+      "unic-ucd-ident@0.9.0",
+      "unic-ucd-version@0.9.0"
+    ],
+    "glib": [],
+    "pem": true
+  },
+  {
+    "side": "before",
+    "target": "wasm32-unknown-unknown",
+    "all_features": false,
+    "exit": 0,
+    "count": 280,
+    "unic": [
+      "unic-char-property@0.9.0",
+      "unic-char-range@0.9.0",
+      "unic-common@0.9.0",
+      "unic-ucd-ident@0.9.0",
+      "unic-ucd-version@0.9.0"
+    ],
+    "glib": [],
+    "pem": false
+  },
+  {
+    "side": "before",
+    "target": "wasm32-unknown-unknown",
+    "all_features": true,
+    "exit": 0,
+    "count": 283,
+    "unic": [
+      "unic-char-property@0.9.0",
+      "unic-char-range@0.9.0",
+      "unic-common@0.9.0",
+      "unic-ucd-ident@0.9.0",
+      "unic-ucd-version@0.9.0"
+    ],
+    "glib": [],
+    "pem": true
+  },
+  {
+    "side": "after",
+    "target": "x86_64-unknown-linux-gnu",
+    "all_features": false,
+    "exit": 0,
+    "count": 372,
+    "unic": [],
+    "glib": [
+      "glib@0.18.5"
+    ],
+    "pem": false
+  },
+  {
+    "side": "after",
+    "target": "x86_64-unknown-linux-gnu",
+    "all_features": true,
+    "exit": 0,
+    "count": 375,
+    "unic": [],
+    "glib": [
+      "glib@0.18.5"
+    ],
+    "pem": true
+  },
+  {
+    "side": "after",
+    "target": "aarch64-linux-android",
+    "all_features": false,
+    "exit": 0,
+    "count": 331,
+    "unic": [],
+    "glib": [],
+    "pem": false
+  },
+  {
+    "side": "after",
+    "target": "aarch64-linux-android",
+    "all_features": true,
+    "exit": 0,
+    "count": 334,
+    "unic": [],
+    "glib": [],
+    "pem": true
+  },
+  {
+    "side": "after",
+    "target": "x86_64-pc-windows-msvc",
+    "all_features": false,
+    "exit": 0,
+    "count": 341,
+    "unic": [],
+    "glib": [],
+    "pem": false
+  },
+  {
+    "side": "after",
+    "target": "x86_64-pc-windows-msvc",
+    "all_features": true,
+    "exit": 0,
+    "count": 344,
+    "unic": [],
+    "glib": [],
+    "pem": true
+  },
+  {
+    "side": "after",
+    "target": "aarch64-apple-darwin",
+    "all_features": false,
+    "exit": 0,
+    "count": 338,
+    "unic": [],
+    "glib": [],
+    "pem": false
+  },
+  {
+    "side": "after",
+    "target": "aarch64-apple-darwin",
+    "all_features": true,
+    "exit": 0,
+    "count": 340,
+    "unic": [],
+    "glib": [],
+    "pem": true
+  },
+  {
+    "side": "after",
+    "target": "aarch64-apple-ios",
+    "all_features": false,
+    "exit": 0,
+    "count": 329,
+    "unic": [],
+    "glib": [],
+    "pem": false
+  },
+  {
+    "side": "after",
+    "target": "aarch64-apple-ios",
+    "all_features": true,
+    "exit": 0,
+    "count": 331,
+    "unic": [],
+    "glib": [],
+    "pem": true
+  },
+  {
+    "side": "after",
+    "target": "wasm32-unknown-unknown",
+    "all_features": false,
+    "exit": 0,
+    "count": 279,
+    "unic": [],
+    "glib": [],
+    "pem": false
+  },
+  {
+    "side": "after",
+    "target": "wasm32-unknown-unknown",
+    "all_features": true,
+    "exit": 0,
+    "count": 282,
+    "unic": [],
+    "glib": [],
+    "pem": true
+  }
+]

@@ -1,0 +1,19 @@
+   Compiling glib v0.18.5 (<UNICODE_DIAGNOSTIC>/after/vendor/glib-0.18.5)
+    Finished `release` profile [optimized] target(s) in 2m 37s
+     Running unittests src/main.rs (<ENVIRONMENT>/cargo-target/release/deps/quelleheureest-c00e32b681600f1a)
+running 0 tests
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+     Running tests/glib_variant_str_iter.rs (<ENVIRONMENT>/cargo-target/release/deps/glib_variant_str_iter-26312993a327fce4)
+running 6 tests
+test backward_nth_reads_written_pointer ... ok
+test backward_next_reads_written_pointer ... ok
+test forward_last_reads_written_pointer ... ok
+test forward_next_reads_written_pointer ... ok
+test forward_nth_reads_written_pointer ... ok
+test mixed_iteration_and_empty_array_remain_valid ... ok
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+     Running tests/http_client.rs (<ENVIRONMENT>/cargo-target/release/deps/http_client-b29adf9d071c994d)
+running 2 tests
+test http1_json_client_remains_compatible ... ok
+test http2_json_uses_patched_transport ... ok
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s

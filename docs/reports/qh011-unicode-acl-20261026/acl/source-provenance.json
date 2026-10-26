@@ -1,0 +1,33 @@
+{
+  "tauri-2.11.6": {
+    "git": {
+      "sha1": "9452ddee5ebefd9b678a94ff003521379df6c9ae"
+    },
+    "path_in_vcs": "crates/tauri"
+  },
+  "tauri-utils-2.9.3": {
+    "git": {
+      "sha1": "6f6ab1207bb3923c2721fbc67d2fdb1c8deb0c7a"
+    },
+    "path_in_vcs": "crates/tauri-utils"
+  },
+  "tauri-utils-2.10.2": {
+    "git": {
+      "sha1": "59b63ab500da9859f12d8888c3298bc29bba0b92"
+    },
+    "path_in_vcs": "crates/tauri-utils",
+    "rust-version": "1.90"
+  },
+  "urlpattern-0.3.0": {
+    "git": {
+      "sha1": "ea97a5de9740a7eda311281828b3270d92fb1afb"
+    },
+    "path_in_vcs": ""
+  },
+  "urlpattern-0.6.0": {
+    "git": {
+      "sha1": "e29804d15bdc60797c1c7f715d90480ace0bb451"
+    },
+    "path_in_vcs": ""
+  }
+}

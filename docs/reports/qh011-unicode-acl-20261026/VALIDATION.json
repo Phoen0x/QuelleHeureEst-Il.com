@@ -1,0 +1,136 @@
+{
+  "confidentiality": "Selected text/JSON and new additions reviewed; secret/path patterns clear except explicitly synthetic fixture credentials; no private logs, binaries, SDKs, caches or third-party source files included",
+  "deferred": [
+    "Rust 1.90 exact",
+    "native Android/Windows/macOS/iOS and GUI",
+    "full WebView IPC/typed-scope enforcement",
+    "universal URLPattern equivalence",
+    "current audits and CI",
+    "fresh-machine reconstruction"
+  ],
+  "historical_preservation": "Exact old byte prefixes for both edited documents; 101 other parent file blobs/modes to remain identical",
+  "links": [
+    {
+      "source": "docs/ai/DIAGNOSTIC_QH011_UNICODE_URLPATTERN_ICU_2026-10-26.md",
+      "url": "https://github.com/Phoen0x/QuelleHeureEst-Il.com/pull/183"
+    },
+    {
+      "source": "docs/ai/DIAGNOSTIC_QH011_UNICODE_URLPATTERN_ICU_2026-10-26.md",
+      "url": "https://github.com/Phoen0x/QuelleHeureEst-Il.com/blob/f2eee4223a1ccf5b0866944580df8fd5979575dd/docs/development/linux-environment-20261022.md"
+    },
+    {
+      "source": "docs/ai/DIAGNOSTIC_QH011_UNICODE_URLPATTERN_ICU_2026-10-26.md",
+      "target": "docs/reports/qh011-unicode-acl-20261026/source-provenance.json"
+    },
+    {
+      "source": "docs/ai/DIAGNOSTIC_QH011_UNICODE_URLPATTERN_ICU_2026-10-26.md",
+      "target": "docs/reports/qh011-unicode-acl-20261026/NOTICE.md"
+    },
+    {
+      "source": "docs/ai/DIAGNOSTIC_QH011_UNICODE_URLPATTERN_ICU_2026-10-26.md",
+      "target": "docs/ai/DIAGNOSTIC_QH011_COMPATIBILITE_ACL_UNICODE_2026-10-26.md"
+    },
+    {
+      "source": "docs/ai/DIAGNOSTIC_QH011_UNICODE_URLPATTERN_ICU_2026-10-26.md",
+      "target": "docs/reports/qh011-unicode-acl-20261026/unicode/dependency-delta.json"
+    },
+    {
+      "source": "docs/ai/DIAGNOSTIC_QH011_UNICODE_URLPATTERN_ICU_2026-10-26.md",
+      "target": "docs/reports/qh011-unicode-acl-20261026/unicode/logs/runtime-new-unpinned-failure-excerpt.json"
+    },
+    {
+      "source": "docs/ai/DIAGNOSTIC_QH011_UNICODE_URLPATTERN_ICU_2026-10-26.md",
+      "target": "docs/reports/qh011-unicode-acl-20261026/unicode/cases.json"
+    },
+    {
+      "source": "docs/ai/DIAGNOSTIC_QH011_UNICODE_URLPATTERN_ICU_2026-10-26.md",
+      "target": "docs/reports/qh011-unicode-acl-20261026/unicode/bounded-run-status.json"
+    },
+    {
+      "source": "docs/ai/DIAGNOSTIC_QH011_UNICODE_URLPATTERN_ICU_2026-10-26.md",
+      "target": "docs/reports/qh011-unicode-acl-20261026/unicode/audit-summary.json"
+    },
+    {
+      "source": "docs/ai/README.md",
+      "target": "docs/ai/DIAGNOSTIC_QH011_UNICODE_URLPATTERN_ICU_2026-10-26.md"
+    },
+    {
+      "source": "docs/ai/README.md",
+      "target": "docs/ai/DIAGNOSTIC_QH011_COMPATIBILITE_ACL_UNICODE_2026-10-26.md"
+    },
+    {
+      "source": "docs/ai/README.md",
+      "target": "docs/reports/qh011-unicode-acl-20261026/NOTICE.md"
+    },
+    {
+      "source": "docs/ai/README.md",
+      "target": "docs/ai/DIAGNOSTIC_QH011_UNICODE_URLPATTERN_ICU_2026-10-26.md"
+    },
+    {
+      "source": "docs/ai/README.md",
+      "target": "docs/ai/DIAGNOSTIC_QH011_COMPATIBILITE_ACL_UNICODE_2026-10-26.md"
+    },
+    {
+      "source": "docs/ai/README.md",
+      "target": "docs/reports/qh011-unicode-acl-20261026/NOTICE.md"
+    },
+    {
+      "source": "docs/ai/JOURNAL_DE_BORD_TECHNIQUE.md",
+      "target": "docs/ai/DIAGNOSTIC_QH011_UNICODE_URLPATTERN_ICU_2026-10-26.md"
+    },
+    {
+      "source": "docs/ai/JOURNAL_DE_BORD_TECHNIQUE.md",
+      "target": "docs/ai/DIAGNOSTIC_QH011_COMPATIBILITE_ACL_UNICODE_2026-10-26.md"
+    },
+    {
+      "source": "docs/ai/JOURNAL_DE_BORD_TECHNIQUE.md",
+      "target": "docs/reports/qh011-unicode-acl-20261026/NOTICE.md"
+    },
+    {
+      "source": "docs/ai/DIAGNOSTIC_QH011_COMPATIBILITE_ACL_UNICODE_2026-10-26.md",
+      "target": "docs/ai/DIAGNOSTIC_QH011_UNICODE_URLPATTERN_ICU_2026-10-26.md"
+    },
+    {
+      "source": "docs/ai/DIAGNOSTIC_QH011_COMPATIBILITE_ACL_UNICODE_2026-10-26.md",
+      "target": "docs/reports/qh011-unicode-acl-20261026/source-provenance.json"
+    },
+    {
+      "source": "docs/ai/DIAGNOSTIC_QH011_COMPATIBILITE_ACL_UNICODE_2026-10-26.md",
+      "target": "docs/reports/qh011-unicode-acl-20261026/acl/cases.json"
+    },
+    {
+      "source": "docs/ai/DIAGNOSTIC_QH011_COMPATIBILITE_ACL_UNICODE_2026-10-26.md",
+      "url": "https://github.com/tauri-apps/tauri/blob/9452ddee5ebefd9b678a94ff003521379df6c9ae/crates/tauri/src/ipc/authority.rs"
+    },
+    {
+      "source": "docs/ai/DIAGNOSTIC_QH011_COMPATIBILITE_ACL_UNICODE_2026-10-26.md",
+      "url": "https://github.com/tauri-apps/tauri/blob/9452ddee5ebefd9b678a94ff003521379df6c9ae/crates/tauri/src/webview/mod.rs"
+    },
+    {
+      "source": "docs/ai/DIAGNOSTIC_QH011_COMPATIBILITE_ACL_UNICODE_2026-10-26.md",
+      "url": "https://github.com/tauri-apps/tauri/blob/59b63ab500da9859f12d8888c3298bc29bba0b92/crates/tauri-utils/src/acl/mod.rs"
+    },
+    {
+      "source": "docs/reports/qh011-unicode-acl-20261026/NOTICE.md",
+      "target": "docs/ai/DIAGNOSTIC_QH011_UNICODE_URLPATTERN_ICU_2026-10-26.md"
+    },
+    {
+      "source": "docs/reports/qh011-unicode-acl-20261026/NOTICE.md",
+      "target": "docs/ai/DIAGNOSTIC_QH011_COMPATIBILITE_ACL_UNICODE_2026-10-26.md"
+    },
+    {
+      "source": "docs/reports/qh011-unicode-acl-20261026/NOTICE.md",
+      "url": "https://github.com/rustsec/advisory-db/tree/21d909e4c8bd4e14c7aea58bf980c881a0053ab1"
+    }
+  ],
+  "markdown_external_links": "HTTPS references inspected; project Linux guide fetched at exact SHA; source-VCS links trace package provenance, not a universal external availability guarantee",
+  "markdown_new_local_links": "PASS",
+  "new_replay_build_run_tested": false,
+  "offline_integrity_and_consistency": "PASS",
+  "original_diagnostics_rerun": false,
+  "publication_status": "Candidate validated before publication; final ref and tree are checked separately.",
+  "reproduce_prepare_only": "PASS; no Cargo execution; isolated output outside checkout",
+  "scope": "documentary archiving only; no new Cargo/Web/audit/CI execution",
+  "source_acl_manifest": "31/31 original files checked before collection, no missing/mismatched file",
+  "syntax_verify_and_reproduce": "PASS (ast.parse)"
+}

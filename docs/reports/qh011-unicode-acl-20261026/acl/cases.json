@@ -1,0 +1,1975 @@
+[
+  {
+    "id": "same-origin",
+    "caps": [
+      {
+        "identifier": "rule",
+        "local": false,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "allow-narrow"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid/*"
+          ]
+        }
+      }
+    ],
+    "url": "https://example.invalid/value",
+    "window": "main",
+    "webview": "view",
+    "local": false,
+    "command": "probe",
+    "target": "linux"
+  },
+  {
+    "id": "wrong-domain",
+    "caps": [
+      {
+        "identifier": "rule",
+        "local": false,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "allow-narrow"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid/*"
+          ]
+        }
+      }
+    ],
+    "url": "https://different.invalid/value",
+    "window": "main",
+    "webview": "view",
+    "local": false,
+    "command": "probe",
+    "target": "linux"
+  },
+  {
+    "id": "subdomain",
+    "caps": [
+      {
+        "identifier": "rule",
+        "local": false,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "allow-narrow"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid/*"
+          ]
+        }
+      }
+    ],
+    "url": "https://sub.example.invalid/value",
+    "window": "main",
+    "webview": "view",
+    "local": false,
+    "command": "probe",
+    "target": "linux"
+  },
+  {
+    "id": "port-default",
+    "caps": [
+      {
+        "identifier": "rule",
+        "local": false,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "allow-narrow"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid/*"
+          ]
+        }
+      }
+    ],
+    "url": "https://example.invalid:443/value",
+    "window": "main",
+    "webview": "view",
+    "local": false,
+    "command": "probe",
+    "target": "linux"
+  },
+  {
+    "id": "port-other",
+    "caps": [
+      {
+        "identifier": "rule",
+        "local": false,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "allow-narrow"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid/*"
+          ]
+        }
+      }
+    ],
+    "url": "https://example.invalid:8443/value",
+    "window": "main",
+    "webview": "view",
+    "local": false,
+    "command": "probe",
+    "target": "linux"
+  },
+  {
+    "id": "http",
+    "caps": [
+      {
+        "identifier": "rule",
+        "local": false,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "allow-narrow"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid/*"
+          ]
+        }
+      }
+    ],
+    "url": "http://example.invalid/value",
+    "window": "main",
+    "webview": "view",
+    "local": false,
+    "command": "probe",
+    "target": "linux"
+  },
+  {
+    "id": "dot-segment",
+    "caps": [
+      {
+        "identifier": "rule",
+        "local": false,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "allow-narrow"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid/*"
+          ]
+        }
+      }
+    ],
+    "url": "https://example.invalid/a/../value",
+    "window": "main",
+    "webview": "view",
+    "local": false,
+    "command": "probe",
+    "target": "linux"
+  },
+  {
+    "id": "encoded-dot",
+    "caps": [
+      {
+        "identifier": "rule",
+        "local": false,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "allow-narrow"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid/*"
+          ]
+        }
+      }
+    ],
+    "url": "https://example.invalid/a/%2E%2E/value",
+    "window": "main",
+    "webview": "view",
+    "local": false,
+    "command": "probe",
+    "target": "linux"
+  },
+  {
+    "id": "encoded-slash",
+    "caps": [
+      {
+        "identifier": "rule",
+        "local": false,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "allow-narrow"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid/*"
+          ]
+        }
+      }
+    ],
+    "url": "https://example.invalid/a%2Fb",
+    "window": "main",
+    "webview": "view",
+    "local": false,
+    "command": "probe",
+    "target": "linux"
+  },
+  {
+    "id": "url-control",
+    "caps": [
+      {
+        "identifier": "rule",
+        "local": false,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "allow-narrow"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid/*"
+          ]
+        }
+      }
+    ],
+    "url": "https://exam\nple.invalid/value",
+    "window": "main",
+    "webview": "view",
+    "local": false,
+    "command": "probe",
+    "target": "linux"
+  },
+  {
+    "id": "path-control",
+    "caps": [
+      {
+        "identifier": "rule",
+        "local": false,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "allow-narrow"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid/*"
+          ]
+        }
+      }
+    ],
+    "url": "https://example.invalid/a\nb",
+    "window": "main",
+    "webview": "view",
+    "local": false,
+    "command": "probe",
+    "target": "linux"
+  },
+  {
+    "id": "encoded-control",
+    "caps": [
+      {
+        "identifier": "rule",
+        "local": false,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "allow-narrow"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid/*"
+          ]
+        }
+      }
+    ],
+    "url": "https://example.invalid/a%0Ab",
+    "window": "main",
+    "webview": "view",
+    "local": false,
+    "command": "probe",
+    "target": "linux"
+  },
+  {
+    "id": "idn",
+    "caps": [
+      {
+        "identifier": "rule",
+        "local": false,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "allow-narrow"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid/*"
+          ]
+        }
+      }
+    ],
+    "url": "https://例え.invalid/value",
+    "window": "main",
+    "webview": "view",
+    "local": false,
+    "command": "probe",
+    "target": "linux"
+  },
+  {
+    "id": "wrong-window",
+    "caps": [
+      {
+        "identifier": "rule",
+        "local": false,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "allow-narrow"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid/*"
+          ]
+        }
+      }
+    ],
+    "url": "https://example.invalid/value",
+    "window": "other",
+    "webview": "view",
+    "local": false,
+    "command": "probe",
+    "target": "linux"
+  },
+  {
+    "id": "local-vs-remote",
+    "caps": [
+      {
+        "identifier": "rule",
+        "local": false,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "allow-narrow"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid/*"
+          ]
+        }
+      }
+    ],
+    "url": "https://example.invalid/value",
+    "window": "main",
+    "webview": "view",
+    "local": true,
+    "command": "probe",
+    "target": "linux"
+  },
+  {
+    "id": "wrong-command",
+    "caps": [
+      {
+        "identifier": "rule",
+        "local": false,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "allow-narrow"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid/*"
+          ]
+        }
+      }
+    ],
+    "url": "https://example.invalid/value",
+    "window": "main",
+    "webview": "view",
+    "local": false,
+    "command": "other",
+    "target": "linux"
+  },
+  {
+    "id": "no-matching-webview",
+    "caps": [
+      {
+        "identifier": "rule",
+        "local": false,
+        "windows": [],
+        "permissions": [
+          "allow-narrow"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid/*"
+          ]
+        },
+        "webviews": [
+          "approved"
+        ]
+      }
+    ],
+    "url": "https://example.invalid/value",
+    "window": "main",
+    "webview": "view",
+    "local": false,
+    "command": "probe",
+    "target": "linux"
+  },
+  {
+    "id": "matching-webview",
+    "caps": [
+      {
+        "identifier": "rule",
+        "local": false,
+        "windows": [],
+        "permissions": [
+          "allow-narrow"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid/*"
+          ]
+        },
+        "webviews": [
+          "approved"
+        ]
+      }
+    ],
+    "url": "https://example.invalid/value",
+    "window": "main",
+    "webview": "approved",
+    "local": false,
+    "command": "probe",
+    "target": "linux"
+  },
+  {
+    "id": "window-or-webview",
+    "caps": [
+      {
+        "identifier": "rule",
+        "local": false,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "allow-narrow"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid/*"
+          ]
+        },
+        "webviews": [
+          "approved"
+        ]
+      }
+    ],
+    "url": "https://example.invalid/value",
+    "window": "main",
+    "webview": "view",
+    "local": false,
+    "command": "probe",
+    "target": "linux"
+  },
+  {
+    "id": "webview-or-window",
+    "caps": [
+      {
+        "identifier": "rule",
+        "local": false,
+        "windows": [
+          "other"
+        ],
+        "permissions": [
+          "allow-narrow"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid/*"
+          ]
+        },
+        "webviews": [
+          "approved"
+        ]
+      }
+    ],
+    "url": "https://example.invalid/value",
+    "window": "main",
+    "webview": "approved",
+    "local": false,
+    "command": "probe",
+    "target": "linux"
+  },
+  {
+    "id": "neither-label",
+    "caps": [
+      {
+        "identifier": "rule",
+        "local": false,
+        "windows": [
+          "other"
+        ],
+        "permissions": [
+          "allow-narrow"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid/*"
+          ]
+        },
+        "webviews": [
+          "approved"
+        ]
+      }
+    ],
+    "url": "https://example.invalid/value",
+    "window": "main",
+    "webview": "view",
+    "local": false,
+    "command": "probe",
+    "target": "linux"
+  },
+  {
+    "id": "window-glob",
+    "caps": [
+      {
+        "identifier": "rule",
+        "local": false,
+        "windows": [
+          "main-*"
+        ],
+        "permissions": [
+          "allow-narrow"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid/*"
+          ]
+        }
+      }
+    ],
+    "url": "https://example.invalid/value",
+    "window": "main-1",
+    "webview": "view",
+    "local": false,
+    "command": "probe",
+    "target": "linux"
+  },
+  {
+    "id": "local-default",
+    "caps": [
+      {
+        "identifier": "rule",
+        "local": true,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "allow-narrow"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid/*"
+          ]
+        }
+      }
+    ],
+    "url": "https://example.invalid/value",
+    "window": "main",
+    "webview": "view",
+    "local": true,
+    "command": "probe",
+    "target": "linux"
+  },
+  {
+    "id": "no-remote-local",
+    "caps": [
+      {
+        "identifier": "rule",
+        "local": true,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "allow-narrow"
+        ]
+      }
+    ],
+    "url": "https://example.invalid/value",
+    "window": "main",
+    "webview": "view",
+    "local": true,
+    "command": "probe",
+    "target": "linux"
+  },
+  {
+    "id": "no-remote-remote",
+    "caps": [
+      {
+        "identifier": "rule",
+        "local": true,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "allow-narrow"
+        ]
+      }
+    ],
+    "url": "https://example.invalid/value",
+    "window": "main",
+    "webview": "view",
+    "local": false,
+    "command": "probe",
+    "target": "linux"
+  },
+  {
+    "id": "no-capabilities",
+    "caps": [],
+    "url": "https://example.invalid/value",
+    "window": "main",
+    "webview": "view",
+    "local": false,
+    "command": "probe",
+    "target": "linux"
+  },
+  {
+    "id": "no-manifest",
+    "caps": [],
+    "url": "https://example.invalid/value",
+    "window": "main",
+    "webview": "view",
+    "local": false,
+    "command": "probe",
+    "target": "linux",
+    "no_manifest": true
+  },
+  {
+    "id": "android-filter-linux",
+    "caps": [
+      {
+        "identifier": "rule",
+        "local": false,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "allow-narrow"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid/*"
+          ]
+        },
+        "platforms": [
+          "android"
+        ]
+      }
+    ],
+    "url": "https://example.invalid/value",
+    "window": "main",
+    "webview": "view",
+    "local": false,
+    "command": "probe",
+    "target": "linux"
+  },
+  {
+    "id": "android-filter-android",
+    "caps": [
+      {
+        "identifier": "rule",
+        "local": false,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "allow-narrow"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid/*"
+          ]
+        },
+        "platforms": [
+          "android"
+        ]
+      }
+    ],
+    "url": "https://example.invalid/value",
+    "window": "main",
+    "webview": "view",
+    "local": false,
+    "command": "probe",
+    "target": "android"
+  },
+  {
+    "id": "windows-filter-linux",
+    "caps": [
+      {
+        "identifier": "rule",
+        "local": false,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "allow-narrow"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid/*"
+          ]
+        },
+        "platforms": [
+          "windows"
+        ]
+      }
+    ],
+    "url": "https://example.invalid/value",
+    "window": "main",
+    "webview": "view",
+    "local": false,
+    "command": "probe",
+    "target": "linux"
+  },
+  {
+    "id": "windows-filter-windows",
+    "caps": [
+      {
+        "identifier": "rule",
+        "local": false,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "allow-narrow"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid/*"
+          ]
+        },
+        "platforms": [
+          "windows"
+        ]
+      }
+    ],
+    "url": "https://example.invalid/value",
+    "window": "main",
+    "webview": "view",
+    "local": false,
+    "command": "probe",
+    "target": "windows"
+  },
+  {
+    "id": "kawi-partial",
+    "caps": [
+      {
+        "identifier": "rule",
+        "local": false,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "allow-narrow"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid/:a𑼀"
+          ]
+        }
+      }
+    ],
+    "url": "https://example.invalid/value",
+    "window": "main",
+    "webview": "view",
+    "local": false,
+    "command": "probe",
+    "target": "linux"
+  },
+  {
+    "id": "kawi-start",
+    "caps": [
+      {
+        "identifier": "rule",
+        "local": false,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "allow-narrow"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid/:𑼂"
+          ]
+        }
+      }
+    ],
+    "url": "https://example.invalid/value",
+    "window": "main",
+    "webview": "view",
+    "local": false,
+    "command": "probe",
+    "target": "linux"
+  },
+  {
+    "id": "cyrillic-start",
+    "caps": [
+      {
+        "identifier": "rule",
+        "local": false,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "allow-narrow"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid/:Ᲊ"
+          ]
+        }
+      }
+    ],
+    "url": "https://example.invalid/value",
+    "window": "main",
+    "webview": "view",
+    "local": false,
+    "command": "probe",
+    "target": "linux"
+  },
+  {
+    "id": "id-not-xid",
+    "caps": [
+      {
+        "identifier": "rule",
+        "local": false,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "allow-narrow"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid/:゛"
+          ]
+        }
+      }
+    ],
+    "url": "https://example.invalid/value",
+    "window": "main",
+    "webview": "view",
+    "local": false,
+    "command": "probe",
+    "target": "linux"
+  },
+  {
+    "id": "duplicate-group",
+    "caps": [
+      {
+        "identifier": "rule",
+        "local": false,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "allow-narrow"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid/:a𑼀/:a"
+          ]
+        }
+      }
+    ],
+    "url": "https://example.invalid/x/y",
+    "window": "main",
+    "webview": "view",
+    "local": false,
+    "command": "probe",
+    "target": "linux"
+  },
+  {
+    "id": "host-tab",
+    "caps": [
+      {
+        "identifier": "rule",
+        "local": false,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "allow-narrow"
+        ],
+        "remote": {
+          "urls": [
+            "https://exam\tple.invalid/*"
+          ]
+        }
+      }
+    ],
+    "url": "https://example.invalid/value",
+    "window": "main",
+    "webview": "view",
+    "local": false,
+    "command": "probe",
+    "target": "linux"
+  },
+  {
+    "id": "host-lf",
+    "caps": [
+      {
+        "identifier": "rule",
+        "local": false,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "allow-narrow"
+        ],
+        "remote": {
+          "urls": [
+            "https://exam\nple.invalid/*"
+          ]
+        }
+      }
+    ],
+    "url": "https://example.invalid/value",
+    "window": "main",
+    "webview": "view",
+    "local": false,
+    "command": "probe",
+    "target": "linux"
+  },
+  {
+    "id": "host-cr",
+    "caps": [
+      {
+        "identifier": "rule",
+        "local": false,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "allow-narrow"
+        ],
+        "remote": {
+          "urls": [
+            "https://exam\rple.invalid/*"
+          ]
+        }
+      }
+    ],
+    "url": "https://example.invalid/value",
+    "window": "main",
+    "webview": "view",
+    "local": false,
+    "command": "probe",
+    "target": "linux"
+  },
+  {
+    "id": "escaped-kawi",
+    "caps": [
+      {
+        "identifier": "rule",
+        "local": false,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "allow-narrow"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid/:a\\𑼀"
+          ]
+        }
+      }
+    ],
+    "url": "https://example.invalid/value",
+    "window": "main",
+    "webview": "view",
+    "local": false,
+    "command": "probe",
+    "target": "linux"
+  },
+  {
+    "id": "quantified-kawi",
+    "caps": [
+      {
+        "identifier": "rule",
+        "local": false,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "allow-narrow"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid/:a𑼀?"
+          ]
+        }
+      }
+    ],
+    "url": "https://example.invalid/value",
+    "window": "main",
+    "webview": "view",
+    "local": false,
+    "command": "probe",
+    "target": "linux"
+  },
+  {
+    "id": "offset-error",
+    "caps": [
+      {
+        "identifier": "rule",
+        "local": false,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "allow-narrow"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid/:é:"
+          ]
+        }
+      }
+    ],
+    "url": "https://example.invalid/value",
+    "window": "main",
+    "webview": "view",
+    "local": false,
+    "command": "probe",
+    "target": "linux"
+  },
+  {
+    "id": "partial-encoded-suffix",
+    "caps": [
+      {
+        "identifier": "rule",
+        "local": false,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "allow-narrow"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid/:a𑼀"
+          ]
+        }
+      }
+    ],
+    "url": "https://example.invalid/value%F0%91%BC%80",
+    "window": "main",
+    "webview": "view",
+    "local": false,
+    "command": "probe",
+    "target": "linux"
+  },
+  {
+    "id": "deny-same",
+    "caps": [
+      {
+        "identifier": "a",
+        "local": false,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "allow-narrow"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid/*"
+          ]
+        }
+      },
+      {
+        "identifier": "d",
+        "local": false,
+        "windows": [
+          "other"
+        ],
+        "permissions": [
+          "deny-probe"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid/*"
+          ]
+        },
+        "webviews": [
+          "other"
+        ]
+      }
+    ],
+    "url": "https://example.invalid/value",
+    "window": "main",
+    "webview": "view",
+    "local": false,
+    "command": "probe",
+    "target": "linux"
+  },
+  {
+    "id": "deny-different",
+    "caps": [
+      {
+        "identifier": "a",
+        "local": false,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "allow-narrow"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid/*"
+          ]
+        }
+      },
+      {
+        "identifier": "d",
+        "local": false,
+        "windows": [
+          "other"
+        ],
+        "permissions": [
+          "deny-probe"
+        ],
+        "remote": {
+          "urls": [
+            "https://different.invalid/*"
+          ]
+        },
+        "webviews": [
+          "other"
+        ]
+      }
+    ],
+    "url": "https://example.invalid/value",
+    "window": "main",
+    "webview": "view",
+    "local": false,
+    "command": "probe",
+    "target": "linux"
+  },
+  {
+    "id": "deny-unicode",
+    "caps": [
+      {
+        "identifier": "a",
+        "local": false,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "allow-narrow"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid/*"
+          ]
+        }
+      },
+      {
+        "identifier": "d",
+        "local": false,
+        "windows": [
+          "other"
+        ],
+        "permissions": [
+          "deny-probe"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid/:a𑼀"
+          ]
+        },
+        "webviews": [
+          "other"
+        ]
+      }
+    ],
+    "url": "https://example.invalid/value",
+    "window": "main",
+    "webview": "view",
+    "local": false,
+    "command": "probe",
+    "target": "linux"
+  },
+  {
+    "id": "deny-unrelated-command",
+    "caps": [
+      {
+        "identifier": "rule",
+        "local": false,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "allow-narrow"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid/*"
+          ]
+        }
+      },
+      {
+        "identifier": "d",
+        "local": false,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "deny-other"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid/*"
+          ]
+        }
+      }
+    ],
+    "url": "https://example.invalid/value",
+    "window": "main",
+    "webview": "view",
+    "local": false,
+    "command": "probe",
+    "target": "linux"
+  },
+  {
+    "id": "deny-empty-entry",
+    "caps": [
+      {
+        "identifier": "rule",
+        "local": false,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "allow-narrow"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid/*"
+          ]
+        }
+      }
+    ],
+    "url": "https://example.invalid/value",
+    "window": "main",
+    "webview": "view",
+    "local": false,
+    "command": "probe",
+    "target": "linux",
+    "empty_deny": true
+  },
+  {
+    "id": "scope-widening-False",
+    "caps": [
+      {
+        "identifier": "a",
+        "local": false,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "allow-narrow"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid/*"
+          ]
+        }
+      },
+      {
+        "identifier": "b",
+        "local": false,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "allow-wide"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid/:a𑼀"
+          ]
+        }
+      }
+    ],
+    "url": "https://example.invalid/value",
+    "window": "main",
+    "webview": "view",
+    "local": false,
+    "command": "probe",
+    "target": "linux"
+  },
+  {
+    "id": "scope-widening-True",
+    "caps": [
+      {
+        "identifier": "b",
+        "local": false,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "allow-wide"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid/:a𑼀"
+          ]
+        }
+      },
+      {
+        "identifier": "a",
+        "local": false,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "allow-narrow"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid/*"
+          ]
+        }
+      }
+    ],
+    "url": "https://example.invalid/value",
+    "window": "main",
+    "webview": "view",
+    "local": false,
+    "command": "probe",
+    "target": "linux"
+  },
+  {
+    "id": "scoped-deny-content",
+    "caps": [
+      {
+        "identifier": "rule",
+        "local": false,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "allow-narrow"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid/*"
+          ]
+        }
+      }
+    ],
+    "url": "https://example.invalid/value",
+    "window": "main",
+    "webview": "view",
+    "local": false,
+    "command": "probe",
+    "target": "linux"
+  },
+  {
+    "id": "local-and-remote-contexts",
+    "caps": [
+      {
+        "identifier": "rule",
+        "local": true,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "allow-narrow"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid/*"
+          ]
+        }
+      }
+    ],
+    "url": "https://example.invalid/value",
+    "window": "main",
+    "webview": "view",
+    "local": false,
+    "command": "probe",
+    "target": "linux"
+  },
+  {
+    "id": "explicit-port-rule",
+    "caps": [
+      {
+        "identifier": "rule",
+        "local": false,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "allow-narrow"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid:8443/*"
+          ]
+        }
+      }
+    ],
+    "url": "https://example.invalid:8443/value",
+    "window": "main",
+    "webview": "view",
+    "local": false,
+    "command": "probe",
+    "target": "linux"
+  },
+  {
+    "id": "subdomain-rule",
+    "caps": [
+      {
+        "identifier": "rule",
+        "local": false,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "allow-narrow"
+        ],
+        "remote": {
+          "urls": [
+            "https://*.example.invalid/*"
+          ]
+        }
+      }
+    ],
+    "url": "https://sub.example.invalid/value",
+    "window": "main",
+    "webview": "view",
+    "local": false,
+    "command": "probe",
+    "target": "linux"
+  },
+  {
+    "id": "exact-path-negative",
+    "caps": [
+      {
+        "identifier": "rule",
+        "local": false,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "allow-narrow"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid/safe"
+          ]
+        }
+      }
+    ],
+    "url": "https://example.invalid/safe/other",
+    "window": "main",
+    "webview": "view",
+    "local": false,
+    "command": "probe",
+    "target": "linux"
+  },
+  {
+    "id": "query-hash-wildcards",
+    "caps": [
+      {
+        "identifier": "rule",
+        "local": false,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "allow-narrow"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid/safe"
+          ]
+        }
+      }
+    ],
+    "url": "https://example.invalid/safe?x=1#part",
+    "window": "main",
+    "webview": "view",
+    "local": false,
+    "command": "probe",
+    "target": "linux"
+  },
+  {
+    "id": "duplicate-allow",
+    "caps": [
+      {
+        "identifier": "a",
+        "local": false,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "allow-narrow"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid/*"
+          ]
+        }
+      },
+      {
+        "identifier": "b",
+        "local": false,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "allow-narrow"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid/*"
+          ]
+        }
+      }
+    ],
+    "url": "https://example.invalid/value",
+    "window": "main",
+    "webview": "view",
+    "local": false,
+    "command": "probe",
+    "target": "linux"
+  },
+  {
+    "id": "escaped-kawi-encoded-suffix",
+    "caps": [
+      {
+        "identifier": "rule",
+        "local": false,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "allow-narrow"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid/:a\\𑼀"
+          ]
+        }
+      }
+    ],
+    "url": "https://example.invalid/value%F0%91%BC%80",
+    "window": "main",
+    "webview": "view",
+    "local": false,
+    "command": "probe",
+    "target": "linux"
+  },
+  {
+    "id": "idn-positive",
+    "caps": [
+      {
+        "identifier": "rule",
+        "local": false,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "allow-narrow"
+        ],
+        "remote": {
+          "urls": [
+            "https://例え.invalid/*"
+          ]
+        }
+      }
+    ],
+    "url": "https://例え.invalid/東京",
+    "window": "main",
+    "webview": "view",
+    "local": false,
+    "command": "probe",
+    "target": "linux"
+  },
+  {
+    "id": "multilingual-path",
+    "caps": [
+      {
+        "identifier": "rule",
+        "local": false,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "allow-narrow"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid/*"
+          ]
+        }
+      }
+    ],
+    "url": "https://example.invalid/é/東京/𑼂",
+    "window": "main",
+    "webview": "view",
+    "local": false,
+    "command": "probe",
+    "target": "linux"
+  },
+  {
+    "id": "literal-encoded-slash",
+    "caps": [
+      {
+        "identifier": "rule",
+        "local": false,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "allow-narrow"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid/a%2Fb"
+          ]
+        }
+      }
+    ],
+    "url": "https://example.invalid/a/b",
+    "window": "main",
+    "webview": "view",
+    "local": false,
+    "command": "probe",
+    "target": "linux"
+  },
+  {
+    "id": "literal-encoded-slash-positive",
+    "caps": [
+      {
+        "identifier": "rule",
+        "local": false,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "allow-narrow"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid/a%2Fb"
+          ]
+        }
+      }
+    ],
+    "url": "https://example.invalid/a%2Fb",
+    "window": "main",
+    "webview": "view",
+    "local": false,
+    "command": "probe",
+    "target": "linux"
+  },
+  {
+    "id": "plugin-allow",
+    "caps": [
+      {
+        "identifier": "rule",
+        "local": false,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "fixture:allow-narrow"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid/*"
+          ]
+        }
+      }
+    ],
+    "url": "https://example.invalid/value",
+    "window": "main",
+    "webview": "view",
+    "local": false,
+    "command": "plugin:fixture|probe",
+    "target": "linux",
+    "plugin": true
+  },
+  {
+    "id": "plugin-refused-window",
+    "caps": [
+      {
+        "identifier": "rule",
+        "local": false,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "fixture:allow-narrow"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid/*"
+          ]
+        }
+      }
+    ],
+    "url": "https://example.invalid/value",
+    "window": "other",
+    "webview": "view",
+    "local": false,
+    "command": "plugin:fixture|probe",
+    "target": "linux",
+    "plugin": true
+  },
+  {
+    "id": "deny-inactive-platform",
+    "caps": [
+      {
+        "identifier": "a",
+        "local": false,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "allow-narrow"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid/*"
+          ]
+        }
+      },
+      {
+        "identifier": "d",
+        "local": false,
+        "windows": [
+          "other"
+        ],
+        "permissions": [
+          "deny-probe"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid/*"
+          ]
+        },
+        "webviews": [
+          "other"
+        ],
+        "platforms": [
+          "android"
+        ]
+      }
+    ],
+    "url": "https://example.invalid/value",
+    "window": "main",
+    "webview": "view",
+    "local": false,
+    "command": "probe",
+    "target": "linux"
+  },
+  {
+    "id": "dynamic-same",
+    "caps": [
+      {
+        "identifier": "rule",
+        "local": false,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "allow-narrow"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid/*"
+          ]
+        }
+      }
+    ],
+    "url": "https://example.invalid/value",
+    "window": "main",
+    "webview": "view",
+    "local": false,
+    "command": "probe",
+    "target": "linux",
+    "dynamic": true
+  },
+  {
+    "id": "dynamic-kawi-partial",
+    "caps": [
+      {
+        "identifier": "rule",
+        "local": false,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "allow-narrow"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid/:a𑼀"
+          ]
+        }
+      }
+    ],
+    "url": "https://example.invalid/value",
+    "window": "main",
+    "webview": "view",
+    "local": false,
+    "command": "probe",
+    "target": "linux",
+    "dynamic": true
+  },
+  {
+    "id": "dynamic-deny-different",
+    "caps": [
+      {
+        "identifier": "a",
+        "local": false,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "allow-narrow"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid/*"
+          ]
+        }
+      },
+      {
+        "identifier": "d",
+        "local": false,
+        "windows": [
+          "other"
+        ],
+        "permissions": [
+          "deny-probe"
+        ],
+        "remote": {
+          "urls": [
+            "https://different.invalid/*"
+          ]
+        },
+        "webviews": [
+          "other"
+        ]
+      }
+    ],
+    "url": "https://example.invalid/value",
+    "window": "main",
+    "webview": "view",
+    "local": false,
+    "command": "probe",
+    "target": "linux",
+    "dynamic": true
+  },
+  {
+    "id": "dynamic-scopes",
+    "caps": [
+      {
+        "identifier": "a",
+        "local": false,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "allow-narrow"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid/*"
+          ]
+        }
+      },
+      {
+        "identifier": "b",
+        "local": false,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "allow-wide"
+        ],
+        "remote": {
+          "urls": [
+            "https://example.invalid/:a𑼀"
+          ]
+        }
+      }
+    ],
+    "url": "https://example.invalid/value",
+    "window": "main",
+    "webview": "view",
+    "local": false,
+    "command": "probe",
+    "target": "linux",
+    "dynamic": true
+  },
+  {
+    "id": "dynamic-no-remote",
+    "caps": [
+      {
+        "identifier": "rule",
+        "local": true,
+        "windows": [
+          "main"
+        ],
+        "permissions": [
+          "allow-narrow"
+        ]
+      }
+    ],
+    "url": "https://example.invalid/value",
+    "window": "main",
+    "webview": "view",
+    "local": false,
+    "command": "probe",
+    "target": "linux",
+    "dynamic": true
+  }
+]

@@ -1,0 +1,9 @@
+[package]
+name="qualification-old"
+version="0.1.0"
+edition="2021"
+[dependencies]
+tauri={version="=2.11.6",default-features=false,features=["dynamic-acl"]}
+tauri-utils="=2.9.3"
+serde_json="1"
+url="=2.5.8"
