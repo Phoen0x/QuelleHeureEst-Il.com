@@ -1,0 +1,133 @@
+{
+  "original_files_checked": 302,
+  "original_and_copied_application_unchanged": true,
+  "original_index_unchanged": true,
+  "original_status_clean": true,
+  "probe_lock_unchanged": true,
+  "active_project_locks_unchanged": true,
+  "tauri_modified_vs_registry": [
+    "src/app.rs",
+    "src/ipc/authority.rs",
+    "src/ipc/mod.rs",
+    "src/manager/mod.rs"
+  ],
+  "tauri_added_vs_registry": [
+    "src/ipc/atomic_admission_probe.rs"
+  ],
+  "tauri_deleted": [],
+  "licenses_unchanged": true,
+  "resolve_access_and_deny_source_unchanged": true,
+  "original_webview_ipc_source_unchanged": true,
+  "runtime_tests_distinct": 22,
+  "historical_container_cases_rerun": 13,
+  "new_installed_empty_profile_cases": 9,
+  "test_exit": 0,
+  "compile_probes": [
+    {
+      "example": "forge_token",
+      "exit": 101,
+      "seconds": 31.131,
+      "timeout": 90
+    },
+    {
+      "example": "manager_fence",
+      "exit": 101,
+      "seconds": 0.218,
+      "timeout": 90
+    },
+    {
+      "example": "direct_fence",
+      "exit": 101,
+      "seconds": 0.265,
+      "timeout": 90
+    },
+    {
+      "example": "context_still_open",
+      "exit": 0,
+      "seconds": 0.215,
+      "timeout": 90
+    }
+  ],
+  "packages": [
+    {
+      "name": "tauri",
+      "version": "2.11.6",
+      "manifest_path": "<STUDY_A>/vendor/tauri-2.11.6/Cargo.toml",
+      "features": [
+        "dynamic-acl",
+        "test"
+      ]
+    },
+    {
+      "name": "tauri-runtime",
+      "version": "2.11.3",
+      "manifest_path": "<CARGO_HOME>/registry/src/index.crates.io-1949cf8c6b5b557f/tauri-runtime-2.11.3/Cargo.toml",
+      "features": []
+    },
+    {
+      "name": "tauri-utils",
+      "version": "2.9.3",
+      "manifest_path": "<CARGO_HOME>/registry/src/index.crates.io-1949cf8c6b5b557f/tauri-utils-2.9.3/Cargo.toml",
+      "features": [
+        "build-2",
+        "cargo_metadata",
+        "html-manipulation-2",
+        "proc-macro2",
+        "quote",
+        "resources",
+        "schema",
+        "schemars",
+        "swift-rs",
+        "walkdir"
+      ]
+    },
+    {
+      "name": "tauri-build",
+      "version": "2.6.3",
+      "manifest_path": "<CARGO_HOME>/registry/src/index.crates.io-1949cf8c6b5b557f/tauri-build-2.6.3/Cargo.toml",
+      "features": []
+    },
+    {
+      "name": "tauri-codegen",
+      "version": "2.6.3",
+      "manifest_path": "<CARGO_HOME>/registry/src/index.crates.io-1949cf8c6b5b557f/tauri-codegen-2.6.3/Cargo.toml",
+      "features": []
+    },
+    {
+      "name": "tauri-macros",
+      "version": "2.6.3",
+      "manifest_path": "<CARGO_HOME>/registry/src/index.crates.io-1949cf8c6b5b557f/tauri-macros-2.6.3/Cargo.toml",
+      "features": []
+    },
+    {
+      "name": "glib",
+      "version": "0.18.5",
+      "manifest_path": "<STUDY_A>/candidate/vendor/glib-0.18.5/Cargo.toml",
+      "features": [
+        "default",
+        "gio",
+        "gio_ffi",
+        "v2_58",
+        "v2_60",
+        "v2_62",
+        "v2_64",
+        "v2_66",
+        "v2_68",
+        "v2_70"
+      ]
+    },
+    {
+      "name": "urlpattern",
+      "version": "0.3.0",
+      "manifest_path": "<CARGO_HOME>/registry/src/index.crates.io-1949cf8c6b5b557f/urlpattern-0.3.0/Cargo.toml",
+      "features": []
+    }
+  ],
+  "attempts": {
+    "first_build": "101 bad import of RuntimeAuthority; changed to public tauri::ipc path",
+    "first_runtime": "101: 21 pass, one fixture construction fails due missing permission_sets before admission; fixed only fixture metadata",
+    "final_build": 0,
+    "final_runtime": 0
+  },
+  "scope": "No application integration, no Cargo dependency migration, no publication; installed empty immutable profile distinct from standalone dynamic store"
+}

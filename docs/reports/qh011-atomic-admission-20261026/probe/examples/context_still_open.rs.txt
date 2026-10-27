@@ -1,0 +1,5 @@
+use tauri::{Context,Runtime};
+use tauri::ipc::RuntimeAuthority;
+use tauri_utils::acl::resolved::Resolved;
+fn replace<R:Runtime>(c:&mut Context<R>){*c.runtime_authority_mut()=RuntimeAuthority::new(Default::default(),Resolved::default());}
+fn main(){}

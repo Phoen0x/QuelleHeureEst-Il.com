@@ -1,0 +1,52 @@
+import json, collections, hashlib, subprocess
+from pathlib import Path
+w=Path(__file__).parent
+p=Path('<UNICODE_DIAGNOSTIC>')
+cases=json.loads((w/'cases.json').read_text())
+old={r['id']:r['result'] for r in json.loads((w/'old-results.json').read_text())}
+new={r['id']:r['result'] for r in json.loads((w/'new-results.json').read_text())}
+old_panics={'kawi-start','cyrillic-start','duplicate-group','host-tab','host-lf','host-cr','offset-error'}
+new_panics={'offset-error'}
+negative={'wrong-domain','subdomain','port-other','http','idn','wrong-window','local-vs-remote','wrong-command','no-matching-webview','neither-label','no-remote-remote','no-capabilities','no-manifest','android-filter-linux','windows-filter-linux','escaped-kawi','deny-same','deny-different','deny-unicode','deny-empty-entry','exact-path-negative','literal-encoded-slash','plugin-refused-window','dynamic-deny-different','dynamic-no-remote'}
+for side,rows,panics in [('old',old,old_panics),('new',new,new_panics)]:
+    for c in cases:
+        i=c['id'];r=rows[i]
+        if i in panics:assert r['stage']=='panic',(side,i,r['stage'])
+        else:
+            expected=i not in negative and not(side=='old' and i in {'kawi-partial','quantified-kawi','dynamic-kawi-partial'})
+            assert r['stage']=='runtime' and r['allowed']==expected,(side,i,r.get('allowed'),expected)
+assert old['scope-widening-False']['allowed'] and new['scope-widening-False']['allowed']
+def entries(r):return [(x['capability'],x['permission'],x['scope_id']) for x in r.get('entries',[])]
+assert entries(old['scope-widening-False'])==[('a','allow-narrow',1)]
+assert entries(new['scope-widening-False'])==[('a','allow-narrow',1),('b','allow-wide',2)]
+assert old['scope-widening-False']['scope_store']==new['scope-widening-False']['scope_store']
+assert 'secret' in old['scope-widening-False']['scope_store'] and 'String("*")' in new['scope-widening-False']['scope_store']
+for rows in [old,new]:
+    for name in ['deny-same','deny-different','deny-unicode','deny-empty-entry']:assert rows[name]['allowed']==False
+    assert rows['deny-unrelated-command']['allowed'] and rows['deny-inactive-platform']['allowed']
+    assert rows['partial-encoded-suffix']['allowed'] and rows['escaped-kawi-encoded-suffix']['allowed']
+raw=json.loads((w/'raw-results.json').read_text());rawcases=json.loads((w/'raw-cases.json').read_text())
+prior={r['id']:r for r in json.loads((p/'raw-pattern-results.json').read_text())}
+for r in raw[:647]:assert r==prior[r['id']],r['id']
+def norm(r):
+    return {k:r[k] for k in ['stage','allowed','error','canonical_url','has_app_manifest','scope_store'] if k in r}|{'entries':entries(r)}
+changes=[{'id':i,'old':norm(old[i]),'new':norm(new[i])} for i in old if norm(old[i])!=norm(new[i])]
+distinct={}
+for c in cases:
+    c=c.copy();i=c.pop('id');c['caps']=sorted(c['caps'],key=lambda x:x['identifier'])
+    distinct.setdefault(json.dumps(c,sort_keys=True),[]).append(i)
+extra=[('https://example.invalid/:é:','https://example.invalid/value'),('https://example.invalid/:é(','https://example.invalid/value'),('https://example.invalid/:東京:','https://example.invalid/value'),('https://example.invalid/:a\U00011f00/:a','https://example.invalid/x/y'),('https://example.invalid/:a\U00011f00','https://example.invalid/value%F0%91%BC%80'),('https://example.invalid/a\nb','https://example.invalid/ab'),('https://example.invalid/a\tb','https://example.invalid/a%09b')]
+raw_unique=len(set([(c['pattern'],c['url']) for c in rawcases]+extra))
+assert raw[-7]['old']['stage']=='constructor' or 'error' in raw[-7]['old']
+summary=dict(acl_records_per_version=len(cases),acl_distinct_requests=len(distinct),acl_replays=[v for v in distinct.values() if len(v)>1],raw_records=len(raw),raw_distinct_pairs=raw_unique,prior_647_identical=True,prior_27_summary=json.loads((p/'diagnostic-summary.json').read_text())['historical_divergences'],old_panics=sorted(old_panics),new_panics=sorted(new_panics),changed_cases=changes,all_expected_checks_passed=True,strategies={
+ 'acceptance_only_counterexample':'kawi-partial parses in both but false -> true',
+ 'sample_only_counterexample':'partial-encoded-suffix matches in both while kawi-partial widens on /value',
+ 'id_tables_only_counterexample':'host-lf ignores a control character independently of Unicode ID properties',
+ 'boolean_intersection_counterexample':'scope-widening-False permits in both but new grants scope 2',
+ 'skip_ambiguous_deny_counterexample':'deny-unicode refuses, removing it yields same-origin allow',
+ 'blanket_unicode_ban_counterexample':'id-not-xid, idn-positive, multilingual-path legitimately allow',
+ 'explicit_escape_example':'escaped-kawi plus escaped-kawi-encoded-suffix preserve these historical decisions only'
+})
+(w/'summary.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2))
+print(json.dumps({k:v for k,v in summary.items() if k!='changed_cases'},ensure_ascii=False,indent=2))
+print('changed cases',[(r['id'],r['old'].get('allowed',r['old']['stage']),r['new'].get('allowed',r['new']['stage'])) for r in changes])

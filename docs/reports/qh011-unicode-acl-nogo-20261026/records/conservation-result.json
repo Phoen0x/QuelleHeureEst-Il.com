@@ -1,0 +1,101 @@
+{
+  "tracked_original_files": 302,
+  "tracked_files_byte_identical": 301,
+  "only_tracked_change": "Cargo.lock",
+  "deleted": [],
+  "outgoing": [
+    "cfb@0.7.3",
+    "ctor-proc-macro@0.0.7",
+    "ctor@0.8.0",
+    "dtor-proc-macro@0.0.6",
+    "dtor@0.3.0",
+    "infer@0.19.0",
+    "tauri-utils@2.9.3",
+    "unic-char-property@0.9.0",
+    "unic-char-range@0.9.0",
+    "unic-common@0.9.0",
+    "unic-ucd-ident@0.9.0",
+    "unic-ucd-version@0.9.0",
+    "urlpattern@0.3.0"
+  ],
+  "incoming": [
+    "alloc-no-stdlib@3.0.0",
+    "alloc-stdlib@0.3.0",
+    "brotli-decompressor@6.0.1",
+    "brotli@9.0.0",
+    "cfb@0.14.0",
+    "cssparser-macros@0.7.1",
+    "cssparser@0.37.0",
+    "ctor@1.0.13",
+    "dom_query@0.28.0",
+    "html5ever@0.39.0",
+    "infer@0.22.0",
+    "json-patch@4.2.0",
+    "jsonptr@0.7.1",
+    "markup5ever@0.39.0",
+    "selectors@0.38.0",
+    "tauri-utils@2.10.2",
+    "urlpattern@0.6.0",
+    "web-time@1.1.0"
+  ],
+  "six_blocks_restored_exactly": true,
+  "common_package_semantic_edge_changes": [
+    {
+      "identity": "tauri-build@2.6.3",
+      "removed": [
+        "tauri-utils@2.9.3"
+      ],
+      "added": [
+        "tauri-utils@2.10.2"
+      ]
+    },
+    {
+      "identity": "tauri-codegen@2.6.3",
+      "removed": [
+        "tauri-utils@2.9.3"
+      ],
+      "added": [
+        "tauri-utils@2.10.2"
+      ]
+    },
+    {
+      "identity": "tauri-macros@2.6.3",
+      "removed": [
+        "tauri-utils@2.9.3"
+      ],
+      "added": [
+        "tauri-utils@2.10.2"
+      ]
+    },
+    {
+      "identity": "tauri-runtime-wry@2.11.4",
+      "removed": [
+        "tauri-utils@2.9.3"
+      ],
+      "added": [
+        "tauri-utils@2.10.2"
+      ]
+    },
+    {
+      "identity": "tauri-runtime@2.11.3",
+      "removed": [
+        "tauri-utils@2.9.3"
+      ],
+      "added": [
+        "tauri-utils@2.10.2"
+      ]
+    },
+    {
+      "identity": "tauri@2.11.6",
+      "removed": [
+        "tauri-utils@2.9.3"
+      ],
+      "added": [
+        "tauri-utils@2.10.2"
+      ]
+    }
+  ],
+  "all_historical_controllers_unchanged": true,
+  "pnpm_and_platform_variants_byte_identical": true,
+  "status": "PASS: structural conservation; not compatibility or security acceptance"
+}

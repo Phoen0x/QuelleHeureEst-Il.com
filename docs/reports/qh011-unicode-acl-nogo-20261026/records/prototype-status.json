@@ -1,0 +1,8 @@
+{
+  "executable": "<ENVIRONMENT>/cargo-target/debug/deps/qh011_policy_prototype-96fe8b53f7ff83b7",
+  "exit": 101,
+  "seconds": 0.6541295019997051,
+  "wall_limit": 30,
+  "cpu_limit": 10,
+  "address_space": 1073741824
+}

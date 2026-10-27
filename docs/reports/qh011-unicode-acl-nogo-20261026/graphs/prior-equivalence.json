@@ -1,0 +1,8 @@
+{
+  "current_metadata_source_sha256": "eb7c7279a0b5a4d51d06144723623fec322f57b4b784388770ebd9bc5e567197",
+  "method": "normalized node identities/features/named kind-target edges; package definitions already in previous archive",
+  "previous_archive_sha256": "03c421c9918ab3468bc9d4cbb0aced0b6ddceffc00d7cc1cf83d06c4f75e6e8f",
+  "previous_commit": "de9d3a1424a43d365169a66888ee5ad66882c565",
+  "previous_path": "docs/reports/qh011-unicode-acl-20261026/unicode/graphs/after-preserved-metadata.json",
+  "same_nodes_as_previous_preserved_variant": true
+}

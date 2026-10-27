@@ -1,0 +1,1 @@
+paths = ["../vendor/tauri-2.11.6", "/workspace/work/glib-qh011-20261023/repo/vendor/glib-0.18.5"]

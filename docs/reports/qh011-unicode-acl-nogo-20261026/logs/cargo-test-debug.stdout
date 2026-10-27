@@ -1,0 +1,23 @@
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 6 tests
+test backward_next_reads_written_pointer ... ok
+test backward_nth_reads_written_pointer ... ok
+test forward_last_reads_written_pointer ... ok
+test forward_next_reads_written_pointer ... ok
+test forward_nth_reads_written_pointer ... ok
+test mixed_iteration_and_empty_array_remain_valid ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 2 tests
+test http1_json_client_remains_compatible ... ok
+test http2_json_uses_patched_transport ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+

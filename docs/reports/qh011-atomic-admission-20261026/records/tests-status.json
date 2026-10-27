@@ -1,0 +1,8 @@
+{
+  "exit": 0,
+  "seconds": 0.127,
+  "wall_limit": 30,
+  "cpu_limit": 10,
+  "address_space": 1073741824,
+  "observations": 5
+}

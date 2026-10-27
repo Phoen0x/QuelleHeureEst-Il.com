@@ -1,0 +1,1866 @@
+{
+  "historical_pairs": 27,
+  "historical_equivalent": 24,
+  "historical_divergences": 3,
+  "matrix_records_per_version": 659,
+  "matrix_distinct_pairs": 647,
+  "equivalent": 534,
+  "divergences": 113,
+  "acceptance_changes": 68,
+  "false_to_true_matches": 45,
+  "true_to_false_matches": 0,
+  "differences": [
+    {
+      "pattern": "https://example.invalid/:𑼂",
+      "url": "https://example.invalid/value",
+      "old": {
+        "accepted": false,
+        "error": "tokenizer error: invalid name; must be at least length 1 (at char 1)"
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:a𑼀",
+      "url": "https://example.invalid/value",
+      "old": {
+        "accepted": true,
+        "matches": false
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:Ᲊ",
+      "url": "https://example.invalid/value",
+      "old": {
+        "accepted": false,
+        "error": "tokenizer error: invalid name; must be at least length 1 (at char 1)"
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:a𑼀",
+      "url": "https://example.invalid/valueX",
+      "old": {
+        "accepted": true,
+        "matches": false
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:a𑼀/fixed",
+      "url": "https://example.invalid/value/fixed",
+      "old": {
+        "accepted": true,
+        "matches": false
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:a𑼀?",
+      "url": "https://example.invalid/value",
+      "old": {
+        "accepted": true,
+        "matches": false
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:a𑼀?",
+      "url": "https://example.invalid/valueX",
+      "old": {
+        "accepted": true,
+        "matches": false
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:a𑼀+",
+      "url": "https://example.invalid/value",
+      "old": {
+        "accepted": false,
+        "error": "parser error: expected token End, found '+' of type OtherModifier"
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:a𑼀+",
+      "url": "https://example.invalid/value/fixed",
+      "old": {
+        "accepted": false,
+        "error": "parser error: expected token End, found '+' of type OtherModifier"
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:a𑼀+",
+      "url": "https://example.invalid/valueX",
+      "old": {
+        "accepted": false,
+        "error": "parser error: expected token End, found '+' of type OtherModifier"
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:a𑼀+",
+      "url": "https://example.invalid/value/other",
+      "old": {
+        "accepted": false,
+        "error": "parser error: expected token End, found '+' of type OtherModifier"
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:a𑼀+",
+      "url": "https://example.invalid/a%F0%91%BC%80",
+      "old": {
+        "accepted": false,
+        "error": "parser error: expected token End, found '+' of type OtherModifier"
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:a𑼀+",
+      "url": "https://example.invalid/",
+      "old": {
+        "accepted": false,
+        "error": "parser error: expected token End, found '+' of type OtherModifier"
+      },
+      "new": {
+        "accepted": true,
+        "matches": false
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:a𑼀*",
+      "url": "https://example.invalid/value",
+      "old": {
+        "accepted": true,
+        "matches": false
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:a𑼀*",
+      "url": "https://example.invalid/value/fixed",
+      "old": {
+        "accepted": true,
+        "matches": false
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:a𑼀*",
+      "url": "https://example.invalid/valueX",
+      "old": {
+        "accepted": true,
+        "matches": false
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:a𑼀*",
+      "url": "https://example.invalid/value/other",
+      "old": {
+        "accepted": true,
+        "matches": false
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:a𑼀b",
+      "url": "https://example.invalid/value",
+      "old": {
+        "accepted": true,
+        "matches": false
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:a𑼀b",
+      "url": "https://example.invalid/valueX",
+      "old": {
+        "accepted": true,
+        "matches": false
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:a𑼀b",
+      "url": "https://example.invalid/a%F0%91%BC%80",
+      "old": {
+        "accepted": true,
+        "matches": false
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:a𑼀b/fixed",
+      "url": "https://example.invalid/value/fixed",
+      "old": {
+        "accepted": true,
+        "matches": false
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:a𑼀b?",
+      "url": "https://example.invalid/value",
+      "old": {
+        "accepted": true,
+        "matches": false
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:a𑼀b?",
+      "url": "https://example.invalid/valueX",
+      "old": {
+        "accepted": true,
+        "matches": false
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:a𑼀b?",
+      "url": "https://example.invalid/a%F0%91%BC%80",
+      "old": {
+        "accepted": true,
+        "matches": false
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:a𑼀b+",
+      "url": "https://example.invalid/value",
+      "old": {
+        "accepted": false,
+        "error": "parser error: expected token End, found '+' of type OtherModifier"
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:a𑼀b+",
+      "url": "https://example.invalid/value/fixed",
+      "old": {
+        "accepted": false,
+        "error": "parser error: expected token End, found '+' of type OtherModifier"
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:a𑼀b+",
+      "url": "https://example.invalid/valueX",
+      "old": {
+        "accepted": false,
+        "error": "parser error: expected token End, found '+' of type OtherModifier"
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:a𑼀b+",
+      "url": "https://example.invalid/value/other",
+      "old": {
+        "accepted": false,
+        "error": "parser error: expected token End, found '+' of type OtherModifier"
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:a𑼀b+",
+      "url": "https://example.invalid/a%F0%91%BC%80",
+      "old": {
+        "accepted": false,
+        "error": "parser error: expected token End, found '+' of type OtherModifier"
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:a𑼀b+",
+      "url": "https://example.invalid/",
+      "old": {
+        "accepted": false,
+        "error": "parser error: expected token End, found '+' of type OtherModifier"
+      },
+      "new": {
+        "accepted": true,
+        "matches": false
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:a𑼀b*",
+      "url": "https://example.invalid/value",
+      "old": {
+        "accepted": true,
+        "matches": false
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:a𑼀b*",
+      "url": "https://example.invalid/value/fixed",
+      "old": {
+        "accepted": true,
+        "matches": false
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:a𑼀b*",
+      "url": "https://example.invalid/valueX",
+      "old": {
+        "accepted": true,
+        "matches": false
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:a𑼀b*",
+      "url": "https://example.invalid/value/other",
+      "old": {
+        "accepted": true,
+        "matches": false
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:a𑼀b*",
+      "url": "https://example.invalid/a%F0%91%BC%80",
+      "old": {
+        "accepted": true,
+        "matches": false
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:a𑼂",
+      "url": "https://example.invalid/value",
+      "old": {
+        "accepted": true,
+        "matches": false
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:a𑼂",
+      "url": "https://example.invalid/valueX",
+      "old": {
+        "accepted": true,
+        "matches": false
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:a𑼂",
+      "url": "https://example.invalid/a%F0%91%BC%80",
+      "old": {
+        "accepted": true,
+        "matches": false
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:a𑼂/fixed",
+      "url": "https://example.invalid/value/fixed",
+      "old": {
+        "accepted": true,
+        "matches": false
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:a𑼂?",
+      "url": "https://example.invalid/value",
+      "old": {
+        "accepted": true,
+        "matches": false
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:a𑼂?",
+      "url": "https://example.invalid/valueX",
+      "old": {
+        "accepted": true,
+        "matches": false
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:a𑼂?",
+      "url": "https://example.invalid/a%F0%91%BC%80",
+      "old": {
+        "accepted": true,
+        "matches": false
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:a𑼂+",
+      "url": "https://example.invalid/value",
+      "old": {
+        "accepted": false,
+        "error": "parser error: expected token End, found '+' of type OtherModifier"
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:a𑼂+",
+      "url": "https://example.invalid/value/fixed",
+      "old": {
+        "accepted": false,
+        "error": "parser error: expected token End, found '+' of type OtherModifier"
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:a𑼂+",
+      "url": "https://example.invalid/valueX",
+      "old": {
+        "accepted": false,
+        "error": "parser error: expected token End, found '+' of type OtherModifier"
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:a𑼂+",
+      "url": "https://example.invalid/value/other",
+      "old": {
+        "accepted": false,
+        "error": "parser error: expected token End, found '+' of type OtherModifier"
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:a𑼂+",
+      "url": "https://example.invalid/a%F0%91%BC%80",
+      "old": {
+        "accepted": false,
+        "error": "parser error: expected token End, found '+' of type OtherModifier"
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:a𑼂+",
+      "url": "https://example.invalid/",
+      "old": {
+        "accepted": false,
+        "error": "parser error: expected token End, found '+' of type OtherModifier"
+      },
+      "new": {
+        "accepted": true,
+        "matches": false
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:a𑼂*",
+      "url": "https://example.invalid/value",
+      "old": {
+        "accepted": true,
+        "matches": false
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:a𑼂*",
+      "url": "https://example.invalid/value/fixed",
+      "old": {
+        "accepted": true,
+        "matches": false
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:a𑼂*",
+      "url": "https://example.invalid/valueX",
+      "old": {
+        "accepted": true,
+        "matches": false
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:a𑼂*",
+      "url": "https://example.invalid/value/other",
+      "old": {
+        "accepted": true,
+        "matches": false
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:a𑼂*",
+      "url": "https://example.invalid/a%F0%91%BC%80",
+      "old": {
+        "accepted": true,
+        "matches": false
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:aᲉ",
+      "url": "https://example.invalid/value",
+      "old": {
+        "accepted": true,
+        "matches": false
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:aᲉ",
+      "url": "https://example.invalid/valueX",
+      "old": {
+        "accepted": true,
+        "matches": false
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:aᲉ",
+      "url": "https://example.invalid/a%F0%91%BC%80",
+      "old": {
+        "accepted": true,
+        "matches": false
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:aᲉ/fixed",
+      "url": "https://example.invalid/value/fixed",
+      "old": {
+        "accepted": true,
+        "matches": false
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:aᲉ?",
+      "url": "https://example.invalid/value",
+      "old": {
+        "accepted": true,
+        "matches": false
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:aᲉ?",
+      "url": "https://example.invalid/valueX",
+      "old": {
+        "accepted": true,
+        "matches": false
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:aᲉ?",
+      "url": "https://example.invalid/a%F0%91%BC%80",
+      "old": {
+        "accepted": true,
+        "matches": false
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:aᲉ+",
+      "url": "https://example.invalid/value",
+      "old": {
+        "accepted": false,
+        "error": "parser error: expected token End, found '+' of type OtherModifier"
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:aᲉ+",
+      "url": "https://example.invalid/value/fixed",
+      "old": {
+        "accepted": false,
+        "error": "parser error: expected token End, found '+' of type OtherModifier"
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:aᲉ+",
+      "url": "https://example.invalid/valueX",
+      "old": {
+        "accepted": false,
+        "error": "parser error: expected token End, found '+' of type OtherModifier"
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:aᲉ+",
+      "url": "https://example.invalid/value/other",
+      "old": {
+        "accepted": false,
+        "error": "parser error: expected token End, found '+' of type OtherModifier"
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:aᲉ+",
+      "url": "https://example.invalid/a%F0%91%BC%80",
+      "old": {
+        "accepted": false,
+        "error": "parser error: expected token End, found '+' of type OtherModifier"
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:aᲉ+",
+      "url": "https://example.invalid/",
+      "old": {
+        "accepted": false,
+        "error": "parser error: expected token End, found '+' of type OtherModifier"
+      },
+      "new": {
+        "accepted": true,
+        "matches": false
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:aᲉ*",
+      "url": "https://example.invalid/value",
+      "old": {
+        "accepted": true,
+        "matches": false
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:aᲉ*",
+      "url": "https://example.invalid/value/fixed",
+      "old": {
+        "accepted": true,
+        "matches": false
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:aᲉ*",
+      "url": "https://example.invalid/valueX",
+      "old": {
+        "accepted": true,
+        "matches": false
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:aᲉ*",
+      "url": "https://example.invalid/value/other",
+      "old": {
+        "accepted": true,
+        "matches": false
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:aᲉ*",
+      "url": "https://example.invalid/a%F0%91%BC%80",
+      "old": {
+        "accepted": true,
+        "matches": false
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:𞓐",
+      "url": "https://example.invalid/value",
+      "old": {
+        "accepted": false,
+        "error": "tokenizer error: invalid name; must be at least length 1 (at char 1)"
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:𞓐",
+      "url": "https://example.invalid/value/fixed",
+      "old": {
+        "accepted": false,
+        "error": "tokenizer error: invalid name; must be at least length 1 (at char 1)"
+      },
+      "new": {
+        "accepted": true,
+        "matches": false
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:𞓐",
+      "url": "https://example.invalid/valueX",
+      "old": {
+        "accepted": false,
+        "error": "tokenizer error: invalid name; must be at least length 1 (at char 1)"
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:𞓐",
+      "url": "https://example.invalid/value/other",
+      "old": {
+        "accepted": false,
+        "error": "tokenizer error: invalid name; must be at least length 1 (at char 1)"
+      },
+      "new": {
+        "accepted": true,
+        "matches": false
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:𞓐",
+      "url": "https://example.invalid/a%F0%91%BC%80",
+      "old": {
+        "accepted": false,
+        "error": "tokenizer error: invalid name; must be at least length 1 (at char 1)"
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:𞓐",
+      "url": "https://example.invalid/",
+      "old": {
+        "accepted": false,
+        "error": "tokenizer error: invalid name; must be at least length 1 (at char 1)"
+      },
+      "new": {
+        "accepted": true,
+        "matches": false
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:𞓐/fixed",
+      "url": "https://example.invalid/value",
+      "old": {
+        "accepted": false,
+        "error": "tokenizer error: invalid name; must be at least length 1 (at char 1)"
+      },
+      "new": {
+        "accepted": true,
+        "matches": false
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:𞓐/fixed",
+      "url": "https://example.invalid/value/fixed",
+      "old": {
+        "accepted": false,
+        "error": "tokenizer error: invalid name; must be at least length 1 (at char 1)"
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:𞓐/fixed",
+      "url": "https://example.invalid/valueX",
+      "old": {
+        "accepted": false,
+        "error": "tokenizer error: invalid name; must be at least length 1 (at char 1)"
+      },
+      "new": {
+        "accepted": true,
+        "matches": false
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:𞓐/fixed",
+      "url": "https://example.invalid/value/other",
+      "old": {
+        "accepted": false,
+        "error": "tokenizer error: invalid name; must be at least length 1 (at char 1)"
+      },
+      "new": {
+        "accepted": true,
+        "matches": false
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:𞓐/fixed",
+      "url": "https://example.invalid/a%F0%91%BC%80",
+      "old": {
+        "accepted": false,
+        "error": "tokenizer error: invalid name; must be at least length 1 (at char 1)"
+      },
+      "new": {
+        "accepted": true,
+        "matches": false
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:𞓐/fixed",
+      "url": "https://example.invalid/",
+      "old": {
+        "accepted": false,
+        "error": "tokenizer error: invalid name; must be at least length 1 (at char 1)"
+      },
+      "new": {
+        "accepted": true,
+        "matches": false
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:𞓐?",
+      "url": "https://example.invalid/value",
+      "old": {
+        "accepted": false,
+        "error": "tokenizer error: invalid name; must be at least length 1 (at char 1)"
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:𞓐?",
+      "url": "https://example.invalid/value/fixed",
+      "old": {
+        "accepted": false,
+        "error": "tokenizer error: invalid name; must be at least length 1 (at char 1)"
+      },
+      "new": {
+        "accepted": true,
+        "matches": false
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:𞓐?",
+      "url": "https://example.invalid/valueX",
+      "old": {
+        "accepted": false,
+        "error": "tokenizer error: invalid name; must be at least length 1 (at char 1)"
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:𞓐?",
+      "url": "https://example.invalid/value/other",
+      "old": {
+        "accepted": false,
+        "error": "tokenizer error: invalid name; must be at least length 1 (at char 1)"
+      },
+      "new": {
+        "accepted": true,
+        "matches": false
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:𞓐?",
+      "url": "https://example.invalid/a%F0%91%BC%80",
+      "old": {
+        "accepted": false,
+        "error": "tokenizer error: invalid name; must be at least length 1 (at char 1)"
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:𞓐?",
+      "url": "https://example.invalid/",
+      "old": {
+        "accepted": false,
+        "error": "tokenizer error: invalid name; must be at least length 1 (at char 1)"
+      },
+      "new": {
+        "accepted": true,
+        "matches": false
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:𞓐+",
+      "url": "https://example.invalid/value",
+      "old": {
+        "accepted": false,
+        "error": "tokenizer error: invalid name; must be at least length 1 (at char 1)"
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:𞓐+",
+      "url": "https://example.invalid/value/fixed",
+      "old": {
+        "accepted": false,
+        "error": "tokenizer error: invalid name; must be at least length 1 (at char 1)"
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:𞓐+",
+      "url": "https://example.invalid/valueX",
+      "old": {
+        "accepted": false,
+        "error": "tokenizer error: invalid name; must be at least length 1 (at char 1)"
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:𞓐+",
+      "url": "https://example.invalid/value/other",
+      "old": {
+        "accepted": false,
+        "error": "tokenizer error: invalid name; must be at least length 1 (at char 1)"
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:𞓐+",
+      "url": "https://example.invalid/a%F0%91%BC%80",
+      "old": {
+        "accepted": false,
+        "error": "tokenizer error: invalid name; must be at least length 1 (at char 1)"
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:𞓐+",
+      "url": "https://example.invalid/",
+      "old": {
+        "accepted": false,
+        "error": "tokenizer error: invalid name; must be at least length 1 (at char 1)"
+      },
+      "new": {
+        "accepted": true,
+        "matches": false
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:𞓐*",
+      "url": "https://example.invalid/value",
+      "old": {
+        "accepted": false,
+        "error": "tokenizer error: invalid name; must be at least length 1 (at char 1)"
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:𞓐*",
+      "url": "https://example.invalid/value/fixed",
+      "old": {
+        "accepted": false,
+        "error": "tokenizer error: invalid name; must be at least length 1 (at char 1)"
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:𞓐*",
+      "url": "https://example.invalid/valueX",
+      "old": {
+        "accepted": false,
+        "error": "tokenizer error: invalid name; must be at least length 1 (at char 1)"
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:𞓐*",
+      "url": "https://example.invalid/value/other",
+      "old": {
+        "accepted": false,
+        "error": "tokenizer error: invalid name; must be at least length 1 (at char 1)"
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:𞓐*",
+      "url": "https://example.invalid/a%F0%91%BC%80",
+      "old": {
+        "accepted": false,
+        "error": "tokenizer error: invalid name; must be at least length 1 (at char 1)"
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://example.invalid/:𞓐*",
+      "url": "https://example.invalid/",
+      "old": {
+        "accepted": false,
+        "error": "tokenizer error: invalid name; must be at least length 1 (at char 1)"
+      },
+      "new": {
+        "accepted": true,
+        "matches": false
+      }
+    },
+    {
+      "pattern": "https://exam\nple.invalid/*",
+      "url": "https://example.invalid/ab",
+      "old": {
+        "accepted": false,
+        "error": "invalid international domain name"
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://exam\nple.invalid/*",
+      "url": "https://example.invalid/a%0Ab",
+      "old": {
+        "accepted": false,
+        "error": "invalid international domain name"
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://exam\nple.invalid/*",
+      "url": "https://example.invalid/value",
+      "old": {
+        "accepted": false,
+        "error": "invalid international domain name"
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://exam\nple.invalid/*",
+      "url": "https://example.invalid/valueb",
+      "old": {
+        "accepted": false,
+        "error": "invalid international domain name"
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://exam\rple.invalid/*",
+      "url": "https://example.invalid/ab",
+      "old": {
+        "accepted": false,
+        "error": "invalid international domain name"
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://exam\rple.invalid/*",
+      "url": "https://example.invalid/a%0Ab",
+      "old": {
+        "accepted": false,
+        "error": "invalid international domain name"
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://exam\rple.invalid/*",
+      "url": "https://example.invalid/value",
+      "old": {
+        "accepted": false,
+        "error": "invalid international domain name"
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://exam\rple.invalid/*",
+      "url": "https://example.invalid/valueb",
+      "old": {
+        "accepted": false,
+        "error": "invalid international domain name"
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://exam\tple.invalid/*",
+      "url": "https://example.invalid/ab",
+      "old": {
+        "accepted": false,
+        "error": "invalid international domain name"
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://exam\tple.invalid/*",
+      "url": "https://example.invalid/a%0Ab",
+      "old": {
+        "accepted": false,
+        "error": "invalid international domain name"
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://exam\tple.invalid/*",
+      "url": "https://example.invalid/value",
+      "old": {
+        "accepted": false,
+        "error": "invalid international domain name"
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    },
+    {
+      "pattern": "https://exam\tple.invalid/*",
+      "url": "https://example.invalid/valueb",
+      "old": {
+        "accepted": false,
+        "error": "invalid international domain name"
+      },
+      "new": {
+        "accepted": true,
+        "matches": true
+      }
+    }
+  ],
+  "property_scan": {
+    "counts_start_added_removed_continue_added_removed": [
+      20582,
+      0,
+      21132,
+      0
+    ],
+    "samples": [
+      [
+        "U+0560",
+        "U+0588",
+        "U+05EF",
+        "U+0870",
+        "U+0871",
+        "U+0872",
+        "U+0873",
+        "U+0874",
+        "U+0875",
+        "U+0876",
+        "U+0877",
+        "U+0878",
+        "U+0879",
+        "U+087A",
+        "U+087B",
+        "U+087C",
+        "U+087D",
+        "U+087E",
+        "U+087F",
+        "U+0880",
+        "U+0881",
+        "U+0882",
+        "U+0883",
+        "U+0884"
+      ],
+      [],
+      [
+        "U+0560",
+        "U+0588",
+        "U+05EF",
+        "U+07FD",
+        "U+0870",
+        "U+0871",
+        "U+0872",
+        "U+0873",
+        "U+0874",
+        "U+0875",
+        "U+0876",
+        "U+0877",
+        "U+0878",
+        "U+0879",
+        "U+087A",
+        "U+087B",
+        "U+087C",
+        "U+087D",
+        "U+087E",
+        "U+087F",
+        "U+0880",
+        "U+0881",
+        "U+0882",
+        "U+0883"
+      ],
+      []
+    ],
+    "scalar_values": 1112064,
+    "selected": [
+      {
+        "cp": "U+11F00",
+        "new_continue": true,
+        "new_start": false,
+        "old_continue": false,
+        "old_start": false,
+        "xid_continue": true,
+        "xid_start": false
+      },
+      {
+        "cp": "U+11F02",
+        "new_continue": true,
+        "new_start": true,
+        "old_continue": false,
+        "old_start": false,
+        "xid_continue": true,
+        "xid_start": true
+      },
+      {
+        "cp": "U+1C89",
+        "new_continue": true,
+        "new_start": true,
+        "old_continue": false,
+        "old_start": false,
+        "xid_continue": true,
+        "xid_start": true
+      },
+      {
+        "cp": "U+309B",
+        "new_continue": true,
+        "new_start": true,
+        "old_continue": true,
+        "old_start": true,
+        "xid_continue": false,
+        "xid_start": false
+      },
+      {
+        "cp": "U+1885",
+        "new_continue": true,
+        "new_start": true,
+        "old_continue": true,
+        "old_start": true,
+        "xid_continue": true,
+        "xid_start": true
+      },
+      {
+        "cp": "U+2118",
+        "new_continue": true,
+        "new_start": true,
+        "old_continue": true,
+        "old_start": true,
+        "xid_continue": true,
+        "xid_start": true
+      },
+      {
+        "cp": "U+200C",
+        "new_continue": true,
+        "new_start": false,
+        "old_continue": false,
+        "old_start": false,
+        "xid_continue": true,
+        "xid_start": false
+      },
+      {
+        "cp": "U+200D",
+        "new_continue": true,
+        "new_start": false,
+        "old_continue": false,
+        "old_start": false,
+        "xid_continue": true,
+        "xid_start": false
+      }
+    ],
+    "unicode_ident_version": [
+      18,
+      0,
+      0
+    ]
+  },
+  "targets": [
+    {
+      "side": "before",
+      "target": "x86_64-unknown-linux-gnu",
+      "all_features": false,
+      "exit": 0,
+      "count": 373,
+      "unic": [
+        "unic-char-property@0.9.0",
+        "unic-char-range@0.9.0",
+        "unic-common@0.9.0",
+        "unic-ucd-ident@0.9.0",
+        "unic-ucd-version@0.9.0"
+      ],
+      "glib": [
+        "glib@0.18.5"
+      ],
+      "pem": false
+    },
+    {
+      "side": "before",
+      "target": "x86_64-unknown-linux-gnu",
+      "all_features": true,
+      "exit": 0,
+      "count": 376,
+      "unic": [
+        "unic-char-property@0.9.0",
+        "unic-char-range@0.9.0",
+        "unic-common@0.9.0",
+        "unic-ucd-ident@0.9.0",
+        "unic-ucd-version@0.9.0"
+      ],
+      "glib": [
+        "glib@0.18.5"
+      ],
+      "pem": true
+    },
+    {
+      "side": "before",
+      "target": "aarch64-linux-android",
+      "all_features": false,
+      "exit": 0,
+      "count": 326,
+      "unic": [
+        "unic-char-property@0.9.0",
+        "unic-char-range@0.9.0",
+        "unic-common@0.9.0",
+        "unic-ucd-ident@0.9.0",
+        "unic-ucd-version@0.9.0"
+      ],
+      "glib": [],
+      "pem": false
+    },
+    {
+      "side": "before",
+      "target": "aarch64-linux-android",
+      "all_features": true,
+      "exit": 0,
+      "count": 329,
+      "unic": [
+        "unic-char-property@0.9.0",
+        "unic-char-range@0.9.0",
+        "unic-common@0.9.0",
+        "unic-ucd-ident@0.9.0",
+        "unic-ucd-version@0.9.0"
+      ],
+      "glib": [],
+      "pem": true
+    },
+    {
+      "side": "before",
+      "target": "x86_64-pc-windows-msvc",
+      "all_features": false,
+      "exit": 0,
+      "count": 341,
+      "unic": [
+        "unic-char-property@0.9.0",
+        "unic-char-range@0.9.0",
+        "unic-common@0.9.0",
+        "unic-ucd-ident@0.9.0",
+        "unic-ucd-version@0.9.0"
+      ],
+      "glib": [],
+      "pem": false
+    },
+    {
+      "side": "before",
+      "target": "x86_64-pc-windows-msvc",
+      "all_features": true,
+      "exit": 0,
+      "count": 344,
+      "unic": [
+        "unic-char-property@0.9.0",
+        "unic-char-range@0.9.0",
+        "unic-common@0.9.0",
+        "unic-ucd-ident@0.9.0",
+        "unic-ucd-version@0.9.0"
+      ],
+      "glib": [],
+      "pem": true
+    },
+    {
+      "side": "before",
+      "target": "aarch64-apple-darwin",
+      "all_features": false,
+      "exit": 0,
+      "count": 339,
+      "unic": [
+        "unic-char-property@0.9.0",
+        "unic-char-range@0.9.0",
+        "unic-common@0.9.0",
+        "unic-ucd-ident@0.9.0",
+        "unic-ucd-version@0.9.0"
+      ],
+      "glib": [],
+      "pem": false
+    },
+    {
+      "side": "before",
+      "target": "aarch64-apple-darwin",
+      "all_features": true,
+      "exit": 0,
+      "count": 341,
+      "unic": [
+        "unic-char-property@0.9.0",
+        "unic-char-range@0.9.0",
+        "unic-common@0.9.0",
+        "unic-ucd-ident@0.9.0",
+        "unic-ucd-version@0.9.0"
+      ],
+      "glib": [],
+      "pem": true
+    },
+    {
+      "side": "before",
+      "target": "aarch64-apple-ios",
+      "all_features": false,
+      "exit": 0,
+      "count": 330,
+      "unic": [
+        "unic-char-property@0.9.0",
+        "unic-char-range@0.9.0",
+        "unic-common@0.9.0",
+        "unic-ucd-ident@0.9.0",
+        "unic-ucd-version@0.9.0"
+      ],
+      "glib": [],
+      "pem": false
+    },
+    {
+      "side": "before",
+      "target": "aarch64-apple-ios",
+      "all_features": true,
+      "exit": 0,
+      "count": 332,
+      "unic": [
+        "unic-char-property@0.9.0",
+        "unic-char-range@0.9.0",
+        "unic-common@0.9.0",
+        "unic-ucd-ident@0.9.0",
+        "unic-ucd-version@0.9.0"
+      ],
+      "glib": [],
+      "pem": true
+    },
+    {
+      "side": "before",
+      "target": "wasm32-unknown-unknown",
+      "all_features": false,
+      "exit": 0,
+      "count": 280,
+      "unic": [
+        "unic-char-property@0.9.0",
+        "unic-char-range@0.9.0",
+        "unic-common@0.9.0",
+        "unic-ucd-ident@0.9.0",
+        "unic-ucd-version@0.9.0"
+      ],
+      "glib": [],
+      "pem": false
+    },
+    {
+      "side": "before",
+      "target": "wasm32-unknown-unknown",
+      "all_features": true,
+      "exit": 0,
+      "count": 283,
+      "unic": [
+        "unic-char-property@0.9.0",
+        "unic-char-range@0.9.0",
+        "unic-common@0.9.0",
+        "unic-ucd-ident@0.9.0",
+        "unic-ucd-version@0.9.0"
+      ],
+      "glib": [],
+      "pem": true
+    },
+    {
+      "side": "after",
+      "target": "x86_64-unknown-linux-gnu",
+      "all_features": false,
+      "exit": 0,
+      "count": 372,
+      "unic": [],
+      "glib": [
+        "glib@0.18.5"
+      ],
+      "pem": false
+    },
+    {
+      "side": "after",
+      "target": "x86_64-unknown-linux-gnu",
+      "all_features": true,
+      "exit": 0,
+      "count": 375,
+      "unic": [],
+      "glib": [
+        "glib@0.18.5"
+      ],
+      "pem": true
+    },
+    {
+      "side": "after",
+      "target": "aarch64-linux-android",
+      "all_features": false,
+      "exit": 0,
+      "count": 331,
+      "unic": [],
+      "glib": [],
+      "pem": false
+    },
+    {
+      "side": "after",
+      "target": "aarch64-linux-android",
+      "all_features": true,
+      "exit": 0,
+      "count": 334,
+      "unic": [],
+      "glib": [],
+      "pem": true
+    },
+    {
+      "side": "after",
+      "target": "x86_64-pc-windows-msvc",
+      "all_features": false,
+      "exit": 0,
+      "count": 341,
+      "unic": [],
+      "glib": [],
+      "pem": false
+    },
+    {
+      "side": "after",
+      "target": "x86_64-pc-windows-msvc",
+      "all_features": true,
+      "exit": 0,
+      "count": 344,
+      "unic": [],
+      "glib": [],
+      "pem": true
+    },
+    {
+      "side": "after",
+      "target": "aarch64-apple-darwin",
+      "all_features": false,
+      "exit": 0,
+      "count": 338,
+      "unic": [],
+      "glib": [],
+      "pem": false
+    },
+    {
+      "side": "after",
+      "target": "aarch64-apple-darwin",
+      "all_features": true,
+      "exit": 0,
+      "count": 340,
+      "unic": [],
+      "glib": [],
+      "pem": true
+    },
+    {
+      "side": "after",
+      "target": "aarch64-apple-ios",
+      "all_features": false,
+      "exit": 0,
+      "count": 329,
+      "unic": [],
+      "glib": [],
+      "pem": false
+    },
+    {
+      "side": "after",
+      "target": "aarch64-apple-ios",
+      "all_features": true,
+      "exit": 0,
+      "count": 331,
+      "unic": [],
+      "glib": [],
+      "pem": true
+    },
+    {
+      "side": "after",
+      "target": "wasm32-unknown-unknown",
+      "all_features": false,
+      "exit": 0,
+      "count": 279,
+      "unic": [],
+      "glib": [],
+      "pem": false
+    },
+    {
+      "side": "after",
+      "target": "wasm32-unknown-unknown",
+      "all_features": true,
+      "exit": 0,
+      "count": 282,
+      "unic": [],
+      "glib": [],
+      "pem": true
+    }
+  ],
+  "bounded_runs": [
+    {
+      "binary": "acl-old",
+      "exit": 0,
+      "records": 659
+    },
+    {
+      "binary": "acl-new",
+      "exit": 0,
+      "records": 659
+    },
+    {
+      "binary": "runtime-old",
+      "exit": 0,
+      "records": 659
+    },
+    {
+      "binary": "runtime-new",
+      "exit": 0,
+      "records": 659
+    },
+    {
+      "binary": "compat-fixture",
+      "exit": 0,
+      "records": 666
+    }
+  ],
+  "application_debug_exit": 0,
+  "application_release_all_features_exit": 0,
+  "publication": false
+}

@@ -1,0 +1,24 @@
+// FR : inventaire statique seulement, aucun build ni exécution frontend.
+// EN: static inventory only, no build or frontend execution.
+const fs=require('fs'),path=require('path');
+const root='/workspace/work/glib-qh011-20261023/repo';
+const ts=require(root+'/node_modules/typescript');
+const files=[];
+function walk(dir){for(const n of fs.readdirSync(dir)){const p=path.join(dir,n);if(fs.statSync(p).isDirectory())walk(p);else if(/\.(tsx?|jsx?)$/.test(p))files.push(p);}}
+walk(root+'/src');
+const rows=files.map(file=>{const text=fs.readFileSync(file,'utf8');const sf=ts.createSourceFile(file,text,ts.ScriptTarget.Latest,true,file.endsWith('.tsx')?ts.ScriptKind.TSX:ts.ScriptKind.TS);const imports=[],calls=[],dynamic=[];
+ function visit(n){
+  if(ts.isImportDeclaration(n)&&ts.isStringLiteral(n.moduleSpecifier))imports.push({specifier:n.moduleSpecifier.text,type_only:!!n.importClause?.isTypeOnly});
+  if(ts.isCallExpression(n)){
+   if(n.expression.kind===ts.SyntaxKind.ImportKeyword)dynamic.push(n.getText(sf));
+   if(ts.isIdentifier(n.expression)&&n.expression.text==='invoke')calls.push({command:ts.isStringLiteral(n.arguments[0])?n.arguments[0].text:null,line:sf.getLineAndCharacterOfPosition(n.pos).line+1});
+  }ts.forEachChild(n,visit);
+ }visit(sf);
+ return {file:path.relative(root,file),imports,calls,dynamic_imports:dynamic};});
+const byFile=new Map(rows.map(r=>[r.file,r]));
+function resolve(file,spec){if(!spec.startsWith('.'))return null;const p=path.normalize(path.join(path.dirname(file),spec));return [p,p+'.ts',p+'.tsx',p+'/index.ts',p+'/index.tsx'].find(x=>byFile.has(x));}
+const reachable=new Set();function mark(file){if(reachable.has(file))return;reachable.add(file);for(const i of byFile.get(file)?.imports||[])if(!i.type_only){const f=resolve(file,i.specifier);if(f)mark(f);}}
+mark('src/main.tsx');
+const result={classification:'TypeScript AST static analysis, not execution or whole-program proof',typescript:ts.version,files:rows.length,runtime_reachable:[...reachable].sort(),unreachable:rows.filter(r=>!reachable.has(r.file)).map(r=>r.file),invoke_calls:rows.flatMap(r=>r.calls.map(c=>({...c,file:r.file,runtime_reachable:reachable.has(r.file)}))),dynamic_imports:rows.flatMap(r=>r.dynamic_imports),rows};
+fs.writeFileSync(path.join(__dirname,'frontend-inventory.json'),JSON.stringify(result,null,2)+'\n');
+console.log(JSON.stringify({files:result.files,runtime_reachable:reachable.size,unreachable:result.unreachable,invoke_calls:result.invoke_calls,dynamic_imports:result.dynamic_imports},null,2));

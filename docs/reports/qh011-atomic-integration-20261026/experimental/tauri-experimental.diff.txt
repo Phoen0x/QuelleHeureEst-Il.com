@@ -1,0 +1,116 @@
+--- a/src/app.rs
++++ b/src/app.rs
+@@ -2240,7 +2240,9 @@
+     feature = "tracing",
+     tracing::instrument(name = "app::build", skip_all)
+   )]
+-  pub fn build(mut self, context: Context<R>) -> crate::Result<App<R>> {
++  pub fn build(mut self, mut context: Context<R>) -> crate::Result<App<R>> {
++    // FR : sonde A obligatoire avant installation. EN: mandatory A probe before installation.
++    context.runtime_authority.admit_empty_profile()?;
+     #[cfg(target_os = "macos")]
+     if self.menu.is_none() && self.enable_macos_default_menu {
+       self.menu = Some(Box::new(|app_handle| {
+--- a/src/ipc/authority.rs
++++ b/src/ipc/authority.rs
+@@ -26,6 +26,8 @@
+ 
+ /// The runtime authority used to authorize IPC execution based on the Access Control List.
+ pub struct RuntimeAuthority {
++  // FR : profil applicatif vide, sonde uniquement. EN: empty app profile, probe only.
++  empty_profile_sealed: bool,
+   #[cfg(any(feature = "dynamic-acl", debug_assertions))]
+   acl: BTreeMap<String, Manifest>,
+   has_app_acl: bool,
+@@ -115,6 +117,7 @@
+       .map(|key| (*key, StateManager::new()))
+       .collect();
+     Self {
++      empty_profile_sealed: false,
+       #[cfg(any(feature = "dynamic-acl", debug_assertions))]
+       acl,
+       has_app_acl: resolved_acl.has_app_acl,
+@@ -134,7 +137,7 @@
+   }
+ 
+   #[doc(hidden)]
+-  pub fn __allow_command(&mut self, command: String, context: ExecutionContext) {
++  pub(crate) fn __allow_command(&mut self, command: String, context: ExecutionContext) {
+     self.allowed_commands.insert(
+       command,
+       vec![ResolvedCommand {
+@@ -148,11 +151,13 @@
+   /// Adds the given capability to the runtime authority.
+   #[cfg(feature = "dynamic-acl")]
+   pub fn add_capability(&mut self, capability: impl super::RuntimeCapability) -> crate::Result<()> {
++    self.ensure_empty_profile_mutable()?;
+     self.add_capability_inner(capability.build())
+   }
+ 
+   #[cfg(feature = "dynamic-acl")]
+   fn add_capability_inner(&mut self, capability: CapabilityFile) -> crate::Result<()> {
++    self.ensure_empty_profile_mutable()?;
+     let mut capabilities = BTreeMap::new();
+     match capability {
+       CapabilityFile::Capability(c) => {
+@@ -176,7 +181,7 @@
+       capabilities,
+       tauri_utils::platform::Target::current(),
+     )
+-    .unwrap();
++    .map_err(|e| crate::Error::Io(std::io::Error::new(std::io::ErrorKind::InvalidInput, e.to_string())))?;
+ 
+     // fill global scope
+     for (plugin, global_scope) in resolved.global_scope {
+@@ -1191,3 +1196,29 @@
+     );
+   }
+ }
++
++// FR : sonde externe uniquement. EN: external probe only.
++#[cfg(feature = "dynamic-acl")]
++#[path = "atomic_admission_probe.rs"]
++pub mod atomic_admission_probe;
++
++// FR : admission spécifique au profil vide, pas une API stable.
++// EN: admission specific to the empty profile, not a stable API.
++impl RuntimeAuthority {
++  fn ensure_empty_profile_mutable(&self) -> crate::Result<()> {
++    if self.empty_profile_sealed { return Err(Self::empty_profile_error()); }
++    Ok(())
++  }
++  fn empty_profile_error() -> crate::Error {
++    crate::Error::Io(std::io::Error::new(std::io::ErrorKind::PermissionDenied,
++      "QH011 empty immutable profile rejects policy mutation"))
++  }
++  pub(crate) fn admit_empty_profile(&mut self) -> crate::Result<()> {
++    if self.has_app_acl || !self.allowed_commands.is_empty() || !self.denied_commands.is_empty()
++      || !self.scope_manager.command_scope.is_empty() || !self.scope_manager.global_scope.is_empty() {
++      return Err(Self::empty_profile_error());
++    }
++    self.empty_profile_sealed = true;
++    Ok(())
++  }
++}
+--- a/src/ipc/mod.rs
++++ b/src/ipc/mod.rs
+@@ -605,3 +605,8 @@
+     assert_eq!(raw.deserialize::<Vec<u8>>().unwrap(), values);
+   }
+ }
++
++// FR : export de faisabilité uniquement. EN: feasibility-only export.
++#[cfg(feature = "dynamic-acl")]
++#[doc(hidden)]
++pub use authority::atomic_admission_probe;
+--- a/src/manager/mod.rs
++++ b/src/manager/mod.rs
+@@ -182,7 +182,7 @@
+ 
+ #[default_runtime(crate::Wry, wry)]
+ pub struct AppManager<R: Runtime> {
+-  pub runtime_authority: Mutex<RuntimeAuthority>,
++  pub(crate) runtime_authority: Mutex<RuntimeAuthority>,
+   pub window: window::WindowManager<R>,
+   pub webview: webview::WebviewManager<R>,
+   #[cfg(all(desktop, feature = "tray-icon"))]

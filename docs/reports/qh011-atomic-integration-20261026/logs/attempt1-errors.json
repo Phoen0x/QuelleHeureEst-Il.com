@@ -1,0 +1,527 @@
+[
+  {
+    "code": {
+      "code": "unused_parens",
+      "explanation": null
+    },
+    "level": "warning",
+    "rendered": "warning: unnecessary parentheses around type\n  --> <STUDY_A>/candidate/vendor/glib-0.18.5/src/value_array.rs:90:42\n   |\n90 |             let func = func as *mut &mut (dyn FnMut(&Value, &Value) -> Ordering);\n   |                                          ^                                     ^\n   |\n   = note: `#[warn(unused_parens)]` (part of `#[warn(unused)]`) on by default\nhelp: remove these parentheses\n   |\n90 -             let func = func as *mut &mut (dyn FnMut(&Value, &Value) -> Ordering);\n90 +             let func = func as *mut &mut dyn FnMut(&Value, &Value) -> Ordering;\n   |\n\n"
+  },
+  {
+    "code": {
+      "code": "unused_parens",
+      "explanation": null
+    },
+    "level": "warning",
+    "rendered": "warning: unnecessary parentheses around type\n  --> <STUDY_A>/candidate/vendor/glib-0.18.5/src/value_array.rs:99:32\n   |\n99 |             let func_obj: &mut (dyn FnMut(&Value, &Value) -> Ordering) = &mut func;\n   |                                ^                                     ^\n   |\nhelp: remove these parentheses\n   |\n99 -             let func_obj: &mut (dyn FnMut(&Value, &Value) -> Ordering) = &mut func;\n99 +             let func_obj: &mut dyn FnMut(&Value, &Value) -> Ordering = &mut func;\n   |\n\n"
+  },
+  {
+    "code": {
+      "code": "unused_parens",
+      "explanation": null
+    },
+    "level": "warning",
+    "rendered": "warning: unnecessary parentheses around type\n   --> <STUDY_A>/candidate/vendor/glib-0.18.5/src/value_array.rs:101:42\n    |\n101 |                 &func_obj as *const &mut (dyn FnMut(&Value, &Value) -> Ordering) as ffi::gpointer;\n    |                                          ^                                     ^\n    |\nhelp: remove these parentheses\n    |\n101 -                 &func_obj as *const &mut (dyn FnMut(&Value, &Value) -> Ordering) as ffi::gpointer;\n101 +                 &func_obj as *const &mut dyn FnMut(&Value, &Value) -> Ordering as ffi::gpointer;\n    |\n\n"
+  },
+  {
+    "code": {
+      "code": "mismatched_lifetime_syntaxes",
+      "explanation": null
+    },
+    "level": "warning",
+    "rendered": "warning: hiding a lifetime that's elided elsewhere is confusing\n    --> <STUDY_A>/candidate/vendor/glib-0.18.5/src/object.rs:1606:34\n     |\n1606 |     fn interface<T: IsInterface>(&self) -> Option<InterfaceRef<T>>;\n     |                                  ^^^^^            ^^^^^^^^^^^^^^^ the same lifetime is hidden here\n     |                                  |\n     |                                  the lifetime is elided here\n     |\n     = help: the same lifetime is referred to in inconsistent ways, making the signature confusing\n     = note: `#[warn(mismatched_lifetime_syntaxes)]` on by default\nhelp: use `'_` for type paths\n     |\n1606 |     fn interface<T: IsInterface>(&self) -> Option<InterfaceRef<'_, T>>;\n     |                                                                +++\n\n"
+  },
+  {
+    "code": {
+      "code": "mismatched_lifetime_syntaxes",
+      "explanation": null
+    },
+    "level": "warning",
+    "rendered": "warning: hiding a lifetime that's elided elsewhere is confusing\n    --> <STUDY_A>/candidate/vendor/glib-0.18.5/src/object.rs:2223:34\n     |\n2223 |     fn interface<U: IsInterface>(&self) -> Option<InterfaceRef<U>> {\n     |                                  ^^^^^            ^^^^^^^^^^^^^^^ the same lifetime is hidden here\n     |                                  |\n     |                                  the lifetime is elided here\n     |\n     = help: the same lifetime is referred to in inconsistent ways, making the signature confusing\nhelp: use `'_` for type paths\n     |\n2223 |     fn interface<U: IsInterface>(&self) -> Option<InterfaceRef<'_, U>> {\n     |                                                                +++\n\n"
+  },
+  {
+    "code": {
+      "code": "mismatched_lifetime_syntaxes",
+      "explanation": null
+    },
+    "level": "warning",
+    "rendered": "warning: hiding a lifetime that's elided elsewhere is confusing\n    --> <STUDY_A>/candidate/vendor/glib-0.18.5/src/object.rs:3961:19\n     |\n3961 |     pub fn parent(&self) -> Option<ClassRef<T>> {\n     |                   ^^^^^            ^^^^^^^^^^^ the same lifetime is hidden here\n     |                   |\n     |                   the lifetime is elided here\n     |\n     = help: the same lifetime is referred to in inconsistent ways, making the signature confusing\nhelp: use `'_` for type paths\n     |\n3961 |     pub fn parent(&self) -> Option<ClassRef<'_, T>> {\n     |                                             +++\n\n"
+  },
+  {
+    "code": {
+      "code": "mismatched_lifetime_syntaxes",
+      "explanation": null
+    },
+    "level": "warning",
+    "rendered": "warning: hiding a lifetime that's elided elsewhere is confusing\n    --> <STUDY_A>/candidate/vendor/glib-0.18.5/src/object.rs:4100:42\n     |\n4100 |     pub fn from_class<U: IsClass>(klass: &Class<U>) -> Option<InterfaceRef<T>> {\n     |                                          ^^^^^^^^^            ^^^^^^^^^^^^^^^ the same lifetime is hidden here\n     |                                          |\n     |                                          the lifetime is elided here\n     |\n     = help: the same lifetime is referred to in inconsistent ways, making the signature confusing\nhelp: use `'_` for type paths\n     |\n4100 |     pub fn from_class<U: IsClass>(klass: &Class<U>) -> Option<InterfaceRef<'_, T>> {\n     |                                                                            +++\n\n"
+  },
+  {
+    "code": {
+      "code": "mismatched_lifetime_syntaxes",
+      "explanation": null
+    },
+    "level": "warning",
+    "rendered": "warning: hiding a lifetime that's elided elsewhere is confusing\n    --> <STUDY_A>/candidate/vendor/glib-0.18.5/src/object.rs:4170:19\n     |\n4170 |     pub fn parent(&self) -> Option<InterfaceRef<T>> {\n     |                   ^^^^^            ^^^^^^^^^^^^^^^ the same lifetime is hidden here\n     |                   |\n     |                   the lifetime is elided here\n     |\n     = help: the same lifetime is referred to in inconsistent ways, making the signature confusing\nhelp: use `'_` for type paths\n     |\n4170 |     pub fn parent(&self) -> Option<InterfaceRef<'_, T>> {\n     |                                                 +++\n\n"
+  },
+  {
+    "code": {
+      "code": "mismatched_lifetime_syntaxes",
+      "explanation": null
+    },
+    "level": "warning",
+    "rendered": "warning: hiding a lifetime that's elided elsewhere is confusing\n   --> <STUDY_A>/candidate/vendor/glib-0.18.5/src/collections/list.rs:104:17\n    |\n104 |     pub fn iter(&self) -> Iter<T> {\n    |                 ^^^^^     ^^^^^^^ the same lifetime is hidden here\n    |                 |\n    |                 the lifetime is elided here\n    |\n    = help: the same lifetime is referred to in inconsistent ways, making the signature confusing\nhelp: use `'_` for type paths\n    |\n104 |     pub fn iter(&self) -> Iter<'_, T> {\n    |                                +++\n\n"
+  },
+  {
+    "code": {
+      "code": "mismatched_lifetime_syntaxes",
+      "explanation": null
+    },
+    "level": "warning",
+    "rendered": "warning: hiding a lifetime that's elided elsewhere is confusing\n   --> <STUDY_A>/candidate/vendor/glib-0.18.5/src/collections/list.rs:111:21\n    |\n111 |     pub fn iter_mut(&mut self) -> IterMut<T> {\n    |                     ^^^^^^^^^     ^^^^^^^^^^ the same lifetime is hidden here\n    |                     |\n    |                     the lifetime is elided here\n    |\n    = help: the same lifetime is referred to in inconsistent ways, making the signature confusing\nhelp: use `'_` for type paths\n    |\n111 |     pub fn iter_mut(&mut self) -> IterMut<'_, T> {\n    |                                           +++\n\n"
+  },
+  {
+    "code": {
+      "code": "mismatched_lifetime_syntaxes",
+      "explanation": null
+    },
+    "level": "warning",
+    "rendered": "warning: hiding a lifetime that's elided elsewhere is confusing\n   --> <STUDY_A>/candidate/vendor/glib-0.18.5/src/collections/slist.rs:104:17\n    |\n104 |     pub fn iter(&self) -> Iter<T> {\n    |                 ^^^^^     ^^^^^^^ the same lifetime is hidden here\n    |                 |\n    |                 the lifetime is elided here\n    |\n    = help: the same lifetime is referred to in inconsistent ways, making the signature confusing\nhelp: use `'_` for type paths\n    |\n104 |     pub fn iter(&self) -> Iter<'_, T> {\n    |                                +++\n\n"
+  },
+  {
+    "code": {
+      "code": "mismatched_lifetime_syntaxes",
+      "explanation": null
+    },
+    "level": "warning",
+    "rendered": "warning: hiding a lifetime that's elided elsewhere is confusing\n   --> <STUDY_A>/candidate/vendor/glib-0.18.5/src/collections/slist.rs:111:21\n    |\n111 |     pub fn iter_mut(&mut self) -> IterMut<T> {\n    |                     ^^^^^^^^^     ^^^^^^^^^^ the same lifetime is hidden here\n    |                     |\n    |                     the lifetime is elided here\n    |\n    = help: the same lifetime is referred to in inconsistent ways, making the signature confusing\nhelp: use `'_` for type paths\n    |\n111 |     pub fn iter_mut(&mut self) -> IterMut<'_, T> {\n    |                                           +++\n\n"
+  },
+  {
+    "code": {
+      "code": "mismatched_lifetime_syntaxes",
+      "explanation": null
+    },
+    "level": "warning",
+    "rendered": "warning: hiding a lifetime that's elided elsewhere is confusing\n   --> <STUDY_A>/candidate/vendor/glib-0.18.5/src/enums.rs:682:20\n    |\n682 |     pub fn builder(&self) -> FlagsBuilder {\n    |                    ^^^^^     ^^^^^^^^^^^^ the same lifetime is hidden here\n    |                    |\n    |                    the lifetime is elided here\n    |\n    = help: the same lifetime is referred to in inconsistent ways, making the signature confusing\nhelp: use `'_` for type paths\n    |\n682 |     pub fn builder(&self) -> FlagsBuilder<'_> {\n    |                                          ++++\n\n"
+  },
+  {
+    "code": {
+      "code": "mismatched_lifetime_syntaxes",
+      "explanation": null
+    },
+    "level": "warning",
+    "rendered": "warning: hiding a lifetime that's elided elsewhere is confusing\n   --> <STUDY_A>/candidate/vendor/glib-0.18.5/src/enums.rs:689:31\n    |\n689 |     pub fn builder_with_value(&self, value: Value) -> Option<FlagsBuilder> {\n    |                               ^^^^^                          ^^^^^^^^^^^^ the same lifetime is hidden here\n    |                               |\n    |                               the lifetime is elided here\n    |\n    = help: the same lifetime is referred to in inconsistent ways, making the signature confusing\nhelp: use `'_` for type paths\n    |\n689 |     pub fn builder_with_value(&self, value: Value) -> Option<FlagsBuilder<'_>> {\n    |                                                                          ++++\n\n"
+  },
+  {
+    "code": {
+      "code": "mismatched_lifetime_syntaxes",
+      "explanation": null
+    },
+    "level": "warning",
+    "rendered": "warning: hiding a lifetime that's elided elsewhere is confusing\n   --> <STUDY_A>/candidate/vendor/glib-0.18.5/src/enums.rs:830:25\n    |\n830 |     fn new(flags_class: &FlagsClass) -> FlagsBuilder {\n    |                         ^^^^^^^^^^^     ^^^^^^^^^^^^ the same lifetime is hidden here\n    |                         |\n    |                         the lifetime is elided here\n    |\n    = help: the same lifetime is referred to in inconsistent ways, making the signature confusing\nhelp: use `'_` for type paths\n    |\n830 |     fn new(flags_class: &FlagsClass) -> FlagsBuilder<'_> {\n    |                                                     ++++\n\n"
+  },
+  {
+    "code": {
+      "code": "mismatched_lifetime_syntaxes",
+      "explanation": null
+    },
+    "level": "warning",
+    "rendered": "warning: hiding a lifetime that's elided elsewhere is confusing\n   --> <STUDY_A>/candidate/vendor/glib-0.18.5/src/enums.rs:835:32\n    |\n835 |     fn with_value(flags_class: &FlagsClass, value: Value) -> FlagsBuilder {\n    |                                ^^^^^^^^^^^                   ^^^^^^^^^^^^ the same lifetime is hidden here\n    |                                |\n    |                                the lifetime is elided here\n    |\n    = help: the same lifetime is referred to in inconsistent ways, making the signature confusing\nhelp: use `'_` for type paths\n    |\n835 |     fn with_value(flags_class: &FlagsClass, value: Value) -> FlagsBuilder<'_> {\n    |                                                                          ++++\n\n"
+  },
+  {
+    "code": {
+      "code": "mismatched_lifetime_syntaxes",
+      "explanation": null
+    },
+    "level": "warning",
+    "rendered": "warning: hiding a lifetime that's named elsewhere is confusing\n   --> <STUDY_A>/candidate/vendor/glib-0.18.5/src/translate.rs:467:42\n    |\n467 |     fn to_glib_none_mut(&'a mut self) -> StashMut<P, Self>;\n    |                          --              ^^^^^^^^^^^^^^^^^ the same lifetime is hidden here\n    |                          |\n    |                          the lifetime is named here\n    |\n    = help: the same lifetime is referred to in inconsistent ways, making the signature confusing\nhelp: consistently use `'a`\n    |\n467 |     fn to_glib_none_mut(&'a mut self) -> StashMut<'a, P, Self>;\n    |                                                   +++\n\n"
+  },
+  {
+    "code": {
+      "code": "mismatched_lifetime_syntaxes",
+      "explanation": null
+    },
+    "level": "warning",
+    "rendered": "warning: hiding a lifetime that's elided elsewhere is confusing\n   --> <STUDY_A>/candidate/vendor/glib-0.18.5/src/main_context.rs:164:20\n    |\n164 |     pub fn acquire(&self) -> Result<MainContextAcquireGuard, crate::BoolError> {\n    |                    ^^^^^            ^^^^^^^^^^^^^^^^^^^^^^^ the same lifetime is hidden here\n    |                    |\n    |                    the lifetime is elided here\n    |\n    = help: the same lifetime is referred to in inconsistent ways, making the signature confusing\nhelp: use `'_` for type paths\n    |\n164 |     pub fn acquire(&self) -> Result<MainContextAcquireGuard<'_>, crate::BoolError> {\n    |                                                            ++++\n\n"
+  },
+  {
+    "code": {
+      "code": "mismatched_lifetime_syntaxes",
+      "explanation": null
+    },
+    "level": "warning",
+    "rendered": "warning: hiding a lifetime that's elided elsewhere is confusing\n   --> <STUDY_A>/candidate/vendor/glib-0.18.5/src/main_context.rs:192:17\n    |\n192 |     fn new(ctx: &MainContext) -> ThreadDefaultContext {\n    |                 ^^^^^^^^^^^^     ^^^^^^^^^^^^^^^^^^^^ the same lifetime is hidden here\n    |                 |\n    |                 the lifetime is elided here\n    |\n    = help: the same lifetime is referred to in inconsistent ways, making the signature confusing\nhelp: use `'_` for type paths\n    |\n192 |     fn new(ctx: &MainContext) -> ThreadDefaultContext<'_> {\n    |                                                      ++++\n\n"
+  },
+  {
+    "code": {
+      "code": "mismatched_lifetime_syntaxes",
+      "explanation": null
+    },
+    "level": "warning",
+    "rendered": "warning: hiding a lifetime that's named elsewhere is confusing\n   --> <STUDY_A>/candidate/vendor/glib-0.18.5/src/value.rs:545:47\n    |\n545 |     pub fn get<'a, T>(&'a self) -> Result<T, <<T as FromValue>::Checker as ValueTypeChecker>::Error>\n    |                        --                     ^^^^^^^^^^^^^^^^^^^^^^^^^ the same lifetime is hidden here\n    |                        |\n    |                        the lifetime is named here\n    |\n    = help: the same lifetime is referred to in inconsistent ways, making the signature confusing\nhelp: consistently use `'a`\n    |\n545 |     pub fn get<'a, T>(&'a self) -> Result<T, <<T as FromValue<'a>>::Checker as ValueTypeChecker>::Error>\n    |                                                              ++++\n\n"
+  },
+  {
+    "code": {
+      "code": "mismatched_lifetime_syntaxes",
+      "explanation": null
+    },
+    "level": "warning",
+    "rendered": "warning: hiding a lifetime that's elided elsewhere is confusing\n   --> <STUDY_A>/candidate/vendor/glib-0.18.5/src/value.rs:558:25\n    |\n558 |     pub fn get_owned<T>(&self) -> Result<T, <<T as FromValue>::Checker as ValueTypeChecker>::Error>\n    |                         ^^^^^                ^^^^^^^^^^^^^^^^^^^^^^^^^ the same lifetime is hidden here\n    |                         |\n    |                         the lifetime is elided here\n    |\n    = help: the same lifetime is referred to in inconsistent ways, making the signature confusing\nhelp: use `'_` for type paths\n    |\n558 |     pub fn get_owned<T>(&self) -> Result<T, <<T as FromValue<'_>>::Checker as ValueTypeChecker>::Error>\n    |                                                             ++++\n\n"
+  },
+  {
+    "code": {
+      "code": "mismatched_lifetime_syntaxes",
+      "explanation": null
+    },
+    "level": "warning",
+    "rendered": "warning: hiding a lifetime that's elided elsewhere is confusing\n   --> <STUDY_A>/candidate/vendor/glib-0.18.5/src/variant.rs:843:27\n    |\n843 |     pub fn array_iter_str(&self) -> Result<VariantStrIter, VariantTypeMismatchError> {\n    |                           ^^^^^            ^^^^^^^^^^^^^^ the same lifetime is hidden here\n    |                           |\n    |                           the lifetime is elided here\n    |\n    = help: the same lifetime is referred to in inconsistent ways, making the signature confusing\nhelp: use `'_` for type paths\n    |\n843 |     pub fn array_iter_str(&self) -> Result<VariantStrIter<'_>, VariantTypeMismatchError> {\n    |                                                          ++++\n\n"
+  },
+  {
+    "code": {
+      "code": "mismatched_lifetime_syntaxes",
+      "explanation": null
+    },
+    "level": "warning",
+    "rendered": "warning: hiding a lifetime that's elided elsewhere is confusing\n   --> <STUDY_A>/candidate/vendor/glib-0.18.5/src/variant_type.rs:592:24\n    |\n592 |     pub fn tuple_types(&self) -> VariantTyIterator {\n    |                        ^^^^^     ^^^^^^^^^^^^^^^^^ the same lifetime is hidden here\n    |                        |\n    |                        the lifetime is elided here\n    |\n    = help: the same lifetime is referred to in inconsistent ways, making the signature confusing\nhelp: use `'_` for type paths\n    |\n592 |     pub fn tuple_types(&self) -> VariantTyIterator<'_> {\n    |                                                   ++++\n\n"
+  },
+  {
+    "code": {
+      "code": "mismatched_lifetime_syntaxes",
+      "explanation": null
+    },
+    "level": "warning",
+    "rendered": "warning: hiding a lifetime that's elided elsewhere is confusing\n    --> <STUDY_A>/candidate/vendor/glib-0.18.5/src/param_spec.rs:1060:15\n     |\n1060 |         name: &str,\n     |               ^^^^ the lifetime is elided here\n1061 |         default_value: T,\n1062 |     ) -> ParamSpecEnumBuilder<T> {\n     |          ^^^^^^^^^^^^^^^^^^^^^^^ the same lifetime is hidden here\n     |\n     = help: the same lifetime is referred to in inconsistent ways, making the signature confusing\nhelp: use `'_` for type paths\n     |\n1062 |     ) -> ParamSpecEnumBuilder<'_, T> {\n     |                               +++\n\n"
+  },
+  {
+    "code": {
+      "code": "mismatched_lifetime_syntaxes",
+      "explanation": null
+    },
+    "level": "warning",
+    "rendered": "warning: hiding a lifetime that's elided elsewhere is confusing\n    --> <STUDY_A>/candidate/vendor/glib-0.18.5/src/param_spec.rs:1067:15\n     |\n1067 |         name: &str,\n     |               ^^^^ the lifetime is elided here\n1068 |     ) -> ParamSpecEnumBuilder<T> {\n     |          ^^^^^^^^^^^^^^^^^^^^^^^ the same lifetime is hidden here\n     |\n     = help: the same lifetime is referred to in inconsistent ways, making the signature confusing\nhelp: use `'_` for type paths\n     |\n1068 |     ) -> ParamSpecEnumBuilder<'_, T> {\n     |                               +++\n\n"
+  },
+  {
+    "code": {
+      "code": "mismatched_lifetime_syntaxes",
+      "explanation": null
+    },
+    "level": "warning",
+    "rendered": "warning: hiding a lifetime that's elided elsewhere is confusing\n    --> <STUDY_A>/candidate/vendor/glib-0.18.5/src/param_spec.rs:1208:15\n     |\n1208 |         name: &str,\n     |               ^^^^ the lifetime is elided here\n1209 |     ) -> ParamSpecFlagsBuilder<T> {\n     |          ^^^^^^^^^^^^^^^^^^^^^^^^ the same lifetime is hidden here\n     |\n     = help: the same lifetime is referred to in inconsistent ways, making the signature confusing\nhelp: use `'_` for type paths\n     |\n1209 |     ) -> ParamSpecFlagsBuilder<'_, T> {\n     |                                +++\n\n"
+  },
+  {
+    "code": {
+      "code": "mismatched_lifetime_syntaxes",
+      "explanation": null
+    },
+    "level": "warning",
+    "rendered": "warning: hiding a lifetime that's elided elsewhere is confusing\n    --> <STUDY_A>/candidate/vendor/glib-0.18.5/src/param_spec.rs:1350:26\n     |\n1350 |     pub fn builder(name: &str) -> ParamSpecStringBuilder {\n     |                          ^^^^     ^^^^^^^^^^^^^^^^^^^^^^ the same lifetime is hidden here\n     |                          |\n     |                          the lifetime is elided here\n     |\n     = help: the same lifetime is referred to in inconsistent ways, making the signature confusing\nhelp: use `'_` for type paths\n     |\n1350 |     pub fn builder(name: &str) -> ParamSpecStringBuilder<'_> {\n     |                                                         ++++\n\n"
+  },
+  {
+    "code": {
+      "code": "mismatched_lifetime_syntaxes",
+      "explanation": null
+    },
+    "level": "warning",
+    "rendered": "warning: hiding a lifetime that's elided elsewhere is confusing\n    --> <STUDY_A>/candidate/vendor/glib-0.18.5/src/param_spec.rs:1492:41\n     |\n1492 |     pub fn builder<T: StaticType>(name: &str) -> ParamSpecBoxedBuilder<T> {\n     |                                         ^^^^     ^^^^^^^^^^^^^^^^^^^^^^^^ the same lifetime is hidden here\n     |                                         |\n     |                                         the lifetime is elided here\n     |\n     = help: the same lifetime is referred to in inconsistent ways, making the signature confusing\nhelp: use `'_` for type paths\n     |\n1492 |     pub fn builder<T: StaticType>(name: &str) -> ParamSpecBoxedBuilder<'_, T> {\n     |                                                                        +++\n\n"
+  },
+  {
+    "code": {
+      "code": "mismatched_lifetime_syntaxes",
+      "explanation": null
+    },
+    "level": "warning",
+    "rendered": "warning: hiding a lifetime that's elided elsewhere is confusing\n    --> <STUDY_A>/candidate/vendor/glib-0.18.5/src/param_spec.rs:1645:26\n     |\n1645 |     pub fn builder(name: &str) -> ParamSpecValueArrayBuilder {\n     |                          ^^^^     ^^^^^^^^^^^^^^^^^^^^^^^^^^ the same lifetime is hidden here\n     |                          |\n     |                          the lifetime is elided here\n     |\n     = help: the same lifetime is referred to in inconsistent ways, making the signature confusing\nhelp: use `'_` for type paths\n     |\n1645 |     pub fn builder(name: &str) -> ParamSpecValueArrayBuilder<'_> {\n     |                                                             ++++\n\n"
+  },
+  {
+    "code": {
+      "code": "mismatched_lifetime_syntaxes",
+      "explanation": null
+    },
+    "level": "warning",
+    "rendered": "warning: hiding a lifetime that's elided elsewhere is confusing\n    --> <STUDY_A>/candidate/vendor/glib-0.18.5/src/param_spec.rs:1743:55\n     |\n1743 |     pub fn builder<T: StaticType + IsA<Object>>(name: &str) -> ParamSpecObjectBuilder<T> {\n     |                                                       ^^^^     ^^^^^^^^^^^^^^^^^^^^^^^^^ the same lifetime is hidden here\n     |                                                       |\n     |                                                       the lifetime is elided here\n     |\n     = help: the same lifetime is referred to in inconsistent ways, making the signature confusing\nhelp: use `'_` for type paths\n     |\n1743 |     pub fn builder<T: StaticType + IsA<Object>>(name: &str) -> ParamSpecObjectBuilder<'_, T> {\n     |                                                                                       +++\n\n"
+  },
+  {
+    "code": {
+      "code": "mismatched_lifetime_syntaxes",
+      "explanation": null
+    },
+    "level": "warning",
+    "rendered": "warning: hiding a lifetime that's elided elsewhere is confusing\n   --> <STUDY_A>/candidate/vendor/glib-0.18.5/src/subclass/types.rs:710:17\n    |\n710 |     fn instance(&self) -> crate::BorrowedObject<Self::Type>;\n    |                 ^^^^^     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ the same lifetime is hidden here\n    |                 |\n    |                 the lifetime is elided here\n    |\n    = help: the same lifetime is referred to in inconsistent ways, making the signature confusing\nhelp: use `'_` for type paths\n    |\n710 |     fn instance(&self) -> crate::BorrowedObject<'_, Self::Type>;\n    |                                                 +++\n\n"
+  },
+  {
+    "code": {
+      "code": "mismatched_lifetime_syntaxes",
+      "explanation": null
+    },
+    "level": "warning",
+    "rendered": "warning: hiding a lifetime that's elided elsewhere is confusing\n   --> <STUDY_A>/candidate/vendor/glib-0.18.5/src/subclass/types.rs:722:12\n    |\n722 |     fn obj(&self) -> crate::BorrowedObject<Self::Type>;\n    |            ^^^^^     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ the same lifetime is hidden here\n    |            |\n    |            the lifetime is elided here\n    |\n    = help: the same lifetime is referred to in inconsistent ways, making the signature confusing\nhelp: use `'_` for type paths\n    |\n722 |     fn obj(&self) -> crate::BorrowedObject<'_, Self::Type>;\n    |                                            +++\n\n"
+  },
+  {
+    "code": {
+      "code": "mismatched_lifetime_syntaxes",
+      "explanation": null
+    },
+    "level": "warning",
+    "rendered": "warning: hiding a lifetime that's elided elsewhere is confusing\n   --> <STUDY_A>/candidate/vendor/glib-0.18.5/src/subclass/types.rs:744:17\n    |\n744 |     fn instance(&self) -> crate::BorrowedObject<Self::Type> {\n    |                 ^^^^^     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ the same lifetime is hidden here\n    |                 |\n    |                 the lifetime is elided here\n    |\n    = help: the same lifetime is referred to in inconsistent ways, making the signature confusing\nhelp: use `'_` for type paths\n    |\n744 |     fn instance(&self) -> crate::BorrowedObject<'_, Self::Type> {\n    |                                                 +++\n\n"
+  },
+  {
+    "code": {
+      "code": "mismatched_lifetime_syntaxes",
+      "explanation": null
+    },
+    "level": "warning",
+    "rendered": "warning: hiding a lifetime that's elided elsewhere is confusing\n   --> <STUDY_A>/candidate/vendor/glib-0.18.5/src/subclass/types.rs:754:12\n    |\n754 |     fn obj(&self) -> crate::BorrowedObject<Self::Type> {\n    |            ^^^^^     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ the same lifetime is hidden here\n    |            |\n    |            the lifetime is elided here\n    |\n    = help: the same lifetime is referred to in inconsistent ways, making the signature confusing\nhelp: use `'_` for type paths\n    |\n754 |     fn obj(&self) -> crate::BorrowedObject<'_, Self::Type> {\n    |                                            +++\n\n"
+  },
+  {
+    "code": {
+      "code": "missing_docs",
+      "explanation": null
+    },
+    "level": "warning",
+    "rendered": "warning: missing documentation for a struct\n  --> <STUDY_A>/vendor/tauri-2.11.6/src/ipc/atomic_admission_probe.rs:9:1\n   |\n 9 | pub struct Version { pub format: u32, pub policy: u32 }\n   | ^^^^^^^^^^^^^^^^^^\n   |\nnote: the lint level is defined here\n  --> <STUDY_A>/vendor/tauri-2.11.6/src/lib.rs:55:9\n   |\n55 | #![warn(missing_docs, rust_2018_idioms)]\n   |         ^^^^^^^^^^^^\n\n"
+  },
+  {
+    "code": {
+      "code": "missing_docs",
+      "explanation": null
+    },
+    "level": "warning",
+    "rendered": "warning: missing documentation for a struct field\n --> <STUDY_A>/vendor/tauri-2.11.6/src/ipc/atomic_admission_probe.rs:9:22\n  |\n9 | pub struct Version { pub format: u32, pub policy: u32 }\n  |                      ^^^^^^^^^^^^^^^\n\n"
+  },
+  {
+    "code": {
+      "code": "missing_docs",
+      "explanation": null
+    },
+    "level": "warning",
+    "rendered": "warning: missing documentation for a struct field\n --> <STUDY_A>/vendor/tauri-2.11.6/src/ipc/atomic_admission_probe.rs:9:39\n  |\n9 | pub struct Version { pub format: u32, pub policy: u32 }\n  |                                       ^^^^^^^^^^^^^^^\n\n"
+  },
+  {
+    "code": {
+      "code": "missing_docs",
+      "explanation": null
+    },
+    "level": "warning",
+    "rendered": "warning: missing documentation for an enum\n  --> <STUDY_A>/vendor/tauri-2.11.6/src/ipc/atomic_admission_probe.rs:11:1\n   |\n11 | pub enum AdmissionError { Invalid(String), Rejected(String), Conflict, WrongOwner, Version, Poisoned, Overflow }\n   | ^^^^^^^^^^^^^^^^^^^^^^^\n\n"
+  },
+  {
+    "code": {
+      "code": "missing_docs",
+      "explanation": null
+    },
+    "level": "warning",
+    "rendered": "warning: missing documentation for a variant\n  --> <STUDY_A>/vendor/tauri-2.11.6/src/ipc/atomic_admission_probe.rs:11:27\n   |\n11 | pub enum AdmissionError { Invalid(String), Rejected(String), Conflict, WrongOwner, Version, Poisoned, Overflow }\n   |                           ^^^^^^^\n\n"
+  },
+  {
+    "code": {
+      "code": "missing_docs",
+      "explanation": null
+    },
+    "level": "warning",
+    "rendered": "warning: missing documentation for a variant\n  --> <STUDY_A>/vendor/tauri-2.11.6/src/ipc/atomic_admission_probe.rs:11:44\n   |\n11 | pub enum AdmissionError { Invalid(String), Rejected(String), Conflict, WrongOwner, Version, Poisoned, Overflow }\n   |                                            ^^^^^^^^\n\n"
+  },
+  {
+    "code": {
+      "code": "missing_docs",
+      "explanation": null
+    },
+    "level": "warning",
+    "rendered": "warning: missing documentation for a variant\n  --> <STUDY_A>/vendor/tauri-2.11.6/src/ipc/atomic_admission_probe.rs:11:62\n   |\n11 | pub enum AdmissionError { Invalid(String), Rejected(String), Conflict, WrongOwner, Version, Poisoned, Overflow }\n   |                                                              ^^^^^^^^\n\n"
+  },
+  {
+    "code": {
+      "code": "missing_docs",
+      "explanation": null
+    },
+    "level": "warning",
+    "rendered": "warning: missing documentation for a variant\n  --> <STUDY_A>/vendor/tauri-2.11.6/src/ipc/atomic_admission_probe.rs:11:72\n   |\n11 | pub enum AdmissionError { Invalid(String), Rejected(String), Conflict, WrongOwner, Version, Poisoned, Overflow }\n   |                                                                        ^^^^^^^^^^\n\n"
+  },
+  {
+    "code": {
+      "code": "missing_docs",
+      "explanation": null
+    },
+    "level": "warning",
+    "rendered": "warning: missing documentation for a variant\n  --> <STUDY_A>/vendor/tauri-2.11.6/src/ipc/atomic_admission_probe.rs:11:84\n   |\n11 | pub enum AdmissionError { Invalid(String), Rejected(String), Conflict, WrongOwner, Version, Poisoned, Overflow }\n   |                                                                                    ^^^^^^^\n\n"
+  },
+  {
+    "code": {
+      "code": "missing_docs",
+      "explanation": null
+    },
+    "level": "warning",
+    "rendered": "warning: missing documentation for a variant\n  --> <STUDY_A>/vendor/tauri-2.11.6/src/ipc/atomic_admission_probe.rs:11:93\n   |\n11 | pub enum AdmissionError { Invalid(String), Rejected(String), Conflict, WrongOwner, Version, Poisoned, Overflow }\n   |                                                                                             ^^^^^^^^\n\n"
+  },
+  {
+    "code": {
+      "code": "missing_docs",
+      "explanation": null
+    },
+    "level": "warning",
+    "rendered": "warning: missing documentation for a variant\n  --> <STUDY_A>/vendor/tauri-2.11.6/src/ipc/atomic_admission_probe.rs:11:103\n   |\n11 | pub enum AdmissionError { Invalid(String), Rejected(String), Conflict, WrongOwner, Version, Poisoned, Overflow }\n   |                                                                                                       ^^^^^^^^\n\n"
+  },
+  {
+    "code": {
+      "code": "missing_docs",
+      "explanation": null
+    },
+    "level": "warning",
+    "rendered": "warning: missing documentation for a struct\n  --> <STUDY_A>/vendor/tauri-2.11.6/src/ipc/atomic_admission_probe.rs:14:1\n   |\n14 | pub struct PolicyStore { owner: Arc<()>, state: Mutex<Published>, validator: Arc<Validator> }\n   | ^^^^^^^^^^^^^^^^^^^^^^\n\n"
+  },
+  {
+    "code": {
+      "code": "missing_docs",
+      "explanation": null
+    },
+    "level": "warning",
+    "rendered": "warning: missing documentation for a struct\n  --> <STUDY_A>/vendor/tauri-2.11.6/src/ipc/atomic_admission_probe.rs:15:1\n   |\n15 | pub struct ValidatedPolicy { owner: Arc<()>, expected_revision: u64, version: Version, candidate: Arc<RuntimeAuthority> }\n   | ^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n"
+  },
+  {
+    "code": {
+      "code": "missing_docs",
+      "explanation": null
+    },
+    "level": "warning",
+    "rendered": "warning: missing documentation for a struct\n  --> <STUDY_A>/vendor/tauri-2.11.6/src/ipc/atomic_admission_probe.rs:16:1\n   |\n16 | pub struct PinnedPolicy { revision: u64, version: Version, authority: Arc<RuntimeAuthority> }\n   | ^^^^^^^^^^^^^^^^^^^^^^^\n\n"
+  },
+  {
+    "code": {
+      "code": "missing_docs",
+      "explanation": null
+    },
+    "level": "warning",
+    "rendered": "warning: missing documentation for an associated function\n  --> <STUDY_A>/vendor/tauri-2.11.6/src/ipc/atomic_admission_probe.rs:43:2\n   |\n43 |  pub fn try_new(acl:BTreeMap<String,Manifest>,resolved:Resolved,version:Version,validator:Arc<Validator>)->Result<Self,AdmissionError>{\n   |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n"
+  },
+  {
+    "code": {
+      "code": "missing_docs",
+      "explanation": null
+    },
+    "level": "warning",
+    "rendered": "warning: missing documentation for a method\n  --> <STUDY_A>/vendor/tauri-2.11.6/src/ipc/atomic_admission_probe.rs:48:2\n   |\n48 |  pub fn pin(&self)->Result<PinnedPolicy,AdmissionError>{\n   |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n"
+  },
+  {
+    "code": {
+      "code": "missing_docs",
+      "explanation": null
+    },
+    "level": "warning",
+    "rendered": "warning: missing documentation for a method\n  --> <STUDY_A>/vendor/tauri-2.11.6/src/ipc/atomic_admission_probe.rs:62:2\n   |\n62 |  pub fn prepare_json(&self,input:&str)->Result<ValidatedPolicy,AdmissionError>{\n   |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n"
+  },
+  {
+    "code": {
+      "code": "missing_docs",
+      "explanation": null
+    },
+    "level": "warning",
+    "rendered": "warning: missing documentation for a method\n  --> <STUDY_A>/vendor/tauri-2.11.6/src/ipc/atomic_admission_probe.rs:74:2\n   |\n74 |  pub fn prepare_embedded(&self,version:Version,acl:BTreeMap<String,Manifest>,resolved:Resolved)->Result<ValidatedPolicy,AdmissionError>{\n   |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n"
+  },
+  {
+    "code": {
+      "code": "missing_docs",
+      "explanation": null
+    },
+    "level": "warning",
+    "rendered": "warning: missing documentation for a method\n  --> <STUDY_A>/vendor/tauri-2.11.6/src/ipc/atomic_admission_probe.rs:78:2\n   |\n78 |  pub fn prepare_direct_grant(&self,name:String,context:ExecutionContext)->Result<ValidatedPolicy,AdmissionError>{\n   |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n"
+  },
+  {
+    "code": {
+      "code": "missing_docs",
+      "explanation": null
+    },
+    "level": "warning",
+    "rendered": "warning: missing documentation for a method\n  --> <STUDY_A>/vendor/tauri-2.11.6/src/ipc/atomic_admission_probe.rs:81:2\n   |\n81 |  pub fn activate(&self,prepared:ValidatedPolicy)->Result<u64,AdmissionError>{\n   |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n"
+  },
+  {
+    "code": {
+      "code": "missing_docs",
+      "explanation": null
+    },
+    "level": "warning",
+    "rendered": "warning: missing documentation for a method\n  --> <STUDY_A>/vendor/tauri-2.11.6/src/ipc/atomic_admission_probe.rs:94:2\n   |\n94 |  pub fn version(&self)->Version{self.version}\n   |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n"
+  },
+  {
+    "code": {
+      "code": "missing_docs",
+      "explanation": null
+    },
+    "level": "warning",
+    "rendered": "warning: missing documentation for a method\n  --> <STUDY_A>/vendor/tauri-2.11.6/src/ipc/atomic_admission_probe.rs:95:2\n   |\n95 |  pub fn matcher_identity(&self,command:&str)->Option<usize>{identity(&self.candidate,command)}\n   |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n"
+  },
+  {
+    "code": {
+      "code": "missing_docs",
+      "explanation": null
+    },
+    "level": "warning",
+    "rendered": "warning: missing documentation for a method\n   --> <STUDY_A>/vendor/tauri-2.11.6/src/ipc/atomic_admission_probe.rs:101:2\n    |\n101 |  pub fn revision(&self)->u64{self.revision}\n    |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n"
+  },
+  {
+    "code": {
+      "code": "missing_docs",
+      "explanation": null
+    },
+    "level": "warning",
+    "rendered": "warning: missing documentation for a method\n   --> <STUDY_A>/vendor/tauri-2.11.6/src/ipc/atomic_admission_probe.rs:102:2\n    |\n102 |  pub fn version(&self)->Version{self.version}\n    |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n"
+  },
+  {
+    "code": {
+      "code": "missing_docs",
+      "explanation": null
+    },
+    "level": "warning",
+    "rendered": "warning: missing documentation for a method\n   --> <STUDY_A>/vendor/tauri-2.11.6/src/ipc/atomic_admission_probe.rs:103:2\n    |\n103 |  pub fn snapshot(&self)->Json{json!({\"revision\":self.revision,\"version\":self.version,\"state\":describe(&self.authority)})}\n    |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n"
+  },
+  {
+    "code": {
+      "code": "missing_docs",
+      "explanation": null
+    },
+    "level": "warning",
+    "rendered": "warning: missing documentation for a method\n   --> <STUDY_A>/vendor/tauri-2.11.6/src/ipc/atomic_admission_probe.rs:104:2\n    |\n104 |  pub fn query(&self,command:&str,window:&str,webview:&str,origin:&Origin)->Json {\n    |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n"
+  },
+  {
+    "code": {
+      "code": "missing_docs",
+      "explanation": null
+    },
+    "level": "warning",
+    "rendered": "warning: missing documentation for a method\n   --> <STUDY_A>/vendor/tauri-2.11.6/src/ipc/atomic_admission_probe.rs:109:2\n    |\n109 |  pub fn scope_allow(&self,id:u64)->Json{self.authority.scope_manager.command_scope.get(&id).map(|s|json!(s.allow)).unwrap_or(Json::...\n    |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n"
+  },
+  {
+    "code": {
+      "code": "missing_docs",
+      "explanation": null
+    },
+    "level": "warning",
+    "rendered": "warning: missing documentation for a method\n   --> <STUDY_A>/vendor/tauri-2.11.6/src/ipc/atomic_admission_probe.rs:110:2\n    |\n110 |  pub fn matcher_identity(&self,command:&str)->Option<usize>{identity(&self.authority,command)}\n    |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n"
+  },
+  {
+    "code": {
+      "code": "missing_docs",
+      "explanation": null
+    },
+    "level": "warning",
+    "rendered": "warning: missing documentation for a method\n   --> <STUDY_A>/vendor/tauri-2.11.6/src/ipc/atomic_admission_probe.rs:111:2\n    |\n111 |  pub fn seed_probe_caches(&self,id:u64){\n    |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n"
+  },
+  {
+    "code": {
+      "code": "missing_docs",
+      "explanation": null
+    },
+    "level": "warning",
+    "rendered": "warning: missing documentation for a method\n   --> <STUDY_A>/vendor/tauri-2.11.6/src/ipc/atomic_admission_probe.rs:115:2\n    |\n115 |  pub fn probe_caches(&self,id:u64)->(bool,bool){(self.authority.scope_manager.command_cache.get(&id).is_some_and(|c|c.try_get::<Str...\n    |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n"
+  },
+  {
+    "code": {
+      "code": "E0603",
+      "explanation": "A private item was used outside its scope.\n\nErroneous code example:\n\n```compile_fail,E0603\nmod foo {\n    const PRIVATE: u32 = 0x_a_bad_1dea_u32; // This const is private, so we\n                                            // can't use it outside of the\n                                            // `foo` module.\n}\n\nprintln!(\"const value: {}\", foo::PRIVATE); // error: constant `PRIVATE`\n                                                  //        is private\n```\n\nIn order to fix this error, you need to make the item public by using the `pub`\nkeyword. Example:\n\n```\nmod foo {\n    pub const PRIVATE: u32 = 0x_a_bad_1dea_u32; // We set it public by using the\n                                                // `pub` keyword.\n}\n\nprintln!(\"const value: {}\", foo::PRIVATE); // ok!\n```\n"
+    },
+    "level": "error",
+    "rendered": "error[E0603]: struct `RuntimeAuthority` is private\n  --> src/application_profile.rs:5:21\n   |\n 5 | use tauri::{Manager,RuntimeAuthority,test::{mock_builder,mock_context,noop_assets,MockRuntime},ipc::CapabilityBuilder};\n   |                     ^^^^^^^^^^^^^^^^ private struct\n   |\nnote: the struct `RuntimeAuthority` is defined here\n  --> <STUDY_A>/vendor/tauri-2.11.6/src/lib.rs:70:5\n   |\n70 | use ipc::RuntimeAuthority;\n   |     ^^^^^^^^^^^^^^^^^^^^^\n\n"
+  },
+  {
+    "code": null,
+    "level": "failure-note",
+    "rendered": "For more information about this error, try `rustc --explain E0603`.\n"
+  }
+]

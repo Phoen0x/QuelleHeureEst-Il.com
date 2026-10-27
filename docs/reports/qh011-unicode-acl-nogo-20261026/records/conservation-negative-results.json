@@ -1,0 +1,20 @@
+[
+  {
+    "case": "optional-dependency-loss",
+    "guard_exit": 1,
+    "rejected": true,
+    "failure": "AssertionError: src-tauri/Cargo.toml"
+  },
+  {
+    "case": "pnpm-historical-loss",
+    "guard_exit": 1,
+    "rejected": true,
+    "failure": "AssertionError: pnpm-lock.yaml"
+  },
+  {
+    "case": "windows-reroute",
+    "guard_exit": 1,
+    "rejected": true,
+    "failure": "AssertionError: ('tempfile@3.27.0', {'getrandom@0.4.3', 'windows-sys@0.61.2'})"
+  }
+]

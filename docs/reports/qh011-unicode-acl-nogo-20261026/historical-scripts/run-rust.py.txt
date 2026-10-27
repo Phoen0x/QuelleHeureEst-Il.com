@@ -1,0 +1,17 @@
+"""FR : candidat verrouillé, GLib explicite ; EN: locked candidate, explicit GLib."""
+import json,subprocess,time
+from pathlib import Path
+w=Path(__file__).parent;r=w/'candidate';status=[]
+commands=[
+('cargo-tree',['cargo','tree','--workspace','--locked','--offline','--all-features','--target','all'],90),
+('cargo-build-debug',['cargo','build','--workspace','--locked','--offline'],300),
+('cargo-test-debug',['cargo','test','--workspace','--locked','--offline'],180),
+('cargo-build-release',['cargo','build','--workspace','--release','--all-features','--locked','--offline'],300),
+('cargo-test-release',['cargo','test','--workspace','--release','--all-features','--locked','--offline'],180),
+('cargo-audit',['<AUDIT_TOOLS>/cargo-audit','audit','--deny','warnings','--no-fetch','--db','<DIAGNOSTIC1>/advisory-db','--json'],90)]
+for name,cmd,limit in commands:
+ start=time.monotonic()
+ try:p=subprocess.run(cmd,cwd=r,capture_output=True,timeout=limit);exit=p.returncode;stdout=p.stdout;stderr=p.stderr
+ except subprocess.TimeoutExpired as e:exit=124;stdout=e.stdout or b'';stderr=(e.stderr or b'')+b'\nWALL TIMEOUT\n'
+ (w/'logs'/(name+'.stdout')).write_bytes(stdout);(w/'logs'/(name+'.stderr')).write_bytes(stderr)
+ status.append({'name':name,'command':cmd,'exit':exit,'seconds':round(time.monotonic()-start,3),'wall_limit':limit});(w/'rust-status.json').write_text(json.dumps(status,indent=2));print(name,exit,flush=True)

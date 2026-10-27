@@ -1,0 +1,8 @@
+warning: `glib` (lib) generated 34 warnings (run `cargo fix --lib -p glib` to apply 34 suggestions)
+   Compiling quelleheureest v0.0.1 (<EXPERIMENT>/candidate/src-tauri)
+warning: `quelleheureest` (bin "quelleheureest" test) generated 8 warnings (run `cargo fix --bin "quelleheureest" -p quelleheureest --tests` to apply 4 suggestions)
+warning: `quelleheureest` (bin "quelleheureest") generated 8 warnings (8 duplicates)
+    Finished `release` profile [optimized] target(s) in 32.29s
+     Running unittests src/main.rs (<ENVIRONMENT>/cargo-target/release/deps/quelleheureest-c00e32b681600f1a)
+     Running tests/glib_variant_str_iter.rs (<ENVIRONMENT>/cargo-target/release/deps/glib_variant_str_iter-26312993a327fce4)
+     Running tests/http_client.rs (<ENVIRONMENT>/cargo-target/release/deps/http_client-b29adf9d071c994d)

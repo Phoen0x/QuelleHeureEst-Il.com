@@ -1,0 +1,12 @@
+use serde_json::json;
+use std::str::FromStr;
+fn main(){
+ let cases:Vec<serde_json::Value>=serde_json::from_str(include_str!("../../cases.json")).unwrap();
+ let mut out=Vec::new();
+ for c in cases {
+  let pattern=c["pattern"].as_str().unwrap();let url=url::Url::parse(c["url"].as_str().unwrap()).unwrap();
+  let actual=match tauri_utils::acl::RemoteUrlPattern::from_str(pattern){Ok(p)=>json!({"accepted":true,"matches":p.test(&url)}),Err(e)=>json!({"accepted":false,"error":e.to_string()})};
+  out.push(json!({"id":c["id"],"pattern":pattern,"url":url.as_str(),"actual":actual}));
+ }
+ println!("{}",json!(out));
+}

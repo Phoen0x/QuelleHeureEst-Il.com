@@ -1,0 +1,4 @@
+
+thread 'application_profile::remote_context_replacement_is_rejected_before_plugin_initialization' (2023) panicked at src/application_profile.rs:11:166:
+called `Result::unwrap()` on an `Err` value: Error("missing field `permission_sets`", line: 0, column: 0)
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace

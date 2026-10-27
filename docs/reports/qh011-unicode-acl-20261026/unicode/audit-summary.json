@@ -1,0 +1,98 @@
+{
+  "advisory_db_commit": "21d909e4c8bd4e14c7aea58bf980c881a0053ab1",
+  "note": "Database commit is read from surviving local database; Cargo audit JSON reports last-commit null. Audit is historical, not rerun by archiving.",
+  "runs": [
+    {
+      "database": {
+        "advisory-count": 1352,
+        "last-commit": "21d909e4c8bd4e14c7aea58bf980c881a0053ab1",
+        "last-updated": "2026-10-24T10:30:13+02:00"
+      },
+      "exit": 1,
+      "ignore": [],
+      "side": "before",
+      "vulnerabilities": 0,
+      "warnings": [
+        {
+          "category": "unmaintained",
+          "id": "RUSTSEC-2024-0370",
+          "package": "proc-macro-error",
+          "version": "1.0.4"
+        },
+        {
+          "category": "unmaintained",
+          "id": "RUSTSEC-2025-0134",
+          "package": "rustls-pemfile",
+          "version": "1.0.4"
+        },
+        {
+          "category": "unmaintained",
+          "id": "RUSTSEC-2025-0081",
+          "package": "unic-char-property",
+          "version": "0.9.0"
+        },
+        {
+          "category": "unmaintained",
+          "id": "RUSTSEC-2025-0075",
+          "package": "unic-char-range",
+          "version": "0.9.0"
+        },
+        {
+          "category": "unmaintained",
+          "id": "RUSTSEC-2025-0080",
+          "package": "unic-common",
+          "version": "0.9.0"
+        },
+        {
+          "category": "unmaintained",
+          "id": "RUSTSEC-2025-0100",
+          "package": "unic-ucd-ident",
+          "version": "0.9.0"
+        },
+        {
+          "category": "unmaintained",
+          "id": "RUSTSEC-2025-0098",
+          "package": "unic-ucd-version",
+          "version": "0.9.0"
+        },
+        {
+          "category": "unsound",
+          "id": "RUSTSEC-2024-0429",
+          "package": "glib",
+          "version": "0.18.5"
+        }
+      ]
+    },
+    {
+      "database": {
+        "advisory-count": 1352,
+        "last-commit": null,
+        "last-updated": null
+      },
+      "exit": 1,
+      "ignore": [],
+      "side": "after",
+      "vulnerabilities": 0,
+      "warnings": [
+        {
+          "category": "unmaintained",
+          "id": "RUSTSEC-2024-0370",
+          "package": "proc-macro-error",
+          "version": "1.0.4"
+        },
+        {
+          "category": "unmaintained",
+          "id": "RUSTSEC-2025-0134",
+          "package": "rustls-pemfile",
+          "version": "1.0.4"
+        },
+        {
+          "category": "unsound",
+          "id": "RUSTSEC-2024-0429",
+          "package": "glib",
+          "version": "0.18.5"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "exit": 101,
+  "seconds": 0.216,
+  "wall_limit": 30,
+  "cpu_limit": 10,
+  "address_space_limit": 1073741824,
+  "core_limit": 0,
+  "binary": "<ENVIRONMENT>/cargo-target/debug/deps/qh011_atomic_admission_probe-7a47e0da6d387e40"
+}

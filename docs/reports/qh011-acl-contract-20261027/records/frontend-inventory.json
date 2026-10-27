@@ -1,0 +1,453 @@
+{
+  "classification": "TypeScript AST static analysis, not execution or whole-program proof",
+  "typescript": "5.9.3",
+  "files": 19,
+  "runtime_reachable": [
+    "src/App.tsx",
+    "src/components/AirQualityCard.tsx",
+    "src/components/Dashboard.tsx",
+    "src/components/ForecastCard.tsx",
+    "src/components/LandingHero.tsx",
+    "src/components/PollenCard.tsx",
+    "src/components/SearchBar.tsx",
+    "src/components/SettingsBar.tsx",
+    "src/components/TimeCard.tsx",
+    "src/components/WeatherCard.tsx",
+    "src/hooks/useAppState.ts",
+    "src/main.tsx",
+    "src/services/cache.ts",
+    "src/services/geocoding.ts",
+    "src/services/weather.ts",
+    "src/utils/formatters.ts"
+  ],
+  "unreachable": [
+    "src/services/tauri.ts",
+    "src/types/index.ts",
+    "src/vite-env.d.ts"
+  ],
+  "invoke_calls": [
+    {
+      "command": "search_location",
+      "line": 8,
+      "file": "src/services/tauri.ts",
+      "runtime_reachable": false
+    },
+    {
+      "command": "get_weather",
+      "line": 12,
+      "file": "src/services/tauri.ts",
+      "runtime_reachable": false
+    },
+    {
+      "command": "get_air_quality",
+      "line": 16,
+      "file": "src/services/tauri.ts",
+      "runtime_reachable": false
+    },
+    {
+      "command": "get_pollen",
+      "line": 20,
+      "file": "src/services/tauri.ts",
+      "runtime_reachable": false
+    },
+    {
+      "command": "get_cached_location",
+      "line": 24,
+      "file": "src/services/tauri.ts",
+      "runtime_reachable": false
+    },
+    {
+      "command": "cache_location",
+      "line": 28,
+      "file": "src/services/tauri.ts",
+      "runtime_reachable": false
+    }
+  ],
+  "dynamic_imports": [],
+  "rows": [
+    {
+      "file": "src/App.tsx",
+      "imports": [
+        {
+          "specifier": "react",
+          "type_only": false
+        },
+        {
+          "specifier": "lucide-react",
+          "type_only": false
+        },
+        {
+          "specifier": "./hooks/useAppState",
+          "type_only": false
+        },
+        {
+          "specifier": "./components/SearchBar",
+          "type_only": false
+        },
+        {
+          "specifier": "./components/Dashboard",
+          "type_only": false
+        },
+        {
+          "specifier": "./components/LandingHero",
+          "type_only": false
+        },
+        {
+          "specifier": "./components/SettingsBar",
+          "type_only": false
+        },
+        {
+          "specifier": "./types",
+          "type_only": true
+        }
+      ],
+      "calls": [],
+      "dynamic_imports": []
+    },
+    {
+      "file": "src/components/AirQualityCard.tsx",
+      "imports": [
+        {
+          "specifier": "lucide-react",
+          "type_only": false
+        },
+        {
+          "specifier": "../types",
+          "type_only": true
+        },
+        {
+          "specifier": "../utils/formatters",
+          "type_only": false
+        }
+      ],
+      "calls": [],
+      "dynamic_imports": []
+    },
+    {
+      "file": "src/components/Dashboard.tsx",
+      "imports": [
+        {
+          "specifier": "lucide-react",
+          "type_only": false
+        },
+        {
+          "specifier": "../types",
+          "type_only": true
+        },
+        {
+          "specifier": "./TimeCard",
+          "type_only": false
+        },
+        {
+          "specifier": "./WeatherCard",
+          "type_only": false
+        },
+        {
+          "specifier": "./ForecastCard",
+          "type_only": false
+        },
+        {
+          "specifier": "./AirQualityCard",
+          "type_only": false
+        },
+        {
+          "specifier": "./PollenCard",
+          "type_only": false
+        },
+        {
+          "specifier": "../utils/formatters",
+          "type_only": false
+        }
+      ],
+      "calls": [],
+      "dynamic_imports": []
+    },
+    {
+      "file": "src/components/ForecastCard.tsx",
+      "imports": [
+        {
+          "specifier": "lucide-react",
+          "type_only": false
+        },
+        {
+          "specifier": "../types",
+          "type_only": true
+        },
+        {
+          "specifier": "../utils/formatters",
+          "type_only": false
+        }
+      ],
+      "calls": [],
+      "dynamic_imports": []
+    },
+    {
+      "file": "src/components/LandingHero.tsx",
+      "imports": [
+        {
+          "specifier": "lucide-react",
+          "type_only": false
+        }
+      ],
+      "calls": [],
+      "dynamic_imports": []
+    },
+    {
+      "file": "src/components/PollenCard.tsx",
+      "imports": [
+        {
+          "specifier": "lucide-react",
+          "type_only": false
+        },
+        {
+          "specifier": "../types",
+          "type_only": true
+        },
+        {
+          "specifier": "../utils/formatters",
+          "type_only": false
+        }
+      ],
+      "calls": [],
+      "dynamic_imports": []
+    },
+    {
+      "file": "src/components/SearchBar.tsx",
+      "imports": [
+        {
+          "specifier": "react",
+          "type_only": false
+        },
+        {
+          "specifier": "lucide-react",
+          "type_only": false
+        },
+        {
+          "specifier": "../types",
+          "type_only": true
+        },
+        {
+          "specifier": "../services/geocoding",
+          "type_only": false
+        }
+      ],
+      "calls": [],
+      "dynamic_imports": []
+    },
+    {
+      "file": "src/components/SettingsBar.tsx",
+      "imports": [
+        {
+          "specifier": "lucide-react",
+          "type_only": false
+        },
+        {
+          "specifier": "../types",
+          "type_only": true
+        }
+      ],
+      "calls": [],
+      "dynamic_imports": []
+    },
+    {
+      "file": "src/components/TimeCard.tsx",
+      "imports": [
+        {
+          "specifier": "react",
+          "type_only": false
+        },
+        {
+          "specifier": "lucide-react",
+          "type_only": false
+        },
+        {
+          "specifier": "../types",
+          "type_only": true
+        },
+        {
+          "specifier": "../utils/formatters",
+          "type_only": false
+        }
+      ],
+      "calls": [],
+      "dynamic_imports": []
+    },
+    {
+      "file": "src/components/WeatherCard.tsx",
+      "imports": [
+        {
+          "specifier": "lucide-react",
+          "type_only": false
+        },
+        {
+          "specifier": "../types",
+          "type_only": true
+        },
+        {
+          "specifier": "../utils/formatters",
+          "type_only": false
+        }
+      ],
+      "calls": [],
+      "dynamic_imports": []
+    },
+    {
+      "file": "src/hooks/useAppState.ts",
+      "imports": [
+        {
+          "specifier": "react",
+          "type_only": false
+        },
+        {
+          "specifier": "../types",
+          "type_only": true
+        },
+        {
+          "specifier": "../services/weather",
+          "type_only": false
+        },
+        {
+          "specifier": "../services/geocoding",
+          "type_only": false
+        },
+        {
+          "specifier": "../services/cache",
+          "type_only": false
+        }
+      ],
+      "calls": [],
+      "dynamic_imports": []
+    },
+    {
+      "file": "src/main.tsx",
+      "imports": [
+        {
+          "specifier": "react",
+          "type_only": false
+        },
+        {
+          "specifier": "react-dom/client",
+          "type_only": false
+        },
+        {
+          "specifier": "./App.tsx",
+          "type_only": false
+        },
+        {
+          "specifier": "./index.css",
+          "type_only": false
+        }
+      ],
+      "calls": [],
+      "dynamic_imports": []
+    },
+    {
+      "file": "src/services/cache.ts",
+      "imports": [
+        {
+          "specifier": "../types",
+          "type_only": true
+        }
+      ],
+      "calls": [],
+      "dynamic_imports": []
+    },
+    {
+      "file": "src/services/geocoding.ts",
+      "imports": [
+        {
+          "specifier": "../types",
+          "type_only": true
+        },
+        {
+          "specifier": "./cache",
+          "type_only": false
+        }
+      ],
+      "calls": [],
+      "dynamic_imports": []
+    },
+    {
+      "file": "src/services/tauri.ts",
+      "imports": [
+        {
+          "specifier": "@tauri-apps/api/core",
+          "type_only": false
+        },
+        {
+          "specifier": "../types",
+          "type_only": true
+        }
+      ],
+      "calls": [
+        {
+          "command": "search_location",
+          "line": 8
+        },
+        {
+          "command": "get_weather",
+          "line": 12
+        },
+        {
+          "command": "get_air_quality",
+          "line": 16
+        },
+        {
+          "command": "get_pollen",
+          "line": 20
+        },
+        {
+          "command": "get_cached_location",
+          "line": 24
+        },
+        {
+          "command": "cache_location",
+          "line": 28
+        }
+      ],
+      "dynamic_imports": []
+    },
+    {
+      "file": "src/services/weather.ts",
+      "imports": [
+        {
+          "specifier": "../types",
+          "type_only": true
+        },
+        {
+          "specifier": "./cache",
+          "type_only": false
+        },
+        {
+          "specifier": "./geocoding",
+          "type_only": false
+        }
+      ],
+      "calls": [],
+      "dynamic_imports": []
+    },
+    {
+      "file": "src/types/index.ts",
+      "imports": [],
+      "calls": [],
+      "dynamic_imports": []
+    },
+    {
+      "file": "src/utils/formatters.ts",
+      "imports": [
+        {
+          "specifier": "../types",
+          "type_only": true
+        }
+      ],
+      "calls": [],
+      "dynamic_imports": []
+    },
+    {
+      "file": "src/vite-env.d.ts",
+      "imports": [],
+      "calls": [],
+      "dynamic_imports": []
+    }
+  ]
+}

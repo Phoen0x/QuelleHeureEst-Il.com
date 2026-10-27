@@ -1,0 +1,91 @@
+import json, shutil, hashlib, subprocess
+from pathlib import Path
+w=Path(__file__).parent
+prior=Path('<UNICODE_DIAGNOSTIC>')
+repo=Path('<PROJECT>')
+paths=subprocess.check_output(['git','-C',str(repo),'ls-files','-z']).decode().split('\0')[:-1]
+(w/'repository-before.json').write_text(json.dumps({p:hashlib.sha256((repo/p).read_bytes()).hexdigest() for p in paths},indent=2))
+(w/'index-before.sha256').write_text(hashlib.sha256((repo/'.git/index').read_bytes()).hexdigest())
+cases=[]
+def cap(pattern='https://example.invalid/*',permission='allow-narrow',**kw):
+    c=dict(identifier='rule',local=False,windows=['main'],permissions=[permission])
+    if pattern is not None:c['remote']={'urls':[pattern]}
+    c.update(kw);return c
+def add(name,caps=None,**kw):
+    c=dict(id=name,caps=[cap()] if caps is None else caps,url='https://example.invalid/value',window='main',webview='view',local=False,command='probe',target='linux')
+    c.update(kw);cases.append(c)
+for name,u in [('same-origin','https://example.invalid/value'),('wrong-domain','https://different.invalid/value'),('subdomain','https://sub.example.invalid/value'),('port-default','https://example.invalid:443/value'),('port-other','https://example.invalid:8443/value'),('http','http://example.invalid/value'),('dot-segment','https://example.invalid/a/../value'),('encoded-dot','https://example.invalid/a/%2E%2E/value'),('encoded-slash','https://example.invalid/a%2Fb'),('url-control','https://exam\nple.invalid/value'),('path-control','https://example.invalid/a\nb'),('encoded-control','https://example.invalid/a%0Ab'),('idn','https://例え.invalid/value')]:add(name,url=u)
+add('wrong-window',window='other')
+add('local-vs-remote',local=True)
+add('wrong-command',command='other')
+add('no-matching-webview',[cap(windows=[],webviews=['approved'])])
+add('matching-webview',[cap(windows=[],webviews=['approved'])],webview='approved')
+add('window-or-webview',[cap(windows=['main'],webviews=['approved'])])
+add('webview-or-window',[cap(windows=['other'],webviews=['approved'])],webview='approved')
+add('neither-label',[cap(windows=['other'],webviews=['approved'])])
+add('window-glob',[cap(windows=['main-*'])],window='main-1')
+add('local-default',[cap(local=True)],local=True)
+add('no-remote-local',[cap(None,local=True)],local=True)
+add('no-remote-remote',[cap(None,local=True)])
+add('no-capabilities',[])
+add('no-manifest',[],no_manifest=True)
+add('android-filter-linux',[cap(platforms=['android'])])
+add('android-filter-android',[cap(platforms=['android'])],target='android')
+add('windows-filter-linux',[cap(platforms=['windows'])])
+add('windows-filter-windows',[cap(platforms=['windows'])],target='windows')
+for kind,p in [('kawi-partial','https://example.invalid/:a\U00011f00'),('kawi-start','https://example.invalid/:\U00011f02'),('cyrillic-start','https://example.invalid/:\u1c89'),('id-not-xid','https://example.invalid/:\u309b'),('duplicate-group','https://example.invalid/:a\U00011f00/:a'),('host-tab','https://exam\tple.invalid/*'),('host-lf','https://exam\nple.invalid/*'),('host-cr','https://exam\rple.invalid/*'),('escaped-kawi','https://example.invalid/:a\\\U00011f00'),('quantified-kawi','https://example.invalid/:a\U00011f00?'),('offset-error','https://example.invalid/:é:')]:
+    add(kind,[cap(p)],url='https://example.invalid/x/y' if kind=='duplicate-group' else 'https://example.invalid/value')
+add('partial-encoded-suffix',[cap('https://example.invalid/:a\U00011f00')],url='https://example.invalid/value%F0%91%BC%80')
+for name,p in [('same','https://example.invalid/*'),('different','https://different.invalid/*'),('unicode','https://example.invalid/:a\U00011f00')]:
+    a=cap();a['identifier']='a';d=cap(p,'deny-probe',identifier='d',windows=['other'],webviews=['other'])
+    add('deny-'+name,[a,d])
+add('deny-unrelated-command',[cap(),cap(permission='deny-other',identifier='d')])
+add('deny-empty-entry',[cap()],empty_deny=True)
+for reverse in [False,True]:
+    a=cap(permission='allow-narrow',identifier='a');b=cap('https://example.invalid/:a\U00011f00',permission='allow-wide',identifier='b')
+    add('scope-widening-'+str(reverse),[b,a] if reverse else [a,b])
+add('scoped-deny-content',[cap(permission='allow-narrow')])
+add('local-and-remote-contexts',[cap(local=True)])
+add('explicit-port-rule',[cap('https://example.invalid:8443/*')],url='https://example.invalid:8443/value')
+add('subdomain-rule',[cap('https://*.example.invalid/*')],url='https://sub.example.invalid/value')
+add('exact-path-negative',[cap('https://example.invalid/safe')],url='https://example.invalid/safe/other')
+add('query-hash-wildcards',[cap('https://example.invalid/safe')],url='https://example.invalid/safe?x=1#part')
+add('duplicate-allow',[cap(identifier='a'),cap(identifier='b')])
+(w/'cases.json').write_text(json.dumps(cases,ensure_ascii=False,indent=2))
+source=r'''use serde_json::{json,Value};
+use std::collections::BTreeMap;
+use tauri::ipc::{RuntimeAuthority,Origin};
+use tauri_utils::{acl::{resolved::Resolved,manifest::Manifest,capability::Capability,Permission,APP_ACL_KEY},platform::Target};
+fn run(c:&Value)->Value {
+ let mut permissions=BTreeMap::new();
+ for (id,allow,deny,scope) in [
+  ("allow-narrow",vec!["probe"],vec![],json!({"allow":[{"path":"safe"}],"deny":[{"path":"secret"}]})),
+  ("allow-wide",vec!["probe"],vec![],json!({"allow":[{"path":"*"}]})),
+  ("deny-probe",vec![],vec!["probe"],json!({})),
+  ("deny-other",vec![],vec!["other"],json!({}))] {
+  let p:Permission=serde_json::from_value(json!({"identifier":id,"commands":{"allow":allow,"deny":deny},"scope":scope})).unwrap();
+  permissions.insert(id.to_string(),p);
+ }
+ let acl=if c["no_manifest"]==true{BTreeMap::new()}else{[(APP_ACL_KEY.to_string(),Manifest{permissions,..Default::default()})].into_iter().collect()};
+ let caps:BTreeMap<String,Capability>=c["caps"].as_array().unwrap().iter().map(|v|{let cap:Capability=serde_json::from_value(v.clone()).unwrap();(cap.identifier.clone(),cap)}).collect();
+ let target:Target=serde_json::from_value(c["target"].clone()).unwrap();
+ let mut r=match Resolved::resolve(&acl,caps,target){Ok(r)=>r,Err(e)=>return json!({"stage":"resolve-error","error":e.to_string()})};
+ if c["empty_deny"]==true{r.denied_commands.insert("probe".into(),vec![]);}
+ let scopes=format!("{:?}",r.command_scope);
+ let origin=if c["local"]==true{Origin::Local}else{Origin::Remote{url:url::Url::parse(c["url"].as_str().unwrap()).unwrap()}};
+ let canonical=match &origin {Origin::Local=>"local".to_string(),Origin::Remote{url}=>url.to_string()};
+ let a=RuntimeAuthority::new(Default::default(),r);
+ let access=a.resolve_access(c["command"].as_str().unwrap(),c["window"].as_str().unwrap(),c["webview"].as_str().unwrap(),&origin);
+ let entries=access.as_ref().map(|cmds|cmds.iter().map(|cmd|json!({"scope_id":cmd.scope_id,"capability":cmd.referenced_by.capability,"permission":cmd.referenced_by.permission,"context":format!("{:?}",cmd.context)})).collect::<Vec<_>>()).unwrap_or_default();
+ json!({"stage":"runtime","allowed":access.is_some(),"entries":entries,"scope_store":scopes,"has_app_manifest":a.has_app_manifest(),"canonical_url":canonical})
+}
+fn main(){std::panic::set_hook(Box::new(|_|{}));let cases:Vec<Value>=serde_json::from_str(include_str!("../../cases.json")).unwrap();
+ let out:Vec<_>=cases.iter().map(|c|{let r=std::panic::catch_unwind(std::panic::AssertUnwindSafe(||run(c))).unwrap_or_else(|e|{let msg=e.downcast_ref::<String>().map(String::as_str).or(e.downcast_ref::<&str>().copied()).unwrap_or("panic");json!({"stage":"panic","error":msg})});json!({"id":c["id"],"result":r})}).collect();println!("{}",json!(out));}
+'''
+for side in ['old','new']:
+    d=w/('qualification-'+side);(d/'src').mkdir(parents=True,exist_ok=True)
+    for name in ['Cargo.toml','Cargo.lock']:
+        s=(prior/('runtime-'+side)/name).read_text().replace('runtime-'+side,'qualification-'+side)
+        (d/name).write_text(s)
+    (d/'src/main.rs').write_text(source)
+print(json.dumps({'cases':len(cases),'tracked_files':len(paths)}))

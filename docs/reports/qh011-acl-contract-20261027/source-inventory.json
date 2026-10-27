@@ -1,0 +1,82 @@
+{
+  "files": [
+    {
+      "bytes": 25052,
+      "omission_reason": null,
+      "original_bytes_published": true,
+      "path": "REPORT.md",
+      "published_as": [
+        "original/REPORT.md"
+      ],
+      "sha256": "f7be59d86d992edc4cb745ca9fb24dfb9bedc861f2dc6e1a36a92daff76222eb"
+    },
+    {
+      "bytes": 2530,
+      "omission_reason": null,
+      "original_bytes_published": true,
+      "path": "frontend-inventory.cjs",
+      "published_as": [
+        "historical-scripts/frontend-inventory.cjs.txt"
+      ],
+      "sha256": "948e50dd49c99fde36137bf09f8dedf769d6ffa209ae468a832fa2430ffb6456"
+    },
+    {
+      "bytes": 9714,
+      "omission_reason": null,
+      "original_bytes_published": true,
+      "path": "frontend-inventory.json",
+      "published_as": [
+        "records/frontend-inventory.json"
+      ],
+      "sha256": "ca7e417f19858123983b5249a8f276758a39fc3926721d57f30cd5898e4c79c5"
+    },
+    {
+      "bytes": 914,
+      "omission_reason": null,
+      "original_bytes_published": true,
+      "path": "github-refs.json",
+      "published_as": [
+        "records/github-refs.json"
+      ],
+      "sha256": "74926135912001c44280f08075b5fdbb0eb41e9a77b50521b16b1c347f70a0df"
+    },
+    {
+      "bytes": 5650,
+      "omission_reason": null,
+      "original_bytes_published": true,
+      "path": "inventory.json",
+      "published_as": [
+        "records/inventory.json"
+      ],
+      "sha256": "dc1a1978d2f75d8fc524ca71d79f0c560e11219ea3e0b75e8372f6da443fb4ac"
+    },
+    {
+      "bytes": 10959,
+      "omission_reason": null,
+      "original_bytes_published": false,
+      "path": "platforms.json",
+      "published_as": [
+        "records/platforms.json"
+      ],
+      "sha256": "20349261406a6f388e51d1b66359aecb0569a8057a649e706b9da4a582fbe8e9"
+    },
+    {
+      "bytes": 3799,
+      "omission_reason": null,
+      "original_bytes_published": false,
+      "path": "verification.json",
+      "published_as": [
+        "records/verification.json"
+      ],
+      "sha256": "751bc4914909b2adda95d66c0cf4547ae56f381d845c0ba8f1cd5b4b48a40830"
+    }
+  ],
+  "manifest_self_reference_excluded": true,
+  "manifest_sha256": "d645917b8decb6ba201a91dee967c60dfacbb6a49c8c06a27581e984141cd92f",
+  "mismatched": [],
+  "missing": [],
+  "note": "A digest does not archive omitted bytes. Original reports and manifests are exact, separate from new archival syntheses.",
+  "source_label": "acl-contract-20261027",
+  "study": "B",
+  "verified_count": 7
+}

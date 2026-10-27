@@ -1,0 +1,11 @@
+# Décision avant expérimentation — QH-011 — 26 octobre 2026
+
+Recherche préalable des huit références effectuée. La mise à jour URLPattern officielle et son rétroport minimal sont plus simples qu'une architecture atomique générale mais ne prouvent aucune équivalence des anciennes décisions ACL. Aucune migration n'est effectuée. Les correctifs de scopes (#15291), cache (#11785) et codegen (#16327 proposé) sont pertinents ; le correctif deny (#16072) est exclu.
+
+Le code applicatif vérifié et les sorties générées historiques rattachées au checkout #183 ont zéro capacité ; aucun plugin tiers enregistré ni API dynamique appelée ; sept commandes personnalisées avec comportement local historique. Les API dynamic-acl restent compilées par défaut. Les artefacts anciens ne certifient pas un nouveau build, une autre cible ou une configuration injectée.
+
+Option A prioritaire : profil explicitement limité à l'autorité initiale vide, immuable une fois installée. Refuser de façon contrôlée toute nouvelle politique, capacité ou scope dans ce profil ; ne supprimer ni désactiver silencieusement une fonctionnalité dans le projet. Un refus dynamique est volontaire dans cette expérience et ne constitue pas une admission dynamique générale. Préserver la possibilité expérimentale du conteneur 13 tests historique séparé.
+
+Sonde minimale justifiée : fermer l'installation Context au vrai Builder::build, bloquer les ajouts après installation, vérifier le vrai chemin IPC avec MockRuntime. Aucun changement du produit original ; copie externe de ses 302 fichiers suivis et copie de Tauri uniquement. Pas d'implémentation B : fidèle transport de politiques non vides, provenance release, caches de plugins et propagation macro/IPC exigeraient un patch plus étendu. Arrêt si le profil A est contournable par un chemin ordinaire non maîtrisé ou si ses invariants échouent. Un marqueur in-process ne vaut pas preuve codegen hôte/cible.
+
+Ne pas élargir les droits, corriger deny, modifier les dépendances/version du verrou ou lancer les grandes matrices Unicode. Compiler et exécuter seulement les sondes ciblées et les contrôles négatifs nécessaires, avec limites. Cette copie spécifique ne devient pas une proposition de fork Tauri général ni une autorisation d'intégration.

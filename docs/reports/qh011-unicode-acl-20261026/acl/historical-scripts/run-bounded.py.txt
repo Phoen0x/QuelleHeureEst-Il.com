@@ -1,0 +1,17 @@
+import json,resource,subprocess,time,os
+from pathlib import Path
+w=Path(__file__).parent
+binroot=Path('<ENVIRONMENT>/cargo-target/debug')
+def limits():
+ resource.setrlimit(resource.RLIMIT_CPU,(10,10))
+ resource.setrlimit(resource.RLIMIT_AS,(1024**3,1024**3))
+ resource.setrlimit(resource.RLIMIT_CORE,(0,0))
+status=[]
+for side in ['old','new','raw']:
+ start=time.monotonic()
+ r=subprocess.run([str(binroot/('qualification-'+side))],capture_output=True,timeout=20,preexec_fn=limits)
+ (w/(side+'-results.json')).write_bytes(r.stdout)
+ (w/(side+'-stderr.log')).write_bytes(r.stderr)
+ rows=json.loads(r.stdout) if r.returncode==0 else []
+ status.append(dict(binary='qualification-'+side,exit=r.returncode,seconds=round(time.monotonic()-start,3),records=len(rows),cpu_seconds=10,address_space_bytes=1024**3,wall_seconds=20))
+(w/'run-status.json').write_text(json.dumps(status,indent=2));print(json.dumps(status,indent=2))

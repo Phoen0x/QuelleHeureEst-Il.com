@@ -1,0 +1,22 @@
+"""FR : mutations dans des copies ; EN: mutate isolated copies only."""
+import json,os,shutil,subprocess,tempfile
+from pathlib import Path
+w=Path(__file__).parent;r=w/'candidate';files=list(json.loads((w/'original-before.json').read_text()))
+history='docs/history/unicode-qh011-experimental-20261026'
+files += [str(p.relative_to(r)) for p in (r/history).rglob('*') if p.is_file()]
+results=[]
+for name in ['optional-dependency-loss','pnpm-historical-loss','windows-reroute']:
+ with tempfile.TemporaryDirectory(prefix='qh011-mutation-',dir=w) as d:
+  d=Path(d)
+  for f in files:
+   p=d/f;p.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(r/f,p)
+  if name=='optional-dependency-loss':
+   p=d/'src-tauri/Cargo.toml';p.write_text(p.read_text().replace('[dependencies.rustls-pemfile]\nversion = "=1.0.4"\noptional = true','[dependencies.rustls-pemfile]\nversion = "=1.0.4"\noptional = false'))
+  elif name=='pnpm-historical-loss':
+   p=d/'pnpm-lock.yaml';s=p.read_text();start=s.index('\n  /');end=s.index('\n  /',start+1);p.write_text(s[:start]+s[end:])
+  else:
+   p=d/'Cargo.lock';s=p.read_text();chunks=s.split('[[package]]');raw=(d/history/'Cargo.lock.raw-resolution.txt').read_text().split('[[package]]');bad=next(c for c in raw if 'name = "tempfile"\nversion = "3.27.0"' in c);good=next(c for c in chunks if 'name = "tempfile"\nversion = "3.27.0"' in c);assert bad!=good;p.write_text(s.replace(good,bad))
+  env=dict(os.environ,GIT_DIR=str(r/'.git'),GIT_WORK_TREE=str(d));out=subprocess.run(['python',str(w/'check-conservation.py'),str(d)],env=env,capture_output=True,text=True,timeout=30)
+  assert out.returncode!=0,name
+  results.append({'case':name,'guard_exit':out.returncode,'rejected':True,'failure':out.stderr.splitlines()[-1]})
+(w/'conservation-negative-results.json').write_text(json.dumps(results,indent=2));print(json.dumps(results,indent=2))

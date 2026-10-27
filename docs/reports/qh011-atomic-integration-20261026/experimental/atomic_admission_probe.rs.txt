@@ -1,0 +1,116 @@
+//! FR : sonde isolée, sans intégration à AppManager ou au moteur Unicode.
+//! EN: Isolated feasibility probe, not integrated into AppManager or Unicode.
+use super::*;
+use serde::{Deserialize, Serialize};
+use serde_json::{json, Value as Json};
+use std::sync::Mutex;
+
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Serialize, Deserialize)]
+pub struct Version { pub format: u32, pub policy: u32 }
+#[derive(Debug, Eq, PartialEq)]
+pub enum AdmissionError { Invalid(String), Rejected(String), Conflict, WrongOwner, Version, Poisoned, Overflow }
+type Validator = dyn Fn(&Json) -> Result<(), String> + Send + Sync;
+struct Published { revision: u64, version: Version, authority: Arc<RuntimeAuthority> }
+pub struct PolicyStore { owner: Arc<()>, state: Mutex<Published>, validator: Arc<Validator> }
+pub struct ValidatedPolicy { owner: Arc<()>, expected_revision: u64, version: Version, candidate: Arc<RuntimeAuthority> }
+pub struct PinnedPolicy { revision: u64, version: Version, authority: Arc<RuntimeAuthority> }
+impl std::fmt::Debug for ValidatedPolicy {
+ fn fmt(&self,f:&mut std::fmt::Formatter<'_>)->std::fmt::Result {f.debug_struct("ValidatedPolicy").field("revision",&self.expected_revision).field("version",&self.version).finish()}
+}
+fn invalid(e:impl std::fmt::Display)->AdmissionError {AdmissionError::Invalid(e.to_string())}
+fn raw(a:&RuntimeAuthority)->Resolved {
+ Resolved {has_app_acl:a.has_app_acl,allowed_commands:a.allowed_commands.clone(),denied_commands:a.denied_commands.clone(),command_scope:a.scope_manager.command_scope.clone(),global_scope:a.scope_manager.global_scope.clone()}
+}
+fn describe(a:&RuntimeAuthority)->Json {
+ fn commands(map:&BTreeMap<String,Vec<ResolvedCommand>>)->Json {
+  Json::Object(map.iter().map(|(name,cmds)| {
+   let rows=cmds.iter().map(|c|{
+    let context=match &c.context {ExecutionContext::Local=>json!({"local":true}),ExecutionContext::Remote{url}=>json!({"remote":url.as_str()})};
+    json!({"context":context,"windows":c.windows.iter().map(|p|p.as_str()).collect::<Vec<_>>(),"webviews":c.webviews.iter().map(|p|p.as_str()).collect::<Vec<_>>(),"scope_id":c.scope_id})
+   }).collect::<Vec<_>>();(name.clone(),json!(rows))
+  }).collect())
+ }
+ let scopes=a.scope_manager.command_scope.iter().map(|(k,v)|(k.to_string(),json!({"allow":v.allow,"deny":v.deny}))).collect::<serde_json::Map<_,_>>();
+ let globals=a.scope_manager.global_scope.iter().map(|(k,v)|(k.clone(),json!({"allow":v.allow,"deny":v.deny}))).collect::<serde_json::Map<_,_>>();
+ json!({"manifests":a.acl,"has_app_acl":a.has_app_acl,"allowed":commands(&a.allowed_commands),"denied":commands(&a.denied_commands),"scopes":scopes,"global":globals})
+}
+fn check_links(a:&RuntimeAuthority)->Result<(),AdmissionError>{
+ for command in a.allowed_commands.values().chain(a.denied_commands.values()).flatten(){
+  if let Some(id)=command.scope_id {if !a.scope_manager.command_scope.contains_key(&id){return Err(invalid("scope reference missing"));}}
+ }Ok(())
+}
+impl PolicyStore {
+ pub fn try_new(acl:BTreeMap<String,Manifest>,resolved:Resolved,version:Version,validator:Arc<Validator>)->Result<Self,AdmissionError>{
+  if version.format!=1{return Err(AdmissionError::Version);}
+  let authority=RuntimeAuthority::new(acl,resolved);check_links(&authority)?;validator(&describe(&authority)).map_err(AdmissionError::Rejected)?;
+  Ok(Self{owner:Arc::new(()),state:Mutex::new(Published{revision:0,version,authority:Arc::new(authority)}),validator})
+ }
+ pub fn pin(&self)->Result<PinnedPolicy,AdmissionError>{
+  let state=self.state.lock().map_err(|_|AdmissionError::Poisoned)?;
+  Ok(PinnedPolicy{revision:state.revision,version:state.version,authority:state.authority.clone()})
+ }
+ fn candidate_from(&self,base:&PinnedPolicy)->Result<RuntimeAuthority,AdmissionError>{
+  // FR : copie isolée des données ; aucun cache typé n'est partagé.
+  // EN: Isolated data copy; typed caches are not shared.
+  let acl=serde_json::from_value(serde_json::to_value(&base.authority.acl).map_err(invalid)?).map_err(invalid)?;
+  Ok(RuntimeAuthority::new(acl,raw(&base.authority)))
+ }
+ fn validate(&self,base:&PinnedPolicy,candidate:RuntimeAuthority)->Result<ValidatedPolicy,AdmissionError>{
+  check_links(&candidate)?;(self.validator)(&describe(&candidate)).map_err(AdmissionError::Rejected)?;
+  Ok(ValidatedPolicy{owner:self.owner.clone(),expected_revision:base.revision,version:base.version,candidate:Arc::new(candidate)})
+ }
+ pub fn prepare_json(&self,input:&str)->Result<ValidatedPolicy,AdmissionError>{
+  let file:CapabilityFile=input.parse().map_err(invalid)?;let base=self.pin()?;
+  // FR : précontrôle limité aux entrées de la sonde ; pas un moteur de compatibilité.
+  // EN: Probe input preflight only, not a compatibility engine.
+  let caps=match &file {CapabilityFile::Capability(c)=>std::slice::from_ref(c),CapabilityFile::List(v)|CapabilityFile::NamedList{capabilities:v}=>v.as_slice()};
+  for cap in caps {if cap.is_active(&tauri_utils::platform::Target::current()) {
+   if let Some(remote)=&cap.remote {for p in &remote.urls {p.parse::<tauri_utils::acl::RemoteUrlPattern>().map_err(invalid)?;}}
+  }}
+  let mut candidate=self.candidate_from(&base)?;
+  candidate.add_capability_inner(file).map_err(invalid)?;
+  self.validate(&base,candidate)
+ }
+ pub fn prepare_embedded(&self,version:Version,acl:BTreeMap<String,Manifest>,resolved:Resolved)->Result<ValidatedPolicy,AdmissionError>{
+  let base=self.pin()?;if version!=base.version{return Err(AdmissionError::Version);}
+  self.validate(&base,RuntimeAuthority::new(acl,resolved))
+ }
+ pub fn prepare_direct_grant(&self,name:String,context:ExecutionContext)->Result<ValidatedPolicy,AdmissionError>{
+  let base=self.pin()?;let mut candidate=self.candidate_from(&base)?;candidate.__allow_command(name,context);self.validate(&base,candidate)
+ }
+ pub fn activate(&self,prepared:ValidatedPolicy)->Result<u64,AdmissionError>{
+  if !Arc::ptr_eq(&self.owner,&prepared.owner){return Err(AdmissionError::WrongOwner);}
+  let mut current=self.state.lock().map_err(|_|AdmissionError::Poisoned)?;
+  if current.revision!=prepared.expected_revision{return Err(AdmissionError::Conflict);}
+  if current.version!=prepared.version{return Err(AdmissionError::Version);}
+  let revision=current.revision.checked_add(1).ok_or(AdmissionError::Overflow)?;
+  let old=std::mem::replace(&mut current.authority,prepared.candidate);current.revision=revision;
+  // FR : destruction et callbacks potentiels hors du verrou de publication.
+  // EN: Destruction and possible callbacks occur outside the publication lock.
+  drop(current);drop(old);Ok(revision)
+ }
+}
+impl ValidatedPolicy {
+ pub fn version(&self)->Version{self.version}
+ pub fn matcher_identity(&self,command:&str)->Option<usize>{identity(&self.candidate,command)}
+}
+fn identity(a:&RuntimeAuthority,command:&str)->Option<usize>{
+ a.allowed_commands.get(command)?.iter().find_map(|c|match &c.context{ExecutionContext::Remote{url}=>Some(url as *const _ as usize),_=>None})
+}
+impl PinnedPolicy {
+ pub fn revision(&self)->u64{self.revision}
+ pub fn version(&self)->Version{self.version}
+ pub fn snapshot(&self)->Json{json!({"revision":self.revision,"version":self.version,"state":describe(&self.authority)})}
+ pub fn query(&self,command:&str,window:&str,webview:&str,origin:&Origin)->Json {
+  let entries=self.authority.resolve_access(command,window,webview,origin);
+  let rows=entries.as_ref().map(|commands|commands.iter().map(|c|json!({"scope_id":c.scope_id,"allow":c.scope_id.and_then(|id|self.authority.scope_manager.command_scope.get(&id)).map(|s|&s.allow)})).collect::<Vec<_>>()).unwrap_or_default();
+  json!({"revision":self.revision,"allowed":entries.is_some(),"entries":rows})
+ }
+ pub fn scope_allow(&self,id:u64)->Json{self.authority.scope_manager.command_scope.get(&id).map(|s|json!(s.allow)).unwrap_or(Json::Null)}
+ pub fn matcher_identity(&self,command:&str)->Option<usize>{identity(&self.authority,command)}
+ pub fn seed_probe_caches(&self,id:u64){
+  if let Some(cache)=self.authority.scope_manager.command_cache.get(&id){cache.set("probe".to_owned());}
+  self.authority.scope_manager.global_scope_cache.set("probe".to_owned());
+ }
+ pub fn probe_caches(&self,id:u64)->(bool,bool){(self.authority.scope_manager.command_cache.get(&id).is_some_and(|c|c.try_get::<String>().is_some()),self.authority.scope_manager.global_scope_cache.try_get::<String>().is_some())}
+}

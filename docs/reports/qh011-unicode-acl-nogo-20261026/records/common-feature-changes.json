@@ -1,0 +1,12 @@
+[
+  {
+    "package": "icu_properties@2.3.0",
+    "before": [
+      "compiled_data"
+    ],
+    "after": [
+      "compiled_data",
+      "default"
+    ]
+  }
+]

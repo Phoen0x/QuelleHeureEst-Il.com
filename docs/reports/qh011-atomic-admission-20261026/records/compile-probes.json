@@ -1,0 +1,22 @@
+[
+  {
+    "example": "forge_token",
+    "exit": 101,
+    "seconds": 3.757
+  },
+  {
+    "example": "manager_fence",
+    "exit": 101,
+    "seconds": 0.224
+  },
+  {
+    "example": "direct_fence",
+    "exit": 101,
+    "seconds": 0.226
+  },
+  {
+    "example": "context_still_open",
+    "exit": 0,
+    "seconds": 0.224
+  }
+]

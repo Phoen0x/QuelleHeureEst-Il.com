@@ -1,0 +1,10 @@
+use serde_json::json;
+fn main(){
+ let start=icu_properties::CodePointSetData::new::<icu_properties::props::IdStart>();
+ let cont=icu_properties::CodePointSetData::new::<icu_properties::props::IdContinue>();
+ let mut counts=[0u32;4];let mut samples:[Vec<String>;4]=Default::default();let mut total=0;
+ for cp in 0..=0x10ffff {if let Some(c)=char::from_u32(cp){total+=1;let os=unic_ucd_ident::is_id_start(c);let oc=unic_ucd_ident::is_id_continue(c);let ns=start.contains(c);let nc=cont.contains(c);
+ for (i,v) in [!os&&ns,os&&!ns,!oc&&nc,oc&&!nc].into_iter().enumerate(){if v {counts[i]+=1;if samples[i].len()<24 {samples[i].push(format!("U+{:04X}",cp));}}}}}
+ let selected:Vec<_>=[0x11f00,0x11f02,0x1c89,0x309b,0x1885,0x2118,0x200c,0x200d].into_iter().map(|cp|{let c=char::from_u32(cp).unwrap();json!({"cp":format!("U+{:04X}",cp),"old_start":unic_ucd_ident::is_id_start(c),"new_start":start.contains(c),"old_continue":unic_ucd_ident::is_id_continue(c),"new_continue":cont.contains(c),"xid_start":unicode_ident::is_xid_start(c),"xid_continue":unicode_ident::is_xid_continue(c)})}).collect();
+ println!("{}",json!({"scalar_values":total,"counts_start_added_removed_continue_added_removed":counts,"samples":samples,"selected":selected,"unicode_ident_version":unicode_ident::UNICODE_VERSION}));
+}

@@ -1,0 +1,45 @@
+from pathlib import Path
+import json
+w=Path('<UNICODE_DIAGNOSTIC>')
+old=json.loads(Path('<EARLIER_DIAGNOSTIC>/compat-results.json').read_text())['url']
+cases=[{'id':'historical-'+str(i),'pattern':x['pattern'],'url':x['url']} for i,x in enumerate(old)]
+names=['a\U00011f00','a\U00011f00b','a\U00011f02','a\u1c89','a\u309b','a\u200c','a\u200d','a\u0301','a\u00b7','a\u0345','a\u200b','\u2118','\u309b','\u212e','\U00010400','\U0001e4d0','a-b','a:b','a.b']
+for i,n in enumerate(names):
+ for j,tail in enumerate(['', '/fixed','?', '+', '*']):
+  for k,u in enumerate(['value','value/fixed','valueX','value/other','a%F0%91%BC%80','']):
+   cases.append({'id':f'name-{i}-{j}-{k}','pattern':'https://example.invalid/:'+n+tail,'url':'https://example.invalid/'+u})
+for i,(p,urls) in enumerate([
+ ('https://example.invalid/*',['https://example.invalid/a','http://example.invalid/a','https://evil.invalid/a','https://example.invalid.evil.invalid/a','https://user:pass@example.invalid/a','https://example.invalid:8443/a']),
+ ('https://*.example.invalid/*',['https://a.example.invalid/a','https://a.b.example.invalid/a','https://example.invalid/a','https://example.invalid.evil.invalid/a']),
+ ('https://example.invalid/:id',['https://example.invalid/a%2Fb','https://example.invalid/a/b','https://example.invalid/a/../b','https://example.invalid/a?x=1#hash']),
+ ('https://example.invalid/:id(\\d+)',['https://example.invalid/123','https://example.invalid/abc']),
+ ('https://example.invalid/{:id}?',['https://example.invalid/','https://example.invalid/abc']),
+ ('https://example.invalid/:x/:x',['https://example.invalid/a/b']),
+ ('https://example.invalid/:',['https://example.invalid/a']),
+ ('https://example.invalid/(','https://example.invalid/a'.split()),
+ ('https://example.invalid/\\:literal',['https://example.invalid/:literal']),
+ ('https://example.invalid/:é',['https://example.invalid/e%CC%81','https://example.invalid/%C3%A9']),
+ ('https://例え.invalid/*',['https://例え.invalid/a','https://xn--r8jz45g.invalid/a'])]):
+ for j,u in enumerate(urls):cases.append({'id':f'boundary-{i}-{j}','pattern':p,'url':u})
+for control in ['\n','\r','\t']:
+ for pattern in ['https://example.invalid/a'+control+'b','https://example.invalid/:a'+control+'b','https://exam'+control+'ple.invalid/*']:
+  for url in ['https://example.invalid/ab','https://example.invalid/a%0Ab','https://example.invalid/value','https://example.invalid/valueb']:
+   cases.append({'id':f'control-{len(cases)}','pattern':pattern,'url':url})
+(w/'cases.json').write_text(json.dumps(cases,ensure_ascii=False,indent=2))
+source=r'''use serde_json::json;
+use std::str::FromStr;
+fn main(){
+ let cases:Vec<serde_json::Value>=serde_json::from_str(include_str!("../../cases.json")).unwrap();
+ let mut out=Vec::new();
+ for c in cases {
+  let pattern=c["pattern"].as_str().unwrap();let url=url::Url::parse(c["url"].as_str().unwrap()).unwrap();
+  let actual=match tauri_utils::acl::RemoteUrlPattern::from_str(pattern){Ok(p)=>json!({"accepted":true,"matches":p.test(&url)}),Err(e)=>json!({"accepted":false,"error":e.to_string()})};
+  out.push(json!({"id":c["id"],"pattern":pattern,"url":url.as_str(),"actual":actual}));
+ }
+ println!("{}",json!(out));
+}'''
+for name,version in [('acl-old','2.9.3'),('acl-new','2.10.2')]:
+ d=w/name;(d/'src').mkdir(parents=True,exist_ok=True)
+ (d/'Cargo.toml').write_text('[package]\nname="'+name+'"\nversion="0.1.0"\nedition="2021"\n[dependencies]\ntauri-utils="='+version+'"\nurl="=2.5.8"\nserde_json="1"\n')
+ (d/'src/main.rs').write_text(source)
+print('prepared',len(cases),'bounded pattern/URL observations per version')

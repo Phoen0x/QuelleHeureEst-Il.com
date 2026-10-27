@@ -113,3 +113,15 @@ Le mini-bilan final comporte :
 - Vérifier séparément la complétude de **chaque** session ChatGPT/Codex accessible ; une seule conversation auditée ne garantit pas les autres. Indiquer toute trace perdue et toute preuve CI temporaire ou expirée.
 - Les règles communes sont documentées dans AGENTS.md et le présent contrat, indexées dans docs/ai/README.md ; les constats datés restent des rapports distincts. Aucun document public ne doit inclure de secrets, d'identité civile, de matériel personnel, d'informations de santé ou d'autres détails privés.
 - Une édition documentaire n'efface pas les anciens commits ou descriptions déjà publiés. Toute suppression rétroactive d'informations privées exige une procédure et une autorisation distinctes ; aucune réécriture silencieuse d'historique.
+
+### Obligation transversale — état de l'art avant travaux techniques complexes
+
+**Règle impérative pour ChatGPT orchestrateur, Codex et tout sous-agent :** avant de proposer ou lancer une correction non triviale, un diagnostic coûteux, une migration de dépendances, une modification de sécurité, un fork ou un prototype, réaliser **d'abord** une recherche externe ciblée des solutions déjà connues.
+
+1. Consulter prioritairement sources officielles, avis et changelogs de sécurité, tickets/PR des mainteneurs, correctifs effectivement publiés, documentation des API, puis les retours techniques d'autres projets. Vérifier l'actualité, les versions, dates, statuts et conditions d'application ; ne pas confondre issue ouverte, hypothèse et correctif disponible.
+2. Comparer les stratégies : correctif amont, mise à jour cadrée, rétroport minimal, mitigation conservatrice, report explicite. Mesurer les écarts de comportement, permissions/scopes, intégrité, compatibilité multiplateforme, maintenance et conservation historique. Un audit moins bruyant ne démontre pas une sécurité accrue.
+3. Restituer à l'utilisatrice un court bilan **avant** de déléguer l'implémentation : liens précis, ce qui est prouvé/non prouvé, meilleur candidat, risques et tests d'acceptation. Intégrer cette recherche au prompt Codex plutôt que réinventer inutilement.
+4. Archiver les références et la décision technique dans les documents appropriés, sans copier de données privées ni contenus tiers non redistribuables. Si la recherche Internet est impossible, déclarer cette limite, la faire figurer comme condition préalable non remplie et éviter toute affirmation non vérifiée.
+5. Cette étape ne remplace ni l'autorisation de l'utilisatrice, ni la revue indépendante, ni les contrôles de sécurité et de conservation. Aucun commit, push, fusion ou assouplissement n'en découle automatiquement.
+
+**Retour d'expérience QH-011 (26 octobre 2026) :** les travaux expérimentaux UNIC/URLPattern/ACL ont précédé la comparaison des solutions publiques. Ne pas reproduire cet ordre : effectuer l'état de l'art dès le cadrage, tout en conservant les preuves et les conclusions historiques du projet.

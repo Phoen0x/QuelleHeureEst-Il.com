@@ -1,0 +1,4 @@
+
+> quelle-heure-est-il?.com@0.1.0 typecheck <EXPERIMENT>/candidate
+> tsc --noEmit -p tsconfig.app.json
+

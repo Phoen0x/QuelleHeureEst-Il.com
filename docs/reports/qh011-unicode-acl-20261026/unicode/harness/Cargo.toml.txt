@@ -1,0 +1,15 @@
+[package]
+name="compat-fixture"
+version="0.1.0"
+edition="2021"
+[dependencies]
+old-urlpattern={package="urlpattern",version="=0.3.0"}
+new-urlpattern={package="urlpattern",version="=0.6.0"}
+regex="1"
+url="2"
+serde_json="1"
+old-pem={package="rustls-pemfile",version="=1.0.4"}
+rustls-pki-types={version="=1.15.1",features=["std"]}
+unicode-ident="=1.0.27"
+icu_properties="=2.3.0"
+unic-ucd-ident={version="=0.9.0",features=["id"]}

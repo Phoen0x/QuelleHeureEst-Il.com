@@ -1,0 +1,29 @@
+[
+  {
+    "binary": "qualification-old",
+    "exit": 0,
+    "seconds": 0.244,
+    "records": 70,
+    "cpu_seconds": 10,
+    "address_space_bytes": 1073741824,
+    "wall_seconds": 20
+  },
+  {
+    "binary": "qualification-new",
+    "exit": 0,
+    "seconds": 0.255,
+    "records": 70,
+    "cpu_seconds": 10,
+    "address_space_bytes": 1073741824,
+    "wall_seconds": 20
+  },
+  {
+    "binary": "qualification-raw",
+    "exit": 0,
+    "seconds": 4.491,
+    "records": 678,
+    "cpu_seconds": 10,
+    "address_space_bytes": 1073741824,
+    "wall_seconds": 20
+  }
+]

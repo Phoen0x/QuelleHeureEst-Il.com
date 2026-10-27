@@ -1,0 +1,3 @@
+use tauri::{Manager,Runtime};
+fn reach<R:Runtime,M:Manager<R>>(m:&M){let _=m.manager().runtime_authority.lock();}
+fn main(){}

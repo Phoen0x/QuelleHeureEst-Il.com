@@ -1,0 +1,370 @@
+{
+  "acl_records_per_version": 70,
+  "acl_distinct_requests": 68,
+  "acl_replays": [
+    [
+      "same-origin",
+      "scoped-deny-content"
+    ],
+    [
+      "scope-widening-False",
+      "scope-widening-True"
+    ]
+  ],
+  "raw_records": 678,
+  "raw_distinct_pairs": 674,
+  "prior_647_identical": true,
+  "prior_27_summary": 3,
+  "old_panics": [
+    "cyrillic-start",
+    "duplicate-group",
+    "host-cr",
+    "host-lf",
+    "host-tab",
+    "kawi-start",
+    "offset-error"
+  ],
+  "new_panics": [
+    "offset-error"
+  ],
+  "changed_cases": [
+    {
+      "id": "kawi-partial",
+      "old": {
+        "stage": "runtime",
+        "allowed": false,
+        "canonical_url": "https://example.invalid/value",
+        "has_app_manifest": true,
+        "scope_store": "{1: ResolvedScope { allow: [Map({\"path\": String(\"safe\")})], deny: [Map({\"path\": String(\"secret\")})] }}",
+        "entries": []
+      },
+      "new": {
+        "stage": "runtime",
+        "allowed": true,
+        "canonical_url": "https://example.invalid/value",
+        "has_app_manifest": true,
+        "scope_store": "{1: ResolvedScope { allow: [Map({\"path\": String(\"safe\")})], deny: [Map({\"path\": String(\"secret\")})] }}",
+        "entries": [
+          [
+            "rule",
+            "allow-narrow",
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "id": "kawi-start",
+      "old": {
+        "stage": "panic",
+        "error": "invalid URL pattern for remote URL https://example.invalid/:𑼂: tokenizer error: invalid name; must be at least length 1 (at char 1)",
+        "entries": []
+      },
+      "new": {
+        "stage": "runtime",
+        "allowed": true,
+        "canonical_url": "https://example.invalid/value",
+        "has_app_manifest": true,
+        "scope_store": "{1: ResolvedScope { allow: [Map({\"path\": String(\"safe\")})], deny: [Map({\"path\": String(\"secret\")})] }}",
+        "entries": [
+          [
+            "rule",
+            "allow-narrow",
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "id": "cyrillic-start",
+      "old": {
+        "stage": "panic",
+        "error": "invalid URL pattern for remote URL https://example.invalid/:Ᲊ: tokenizer error: invalid name; must be at least length 1 (at char 1)",
+        "entries": []
+      },
+      "new": {
+        "stage": "runtime",
+        "allowed": true,
+        "canonical_url": "https://example.invalid/value",
+        "has_app_manifest": true,
+        "scope_store": "{1: ResolvedScope { allow: [Map({\"path\": String(\"safe\")})], deny: [Map({\"path\": String(\"secret\")})] }}",
+        "entries": [
+          [
+            "rule",
+            "allow-narrow",
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "id": "duplicate-group",
+      "old": {
+        "stage": "panic",
+        "error": "invalid URL pattern for remote URL https://example.invalid/:a𑼀/:a: parser error: pattern contains duplicate name a",
+        "entries": []
+      },
+      "new": {
+        "stage": "runtime",
+        "allowed": true,
+        "canonical_url": "https://example.invalid/x/y",
+        "has_app_manifest": true,
+        "scope_store": "{1: ResolvedScope { allow: [Map({\"path\": String(\"safe\")})], deny: [Map({\"path\": String(\"secret\")})] }}",
+        "entries": [
+          [
+            "rule",
+            "allow-narrow",
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "id": "host-tab",
+      "old": {
+        "stage": "panic",
+        "error": "invalid URL pattern for remote URL https://exam\tple.invalid/*: invalid international domain name",
+        "entries": []
+      },
+      "new": {
+        "stage": "runtime",
+        "allowed": true,
+        "canonical_url": "https://example.invalid/value",
+        "has_app_manifest": true,
+        "scope_store": "{1: ResolvedScope { allow: [Map({\"path\": String(\"safe\")})], deny: [Map({\"path\": String(\"secret\")})] }}",
+        "entries": [
+          [
+            "rule",
+            "allow-narrow",
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "id": "host-lf",
+      "old": {
+        "stage": "panic",
+        "error": "invalid URL pattern for remote URL https://exam\nple.invalid/*: invalid international domain name",
+        "entries": []
+      },
+      "new": {
+        "stage": "runtime",
+        "allowed": true,
+        "canonical_url": "https://example.invalid/value",
+        "has_app_manifest": true,
+        "scope_store": "{1: ResolvedScope { allow: [Map({\"path\": String(\"safe\")})], deny: [Map({\"path\": String(\"secret\")})] }}",
+        "entries": [
+          [
+            "rule",
+            "allow-narrow",
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "id": "host-cr",
+      "old": {
+        "stage": "panic",
+        "error": "invalid URL pattern for remote URL https://exam\rple.invalid/*: invalid international domain name",
+        "entries": []
+      },
+      "new": {
+        "stage": "runtime",
+        "allowed": true,
+        "canonical_url": "https://example.invalid/value",
+        "has_app_manifest": true,
+        "scope_store": "{1: ResolvedScope { allow: [Map({\"path\": String(\"safe\")})], deny: [Map({\"path\": String(\"secret\")})] }}",
+        "entries": [
+          [
+            "rule",
+            "allow-narrow",
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "id": "quantified-kawi",
+      "old": {
+        "stage": "runtime",
+        "allowed": false,
+        "canonical_url": "https://example.invalid/value",
+        "has_app_manifest": true,
+        "scope_store": "{1: ResolvedScope { allow: [Map({\"path\": String(\"safe\")})], deny: [Map({\"path\": String(\"secret\")})] }}",
+        "entries": []
+      },
+      "new": {
+        "stage": "runtime",
+        "allowed": true,
+        "canonical_url": "https://example.invalid/value",
+        "has_app_manifest": true,
+        "scope_store": "{1: ResolvedScope { allow: [Map({\"path\": String(\"safe\")})], deny: [Map({\"path\": String(\"secret\")})] }}",
+        "entries": [
+          [
+            "rule",
+            "allow-narrow",
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "id": "offset-error",
+      "old": {
+        "stage": "panic",
+        "error": "invalid URL pattern for remote URL https://example.invalid/:é:: tokenizer error: invalid name; must be at least length 1 (at char 3)",
+        "entries": []
+      },
+      "new": {
+        "stage": "panic",
+        "error": "invalid URL pattern for remote URL https://example.invalid/:é:: tokenizer error: invalid name; must be at least length 1 (at char 4)",
+        "entries": []
+      }
+    },
+    {
+      "id": "scope-widening-False",
+      "old": {
+        "stage": "runtime",
+        "allowed": true,
+        "canonical_url": "https://example.invalid/value",
+        "has_app_manifest": true,
+        "scope_store": "{1: ResolvedScope { allow: [Map({\"path\": String(\"safe\")})], deny: [Map({\"path\": String(\"secret\")})] }, 2: ResolvedScope { allow: [Map({\"path\": String(\"*\")})], deny: [] }}",
+        "entries": [
+          [
+            "a",
+            "allow-narrow",
+            1
+          ]
+        ]
+      },
+      "new": {
+        "stage": "runtime",
+        "allowed": true,
+        "canonical_url": "https://example.invalid/value",
+        "has_app_manifest": true,
+        "scope_store": "{1: ResolvedScope { allow: [Map({\"path\": String(\"safe\")})], deny: [Map({\"path\": String(\"secret\")})] }, 2: ResolvedScope { allow: [Map({\"path\": String(\"*\")})], deny: [] }}",
+        "entries": [
+          [
+            "a",
+            "allow-narrow",
+            1
+          ],
+          [
+            "b",
+            "allow-wide",
+            2
+          ]
+        ]
+      }
+    },
+    {
+      "id": "scope-widening-True",
+      "old": {
+        "stage": "runtime",
+        "allowed": true,
+        "canonical_url": "https://example.invalid/value",
+        "has_app_manifest": true,
+        "scope_store": "{1: ResolvedScope { allow: [Map({\"path\": String(\"safe\")})], deny: [Map({\"path\": String(\"secret\")})] }, 2: ResolvedScope { allow: [Map({\"path\": String(\"*\")})], deny: [] }}",
+        "entries": [
+          [
+            "a",
+            "allow-narrow",
+            1
+          ]
+        ]
+      },
+      "new": {
+        "stage": "runtime",
+        "allowed": true,
+        "canonical_url": "https://example.invalid/value",
+        "has_app_manifest": true,
+        "scope_store": "{1: ResolvedScope { allow: [Map({\"path\": String(\"safe\")})], deny: [Map({\"path\": String(\"secret\")})] }, 2: ResolvedScope { allow: [Map({\"path\": String(\"*\")})], deny: [] }}",
+        "entries": [
+          [
+            "a",
+            "allow-narrow",
+            1
+          ],
+          [
+            "b",
+            "allow-wide",
+            2
+          ]
+        ]
+      }
+    },
+    {
+      "id": "dynamic-kawi-partial",
+      "old": {
+        "stage": "runtime",
+        "allowed": false,
+        "canonical_url": "https://example.invalid/value",
+        "has_app_manifest": true,
+        "scope_store": "{}",
+        "entries": []
+      },
+      "new": {
+        "stage": "runtime",
+        "allowed": true,
+        "canonical_url": "https://example.invalid/value",
+        "has_app_manifest": true,
+        "scope_store": "{}",
+        "entries": [
+          [
+            "rule",
+            "allow-narrow",
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "id": "dynamic-scopes",
+      "old": {
+        "stage": "runtime",
+        "allowed": true,
+        "canonical_url": "https://example.invalid/value",
+        "has_app_manifest": true,
+        "scope_store": "{}",
+        "entries": [
+          [
+            "a",
+            "allow-narrow",
+            1
+          ]
+        ]
+      },
+      "new": {
+        "stage": "runtime",
+        "allowed": true,
+        "canonical_url": "https://example.invalid/value",
+        "has_app_manifest": true,
+        "scope_store": "{}",
+        "entries": [
+          [
+            "a",
+            "allow-narrow",
+            1
+          ],
+          [
+            "b",
+            "allow-wide",
+            1
+          ]
+        ]
+      }
+    }
+  ],
+  "all_expected_checks_passed": true,
+  "strategies": {
+    "acceptance_only_counterexample": "kawi-partial parses in both but false -> true",
+    "sample_only_counterexample": "partial-encoded-suffix matches in both while kawi-partial widens on /value",
+    "id_tables_only_counterexample": "host-lf ignores a control character independently of Unicode ID properties",
+    "boolean_intersection_counterexample": "scope-widening-False permits in both but new grants scope 2",
+    "skip_ambiguous_deny_counterexample": "deny-unicode refuses, removing it yields same-origin allow",
+    "blanket_unicode_ban_counterexample": "id-not-xid, idn-positive, multilingual-path legitimately allow",
+    "explicit_escape_example": "escaped-kawi plus escaped-kawi-encoded-suffix preserve these historical decisions only"
+  }
+}

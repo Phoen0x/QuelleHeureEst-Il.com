@@ -1,0 +1,10 @@
+{
+  "snapshots": 409,
+  "optional": 140,
+  "patched_braces": {
+    "braces@3.0.3": {
+      "hash": "ij22dduv7f6wi3glhwl7jmdbrm",
+      "path": "patches/braces-3.0.3.patch"
+    }
+  }
+}

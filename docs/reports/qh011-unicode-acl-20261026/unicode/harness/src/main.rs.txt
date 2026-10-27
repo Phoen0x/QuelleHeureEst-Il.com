@@ -1,0 +1,28 @@
+use serde_json::json;
+macro_rules! probe {($name:ident,$lib:ident)=>{
+fn $name(pattern:&str,url:&url::Url)->serde_json::Value {
+ let mut init=match $lib::UrlPatternInit::parse_constructor_string::<regex::Regex>(pattern,None){Ok(x)=>x,Err(e)=>return json!({"stage":"constructor","error":e.to_string()})};
+ if init.search.as_ref().map(|s|s.is_empty()).unwrap_or(true){init.search=Some("*".into());}
+ if init.hash.as_ref().map(|s|s.is_empty()).unwrap_or(true){init.hash=Some("*".into());}
+ if init.pathname.as_ref().map(|s|s.is_empty()||s=="/").unwrap_or(true){init.pathname=Some("*".into());}
+ let parsed=format!("{:?}",init);
+ let p=match $lib::UrlPattern::<regex::Regex>::parse(init,Default::default()){Ok(p)=>p,Err(e)=>return json!({"stage":"pattern","init":parsed,"error":e.to_string()})};
+ let matched=p.exec($lib::UrlPatternMatchInput::Url(url.clone())).unwrap();
+ json!({"stage":"matching","init":parsed,"matched":matched.is_some(),"pathname":p.pathname(),"groups":matched.map(|m|m.pathname.groups)})
+}
+}}
+probe!(old,old_urlpattern);probe!(new,new_urlpattern);
+fn main(){
+ let mut cases:Vec<serde_json::Value>=serde_json::from_str(include_str!("../../cases.json")).unwrap();
+ for (i,(pattern,url)) in [
+ ("https://example.invalid/:é:","https://example.invalid/value"),
+ ("https://example.invalid/:é(","https://example.invalid/value"),
+ ("https://example.invalid/:東京:","https://example.invalid/value"),
+ ("https://example.invalid/:a\u{11f00}/:a","https://example.invalid/x/y"),
+ ("https://example.invalid/:a\u{11f00}","https://example.invalid/value%F0%91%BC%80"),
+ ("https://example.invalid/a\nb","https://example.invalid/ab"),
+ ("https://example.invalid/a\tb","https://example.invalid/a%09b")
+ ].into_iter().enumerate(){cases.push(json!({"id":format!("extra-diagnostic-{}",i),"pattern":pattern,"url":url}));}
+ let result:Vec<_>=cases.iter().map(|c|{let u=url::Url::parse(c["url"].as_str().unwrap()).unwrap();let p=c["pattern"].as_str().unwrap();json!({"id":c["id"],"old":old(p,&u),"new":new(p,&u)})}).collect();
+ println!("{}",json!(result));
+}

@@ -1,0 +1,3 @@
+   Compiling tauri v2.11.6 (<EXPERIMENT>/vendor/tauri-2.11.6)
+   Compiling qh011-atomic-admission-probe v0.1.0 (<EXPERIMENT>/probe)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 5.66s

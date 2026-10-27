@@ -1,0 +1,81 @@
+{
+  "commit": "f2eee4223a1ccf5b0866944580df8fd5979575dd",
+  "tracked_files": 302,
+  "candidate_source_changes": [],
+  "application_plugins_registered": [],
+  "application_dynamic_add_calls": [],
+  "custom_commands": [
+    "greet",
+    "search_location",
+    "get_weather",
+    "get_air_quality",
+    "get_pollen",
+    "get_cached_location",
+    "cache_location"
+  ],
+  "dynamic_acl_feature": "enabled in Tauri default features; not removed",
+  "configs": [
+    {
+      "path": "tauri.conf.json",
+      "sha256": "f16431ba98cb815295fcd7f12dc4860bea04885e4e68440545df6756186af280",
+      "capabilities": [],
+      "csp": null
+    },
+    {
+      "path": "src-tauri/tauri.conf.json",
+      "sha256": "af89ee021642fcedfbed8f6b653fbf9ca8d476d5dbf1f06d88e9fc6ecf2cee16",
+      "capabilities": [],
+      "csp": null
+    }
+  ],
+  "generated_artifacts": [
+    {
+      "path": "<ENVIRONMENT>/cargo-target/debug/build/quelleheureest-09e905786b786777/out/capabilities.json",
+      "sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "capabilities": {},
+      "app_manifest_present": false,
+      "manifest_names": [
+        "core",
+        "core:app",
+        "core:event",
+        "core:image",
+        "core:menu",
+        "core:path",
+        "core:resources",
+        "core:tray",
+        "core:webview",
+        "core:window"
+      ],
+      "manifest_sha256": "b8665c2471bd4c59d570c77e226f37410ce396da52525383a15b5cbbff9d786e",
+      "output_sha256": "d11f22dc7611edf56da70d61e16b5e3c26eef5249b9d98f67418adbf0b6013cf",
+      "origin_link": "build output references original src-tauri/tauri.conf.json"
+    },
+    {
+      "path": "<ENVIRONMENT>/cargo-target/release/build/quelleheureest-004e07f1cc106566/out/capabilities.json",
+      "sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "capabilities": {},
+      "app_manifest_present": false,
+      "manifest_names": [
+        "core",
+        "core:app",
+        "core:event",
+        "core:image",
+        "core:menu",
+        "core:path",
+        "core:resources",
+        "core:tray",
+        "core:webview",
+        "core:window"
+      ],
+      "manifest_sha256": "b8665c2471bd4c59d570c77e226f37410ce396da52525383a15b5cbbff9d786e",
+      "output_sha256": "f437f9ba7bea18276027c50dea95eb722fb9ddd5cad897026a148bc38a209049",
+      "origin_link": "build output references original src-tauri/tauri.conf.json"
+    }
+  ],
+  "limitations": [
+    "Source searches not formal whole-program proof",
+    "Generated outputs are old build artifacts, not a new application build",
+    "No loaded native/plugin host is sandboxed",
+    "Default dev URL is recognized local in Tauri; remote web content is different from native reqwest weather fetches"
+  ]
+}
