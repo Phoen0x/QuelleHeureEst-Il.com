@@ -1,0 +1,4 @@
+use tauri::ipc::RuntimeAuthority;
+use tauri_utils::acl::ExecutionContext;
+fn insert(a:&mut RuntimeAuthority){a.__allow_command("probe".into(),ExecutionContext::Local);}
+fn main(){}

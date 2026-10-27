@@ -1,0 +1,134 @@
+{
+  "references": [
+    {
+      "branch": "main",
+      "expected": "eb3c9403fa97db5ccf1fb4b13e3b0872e36c8228",
+      "actual": "eb3c9403fa97db5ccf1fb4b13e3b0872e36c8228"
+    },
+    {
+      "branch": "codex/fix-development-validation-20261021",
+      "expected": "f2eee4223a1ccf5b0866944580df8fd5979575dd",
+      "actual": "f2eee4223a1ccf5b0866944580df8fd5979575dd"
+    },
+    {
+      "branch": "docs/chatgpt-v2-v3-relay-20261022",
+      "expected": "cbdfbeed1c4fccdf9d6d20adad594ee40f568b10",
+      "actual": "f2d05a7cb0e78e6a01a79b0d222c34b3d684c8a8"
+    },
+    {
+      "branch": "docs/project-roadmap-20261022",
+      "expected": "228e36a048926d77e84c9bb47863b84d07d2b924",
+      "actual": "228e36a048926d77e84c9bb47863b84d07d2b924"
+    }
+  ],
+  "upstream": [
+    {
+      "url": "https://oaslananka.github.io/kicad-mcp-pro/security/rustsec-gtk3-unic-disposition/",
+      "dated": "2026-10-05; update 2026-10-20",
+      "observation": "Stable Tauri 2.12.0/utils 2.10.1/urlpattern 0.6.0; pinned resolver/audit evidence retrieved from main; no historic ACL equivalence proof identified."
+    },
+    {
+      "url": "https://docs.vacancyd.com/dependency-policy/",
+      "dated": "dependency freeze 2026-09-16; page publication date not established",
+      "observation": "Local dependency-only backport to utils 2.9.3+vacancyd.1; archive hash and permitted diff public. Omitted upstream development Cargo.lock incompatible with unconditional historical preservation unless retained as inert archive."
+    },
+    {
+      "url": "https://github.com/tauri-apps/tauri/issues/8799",
+      "title": "[feat] add capabilities at runtime",
+      "state": "closed",
+      "created": "2024-02-06T16:14:02Z",
+      "updated": "2024-02-19T14:59:21Z"
+    },
+    {
+      "url": "https://github.com/tauri-apps/tauri/issues/12968",
+      "title": "[feat] Dynamically Add `Capability` to `Context`",
+      "state": "open",
+      "created": "2025-03-13T16:53:21Z",
+      "updated": "2025-03-13T16:53:21Z"
+    },
+    {
+      "url": "https://github.com/tauri-apps/tauri/issues/9343",
+      "title": "[bug] `add_capability` for a specific window does not work on Android when the webview url is of type `CustomProtocol`",
+      "state": "open",
+      "created": "2024-04-02T15:27:54Z",
+      "updated": "2024-04-02T15:27:54Z"
+    },
+    {
+      "url": "https://github.com/orgs/tauri-apps/discussions/14125",
+      "dated": "2025-08-30/31",
+      "observation": "Unanswered discussion; Manager.add_capability exists; relaunch/deny as revocation suggestions are not validated atomic transactions."
+    },
+    {
+      "url": "https://github.com/tauri-apps/tauri/security/advisories/GHSA-7gmj-67g7-phm9",
+      "dated": "2026-05-06",
+      "affected": ">=2.0 <=2.11.0",
+      "patched": ">=2.11.1",
+      "observation": "Origin confusion Windows/Android; local source 2.11.6 uses full .localhost suffix; not a Unicode or atomic admission fix."
+    },
+    {
+      "url": "https://github.com/tauri-apps/tauri-docs/blob/v2/src/content/docs/security/capabilities.mdx",
+      "blob": "b7ff29d1b37d40d75fc1edeed4c94a2243717046",
+      "observation": "Static capability merge semantics and trusted native Rust boundary documented. Remote iframe warning Linux/Android."
+    }
+  ],
+  "related": [
+    {
+      "number": 15660,
+      "url": "https://github.com/tauri-apps/tauri/pull/15660",
+      "title": "chore(deps): update rust crate urlpattern to 0.6",
+      "created": "2026-07-06T12:49:11Z",
+      "updated": "2026-07-06T16:50:46Z",
+      "merged": "2026-07-06T16:50:43Z",
+      "merge_commit": "dd725f4b13c30a86b398ccc59eb498f151f461c5"
+    },
+    {
+      "number": 15291,
+      "url": "https://github.com/tauri-apps/tauri/pull/15291",
+      "title": "fix(acl): rebase runtime-resolved scope ids past baked ACL",
+      "created": "2026-04-24T20:43:51Z",
+      "updated": "2026-09-23T15:03:55Z",
+      "merged": "2026-09-23T15:03:55Z",
+      "merge_commit": "023fe7f59650c50b624021460064ee074bda56d9"
+    },
+    {
+      "number": 12969,
+      "url": "https://github.com/tauri-apps/tauri/pull/12969",
+      "title": "feat(tauri): add `fn Context::add_capability`",
+      "created": "2025-03-13T16:54:40Z",
+      "updated": "2025-05-07T03:06:27Z",
+      "merged": null,
+      "merge_commit": "6c5965794a658a7df2512603ed41767bc1dbd3f8"
+    },
+    {
+      "number": 11785,
+      "url": "https://github.com/tauri-apps/tauri/pull/11785",
+      "title": "fix(core): Initialize command cache when a capability is added",
+      "created": "2024-11-24T17:48:35Z",
+      "updated": "2024-11-26T15:01:48Z",
+      "merged": "2024-11-26T12:18:55Z",
+      "merge_commit": "ba6f3701472daa9295a39709761ea85c128881f1"
+    },
+    {
+      "number": 16072,
+      "url": "https://github.com/tauri-apps/tauri/pull/16072",
+      "title": "fix(core): scope ACL deny permissions to the capability execution context",
+      "created": "2026-09-21T00:13:20Z",
+      "updated": "2026-09-22T13:58:58Z",
+      "merged": "2026-09-22T13:58:56Z",
+      "merge_commit": "0349b6fb8a77739146d6e0071cad33d9c083fc4f"
+    },
+    {
+      "number": 16327,
+      "url": "https://github.com/tauri-apps/tauri/pull/16327",
+      "title": "fix(codegen): rebuild when additional capability files change",
+      "created": "2026-10-19T01:13:08Z",
+      "updated": "2026-10-19T01:13:08Z",
+      "merged": null,
+      "merge_commit": "ecf81bf327fd8c017438f5c0ec48ff3cf0b4fe50"
+    }
+  ],
+  "search_limit": "Targeted title searches, broad queries and public web; no proof that all upstream branches/PRs or third-party ACL behavior were exhaustively examined.",
+  "connector_errors": [
+    "Discussion and advisory endpoints rejected as unsupported by GitHub fetch; read via web tool instead. KiCad evidence absent at cited sourceMainCommit, retrieved from current main; not silently attributed to that commit. Connector has no configurable cancellation deadline."
+  ]
+}

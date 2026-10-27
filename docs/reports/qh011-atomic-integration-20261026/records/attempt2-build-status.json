@@ -1,0 +1,16 @@
+{
+  "command": [
+    "cargo",
+    "--config",
+    "<STUDY_A>/probe/.cargo/config.toml",
+    "test",
+    "--lib",
+    "--locked",
+    "--offline",
+    "--no-run",
+    "--message-format=json"
+  ],
+  "exit": 0,
+  "seconds": 1.481,
+  "timeout": 180
+}

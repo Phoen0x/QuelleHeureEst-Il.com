@@ -1,0 +1,90 @@
+{
+  "classification": "read-only static evidence; not a technical test replay",
+  "original_preservation": {
+    "files": 302,
+    "all_hashes_match": true,
+    "index_unchanged": true,
+    "git_status": "",
+    "head": "f2eee4223a1ccf5b0866944580df8fd5979575dd"
+  },
+  "prior_evidence": {
+    "files_checked": 500,
+    "all_hashes_match": true,
+    "manifest_sha256": "67dfb4664704f00067fc28d74706f45b21bf7b9f8abebbc19ec4f3a10e9fe968",
+    "runtime_tests_reexecuted": 0
+  },
+  "upstream_source_sha256": {
+    "tauri-2.11.6/src/lib.rs": "dd9d3eeec873339b8fcdd0aa1719e3a875c440462f449a0dc8833685d95996d2",
+    "tauri-2.11.6/src/ipc/authority.rs": "6da0f6200de5d8a417d0a13b5f6b08f69dafe6f78517691cc072a1dbc7e3859b",
+    "tauri-2.11.6/src/manager/mod.rs": "a7315fd687aabfc398e9a9dbaac53827e8a989740a368898170161b7b4ac8aa0",
+    "tauri-2.11.6/src/webview/mod.rs": "954cf212cb79d6b566c10b76d2ff2da05bc637cfc9f666c2f03d4e3dddf35f1c",
+    "tauri-2.11.6/Cargo.toml": "e9baa3bbf077a841b0d7769573906c3780770336d71f42fda53b4c1d1b0006f3",
+    "tauri-utils-2.9.3/src/acl/mod.rs": "d724c2b14b377cc920a25c9d3e3b749ced35974107716677299da3949308d7d2",
+    "tauri-utils-2.9.3/src/acl/build.rs": "99f6d911e46129c5d327f38297eb44bc0fd11f1270d0a9f997f4f3f6b78ffb7a",
+    "tauri-build-2.6.3/src/acl.rs": "5b9ca6d0ab9bba860d8acc45fff0be38349598deede0f8a002e8ab6acae4dd48",
+    "tauri-codegen-2.6.3/src/context.rs": "ea13b70394f0166813d3aa1938d423ddd3ed809f81ecf541586c2f32f15255bd"
+  },
+  "historical_generated_artifacts": [
+    {
+      "path": "<ENVIRONMENT>/cargo-target/debug/build/quelleheureest-09e905786b786777/out/capabilities.json",
+      "sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "file_capabilities": {},
+      "acl_manifests_sha256": "b8665c2471bd4c59d570c77e226f37410ce396da52525383a15b5cbbff9d786e",
+      "app_acl_manifest": false,
+      "manifest_names": [
+        "core",
+        "core:app",
+        "core:event",
+        "core:image",
+        "core:menu",
+        "core:path",
+        "core:resources",
+        "core:tray",
+        "core:webview",
+        "core:window"
+      ],
+      "build_output_sha256": "d11f22dc7611edf56da70d61e16b5e3c26eef5249b9d98f67418adbf0b6013cf",
+      "build_references_original_configuration": true,
+      "not_final_runtime_attestation": true
+    },
+    {
+      "path": "<ENVIRONMENT>/cargo-target/release/build/quelleheureest-004e07f1cc106566/out/capabilities.json",
+      "sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "file_capabilities": {},
+      "acl_manifests_sha256": "b8665c2471bd4c59d570c77e226f37410ce396da52525383a15b5cbbff9d786e",
+      "app_acl_manifest": false,
+      "manifest_names": [
+        "core",
+        "core:app",
+        "core:event",
+        "core:image",
+        "core:menu",
+        "core:path",
+        "core:resources",
+        "core:tray",
+        "core:webview",
+        "core:window"
+      ],
+      "build_output_sha256": "f437f9ba7bea18276027c50dea95eb722fb9ddd5cad897026a148bc38a209049",
+      "build_references_original_configuration": true,
+      "not_final_runtime_attestation": true
+    }
+  ],
+  "commands_now": {
+    "first_ast_attempt": {
+      "exit": 127,
+      "reason": "old Node path absent"
+    },
+    "ast_with_available_node": {
+      "exit": 0,
+      "node": "24.19.0",
+      "typescript": "5.9.3",
+      "timeout_seconds": 20,
+      "max_old_space_mb": 128
+    },
+    "new_rust_or_native_tests": 0,
+    "new_builds_or_audits": 0,
+    "new_cargo_resolution_commands": 0
+  },
+  "context_limit": "capabilities.json from tauri-build contains file capabilities; inline/config and generate_context supplemental capabilities are combined later. No fresh final Context or old environment overlay reconstructed."
+}

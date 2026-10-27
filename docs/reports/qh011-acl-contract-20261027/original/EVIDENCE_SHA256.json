@@ -1,0 +1,15 @@
+{
+  "algorithm": "SHA-256",
+  "excluded": [
+    "EVIDENCE_SHA256.json (self-reference)"
+  ],
+  "files": {
+    "REPORT.md": "f7be59d86d992edc4cb745ca9fb24dfb9bedc861f2dc6e1a36a92daff76222eb",
+    "frontend-inventory.cjs": "948e50dd49c99fde36137bf09f8dedf769d6ffa209ae468a832fa2430ffb6456",
+    "frontend-inventory.json": "ca7e417f19858123983b5249a8f276758a39fc3926721d57f30cd5898e4c79c5",
+    "github-refs.json": "74926135912001c44280f08075b5fdbb0eb41e9a77b50521b16b1c347f70a0df",
+    "inventory.json": "dc1a1978d2f75d8fc524ca71d79f0c560e11219ea3e0b75e8372f6da443fb4ac",
+    "platforms.json": "20349261406a6f388e51d1b66359aecb0569a8057a649e706b9da4a582fbe8e9",
+    "verification.json": "751bc4914909b2adda95d66c0cf4547ae56f381d845c0ba8f1cd5b4b48a40830"
+  }
+}

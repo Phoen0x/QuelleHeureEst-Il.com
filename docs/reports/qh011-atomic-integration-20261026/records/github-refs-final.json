@@ -1,0 +1,26 @@
+[
+  {
+    "branch": "main",
+    "initial": "eb3c9403fa97db5ccf1fb4b13e3b0872e36c8228",
+    "actual": "eb3c9403fa97db5ccf1fb4b13e3b0872e36c8228",
+    "unchanged_since_start": true
+  },
+  {
+    "branch": "codex/fix-development-validation-20261021",
+    "initial": "f2eee4223a1ccf5b0866944580df8fd5979575dd",
+    "actual": "f2eee4223a1ccf5b0866944580df8fd5979575dd",
+    "unchanged_since_start": true
+  },
+  {
+    "branch": "docs/chatgpt-v2-v3-relay-20261022",
+    "initial": "f2d05a7cb0e78e6a01a79b0d222c34b3d684c8a8",
+    "actual": "f2d05a7cb0e78e6a01a79b0d222c34b3d684c8a8",
+    "unchanged_since_start": true
+  },
+  {
+    "branch": "docs/project-roadmap-20261022",
+    "initial": "228e36a048926d77e84c9bb47863b84d07d2b924",
+    "actual": "228e36a048926d77e84c9bb47863b84d07d2b924",
+    "unchanged_since_start": true
+  }
+]

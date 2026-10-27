@@ -99,3 +99,18 @@ Le [rapport d'archivage](FAISABILITE_QH011_ADMISSION_ATOMIQUE_TAURI_2026-10-26.m
 ## QH-011 — atomic-admission feasibility archive — October 26, 2026
 
 The [archival report](FAISABILITE_QH011_ADMISSION_ATOMIQUE_TAURI_2026-10-26.md) and [sources and evidence](../reports/qh011-atomic-admission-20261026/NOTICE.md) preserve a **conditional GO for a later atomic-admission prototype only**: 13 passing runtime tests, three expected compiler rejections (101), and successful Context replacement compilation (0), an open route. Mandatory end-to-end admission and codegen-to-target transport remain unproven. No technical campaign was rerun for archival. QH-011/T-003 remain open; the earlier Unicode prototype remains NO-GO with two failures. No implementation or merge is authorized; independent ChatGPT V4 review of #186 is required.
+
+
+## QH-011 — deux études successives distinctes archivées — 27 octobre 2026
+
+- **[Étude A : prototype d'intégration Tauri du 26 octobre](EXPERIMENTATION_QH011_INTEGRATION_ATOMIQUE_2026-10-26.md)** — [preuves originales et reproduction](../reports/qh011-atomic-integration-20261026/NOTICE.md). Option A sous conditions, option B générale NO-GO ; 22 cas runtime réussis (13 rejoués, neuf nouveaux), quatre compilations distinctes 101/101/101/0, premières erreurs conservées. Profil vide immuable, MockRuntime, pas de validation Unicode ou native multiplateforme.
+- **[Étude B : contrat ACL minimal du 27 octobre](QUALIFICATION_QH011_CONTRAT_ACL_MINIMAL_2026-10-27.md)** — [preuves statiques et provenance](../reports/qh011-acl-contract-20261027/NOTICE.md). GO sous conditions pour cadrer un garde applicatif build/démarrage sans fork. AST de 19 fichiers, six invoke dans un wrapper non importé ; aucun nouveau test Rust, build, audit ou essai natif. Le contrat peut préserver des permissions locales statiques futures ; capabilities: [] et capabilities.json ne prouvent pas à eux seuls un refus global.
+
+Les rapports originaux sont séparés des nouvelles synthèses. Aucun ancien diagnostic n'est réécrit ; aucune campagne technique n'est rejouée pour cet archivage. QH-011/T-003 restent ouverts et le NO-GO Unicode précédent n'est pas levé. Prochaine action unique : revue indépendante de #186 par ChatGPT V4, sans implémentation automatique.
+
+## QH-011 — two separate successive studies archived — October 27, 2026
+
+- **[Study A: October 26 Tauri integration prototype](EXPERIMENTATION_QH011_INTEGRATION_ATOMIQUE_2026-10-26.md)** — [original evidence and reproduction](../reports/qh011-atomic-integration-20261026/NOTICE.md). Conditional option A; general option B remains NO-GO. 22 passing runtime cases (13 replayed, nine new), four separate compiler probes 101/101/101/0, intermediate failures retained. Empty immutable profile, MockRuntime; no Unicode or native cross-platform validation.
+- **[Study B: October 27 minimal ACL contract](QUALIFICATION_QH011_CONTRAT_ACL_MINIMAL_2026-10-27.md)** — [static evidence and provenance](../reports/qh011-acl-contract-20261027/NOTICE.md). Conditional GO to scope an application build/startup guard without a fork. AST analysis of 19 files, six invoke calls in an unimported wrapper; no new Rust tests, builds, audits or native trials. Future reviewed static local permissions remain possible; empty configuration/file capability lists alone do not attest the final Context.
+
+Original reports remain separate from archival syntheses. Previous diagnostics are unchanged; no technical campaign was replayed for archival. QH-011/T-003 remain open and the earlier Unicode NO-GO stands. Next step: independent ChatGPT V4 review of #186, without automatic implementation.

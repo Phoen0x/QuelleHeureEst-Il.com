@@ -1,0 +1,16 @@
+   Compiling glib v0.18.5 (<STUDY_A>/candidate/vendor/glib-0.18.5)
+   Compiling tauri v2.11.6 (<STUDY_A>/vendor/tauri-2.11.6)
+   Compiling gio v0.18.4
+   Compiling cairo-rs v0.18.5
+   Compiling atk v0.18.2
+   Compiling javascriptcore-rs v1.1.2
+   Compiling gdk-pixbuf v0.18.5
+   Compiling pango v0.18.3
+   Compiling gdk v0.18.2
+   Compiling soup3 v0.5.0
+   Compiling gtk v0.18.2
+   Compiling webkit2gtk v2.0.2
+   Compiling tauri-runtime v2.11.3
+   Compiling muda v0.19.3
+   Compiling qh011-atomic-admission-probe v0.1.0 (<STUDY_A>/probe)
+error: could not compile `qh011-atomic-admission-probe` (lib test) due to 1 previous error

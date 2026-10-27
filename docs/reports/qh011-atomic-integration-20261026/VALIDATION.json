@@ -1,0 +1,332 @@
+{
+  "classification": "archival documentary checks only",
+  "connector_limit": "No configurable cancellation deadline exposed; mutations sequential, expected HEAD lease, no blind write retry.",
+  "licensing": "Narrow inert experimental excerpts; existing upstream MIT/Apache notices linked and preserved. No repository license changes.",
+  "limits": "No independent rerun of the historical technical claims. Intermediate complete source snapshots and standalone terminal traces absent as described in NOTICEs; no fabrication.",
+  "links": [
+    {
+      "source": "docs/ai/QUALIFICATION_QH011_CONTRAT_ACL_MINIMAL_2026-10-27.md",
+      "target": "docs/reports/qh011-acl-contract-20261027/original/REPORT.md"
+    },
+    {
+      "source": "docs/ai/QUALIFICATION_QH011_CONTRAT_ACL_MINIMAL_2026-10-27.md",
+      "target": "docs/reports/qh011-acl-contract-20261027/NOTICE.md"
+    },
+    {
+      "source": "docs/ai/QUALIFICATION_QH011_CONTRAT_ACL_MINIMAL_2026-10-27.md",
+      "target": "docs/ai/EXPERIMENTATION_QH011_INTEGRATION_ATOMIQUE_2026-10-26.md"
+    },
+    {
+      "source": "docs/ai/README.md",
+      "target": "docs/ai/EXPERIMENTATION_QH011_INTEGRATION_ATOMIQUE_2026-10-26.md"
+    },
+    {
+      "source": "docs/ai/README.md",
+      "target": "docs/reports/qh011-atomic-integration-20261026/NOTICE.md"
+    },
+    {
+      "source": "docs/ai/README.md",
+      "target": "docs/ai/QUALIFICATION_QH011_CONTRAT_ACL_MINIMAL_2026-10-27.md"
+    },
+    {
+      "source": "docs/ai/README.md",
+      "target": "docs/reports/qh011-acl-contract-20261027/NOTICE.md"
+    },
+    {
+      "source": "docs/ai/README.md",
+      "target": "docs/ai/EXPERIMENTATION_QH011_INTEGRATION_ATOMIQUE_2026-10-26.md"
+    },
+    {
+      "source": "docs/ai/README.md",
+      "target": "docs/reports/qh011-atomic-integration-20261026/NOTICE.md"
+    },
+    {
+      "source": "docs/ai/README.md",
+      "target": "docs/ai/QUALIFICATION_QH011_CONTRAT_ACL_MINIMAL_2026-10-27.md"
+    },
+    {
+      "source": "docs/ai/README.md",
+      "target": "docs/reports/qh011-acl-contract-20261027/NOTICE.md"
+    },
+    {
+      "source": "docs/ai/JOURNAL_DE_BORD_TECHNIQUE.md",
+      "target": "docs/ai/EXPERIMENTATION_QH011_INTEGRATION_ATOMIQUE_2026-10-26.md"
+    },
+    {
+      "source": "docs/ai/JOURNAL_DE_BORD_TECHNIQUE.md",
+      "target": "docs/ai/QUALIFICATION_QH011_CONTRAT_ACL_MINIMAL_2026-10-27.md"
+    },
+    {
+      "source": "docs/ai/JOURNAL_DE_BORD_TECHNIQUE.md",
+      "target": "docs/reports/qh011-atomic-integration-20261026/NOTICE.md"
+    },
+    {
+      "source": "docs/ai/JOURNAL_DE_BORD_TECHNIQUE.md",
+      "target": "docs/reports/qh011-acl-contract-20261027/NOTICE.md"
+    },
+    {
+      "source": "docs/ai/EXPERIMENTATION_QH011_INTEGRATION_ATOMIQUE_2026-10-26.md",
+      "target": "docs/reports/qh011-atomic-integration-20261026/original/REPORT.md"
+    },
+    {
+      "source": "docs/ai/EXPERIMENTATION_QH011_INTEGRATION_ATOMIQUE_2026-10-26.md",
+      "target": "docs/reports/qh011-atomic-integration-20261026/NOTICE.md"
+    },
+    {
+      "source": "docs/ai/EXPERIMENTATION_QH011_INTEGRATION_ATOMIQUE_2026-10-26.md",
+      "target": "docs/ai/EXPERIMENTATION_QH011_UNICODE_ACL_NOGO_2026-10-26.md"
+    },
+    {
+      "source": "docs/ai/EXPERIMENTATION_QH011_INTEGRATION_ATOMIQUE_2026-10-26.md",
+      "target": "docs/ai/QUALIFICATION_QH011_CONTRAT_ACL_MINIMAL_2026-10-27.md"
+    },
+    {
+      "source": "docs/reports/qh011-atomic-integration-20261026/NOTICE.md",
+      "target": "docs/ai/EXPERIMENTATION_QH011_INTEGRATION_ATOMIQUE_2026-10-26.md"
+    },
+    {
+      "source": "docs/reports/qh011-atomic-integration-20261026/NOTICE.md",
+      "target": "docs/reports/qh011-atomic-integration-20261026/original/REPORT.md"
+    },
+    {
+      "source": "docs/reports/qh011-atomic-integration-20261026/NOTICE.md",
+      "target": "docs/reports/qh011-atomic-integration-20261026/original/SCOPE_DECISION.md"
+    },
+    {
+      "source": "docs/reports/qh011-atomic-integration-20261026/NOTICE.md",
+      "target": "docs/reports/qh011-acl-contract-20261027/NOTICE.md"
+    },
+    {
+      "source": "docs/reports/qh011-atomic-integration-20261026/NOTICE.md",
+      "target": "docs/reports/qh011-atomic-integration-20261026/archive-provenance.json"
+    },
+    {
+      "source": "docs/reports/qh011-atomic-integration-20261026/NOTICE.md",
+      "target": "docs/reports/qh011-atomic-integration-20261026/source-inventory.json"
+    },
+    {
+      "source": "docs/reports/qh011-atomic-integration-20261026/NOTICE.md",
+      "target": "docs/reports/qh011-atomic-admission-20261026/third-party-notices/tauri-2.11.6/LICENSE_MIT.txt"
+    },
+    {
+      "source": "docs/reports/qh011-atomic-integration-20261026/NOTICE.md",
+      "target": "docs/reports/qh011-atomic-admission-20261026/third-party-notices/tauri-2.11.6/LICENSE_APACHE-2.0.txt"
+    },
+    {
+      "source": "docs/reports/qh011-atomic-integration-20261026/NOTICE.md",
+      "url": "https://github.com/Phoen0x/QuelleHeureEst-Il.com/blob/f2eee4223a1ccf5b0866944580df8fd5979575dd/docs/development/linux-environment-20261022.md"
+    },
+    {
+      "source": "docs/reports/qh011-atomic-integration-20261026/NOTICE.md",
+      "target": "docs/reports/qh011-atomic-admission-20261026/NOTICE.md"
+    },
+    {
+      "source": "docs/reports/qh011-atomic-integration-20261026/NOTICE.md",
+      "target": "docs/reports/qh011-atomic-integration-20261026/MANIFEST.json"
+    },
+    {
+      "source": "docs/reports/qh011-atomic-integration-20261026/NOTICE.md",
+      "target": "docs/reports/qh011-atomic-integration-20261026/PUBLICATION.json"
+    },
+    {
+      "source": "docs/reports/qh011-atomic-integration-20261026/NOTICE.md",
+      "target": "docs/reports/qh011-atomic-integration-20261026/VALIDATION.json"
+    },
+    {
+      "source": "docs/reports/qh011-acl-contract-20261027/NOTICE.md",
+      "target": "docs/ai/QUALIFICATION_QH011_CONTRAT_ACL_MINIMAL_2026-10-27.md"
+    },
+    {
+      "source": "docs/reports/qh011-acl-contract-20261027/NOTICE.md",
+      "target": "docs/reports/qh011-acl-contract-20261027/original/REPORT.md"
+    },
+    {
+      "source": "docs/reports/qh011-acl-contract-20261027/NOTICE.md",
+      "target": "docs/reports/qh011-atomic-integration-20261026/NOTICE.md"
+    },
+    {
+      "source": "docs/reports/qh011-acl-contract-20261027/NOTICE.md",
+      "target": "docs/reports/qh011-acl-contract-20261027/archive-provenance.json"
+    },
+    {
+      "source": "docs/reports/qh011-acl-contract-20261027/NOTICE.md",
+      "target": "docs/reports/qh011-acl-contract-20261027/source-inventory.json"
+    },
+    {
+      "source": "docs/reports/qh011-acl-contract-20261027/NOTICE.md",
+      "target": "docs/reports/qh011-unicode-acl-20261026/NOTICE.md"
+    },
+    {
+      "source": "docs/reports/qh011-acl-contract-20261027/NOTICE.md",
+      "target": "docs/reports/qh011-acl-contract-20261027/MANIFEST.json"
+    },
+    {
+      "source": "docs/reports/qh011-acl-contract-20261027/NOTICE.md",
+      "target": "docs/reports/qh011-acl-contract-20261027/PUBLICATION.json"
+    },
+    {
+      "source": "docs/reports/qh011-acl-contract-20261027/NOTICE.md",
+      "target": "docs/reports/qh011-acl-contract-20261027/VALIDATION.json"
+    },
+    {
+      "source": "docs/reports/qh011-atomic-integration-20261026/original/REPORT.md",
+      "url": "https://oaslananka.github.io/kicad-mcp-pro/security/rustsec-gtk3-unic-disposition/"
+    },
+    {
+      "source": "docs/reports/qh011-atomic-integration-20261026/original/REPORT.md",
+      "url": "https://docs.vacancyd.com/dependency-policy/"
+    },
+    {
+      "source": "docs/reports/qh011-atomic-integration-20261026/original/REPORT.md",
+      "url": "https://github.com/maxfield-allison/vacancyd/blob/2be2adc682054e3cd580ce61b4b598ee87af77e7/policy/vendor.json"
+    },
+    {
+      "source": "docs/reports/qh011-atomic-integration-20261026/original/REPORT.md",
+      "url": "https://github.com/tauri-apps/tauri/issues/8799"
+    },
+    {
+      "source": "docs/reports/qh011-atomic-integration-20261026/original/REPORT.md",
+      "url": "https://github.com/tauri-apps/tauri/issues/12968"
+    },
+    {
+      "source": "docs/reports/qh011-atomic-integration-20261026/original/REPORT.md",
+      "url": "https://github.com/tauri-apps/tauri/pull/12969"
+    },
+    {
+      "source": "docs/reports/qh011-atomic-integration-20261026/original/REPORT.md",
+      "url": "https://github.com/orgs/tauri-apps/discussions/14125"
+    },
+    {
+      "source": "docs/reports/qh011-atomic-integration-20261026/original/REPORT.md",
+      "url": "https://github.com/tauri-apps/tauri/issues/9343"
+    },
+    {
+      "source": "docs/reports/qh011-atomic-integration-20261026/original/REPORT.md",
+      "url": "https://github.com/tauri-apps/tauri/security/advisories/GHSA-7gmj-67g7-phm9"
+    },
+    {
+      "source": "docs/reports/qh011-atomic-integration-20261026/original/REPORT.md",
+      "url": "https://github.com/tauri-apps/tauri-docs/blob/v2/src/content/docs/security/capabilities.mdx"
+    },
+    {
+      "source": "docs/reports/qh011-atomic-integration-20261026/original/REPORT.md",
+      "url": "https://github.com/tauri-apps/tauri/pull/15660"
+    },
+    {
+      "source": "docs/reports/qh011-atomic-integration-20261026/original/REPORT.md",
+      "url": "https://github.com/denoland/rust-urlpattern/commit/b047afee9b901e19928f87470ba722bbac05a27f"
+    },
+    {
+      "source": "docs/reports/qh011-atomic-integration-20261026/original/REPORT.md",
+      "url": "https://github.com/tauri-apps/tauri/pull/15291"
+    },
+    {
+      "source": "docs/reports/qh011-atomic-integration-20261026/original/REPORT.md",
+      "url": "https://github.com/tauri-apps/tauri/pull/11785"
+    },
+    {
+      "source": "docs/reports/qh011-atomic-integration-20261026/original/REPORT.md",
+      "url": "https://github.com/tauri-apps/tauri/pull/16327"
+    },
+    {
+      "source": "docs/reports/qh011-atomic-integration-20261026/original/REPORT.md",
+      "url": "https://github.com/tauri-apps/tauri/pull/16072"
+    },
+    {
+      "source": "docs/reports/qh011-acl-contract-20261027/original/REPORT.md",
+      "url": "https://v2.tauri.app/security/capabilities/"
+    },
+    {
+      "source": "docs/reports/qh011-acl-contract-20261027/original/REPORT.md",
+      "url": "https://v2.tauri.app/security/permissions/"
+    },
+    {
+      "source": "docs/reports/qh011-acl-contract-20261027/original/REPORT.md",
+      "url": "https://v2.tauri.app/security/runtime-authority/"
+    },
+    {
+      "source": "docs/reports/qh011-acl-contract-20261027/original/REPORT.md",
+      "url": "https://v2.tauri.app/concept/inter-process-communication/"
+    },
+    {
+      "source": "docs/reports/qh011-acl-contract-20261027/original/REPORT.md",
+      "url": "https://v2.tauri.app/develop/plugins/"
+    },
+    {
+      "source": "docs/reports/qh011-acl-contract-20261027/original/REPORT.md",
+      "url": "https://v2.tauri.app/develop/plugins/develop-mobile/"
+    },
+    {
+      "source": "docs/reports/qh011-acl-contract-20261027/original/REPORT.md",
+      "url": "https://v2.tauri.app/reference/config/"
+    },
+    {
+      "source": "docs/reports/qh011-acl-contract-20261027/original/REPORT.md",
+      "url": "https://github.com/tauri-apps/tauri/blob/tauri-v2.11.6/crates/tauri/src/lib.rs"
+    },
+    {
+      "source": "docs/reports/qh011-acl-contract-20261027/original/REPORT.md",
+      "url": "https://github.com/tauri-apps/tauri/blob/tauri-v2.11.6/crates/tauri/src/ipc/authority.rs"
+    },
+    {
+      "source": "docs/reports/qh011-acl-contract-20261027/original/REPORT.md",
+      "url": "https://github.com/tauri-apps/tauri/security/advisories/GHSA-7gmj-67g7-phm9"
+    },
+    {
+      "source": "docs/reports/qh011-acl-contract-20261027/original/REPORT.md",
+      "url": "https://github.com/tauri-apps/tauri/pull/12969"
+    },
+    {
+      "source": "docs/reports/qh011-acl-contract-20261027/original/REPORT.md",
+      "url": "https://github.com/tauri-apps/tauri/pull/15291"
+    },
+    {
+      "source": "docs/reports/qh011-acl-contract-20261027/original/REPORT.md",
+      "url": "https://github.com/tauri-apps/tauri/pull/16072"
+    },
+    {
+      "source": "docs/reports/qh011-acl-contract-20261027/original/REPORT.md",
+      "url": "https://github.com/tauri-apps/tauri/pull/16327"
+    }
+  ],
+  "original_checkout": "302 tracked files, index and clean status unchanged",
+  "original_reports": "exact bytes, original SHA-256 and source provenance retained",
+  "parent_preservation": "309 other blobs/modes, original README/journal byte prefixes, no deletions",
+  "privacy": {
+    "generic_paths_retained_in_exact_originals": [
+      "docs/reports/qh011-acl-contract-20261027/historical-scripts/frontend-inventory.cjs.txt",
+      "docs/reports/qh011-acl-contract-20261027/original/REPORT.md"
+    ],
+    "manual_review": "Selected original technical reports, synthetic probes, records and logs reviewed; no private conversation, personal data or secrets; full project/dependencies/caches/binaries and unnecessary third-party JSON omitted",
+    "pattern_scan": "PASS",
+    "transformations": "explicit generic environment-path substitutions, with before/after hashes; compiler JSONL selected diagnostics only"
+  },
+  "relative_markdown_links": "PASS",
+  "scope_executed": "Hash/provenance/count/exit-code checks, TOML/JSON parsing, Python/JS/shell syntax only; archive verifiers run without Cargo/Node application tests.",
+  "script_syntax": [
+    {
+      "method": "bash -n, commands not executed",
+      "path": "docs/reports/qh011-atomic-integration-20261026/NOTICE.md"
+    },
+    {
+      "method": "ast.parse, no script execution",
+      "path": "docs/reports/qh011-atomic-integration-20261026/verify.py"
+    },
+    {
+      "method": "ast.parse, no script execution",
+      "path": "docs/reports/qh011-acl-contract-20261027/verify.py"
+    },
+    {
+      "method": "ast.parse, no script execution",
+      "path": "docs/reports/qh011-atomic-integration-20261026/historical-scripts/modify-copy.py.txt"
+    },
+    {
+      "method": "node --check stdin, script not executed",
+      "path": "docs/reports/qh011-acl-contract-20261027/historical-scripts/frontend-inventory.cjs.txt"
+    }
+  ],
+  "separation": "A: experiment 22 runtime cases and four compiler probes; B: static qualification, no new native tests/build/audit",
+  "source_hashes_verified": 500,
+  "study": "A",
+  "verdicts_preserved": "A conditional option A/general option B NO-GO; B conditional scoping of application guard without fork; no Unicode validation; QH011/T003 open"
+}

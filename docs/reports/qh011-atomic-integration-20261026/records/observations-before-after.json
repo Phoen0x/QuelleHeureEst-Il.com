@@ -1,0 +1,949 @@
+[
+  {
+    "after": {
+      "revision": 0,
+      "state": {
+        "allowed": {},
+        "denied": {},
+        "global": {},
+        "has_app_acl": true,
+        "manifests": {
+          "__app-acl__": {
+            "default_permission": null,
+            "global_scope_schema": null,
+            "permission_sets": {},
+            "permissions": {
+              "deny": {
+                "commands": {
+                  "allow": [],
+                  "deny": [
+                    "probe"
+                  ]
+                },
+                "identifier": "deny"
+              },
+              "global": {
+                "commands": {
+                  "allow": [],
+                  "deny": []
+                },
+                "identifier": "global",
+                "scope": {
+                  "allow": [
+                    {
+                      "path": "global"
+                    }
+                  ]
+                }
+              },
+              "global-forbidden": {
+                "commands": {
+                  "allow": [],
+                  "deny": []
+                },
+                "identifier": "global-forbidden",
+                "scope": {
+                  "allow": [
+                    {
+                      "path": "forbidden"
+                    }
+                  ]
+                }
+              },
+              "read-a": {
+                "commands": {
+                  "allow": [
+                    "probe"
+                  ],
+                  "deny": []
+                },
+                "identifier": "read-a",
+                "scope": {
+                  "allow": [
+                    {
+                      "path": "a"
+                    }
+                  ],
+                  "deny": [
+                    {
+                      "path": "secret"
+                    }
+                  ]
+                }
+              },
+              "read-b": {
+                "commands": {
+                  "allow": [
+                    "probe"
+                  ],
+                  "deny": []
+                },
+                "identifier": "read-b",
+                "scope": {
+                  "allow": [
+                    {
+                      "path": "b"
+                    }
+                  ]
+                }
+              },
+              "read-forbidden": {
+                "commands": {
+                  "allow": [
+                    "probe"
+                  ],
+                  "deny": []
+                },
+                "identifier": "read-forbidden",
+                "scope": {
+                  "allow": [
+                    {
+                      "path": "forbidden"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "scopes": {}
+      },
+      "version": {
+        "format": 1,
+        "policy": 17
+      }
+    },
+    "before": {
+      "revision": 0,
+      "state": {
+        "allowed": {},
+        "denied": {},
+        "global": {},
+        "has_app_acl": true,
+        "manifests": {
+          "__app-acl__": {
+            "default_permission": null,
+            "global_scope_schema": null,
+            "permission_sets": {},
+            "permissions": {
+              "deny": {
+                "commands": {
+                  "allow": [],
+                  "deny": [
+                    "probe"
+                  ]
+                },
+                "identifier": "deny"
+              },
+              "global": {
+                "commands": {
+                  "allow": [],
+                  "deny": []
+                },
+                "identifier": "global",
+                "scope": {
+                  "allow": [
+                    {
+                      "path": "global"
+                    }
+                  ]
+                }
+              },
+              "global-forbidden": {
+                "commands": {
+                  "allow": [],
+                  "deny": []
+                },
+                "identifier": "global-forbidden",
+                "scope": {
+                  "allow": [
+                    {
+                      "path": "forbidden"
+                    }
+                  ]
+                }
+              },
+              "read-a": {
+                "commands": {
+                  "allow": [
+                    "probe"
+                  ],
+                  "deny": []
+                },
+                "identifier": "read-a",
+                "scope": {
+                  "allow": [
+                    {
+                      "path": "a"
+                    }
+                  ],
+                  "deny": [
+                    {
+                      "path": "secret"
+                    }
+                  ]
+                }
+              },
+              "read-b": {
+                "commands": {
+                  "allow": [
+                    "probe"
+                  ],
+                  "deny": []
+                },
+                "identifier": "read-b",
+                "scope": {
+                  "allow": [
+                    {
+                      "path": "b"
+                    }
+                  ]
+                }
+              },
+              "read-forbidden": {
+                "commands": {
+                  "allow": [
+                    "probe"
+                  ],
+                  "deny": []
+                },
+                "identifier": "read-forbidden",
+                "scope": {
+                  "allow": [
+                    {
+                      "path": "forbidden"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "scopes": {}
+      },
+      "version": {
+        "format": 1,
+        "policy": 17
+      }
+    },
+    "case": "global_only_rejected"
+  },
+  {
+    "case": "pinned_request",
+    "current_revision": 1,
+    "current_scope_after": [
+      {
+        "path": "b"
+      }
+    ],
+    "old_revision": 0,
+    "old_scope_after": [
+      {
+        "path": "a"
+      }
+    ],
+    "selected_before": {
+      "allowed": true,
+      "entries": [
+        {
+          "allow": [
+            {
+              "path": "a"
+            }
+          ],
+          "scope_id": 1
+        }
+      ],
+      "revision": 0
+    }
+  },
+  {
+    "after": {
+      "revision": 0,
+      "state": {
+        "allowed": {
+          "probe": [
+            {
+              "context": {
+                "remote": "https://example.invalid/*"
+              },
+              "scope_id": 1,
+              "webviews": [],
+              "windows": [
+                "main"
+              ]
+            }
+          ]
+        },
+        "denied": {},
+        "global": {},
+        "has_app_acl": true,
+        "manifests": {
+          "__app-acl__": {
+            "default_permission": null,
+            "global_scope_schema": null,
+            "permission_sets": {},
+            "permissions": {
+              "deny": {
+                "commands": {
+                  "allow": [],
+                  "deny": [
+                    "probe"
+                  ]
+                },
+                "identifier": "deny"
+              },
+              "global": {
+                "commands": {
+                  "allow": [],
+                  "deny": []
+                },
+                "identifier": "global",
+                "scope": {
+                  "allow": [
+                    {
+                      "path": "global"
+                    }
+                  ]
+                }
+              },
+              "global-forbidden": {
+                "commands": {
+                  "allow": [],
+                  "deny": []
+                },
+                "identifier": "global-forbidden",
+                "scope": {
+                  "allow": [
+                    {
+                      "path": "forbidden"
+                    }
+                  ]
+                }
+              },
+              "read-a": {
+                "commands": {
+                  "allow": [
+                    "probe"
+                  ],
+                  "deny": []
+                },
+                "identifier": "read-a",
+                "scope": {
+                  "allow": [
+                    {
+                      "path": "a"
+                    }
+                  ],
+                  "deny": [
+                    {
+                      "path": "secret"
+                    }
+                  ]
+                }
+              },
+              "read-b": {
+                "commands": {
+                  "allow": [
+                    "probe"
+                  ],
+                  "deny": []
+                },
+                "identifier": "read-b",
+                "scope": {
+                  "allow": [
+                    {
+                      "path": "b"
+                    }
+                  ]
+                }
+              },
+              "read-forbidden": {
+                "commands": {
+                  "allow": [
+                    "probe"
+                  ],
+                  "deny": []
+                },
+                "identifier": "read-forbidden",
+                "scope": {
+                  "allow": [
+                    {
+                      "path": "forbidden"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "scopes": {
+          "1": {
+            "allow": [
+              {
+                "path": "a"
+              }
+            ],
+            "deny": [
+              {
+                "path": "secret"
+              }
+            ]
+          }
+        }
+      },
+      "version": {
+        "format": 1,
+        "policy": 17
+      }
+    },
+    "before": {
+      "revision": 0,
+      "state": {
+        "allowed": {
+          "probe": [
+            {
+              "context": {
+                "remote": "https://example.invalid/*"
+              },
+              "scope_id": 1,
+              "webviews": [],
+              "windows": [
+                "main"
+              ]
+            }
+          ]
+        },
+        "denied": {},
+        "global": {},
+        "has_app_acl": true,
+        "manifests": {
+          "__app-acl__": {
+            "default_permission": null,
+            "global_scope_schema": null,
+            "permission_sets": {},
+            "permissions": {
+              "deny": {
+                "commands": {
+                  "allow": [],
+                  "deny": [
+                    "probe"
+                  ]
+                },
+                "identifier": "deny"
+              },
+              "global": {
+                "commands": {
+                  "allow": [],
+                  "deny": []
+                },
+                "identifier": "global",
+                "scope": {
+                  "allow": [
+                    {
+                      "path": "global"
+                    }
+                  ]
+                }
+              },
+              "global-forbidden": {
+                "commands": {
+                  "allow": [],
+                  "deny": []
+                },
+                "identifier": "global-forbidden",
+                "scope": {
+                  "allow": [
+                    {
+                      "path": "forbidden"
+                    }
+                  ]
+                }
+              },
+              "read-a": {
+                "commands": {
+                  "allow": [
+                    "probe"
+                  ],
+                  "deny": []
+                },
+                "identifier": "read-a",
+                "scope": {
+                  "allow": [
+                    {
+                      "path": "a"
+                    }
+                  ],
+                  "deny": [
+                    {
+                      "path": "secret"
+                    }
+                  ]
+                }
+              },
+              "read-b": {
+                "commands": {
+                  "allow": [
+                    "probe"
+                  ],
+                  "deny": []
+                },
+                "identifier": "read-b",
+                "scope": {
+                  "allow": [
+                    {
+                      "path": "b"
+                    }
+                  ]
+                }
+              },
+              "read-forbidden": {
+                "commands": {
+                  "allow": [
+                    "probe"
+                  ],
+                  "deny": []
+                },
+                "identifier": "read-forbidden",
+                "scope": {
+                  "allow": [
+                    {
+                      "path": "forbidden"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "scopes": {
+          "1": {
+            "allow": [
+              {
+                "path": "a"
+              }
+            ],
+            "deny": [
+              {
+                "path": "secret"
+              }
+            ]
+          }
+        }
+      },
+      "version": {
+        "format": 1,
+        "policy": 17
+      }
+    },
+    "case": "rejected_staging"
+  },
+  {
+    "after": {
+      "revision": 1,
+      "state": {
+        "allowed": {
+          "probe": [
+            {
+              "context": {
+                "remote": "https://example.invalid/*"
+              },
+              "scope_id": 1,
+              "webviews": [],
+              "windows": [
+                "main"
+              ]
+            }
+          ]
+        },
+        "denied": {},
+        "global": {},
+        "has_app_acl": true,
+        "manifests": {
+          "__app-acl__": {
+            "default_permission": null,
+            "global_scope_schema": null,
+            "permission_sets": {},
+            "permissions": {
+              "deny": {
+                "commands": {
+                  "allow": [],
+                  "deny": [
+                    "probe"
+                  ]
+                },
+                "identifier": "deny"
+              },
+              "global": {
+                "commands": {
+                  "allow": [],
+                  "deny": []
+                },
+                "identifier": "global",
+                "scope": {
+                  "allow": [
+                    {
+                      "path": "global"
+                    }
+                  ]
+                }
+              },
+              "global-forbidden": {
+                "commands": {
+                  "allow": [],
+                  "deny": []
+                },
+                "identifier": "global-forbidden",
+                "scope": {
+                  "allow": [
+                    {
+                      "path": "forbidden"
+                    }
+                  ]
+                }
+              },
+              "read-a": {
+                "commands": {
+                  "allow": [
+                    "probe"
+                  ],
+                  "deny": []
+                },
+                "identifier": "read-a",
+                "scope": {
+                  "allow": [
+                    {
+                      "path": "a"
+                    }
+                  ],
+                  "deny": [
+                    {
+                      "path": "secret"
+                    }
+                  ]
+                }
+              },
+              "read-b": {
+                "commands": {
+                  "allow": [
+                    "probe"
+                  ],
+                  "deny": []
+                },
+                "identifier": "read-b",
+                "scope": {
+                  "allow": [
+                    {
+                      "path": "b"
+                    }
+                  ]
+                }
+              },
+              "read-forbidden": {
+                "commands": {
+                  "allow": [
+                    "probe"
+                  ],
+                  "deny": []
+                },
+                "identifier": "read-forbidden",
+                "scope": {
+                  "allow": [
+                    {
+                      "path": "forbidden"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "scopes": {
+          "1": {
+            "allow": [
+              {
+                "path": "a"
+              }
+            ],
+            "deny": [
+              {
+                "path": "secret"
+              }
+            ]
+          }
+        }
+      },
+      "version": {
+        "format": 1,
+        "policy": 17
+      }
+    },
+    "case": "concurrent_preparations",
+    "conflicts": 1,
+    "successes": 1
+  },
+  {
+    "after": {
+      "revision": 1,
+      "state": {
+        "allowed": {
+          "probe": [
+            {
+              "context": {
+                "remote": "https://example.invalid/*"
+              },
+              "scope_id": 1,
+              "webviews": [],
+              "windows": [
+                "main"
+              ]
+            }
+          ]
+        },
+        "denied": {},
+        "global": {
+          "__app-acl__": {
+            "allow": [
+              {
+                "path": "global"
+              }
+            ],
+            "deny": []
+          }
+        },
+        "has_app_acl": true,
+        "manifests": {
+          "__app-acl__": {
+            "default_permission": null,
+            "global_scope_schema": null,
+            "permission_sets": {},
+            "permissions": {
+              "deny": {
+                "commands": {
+                  "allow": [],
+                  "deny": [
+                    "probe"
+                  ]
+                },
+                "identifier": "deny"
+              },
+              "global": {
+                "commands": {
+                  "allow": [],
+                  "deny": []
+                },
+                "identifier": "global",
+                "scope": {
+                  "allow": [
+                    {
+                      "path": "global"
+                    }
+                  ]
+                }
+              },
+              "global-forbidden": {
+                "commands": {
+                  "allow": [],
+                  "deny": []
+                },
+                "identifier": "global-forbidden",
+                "scope": {
+                  "allow": [
+                    {
+                      "path": "forbidden"
+                    }
+                  ]
+                }
+              },
+              "read-a": {
+                "commands": {
+                  "allow": [
+                    "probe"
+                  ],
+                  "deny": []
+                },
+                "identifier": "read-a",
+                "scope": {
+                  "allow": [
+                    {
+                      "path": "a"
+                    }
+                  ],
+                  "deny": [
+                    {
+                      "path": "secret"
+                    }
+                  ]
+                }
+              },
+              "read-b": {
+                "commands": {
+                  "allow": [
+                    "probe"
+                  ],
+                  "deny": []
+                },
+                "identifier": "read-b",
+                "scope": {
+                  "allow": [
+                    {
+                      "path": "b"
+                    }
+                  ]
+                }
+              },
+              "read-forbidden": {
+                "commands": {
+                  "allow": [
+                    "probe"
+                  ],
+                  "deny": []
+                },
+                "identifier": "read-forbidden",
+                "scope": {
+                  "allow": [
+                    {
+                      "path": "forbidden"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "scopes": {
+          "1": {
+            "allow": [
+              {
+                "path": "a"
+              }
+            ],
+            "deny": [
+              {
+                "path": "secret"
+              }
+            ]
+          }
+        }
+      },
+      "version": {
+        "format": 1,
+        "policy": 17
+      }
+    },
+    "before": {
+      "revision": 0,
+      "state": {
+        "allowed": {},
+        "denied": {},
+        "global": {},
+        "has_app_acl": true,
+        "manifests": {
+          "__app-acl__": {
+            "default_permission": null,
+            "global_scope_schema": null,
+            "permission_sets": {},
+            "permissions": {
+              "deny": {
+                "commands": {
+                  "allow": [],
+                  "deny": [
+                    "probe"
+                  ]
+                },
+                "identifier": "deny"
+              },
+              "global": {
+                "commands": {
+                  "allow": [],
+                  "deny": []
+                },
+                "identifier": "global",
+                "scope": {
+                  "allow": [
+                    {
+                      "path": "global"
+                    }
+                  ]
+                }
+              },
+              "global-forbidden": {
+                "commands": {
+                  "allow": [],
+                  "deny": []
+                },
+                "identifier": "global-forbidden",
+                "scope": {
+                  "allow": [
+                    {
+                      "path": "forbidden"
+                    }
+                  ]
+                }
+              },
+              "read-a": {
+                "commands": {
+                  "allow": [
+                    "probe"
+                  ],
+                  "deny": []
+                },
+                "identifier": "read-a",
+                "scope": {
+                  "allow": [
+                    {
+                      "path": "a"
+                    }
+                  ],
+                  "deny": [
+                    {
+                      "path": "secret"
+                    }
+                  ]
+                }
+              },
+              "read-b": {
+                "commands": {
+                  "allow": [
+                    "probe"
+                  ],
+                  "deny": []
+                },
+                "identifier": "read-b",
+                "scope": {
+                  "allow": [
+                    {
+                      "path": "b"
+                    }
+                  ]
+                }
+              },
+              "read-forbidden": {
+                "commands": {
+                  "allow": [
+                    "probe"
+                  ],
+                  "deny": []
+                },
+                "identifier": "read-forbidden",
+                "scope": {
+                  "allow": [
+                    {
+                      "path": "forbidden"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "scopes": {}
+      },
+      "version": {
+        "format": 1,
+        "policy": 17
+      }
+    },
+    "case": "valid_dynamic"
+  }
+]

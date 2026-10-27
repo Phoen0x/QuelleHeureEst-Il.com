@@ -1,0 +1,3 @@
+use tauri::ipc::atomic_admission_probe::ValidatedPolicy;
+fn forge()->ValidatedPolicy {ValidatedPolicy{owner:todo!(),expected_revision:0,version:todo!(),candidate:todo!()}}
+fn main(){}

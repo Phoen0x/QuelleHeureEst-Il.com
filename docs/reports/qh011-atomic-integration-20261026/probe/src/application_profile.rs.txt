@@ -1,0 +1,45 @@
+//! FR : intégration ciblée du profil vide, MockRuntime seulement.
+//! EN: targeted empty-profile integration, MockRuntime only.
+use std::{collections::BTreeMap,sync::{Arc,atomic::{AtomicBool,Ordering}}};
+use serde_json::json;
+use tauri::{Manager,test::{mock_builder,mock_context,noop_assets,MockRuntime},ipc::{CapabilityBuilder,RuntimeAuthority}};
+use tauri_utils::{acl::{APP_ACL_KEY,capability::Capability,manifest::Manifest,resolved::{Resolved,ResolvedScope}},platform::Target};
+fn context()->tauri::Context<MockRuntime>{mock_context(noop_assets())}
+fn app()->tauri::App<MockRuntime>{mock_builder().invoke_handler(tauri::generate_handler![greet]).build(context()).unwrap()}
+#[tauri::command] fn greet()->String{"unchanged local command".to_owned()}
+fn raw_remote()->RuntimeAuthority {
+ let manifest:Manifest=serde_json::from_value(json!({"default_permission":null,"permission_sets":{},"global_scope_schema":null,"permissions":{"read":{"identifier":"read","commands":{"allow":["greet"]},"scope":{"allow":[{"path":"a"}]}}}})).unwrap();
+ let acl:BTreeMap<String,Manifest>=[(APP_ACL_KEY.to_owned(),manifest)].into();
+ let c:Capability=serde_json::from_value(json!({"identifier":"remote","windows":["main"],"remote":{"urls":["https://example.invalid/*"]},"permissions":["read"]})).unwrap();
+ let r=Resolved::resolve(&acl,[(c.identifier.clone(),c)].into(),Target::current()).unwrap();RuntimeAuthority::new(acl,r)
+}
+fn response(app:&tauri::App<MockRuntime>,origin:&str)->Result<String,serde_json::Value>{
+ let view=tauri::WebviewWindowBuilder::new(app,"main",Default::default()).build().unwrap();
+ tauri::test::get_ipc_response(&view,tauri::webview::InvokeRequest{cmd:"greet".into(),callback:tauri::ipc::CallbackFn(0),error:tauri::ipc::CallbackFn(1),url:origin.parse().unwrap(),body:Default::default(),headers:Default::default(),invoke_key:tauri::test::INVOKE_KEY.into()}).map(|r|r.deserialize::<String>().unwrap())
+}
+#[test] fn empty_initial_context_is_admitted(){let _=app();}
+#[test] fn remote_context_replacement_is_rejected_before_plugin_initialization(){
+ let called=Arc::new(AtomicBool::new(false));let flag=called.clone();let plugin=tauri::plugin::Builder::<MockRuntime>::new("probe").setup(move|_,_|{flag.store(true,Ordering::SeqCst);Ok(())}).build();
+ let mut c=context();*c.runtime_authority_mut()=raw_remote();let result=mock_builder().plugin(plugin).build(c);assert!(result.is_err());assert!(!called.load(Ordering::SeqCst));
+}
+#[test] fn empty_context_replacement_is_revalidated_and_admitted(){
+ let mut c=context();*c.runtime_authority_mut()=RuntimeAuthority::new(Default::default(),Resolved::default());assert!(mock_builder().build(c).is_ok());
+}
+#[test] fn global_only_context_cannot_bypass_admission(){
+ let mut r=Resolved::default();r.global_scope.insert(APP_ACL_KEY.into(),ResolvedScope{allow:vec![],deny:vec![]});let mut c=context();*c.runtime_authority_mut()=RuntimeAuthority::new(Default::default(),r);assert!(mock_builder().build(c).is_err());
+}
+#[test] fn orphan_command_scope_is_rejected(){
+ let mut r=Resolved::default();r.command_scope.insert(1,Default::default());let mut c=context();*c.runtime_authority_mut()=RuntimeAuthority::new(Default::default(),r);assert!(mock_builder().build(c).is_err());
+}
+#[test] fn dynamic_mutation_is_rejected_before_runtime_capability_callback(){
+ struct HostCallback;impl tauri::ipc::RuntimeCapability for HostCallback{fn build(self)->tauri_utils::acl::capability::CapabilityFile{panic!("must not evaluate after sealing")}}
+ let a=app();let e=a.add_capability(HostCallback).unwrap_err();assert!(e.to_string().contains("empty immutable profile"));
+}
+#[test] fn local_command_still_works_after_rejected_dynamic_change(){
+ let a=app();assert!(a.add_capability(CapabilityBuilder::new("not-used")).is_err());assert_eq!(response(&a,"tauri://localhost/"),Ok("unchanged local command".into()));
+}
+#[test] fn remote_ipc_cannot_invoke_custom_local_command(){let a=app();assert!(response(&a,"https://example.invalid/").is_err());}
+#[test] fn plugin_setup_uses_same_dynamic_admission(){
+ let observed=Arc::new(AtomicBool::new(false));let flag=observed.clone();let plugin=tauri::plugin::Builder::<MockRuntime>::new("probe").setup(move|app,_|{let e=app.add_capability(CapabilityBuilder::new("plugin-added")).unwrap_err();assert!(e.to_string().contains("empty immutable profile"));flag.store(true,Ordering::SeqCst);Ok(())}).build();
+ let a=mock_builder().invoke_handler(tauri::generate_handler![greet]).plugin(plugin).build(context()).unwrap();assert!(observed.load(Ordering::SeqCst));assert_eq!(response(&a,"tauri://localhost/" ),Ok("unchanged local command".into()));
+}

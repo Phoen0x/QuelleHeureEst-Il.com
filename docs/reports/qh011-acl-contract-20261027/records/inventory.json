@@ -1,0 +1,109 @@
+{
+  "head": "f2eee4223a1ccf5b0866944580df8fd5979575dd",
+  "tracked_files": 302,
+  "tracked_tauri_configs": [
+    "src-tauri/tauri.conf.json",
+    "tauri.conf.json"
+  ],
+  "configurations": {
+    "src-tauri/tauri.conf.json": {
+      "productName": "QuelleHeureEst-Il",
+      "version": "0.0.1",
+      "identifier": "com.quelleheureest.app",
+      "build": {
+        "beforeBuildCommand": "npm run vite:build",
+        "beforeDevCommand": "npm run vite:dev",
+        "devUrl": "http://localhost:5173",
+        "frontendDist": "../dist"
+      },
+      "app": {
+        "windows": [
+          {
+            "title": "QuelleHeureEst-Il",
+            "width": 1200,
+            "height": 800,
+            "resizable": true
+          }
+        ],
+        "security": {
+          "csp": null
+        }
+      },
+      "$schema": "https://schema.tauri.app/config/2"
+    },
+    "tauri.conf.json": {
+      "productName": "QuelleHeureEst-Il",
+      "version": "0.0.1",
+      "identifier": "com.quelleheureest.app",
+      "build": {
+        "beforeBuildCommand": "npm run vite:build",
+        "beforeDevCommand": "npm run vite:dev",
+        "devUrl": "http://localhost:5173",
+        "frontendDist": "../dist"
+      },
+      "app": {
+        "windows": [
+          {
+            "title": "QuelleHeureEst-Il",
+            "width": 1200,
+            "height": 800,
+            "resizable": true
+          }
+        ],
+        "security": {
+          "csp": null
+        }
+      }
+    }
+  },
+  "capability_or_permission_files": [],
+  "active_inputs_sha256": {
+    "Cargo.lock": "9487c3bd7fa0f5f59a3c7967cf64e324443e680fee05316db40ab7586e46ccac",
+    "Cargo.toml": "ea3cef566cb6891ccb714d151fc0cf0ee05ee1c0c72fce7e636d6407e115c812",
+    "index.html": "89cf481d800381f4f09216aaa611c3771d95e7410b6026e3a1c245b5ead2591d",
+    "package.json": "9c7c201b9de5258b35caf3b74dd7c08cee76fd6df95df2f835cd08e4ac83add7",
+    "src-tauri/Cargo.toml": "64ebc5012a8201ca0a0f09ce1d56cdbd611f2cb28210145c429cf28c4c9ee373",
+    "src-tauri/build.rs": "b01bb80b64916f502a3033afdb4567227ef2abcc3b938889f02283aefa780fbe",
+    "src-tauri/icons/icon.png": "9e31fb5b009ac628ff272b74858d7ff63ca4baa6639fa6a86bffcde988fc7198",
+    "src-tauri/src/cache.rs": "0b8b66b3941f6b22a7faf894368785f5ce2024971c63608d24bda734143423fe",
+    "src-tauri/src/geocoding.rs": "0299f88af7dfd095c7ded625bbcef6e5cd8a34c55ccc021eb5811732347ea392",
+    "src-tauri/src/main.rs": "ff15fd5612d52c34c764df1e61b980360fd0187e1650f714d52b1d2d518c76b7",
+    "src-tauri/src/weather.rs": "7cb0a6f6c9357f71581adcd16364f3beb03e147c9256f3763c651c42c965f8bb",
+    "src-tauri/tauri.conf.json": "af89ee021642fcedfbed8f6b653fbf9ca8d476d5dbf1f06d88e9fc6ecf2cee16",
+    "src-tauri/tests/glib_variant_str_iter.rs": "524e788e0a5f07307d172a9e2c90935e20dfe94d1b86a2fa92c5fea74ab0cee3",
+    "src-tauri/tests/http_client.rs": "58ac032936f5d08914b3b98f7d0f1072fee2d57cda44ea9068047418dca02ff9",
+    "src/App.tsx": "fc4a135cf7e9f32f6c0e39b1a0ecab9882292f60cb00108fdac2e68bbeb279d6",
+    "src/components/AirQualityCard.tsx": "91f913608175dc77a96915ffa472468e50793e1ad7dd9ac9b52667f719dbc06a",
+    "src/components/Dashboard.tsx": "19d87fa9c5020907ff108a5753a5adfb491e9ae9e1b26799a3b5818115b82a07",
+    "src/components/ForecastCard.tsx": "81e7f34bd8f30c75c983199a0db7fec8f36a1ffa97b7fe0ff1162ca858b60a12",
+    "src/components/LandingHero.tsx": "cbb39c71f6a49c1c903f427118b411e01d690f725577761f8ce4b98298164318",
+    "src/components/PollenCard.tsx": "1fde4f806a52b68e2a4af4f5182504998f10c75f7e286d083c1c8e1f524ab202",
+    "src/components/SearchBar.tsx": "4190cc706152224b9164f99c408f2709fb4e579021d0a98670fc792a0d91f4b2",
+    "src/components/SettingsBar.tsx": "4ca552447ffbf544fef25df00e6ffa0a948e31b1d88b34436fbe15cb0277201b",
+    "src/components/TimeCard.tsx": "048b01f1e335ec31b9259b37f85e43a91da9c2575f8d64205aad478ddfecfeb9",
+    "src/components/WeatherCard.tsx": "2e89c31129e6705c405ed8795c270e6876594b52dd28209bae6740a5cb138c84",
+    "src/hooks/useAppState.ts": "0d7b4110c4bb54ce810d4d559b62b96cf8a28b4f4c8057e53876af9b090932e4",
+    "src/index.css": "fe17590dbfec9c6ccb8b61f9e0c4243c40d5ea470cc2d455a51b1da46412e389",
+    "src/main.tsx": "832842269af94b055b2cd42fd27a0f212773b36d20083b631b863cbb5f0fd09e",
+    "src/services/cache.ts": "4e5a038dbd6d9cf4becf1f0decae24544e3f665c91cf3ec914afceb35bd4fa85",
+    "src/services/geocoding.ts": "40066ac791abd0e2cb6d3552d4eb00aa97b9a65fff90e72c94e6598090ea8ec9",
+    "src/services/tauri.ts": "60e537db9936893f0448f391f54efebf2aaf415107c02edc48e72e4469a40350",
+    "src/services/weather.ts": "f489e75f248aec6b51e8ea6f6cbe75d5b057261ce0cffdb54adcb5e40b4541b3",
+    "src/types/index.ts": "1fe0afa91ac38d8206ef6c2799ae06894c0dc468dd47dfb50c8ea1a92b863a24",
+    "src/utils/formatters.ts": "3b97fcb9393f5b65d20b75d272b1542aa3c756b6f495da183da2aded2f71330e",
+    "src/vite-env.d.ts": "65996936fbb042915f7b74a200fcdde7e410f32a669b1ab9597cfaa4b0faddb5",
+    "tauri.conf.json": "f16431ba98cb815295fcd7f12dc4860bea04885e4e68440545df6756186af280",
+    "vite.config.ts": "a598244a2da0113288c541a7952a0d755b7d8ea8ffd9a1ab50317313f61ab80a"
+  },
+  "historical_variants": [
+    "docs/history/development-validation-20261021/src-tauri/Cargo.toml",
+    "docs/history/development-validation-20261021/src-tauri/src/main.rs",
+    "docs/history/development-validation-20261021/src/services/tauri.ts.txt",
+    "docs/history/glib-qh011-20261023/Cargo.toml",
+    "docs/history/glib-qh011-20261023/src-tauri/Cargo.toml",
+    "docs/history/http2-183-20261022/src-tauri/Cargo.toml"
+  ],
+  "all_original_hashes_match": true,
+  "index_sha256": "022e7df574e8a28f8a2b14cf85c4432b1019078cad96e60857b034162829590e",
+  "git_status": ""
+}

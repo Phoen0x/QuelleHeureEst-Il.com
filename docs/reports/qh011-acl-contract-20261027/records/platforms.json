@@ -1,0 +1,376 @@
+[
+  {
+    "target": "x86_64-unknown-linux-gnu",
+    "all_features": false,
+    "provenance": "historical filtered-before metadata read now, not a new resolution/compile",
+    "source": "<PRIOR_DIAGNOSTIC>/filtered-before-x86_64-unknown-linux-gnu.json",
+    "sha256": "b00bc673a3c7e2a5746f45b309936ade78d1ed0b6b7f89ee102882669c7cbf43",
+    "packages_in_filtered_metadata": 373,
+    "resolved_nodes": 373,
+    "tauri_version": "2.11.6",
+    "tauri_features": [
+      "common-controls-v6",
+      "compression",
+      "custom-protocol",
+      "dbus",
+      "default",
+      "dynamic-acl",
+      "tauri-runtime-wry",
+      "webkit2gtk",
+      "webview2-com",
+      "wry",
+      "x11"
+    ],
+    "plugins": [],
+    "platform_packages": {
+      "tauri-runtime": "2.11.3",
+      "tauri-runtime-wry": "2.11.4",
+      "tauri-utils": "2.9.3",
+      "wry": "0.55.1",
+      "gtk": "0.18.2",
+      "webkit2gtk": "2.0.2"
+    }
+  },
+  {
+    "target": "x86_64-unknown-linux-gnu",
+    "all_features": true,
+    "provenance": "historical filtered-before metadata read now, not a new resolution/compile",
+    "source": "<PRIOR_DIAGNOSTIC>/filtered-before-x86_64-unknown-linux-gnu-all.json",
+    "sha256": "6fcfaa2ba1e3983a683c4e5cfed3ae72fe332579c5fff5e23fd4c0c5af3e1129",
+    "packages_in_filtered_metadata": 376,
+    "resolved_nodes": 376,
+    "tauri_version": "2.11.6",
+    "tauri_features": [
+      "common-controls-v6",
+      "compression",
+      "custom-protocol",
+      "dbus",
+      "default",
+      "dynamic-acl",
+      "tauri-runtime-wry",
+      "webkit2gtk",
+      "webview2-com",
+      "wry",
+      "x11"
+    ],
+    "plugins": [],
+    "platform_packages": {
+      "tauri-runtime": "2.11.3",
+      "tauri-runtime-wry": "2.11.4",
+      "tauri-utils": "2.9.3",
+      "wry": "0.55.1",
+      "gtk": "0.18.2",
+      "webkit2gtk": "2.0.2"
+    }
+  },
+  {
+    "target": "aarch64-linux-android",
+    "all_features": false,
+    "provenance": "historical filtered-before metadata read now, not a new resolution/compile",
+    "source": "<PRIOR_DIAGNOSTIC>/filtered-before-aarch64-linux-android.json",
+    "sha256": "3692efbcfb690cdfdffb011a27a672b5d65343fa4228d28fcd38cf4cd195262f",
+    "packages_in_filtered_metadata": 326,
+    "resolved_nodes": 326,
+    "tauri_version": "2.11.6",
+    "tauri_features": [
+      "common-controls-v6",
+      "compression",
+      "custom-protocol",
+      "dbus",
+      "default",
+      "dynamic-acl",
+      "tauri-runtime-wry",
+      "webkit2gtk",
+      "webview2-com",
+      "wry",
+      "x11"
+    ],
+    "plugins": [],
+    "platform_packages": {
+      "tauri-runtime": "2.11.3",
+      "tauri-runtime-wry": "2.11.4",
+      "tauri-utils": "2.9.3",
+      "wry": "0.55.1",
+      "jni": "0.21.1",
+      "ndk": "0.9.0"
+    }
+  },
+  {
+    "target": "aarch64-linux-android",
+    "all_features": true,
+    "provenance": "historical filtered-before metadata read now, not a new resolution/compile",
+    "source": "<PRIOR_DIAGNOSTIC>/filtered-before-aarch64-linux-android-all.json",
+    "sha256": "4521ec67a6af568acf95ab8fc6ff46df301ae5064d894dbc789736a35f0bde7f",
+    "packages_in_filtered_metadata": 329,
+    "resolved_nodes": 329,
+    "tauri_version": "2.11.6",
+    "tauri_features": [
+      "common-controls-v6",
+      "compression",
+      "custom-protocol",
+      "dbus",
+      "default",
+      "dynamic-acl",
+      "tauri-runtime-wry",
+      "webkit2gtk",
+      "webview2-com",
+      "wry",
+      "x11"
+    ],
+    "plugins": [],
+    "platform_packages": {
+      "tauri-runtime": "2.11.3",
+      "tauri-runtime-wry": "2.11.4",
+      "tauri-utils": "2.9.3",
+      "wry": "0.55.1",
+      "jni": "0.21.1",
+      "ndk": "0.9.0"
+    }
+  },
+  {
+    "target": "x86_64-pc-windows-msvc",
+    "all_features": false,
+    "provenance": "historical filtered-before metadata read now, not a new resolution/compile",
+    "source": "<PRIOR_DIAGNOSTIC>/filtered-before-x86_64-pc-windows-msvc.json",
+    "sha256": "09187b4996a973998373e4afa372086fd54a95e148223d42f2fe52ed33b2a659",
+    "packages_in_filtered_metadata": 341,
+    "resolved_nodes": 341,
+    "tauri_version": "2.11.6",
+    "tauri_features": [
+      "common-controls-v6",
+      "compression",
+      "custom-protocol",
+      "dbus",
+      "default",
+      "dynamic-acl",
+      "tauri-runtime-wry",
+      "webkit2gtk",
+      "webview2-com",
+      "wry",
+      "x11"
+    ],
+    "plugins": [],
+    "platform_packages": {
+      "tauri-runtime": "2.11.3",
+      "tauri-runtime-wry": "2.11.4",
+      "tauri-utils": "2.9.3",
+      "wry": "0.55.1",
+      "webview2-com": "0.38.2"
+    }
+  },
+  {
+    "target": "x86_64-pc-windows-msvc",
+    "all_features": true,
+    "provenance": "historical filtered-before metadata read now, not a new resolution/compile",
+    "source": "<PRIOR_DIAGNOSTIC>/filtered-before-x86_64-pc-windows-msvc-all.json",
+    "sha256": "b3d9eb9a8a8bd6eb32cae105bdf2dcae2e809fe06f82cc8053063787ff08f313",
+    "packages_in_filtered_metadata": 344,
+    "resolved_nodes": 344,
+    "tauri_version": "2.11.6",
+    "tauri_features": [
+      "common-controls-v6",
+      "compression",
+      "custom-protocol",
+      "dbus",
+      "default",
+      "dynamic-acl",
+      "tauri-runtime-wry",
+      "webkit2gtk",
+      "webview2-com",
+      "wry",
+      "x11"
+    ],
+    "plugins": [],
+    "platform_packages": {
+      "tauri-runtime": "2.11.3",
+      "tauri-runtime-wry": "2.11.4",
+      "tauri-utils": "2.9.3",
+      "wry": "0.55.1",
+      "webview2-com": "0.38.2"
+    }
+  },
+  {
+    "target": "aarch64-apple-darwin",
+    "all_features": false,
+    "provenance": "historical filtered-before metadata read now, not a new resolution/compile",
+    "source": "<PRIOR_DIAGNOSTIC>/filtered-before-aarch64-apple-darwin.json",
+    "sha256": "b5299299936f05faa691bf4865dca6356f976a3724018fb8323572dccf5b471a",
+    "packages_in_filtered_metadata": 339,
+    "resolved_nodes": 339,
+    "tauri_version": "2.11.6",
+    "tauri_features": [
+      "common-controls-v6",
+      "compression",
+      "custom-protocol",
+      "dbus",
+      "default",
+      "dynamic-acl",
+      "tauri-runtime-wry",
+      "webkit2gtk",
+      "webview2-com",
+      "wry",
+      "x11"
+    ],
+    "plugins": [],
+    "platform_packages": {
+      "tauri-runtime": "2.11.3",
+      "tauri-runtime-wry": "2.11.4",
+      "tauri-utils": "2.9.3",
+      "wry": "0.55.1",
+      "objc2": "0.6.5"
+    }
+  },
+  {
+    "target": "aarch64-apple-darwin",
+    "all_features": true,
+    "provenance": "historical filtered-before metadata read now, not a new resolution/compile",
+    "source": "<PRIOR_DIAGNOSTIC>/filtered-before-aarch64-apple-darwin-all.json",
+    "sha256": "f9301c025d94c31b904fecce8ac0d1edb49235cc5001471f825e9c18910ca2ed",
+    "packages_in_filtered_metadata": 341,
+    "resolved_nodes": 341,
+    "tauri_version": "2.11.6",
+    "tauri_features": [
+      "common-controls-v6",
+      "compression",
+      "custom-protocol",
+      "dbus",
+      "default",
+      "dynamic-acl",
+      "tauri-runtime-wry",
+      "webkit2gtk",
+      "webview2-com",
+      "wry",
+      "x11"
+    ],
+    "plugins": [],
+    "platform_packages": {
+      "tauri-runtime": "2.11.3",
+      "tauri-runtime-wry": "2.11.4",
+      "tauri-utils": "2.9.3",
+      "wry": "0.55.1",
+      "objc2": "0.6.5"
+    }
+  },
+  {
+    "target": "aarch64-apple-ios",
+    "all_features": false,
+    "provenance": "historical filtered-before metadata read now, not a new resolution/compile",
+    "source": "<PRIOR_DIAGNOSTIC>/filtered-before-aarch64-apple-ios.json",
+    "sha256": "9f95a63cbe30a4b8dbfc887dca29fc365c43fb797cbf39dc5981d05b11f71388",
+    "packages_in_filtered_metadata": 330,
+    "resolved_nodes": 330,
+    "tauri_version": "2.11.6",
+    "tauri_features": [
+      "common-controls-v6",
+      "compression",
+      "custom-protocol",
+      "dbus",
+      "default",
+      "dynamic-acl",
+      "tauri-runtime-wry",
+      "webkit2gtk",
+      "webview2-com",
+      "wry",
+      "x11"
+    ],
+    "plugins": [],
+    "platform_packages": {
+      "tauri-runtime": "2.11.3",
+      "tauri-runtime-wry": "2.11.4",
+      "tauri-utils": "2.9.3",
+      "wry": "0.55.1",
+      "objc2": "0.6.5"
+    }
+  },
+  {
+    "target": "aarch64-apple-ios",
+    "all_features": true,
+    "provenance": "historical filtered-before metadata read now, not a new resolution/compile",
+    "source": "<PRIOR_DIAGNOSTIC>/filtered-before-aarch64-apple-ios-all.json",
+    "sha256": "0693e0a3ac2d67d29adb989b13b8fcf34f8c6202da90924dcc641db368708318",
+    "packages_in_filtered_metadata": 332,
+    "resolved_nodes": 332,
+    "tauri_version": "2.11.6",
+    "tauri_features": [
+      "common-controls-v6",
+      "compression",
+      "custom-protocol",
+      "dbus",
+      "default",
+      "dynamic-acl",
+      "tauri-runtime-wry",
+      "webkit2gtk",
+      "webview2-com",
+      "wry",
+      "x11"
+    ],
+    "plugins": [],
+    "platform_packages": {
+      "tauri-runtime": "2.11.3",
+      "tauri-runtime-wry": "2.11.4",
+      "tauri-utils": "2.9.3",
+      "wry": "0.55.1",
+      "objc2": "0.6.5"
+    }
+  },
+  {
+    "target": "wasm32-unknown-unknown",
+    "all_features": false,
+    "provenance": "historical filtered-before metadata read now, not a new resolution/compile",
+    "source": "<PRIOR_DIAGNOSTIC>/filtered-before-wasm32-unknown-unknown.json",
+    "sha256": "21023fd021c7f0b77e20ca4af3b6403410922bdf87e7593d313240475037c414",
+    "packages_in_filtered_metadata": 280,
+    "resolved_nodes": 280,
+    "tauri_version": "2.11.6",
+    "tauri_features": [
+      "common-controls-v6",
+      "compression",
+      "custom-protocol",
+      "dbus",
+      "default",
+      "dynamic-acl",
+      "tauri-runtime-wry",
+      "webkit2gtk",
+      "webview2-com",
+      "wry",
+      "x11"
+    ],
+    "plugins": [],
+    "platform_packages": {
+      "tauri-runtime": "2.11.3",
+      "tauri-runtime-wry": "2.11.4",
+      "tauri-utils": "2.9.3",
+      "wry": "0.55.1"
+    }
+  },
+  {
+    "target": "wasm32-unknown-unknown",
+    "all_features": true,
+    "provenance": "historical filtered-before metadata read now, not a new resolution/compile",
+    "source": "<PRIOR_DIAGNOSTIC>/filtered-before-wasm32-unknown-unknown-all.json",
+    "sha256": "ae15514d8b9556c4799517d4303c7601aa21584f47807b731bedabadba67b449",
+    "packages_in_filtered_metadata": 283,
+    "resolved_nodes": 283,
+    "tauri_version": "2.11.6",
+    "tauri_features": [
+      "common-controls-v6",
+      "compression",
+      "custom-protocol",
+      "dbus",
+      "default",
+      "dynamic-acl",
+      "tauri-runtime-wry",
+      "webkit2gtk",
+      "webview2-com",
+      "wry",
+      "x11"
+    ],
+    "plugins": [],
+    "platform_packages": {
+      "tauri-runtime": "2.11.3",
+      "tauri-runtime-wry": "2.11.4",
+      "tauri-utils": "2.9.3",
+      "wry": "0.55.1"
+    }
+  }
+]
