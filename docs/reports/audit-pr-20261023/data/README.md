@@ -1,0 +1,10 @@
+# Données brutes de l'audit / Raw audit data
+
+> Édition publique impersonnelle du 27 octobre 2026. Le relevé historique du 23 octobre est conservé ; cette édition ne constitue pas l’original à l’octet. Voir la [notice de confidentialité et d’intégrité](../NOTICE_CONFIDENTIALITE_INTEGRITE_20261027.md).
+> Impersonal public edition dated October 27, 2026. The historical October 23 record is retained; this edition is not the byte-exact original. See the [privacy and integrity notice](../NOTICE_CONFIDENTIALITE_INTEGRITE_20261027.md).
+
+
+FR : l’archive originale `audit-data-20261023.tar.gz` est conservée à l’octet (1 995 059 octets ; SHA-256 `84c00d03b9b53990d26abc73c999288ba704d5996a59ed74f9d37f9e3386375a`). Elle contient 118 fichiers de capture du 23 octobre 2026. **`files-153.json` est un JSON invalide contenant aussi une erreur du proxy** ; il ne doit pas être traité comme une liste REST valide. Les pages distinctes `f153-1.json`, `f153-2.json`, `f153-3.json` sont valides : 100 + 100 + 76 identifiants de fichiers, vérifiés contre #153 au SHA `0ebc167c8febf1b61752d1114f8135a59400c5f1`. Voir la [notice](../NOTICE_CONFIDENTIALITE_INTEGRITE_20261027.md) et le [manifeste de correction](../MANIFESTE_CORRECTION_20261027.json). Le caractère public des sources ne constitue pas, à lui seul, une preuve d’absence de données sensibles.
+EN: the original archive is preserved byte for byte with the size and SHA-256 above. It contains 118 capture files dated October 23, 2026. **`files-153.json` is invalid JSON and also contains a proxy error**; do not treat it as a valid REST list. The three separate `f153-*.json` pages are valid and contain 100 + 100 + 76 file identities checked against the pinned #153 commit. See the [correction notice](../NOTICE_CONFIDENTIALITE_INTEGRITE_20261027.md) and [manifest](../MANIFESTE_CORRECTION_20261027.json). Public availability alone does not prove that captured data contains no sensitive information.
+
+Extraction / extract : `mkdir d && tar xzf audit-data-20261023.tar.gz -C d`

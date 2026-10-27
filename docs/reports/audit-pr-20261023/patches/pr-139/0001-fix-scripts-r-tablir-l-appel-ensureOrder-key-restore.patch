@@ -1,0 +1,38 @@
+From 18686500d4aecd68aa2ae4773fc29327dabda8b9 Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Fri, 23 Oct 2026 07:35:06 +0200
+Subject: [PATCH 1/2] =?UTF-8?q?fix(scripts):=20r=C3=A9tablir=20l'appel=20e?=
+ =?UTF-8?q?nsureOrder(key)=20/=20restore=20ensureOrder(key)=20call?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+FR : ensureOrder est définie avec un seul paramètre (key). L'appel à deux
+arguments (order, key) passait le tableau 'order' comme clé et l'y insérait.
+Réf. : correctif automatique de la PR #139.
+
+EN: ensureOrder is defined with a single parameter (key). The two-argument
+call (order, key) passed the 'order' array as the key and pushed it into itself.
+Ref: autofix from PR #139.
+
+Co-Authored-By: Claude Sonnet 5.5 <noreply@anthropic.com>
+---
+ Scripts/fix-package-lock-merge.mjs | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Scripts/fix-package-lock-merge.mjs b/Scripts/fix-package-lock-merge.mjs
+index cb818ba..b2194be 100644
+--- a/Scripts/fix-package-lock-merge.mjs
++++ b/Scripts/fix-package-lock-merge.mjs
+@@ -290,7 +290,7 @@ function upsert(map, order, key, obj, meta) {
+   }
+   if (!map.has(key)) {
+     map.set(key, structuredClone(obj));
+-    ensureOrder(order, key);
++    ensureOrder(key);
+     report.merges.push({ key, action: 'insert', version: obj.version, ...meta });
+     return;
+   }
+-- 
+2.43.0
+
