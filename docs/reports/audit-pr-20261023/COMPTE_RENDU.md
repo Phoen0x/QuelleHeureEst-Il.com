@@ -1,5 +1,8 @@
 # Compte rendu — audit des PR ouvertes / Report — audit of open PRs
 
+> Édition publique impersonnelle du 27 octobre 2026. Le relevé historique du 23 octobre est conservé ; cette édition ne constitue pas l’original à l’octet. Voir la [notice de confidentialité et d’intégrité](NOTICE_CONFIDENTIALITE_INTEGRITE_20261027.md).
+
+
 *Vendredi 23 octobre 2026 · FR d'abord, EN en fin de document / French first, English at the end.*
 *Rien n'a été poussé sur les branches des PR auditées, commenté, fermé ou fusionné. Les correctifs sont livrés sous forme de patchs (`patches/`).*
 
@@ -49,16 +52,16 @@ PR concernées : #138, #144, #145, #146, #148, #149, #150, #151, #152, #155, #15
 | `Analysis` | `sonarcloud.yml` | `projectKey`/`organization` vides, `SONAR_TOKEN` probablement absent |
 | `build` | `rust.yml` | non déterminée sans les logs |
 
-#153 corrige tout cela (retire `java-kotlin`, APIsec manuel, Sonar/Semgrep conditionnels). **Décision de Sasha : « les scans ne se lancent que quand ils sont pertinents ».**
+#153 contient les modalités CI examinées au relevé historique. Principe technique rapporté : réserver les scans aux sources et contextes pertinents ; aucune modification de CI autorisée par la présente édition.
 
 ## 5. Fiche par groupe de PR
 
 | Groupe | PR | +/− | Verdict |
 |---|---|---|---|
 | Lockfiles bots | 19 PR §3 | −1 200 à −3 000 | Légitime, redondant. Branche de resynchronisation préparée (C5). #149–152 gelées, non fermées |
-| Cargo bumps | #164 chrono-tz 0.8→0.10, #165 reqwest 0.11→0.13, #166 rusqlite 0.29→0.40 | +1/−1 | **Rien pour le moment (décision de Sasha).** Trois sauts majeurs sans changement de code, pas de `cargo check` |
+| Cargo bumps | #164 chrono-tz 0.8→0.10, #165 reqwest 0.11→0.13, #166 rusqlite 0.29→0.40 | +1/−1 | Intervention différée au relevé historique. Trois sauts majeurs sans changement de code ; aucun `cargo check` rapporté pour ces propositions. |
 | Actions | #185 `checkout` v6→v7 | +14/−14 | OK sous réserve de CI ; la v7.0.0 existe |
-| Autofix IA | #139, #140, #141 | +14/−5, +14/−11, +23/−6 | #139, #141 : patchs C1–C3. **#140 : rien pour le moment (décision de Sasha)** |
+| Autofix IA | #139, #140, #141 | +14/−5, +14/−11, +23/−6 | #139/#141 : patchs C1–C3 préparés ; #140 différée sans patch. |
 | Chaîne Rust/Tauri | #176 → #177, #178, #179 | +33, +334, +452, +4 713 | OK dans l'esprit. ⚠ #177–179 ciblent `fix/rust-tauri2-shell-feature`, pas `main` |
 | Grosses PR | #153 (+116 172/−360) · #183 (+45 981/−81) | | 0 fichier supprimé. #153 : un seul conflit avec `main` (`AGENTS.md`), résolu localement (C6). #183 ajoute `Cargo.lock` (5 270 lignes) |
 | Docs / audit | #162, #170, #171, #172, #186, #187 | purs ajouts | OK, ne rien toucher. Le `package-lock.json` de #170 sous `docs/audits/` est une preuve d'audit |
@@ -67,7 +70,7 @@ PR concernées : #138, #144, #145, #146, #148, #149, #150, #151, #152, #155, #15
 
 ## 6. Commits préparés (non poussés sur les PR) — `patches/`
 
-Tous : message bilingue FR puis EN, trailer `Co-Authored-By` seul (choix de Sasha).
+Messages préparés français puis anglais, trailer `Co-Authored-By` de service seulement ; aucun lien de session nécessaire à la preuve.
 
 | # | PR | Contenu | Vérification faite |
 |---|---|---|---|
@@ -83,7 +86,7 @@ Tous : message bilingue FR puis EN, trailer `Co-Authored-By` seul (choix de Sash
 
 **Ordre de fusion suggéré** (à valider) : ① #153 (+ C6) → ② #176 → #177 → #178 → #179, puis #183 → ③ branche C5 (les autres PR de lockfile refermées par toi) → ④ #164–166 après `cargo check`.
 
-## 7. Décisions de Sasha et points ouverts
+## 7. Décisions techniques rapportées et points ouverts
 
 Voir `JOURNAL_DECISIONS.md` pour le détail. Ouvert : version de pnpm (v6/v9), cohabitation npm/pnpm/yarn/bun avec `only-allow pnpm`, `postcss ^8.5.14` vs `^8.5.25`, `esbuild`/`rollup` et scripts alternatifs (voir `VARIANTES.md`).
 

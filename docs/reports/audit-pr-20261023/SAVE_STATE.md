@@ -1,7 +1,10 @@
 # État complet de notre travail / Full save state
 
-*Instantané du vendredi 23 octobre 2026, ~11h40 (Europe/Paris). FR d'abord, EN en fin de document. Ce fichier remplace tout besoin de relire la conversation : il dit où on en est, ce qui existe, où, et comment reprendre.*
-*Snapshot of Friday 23 October 2026, ~11:40 (Europe/Paris). French first, English at the end. This file removes the need to re-read the conversation: it says where we are, what exists and where, and how to resume.*
+> Édition publique impersonnelle du 27 octobre 2026. Le relevé historique du 23 octobre est conservé ; cette édition ne constitue pas l’original à l’octet. Voir la [notice de confidentialité et d’intégrité](NOTICE_CONFIDENTIALITE_INTEGRITE_20261027.md).
+
+
+*Photographie technique du 23 octobre 2026, vers 11h40 Europe/Paris. Cette édition impersonnelle du 27 octobre 2026 conserve les décisions et preuves accessibles ; elle ne constitue ni une transcription ni une sauvegarde exhaustive des conversations ou mémoires externes.*
+*Technical snapshot of October 23, 2026, around 11:40 Europe/Paris. This impersonal edition dated October 27, 2026 preserves accessible decisions and evidence; it is neither a transcript nor a comprehensive archive of conversations or external memories.*
 
 Fichiers frères / sibling files : `COMPTE_RENDU.md` (analyse), `JOURNAL_DECISIONS.md` (décisions), `VARIANTES.md` (variantes package.json/lockfiles), `INVENTAIRE_PR.md` (38 PR), `PROMPT_AUDIT_PR.md` (prompt initial), `patches/`.
 
@@ -18,11 +21,11 @@ Fichiers frères / sibling files : `COMPTE_RENDU.md` (analyse), `JOURNAL_DECISIO
 
 ## 2. Règles de travail à respecter (issues de ton `AGENTS.md` et de tes consignes)
 
-1. **Ne rien supprimer.** « Je préfère un code gardé ou mis en commentaire plutôt qu'un bout de code supprimé. » Règle « code fantôme » de `AGENTS.md` : ne jamais supprimer/réécrire/réactiver commentaires, variantes de config, scripts Windows (`Scripts/`), rapports historiques, variantes de lockfiles. En cas de doute : signaler et demander.
+1. **Conservation :** préserver les variantes, commentaires utiles, scripts, archives et représentations de verrous. Aucune suppression, réécriture ou réactivation automatique ; signaler les incertitudes et demander une décision selon `AGENTS.md`.
 2. **Commentaires : français d'abord, anglais ensuite.** Garder les commentaires utiles.
 3. **Programmes multilingues**, français par défaut ; projets prévus pour GitHub (public ou privé).
 4. **Ne pas fusionner automatiquement les PR de sécurité.** Tester avant fusion ; signaler les jobs ignorés ou non bloquants.
-5. **Précision avant action** : « attention à ne pas faire n'importe quoi et bien faire exactement ce que je veux ». Chaque affirmation doit s'appuyer sur un diff, un check ou un fichier lu ; sinon le dire.
+5. **Précision avant action :** toute affirmation doit être liée à un diff, un contrôle ou une source examinée ; indiquer les limites au lieu d’en déduire une validation.
 6. **Recherche web à jour** plutôt que la mémoire d'entraînement (avis de sécurité, versions).
 7. **Attribution des commits** : trailer `Co-Authored-By: Claude Sonnet 5.5 <noreply@anthropic.com>` seul, sans lien de session.
 
@@ -33,9 +36,9 @@ Fichiers frères / sibling files : `COMPTE_RENDU.md` (analyse), `JOURNAL_DECISIO
 | Lecture du repo, des PR, diffs, check-runs, annotations | OK (API REST via `gh api`, clone local) |
 | `gh pr list` / GraphQL | **Bloqué** (utiliser REST) |
 | Push | **OK** depuis l'installation de la GitHub App Claude (testé à blanc, `permissions.push = true`) ; utilisé **uniquement** pour la branche `docs/audit-pr-20261023` |
-| PAT de Sasha | **Non disponible** : `GH_TOKEN` du shell est invalide ; l'accès passe par le dépôt attaché à la session |
+| Authentification héritée | Rapportée non utilisable au relevé du 23 octobre ; accès effectif fourni par l’environnement attaché. Aucune valeur de jeton n’est reproduite. |
 | Alertes code scanning / Dependabot (API) | **403** (pas d'option de permission trouvée) ; GitHub signale 51 vulnérabilités sur `main` (37 élevées, 10 modérées, 4 faibles) : onglet Security |
-| Navigateur, contrôle de l'ordinateur, tâches planifiées | Indisponibles (plan gratuit) |
+| Navigateur, contrôle de l’ordinateur, tâches planifiées | Non disponibles dans l’environnement audité au relevé ; aucun détail d’abonnement nécessaire à la preuve. |
 | Connecteur GitHub dédié | Non trouvé dans le catalogue ; la GitHub App suffit |
 | Environnement d'exécution | Linux, Node 22.22.0, npm 10.9.4, pnpm 8.15.9 via `npx`, pas de PowerShell, pas de `cargo` testé |
 
@@ -43,13 +46,13 @@ Fichiers frères / sibling files : `COMPTE_RENDU.md` (analyse), `JOURNAL_DECISIO
 
 1. **Demande** : accès complet ? analyse du repo, prompt auto-adressé pour auditer les PR. → accès vérifié, repo cloné (shallow), prompt livré (`PROMPT_AUDIT_PR.md`).
 2. **Installation** de la GitHub App Claude (liens donnés) ; vérification : push autorisé, code scanning 403.
-3. **Audit** (« go ») : collecte REST de 38 PR (méta, fichiers, check-runs) ; analyse des lockfiles par comparaison d'ensembles de paquets ; lecture des diffs autofix ; recherches web ; compte rendu.
+3. **Audit :** collecte REST des 38 PR et de leurs fichiers/checks ; analyse des verrous et diffs ; recherches externes ; production du compte rendu. Les limites de la capture brute sont à lire dans la notice d’intégrité.
 4. **Erreurs détectées et corrigées** : voir §8.
-5. **Questions à choix** (≈12) → décisions (§6).
+5. **Arbitrages :** décisions techniques et questions encore ouvertes consignées au §6.
 6. **Préparation des patchs** C1–C3, branche C5 validée, essai de fusion C6.
 7. **PR #188** ouverte en brouillon ; commentaire d'explication des checks rouges posté.
-8. **Notifications** reçues après ouverture : abonnement automatique à #188 ; commentaire du bot Bolt (lien StackBlitz, sans action) ; 5 échecs de checks hérités de `main` (§5.4).
-9. **Dernière consigne** : arrêter les questions, consigner tout (ce fichier).
+8. **Après ouverture :** présence de commentaires publics et de checks en échec rapportée ; aucun détail d’abonnement ou de notification n’est nécessaire à la preuve.
+9. **Relais :** état technique et questions ouvertes consignés dans ce fichier.
 
 ## 5. Constats techniques
 
@@ -75,12 +78,12 @@ Fichiers frères / sibling files : `COMPTE_RENDU.md` (analyse), `JOURNAL_DECISIO
 ### 5.5 Variantes
 Voir `VARIANTES.md`. Sur 21 dépendances, 3 diffèrent entre variantes (`esbuild`, `rollup`, `postcss`) ; scripts alternatifs `check:dependencies`, `test:security`, `test`. `package-lock.main.json` est un **JSON invalide** (ligne 1503) ; `package-lock.main.fixed.json` et `package-lock.fix-report.json` sont les sorties par défaut de `Scripts/fix-package-lock-merge.mjs`.
 
-## 6. Décisions de Sasha
+## 6. Décisions techniques rapportées au 23 octobre 2026
 
 | Sujet | Décision |
 |---|---|
 | CI | Les scans ne se lancent que quand ils sont pertinents ; `java-kotlin` retiré (pas de PR de code poussée) |
-| Format pnpm-lock | « Je ne sais pas » : #149–152 gelées, C5 garde le format 6.0 |
+| Format pnpm-lock | Format non arbitré : #149–152 restent en attente, C5 conserve le format 6.0 ; version de pnpm à relever séparément. |
 | Lockfiles et variantes | Tout garder, rien supprimer ; variantes à refusionner plus tard **avec des questions** |
 | PR pivot lockfile | Branche neuve générée par Claude (C5), aucun bot ne l'écrase |
 | esbuild / rollup | Ne pas ajouter, documenter |
@@ -91,8 +94,8 @@ Voir `VARIANTES.md`. Sur 21 dépendances, 3 diffèrent entre variantes (`esbuild
 | PR documentaire | `docs/reports/audit-pr-20261023/`, **document neuf**, brouillon |
 | Attribution | `Co-Authored-By` seul |
 | Commentaire sur #188 | Oui, expliquer les checks rouges (fait) |
-| Questions | **Stop** : consigner tout (ce fichier) |
-| Outils utilisés | ChatGPT, Codex, Claude, Bolt, Cursor, Copilot ; besoin présumé de npm, pnpm, yarn, bun (« jsp jcrois ») |
+| Méthode de relais | Consigner l’état et les questions ouvertes ; aucune nouvelle décision technique rapportée. |
+| Gestionnaires de paquets | Besoin multi-gestionnaires à confirmer ; aucun nouveau gestionnaire ou verrou autorisé implicitement. |
 
 ## 7. Où se trouve chaque chose
 
@@ -104,7 +107,7 @@ Voir `VARIANTES.md`. Sur 21 dépendances, 3 diffèrent entre variantes (`esbuild
 | Recette C6 | `patches/pr-153-merge-main/MERGE.md` (dans #188) | Durable |
 | Branches locales `local/pr-139-fixes` (1868650, f0dc245), `local/pr-141-fixes` (e8701c7), `local/lock-resync-20261023` (b9dc962), `local/pr-153-merge-main` (75ee090) | Sandbox de Claude uniquement | Perdues à la fin de la session, **mais reconstruisibles à l'identique** : C1–C3 et C5 par `git am` des patchs (réappliqués à froid avec succès), C6 par la recette de `MERGE.md`. Non poussées comme branches, par choix (pas de branches ni de CI supplémentaires sur le dépôt public) |
 | Données brutes de l'audit (JSON des 38 PR, fichiers, checks) | PR #188, `data/audit-data-20261023.tar.gz` (+ `data/README.md`) | **Durable** (ajouté après coup) |
-| Mémoire de Claude | Fichier `quelleheureest-il` (décisions de Sasha + pointeur vers #188) | Durable tant que la mémoire est activée |
+| Mémoire externe de l’outil | Hors du jeu de preuves versionné | Contenu et durabilité non attestés par Git ; ne remplace pas les fichiers de cette archive. |
 
 ## 8. Incidents et corrections (par honnêteté)
 
