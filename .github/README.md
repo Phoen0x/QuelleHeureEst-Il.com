@@ -317,3 +317,23 @@ Pour toute question, suggestion, ou autre, ouvrez une issue sur ce dépôt.
 5. iOS, Wearable (WearOS, WatchOS), TV (Android TV, Apple TV, Amazon TV), Self-Host (Docker, VM, Proxmox, Qubes OS).
 
 **Toujours** : Rust d'abord, local d'abord, offline d'abord, sécurité d'abord.
+
+---
+
+## 🗺️ Feuille de route et suivi des tâches — français
+
+Pour ne pas confondre présentation du produit, tâches futures et problèmes déjà rencontrés :
+
+- **Public / utilisateurs :** [feuille de route du projet](../docs/ROADMAP.md), priorités et fonctionnalités non encore validées.
+- **Développeurs / agents IA :** [backlog technique partagé](../docs/TODO_TECHNIQUE.md), tâches identifiées, liens GitHub et critères de validation.
+- **Incidents / solutions / archives :** [journal et relais de la PR #186](https://github.com/Phoen0x/QuelleHeureEst-Il.com/pull/186), non fusionnée au relevé du 22 octobre 2026.
+
+Ces liens ne modifient ni la licence actuelle [LICENSE](../LICENSE), ni les droits de fusion, ni les obligations de validation. Le backlog fait foi pour les tâches en attente ; le journal fait foi pour les incidents documentés.
+
+## 🗺️ Roadmap and task tracking — English
+
+- **Public:** [project roadmap](../docs/ROADMAP.md) with goals and unverified milestones.
+- **Developers / AI agents:** [shared technical backlog](../docs/TODO_TECHNIQUE.md) with traceable tasks and acceptance criteria.
+- **Incidents and evidence:** [draft PR #186 handoff and incident log](https://github.com/Phoen0x/QuelleHeureEst-Il.com/pull/186), not yet merged as of October 22, 2026.
+
+These links do not alter the [LICENSE](../LICENSE) or authorize merges, deployments, or security-policy changes.

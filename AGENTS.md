@@ -64,3 +64,11 @@ Avant de transférer des informations d'une conversation, d'une PR ou d'une appl
 ## Agent knowledge and privacy
 
 Before moving information from a conversation, PR or connected app into this **public** repository, read the [knowledge and privacy policy](docs/ai/KNOWLEDGE_PRIVACY_POLICY.md). Preserve useful impersonal project rules, not identity, health, private devices, personal exchanges or secrets. Audit each conversation separately; never claim a complete shared memory without evidence.
+
+## Démarrage multi-dépôts — ChatGPT et Codex uniquement
+
+À chaque reprise de mission Phoen0x, **ChatGPT et Codex seulement** suivent le [protocole léger](docs/ai/STARTUP_CHATGPT_CODEX_PHOEN0X.md) : consulter les **pages de projet, README et licences de tous les dépôts accessibles** avant l'analyse ciblée. Éviter de recharger les mêmes documents inchangés ; signaler ce qui n'a pas été lu. Ne pas appliquer cette consigne à Claude ou Bolt.
+
+## Multi-repository startup — ChatGPT and Codex only
+
+At the start or resumption of Phoen0x work, **ChatGPT and Codex only** follow the [lightweight protocol](docs/ai/STARTUP_CHATGPT_CODEX_PHOEN0X.md): review project pages, READMEs and licenses for every accessible repository, then investigate only relevant sources. Reuse unchanged SHA-verified context; report missing reads. This instruction does not apply to Claude or Bolt.
