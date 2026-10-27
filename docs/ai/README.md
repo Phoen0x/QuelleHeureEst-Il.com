@@ -114,3 +114,19 @@ Les rapports originaux sont séparés des nouvelles synthèses. Aucun ancien dia
 - **[Study B: October 27 minimal ACL contract](QUALIFICATION_QH011_CONTRAT_ACL_MINIMAL_2026-10-27.md)** — [static evidence and provenance](../reports/qh011-acl-contract-20261027/NOTICE.md). Conditional GO to scope an application build/startup guard without a fork. AST analysis of 19 files, six invoke calls in an unimported wrapper; no new Rust tests, builds, audits or native trials. Future reviewed static local permissions remain possible; empty configuration/file capability lists alone do not attest the final Context.
 
 Original reports remain separate from archival syntheses. Previous diagnostics are unchanged; no technical campaign was replayed for archival. QH-011/T-003 remain open and the earlier Unicode NO-GO stands. Next step: independent ChatGPT V4 review of #186, without automatic implementation.
+
+## Reprise multi-dépôts — ChatGPT et Codex uniquement
+
+[Protocole léger Phoen0x](STARTUP_CHATGPT_CODEX_PHOEN0X.md) : à l'initialisation, inventorier tous les dépôts accessibles, lire leurs pages de présentation et leurs README, relever les licences, puis approfondir seulement les dépôts utiles. Synthèse courte par SHA ; **aucune consigne nouvelle pour Claude ou Bolt**. Une PR non fusionnée n'est pas automatiquement lue depuis `main`.
+
+## Multi-repository startup — ChatGPT and Codex only
+
+The [lightweight Phoen0x protocol](STARTUP_CHATGPT_CODEX_PHOEN0X.md) requires initial project-page and README review across accessible repositories, license identification and targeted follow-up. Keep SHA-linked summaries small. It does **not** apply to Claude or Bolt; an unmerged PR is not automatically loaded from `main`.
+
+## Réconciliation documentaire après #187 — 27 octobre 2026
+
+La PR #187 a été fusionnée dans `main` au commit `ae600a6f0971f5e2d40f5d95ee5b447778d2d439`. Sa documentation et le protocole de reprise sont conservés avec les apports de #186. Les rapports, SHA, verdicts et entrées du journal restent des preuves datées ; cette réconciliation ne les actualise pas rétroactivement et ne valide aucune migration. #186 demeure soumise à revue indépendante avant une éventuelle fusion autorisée séparément.
+
+## Documentary reconciliation after #187 — October 27, 2026
+
+PR #187 merged into `main` at `ae600a6f0971f5e2d40f5d95ee5b447778d2d439`. Its documentation and startup protocol are preserved alongside #186's additions. Reports, SHAs, verdicts and journal entries remain dated evidence; reconciliation does not retroactively update them or validate any migration. PR #186 still requires independent review before any separately authorized merge.
