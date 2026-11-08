@@ -10,7 +10,10 @@ publish = false
 tauri-build = { version = "2.0", features = [] }
 
 [dependencies]
-tauri = { version = "2.0", features = ["shell-open"] }
+# FR// Variante historique Tauri 1 conservée ; shell-open n'existe pas dans Tauri 2.
+# EN// Preserve the historical Tauri 1 variant; shell-open does not exist in Tauri 2.
+# tauri = { version = "2.0", features = ["shell-open"] }
+tauri = { version = "2.0", features = [] }
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 tokio = { version = "1", features = ["full"] }
