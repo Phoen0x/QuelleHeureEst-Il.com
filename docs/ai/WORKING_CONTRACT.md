@@ -125,3 +125,10 @@ Le mini-bilan final comporte :
 5. Cette étape ne remplace ni l'autorisation de l'utilisatrice, ni la revue indépendante, ni les contrôles de sécurité et de conservation. Aucun commit, push, fusion ou assouplissement n'en découle automatiquement.
 
 **Retour d'expérience QH-011 (26 octobre 2026) :** les travaux expérimentaux UNIC/URLPattern/ACL ont précédé la comparaison des solutions publiques. Ne pas reproduire cet ordre : effectuer l'état de l'art dès le cadrage, tout en conservant les preuves et les conclusions historiques du projet.
+
+## 15. Registre canonique des décisions et invariants
+
+- À chaque reprise, et **avant** toute recommandation concernant une PR, une fusion, la CI, les règles GitHub, un contournement, les bots ou les dépendances, lire le [registre canonique](REGISTRE_DECISIONS_ET_INVARIANTS.md) après `AGENTS.md`, le présent contrat et l'index. Relire les sources qu'il référence, notamment les SHA, l'état des PR et la configuration GitHub courante.
+- Le registre est un **index de décisions, motifs, exceptions et preuves**, pas un nouveau système d'autorisation. Une possibilité de bypass ne vaut jamais permission de fusion ; une approbation de workflow ne remplace pas une revue indépendante ; un fait ancien ne vaut pas preuve actuelle.
+- Après chaque arbitrage durable, corriger ou compléter l'entrée concernée uniquement sur une branche **explicitement autorisée**, avec date, statut, liens et limites. Conserver les originaux historiques sans les réécrire. En cas de contradiction ou d'information inaccessible, documenter l'écart et solliciter la décision humaine nécessaire.
+- Si le registre demeure dans une PR non fusionnée, le signaler expressément : il n'est pas automatiquement disponible pour un agent qui démarre sur `main`. Cette référence **n'autorise ni fusion ni contournement**.
