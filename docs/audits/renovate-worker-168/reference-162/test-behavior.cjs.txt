@@ -1,0 +1,44 @@
+// FR : Tests isolés de code Renovate publié ; aucune API GitHub réelle.
+// EN: Isolated tests of published Renovate code; no real GitHub API calls.
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
+const pkg=process.env.RENOVATE_PACKAGE_ROOT||'/workspace/renovate-pause-npm-cache/_npx/f45526f69fea28f5/node_modules/renovate';
+const fixture=process.env.COHAB_FIXTURE_DIR||'/workspace/bot-cohabitation-20261015';
+const {createRequire}=require('node:module');const requirePkg=createRequire(pkg+'/package.json');
+const candidate=JSON.parse(fs.readFileSync(fixture+'/renovate.candidate.json','utf8'));
+function bodies(path){return fs.readFileSync(pkg+'/dist/'+path,'utf8').replace(/^import .*;\r?\n/gm,'').replace(/^export \{.*\};\r?\n/gm,'');}
+const noop=()=>{},logger={debug:noop,info:noop,trace:noop,warn:noop};
+const {DateTime,Settings}=requirePkg('luxon'),{Cron,CronPattern}=requirePkg('croner');
+const scheduleCtx={logger,DateTime,Cron,CronPattern,isArray:Array.isArray,fixShortHours:s=>s,later:requirePkg('@breejs/later'),cronstrue:requirePkg('cronstrue')};
+vm.createContext(scheduleCtx);vm.runInContext(bodies('workers/repository/update/branch/schedule.js'),scheduleCtx);
+assert(scheduleCtx.hasValidSchedule(candidate.schedule)[0]);assert(scheduleCtx.hasValidTimezone(candidate.timezone)[0]);
+const priorNow=Settings.now,cases=[];
+for(const day of ['2026-01-15','2026-07-15','2026-03-29','2026-10-25']){
+ for(const [time,expected] of [['17:59',false],['18:00',true],['22:59',true],['23:00',false]]){
+  Settings.now=priorNow;const instant=DateTime.fromISO(day+'T'+time+':00',{zone:'Europe/Paris'}).toMillis();Settings.now=()=>instant;
+  const actual=scheduleCtx.isScheduledNow(candidate);assert.equal(actual,expected);cases.push({local:day+' '+time,utc:new Date(instant).toISOString(),expected,actual});
+ }
+}
+Settings.now=priorNow;
+const prs=JSON.parse(fs.readFileSync(fixture+'/legacy-prs.json','utf8'));
+async function prune(pruneStaleBranches){
+ const events=[];const ctx={logger,GlobalConfig:{get:()=>false},regEx:s=>new RegExp(s),uniqueStrings:(s,i,a)=>a.indexOf(s)===i,
+  getBranchList:()=>prs.map(p=>p.branch),setUserRepoConfig:noop,isMultiBaseBranch:()=>false,getReconfigureBranchName:()=> 'renovate/reconfigure',
+  isNonEmptyStringAndNotWhitespace:s=>typeof s==='string'&&s.trim().length>0,
+  platform:{findPr:async({branchName})=>({...prs.find(p=>p.branch===branchName),title:'fixture'}),updatePr:async p=>events.push(['updatePr',p.number,p.state])},
+  scm:{isBranchModified:async()=>false,deleteBranch:async b=>events.push(['deleteBranch',b])},ensureComment:async()=>events.push(['comment'])};
+ vm.createContext(ctx);vm.runInContext(bodies('workers/repository/finalize/prune.js'),ctx);
+ await ctx.pruneStaleBranches({...candidate,defaultBranch:'main',branchPrefix:'renovate/',pruneStaleBranches},[]);
+ return events;
+}
+(async()=>{
+ const defaultCleanup=await prune(true),protectedCleanup=await prune(false);
+ assert.equal(defaultCleanup.filter(e=>e[0]==='updatePr'&&e[2]==='closed').length,8);
+ assert.equal(defaultCleanup.filter(e=>e[0]==='deleteBranch').length,8);
+ assert.deepEqual(protectedCleanup,[]);
+ assert.equal(candidate.enabled,true);assert.equal(candidate.automerge,false);assert.equal(candidate.platformAutomerge,false);
+ assert.deepEqual(candidate.enabledManagers,['cargo']);assert.equal(candidate.updateNotScheduled,false);assert.equal(candidate.rebaseWhen,'never');
+ assert.equal(candidate.lockFileMaintenance.enabled,false);assert.equal(candidate.vulnerabilityAlerts.enabled,false);assert.equal(candidate.osvVulnerabilityAlerts,false);
+ const out={renovate_version:requirePkg('./package.json').version,schedule:cases,default_cleanup:defaultCleanup,protected_cleanup:protectedCleanup,
+  assertions:'PASS',limits:['Pruning function isolated with platform/git mocks, not the full worker or installed app','No proof that existing Cargo PR bodies or branches remain unmodified by other update paths','Security producer handoff is not activated; GitHub administrative settings and live Dependabot service are not validated']};
+ fs.writeFileSync(fixture+'/behavior-results.json',JSON.stringify(out,null,2)+'\n');console.log(JSON.stringify(out,null,2));
+})().catch(e=>{Settings.now=priorNow;console.error(e);process.exitCode=1;});

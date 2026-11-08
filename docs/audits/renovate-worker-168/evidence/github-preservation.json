@@ -1,0 +1,99 @@
+{
+  "checkedAt": "2026-10-16T19:08:30.379Z",
+  "prs": [
+    {
+      "n": 155,
+      "identical": true,
+      "state": "open",
+      "sha": "abbfbb53c703b44779016fa63531d8693b1673f7"
+    },
+    {
+      "n": 156,
+      "identical": true,
+      "state": "open",
+      "sha": "f1c3ac3057d4456d7115e7720d3b6c3f0e6dcd20"
+    },
+    {
+      "n": 158,
+      "identical": true,
+      "state": "open",
+      "sha": "a4fcede4cc0da3f81cdc0bcd3b7b883012cb8da3"
+    },
+    {
+      "n": 159,
+      "identical": true,
+      "state": "open",
+      "sha": "d6cc1d2560f80a2dc57c38170ba63c8c6a9e8b39"
+    },
+    {
+      "n": 160,
+      "identical": true,
+      "state": "open",
+      "sha": "d02e76399a078d514aadd576e58ab48c1cda8b95"
+    },
+    {
+      "n": 161,
+      "identical": true,
+      "state": "open",
+      "sha": "21a01d82de23e8a314546d77222fef459a1a313c"
+    },
+    {
+      "n": 163,
+      "identical": true,
+      "state": "open",
+      "sha": "ad838ab5ea5bdc0d807459e1b65729c50237ebe2"
+    },
+    {
+      "n": 164,
+      "identical": true,
+      "state": "open",
+      "sha": "fa6635d2f912efb3637ebe20bebef99ce272ac7c"
+    },
+    {
+      "n": 165,
+      "identical": true,
+      "state": "open",
+      "sha": "20de7e9641c5176710b19759b0fc9653d43eb014"
+    },
+    {
+      "n": 166,
+      "identical": true,
+      "state": "open",
+      "sha": "c03d30824e89d71901677c082f09c5d85ccebcb0"
+    }
+  ],
+  "branches": [
+    {
+      "name": "chore/ci-phase1-reliability-20261013",
+      "commit": {
+        "sha": "0ebc167c8febf1b61752d1114f8135a59400c5f1",
+        "url": "https://api.github.com/repos/Phoen0x/QuelleHeureEst-Il.com/commits/0ebc167c8febf1b61752d1114f8135a59400c5f1"
+      },
+      "protected": false
+    },
+    {
+      "name": "chore/pause-renovate-preservation-20261015",
+      "commit": {
+        "sha": "4d4efbb05793bf4bfc0eee8a27eb026cb8f1dd9a",
+        "url": "https://api.github.com/repos/Phoen0x/QuelleHeureEst-Il.com/commits/4d4efbb05793bf4bfc0eee8a27eb026cb8f1dd9a"
+      },
+      "protected": false
+    },
+    {
+      "name": "docs/ai-relay-working-contract-20261016",
+      "commit": {
+        "sha": "adf9efda058f389a9acf99c70f2a096c91a3871a",
+        "url": "https://api.github.com/repos/Phoen0x/QuelleHeureEst-Il.com/commits/adf9efda058f389a9acf99c70f2a096c91a3871a"
+      },
+      "protected": false
+    },
+    {
+      "name": "main",
+      "commit": {
+        "sha": "235194a6fe825a6dac27012f07cbac2cc5d86794",
+        "url": "https://api.github.com/repos/Phoen0x/QuelleHeureEst-Il.com/commits/235194a6fe825a6dac27012f07cbac2cc5d86794"
+      },
+      "protected": true
+    }
+  ]
+}

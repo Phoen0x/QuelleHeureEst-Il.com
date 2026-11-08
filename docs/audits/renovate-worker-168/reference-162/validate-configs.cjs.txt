@@ -1,0 +1,17 @@
+// FR : Schémas et conservation en copie isolée. EN: Schemas and preservation in isolation.
+const fs=require('node:fs'),assert=require('node:assert/strict'),{createRequire}=require('node:module');
+const pkg=process.env.RENOVATE_PACKAGE_ROOT,fixture=process.env.COHAB_FIXTURE_DIR,req=createRequire(pkg+'/package.json');
+const Ajv=req('ajv'),yaml=req('js-yaml');
+const db=yaml.load(fs.readFileSync(fixture+'/dependabot.candidate.yml','utf8'));
+const schema=JSON.parse(fs.readFileSync(process.env.DEPENDABOT_SCHEMA_FILE,'utf8'));
+const ajv=new Ajv({allErrors:true,strict:false});const validate=ajv.compile(schema);
+assert(validate(db),JSON.stringify(validate.errors));
+const map=Object.fromEntries(db.updates.map(u=>[u['package-ecosystem'],u]));
+assert.deepEqual(Object.keys(map).sort(),['cargo','github-actions','npm']);
+assert.equal(map.cargo['open-pull-requests-limit'],0);
+assert.equal(map.npm['open-pull-requests-limit'],10);assert.equal(map['github-actions']['open-pull-requests-limit'],5);
+assert(db.updates.every(u=>u.schedule.timezone==='Europe/Paris'&&!u.ignore));
+assert.equal(map.npm.schedule.time,'07:00');assert.equal(map['github-actions'].schedule.time,'08:00');
+const r=JSON.parse(fs.readFileSync(fixture+'/renovate.candidate.json','utf8'));
+assert.equal(r.enabled,true);assert.deepEqual(r.enabledManagers,['cargo']);assert.equal(r.automerge,false);assert.equal(r.platformAutomerge,false);
+console.log(JSON.stringify({community_schemastore_validation:'PASS',responsibility_contract:'PASS',note:'Community schema is not the official GitHub hosted validator; official Ruby parser is checked separately'}));

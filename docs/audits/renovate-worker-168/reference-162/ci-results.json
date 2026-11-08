@@ -1,0 +1,27 @@
+{
+  "tested_sha": "befbab99990c787770b4ca0beb0f9093ee5904a0",
+  "run_id": 38823476702,
+  "job_id": 116725336880,
+  "conclusion": "success",
+  "run_url": "https://github.com/Phoen0x/QuelleHeureEst-Il.com/actions/runs/38823476702",
+  "job_url": "https://github.com/Phoen0x/QuelleHeureEst-Il.com/actions/runs/38823476702/job/116725336880",
+  "renovate": "44.155.7",
+  "ruby": "3.2.3",
+  "sorbet_runtime": "0.6.13566",
+  "sorbet_runtime_pinned": false,
+  "assertions": [
+    "Renovate strict validator PASS",
+    "16 scheduling cases PASS",
+    "Default isolated pruning: 8 mock closes and 8 mock branch deletes",
+    "Protected isolated pruning: zero platform writes",
+    "SchemaStore community schema and responsibility contract PASS",
+    "Official pinned Dependabot parser PASS",
+    "Candidate comparisons and tracked git diff clean"
+  ],
+  "limitations": [
+    "Isolated functions with mocked platform/SCM, not complete worker or installed app",
+    "Hosted Dependabot/GitHub administrative settings not verified",
+    "No project dependency installation or builds; no zero-duplicate cross-bot guarantee",
+    "RE2 native fallback warning remains visible"
+  ]
+}

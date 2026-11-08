@@ -1,0 +1,57 @@
+{
+  "commit": "4d4efbb05793bf4bfc0eee8a27eb026cb8f1dd9a",
+  "files": [
+    {
+      "name": "README.md",
+      "blob": "9fd186319015641efdd3ad953ae67c8b183a6c43"
+    },
+    {
+      "name": "behavior-results.json",
+      "blob": "ef2eccfeb4958d51bbecfa44efdd76d5d6728827"
+    },
+    {
+      "name": "ci-results.json",
+      "blob": "e91a7eff322b6a33398fb2c915d1fe994edf7d84"
+    },
+    {
+      "name": "dependabot.candidate.yml",
+      "blob": "59258a28e2a4cfc0123a2afd0bc8129e5fffdede"
+    },
+    {
+      "name": "evidence.json",
+      "blob": "1ae28effcc3013da71bb907dd7e309824490cd1b"
+    },
+    {
+      "name": "legacy-prs.json",
+      "blob": "16a1a9975eed69417237ccfbc5fa15347e441b29"
+    },
+    {
+      "name": "local-test-results.json",
+      "blob": "6231036f247df92f54ea2e7280ce3f6ec4a1632b"
+    },
+    {
+      "name": "pr-name-differences.json",
+      "blob": "fd687cfcc480e7a2f9e7d0b000508702c25ca881"
+    },
+    {
+      "name": "renovate-validator.log.txt",
+      "blob": "7a0ac13f0be38974c5529b18a1491ddab4f0f12b"
+    },
+    {
+      "name": "renovate.candidate.json",
+      "blob": "5e0dbf6f5daeb165c2cd04f0d79e100b93550ec6"
+    },
+    {
+      "name": "test-behavior.cjs.txt",
+      "blob": "10ae496240a98f79d27b97e64caea7036cf51fe3"
+    },
+    {
+      "name": "test-dependabot.rb.txt",
+      "blob": "b9be7d2a770bb8675b4a452c4c4c762563af87ea"
+    },
+    {
+      "name": "validate-configs.cjs.txt",
+      "blob": "7b87856ebac740a6225bdc6f3b5ba025a4cb2a1f"
+    }
+  ]
+}
