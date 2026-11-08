@@ -75,3 +75,14 @@
 **Prochaine étape conseillée au 8 novembre 2026 :** faire revoir indépendamment **cette PR documentaire de registre**, vérifier les liens/versions et obtenir une autorisation humaine distincte avant sa fusion sur `main`. Les décisions de fusion de #188/#190/#191 restent distinctes.
 
 **Limites de preuve :** inventaire ciblé des sources accessibles ; pas d'audit exhaustif de chaque conversation, dépôt, artifact, archive binaire, protection non visible par l'intégration ou état interne des services tiers. Aucun test applicatif, build, expérimentation de bypass ni essai d'activation Codex/Work réalisé par ce registre.
+
+## F. Mise à jour de classement — 8 novembre 2026 (après le relevé initial)
+
+**Changement de métadonnées de PR effectué avec autorisation explicite, sans nouveau commit sur leurs branches :**
+
+- [#162](https://github.com/Phoen0x/QuelleHeureEst-Il.com/pull/162), [#170](https://github.com/Phoen0x/QuelleHeureEst-Il.com/pull/170), [#178](https://github.com/Phoen0x/QuelleHeureEst-Il.com/pull/178) et [#179](https://github.com/Phoen0x/QuelleHeureEst-Il.com/pull/179) : **converties en brouillon** pour correspondre à leurs travaux non terminés ou à leurs descriptions mentionnant un brouillon. Aucune de leurs branches n'a été synchronisée ou fusionnée.
+- [#192](https://github.com/Phoen0x/QuelleHeureEst-Il.com/pull/192) : **passée en Ready for review** comme rapport documentaire achevé ; cela ne vaut **pas** autorisation de fusion ni validation automatique de ses liens externes.
+- [#188](https://github.com/Phoen0x/QuelleHeureEst-Il.com/pull/188) : branche **en retard sur `main`** mais sans conflit signalé ; ne pas créer un merge de synchronisation qui invaliderait les preuves au SHA contrôlé sans nécessité explicite.
+- Les autres PR gardent leur état, notamment [#190](https://github.com/Phoen0x/QuelleHeureEst-Il.com/pull/190) en brouillon et [#191](https://github.com/Phoen0x/QuelleHeureEst-Il.com/pull/191)/[#193](https://github.com/Phoen0x/QuelleHeureEst-Il.com/pull/193) ouvertes pour revue. **Aucune fusion et aucun bypass exécutés durant ce reclassement.**
+
+Les mentions plus haut (« #162 ouverte », « #192 en brouillon ») sont des **photographies prises avant ce reclassement** et restent conservées à dessein. Pour l'état courant, consulter l'API GitHub plutôt que ces observations datées.
