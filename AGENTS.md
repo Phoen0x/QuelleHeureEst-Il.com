@@ -2,6 +2,8 @@
 
 ## Français — prioritaire
 
+**Référence canonique à consulter dès la reprise :** [registre des décisions et invariants](docs/ai/REGISTRE_DECISIONS_ET_INVARIANTS.md), qui indexe les règles GitHub, leurs exceptions, les raisons d'être des PR et leurs preuves. Il complète les contrats existants sans modifier les autorisations, les protections ou l'historique. Vérifier l'état GitHub en direct avant toute décision.
+
 Ce dépôt développe **QuelleHeureEst-Il.com** : application native multi-plateforme, **Android en priorité**, basée sur **Rust/Tauri 2**, à architecture **offline-first**, respectueuse de la vie privée, avec **français par défaut** et langues sélectionnables. L'interface web n'est qu'une couche de présentation ; l'objectif est de déplacer la logique métier, les sources de données et le cache vers le backend Rust local.
 
 ### Règle impérative : conserver le code fantôme
@@ -24,6 +26,8 @@ Ce dépôt développe **QuelleHeureEst-Il.com** : application native multi-plate
 - Les scripts Windows, les variantes sauvegardées, les rapports historiques et les fichiers de configuration de référence ne doivent pas être nettoyés sans autorisation explicite.
 
 ## English — secondary
+
+**Canonical reference for every handoff:** [decision and invariant register](docs/ai/REGISTRE_DECISIONS_ET_INVARIANTS.md), indexing GitHub rules, exceptions, PR rationales and evidence. It supplements existing contracts without changing permissions, protections or history. Verify the current GitHub state before acting.
 
 This repository is for **QuelleHeureEst-Il.com**, an **Android-first**, privacy-focused, native, multi-platform application based on **Rust/Tauri 2**, designed to be **offline-first**, with **French as the default selectable language**. The web frontend is only a presentation layer; business logic and offline persistence are intended to live in the local Rust backend.
 

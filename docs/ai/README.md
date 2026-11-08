@@ -1,5 +1,9 @@
 # IA — relais et protocole de développement
 
+**Point d'entrée canonique — décisions et invariants :** [REGISTRE_DECISIONS_ET_INVARIANTS.md](REGISTRE_DECISIONS_ET_INVARIANTS.md). Consulter à chaque reprise avant toute recommandation sur PR, CI, règles GitHub, approbation, bypass ou bots, puis vérifier les sources et SHA courants. Le registre n'autorise aucune fusion ni assouplissement de protection. **Tant que sa PR reste ouverte, le registre n'est pas sur `main`.**
+
+**Canonical decision and invariant index:** [REGISTRE_DECISIONS_ET_INVARIANTS.md](REGISTRE_DECISIONS_ET_INVARIANTS.md). Read it when resuming work, then verify current evidence and GitHub state. It does not authorize merges, bypasses or weakened protections. **Until the PR is merged, this register is not available on `main`.**
+
 **Journal commun des IA :** [incidents, solutions, preuves et idées en attente](JOURNAL_DE_BORD_TECHNIQUE.md). Toute IA doit le consulter à la reprise, puis documenter les nouveaux incidents et les résolutions prouvées sur la branche autorisée, sans données privées ni écrasement d'historique. Cette nouvelle entrée documentaire est proposée par la PR #186 et n'est pas encore sur `main`.
 
 **Shared AI engineering log:** [incidents, fixes, evidence, and pending ideas](JOURNAL_DE_BORD_TECHNIQUE.md). Review it at handoff and record confirmed outcomes on the authorized branch, without personal data, history rewrites, or unauthorized edits. This journal is proposed by draft PR #186; it is not yet on `main`.
