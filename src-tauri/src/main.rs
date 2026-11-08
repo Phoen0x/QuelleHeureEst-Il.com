@@ -48,7 +48,10 @@ fn main() {
         .setup(|app| {
             #[cfg(debug_assertions)]
             {
-                let window = app.get_window("main").unwrap();
+                // FR// Appel Tauri 1 historique conserve hors compilation ; adaptation reprise de #153.
+                // EN// Historical Tauri 1 call retained outside compilation; adaptation reused from #153.
+                // let window = app.get_window("main").unwrap();
+                let window = app.get_webview_window("main").unwrap();
                 window.open_devtools();
             }
             Ok(())

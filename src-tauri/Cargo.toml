@@ -10,11 +10,21 @@ publish = false
 tauri-build = { version = "2.0", features = [] }
 
 [dependencies]
-tauri = { version = "2.0", features = ["shell-open"] }
+# FR// Variante historique Tauri 1 conservée ; shell-open n'existe pas dans Tauri 2.
+# EN// Preserve the historical Tauri 1 variant; shell-open does not exist in Tauri 2.
+# tauri = { version = "2.0", features = ["shell-open"] }
+# FR// Même version mineure que @tauri-apps/api 2.11 ; le CLI refuse les versions désalignées.
+# EN// Match @tauri-apps/api 2.11's minor release; the CLI rejects mismatched versions.
+tauri = { version = "~2.11.0", features = [] }
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 tokio = { version = "1", features = ["full"] }
-reqwest = { version = "0.11", features = ["json"] }
+# FR// Résolution HTTP/2 historique intégralement archivée ; h2 0.3 n'est plus actif.
+# EN// The full historical HTTP/2 resolution is archived; h2 0.3 is no longer active.
+# reqwest = { version = "0.11", features = ["json"] }
+# FR// Portage ciblé de #153 : TLS natif, JSON et HTTP/2 conservés avec Tauri 2.11.
+# EN// Targeted port from #153: preserve native TLS, JSON and HTTP/2 with Tauri 2.11.
+reqwest = { version = "=0.12.28", features = ["json"] }
 chrono = { version = "0.4", features = ["serde"] }
 chrono-tz = "0.8"
 rusqlite = { version = "0.29", features = ["bundled", "chrono"] }
@@ -30,3 +40,25 @@ custom-protocol = ["tauri/custom-protocol"]
 [profile.release]
 opt-level = "z"
 lto = true
+
+# FR// Le serveur de test h2 impose la version corrigée du transport partagé.
+# EN// The h2 test server pins the patched version of the shared transport.
+[dev-dependencies]
+h2 = "=0.4.20"
+http = "1"
+bytes = "1"
+
+# FR// Paquets historiques conservés sans activation dans les fonctionnalités par défaut.
+# EN// Retain historical packages without activation in the default features.
+[dependencies.httpdate]
+version = "=1.0.3"
+optional = true
+
+[dependencies.rustls-pemfile]
+version = "=1.0.4"
+optional = true
+
+# FR// Les régressions Linux utilisent exactement le GLib partagé par GTK/Tauri.
+# EN// Linux regressions use the exact GLib shared by GTK/Tauri.
+[target.'cfg(target_os = "linux")'.dev-dependencies]
+glib = "=0.18.5"

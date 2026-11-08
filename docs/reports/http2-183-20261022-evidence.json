@@ -1,0 +1,579 @@
+{
+  "scope": "HTTP/2 migration on existing PR183; local Linux validation, no merge",
+  "date": "2026-10-22",
+  "before_sha": "b880e9d0fefbb8662b7fdc46d3831a7c47684cf9",
+  "source_sha": "0ebc167c8febf1b61752d1114f8135a59400c5f1",
+  "historical_pr179_sha": "50399f2a74cf77f4216187628ec163495906e241",
+  "source_http_test_blob": "0056f9d27e1601ff9c027a619075dfd19d5298dc",
+  "modified_files": [
+    "Cargo.lock",
+    "src-tauri/Cargo.toml"
+  ],
+  "added_files": [
+    "src-tauri/tests/http_client.rs",
+    "Scripts/check-http2-183-preservation.py",
+    "docs/history/http2-183-20261022/Cargo.lock",
+    "docs/history/http2-183-20261022/src-tauri/Cargo.toml",
+    "docs/history/http2-183-20261022/PR183.before.md",
+    "docs/development/linux-environment-20261022.md",
+    "docs/development/debian13-packages-20261022.json",
+    "docs/reports/http2-183-20261022.md",
+    "docs/reports/http2-183-20261022-evidence.json"
+  ],
+  "environment": {
+    "os": "Debian 13.6 amd64",
+    "node": "24.19.0",
+    "pnpm": "8.15.9",
+    "rustc": "1.99.1",
+    "cargo": "1.99.1",
+    "cargo_audit": "0.22.2",
+    "gtk": "3.24.49",
+    "webkitgtk": "2.54.0"
+  },
+  "preservation": {
+    "status": "PASS",
+    "base": "b880e9d0fefbb8662b7fdc46d3831a7c47684cf9",
+    "original_files": 113,
+    "unchanged_original_files": 111,
+    "archived_modified_files": [
+      "Cargo.lock",
+      "src-tauri/Cargo.toml"
+    ],
+    "old_packages": 506,
+    "new_packages": 504,
+    "preserved_package_names": 442,
+    "missing_package_names": [],
+    "added_package_names": [
+      "hyper-rustls",
+      "ring",
+      "rustls",
+      "rustls-pki-types",
+      "rustls-webpki",
+      "subtle",
+      "tokio-rustls",
+      "untrusted",
+      "windows-registry",
+      "zeroize"
+    ],
+    "tauri_family_unchanged": true,
+    "h2_versions": [
+      "0.4.20"
+    ],
+    "application_reqwest": "0.12.28",
+    "reqwest_features": [
+      "__tls",
+      "charset",
+      "default",
+      "default-tls",
+      "h2",
+      "http2",
+      "json",
+      "system-proxy"
+    ]
+  },
+  "retired_active_identities_archived": [
+    [
+      "h2",
+      "0.3.27",
+      "registry+https://github.com/rust-lang/crates.io-index"
+    ],
+    [
+      "http",
+      "0.2.12",
+      "registry+https://github.com/rust-lang/crates.io-index"
+    ],
+    [
+      "http-body",
+      "0.4.6",
+      "registry+https://github.com/rust-lang/crates.io-index"
+    ],
+    [
+      "hyper",
+      "0.14.32",
+      "registry+https://github.com/rust-lang/crates.io-index"
+    ],
+    [
+      "hyper-tls",
+      "0.5.0",
+      "registry+https://github.com/rust-lang/crates.io-index"
+    ],
+    [
+      "reqwest",
+      "0.11.27",
+      "registry+https://github.com/rust-lang/crates.io-index"
+    ],
+    [
+      "socket2",
+      "0.5.10",
+      "registry+https://github.com/rust-lang/crates.io-index"
+    ],
+    [
+      "sync_wrapper",
+      "0.1.2",
+      "registry+https://github.com/rust-lang/crates.io-index"
+    ],
+    [
+      "system-configuration",
+      "0.5.1",
+      "registry+https://github.com/rust-lang/crates.io-index"
+    ],
+    [
+      "system-configuration-sys",
+      "0.5.0",
+      "registry+https://github.com/rust-lang/crates.io-index"
+    ],
+    [
+      "windows-sys",
+      "0.48.0",
+      "registry+https://github.com/rust-lang/crates.io-index"
+    ],
+    [
+      "windows-targets",
+      "0.48.5",
+      "registry+https://github.com/rust-lang/crates.io-index"
+    ],
+    [
+      "windows_aarch64_gnullvm",
+      "0.48.5",
+      "registry+https://github.com/rust-lang/crates.io-index"
+    ],
+    [
+      "windows_aarch64_msvc",
+      "0.48.5",
+      "registry+https://github.com/rust-lang/crates.io-index"
+    ],
+    [
+      "windows_i686_gnu",
+      "0.48.5",
+      "registry+https://github.com/rust-lang/crates.io-index"
+    ],
+    [
+      "windows_i686_msvc",
+      "0.48.5",
+      "registry+https://github.com/rust-lang/crates.io-index"
+    ],
+    [
+      "windows_x86_64_gnu",
+      "0.48.5",
+      "registry+https://github.com/rust-lang/crates.io-index"
+    ],
+    [
+      "windows_x86_64_gnullvm",
+      "0.48.5",
+      "registry+https://github.com/rust-lang/crates.io-index"
+    ],
+    [
+      "windows_x86_64_msvc",
+      "0.48.5",
+      "registry+https://github.com/rust-lang/crates.io-index"
+    ],
+    [
+      "winreg",
+      "0.50.0",
+      "registry+https://github.com/rust-lang/crates.io-index"
+    ]
+  ],
+  "added_active_identities": [
+    [
+      "getrandom",
+      "0.2.17",
+      "registry+https://github.com/rust-lang/crates.io-index"
+    ],
+    [
+      "h2",
+      "0.4.20",
+      "registry+https://github.com/rust-lang/crates.io-index"
+    ],
+    [
+      "hyper-rustls",
+      "0.27.10",
+      "registry+https://github.com/rust-lang/crates.io-index"
+    ],
+    [
+      "hyper-tls",
+      "0.6.0",
+      "registry+https://github.com/rust-lang/crates.io-index"
+    ],
+    [
+      "reqwest",
+      "0.12.28",
+      "registry+https://github.com/rust-lang/crates.io-index"
+    ],
+    [
+      "ring",
+      "0.17.14",
+      "registry+https://github.com/rust-lang/crates.io-index"
+    ],
+    [
+      "rustls",
+      "0.23.46",
+      "registry+https://github.com/rust-lang/crates.io-index"
+    ],
+    [
+      "rustls-pki-types",
+      "1.15.1",
+      "registry+https://github.com/rust-lang/crates.io-index"
+    ],
+    [
+      "rustls-webpki",
+      "0.103.16",
+      "registry+https://github.com/rust-lang/crates.io-index"
+    ],
+    [
+      "subtle",
+      "2.6.1",
+      "registry+https://github.com/rust-lang/crates.io-index"
+    ],
+    [
+      "system-configuration",
+      "0.7.0",
+      "registry+https://github.com/rust-lang/crates.io-index"
+    ],
+    [
+      "system-configuration-sys",
+      "0.6.0",
+      "registry+https://github.com/rust-lang/crates.io-index"
+    ],
+    [
+      "tokio-rustls",
+      "0.26.6",
+      "registry+https://github.com/rust-lang/crates.io-index"
+    ],
+    [
+      "untrusted",
+      "0.9.0",
+      "registry+https://github.com/rust-lang/crates.io-index"
+    ],
+    [
+      "windows-registry",
+      "0.6.1",
+      "registry+https://github.com/rust-lang/crates.io-index"
+    ],
+    [
+      "windows-result",
+      "0.4.1",
+      "registry+https://github.com/rust-lang/crates.io-index"
+    ],
+    [
+      "windows-strings",
+      "0.5.1",
+      "registry+https://github.com/rust-lang/crates.io-index"
+    ],
+    [
+      "zeroize",
+      "1.9.1",
+      "registry+https://github.com/rust-lang/crates.io-index"
+    ]
+  ],
+  "tauri_family": {
+    "tauri": "2.11.6",
+    "tauri-build": "2.6.3",
+    "tauri-codegen": "2.6.3",
+    "tauri-macros": "2.6.3",
+    "tauri-runtime": "2.11.3",
+    "tauri-runtime-wry": "2.11.4",
+    "tauri-utils": "2.9.3",
+    "tauri-winres": "0.3.7"
+  },
+  "commands": [
+    {
+      "name": "pnpm-install",
+      "command": [
+        "pnpm",
+        "install",
+        "--frozen-lockfile",
+        "--store-dir",
+        "<external-pnpm-store>",
+        "--fetch-retries=1",
+        "--fetch-timeout=20000"
+      ],
+      "timeout_seconds": 600,
+      "exit_code": 0,
+      "seconds": 1.971
+    },
+    {
+      "name": "pnpm-graph",
+      "command": [
+        "node",
+        "docs/validation/rust-178/check-ported-graph.cjs"
+      ],
+      "timeout_seconds": 60,
+      "exit_code": 0,
+      "seconds": 0.566
+    },
+    {
+      "name": "typecheck",
+      "command": [
+        "pnpm",
+        "run",
+        "typecheck"
+      ],
+      "timeout_seconds": 180,
+      "exit_code": 0,
+      "seconds": 3.822
+    },
+    {
+      "name": "lint",
+      "command": [
+        "pnpm",
+        "run",
+        "lint"
+      ],
+      "timeout_seconds": 180,
+      "exit_code": 0,
+      "seconds": 3.796
+    },
+    {
+      "name": "web-tests",
+      "command": [
+        "pnpm",
+        "test"
+      ],
+      "timeout_seconds": 60,
+      "exit_code": 0,
+      "seconds": 2.63
+    },
+    {
+      "name": "vite",
+      "command": [
+        "pnpm",
+        "run",
+        "vite:build"
+      ],
+      "timeout_seconds": 180,
+      "exit_code": 0,
+      "seconds": 2.762
+    },
+    {
+      "name": "cargo-tree-all",
+      "command": [
+        "cargo",
+        "tree",
+        "--locked",
+        "--target",
+        "all"
+      ],
+      "timeout_seconds": 120,
+      "exit_code": 0,
+      "seconds": 0.646
+    },
+    {
+      "name": "cargo-build-debug",
+      "command": [
+        "cargo",
+        "build",
+        "--workspace",
+        "--locked",
+        "--jobs",
+        "3"
+      ],
+      "timeout_seconds": 1200,
+      "exit_code": 0,
+      "seconds": 35.065
+    },
+    {
+      "name": "cargo-tests-debug",
+      "command": [
+        "cargo",
+        "test",
+        "--workspace",
+        "--locked",
+        "--jobs",
+        "3"
+      ],
+      "timeout_seconds": 1200,
+      "exit_code": 0,
+      "seconds": 5.84
+    },
+    {
+      "name": "cargo-build-release",
+      "command": [
+        "cargo",
+        "build",
+        "--workspace",
+        "--release",
+        "--locked",
+        "--jobs",
+        "3"
+      ],
+      "timeout_seconds": 1200,
+      "exit_code": 0,
+      "seconds": 260.937
+    },
+    {
+      "name": "cargo-tests-release",
+      "command": [
+        "cargo",
+        "test",
+        "--workspace",
+        "--release",
+        "--locked",
+        "--jobs",
+        "3"
+      ],
+      "timeout_seconds": 1200,
+      "exit_code": 0,
+      "seconds": 31.881
+    },
+    {
+      "name": "preservation-after",
+      "command": [
+        "python3",
+        "Scripts/check-http2-183-preservation.py"
+      ],
+      "timeout_seconds": 90,
+      "exit_code": 0,
+      "seconds": 0.525
+    },
+    {
+      "name": "diff-check",
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "timeout_seconds": 60,
+      "exit_code": 0,
+      "seconds": 0.006
+    }
+  ],
+  "tests": {
+    "web": {
+      "executed": 2,
+      "passed": 2,
+      "failed": 0,
+      "ignored": 0
+    },
+    "rust_debug": {
+      "binary_unit_tests": 0,
+      "http_tests": 2,
+      "passed": 2,
+      "failed": 0,
+      "ignored": 0
+    },
+    "rust_release": {
+      "binary_unit_tests": 0,
+      "http_tests": 2,
+      "passed": 2,
+      "failed": 0,
+      "ignored": 0
+    },
+    "distinct_http_tests": 2,
+    "total_http_executions": 4
+  },
+  "audit": {
+    "exit_code": 1,
+    "database": {
+      "advisory-count": 1348,
+      "last-commit": "4b587f00996ebe5c05a73eaef105ef241e876414",
+      "last-updated": "2026-10-21T08:20:38+02:00"
+    },
+    "ignores": [],
+    "before_vulnerabilities": [
+      {
+        "id": "RUSTSEC-2026-0258",
+        "package": "h2",
+        "version": "0.3.27"
+      }
+    ],
+    "after_vulnerabilities": [],
+    "unchanged_warnings": [
+      {
+        "kind": "unmaintained",
+        "advisory": "RUSTSEC-2024-0370",
+        "package": "proc-macro-error",
+        "version": "1.0.4"
+      },
+      {
+        "kind": "unmaintained",
+        "advisory": "RUSTSEC-2025-0134",
+        "package": "rustls-pemfile",
+        "version": "1.0.4"
+      },
+      {
+        "kind": "unmaintained",
+        "advisory": "RUSTSEC-2025-0081",
+        "package": "unic-char-property",
+        "version": "0.9.0"
+      },
+      {
+        "kind": "unmaintained",
+        "advisory": "RUSTSEC-2025-0075",
+        "package": "unic-char-range",
+        "version": "0.9.0"
+      },
+      {
+        "kind": "unmaintained",
+        "advisory": "RUSTSEC-2025-0080",
+        "package": "unic-common",
+        "version": "0.9.0"
+      },
+      {
+        "kind": "unmaintained",
+        "advisory": "RUSTSEC-2025-0100",
+        "package": "unic-ucd-ident",
+        "version": "0.9.0"
+      },
+      {
+        "kind": "unmaintained",
+        "advisory": "RUSTSEC-2025-0098",
+        "package": "unic-ucd-version",
+        "version": "0.9.0"
+      },
+      {
+        "kind": "unsound",
+        "advisory": "RUSTSEC-2024-0429",
+        "package": "glib",
+        "version": "0.18.5"
+      },
+      {
+        "kind": "yanked",
+        "advisory": null,
+        "package": "tokio",
+        "version": "1.54.0"
+      }
+    ],
+    "baseline_audit_no_fetch": true,
+    "database_commit_verified_independently": "4b587f00996ebe5c05a73eaef105ef241e876414"
+  },
+  "source_sha256": {
+    "Cargo.lock": "290f2a3269912edfd8fde187c848cf4828f6bead500feb1dd14b8ddc6da7c61c",
+    "src-tauri/Cargo.toml": "fd8a1ca892355fc6be739e5969acaddc1bacee1d8a943f64003119af4549bc08",
+    "src-tauri/tests/http_client.rs": "58ac032936f5d08914b3b98f7d0f1072fee2d57cda44ea9068047418dca02ff9",
+    "Scripts/check-http2-183-preservation.py": "44e760d06413610f1d6eb485618a298b953a80a75db123ad8eadaec85953e7f4",
+    "docs/history/http2-183-20261022/Cargo.lock": "1cbef5cd93bb3c617576a43d28b6b9487e9697f21ca76b3ce6e9fe97cd3e9653",
+    "docs/history/http2-183-20261022/src-tauri/Cargo.toml": "46f94df1adfb897bcd48841a30b705752bdc5ebe83a0beded6e8a8532cb8c3e3",
+    "docs/history/http2-183-20261022/PR183.before.md": "53a2d23b5d308efa40567cb30d5b6b9e849fe5b8f1d579ff18783f26eab57f5b",
+    "docs/development/linux-environment-20261022.md": "a77e3a01d1c933c5d26b0bc27c7a12736fc984e24b6cd807f1f028390e05b8f1",
+    "docs/development/debian13-packages-20261022.json": "8a37b184035f13a861161c04b9fed6383744b0ec49b43bd582682fc80bdf3e40"
+  },
+  "local_log_sha256": {
+    "pnpm-install.log": "76272b2e793bf2804fa9654371dd5fe50a8cf7230434e53c27ee73bc2f1a3a02",
+    "pnpm-graph.log": "4e5c989560e8c8a10ad9aaf62dabcd4a8efe6adca1aef2a925eab75432af8a53",
+    "typecheck.log": "fbc12e1f12c1b4784aa0e734b461a5377b3dc308ee8d53e7a8aad3c2bbb5f19a",
+    "lint.log": "ea4a722cda59ff77e85a41470f08be3575db57af8c290c84dccc55b67b1cd6da",
+    "web-tests.log": "2cf8257d6894f4ea555dd3c41720b1c1f35a415baff8174340d3751485d21800",
+    "vite.log": "c62b42c228a178a00062aa76e04836266748e3eb1666fa2ea1c6ab5707397863",
+    "cargo-tree-all.log": "dbf8edfa366ce849f3db3da3339abe25344a07b4ebbffac06738e7bfbe899bde",
+    "cargo-build-debug.log": "365bb4195871f5136ec0cbd244ee8cf4b1e4503afa8da2a62437de57acd54ff1",
+    "cargo-tests-debug.log": "a11f90cb3a84fb5217bebf5f4bb3d4c29a413259318a413824cdde951c920cb0",
+    "cargo-build-release.log": "f62e04b030bf180c0a71b6d5b098708559da74cc94410a0f9322be0ee5efd2d6",
+    "cargo-tests-release.log": "8509871834f7350a33e4d76fbe27eb9a4f4b6a706376388b534b642d36fb7d8a",
+    "preservation-after.log": "21ebadd70a7ab5531a91531daeefdba41d6068e3df028579dcbc510ee7292759",
+    "diff-check.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "cargo-audit.json": "9ae695c8b212e7dc2ab36ac5e62f91d71114afe26c5f6bb939031f2c6d4635db",
+    "cargo-audit-before.json": "5beb5ac6262473e5347ad5ae7568d4e77fa965c2716066dfbab7b62d52a9b688",
+    "cargo-tree-h2-patched.log": "e23667bbd577b024b5db303978a691522c6f7ba534714aa378d4f8c082a129cd",
+    "cargo-tree-h2-absent.log": "acb3084ba8cc9b5179cd2d6686c649388d3d979211988a3f9c7a7d5f88e13e72"
+  },
+  "log_retention": "Raw local logs are not committed and are not guaranteed to survive this environment; digests alone do not archive bytes",
+  "not_validated": [
+    "Android build/device/emulator",
+    "native GUI",
+    "bundles/installers",
+    "real external HTTPS APIs",
+    "malicious HTTP2 DATA-frame attack reproduction",
+    "fully fresh environment bootstrap",
+    "global security/license approval"
+  ]
+}

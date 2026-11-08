@@ -1,0 +1,1595 @@
+{
+  "mission": "QH-011 / T-003 targeted Tokio correction",
+  "date_client": "2026-10-23",
+  "base_sha": "fb3ff18a7829a7ac997e7569cabc8ed3a9603aca",
+  "base_tree": "676f12c3c56536732b6448938a15d680c109b22a",
+  "references": {
+    "main": "eb3c9403fa97db5ccf1fb4b13e3b0872e36c8228",
+    "186": "568bb986d83d862153349c0c1b09132bc2e868eb",
+    "187": "6dc7ef9d6899331bf859dd1687c135a89ffcb852"
+  },
+  "runtime": {
+    "node": "24.19.0",
+    "pnpm": "8.15.9",
+    "rustc": "1.99.1 (58cf8f9c3 2026-10-13)",
+    "cargo": "1.99.1 (5f94df478 2026-08-27)",
+    "cargo-audit": "0.22.2",
+    "tauri-cli": "2.11.2",
+    "os": "Debian 13.6 Linux amd64"
+  },
+  "inventory": {
+    "initial": 157,
+    "unchanged": 155,
+    "modified": [
+      "Cargo.lock",
+      "docs/validation/rust-178/check-ported-graph.cjs"
+    ],
+    "added": [
+      "Scripts/check-tokio-qh011.cjs",
+      "docs/history/tokio-qh011-20261023/Cargo.lock",
+      "docs/history/tokio-qh011-20261023/PORT.json",
+      "docs/history/tokio-qh011-20261023/PR183.before.md",
+      "docs/history/tokio-qh011-20261023/docs/validation/rust-178/check-ported-graph.cjs",
+      "docs/reports/tokio-qh011-20261023-evidence.json",
+      "docs/reports/tokio-qh011-20261023.md",
+      "tests/dependency_updates/tokio-qh011.test.cjs"
+    ],
+    "deleted": [],
+    "mode_changes": [],
+    "archives": {
+      "Cargo.lock": {
+        "git_blob": "221de1eaa6950adae5f1b97d7bae06bf6bfdbdb0",
+        "sha256": "290f2a3269912edfd8fde187c848cf4828f6bead500feb1dd14b8ddc6da7c61c"
+      },
+      "docs/validation/rust-178/check-ported-graph.cjs": {
+        "git_blob": "e101b8ecf9a6982c848dcee0e3f78253d469f68d",
+        "sha256": "8947cb74755eabc6ddb3e0d2e049aa12d9f96ddedc08fe0160ff9ba5d95db1c6"
+      }
+    }
+  },
+  "cargo": {
+    "packages_before": 504,
+    "packages_after": 504,
+    "only_modified_dependency": "tokio",
+    "before": "1.54.0",
+    "after": "1.54.1",
+    "non_tokio_entries_identical": 503,
+    "manifest_changes": [],
+    "diff": "diff --git a/Cargo.lock b/Cargo.lock\nindex 221de1e..0257b26 100644\n--- a/Cargo.lock\n+++ b/Cargo.lock\n@@ -4044,9 +4044,9 @@ checksum = \"fd3ca314f692efd6c868f8408f53fe444634a845f96c028b97d35f6a1f79f0ee\"\n \n [[package]]\n name = \"tokio\"\n-version = \"1.54.0\"\n+version = \"1.54.1\"\n source = \"registry+https://github.com/rust-lang/crates.io-index\"\n-checksum = \"a0c168a474b95bfecfe908a65d4bdffc523144b649a74c09c286afb35d53e0bc\"\n+checksum = \"b52fd3255258d26fac7264ab5a76b53c13367136dc011d3d6ad4f8ed070396a3\"\n dependencies = [\n  \"bytes\",\n  \"libc\",\n",
+    "consumers_all_targets": [
+      {
+        "name": "h2",
+        "version": "0.4.20",
+        "constraints": [
+          {
+            "req": "^1",
+            "features": [
+              "io-util"
+            ],
+            "optional": false,
+            "target": null,
+            "kind": null
+          }
+        ]
+      },
+      {
+        "name": "hyper",
+        "version": "1.12.0",
+        "constraints": [
+          {
+            "req": "^1",
+            "features": [
+              "sync"
+            ],
+            "optional": false,
+            "target": null,
+            "kind": null
+          }
+        ]
+      },
+      {
+        "name": "hyper-rustls",
+        "version": "0.27.10",
+        "constraints": [
+          {
+            "req": "^1.0",
+            "features": [],
+            "optional": false,
+            "target": null,
+            "kind": null
+          }
+        ]
+      },
+      {
+        "name": "hyper-tls",
+        "version": "0.6.0",
+        "constraints": [
+          {
+            "req": "^1",
+            "features": [],
+            "optional": false,
+            "target": null,
+            "kind": null
+          }
+        ]
+      },
+      {
+        "name": "hyper-util",
+        "version": "0.1.21",
+        "constraints": [
+          {
+            "req": "^1.13",
+            "features": [],
+            "optional": true,
+            "target": null,
+            "kind": null
+          }
+        ]
+      },
+      {
+        "name": "quelleheureest",
+        "version": "0.0.1",
+        "constraints": [
+          {
+            "req": "^1",
+            "features": [
+              "full"
+            ],
+            "optional": false,
+            "target": null,
+            "kind": null
+          }
+        ]
+      },
+      {
+        "name": "reqwest",
+        "version": "0.12.28",
+        "constraints": [
+          {
+            "req": "^1.0",
+            "features": [
+              "net",
+              "time"
+            ],
+            "optional": false,
+            "target": "cfg(not(target_arch = \"wasm32\"))",
+            "kind": null
+          }
+        ]
+      },
+      {
+        "name": "reqwest",
+        "version": "0.13.5",
+        "constraints": [
+          {
+            "req": "^1.0",
+            "features": [
+              "net",
+              "time"
+            ],
+            "optional": false,
+            "target": "cfg(not(all(target_arch = \"wasm32\", any(target_os = \"unknown\", target_os = \"none\"))))",
+            "kind": null
+          }
+        ]
+      },
+      {
+        "name": "tauri",
+        "version": "2.11.6",
+        "constraints": [
+          {
+            "req": "^1",
+            "features": [
+              "rt",
+              "rt-multi-thread",
+              "sync",
+              "fs",
+              "io-util"
+            ],
+            "optional": false,
+            "target": null,
+            "kind": null
+          }
+        ]
+      },
+      {
+        "name": "tokio-native-tls",
+        "version": "0.3.1",
+        "constraints": [
+          {
+            "req": "^1.0",
+            "features": [],
+            "optional": false,
+            "target": null,
+            "kind": null
+          }
+        ]
+      },
+      {
+        "name": "tokio-rustls",
+        "version": "0.26.6",
+        "constraints": [
+          {
+            "req": "^1.0",
+            "features": [],
+            "optional": false,
+            "target": null,
+            "kind": null
+          }
+        ]
+      },
+      {
+        "name": "tokio-util",
+        "version": "0.7.20",
+        "constraints": [
+          {
+            "req": "^1.51.0",
+            "features": [
+              "sync"
+            ],
+            "optional": false,
+            "target": null,
+            "kind": null
+          }
+        ]
+      },
+      {
+        "name": "tower",
+        "version": "0.5.3",
+        "constraints": [
+          {
+            "req": "^1.6.2",
+            "features": [],
+            "optional": true,
+            "target": null,
+            "kind": null
+          }
+        ]
+      },
+      {
+        "name": "wasm-bindgen-futures",
+        "version": "0.4.79",
+        "constraints": [
+          {
+            "req": "^1",
+            "features": [
+              "rt",
+              "time"
+            ],
+            "optional": false,
+            "target": "cfg(all(target_os = \"emscripten\", wasm_bindgen_unstable_tokio))",
+            "kind": null
+          }
+        ]
+      }
+    ],
+    "reverse_subgraph": {
+      "nodes": [
+        "h2@0.4.20",
+        "hyper-rustls@0.27.10",
+        "hyper-tls@0.6.0",
+        "hyper-util@0.1.21",
+        "hyper@1.12.0",
+        "quelleheureest@0.0.1",
+        "reqwest@0.12.28",
+        "reqwest@0.13.5",
+        "tauri@2.11.6",
+        "tokio-native-tls@0.3.1",
+        "tokio-rustls@0.26.6",
+        "tokio-util@0.7.20",
+        "tokio@1.54.1",
+        "tower-http@0.6.11",
+        "tower@0.5.3",
+        "wasm-bindgen-futures@0.4.79",
+        "wasm-streams@0.5.0"
+      ],
+      "edges": [
+        {
+          "from": "quelleheureest@0.0.1",
+          "to": "h2@0.4.20"
+        },
+        {
+          "from": "quelleheureest@0.0.1",
+          "to": "reqwest@0.12.28"
+        },
+        {
+          "from": "quelleheureest@0.0.1",
+          "to": "tauri@2.11.6"
+        },
+        {
+          "from": "quelleheureest@0.0.1",
+          "to": "tokio@1.54.1"
+        },
+        {
+          "from": "h2@0.4.20",
+          "to": "tokio@1.54.1"
+        },
+        {
+          "from": "h2@0.4.20",
+          "to": "tokio-util@0.7.20"
+        },
+        {
+          "from": "hyper-rustls@0.27.10",
+          "to": "hyper@1.12.0"
+        },
+        {
+          "from": "hyper-rustls@0.27.10",
+          "to": "hyper-util@0.1.21"
+        },
+        {
+          "from": "hyper-rustls@0.27.10",
+          "to": "tokio@1.54.1"
+        },
+        {
+          "from": "hyper-rustls@0.27.10",
+          "to": "tokio-rustls@0.26.6"
+        },
+        {
+          "from": "hyper-tls@0.6.0",
+          "to": "hyper@1.12.0"
+        },
+        {
+          "from": "hyper-tls@0.6.0",
+          "to": "hyper-util@0.1.21"
+        },
+        {
+          "from": "hyper-tls@0.6.0",
+          "to": "tokio@1.54.1"
+        },
+        {
+          "from": "hyper-tls@0.6.0",
+          "to": "tokio-native-tls@0.3.1"
+        },
+        {
+          "from": "hyper-util@0.1.21",
+          "to": "hyper@1.12.0"
+        },
+        {
+          "from": "hyper-util@0.1.21",
+          "to": "tokio@1.54.1"
+        },
+        {
+          "from": "hyper@1.12.0",
+          "to": "h2@0.4.20"
+        },
+        {
+          "from": "hyper@1.12.0",
+          "to": "tokio@1.54.1"
+        },
+        {
+          "from": "reqwest@0.12.28",
+          "to": "h2@0.4.20"
+        },
+        {
+          "from": "reqwest@0.12.28",
+          "to": "hyper@1.12.0"
+        },
+        {
+          "from": "reqwest@0.12.28",
+          "to": "hyper-rustls@0.27.10"
+        },
+        {
+          "from": "reqwest@0.12.28",
+          "to": "hyper-tls@0.6.0"
+        },
+        {
+          "from": "reqwest@0.12.28",
+          "to": "hyper-util@0.1.21"
+        },
+        {
+          "from": "reqwest@0.12.28",
+          "to": "tokio@1.54.1"
+        },
+        {
+          "from": "reqwest@0.12.28",
+          "to": "tokio-native-tls@0.3.1"
+        },
+        {
+          "from": "reqwest@0.12.28",
+          "to": "tower@0.5.3"
+        },
+        {
+          "from": "reqwest@0.12.28",
+          "to": "tower-http@0.6.11"
+        },
+        {
+          "from": "reqwest@0.12.28",
+          "to": "wasm-bindgen-futures@0.4.79"
+        },
+        {
+          "from": "reqwest@0.13.5",
+          "to": "hyper@1.12.0"
+        },
+        {
+          "from": "reqwest@0.13.5",
+          "to": "hyper-util@0.1.21"
+        },
+        {
+          "from": "reqwest@0.13.5",
+          "to": "tokio@1.54.1"
+        },
+        {
+          "from": "reqwest@0.13.5",
+          "to": "tokio-util@0.7.20"
+        },
+        {
+          "from": "reqwest@0.13.5",
+          "to": "tower@0.5.3"
+        },
+        {
+          "from": "reqwest@0.13.5",
+          "to": "tower-http@0.6.11"
+        },
+        {
+          "from": "reqwest@0.13.5",
+          "to": "wasm-bindgen-futures@0.4.79"
+        },
+        {
+          "from": "reqwest@0.13.5",
+          "to": "wasm-streams@0.5.0"
+        },
+        {
+          "from": "tauri@2.11.6",
+          "to": "reqwest@0.13.5"
+        },
+        {
+          "from": "tauri@2.11.6",
+          "to": "tokio@1.54.1"
+        },
+        {
+          "from": "tokio-native-tls@0.3.1",
+          "to": "tokio@1.54.1"
+        },
+        {
+          "from": "tokio-rustls@0.26.6",
+          "to": "tokio@1.54.1"
+        },
+        {
+          "from": "tokio-util@0.7.20",
+          "to": "tokio@1.54.1"
+        },
+        {
+          "from": "tower-http@0.6.11",
+          "to": "tower@0.5.3"
+        },
+        {
+          "from": "tower@0.5.3",
+          "to": "tokio@1.54.1"
+        },
+        {
+          "from": "wasm-bindgen-futures@0.4.79",
+          "to": "tokio@1.54.1"
+        },
+        {
+          "from": "wasm-streams@0.5.0",
+          "to": "wasm-bindgen-futures@0.4.79"
+        }
+      ]
+    },
+    "activated_features": [
+      "bytes",
+      "default",
+      "fs",
+      "full",
+      "io-std",
+      "io-util",
+      "libc",
+      "macros",
+      "mio",
+      "net",
+      "parking_lot",
+      "process",
+      "rt",
+      "rt-multi-thread",
+      "signal",
+      "signal-hook-registry",
+      "socket2",
+      "sync",
+      "time",
+      "tokio-macros",
+      "windows-sys"
+    ],
+    "all_features_activated_optional_packages": [
+      "httpdate",
+      "rustls-pemfile"
+    ],
+    "resolve_identical_except_tokio_id": true,
+    "official_crate_integrity_and_features": [
+      {
+        "version": "1.54.0",
+        "archive_sha256": "a0c168a474b95bfecfe908a65d4bdffc523144b649a74c09c286afb35d53e0bc",
+        "rust_version": "1.85",
+        "features": {
+          "default": [],
+          "fs": [],
+          "full": [
+            "fs",
+            "io-util",
+            "io-std",
+            "macros",
+            "net",
+            "parking_lot",
+            "process",
+            "rt",
+            "rt-multi-thread",
+            "signal",
+            "sync",
+            "time"
+          ],
+          "io-std": [],
+          "io-uring": [
+            "dep:io-uring",
+            "libc",
+            "mio/os-poll",
+            "mio/os-ext",
+            "dep:slab"
+          ],
+          "io-util": [
+            "bytes"
+          ],
+          "macros": [
+            "tokio-macros"
+          ],
+          "net": [
+            "libc",
+            "mio/os-poll",
+            "mio/os-ext",
+            "mio/net",
+            "socket2",
+            "windows-sys/Win32_Foundation",
+            "windows-sys/Win32_Security",
+            "windows-sys/Win32_Storage_FileSystem",
+            "windows-sys/Win32_System_Pipes",
+            "windows-sys/Win32_System_SystemServices"
+          ],
+          "process": [
+            "bytes",
+            "libc",
+            "mio/os-poll",
+            "mio/os-ext",
+            "mio/net",
+            "signal-hook-registry",
+            "windows-sys/Win32_Foundation",
+            "windows-sys/Win32_System_Threading",
+            "windows-sys/Win32_System_WindowsProgramming"
+          ],
+          "rt": [],
+          "rt-multi-thread": [
+            "rt"
+          ],
+          "schedule-latency": [],
+          "signal": [
+            "libc",
+            "mio/os-poll",
+            "mio/net",
+            "mio/os-ext",
+            "signal-hook-registry",
+            "windows-sys/Win32_Foundation",
+            "windows-sys/Win32_System_Console"
+          ],
+          "sync": [],
+          "taskdump": [
+            "dep:backtrace"
+          ],
+          "test-util": [
+            "rt",
+            "sync",
+            "time"
+          ],
+          "time": []
+        }
+      },
+      {
+        "version": "1.54.1",
+        "archive_sha256": "b52fd3255258d26fac7264ab5a76b53c13367136dc011d3d6ad4f8ed070396a3",
+        "rust_version": "1.85",
+        "features": {
+          "default": [],
+          "fs": [],
+          "full": [
+            "fs",
+            "io-util",
+            "io-std",
+            "macros",
+            "net",
+            "parking_lot",
+            "process",
+            "rt",
+            "rt-multi-thread",
+            "signal",
+            "sync",
+            "time"
+          ],
+          "io-std": [],
+          "io-uring": [
+            "dep:io-uring",
+            "libc",
+            "mio/os-poll",
+            "mio/os-ext",
+            "dep:slab"
+          ],
+          "io-util": [
+            "bytes"
+          ],
+          "macros": [
+            "tokio-macros"
+          ],
+          "net": [
+            "libc",
+            "mio/os-poll",
+            "mio/os-ext",
+            "mio/net",
+            "socket2",
+            "windows-sys/Win32_Foundation",
+            "windows-sys/Win32_Security",
+            "windows-sys/Win32_Storage_FileSystem",
+            "windows-sys/Win32_System_Pipes",
+            "windows-sys/Win32_System_SystemServices"
+          ],
+          "process": [
+            "bytes",
+            "libc",
+            "mio/os-poll",
+            "mio/os-ext",
+            "mio/net",
+            "signal-hook-registry",
+            "windows-sys/Win32_Foundation",
+            "windows-sys/Win32_System_Threading",
+            "windows-sys/Win32_System_WindowsProgramming"
+          ],
+          "rt": [],
+          "rt-multi-thread": [
+            "rt"
+          ],
+          "schedule-latency": [],
+          "signal": [
+            "libc",
+            "mio/os-poll",
+            "mio/net",
+            "mio/os-ext",
+            "signal-hook-registry",
+            "windows-sys/Win32_Foundation",
+            "windows-sys/Win32_System_Console"
+          ],
+          "sync": [],
+          "taskdump": [
+            "dep:backtrace"
+          ],
+          "test-util": [
+            "rt",
+            "sync",
+            "time"
+          ],
+          "time": []
+        }
+      }
+    ],
+    "excluded_solver_changes": [
+      {
+        "before": {
+          "name": "dirs-sys",
+          "version": "0.5.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "checksum": "e01a3366d27ee9890022452ee61b2b63a67e6f13f58900b651ff5665f0bb1fab",
+          "dependencies": [
+            "libc",
+            "option-ext",
+            "redox_users",
+            "windows-sys 0.61.2"
+          ]
+        },
+        "after": {
+          "name": "dirs-sys",
+          "version": "0.5.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "checksum": "e01a3366d27ee9890022452ee61b2b63a67e6f13f58900b651ff5665f0bb1fab",
+          "dependencies": [
+            "libc",
+            "option-ext",
+            "redox_users",
+            "windows-sys 0.59.0"
+          ]
+        }
+      },
+      {
+        "before": {
+          "name": "errno",
+          "version": "0.3.14",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "checksum": "39cab71617ae0d63f51a36d69f866391735b51691dbda63cf6f96d042b63efeb",
+          "dependencies": [
+            "libc",
+            "windows-sys 0.61.2"
+          ]
+        },
+        "after": {
+          "name": "errno",
+          "version": "0.3.14",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "checksum": "39cab71617ae0d63f51a36d69f866391735b51691dbda63cf6f96d042b63efeb",
+          "dependencies": [
+            "libc",
+            "windows-sys 0.52.0"
+          ]
+        }
+      },
+      {
+        "before": {
+          "name": "rustix",
+          "version": "1.1.5",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "checksum": "891efababe418670775f199f0d233d84843c227a0949a883ce15b37c78d6629d",
+          "dependencies": [
+            "bitflags 2.13.2",
+            "errno",
+            "libc",
+            "linux-raw-sys",
+            "windows-sys 0.61.2"
+          ]
+        },
+        "after": {
+          "name": "rustix",
+          "version": "1.1.5",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "checksum": "891efababe418670775f199f0d233d84843c227a0949a883ce15b37c78d6629d",
+          "dependencies": [
+            "bitflags 2.13.2",
+            "errno",
+            "libc",
+            "linux-raw-sys",
+            "windows-sys 0.52.0"
+          ]
+        }
+      },
+      {
+        "before": {
+          "name": "tempfile",
+          "version": "3.27.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "checksum": "32497e9a4c7b38532efcdebeef879707aa9f794296a4f0244f6f69e9bc8574bd",
+          "dependencies": [
+            "fastrand",
+            "getrandom 0.4.3",
+            "once_cell",
+            "rustix",
+            "windows-sys 0.61.2"
+          ]
+        },
+        "after": {
+          "name": "tempfile",
+          "version": "3.27.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "checksum": "32497e9a4c7b38532efcdebeef879707aa9f794296a4f0244f6f69e9bc8574bd",
+          "dependencies": [
+            "fastrand",
+            "getrandom 0.4.3",
+            "once_cell",
+            "rustix",
+            "windows-sys 0.52.0"
+          ]
+        }
+      },
+      {
+        "before": {
+          "name": "winapi-util",
+          "version": "0.1.11",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "checksum": "c2a7b1c03c876122aa43f3020e6c3c3ee5c05081c9a00739faf7503aeba10d22",
+          "dependencies": [
+            "windows-sys 0.61.2"
+          ]
+        },
+        "after": {
+          "name": "winapi-util",
+          "version": "0.1.11",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "checksum": "c2a7b1c03c876122aa43f3020e6c3c3ee5c05081c9a00739faf7503aeba10d22",
+          "dependencies": [
+            "windows-sys 0.52.0"
+          ]
+        }
+      },
+      {
+        "before": {
+          "name": "winreg",
+          "version": "0.56.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "checksum": "7d6f32a0ff4a9f6f01231eb2059cc85479330739333e0e58cadf03b6af2cca10",
+          "dependencies": [
+            "cfg-if",
+            "windows-sys 0.61.2"
+          ]
+        },
+        "after": {
+          "name": "winreg",
+          "version": "0.56.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "checksum": "7d6f32a0ff4a9f6f01231eb2059cc85479330739333e0e58cadf03b6af2cca10",
+          "dependencies": [
+            "cfg-if",
+            "windows-sys 0.59.0"
+          ]
+        }
+      }
+    ],
+    "h2_versions": [
+      "0.4.20"
+    ],
+    "reqwest_versions": [
+      "0.12.28",
+      "0.13.5"
+    ],
+    "tauri_version": "2.11.6"
+  },
+  "preservation": {
+    "status": "PASS",
+    "base": "fb3ff18a7829a7ac997e7569cabc8ed3a9603aca",
+    "originalFiles": 157,
+    "unchangedFiles": 155,
+    "archivedModifiedFiles": [
+      "Cargo.lock",
+      "docs/validation/rust-178/check-ported-graph.cjs"
+    ],
+    "cargoPackagesBefore": 504,
+    "cargoPackagesAfter": 504,
+    "modifiedDependencies": [
+      "tokio 1.54.0 -> 1.54.1"
+    ],
+    "onlyTokioVersionAndChecksumChanged": true,
+    "manifestsUnchanged": true,
+    "pnpmSnapshotsIdentical": 409,
+    "optionalIdentical": 140,
+    "reachable": 304,
+    "patchHash": "ij22dduv7f6wi3glhwl7jmdbrm",
+    "historicalGuards": {
+      "status": "PASS",
+      "base": "66f4d47f0b10f07c80a3ac257c3f76947bff8051",
+      "originalFiles": 144,
+      "unchangedFiles": 139,
+      "archivedModifiedFiles": [
+        "patches/braces-3.0.3.patch",
+        "pnpm-lock.yaml",
+        "docs/validation/rust-178/check-ported-graph.cjs",
+        "tests/dependency_updates/js-security-183.test.cjs",
+        "tests/dependency_updates/vite-qh010.test.cjs"
+      ],
+      "snapshotsBefore": 408,
+      "snapshotsAfter": 409,
+      "identicalActiveBlocks": 406,
+      "adaptedConsumerEdges": [
+        "/chokidar@3.6.0",
+        "/micromatch@4.0.8"
+      ],
+      "exactOriginalBlocksArchived": 408,
+      "optional": 140,
+      "reachable": 304,
+      "initialInactiveNotReactivated": 104,
+      "historicalGuards": {
+        "status": "PASS",
+        "qh010": {
+          "base": "bdda4abf3430bc5bda20176538c08533694c83f7",
+          "originalFiles": 133,
+          "unchangedFiles": 129,
+          "archivedModifiedFiles": [
+            "package.json",
+            "pnpm-lock.yaml",
+            "Scripts/check-js-security-183.cjs",
+            "tests/dependency_updates/js-security-183.test.cjs"
+          ],
+          "identicalInitialSnapshots": 384,
+          "initialOptionalRetained": 121,
+          "initialInactiveNotReactivated": 81,
+          "addedSnapshots": 24,
+          "totalSnapshots": 408,
+          "reachableEntries": 304,
+          "optionalAfter": 140,
+          "cargoAndHttpTestsUnchanged": true
+        },
+        "base": "6db8239390b6cf12cb22c0d9ff43ac62c680967b",
+        "originalFiles": 122,
+        "unchangedFiles": 119,
+        "archivedModifiedFiles": [
+          "package.json",
+          "pnpm-lock.yaml",
+          "docs/validation/rust-178/check-ported-graph.cjs"
+        ],
+        "initialSnapshots": 337,
+        "identicalInitialSnapshots": 329,
+        "adaptedInitialSnapshots": 8,
+        "missingSnapshots": [],
+        "initialOptional": 95,
+        "optionalAfter": 140,
+        "historicalNotReactivated": 35,
+        "totalSnapshots": 408,
+        "reachableEntries": 304,
+        "missingEdges": [],
+        "cargoAndHttpTestsUnchanged": true
+      },
+      "patchHash": "ij22dduv7f6wi3glhwl7jmdbrm"
+    }
+  },
+  "validation_first_pass": [
+    {
+      "name": "pnpm-install",
+      "command": [
+        "pnpm",
+        "install",
+        "--frozen-lockfile",
+        "--store-dir",
+        "$PNPM_STORE",
+        "--fetch-retries=1",
+        "--fetch-timeout=20000"
+      ],
+      "exit_code": 0,
+      "timeout_seconds": 240,
+      "seconds": 1.044
+    },
+    {
+      "name": "pnpm-graph",
+      "command": [
+        "pnpm",
+        "run",
+        "check:dependencies"
+      ],
+      "exit_code": 0,
+      "timeout_seconds": 60,
+      "seconds": 2.49
+    },
+    {
+      "name": "typecheck",
+      "command": [
+        "pnpm",
+        "run",
+        "typecheck"
+      ],
+      "exit_code": 0,
+      "timeout_seconds": 180,
+      "seconds": 1.978
+    },
+    {
+      "name": "lint",
+      "command": [
+        "pnpm",
+        "run",
+        "lint"
+      ],
+      "exit_code": 0,
+      "timeout_seconds": 180,
+      "seconds": 1.812
+    },
+    {
+      "name": "web-tests",
+      "command": [
+        "pnpm",
+        "test"
+      ],
+      "exit_code": 0,
+      "timeout_seconds": 120,
+      "seconds": 3.159
+    },
+    {
+      "name": "braces-historical",
+      "command": [
+        "pnpm",
+        "run",
+        "test:security"
+      ],
+      "exit_code": 0,
+      "timeout_seconds": 60,
+      "seconds": 0.504
+    },
+    {
+      "name": "preservation-tests",
+      "command": [
+        "node",
+        "--test",
+        "tests/dependency_updates/js-security-183.test.cjs",
+        "tests/dependency_updates/vite-qh010.test.cjs",
+        "tests/dependency_updates/braces-qh009.test.cjs",
+        "tests/dependency_updates/tokio-qh011.test.cjs"
+      ],
+      "exit_code": 1,
+      "timeout_seconds": 180,
+      "seconds": 14.486
+    },
+    {
+      "name": "vite-security-tests",
+      "command": [
+        "node",
+        "--test",
+        "tests/security/vite-qh010.test.mjs"
+      ],
+      "exit_code": 0,
+      "timeout_seconds": 60,
+      "seconds": 0.353
+    },
+    {
+      "name": "vite-build",
+      "command": [
+        "pnpm",
+        "run",
+        "vite:build"
+      ],
+      "exit_code": 0,
+      "timeout_seconds": 180,
+      "seconds": 1.135
+    },
+    {
+      "name": "cargo-metadata",
+      "command": [
+        "cargo",
+        "metadata",
+        "--locked",
+        "--format-version",
+        "1"
+      ],
+      "exit_code": 0,
+      "timeout_seconds": 120,
+      "seconds": 0.234
+    },
+    {
+      "name": "cargo-tree",
+      "command": [
+        "cargo",
+        "tree",
+        "--locked",
+        "--target",
+        "all"
+      ],
+      "exit_code": 0,
+      "timeout_seconds": 120,
+      "seconds": 0.219
+    },
+    {
+      "name": "cargo-inverse-features",
+      "command": [
+        "cargo",
+        "tree",
+        "--locked",
+        "--target",
+        "all",
+        "-i",
+        "tokio",
+        "-e",
+        "features"
+      ],
+      "exit_code": 0,
+      "timeout_seconds": 120,
+      "seconds": 0.235
+    },
+    {
+      "name": "cargo-features",
+      "command": [
+        "cargo",
+        "tree",
+        "--locked",
+        "--target",
+        "all",
+        "-p",
+        "tokio",
+        "-e",
+        "features"
+      ],
+      "exit_code": 0,
+      "timeout_seconds": 120,
+      "seconds": 0.207
+    },
+    {
+      "name": "cargo-build-debug",
+      "command": [
+        "cargo",
+        "build",
+        "--workspace",
+        "--locked",
+        "--jobs",
+        "3"
+      ],
+      "exit_code": 0,
+      "timeout_seconds": 1200,
+      "seconds": 19.682
+    },
+    {
+      "name": "cargo-tests-debug",
+      "command": [
+        "cargo",
+        "test",
+        "--workspace",
+        "--locked",
+        "--jobs",
+        "3"
+      ],
+      "exit_code": 0,
+      "timeout_seconds": 1200,
+      "seconds": 6.482
+    },
+    {
+      "name": "cargo-build-release",
+      "command": [
+        "cargo",
+        "build",
+        "--workspace",
+        "--release",
+        "--locked",
+        "--jobs",
+        "3"
+      ],
+      "exit_code": 0,
+      "timeout_seconds": 1200,
+      "seconds": 58.787
+    },
+    {
+      "name": "cargo-tests-release",
+      "command": [
+        "cargo",
+        "test",
+        "--workspace",
+        "--release",
+        "--locked",
+        "--jobs",
+        "3"
+      ],
+      "exit_code": 0,
+      "timeout_seconds": 1200,
+      "seconds": 34.26
+    },
+    {
+      "name": "tauri-cli",
+      "command": [
+        "pnpm",
+        "run",
+        "tauri",
+        "build",
+        "--debug",
+        "--no-bundle",
+        "--",
+        "--locked"
+      ],
+      "exit_code": 0,
+      "timeout_seconds": 1200,
+      "seconds": 7.5
+    },
+    {
+      "name": "cargo-audit",
+      "command": [
+        "cargo",
+        "audit",
+        "--deny",
+        "warnings",
+        "--json",
+        "--db",
+        "$RUSTSEC_DB"
+      ],
+      "exit_code": 1,
+      "timeout_seconds": 120,
+      "seconds": 3.157
+    },
+    {
+      "name": "cargo-audit-initial-comparable",
+      "command": [
+        "cargo",
+        "audit",
+        "--deny",
+        "warnings",
+        "--json",
+        "--no-fetch",
+        "--db",
+        "$RUSTSEC_DB",
+        "--file",
+        "docs/history/tokio-qh011-20261023/Cargo.lock"
+      ],
+      "exit_code": 1,
+      "timeout_seconds": 120,
+      "seconds": 0.269
+    },
+    {
+      "name": "pnpm-audit",
+      "command": [
+        "pnpm",
+        "audit",
+        "--json",
+        "--registry=https://registry.npmjs.org"
+      ],
+      "exit_code": 1,
+      "timeout_seconds": 120,
+      "seconds": 0.681
+    },
+    {
+      "name": "pnpm-audit-prod",
+      "command": [
+        "pnpm",
+        "audit",
+        "--prod",
+        "--json",
+        "--registry=https://registry.npmjs.org"
+      ],
+      "exit_code": 0,
+      "timeout_seconds": 120,
+      "seconds": 0.506
+    },
+    {
+      "name": "preservation-after",
+      "command": [
+        "node",
+        "docs/validation/rust-178/check-ported-graph.cjs"
+      ],
+      "exit_code": 0,
+      "timeout_seconds": 60,
+      "seconds": 1.59
+    },
+    {
+      "name": "diff-check",
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "timeout_seconds": 60,
+      "seconds": 0.005
+    }
+  ],
+  "final_reruns": {
+    "preservation_tests": {
+      "exit_code": 0,
+      "registered": 29,
+      "distinct": 26,
+      "negative": 23
+    },
+    "preservation_guard": {
+      "exit_code": 0
+    },
+    "lint": {
+      "exit_code": 0
+    }
+  },
+  "tests": {
+    "web": 2,
+    "braces_historical": 10,
+    "braces_hardening_registered": 20,
+    "vite_security": 2,
+    "preservation_registered": 29,
+    "preservation_distinct": 26,
+    "node_registered_total": 63,
+    "node_distinct_total": 59,
+    "duplicate_cases_excluded": 4,
+    "rust_http_distinct": 2,
+    "rust_http_debug_executions": 2,
+    "rust_http_release_executions": 2,
+    "rust_binary_unit_tests": 0,
+    "final_failed": 0,
+    "final_ignored": 0,
+    "note": "No validation reruns are added to distinct counts. Three preservation harness cases replay in two suites; one deep-AST case replays a historical braces case. Previous upstream 764 and differential 24000 results are historical, not rerun in this mission."
+  },
+  "audits": {
+    "rustsec_database": {
+      "advisory-count": 1349,
+      "last-commit": "640bf5a9f06e66d8721e8772766531fe77c8630d",
+      "last-updated": "2026-10-22T12:49:47+02:00"
+    },
+    "initial": {
+      "vulnerabilities": 1,
+      "vulnerability_ids": [
+        "RUSTSEC-2026-0384"
+      ],
+      "warnings": {
+        "unmaintained": [
+          {
+            "name": "proc-macro-error",
+            "version": "1.0.4",
+            "advisory": "RUSTSEC-2024-0370"
+          },
+          {
+            "name": "rustls-pemfile",
+            "version": "1.0.4",
+            "advisory": "RUSTSEC-2025-0134"
+          },
+          {
+            "name": "unic-char-property",
+            "version": "0.9.0",
+            "advisory": "RUSTSEC-2025-0081"
+          },
+          {
+            "name": "unic-char-range",
+            "version": "0.9.0",
+            "advisory": "RUSTSEC-2025-0075"
+          },
+          {
+            "name": "unic-common",
+            "version": "0.9.0",
+            "advisory": "RUSTSEC-2025-0080"
+          },
+          {
+            "name": "unic-ucd-ident",
+            "version": "0.9.0",
+            "advisory": "RUSTSEC-2025-0100"
+          },
+          {
+            "name": "unic-ucd-version",
+            "version": "0.9.0",
+            "advisory": "RUSTSEC-2025-0098"
+          }
+        ],
+        "unsound": [
+          {
+            "name": "glib",
+            "version": "0.18.5",
+            "advisory": "RUSTSEC-2024-0429"
+          }
+        ],
+        "yanked": [
+          {
+            "name": "tokio",
+            "version": "1.54.0",
+            "advisory": null
+          }
+        ]
+      },
+      "exit_code": 1,
+      "same_effective_database_as_final": true,
+      "metadata_commit_date_null_with_no_fetch": true
+    },
+    "final": {
+      "vulnerabilities": 0,
+      "vulnerability_ids": [],
+      "warnings": {
+        "unmaintained": [
+          {
+            "name": "proc-macro-error",
+            "version": "1.0.4",
+            "advisory": "RUSTSEC-2024-0370"
+          },
+          {
+            "name": "rustls-pemfile",
+            "version": "1.0.4",
+            "advisory": "RUSTSEC-2025-0134"
+          },
+          {
+            "name": "unic-char-property",
+            "version": "0.9.0",
+            "advisory": "RUSTSEC-2025-0081"
+          },
+          {
+            "name": "unic-char-range",
+            "version": "0.9.0",
+            "advisory": "RUSTSEC-2025-0075"
+          },
+          {
+            "name": "unic-common",
+            "version": "0.9.0",
+            "advisory": "RUSTSEC-2025-0080"
+          },
+          {
+            "name": "unic-ucd-ident",
+            "version": "0.9.0",
+            "advisory": "RUSTSEC-2025-0100"
+          },
+          {
+            "name": "unic-ucd-version",
+            "version": "0.9.0",
+            "advisory": "RUSTSEC-2025-0098"
+          }
+        ],
+        "unsound": [
+          {
+            "name": "glib",
+            "version": "0.18.5",
+            "advisory": "RUSTSEC-2024-0429"
+          }
+        ]
+      },
+      "exit_code": 1
+    },
+    "pnpm_full": {
+      "exit_code": 1,
+      "vulnerabilities": {
+        "info": 0,
+        "low": 0,
+        "moderate": 0,
+        "high": 1,
+        "critical": 0
+      },
+      "advisories": [
+        {
+          "id": "GHSA-vfj7-8cjw-p6xm",
+          "name": "braces",
+          "severity": "high"
+        }
+      ]
+    },
+    "pnpm_production": {
+      "exit_code": 0,
+      "vulnerabilities": {
+        "info": 0,
+        "low": 0,
+        "moderate": 0,
+        "high": 0,
+        "critical": 0
+      }
+    }
+  },
+  "tested_source_sha256": {
+    ".bolt/config.json": "da87f3867aa1c920ea2dc6b29775a1be2bcf844ee6caa7b947341fae1a7b1b91",
+    ".bolt/mcp.json": "5d2c70e56efe18c212678901ede075c02ca982810aaff52eeb4ec7112f95759b",
+    ".bolt/prompt": "7a27f357c92d3ee5f887edd80e86fa05d2eb78dc831ecda94daaab7364e7a915",
+    ".cursor/settings.json": "cec9308da95716a1d7d6c12267b418dca3480e3d895080f9c445192db20b531b",
+    ".gitattributes": "a405cec473427befc66301e5d001af6d17abd0d529dedbcfba765ef8e3534fbb",
+    ".github/README.md": "710eebc94f2de1118683e5292c4bc501a076a536f7defad254262596d1f590fa",
+    ".github/dependabot.yml": "e4f4544e23586fbef83f06a1be657bb51b60f6dc0baa50c09cd2527f78ad9516",
+    ".github/workflows/apisec-scan.yml": "6153e18cab2f69140430d8476a1d6970ef364549b4b28ce48fae2c6c3e450535",
+    ".github/workflows/auto-approve.yml": "2e80aa28c427916fb405b2cca57347c2282b47b2a5684ac355cbb03ad246d675",
+    ".github/workflows/codeql.yml": "d50ea0f0adf8cd3dbe9cee4c581b485a5e8f21001af40b5a700d5e4511c89e3f",
+    ".github/workflows/neuralegion.yml": "54b35581e01ac8447698534d85755aac605cd392cccc68b6e189851d710c84b5",
+    ".github/workflows/rust.yml": "84c0654a1669e87ac32540c45cc279e77798db7e7e1067f86cde8b4188f1ad59",
+    ".github/workflows/security-analysis.yml": "ac710f31de7603d95e17b8ba719ed44078504fea5c55511984915e1b5f48e345",
+    ".github/workflows/semgrep.yml": "1149e5b4fd5232fe358ac15cf841a0df2eac007b9e603fac6c8819817b363fbb",
+    ".github/workflows/sonarcloud.yml": "8463252cae0a5c9599c40319d4fd3a982f00a061dec202cdeeeafa38acc161f2",
+    ".gitignore": "08a0eb0e756aa702597e5de87b594b38cd8d8fa9c572d310301e79ab066e8e6f",
+    "AGENTS.md": "670dfd87bc0295041444303a37b3015494117e289d464e834119acad3c9e9bae",
+    "Cargo.lock": "695708e710c73f2c4f0176df01aa73a6fb5a3b724d3032e8d4262eed3b761b03",
+    "Cargo.toml": "7c0212cf7a002175e8f408defc52cc275c144e48c60db2cd231c4846484aeeeb",
+    "LICENSE": "885e047aba43501743e1ce3ad4557b3b445155c962141c3dda484521459fcedd",
+    "NotesPersos.md": "b2e9969b526cd5ce450c60f39887b8b5efa939a543bb6dd5ff7ea85f8e4a35c3",
+    "README.md": "9951e7988f2d0f7eb3ee606cf13ff8b7247e5b70d01c6bf19413888e9ba8a9c3",
+    "SECURITY.md": "68c93e22c75cbf42d048f6eaae14125eb86aa9233b412058c64ceda55be36042",
+    "Scripts/DiagComplet_DINGUERIE.ps1": "497d64cb8478bdbdf2e62cab87f2063793bdd4449635106de44de7981f744e8f",
+    "Scripts/DiagDrivers_20260521_1402.txt": "514d20658356e69e28676848aa3ace095136dddf54423712c52a08fecbffbeb8",
+    "Scripts/EpicGamesLauncherDelete.ps1": "f47df7d76d27868b8201000c6b219343f9bce1cf9db18ed1aa6c68a5b81deb22",
+    "Scripts/IntelDSA_RegistryBackup_2026-05-22_06-36-03.reg": "7d74c4dd3e366cb01ce9bf758eac379a549b86a17d06b1dcc0db641bb1cc6d42",
+    "Scripts/Maintenance.ps1": "c80de13a7049f044075fd190c9b32eb02759b7b6ab8f90ae4dc99f840a16dfc2",
+    "Scripts/Nettoyage_du_Dépôt.sh": "83d6b28bd06d6c0e3aa5c374cd2f0990c0f75b08b53597c51723b09f02381f74",
+    "Scripts/OptiAlimRog.ps1": "11db71a91fc1c6a2d382f36e320b6bd795499a172944c4045407a3302647d0dc",
+    "Scripts/WindowsFullUpdate.ps1": "574951bf8f0c8840eb16d8c1f8fa0179703b8b3bcff9a7f38d7ad332355fbb5f",
+    "Scripts/analyze-lock-duplicates.mjs": "ee821dde22c2e5e57f91f8894402ebe6ac9ea9d416198e9afab8f69a6232cf2c",
+    "Scripts/antiintelstartup.ps1": "387ed4077e18cfc3d22566f15bcd85f47363ab42ff27df02210af51f9ee6c497",
+    "Scripts/armourydelete.ps1": "f84dd18bbfff1fa8604f6a87c2e53f39a3d76405a71e627be31071f30e678dbb",
+    "Scripts/check-braces-qh009.cjs": "daa1a00f297560e30d0ce260abfed40b76be22c4535c9b691dede2aa2b5d777c",
+    "Scripts/check-http2-183-preservation.py": "44e760d06413610f1d6eb485618a298b953a80a75db123ad8eadaec85953e7f4",
+    "Scripts/check-js-security-183.cjs": "04f285a8773fd1ddf0b3cfcfe8d9e676d3d2a69b49d777b02f4805346d8135cf",
+    "Scripts/check-vite-qh010.cjs": "05724d075447eba1c1cdfb2af5cf67f424882ece930b4e6ee33835ef86ac04c1",
+    "Scripts/dernier.ps1": "46170c9e93a5e7eacee4dde82759baa053004df921b29a5e78e9d8d9fcefb52c",
+    "Scripts/disableasusservices.ps1": "d35e3621dfd04c13259830cce4d91fe2c6c0f30c19696548f07604e39657a36a",
+    "Scripts/fix-package-lock-merge.mjs": "26129b2deb45ec76ed7f83d1f9826c58d7c72275f757754cbc09ef8a0ce30f99",
+    "Scripts/ghelper.ps1": "61d8466ee50f916c7f6c462458fe5c9626a5ecbb9c1ea222ee0a5dd05cb0c1e6",
+    "Scripts/logs latencymon.txt": "73451cd41310d66f03add72d81a8573dbcac6cd117994bc73314338b8d898525",
+    "Scripts/majs prob.ps1": "f67380bcdf68d8450b1790820ebaf9917bab15a23d9ceb7ac623ffb98f240a0c",
+    "Scripts/purgewindowsupdate (2).ps1": "6103002325798ba6e93a4e2bdb3256104915db06e7badba99c9c3fb6769ad624",
+    "Scripts/purgewindowsupdate (3).ps1": "3dc9d860e46db8589e2549868d816c86e121d5aeadb6b9f10f52e2124472db9f",
+    "Scripts/purgewindowsupdate.ps1": "8ca20434a8dcd0e955af5ab5aa69e2cc4caa9bed278104b6ff60788dd311b2d4",
+    "Scripts/reportbsod.txt": "b8595e85bfcda0483740cfcc432e32ea828733d52ec014679a662598aa7ea25e",
+    "Scripts/scriptantiacronis.ps1": "75ae4729c053b2482fb39b634a477dc020d3150e644b1b1532d4338cbc15111f",
+    "Scripts/setup_file_compare_unity_git.ps1": "de085e887fa6c3c0f0c637b19bf96c828b4e3c7d498ed9ffe6ca96bc4f2c18ee",
+    "Scripts/transcriptcursor.md": "754431c37ded59b778ab15226b0d9ccd7e283e0b43fed595b5f1946048d8f0e7",
+    "docs/ai/COLLABORATION_VALIDATION_2026-10-16.md": "c6dd841400043aa9d5ef219ae94bdd11c70cf940f351780e67fd40dc5e60ff25",
+    "docs/ai/KNOWLEDGE_PRIVACY_POLICY.md": "7e69fc53daaed9772f3dc13cf1da9924d97b566e34c38dd5ad7fc3b103c268a2",
+    "docs/ai/PROJECT_RELAY_2026-10-16.md": "0ca23bff9a7e6c4ac141f2ae3a7cb62d9624c8c1c7efd9c8d597e4b6bfadbc0c",
+    "docs/ai/README.md": "66e8576f1bd2199904decd2bccc0d98073c53a47814368e28575b72b487f005b",
+    "docs/ai/SESSION_CHATGPT_INITIAL_AUDITS_COMPLETENESS_2026-10-21.md": "6f6cf2679764bb66f2b607edc861113622f07ac45de2b3e5191640c88aee21dc",
+    "docs/ai/SESSION_CODEX_COMPLETENESS_2026-10-21.md": "9a77461f69d2798ed4a759160b4bd0497f1fc0437a6e450a6395e94afff09022",
+    "docs/ai/SESSION_CODEX_PR153_PR162_COMPLETENESS_2026-10-21.md": "a08c919e8fc21450cb154e28abfd9ca5c8a2cf3bee1fe9e9395c6a4714151523",
+    "docs/ai/SESSION_CODEX_PR153_PR162_COMPLETENESS_2026-10-21_EVIDENCE.json": "da3ccbf1f75be17c9d91cd6a2b1ac12f86967d6dac15e45f85b3c3fca8d557c3",
+    "docs/ai/WORKING_CONTRACT.md": "dbf764465a00857cdc22f20b5c54bf5800ec6355aa4e9212ceebdea256d38313",
+    "docs/development/debian13-packages-20261022.json": "8a37b184035f13a861161c04b9fed6383744b0ec49b43bd582682fc80bdf3e40",
+    "docs/development/linux-environment-20261022.md": "a77e3a01d1c933c5d26b0bc27c7a12736fc984e24b6cd807f1f028390e05b8f1",
+    "docs/history/braces-qh009-20261022/PORT.json": "294ba13f64fe5d56003935288df08a68e33ba959385235a1117b1e16206e1e8a",
+    "docs/history/braces-qh009-20261022/PR183.before.md": "40c3094de1853c3b4f0e2e9e2f97a1388f7c2757cf92d829b3a6d175263edbbc",
+    "docs/history/braces-qh009-20261022/docs/validation/rust-178/check-ported-graph.cjs": "5cb0d6c5ec7533c5e52e4f4fadc18e57d92f208f9d0fac46011d4e6ef45cbd66",
+    "docs/history/braces-qh009-20261022/patches/braces-3.0.3.patch": "0798420c485a08534083b6eba2d8d8f50888716f40e1f5fc9883c43a38419619",
+    "docs/history/braces-qh009-20261022/pnpm-lock.yaml": "20e472df3c157d77791d94e3b025bbf4bf8dee25cf87a0970d449ba5ce37c860",
+    "docs/history/braces-qh009-20261022/tests/dependency_updates/js-security-183.test.cjs": "f444aa27cb453aa050f6afead6be0bba817c9b96a1e76ab7d8747d04869d4800",
+    "docs/history/braces-qh009-20261022/tests/dependency_updates/vite-qh010.test.cjs": "436c1d94b3a2d9f0fdc2b93e768030d521efb04e53d56b4c82144318df75002a",
+    "docs/history/development-validation-20261021/PollenCard.before.tsx.txt": "5316f89723fcb7b3a1699bdf6360c46e45ee070ec7b674af7c1f57ef9fc015a9",
+    "docs/history/development-validation-20261021/pnpm-lock.yaml": "685f622bd59421fe48e40007d35e707b361af14900e79f80dc69cd1cf06682a4",
+    "docs/history/development-validation-20261021/rust.before.yml": "e2238de12c2dc4cf26ac75600923cd477f40023e75fab4445ce5f9e41d429483",
+    "docs/history/development-validation-20261021/src-tauri/Cargo.toml": "fe2afa9dd9260e21636200bd3558aadc7ebe61cc22b71fc6eb7742f20ef17ce9",
+    "docs/history/development-validation-20261021/src-tauri/src/main.rs": "53afa352fbaf84d66debde52ccd83e94a738467194d269dd12590f21ec91673f",
+    "docs/history/development-validation-20261021/src/services/tauri.ts.txt": "e56e50b79ad0f92eca5708c5d2e4b12bd3b8932fd6a98564162f37efdb7907a1",
+    "docs/history/http2-183-20261022/Cargo.lock": "1cbef5cd93bb3c617576a43d28b6b9487e9697f21ca76b3ce6e9fe97cd3e9653",
+    "docs/history/http2-183-20261022/PR183.before.md": "53a2d23b5d308efa40567cb30d5b6b9e849fe5b8f1d579ff18783f26eab57f5b",
+    "docs/history/http2-183-20261022/src-tauri/Cargo.toml": "46f94df1adfb897bcd48841a30b705752bdc5ebe83a0beded6e8a8532cb8c3e3",
+    "docs/history/js-security-183-20261022/PORT.json": "4aa3a5ae05ec27674d4688471f3a60492a8d07fe51b5d99b45e2b62a4ac6c50f",
+    "docs/history/js-security-183-20261022/PR183.before.md": "6f2be728b6d91451be7d8591dc2bad7a933ac6480ef113adca72f42b6a0ef887",
+    "docs/history/js-security-183-20261022/docs/validation/rust-178/check-ported-graph.cjs": "1cc8f9402494e922a5292a5b06d43204593696c494a1f756b09ba550d081cacc",
+    "docs/history/js-security-183-20261022/package.json": "3f2a65888a0913c1d5f779ab98339e8978230679a9071b9ac7bb2d85af24c6c6",
+    "docs/history/js-security-183-20261022/pnpm-lock.yaml": "0537ba2f2914f12ead588afe47b03cb76e76c58f69fb7599460531867e63b09e",
+    "docs/history/rust-178/PORT.json": "d2adc98e8d632df9baa6be2aa9d7c27193e551f752fd6bb369b9a7f252c50f82",
+    "docs/history/rust-178/package.json": "6c8872840a20c1e6c2b955d3d6f2943f3bfdd3f884396f0691ff99f091a5fcce",
+    "docs/history/rust-178/pnpm-lock.yaml": "685f622bd59421fe48e40007d35e707b361af14900e79f80dc69cd1cf06682a4",
+    "docs/history/vite-qh010-20261022/PORT.json": "f94242d4c72cac00022788ce989939e8b01c2f4d655d509fb3414bb2dd63051d",
+    "docs/history/vite-qh010-20261022/PR183.before.md": "46ab58d6b39028c8eed46eda3fab56f51dc6a7a20b6eb1fd7d6dfa7386432875",
+    "docs/history/vite-qh010-20261022/Scripts/check-js-security-183.cjs": "37d60a74d0ccd0a6fbf2d2657723e64ec80e5282c312eaf48156d9492cc016a3",
+    "docs/history/vite-qh010-20261022/package.json": "2221fca11d4db09ca27600517803210555a2fbd6ea141829fe0d801f2a6d1e7c",
+    "docs/history/vite-qh010-20261022/pnpm-lock.yaml": "f19510e5217b8aa34f9389d12a53f534455b47a7890d5f3ebba2dbcce852e0a8",
+    "docs/history/vite-qh010-20261022/tests/dependency_updates/js-security-183.test.cjs": "6b9d099b892ab70e70b9d9a1d2d11c94037050c900433221aaa71139e4178517",
+    "docs/reports/braces-qh009-20261022-evidence.json": "3b5cdc755a4b7419f7a25a3c141d54dd86d48791fc82a7e0eb572fe21859b07a",
+    "docs/reports/braces-qh009-20261022.md": "aa451f9f2a03a7aca307f477e383bd94c6c0659eb01d38afe4f54149fe2b5073",
+    "docs/reports/development-validation-20261021.md": "97f2c98184534de6f126014dd2adc3f5cae4c8cacf09ce4ac19e765111f8d46e",
+    "docs/reports/http2-183-20261022-evidence.json": "bd49acec80ec3ae80adf656fb4f823fb5f22e822f82a37d5a437602aaaa1bdeb",
+    "docs/reports/http2-183-20261022.md": "b4c10c993b3e0504df6cbc92e7f743ab45f77dadb7e133dbbf62c6e0cb7cc86d",
+    "docs/reports/js-security-183-20261022-evidence.json": "322fbb81002052219b1a7f7ed5a5bd798771f749ec2403927c127a2429b1d2be",
+    "docs/reports/js-security-183-20261022.md": "ffc72719a4b8bb40ff57933255125e70358038379ea6e3d014705ea4fadf9177",
+    "docs/reports/vite-qh010-20261022-evidence.json": "884d5172a5397b314515811ee49c026f1fecaefee8e0d695e500cba07bb847a1",
+    "docs/reports/vite-qh010-20261022.md": "6ad4455a0c87fd09f7a4e02da5b0ff071db3558e839dc317be6d7b57a7c0e5a3",
+    "docs/validation/rust-178/check-js-dependency-preservation.cjs": "2f7d22d72db86c7a0e3c51728dfc286520e8e623d33a7b1162d5863b93362c6c",
+    "docs/validation/rust-178/check-ported-graph.cjs": "e1154b87c79f4fa318de7705ccbc98746a729b5e2c17c8c2ee9049bcbabf8391",
+    "eslint.config.js": "fa3cc12579fb0ef678a3153b31ec396d81ef2fec284a1a5ecb779c0ff336cfe0",
+    "index.html": "89cf481d800381f4f09216aaa611c3771d95e7410b6026e3a1c245b5ead2591d",
+    "package-lock.fix-report.json": "b9ac67bf29dd7d0144cbf3cb027aba9568a8cb87e74adecc86e5508d8f193e58",
+    "package-lock.json": "4b830f3f936c7920041cc919ee12980dee1763f42f411deb6a801d7fa020179e",
+    "package-lock.main.fixed.json": "504ee6e3e9f17de083fe402a2c06da407d1ef89b62a78c8c47aca176bc234ba3",
+    "package-lock.main.json": "214b0924bd06f6485f094e0e37de9e0fbf2f5c4a37b4c751ca939f34d9bcdf21",
+    "package.json": "9c7c201b9de5258b35caf3b74dd7c08cee76fd6df95df2f835cd08e4ac83add7",
+    "patches/braces-3.0.3.patch": "d5e1e30675318dd5defe4850a6d481a779cf664129a11cc0bb1a09cb39b6cd09",
+    "pnpm-lock.yaml": "5cb81c84f2ef06fb5876883cadab9fdf71bcca04c0a2ba978af358d0916ce98d",
+    "postcss.config.js": "e32657baf631d7c5f4dc67b4b2ee0ec8e7d5b3c41860e09cddce7c0377cd80bc",
+    "renovate.json": "e80b4e42a3043bc12fa0640db4bac392d2bf770acf841360d7c8ceeeac2ec1a9",
+    "src-tauri/Cargo.toml": "fd8a1ca892355fc6be739e5969acaddc1bacee1d8a943f64003119af4549bc08",
+    "src-tauri/build.rs": "b01bb80b64916f502a3033afdb4567227ef2abcc3b938889f02283aefa780fbe",
+    "src-tauri/icons/icon.png": "9e31fb5b009ac628ff272b74858d7ff63ca4baa6639fa6a86bffcde988fc7198",
+    "src-tauri/src/cache.rs": "0b8b66b3941f6b22a7faf894368785f5ce2024971c63608d24bda734143423fe",
+    "src-tauri/src/geocoding.rs": "0299f88af7dfd095c7ded625bbcef6e5cd8a34c55ccc021eb5811732347ea392",
+    "src-tauri/src/main.rs": "ff15fd5612d52c34c764df1e61b980360fd0187e1650f714d52b1d2d518c76b7",
+    "src-tauri/src/weather.rs": "7cb0a6f6c9357f71581adcd16364f3beb03e147c9256f3763c651c42c965f8bb",
+    "src-tauri/tauri.conf.json": "af89ee021642fcedfbed8f6b653fbf9ca8d476d5dbf1f06d88e9fc6ecf2cee16",
+    "src-tauri/tests/http_client.rs": "58ac032936f5d08914b3b98f7d0f1072fee2d57cda44ea9068047418dca02ff9",
+    "src/App.tsx": "fc4a135cf7e9f32f6c0e39b1a0ecab9882292f60cb00108fdac2e68bbeb279d6",
+    "src/components/AirQualityCard.tsx": "91f913608175dc77a96915ffa472468e50793e1ad7dd9ac9b52667f719dbc06a",
+    "src/components/Dashboard.tsx": "19d87fa9c5020907ff108a5753a5adfb491e9ae9e1b26799a3b5818115b82a07",
+    "src/components/ForecastCard.tsx": "81e7f34bd8f30c75c983199a0db7fec8f36a1ffa97b7fe0ff1162ca858b60a12",
+    "src/components/LandingHero.tsx": "cbb39c71f6a49c1c903f427118b411e01d690f725577761f8ce4b98298164318",
+    "src/components/PollenCard.tsx": "1fde4f806a52b68e2a4af4f5182504998f10c75f7e286d083c1c8e1f524ab202",
+    "src/components/SearchBar.tsx": "4190cc706152224b9164f99c408f2709fb4e579021d0a98670fc792a0d91f4b2",
+    "src/components/SettingsBar.tsx": "4ca552447ffbf544fef25df00e6ffa0a948e31b1d88b34436fbe15cb0277201b",
+    "src/components/TimeCard.tsx": "048b01f1e335ec31b9259b37f85e43a91da9c2575f8d64205aad478ddfecfeb9",
+    "src/components/WeatherCard.tsx": "2e89c31129e6705c405ed8795c270e6876594b52dd28209bae6740a5cb138c84",
+    "src/hooks/useAppState.ts": "0d7b4110c4bb54ce810d4d559b62b96cf8a28b4f4c8057e53876af9b090932e4",
+    "src/index.css": "fe17590dbfec9c6ccb8b61f9e0c4243c40d5ea470cc2d455a51b1da46412e389",
+    "src/main.tsx": "832842269af94b055b2cd42fd27a0f212773b36d20083b631b863cbb5f0fd09e",
+    "src/services/cache.ts": "4e5a038dbd6d9cf4becf1f0decae24544e3f665c91cf3ec914afceb35bd4fa85",
+    "src/services/geocoding.ts": "40066ac791abd0e2cb6d3552d4eb00aa97b9a65fff90e72c94e6598090ea8ec9",
+    "src/services/tauri.ts": "60e537db9936893f0448f391f54efebf2aaf415107c02edc48e72e4469a40350",
+    "src/services/weather.ts": "f489e75f248aec6b51e8ea6f6cbe75d5b057261ce0cffdb54adcb5e40b4541b3",
+    "src/types/index.ts": "1fe0afa91ac38d8206ef6c2799ae06894c0dc468dd47dfb50c8ea1a92b863a24",
+    "src/utils/formatters.ts": "3b97fcb9393f5b65d20b75d272b1542aa3c756b6f495da183da2aded2f71330e",
+    "src/vite-env.d.ts": "65996936fbb042915f7b74a200fcdde7e410f32a669b1ab9597cfaa4b0faddb5",
+    "tailwind.config.js": "316c86f90ec708a4e953dbba5f6064ddae1feb701754f872b599c4bc2a0aceb5",
+    "tauri.conf.json": "f16431ba98cb815295fcd7f12dc4860bea04885e4e68440545df6756186af280",
+    "tests/braces-hardening.test.mjs": "78ff18c24688350579732d2abe3051b9d53fcb42439d74deb169befce7c844da",
+    "tests/dependency_updates/braces-qh009.test.cjs": "0cb4b878403573cf003b610da1dcf4aa4cac6c2864c3fd3c554be19e50997e50",
+    "tests/dependency_updates/js-security-183.test.cjs": "61ce6bc8d6ffb3461f71d0298b632d9f69a46f81eede5d48f74f2706931656a6",
+    "tests/dependency_updates/vite-qh010.test.cjs": "58ea8400eaa2429a5e1a4fd35cffcf5c53ba0e1063dfeaa9a0e6690aafa7c76b",
+    "tests/pollen-card.test.mjs": "151c6043afcc05043404295c4fa3274e90278ab223e6ed6fa4ce62a14da5c5eb",
+    "tests/security/braces-depth.test.cjs": "2452495696c8856864a77260a39d955e85a56ef314c3dfad5fffb804e8788f5e",
+    "tests/security/braces-hardening-worker.cjs": "02bfd3919e9ba3e1eb1baf6a0fb467fa09af8325af58ba1e19e7d2124f217828",
+    "tests/security/vite-qh010.test.mjs": "d071b64ac9a780c9f434d10cdfcd882aed1644e358c4573ad4d6e40d89b91c00",
+    "tsconfig.app.json": "5dea726e0460f4b1c4c8cd0dab11544af8ae8f89445d8618f0d643762e2c5a0a",
+    "tsconfig.json": "770b4140bbb581e2dfd9ea9946ffc9c75a1d86ba7d2db5f77c83e37cbdf9d808",
+    "tsconfig.node.json": "1a270cb8020d1fa879262423b9c222fa38d94b830ec61164a46b558ea9d2a526",
+    "vite.config.ts": "a598244a2da0113288c541a7952a0d755b7d8ea8ffd9a1ab50317313f61ab80a",
+    "Scripts/check-tokio-qh011.cjs": "bc70940dc2609c90a7ed93af112321ed5aacd71f4b6521c4291344a7bdfeae25",
+    "tests/dependency_updates/tokio-qh011.test.cjs": "66c36bf53cf6a401e62d2c85f2ada3f0535746545d6db797d4a80dd5002da3b8"
+  },
+  "interval_search": {
+    "scope": "Application sources and src directories of 14 resolved direct Tokio consumers; textual evidence only",
+    "code_usage_identified": false,
+    "remaining_match": "hyper@1.12.0 src/proto/h2/ping.rs:476 trace message containing interval, not proof of Tokio Interval usage",
+    "not_an_exposure_exclusion": true
+  },
+  "ci": "Candidate not yet published at report creation; final exact-SHA results must be read on PR183.",
+  "status": {
+    "tokio_advisory": "Corrected on candidate, subject to independent review; not merged",
+    "QH-011": "OPEN: strict audit still fails",
+    "T-003": "UNCHECKED",
+    "QH-009": "MITIGATED, advisory OPEN",
+    "T-002": "UNCHECKED",
+    "QH-010": "Resolved only within PR183",
+    "T-004": "OPEN, workflows unchanged"
+  },
+  "limitations": [
+    "No Android APK/device/emulator test",
+    "No Windows/WSL or other platform build",
+    "No native GUI/installer validation",
+    "No upstream Tokio Loom/Miri/race scheduling campaign executed",
+    "Existing braces/Chokidar/Cartesian/Vite-bundled-code residuals unchanged",
+    "Connector interface exposes no configurable cancellation/timeout; shell network work is explicitly bounded"
+  ]
+}

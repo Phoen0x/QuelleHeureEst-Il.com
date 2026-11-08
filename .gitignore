@@ -21,3 +21,8 @@ dist-ssr
 *.sln
 *.sw?
 .env
+
+# FR// Sorties Rust et schémas Tauri générés, sans exclure les futurs projets Android.
+# EN// Generated Rust outputs and Tauri schemas, without excluding future Android projects.
+/target/
+/src-tauri/gen/schemas/

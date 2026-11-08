@@ -1,0 +1,651 @@
+{
+  "base_sha": "d033c8ea819614b4676f4db057ee3ef62c33f264",
+  "base_tree": "4fc715e4c072157da700305ea2490a34a7606b59",
+  "status": "local_acceptance_passed_remote_ci_not_yet_observed",
+  "upstream": {
+    "commit": "b5a4071e439bef2b5eea76c3aa25e5ae84839e34",
+    "url": "https://github.com/gtk-rs/gtk-rs-core/pull/1343",
+    "official_archive_sha256": "233daaf6e83ae6a12a52055f568f9d7cf4671dabb78ff9560ab6da230ce00ee5",
+    "vendor_files": 121,
+    "modified_vendor_files": [
+      "src/variant_iter.rs"
+    ],
+    "exact_changes": [
+      "let p -> let mut p",
+      "&p -> &mut p"
+    ],
+    "ptr_slice_identical_to_official_archive": true
+  },
+  "preservation": {
+    "initial_files": 165,
+    "unchanged_original_files": 161,
+    "modified_files": [
+      "Cargo.toml",
+      "Cargo.lock",
+      "src-tauri/Cargo.toml",
+      "docs/validation/rust-178/check-ported-graph.cjs"
+    ],
+    "added_file_count": 137,
+    "added_files": [
+      ".cargo/config.toml",
+      "Scripts/check-glib-qh011.py",
+      "Scripts/run-glib-variant-regressions.py",
+      "docs/history/glib-qh011-20261023/Cargo.lock",
+      "docs/history/glib-qh011-20261023/Cargo.toml",
+      "docs/history/glib-qh011-20261023/PORT.json",
+      "docs/history/glib-qh011-20261023/docs/validation/rust-178/check-ported-graph.cjs",
+      "docs/history/glib-qh011-20261023/glib-0.18.5.crate",
+      "docs/history/glib-qh011-20261023/metadata-all-before-graph.json",
+      "docs/history/glib-qh011-20261023/metadata-before-graph.json",
+      "docs/history/glib-qh011-20261023/src-tauri/Cargo.toml",
+      "docs/reports/glib-qh011-20261023-evidence.json",
+      "docs/reports/glib-qh011-20261023.md",
+      "patches/GLIB_0.18.5_BACKPORT_QH011.md",
+      "src-tauri/tests/glib_variant_str_iter.rs",
+      "tests/dependency_updates/glib-qh011.test.cjs",
+      "vendor/glib-0.18.5/.cargo_vcs_info.json",
+      "vendor/glib-0.18.5/COPYRIGHT",
+      "vendor/glib-0.18.5/Cargo.toml",
+      "vendor/glib-0.18.5/Cargo.toml.orig",
+      "vendor/glib-0.18.5/Gir.toml",
+      "vendor/glib-0.18.5/Gir_GObject.toml",
+      "vendor/glib-0.18.5/LICENSE",
+      "vendor/glib-0.18.5/README.md",
+      "vendor/glib-0.18.5/benches/gstring.rs",
+      "vendor/glib-0.18.5/src/auto/alias.rs",
+      "vendor/glib-0.18.5/src/auto/checksum.rs",
+      "vendor/glib-0.18.5/src/auto/constants.rs",
+      "vendor/glib-0.18.5/src/auto/date_time.rs",
+      "vendor/glib-0.18.5/src/auto/enums.rs",
+      "vendor/glib-0.18.5/src/auto/flags.rs",
+      "vendor/glib-0.18.5/src/auto/functions.rs",
+      "vendor/glib-0.18.5/src/auto/key_file.rs",
+      "vendor/glib-0.18.5/src/auto/main_context.rs",
+      "vendor/glib-0.18.5/src/auto/main_loop.rs",
+      "vendor/glib-0.18.5/src/auto/markup_parse_context.rs",
+      "vendor/glib-0.18.5/src/auto/mod.rs",
+      "vendor/glib-0.18.5/src/auto/source.rs",
+      "vendor/glib-0.18.5/src/auto/time_zone.rs",
+      "vendor/glib-0.18.5/src/auto/uri.rs",
+      "vendor/glib-0.18.5/src/auto/versions.txt",
+      "vendor/glib-0.18.5/src/boxed.rs",
+      "vendor/glib-0.18.5/src/boxed_any_object.rs",
+      "vendor/glib-0.18.5/src/boxed_inline.rs",
+      "vendor/glib-0.18.5/src/bridged_logging.rs",
+      "vendor/glib-0.18.5/src/byte_array.rs",
+      "vendor/glib-0.18.5/src/bytes.rs",
+      "vendor/glib-0.18.5/src/char.rs",
+      "vendor/glib-0.18.5/src/checksum.rs",
+      "vendor/glib-0.18.5/src/clone.rs",
+      "vendor/glib-0.18.5/src/closure.rs",
+      "vendor/glib-0.18.5/src/collections/list.rs",
+      "vendor/glib-0.18.5/src/collections/mod.rs",
+      "vendor/glib-0.18.5/src/collections/ptr_slice.rs",
+      "vendor/glib-0.18.5/src/collections/slice.rs",
+      "vendor/glib-0.18.5/src/collections/slist.rs",
+      "vendor/glib-0.18.5/src/collections/strv.rs",
+      "vendor/glib-0.18.5/src/control_flow.rs",
+      "vendor/glib-0.18.5/src/convert.rs",
+      "vendor/glib-0.18.5/src/date.rs",
+      "vendor/glib-0.18.5/src/date_time.rs",
+      "vendor/glib-0.18.5/src/enums.rs",
+      "vendor/glib-0.18.5/src/error.rs",
+      "vendor/glib-0.18.5/src/exit_code.rs",
+      "vendor/glib-0.18.5/src/future_with_timeout.rs",
+      "vendor/glib-0.18.5/src/gobject/auto/binding.rs",
+      "vendor/glib-0.18.5/src/gobject/auto/binding_group.rs",
+      "vendor/glib-0.18.5/src/gobject/auto/flags.rs",
+      "vendor/glib-0.18.5/src/gobject/auto/mod.rs",
+      "vendor/glib-0.18.5/src/gobject/auto/signal_group.rs",
+      "vendor/glib-0.18.5/src/gobject/binding.rs",
+      "vendor/glib-0.18.5/src/gobject/binding_group.rs",
+      "vendor/glib-0.18.5/src/gobject/flags.rs",
+      "vendor/glib-0.18.5/src/gobject/mod.rs",
+      "vendor/glib-0.18.5/src/gobject/signal_group.rs",
+      "vendor/glib-0.18.5/src/gstring.rs",
+      "vendor/glib-0.18.5/src/gstring_builder.rs",
+      "vendor/glib-0.18.5/src/key_file.rs",
+      "vendor/glib-0.18.5/src/lib.rs",
+      "vendor/glib-0.18.5/src/log.rs",
+      "vendor/glib-0.18.5/src/main_context.rs",
+      "vendor/glib-0.18.5/src/main_context_channel.rs",
+      "vendor/glib-0.18.5/src/main_context_futures.rs",
+      "vendor/glib-0.18.5/src/manual_functions.rs",
+      "vendor/glib-0.18.5/src/object.rs",
+      "vendor/glib-0.18.5/src/param_spec.rs",
+      "vendor/glib-0.18.5/src/prelude.rs",
+      "vendor/glib-0.18.5/src/property.rs",
+      "vendor/glib-0.18.5/src/quark.rs",
+      "vendor/glib-0.18.5/src/shared.rs",
+      "vendor/glib-0.18.5/src/signal.rs",
+      "vendor/glib-0.18.5/src/source.rs",
+      "vendor/glib-0.18.5/src/source_futures.rs",
+      "vendor/glib-0.18.5/src/subclass/basic.rs",
+      "vendor/glib-0.18.5/src/subclass/boxed.rs",
+      "vendor/glib-0.18.5/src/subclass/interface.rs",
+      "vendor/glib-0.18.5/src/subclass/mod.rs",
+      "vendor/glib-0.18.5/src/subclass/object.rs",
+      "vendor/glib-0.18.5/src/subclass/object_impl_ref.rs",
+      "vendor/glib-0.18.5/src/subclass/shared.rs",
+      "vendor/glib-0.18.5/src/subclass/signal.rs",
+      "vendor/glib-0.18.5/src/subclass/types.rs",
+      "vendor/glib-0.18.5/src/thread_guard.rs",
+      "vendor/glib-0.18.5/src/thread_pool.rs",
+      "vendor/glib-0.18.5/src/time_span.rs",
+      "vendor/glib-0.18.5/src/time_zone.rs",
+      "vendor/glib-0.18.5/src/translate.rs",
+      "vendor/glib-0.18.5/src/types.rs",
+      "vendor/glib-0.18.5/src/unichar.rs",
+      "vendor/glib-0.18.5/src/unicollate.rs",
+      "vendor/glib-0.18.5/src/utils.rs",
+      "vendor/glib-0.18.5/src/value.rs",
+      "vendor/glib-0.18.5/src/value_array.rs",
+      "vendor/glib-0.18.5/src/variant.rs",
+      "vendor/glib-0.18.5/src/variant_dict.rs",
+      "vendor/glib-0.18.5/src/variant_iter.rs",
+      "vendor/glib-0.18.5/src/variant_type.rs",
+      "vendor/glib-0.18.5/src/win32.rs",
+      "vendor/glib-0.18.5/src/wrapper.rs",
+      "vendor/glib-0.18.5/tests/check_gir.rs",
+      "vendor/glib-0.18.5/tests/clone.rs",
+      "vendor/glib-0.18.5/tests/derive.rs",
+      "vendor/glib-0.18.5/tests/log.rs",
+      "vendor/glib-0.18.5/tests/print.rs",
+      "vendor/glib-0.18.5/tests/structured_log.rs",
+      "vendor/glib-0.18.5/tests/subclass_compiletest.rs",
+      "vendor/glib-0.18.5/tests/subclass_compiletest/01-auto-send-sync.rs",
+      "vendor/glib-0.18.5/tests/subclass_compiletest/02-no-auto-send-sync.rs",
+      "vendor/glib-0.18.5/tests/subclass_compiletest/02-no-auto-send-sync.stderr",
+      "vendor/glib-0.18.5/tests/subclass_compiletest/03-object-no-auto-send-sync.rs",
+      "vendor/glib-0.18.5/tests/subclass_compiletest/03-object-no-auto-send-sync.stderr",
+      "vendor/glib-0.18.5/tests/subclass_compiletest/04-auto-send-sync-with-send-sync-parent.rs",
+      "vendor/glib-0.18.5/tests/subclass_compiletest/05-no-auto-send-sync-with-non-send-sync-parent.rs",
+      "vendor/glib-0.18.5/tests/subclass_compiletest/05-no-auto-send-sync-with-non-send-sync-parent.stderr",
+      "vendor/glib-0.18.5/tests/subclass_compiletest/06-no-auto-send-sync-with-non-send-sync-ffi-parent.rs",
+      "vendor/glib-0.18.5/tests/subclass_compiletest/06-no-auto-send-sync-with-non-send-sync-ffi-parent.stderr",
+      "vendor/glib-0.18.5/tests/value.rs"
+    ],
+    "archives": {
+      "Cargo.lock": {
+        "git_blob": "0257b2636b0f2252a592ad6e236fcf62a820ac41",
+        "sha256": "695708e710c73f2c4f0176df01aa73a6fb5a3b724d3032e8d4262eed3b761b03"
+      },
+      "Cargo.toml": {
+        "git_blob": "5322fc260c0e9012a3f51a9781b7ff5f8045cc44",
+        "sha256": "7c0212cf7a002175e8f408defc52cc275c144e48c60db2cd231c4846484aeeeb"
+      },
+      "docs/validation/rust-178/check-ported-graph.cjs": {
+        "git_blob": "66e25f71a9240178974a78d5cf4052cc2f23e674",
+        "sha256": "e1154b87c79f4fa318de7705ccbc98746a729b5e2c17c8c2ee9049bcbabf8391"
+      },
+      "src-tauri/Cargo.toml": {
+        "git_blob": "b41853b59061fe3142252fe41069508011ceb1cf",
+        "sha256": "fd8a1ca892355fc6be739e5969acaddc1bacee1d8a943f64003119af4549bc08"
+      }
+    },
+    "cargo_packages_before": 504,
+    "cargo_packages_after": 504,
+    "unchanged_cargo_package_entries": 503,
+    "only_lock_change": [
+      "quelleheureest: added GLib test edge"
+    ],
+    "glib_registry_entry_unchanged": true,
+    "dependency_versions_checksums_features_preserved": true,
+    "graph_archives": {
+      "metadata-all-before-graph.json": "6ad6b9f64de34ef61797aa867f0178d5a82d2c3b0fb820a6cf2dac03562a06b7",
+      "metadata-before-graph.json": "5062ac391bdd64fe5bdcd981e7dbea45a42c909f53876466c84688195ea2c07b"
+    },
+    "pnpm_snapshots": 409,
+    "optional_snapshots": 140,
+    "reachable_pnpm_snapshots": 304,
+    "inactive_pnpm_snapshots": 105,
+    "braces_patch_hash": "ij22dduv7f6wi3glhwl7jmdbrm"
+  },
+  "environment": {
+    "os": "Debian 13.6 Linux x86_64",
+    "rustc": "1.99.1 (58cf8f9c3 2026-10-13)",
+    "cargo": "1.99.1 (5f94df478 2026-08-27)",
+    "cargo_audit": "0.22.2",
+    "node": "24.19.0",
+    "pnpm": "8.15.9",
+    "native_libraries": "GTK 3.24.49 / WebKitGTK 4.1 API, 2.54.0 locally extracted prerequisites"
+  },
+  "compiled_source": {
+    "manifest": "vendor/glib-0.18.5/Cargo.toml",
+    "version": "0.18.5",
+    "features": [
+      "default",
+      "gio",
+      "gio_ffi",
+      "v2_58",
+      "v2_60",
+      "v2_62",
+      "v2_64",
+      "v2_66",
+      "v2_68",
+      "v2_70"
+    ],
+    "direct_consumers": [
+      "atk 0.18.2",
+      "cairo-rs 0.18.5",
+      "gdk 0.18.2",
+      "gdk-pixbuf 0.18.5",
+      "gdkx11 0.18.2",
+      "gio 0.18.4",
+      "gtk 0.18.2",
+      "javascriptcore-rs 1.1.2",
+      "libappindicator 0.9.0",
+      "pango 0.18.3",
+      "quelleheureest 0.0.1",
+      "soup3 0.5.0",
+      "webkit2gtk 2.0.2"
+    ],
+    "contexts": [
+      "repository root",
+      "src-tauri",
+      "Tauri CLI through package script"
+    ],
+    "external_contexts": [
+      {
+        "context": "external-unconfigured",
+        "exit": 0,
+        "uses_vendor": false,
+        "source_kind": "registry"
+      },
+      {
+        "context": "external-explicit",
+        "exit": 0,
+        "uses_vendor": true,
+        "source_kind": "vendor"
+      }
+    ],
+    "external_manifest_only_is_not_patched": true
+  },
+  "isolated_glib_reference": {
+    "distinctCases": 6,
+    "executions": 12,
+    "results": [
+      {
+        "profile": "debug",
+        "case": "forward_next_reads_written_pointer",
+        "exit": 0,
+        "stdout": "\nrunning 1 test\ntest forward_next_reads_written_pointer ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 5 filtered out; finished in 0.00s\n\n",
+        "stderr": ""
+      },
+      {
+        "profile": "debug",
+        "case": "forward_nth_reads_written_pointer",
+        "exit": 0,
+        "stdout": "\nrunning 1 test\ntest forward_nth_reads_written_pointer ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 5 filtered out; finished in 0.00s\n\n",
+        "stderr": ""
+      },
+      {
+        "profile": "debug",
+        "case": "forward_last_reads_written_pointer",
+        "exit": 0,
+        "stdout": "\nrunning 1 test\ntest forward_last_reads_written_pointer ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 5 filtered out; finished in 0.00s\n\n",
+        "stderr": ""
+      },
+      {
+        "profile": "debug",
+        "case": "backward_next_reads_written_pointer",
+        "exit": 0,
+        "stdout": "\nrunning 1 test\ntest backward_next_reads_written_pointer ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 5 filtered out; finished in 0.00s\n\n",
+        "stderr": ""
+      },
+      {
+        "profile": "debug",
+        "case": "backward_nth_reads_written_pointer",
+        "exit": 0,
+        "stdout": "\nrunning 1 test\ntest backward_nth_reads_written_pointer ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 5 filtered out; finished in 0.00s\n\n",
+        "stderr": ""
+      },
+      {
+        "profile": "debug",
+        "case": "mixed_iteration_and_empty_array_remain_valid",
+        "exit": 0,
+        "stdout": "\nrunning 1 test\ntest mixed_iteration_and_empty_array_remain_valid ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 5 filtered out; finished in 0.00s\n\n",
+        "stderr": ""
+      },
+      {
+        "profile": "release",
+        "case": "forward_next_reads_written_pointer",
+        "exit": -11,
+        "stdout": "\nrunning 1 test\n",
+        "stderr": ""
+      },
+      {
+        "profile": "release",
+        "case": "forward_nth_reads_written_pointer",
+        "exit": -11,
+        "stdout": "\nrunning 1 test\n",
+        "stderr": ""
+      },
+      {
+        "profile": "release",
+        "case": "forward_last_reads_written_pointer",
+        "exit": -11,
+        "stdout": "\nrunning 1 test\n",
+        "stderr": ""
+      },
+      {
+        "profile": "release",
+        "case": "backward_next_reads_written_pointer",
+        "exit": -11,
+        "stdout": "\nrunning 1 test\n",
+        "stderr": ""
+      },
+      {
+        "profile": "release",
+        "case": "backward_nth_reads_written_pointer",
+        "exit": -11,
+        "stdout": "\nrunning 1 test\n",
+        "stderr": ""
+      },
+      {
+        "profile": "release",
+        "case": "mixed_iteration_and_empty_array_remain_valid",
+        "exit": -11,
+        "stdout": "\nrunning 1 test\n",
+        "stderr": ""
+      }
+    ],
+    "limits": {
+      "wallSeconds": 10,
+      "cpuSeconds": 5,
+      "addressSpaceMiB": 1024,
+      "coreBytes": 0
+    }
+  },
+  "isolated_glib_corrected": {
+    "distinctCases": 6,
+    "executions": 12,
+    "results": [
+      {
+        "profile": "debug",
+        "case": "forward_next_reads_written_pointer",
+        "exit": 0,
+        "stdout": "\nrunning 1 test\ntest forward_next_reads_written_pointer ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 5 filtered out; finished in 0.04s\n\n",
+        "stderr": ""
+      },
+      {
+        "profile": "debug",
+        "case": "forward_nth_reads_written_pointer",
+        "exit": 0,
+        "stdout": "\nrunning 1 test\ntest forward_nth_reads_written_pointer ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 5 filtered out; finished in 0.00s\n\n",
+        "stderr": ""
+      },
+      {
+        "profile": "debug",
+        "case": "forward_last_reads_written_pointer",
+        "exit": 0,
+        "stdout": "\nrunning 1 test\ntest forward_last_reads_written_pointer ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 5 filtered out; finished in 0.00s\n\n",
+        "stderr": ""
+      },
+      {
+        "profile": "debug",
+        "case": "backward_next_reads_written_pointer",
+        "exit": 0,
+        "stdout": "\nrunning 1 test\ntest backward_next_reads_written_pointer ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 5 filtered out; finished in 0.00s\n\n",
+        "stderr": ""
+      },
+      {
+        "profile": "debug",
+        "case": "backward_nth_reads_written_pointer",
+        "exit": 0,
+        "stdout": "\nrunning 1 test\ntest backward_nth_reads_written_pointer ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 5 filtered out; finished in 0.00s\n\n",
+        "stderr": ""
+      },
+      {
+        "profile": "debug",
+        "case": "mixed_iteration_and_empty_array_remain_valid",
+        "exit": 0,
+        "stdout": "\nrunning 1 test\ntest mixed_iteration_and_empty_array_remain_valid ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 5 filtered out; finished in 0.00s\n\n",
+        "stderr": ""
+      },
+      {
+        "profile": "release",
+        "case": "forward_next_reads_written_pointer",
+        "exit": 0,
+        "stdout": "\nrunning 1 test\ntest forward_next_reads_written_pointer ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 5 filtered out; finished in 0.00s\n\n",
+        "stderr": ""
+      },
+      {
+        "profile": "release",
+        "case": "forward_nth_reads_written_pointer",
+        "exit": 0,
+        "stdout": "\nrunning 1 test\ntest forward_nth_reads_written_pointer ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 5 filtered out; finished in 0.00s\n\n",
+        "stderr": ""
+      },
+      {
+        "profile": "release",
+        "case": "forward_last_reads_written_pointer",
+        "exit": 0,
+        "stdout": "\nrunning 1 test\ntest forward_last_reads_written_pointer ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 5 filtered out; finished in 0.00s\n\n",
+        "stderr": ""
+      },
+      {
+        "profile": "release",
+        "case": "backward_next_reads_written_pointer",
+        "exit": 0,
+        "stdout": "\nrunning 1 test\ntest backward_next_reads_written_pointer ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 5 filtered out; finished in 0.00s\n\n",
+        "stderr": ""
+      },
+      {
+        "profile": "release",
+        "case": "backward_nth_reads_written_pointer",
+        "exit": 0,
+        "stdout": "\nrunning 1 test\ntest backward_nth_reads_written_pointer ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 5 filtered out; finished in 0.00s\n\n",
+        "stderr": ""
+      },
+      {
+        "profile": "release",
+        "case": "mixed_iteration_and_empty_array_remain_valid",
+        "exit": 0,
+        "stdout": "\nrunning 1 test\ntest mixed_iteration_and_empty_array_remain_valid ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 5 filtered out; finished in 0.00s\n\n",
+        "stderr": ""
+      }
+    ],
+    "limits": {
+      "wallSeconds": 10,
+      "cpuSeconds": 5,
+      "addressSpaceMiB": 1024,
+      "coreBytes": 0
+    }
+  },
+  "rust_tests": {
+    "distinct": 8,
+    "glib_distinct": 6,
+    "http_distinct": 2,
+    "profiles": [
+      "debug",
+      "release"
+    ],
+    "workspace_executions": 16,
+    "unit_tests_in_binary": 0,
+    "failed": 0,
+    "ignored": 0,
+    "additional_corrected_glib_isolated_replays": 12,
+    "reference_fixture_executions": 12,
+    "reference_release_sigsegv": 6
+  },
+  "node_tests": {
+    "primary_executions": 75,
+    "distinct_cases": 71,
+    "web_product_cases": 2,
+    "braces_historical": 10,
+    "braces_hardening_diagnostics": 20,
+    "vite_security": 2,
+    "preservation_executions": 41,
+    "distinct_negative_mutations": 35,
+    "new_glib_negative_mutations": 12,
+    "duplicate_named_cases": {
+      "preservation: intact candidate accepted": 2,
+      "preservation: initial Git object not required by a shallow checkout": 2,
+      "preservation: no-op mutation serializer preserves lock bytes": 2
+    },
+    "additional_semantic_replay": "braces expand directly supplied 4000-level AST",
+    "preservation_replay_executions": 53,
+    "failed": 0,
+    "ignored": 0
+  },
+  "commands": {
+    "cargo-build-debug": {
+      "exit": 0
+    },
+    "cargo-test-debug": {
+      "exit": 0
+    },
+    "cargo-build-release": {
+      "exit": 0
+    },
+    "cargo-test-release": {
+      "exit": 0
+    },
+    "tauri-cli": {
+      "exit": 0
+    },
+    "preservation-tests-final": {
+      "exit": 0
+    },
+    "preservation-final": {
+      "exit": 0
+    },
+    "bootstrap-preservation": {
+      "exit": 0
+    },
+    "glib-negative-final": {
+      "exit": 0
+    },
+    "preservation-publish": {
+      "exit": 0
+    }
+  },
+  "other_local_validation": {
+    "pnpm_frozen_install_exit": 0,
+    "typescript_exit": 0,
+    "eslint_exit": 0,
+    "vite_build_exit": 0,
+    "cargo_tree_locked_target_all_exit": 0,
+    "cargo_tree_locked_target_all_all_features_exit": 0,
+    "metadata_default_and_all_features_exit": 0,
+    "bootstrap_one_missing_crate_cache_test_exit": 0,
+    "fresh_machine_reconstruction_tested": false
+  },
+  "audits": [
+    {
+      "name": "cargo-before",
+      "exit": 1,
+      "seconds": 4.09,
+      "vulnerabilities": 0,
+      "warnings": {
+        "unmaintained": [
+          "RUSTSEC-2024-0370",
+          "RUSTSEC-2025-0134",
+          "RUSTSEC-2025-0081",
+          "RUSTSEC-2025-0075",
+          "RUSTSEC-2025-0080",
+          "RUSTSEC-2025-0100",
+          "RUSTSEC-2025-0098"
+        ],
+        "unsound": [
+          "RUSTSEC-2024-0429"
+        ]
+      },
+      "database": {
+        "advisory-count": 1349,
+        "last-commit": "c244ff02630e2e4e1eb69e01914b14a37dad7cbb",
+        "last-updated": "2026-10-23T07:37:57+02:00"
+      },
+      "pinned_database_commit": "c244ff02630e2e4e1eb69e01914b14a37dad7cbb"
+    },
+    {
+      "name": "cargo-after",
+      "exit": 1,
+      "seconds": 0.29,
+      "vulnerabilities": 0,
+      "warnings": {
+        "unmaintained": [
+          "RUSTSEC-2024-0370",
+          "RUSTSEC-2025-0134",
+          "RUSTSEC-2025-0081",
+          "RUSTSEC-2025-0075",
+          "RUSTSEC-2025-0080",
+          "RUSTSEC-2025-0100",
+          "RUSTSEC-2025-0098"
+        ],
+        "unsound": [
+          "RUSTSEC-2024-0429"
+        ]
+      },
+      "database": {
+        "advisory-count": 1349,
+        "last-commit": null,
+        "last-updated": null
+      },
+      "pinned_database_commit": "c244ff02630e2e4e1eb69e01914b14a37dad7cbb"
+    },
+    {
+      "name": "pnpm-full",
+      "exit": 1,
+      "seconds": 0.77,
+      "metadata": {
+        "vulnerabilities": {
+          "info": 0,
+          "low": 0,
+          "moderate": 0,
+          "high": 1,
+          "critical": 0
+        },
+        "dependencies": 305,
+        "devDependencies": 0,
+        "optionalDependencies": 0,
+        "totalDependencies": 305
+      },
+      "error": null,
+      "advisories": [
+        {
+          "id": 1240992,
+          "module_name": "braces",
+          "severity": "high",
+          "url": "https://github.com/advisories/GHSA-vfj7-8cjw-p6xm"
+        }
+      ]
+    },
+    {
+      "name": "pnpm-production",
+      "exit": 0,
+      "seconds": 0.56,
+      "metadata": {
+        "vulnerabilities": {
+          "info": 0,
+          "low": 0,
+          "moderate": 0,
+          "high": 0,
+          "critical": 0
+        },
+        "dependencies": 7,
+        "devDependencies": 0,
+        "optionalDependencies": 0,
+        "totalDependencies": 7
+      },
+      "error": null,
+      "advisories": []
+    }
+  ],
+  "limits": [
+    "No Android/APK/AAB/device/emulator validation",
+    "No Windows/WSL/macOS validation",
+    "No GUI launch or installer",
+    "No PtrSlice backport imported",
+    "No claim that the complete upstream GLib suite was executed",
+    "External Cargo manifest-only invocations do not discover repository source overrides",
+    "Strict Rust audit still fails with eight advisories",
+    "JavaScript full audit still reports HIGH braces; production audit zero"
+  ],
+  "ci": {
+    "status": "not_yet_observed_at_commit_creation",
+    "workflow_files_unchanged": true,
+    "expected_permanent_rust_tests": "6 GLib + 2 HTTP in debug; release and isolation are local checks in this mission; final published-SHA CI evidence belongs to the final handoff"
+  }
+}

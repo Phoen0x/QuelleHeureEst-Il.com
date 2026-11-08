@@ -1,0 +1,837 @@
+{
+  "added_files": [
+    ".cargo/config.toml",
+    "Scripts/check-glib-qh011.py",
+    "Scripts/run-glib-variant-regressions.py",
+    "docs/history/glib-qh011-20261023/Cargo.lock",
+    "docs/history/glib-qh011-20261023/Cargo.toml",
+    "docs/history/glib-qh011-20261023/PORT.json",
+    "docs/history/glib-qh011-20261023/docs/validation/rust-178/check-ported-graph.cjs",
+    "docs/history/glib-qh011-20261023/glib-0.18.5.crate",
+    "docs/history/glib-qh011-20261023/metadata-all-before-graph.json",
+    "docs/history/glib-qh011-20261023/metadata-before-graph.json",
+    "docs/history/glib-qh011-20261023/src-tauri/Cargo.toml",
+    "docs/reports/glib-qh011-20261023-evidence.json",
+    "docs/reports/glib-qh011-20261023.md",
+    "patches/GLIB_0.18.5_BACKPORT_QH011.md",
+    "src-tauri/tests/glib_variant_str_iter.rs",
+    "tests/dependency_updates/glib-qh011.test.cjs",
+    "vendor/glib-0.18.5/.cargo_vcs_info.json",
+    "vendor/glib-0.18.5/COPYRIGHT",
+    "vendor/glib-0.18.5/Cargo.toml",
+    "vendor/glib-0.18.5/Cargo.toml.orig",
+    "vendor/glib-0.18.5/Gir.toml",
+    "vendor/glib-0.18.5/Gir_GObject.toml",
+    "vendor/glib-0.18.5/LICENSE",
+    "vendor/glib-0.18.5/README.md",
+    "vendor/glib-0.18.5/benches/gstring.rs",
+    "vendor/glib-0.18.5/src/auto/alias.rs",
+    "vendor/glib-0.18.5/src/auto/checksum.rs",
+    "vendor/glib-0.18.5/src/auto/constants.rs",
+    "vendor/glib-0.18.5/src/auto/date_time.rs",
+    "vendor/glib-0.18.5/src/auto/enums.rs",
+    "vendor/glib-0.18.5/src/auto/flags.rs",
+    "vendor/glib-0.18.5/src/auto/functions.rs",
+    "vendor/glib-0.18.5/src/auto/key_file.rs",
+    "vendor/glib-0.18.5/src/auto/main_context.rs",
+    "vendor/glib-0.18.5/src/auto/main_loop.rs",
+    "vendor/glib-0.18.5/src/auto/markup_parse_context.rs",
+    "vendor/glib-0.18.5/src/auto/mod.rs",
+    "vendor/glib-0.18.5/src/auto/source.rs",
+    "vendor/glib-0.18.5/src/auto/time_zone.rs",
+    "vendor/glib-0.18.5/src/auto/uri.rs",
+    "vendor/glib-0.18.5/src/auto/versions.txt",
+    "vendor/glib-0.18.5/src/boxed.rs",
+    "vendor/glib-0.18.5/src/boxed_any_object.rs",
+    "vendor/glib-0.18.5/src/boxed_inline.rs",
+    "vendor/glib-0.18.5/src/bridged_logging.rs",
+    "vendor/glib-0.18.5/src/byte_array.rs",
+    "vendor/glib-0.18.5/src/bytes.rs",
+    "vendor/glib-0.18.5/src/char.rs",
+    "vendor/glib-0.18.5/src/checksum.rs",
+    "vendor/glib-0.18.5/src/clone.rs",
+    "vendor/glib-0.18.5/src/closure.rs",
+    "vendor/glib-0.18.5/src/collections/list.rs",
+    "vendor/glib-0.18.5/src/collections/mod.rs",
+    "vendor/glib-0.18.5/src/collections/ptr_slice.rs",
+    "vendor/glib-0.18.5/src/collections/slice.rs",
+    "vendor/glib-0.18.5/src/collections/slist.rs",
+    "vendor/glib-0.18.5/src/collections/strv.rs",
+    "vendor/glib-0.18.5/src/control_flow.rs",
+    "vendor/glib-0.18.5/src/convert.rs",
+    "vendor/glib-0.18.5/src/date.rs",
+    "vendor/glib-0.18.5/src/date_time.rs",
+    "vendor/glib-0.18.5/src/enums.rs",
+    "vendor/glib-0.18.5/src/error.rs",
+    "vendor/glib-0.18.5/src/exit_code.rs",
+    "vendor/glib-0.18.5/src/future_with_timeout.rs",
+    "vendor/glib-0.18.5/src/gobject/auto/binding.rs",
+    "vendor/glib-0.18.5/src/gobject/auto/binding_group.rs",
+    "vendor/glib-0.18.5/src/gobject/auto/flags.rs",
+    "vendor/glib-0.18.5/src/gobject/auto/mod.rs",
+    "vendor/glib-0.18.5/src/gobject/auto/signal_group.rs",
+    "vendor/glib-0.18.5/src/gobject/binding.rs",
+    "vendor/glib-0.18.5/src/gobject/binding_group.rs",
+    "vendor/glib-0.18.5/src/gobject/flags.rs",
+    "vendor/glib-0.18.5/src/gobject/mod.rs",
+    "vendor/glib-0.18.5/src/gobject/signal_group.rs",
+    "vendor/glib-0.18.5/src/gstring.rs",
+    "vendor/glib-0.18.5/src/gstring_builder.rs",
+    "vendor/glib-0.18.5/src/key_file.rs",
+    "vendor/glib-0.18.5/src/lib.rs",
+    "vendor/glib-0.18.5/src/log.rs",
+    "vendor/glib-0.18.5/src/main_context.rs",
+    "vendor/glib-0.18.5/src/main_context_channel.rs",
+    "vendor/glib-0.18.5/src/main_context_futures.rs",
+    "vendor/glib-0.18.5/src/manual_functions.rs",
+    "vendor/glib-0.18.5/src/object.rs",
+    "vendor/glib-0.18.5/src/param_spec.rs",
+    "vendor/glib-0.18.5/src/prelude.rs",
+    "vendor/glib-0.18.5/src/property.rs",
+    "vendor/glib-0.18.5/src/quark.rs",
+    "vendor/glib-0.18.5/src/shared.rs",
+    "vendor/glib-0.18.5/src/signal.rs",
+    "vendor/glib-0.18.5/src/source.rs",
+    "vendor/glib-0.18.5/src/source_futures.rs",
+    "vendor/glib-0.18.5/src/subclass/basic.rs",
+    "vendor/glib-0.18.5/src/subclass/boxed.rs",
+    "vendor/glib-0.18.5/src/subclass/interface.rs",
+    "vendor/glib-0.18.5/src/subclass/mod.rs",
+    "vendor/glib-0.18.5/src/subclass/object.rs",
+    "vendor/glib-0.18.5/src/subclass/object_impl_ref.rs",
+    "vendor/glib-0.18.5/src/subclass/shared.rs",
+    "vendor/glib-0.18.5/src/subclass/signal.rs",
+    "vendor/glib-0.18.5/src/subclass/types.rs",
+    "vendor/glib-0.18.5/src/thread_guard.rs",
+    "vendor/glib-0.18.5/src/thread_pool.rs",
+    "vendor/glib-0.18.5/src/time_span.rs",
+    "vendor/glib-0.18.5/src/time_zone.rs",
+    "vendor/glib-0.18.5/src/translate.rs",
+    "vendor/glib-0.18.5/src/types.rs",
+    "vendor/glib-0.18.5/src/unichar.rs",
+    "vendor/glib-0.18.5/src/unicollate.rs",
+    "vendor/glib-0.18.5/src/utils.rs",
+    "vendor/glib-0.18.5/src/value.rs",
+    "vendor/glib-0.18.5/src/value_array.rs",
+    "vendor/glib-0.18.5/src/variant.rs",
+    "vendor/glib-0.18.5/src/variant_dict.rs",
+    "vendor/glib-0.18.5/src/variant_iter.rs",
+    "vendor/glib-0.18.5/src/variant_type.rs",
+    "vendor/glib-0.18.5/src/win32.rs",
+    "vendor/glib-0.18.5/src/wrapper.rs",
+    "vendor/glib-0.18.5/tests/check_gir.rs",
+    "vendor/glib-0.18.5/tests/clone.rs",
+    "vendor/glib-0.18.5/tests/derive.rs",
+    "vendor/glib-0.18.5/tests/log.rs",
+    "vendor/glib-0.18.5/tests/print.rs",
+    "vendor/glib-0.18.5/tests/structured_log.rs",
+    "vendor/glib-0.18.5/tests/subclass_compiletest.rs",
+    "vendor/glib-0.18.5/tests/subclass_compiletest/01-auto-send-sync.rs",
+    "vendor/glib-0.18.5/tests/subclass_compiletest/02-no-auto-send-sync.rs",
+    "vendor/glib-0.18.5/tests/subclass_compiletest/02-no-auto-send-sync.stderr",
+    "vendor/glib-0.18.5/tests/subclass_compiletest/03-object-no-auto-send-sync.rs",
+    "vendor/glib-0.18.5/tests/subclass_compiletest/03-object-no-auto-send-sync.stderr",
+    "vendor/glib-0.18.5/tests/subclass_compiletest/04-auto-send-sync-with-send-sync-parent.rs",
+    "vendor/glib-0.18.5/tests/subclass_compiletest/05-no-auto-send-sync-with-non-send-sync-parent.rs",
+    "vendor/glib-0.18.5/tests/subclass_compiletest/05-no-auto-send-sync-with-non-send-sync-parent.stderr",
+    "vendor/glib-0.18.5/tests/subclass_compiletest/06-no-auto-send-sync-with-non-send-sync-ffi-parent.rs",
+    "vendor/glib-0.18.5/tests/subclass_compiletest/06-no-auto-send-sync-with-non-send-sync-ffi-parent.stderr",
+    "vendor/glib-0.18.5/tests/value.rs"
+  ],
+  "archive_sha256": "233daaf6e83ae6a12a52055f568f9d7cf4671dabb78ff9560ab6da230ce00ee5",
+  "archives": {
+    "Cargo.lock": {
+      "git_blob": "0257b2636b0f2252a592ad6e236fcf62a820ac41",
+      "sha256": "695708e710c73f2c4f0176df01aa73a6fb5a3b724d3032e8d4262eed3b761b03"
+    },
+    "Cargo.toml": {
+      "git_blob": "5322fc260c0e9012a3f51a9781b7ff5f8045cc44",
+      "sha256": "7c0212cf7a002175e8f408defc52cc275c144e48c60db2cd231c4846484aeeeb"
+    },
+    "docs/validation/rust-178/check-ported-graph.cjs": {
+      "git_blob": "66e25f71a9240178974a78d5cf4052cc2f23e674",
+      "sha256": "e1154b87c79f4fa318de7705ccbc98746a729b5e2c17c8c2ee9049bcbabf8391"
+    },
+    "src-tauri/Cargo.toml": {
+      "git_blob": "b41853b59061fe3142252fe41069508011ceb1cf",
+      "sha256": "fd8a1ca892355fc6be739e5969acaddc1bacee1d8a943f64003119af4549bc08"
+    }
+  },
+  "base_sha": "d033c8ea819614b4676f4db057ee3ef62c33f264",
+  "base_tree": "4fc715e4c072157da700305ea2490a34a7606b59",
+  "graph_hashes": {
+    "metadata-all-before-graph.json": "6ad6b9f64de34ef61797aa867f0178d5a82d2c3b0fb820a6cf2dac03562a06b7",
+    "metadata-before-graph.json": "5062ac391bdd64fe5bdcd981e7dbea45a42c909f53876466c84688195ea2c07b"
+  },
+  "historical_source_sha": "0ebc167c8febf1b61752d1114f8135a59400c5f1",
+  "initial_files": {
+    ".bolt/config.json": {
+      "mode": "100644",
+      "sha": "6b6787dcd124b08cbe754dca375d4780fe93829d"
+    },
+    ".bolt/mcp.json": {
+      "mode": "100644",
+      "sha": "28c6548f6d0dedf18030ab2979ea57b91395eab4"
+    },
+    ".bolt/prompt": {
+      "mode": "100644",
+      "sha": "50bf7a0a874cbcd5362f338b44602e7e8db16ef5"
+    },
+    ".cursor/settings.json": {
+      "mode": "100644",
+      "sha": "ed5f10d64c619cf59940c14dc632519a5d2f7868"
+    },
+    ".gitattributes": {
+      "mode": "100644",
+      "sha": "b46b890a570df1e8694f221da77e958f9449c105"
+    },
+    ".github/README.md": {
+      "mode": "100644",
+      "sha": "5699e0b891211736de6273b4c3167ae92aa96a5b"
+    },
+    ".github/dependabot.yml": {
+      "mode": "100644",
+      "sha": "c91b6905b78503b435d6a6db5c7bb8652cdaf62a"
+    },
+    ".github/workflows/apisec-scan.yml": {
+      "mode": "100644",
+      "sha": "409f7b5479211adc015720fddd26d6e6b0ddf158"
+    },
+    ".github/workflows/auto-approve.yml": {
+      "mode": "100644",
+      "sha": "2d2995cd9abfd42781a3d0942cc49d836a3d65ea"
+    },
+    ".github/workflows/codeql.yml": {
+      "mode": "100644",
+      "sha": "6045f8eebddacb766b1163aec67cab3b10613eea"
+    },
+    ".github/workflows/neuralegion.yml": {
+      "mode": "100644",
+      "sha": "be9e0f5b13380a20cb857c8b33e6eaf4436bf2ee"
+    },
+    ".github/workflows/rust.yml": {
+      "mode": "100644",
+      "sha": "7ca5922de2af3774229c699062fbd7992eb4b0fc"
+    },
+    ".github/workflows/security-analysis.yml": {
+      "mode": "100644",
+      "sha": "333a21398668fdc3b1e83f39ce60d7b0a349a417"
+    },
+    ".github/workflows/semgrep.yml": {
+      "mode": "100644",
+      "sha": "d63d51807391674593ebb8414797ba9ac74c9d77"
+    },
+    ".github/workflows/sonarcloud.yml": {
+      "mode": "100644",
+      "sha": "07701bef6c6e65143b9b4c1840f4e1349ed36ddc"
+    },
+    ".gitignore": {
+      "mode": "100644",
+      "sha": "0a8bcc5aa9d3e0657296d97effca553c3d078b38"
+    },
+    "AGENTS.md": {
+      "mode": "100644",
+      "sha": "3d91e7767ae3d00156f19bf8599ad11ea26e4a46"
+    },
+    "Cargo.lock": {
+      "mode": "100644",
+      "sha": "0257b2636b0f2252a592ad6e236fcf62a820ac41"
+    },
+    "Cargo.toml": {
+      "mode": "100644",
+      "sha": "5322fc260c0e9012a3f51a9781b7ff5f8045cc44"
+    },
+    "LICENSE": {
+      "mode": "100644",
+      "sha": "947481855a58de035c7c0d5ec268ccc895a891fc"
+    },
+    "NotesPersos.md": {
+      "mode": "100644",
+      "sha": "3df6142f66603c61f5d5e4625d7ea0ec63fcdb7b"
+    },
+    "README.md": {
+      "mode": "100644",
+      "sha": "22a76a192e81c7eb8a248f5dcb46b4b565c46414"
+    },
+    "SECURITY.md": {
+      "mode": "100644",
+      "sha": "390349b667961013e7703536b219eb0fa0a3e897"
+    },
+    "Scripts/DiagComplet_DINGUERIE.ps1": {
+      "mode": "100644",
+      "sha": "afb29a1d89e92001269f1ef173560a17d10cbeb3"
+    },
+    "Scripts/DiagDrivers_20260521_1402.txt": {
+      "mode": "100644",
+      "sha": "b06d0ac1f1d0f5a9adbfe233cd6a09e32d305fc1"
+    },
+    "Scripts/EpicGamesLauncherDelete.ps1": {
+      "mode": "100644",
+      "sha": "65411f15f5c9bdca467eed66afca1afba76ab8a8"
+    },
+    "Scripts/IntelDSA_RegistryBackup_2026-05-22_06-36-03.reg": {
+      "mode": "100644",
+      "sha": "960540f95a673676d7ab7641024cc0ab3b74f604"
+    },
+    "Scripts/Maintenance.ps1": {
+      "mode": "100644",
+      "sha": "e970f4f4008d254704e93a96d37140100fb2d94b"
+    },
+    "Scripts/Nettoyage_du_D\u00e9p\u00f4t.sh": {
+      "mode": "100644",
+      "sha": "360d764d4bd275cd0031e7f1ee3e4991b5a09580"
+    },
+    "Scripts/OptiAlimRog.ps1": {
+      "mode": "100644",
+      "sha": "45b8ce74b4d92ed6a8f642246af4355bf97e8b5e"
+    },
+    "Scripts/WindowsFullUpdate.ps1": {
+      "mode": "100644",
+      "sha": "f66e871420f97626a4abdcd9a1a0be93fc4edc85"
+    },
+    "Scripts/analyze-lock-duplicates.mjs": {
+      "mode": "100644",
+      "sha": "65406b2ea829a68cbb7353d07f140510315383ce"
+    },
+    "Scripts/antiintelstartup.ps1": {
+      "mode": "100644",
+      "sha": "99d98eafb7f2b758ddd10157d575e7520750ad84"
+    },
+    "Scripts/armourydelete.ps1": {
+      "mode": "100644",
+      "sha": "f4e00f8559c6cc01c1454b2fdad673f3b831e235"
+    },
+    "Scripts/check-braces-qh009.cjs": {
+      "mode": "100644",
+      "sha": "0e1dc1badc70ac92ce6b6dd4ffc9bab40acc1caa"
+    },
+    "Scripts/check-http2-183-preservation.py": {
+      "mode": "100644",
+      "sha": "9b7656270f3be37e2fb8f445634dae51541114a6"
+    },
+    "Scripts/check-js-security-183.cjs": {
+      "mode": "100644",
+      "sha": "f4e81155abecc77a47baa4a3d4a623a9a223322f"
+    },
+    "Scripts/check-tokio-qh011.cjs": {
+      "mode": "100644",
+      "sha": "e8a2d3c03b9dcb022a0d516ca1ddb9f1db47c0c1"
+    },
+    "Scripts/check-vite-qh010.cjs": {
+      "mode": "100644",
+      "sha": "c9e7a043499017e57b82e2fd9f96428fa724abb4"
+    },
+    "Scripts/dernier.ps1": {
+      "mode": "100644",
+      "sha": "d5efbb7945c5f00cb3e0a5ffa0cb2ed8b92de8ce"
+    },
+    "Scripts/disableasusservices.ps1": {
+      "mode": "100644",
+      "sha": "af3dae46c29051b16f793a839a9a08adffb759c6"
+    },
+    "Scripts/fix-package-lock-merge.mjs": {
+      "mode": "100644",
+      "sha": "edd0922deafc565210e292a68fddfb5023f2eb82"
+    },
+    "Scripts/ghelper.ps1": {
+      "mode": "100644",
+      "sha": "e9ee6d6b5dd38aa9f888c0e282a027abc2cc45f3"
+    },
+    "Scripts/logs latencymon.txt": {
+      "mode": "100644",
+      "sha": "97ca8c6907845baaa7263778ec859be888df27d2"
+    },
+    "Scripts/majs prob.ps1": {
+      "mode": "100644",
+      "sha": "b78a816915f25031d713e096cf5a4fb517c512e2"
+    },
+    "Scripts/purgewindowsupdate (2).ps1": {
+      "mode": "100644",
+      "sha": "83aa30f9cf03a7f5bbdaa6461437c85d8cb82406"
+    },
+    "Scripts/purgewindowsupdate (3).ps1": {
+      "mode": "100644",
+      "sha": "20bb6352ec9a2b9045a922f862a1a8cd1be7548e"
+    },
+    "Scripts/purgewindowsupdate.ps1": {
+      "mode": "100644",
+      "sha": "eb4e0f015f6b51a88c45b294a92de896f0503139"
+    },
+    "Scripts/reportbsod.txt": {
+      "mode": "100644",
+      "sha": "cc6ef87175a17579bb649f0e61f00caeb53b85a2"
+    },
+    "Scripts/scriptantiacronis.ps1": {
+      "mode": "100644",
+      "sha": "f65b1cf63f930e72708d394d61708c32341c2a0b"
+    },
+    "Scripts/setup_file_compare_unity_git.ps1": {
+      "mode": "100644",
+      "sha": "51ceee359338b83aecb5dddca7458b0f2907b85d"
+    },
+    "Scripts/transcriptcursor.md": {
+      "mode": "100644",
+      "sha": "93d53847a19ed12a3c6c7b5ca827ae40e8940514"
+    },
+    "docs/ai/COLLABORATION_VALIDATION_2026-10-16.md": {
+      "mode": "100644",
+      "sha": "d4f7ca5296b45c555f8a3427a92477c93b5d6dac"
+    },
+    "docs/ai/KNOWLEDGE_PRIVACY_POLICY.md": {
+      "mode": "100644",
+      "sha": "9178fd1f5c62c36c6bcae0275c26d26a4a2b533d"
+    },
+    "docs/ai/PROJECT_RELAY_2026-10-16.md": {
+      "mode": "100644",
+      "sha": "10942af52affcc8966d26528dd32e28bc7f7ab85"
+    },
+    "docs/ai/README.md": {
+      "mode": "100644",
+      "sha": "10dba29f43c351b18aa68361c4664ce794e9eefb"
+    },
+    "docs/ai/SESSION_CHATGPT_INITIAL_AUDITS_COMPLETENESS_2026-10-21.md": {
+      "mode": "100644",
+      "sha": "d1c835f7a335d492d7de6878601fc30bfe73276e"
+    },
+    "docs/ai/SESSION_CODEX_COMPLETENESS_2026-10-21.md": {
+      "mode": "100644",
+      "sha": "ef1bd7bd159cc10f54ee9e556c477da3cc8de4eb"
+    },
+    "docs/ai/SESSION_CODEX_PR153_PR162_COMPLETENESS_2026-10-21.md": {
+      "mode": "100644",
+      "sha": "8e1ff78c9e0b62028ce538e80992016217efe282"
+    },
+    "docs/ai/SESSION_CODEX_PR153_PR162_COMPLETENESS_2026-10-21_EVIDENCE.json": {
+      "mode": "100644",
+      "sha": "330343f43b4853b1d9c622055c636c582af3341b"
+    },
+    "docs/ai/WORKING_CONTRACT.md": {
+      "mode": "100644",
+      "sha": "7887de7a084ecc54f789a6dd1156a88907372ddb"
+    },
+    "docs/development/debian13-packages-20261022.json": {
+      "mode": "100644",
+      "sha": "d69dfd8760709232b1e7db0bb4fd52ea32af8438"
+    },
+    "docs/development/linux-environment-20261022.md": {
+      "mode": "100644",
+      "sha": "4d63a41b86115aa9381a6f59f8839b31b7d36cfa"
+    },
+    "docs/history/braces-qh009-20261022/PORT.json": {
+      "mode": "100644",
+      "sha": "53c5abadcd29eabffe55c6503a48fd715b31073e"
+    },
+    "docs/history/braces-qh009-20261022/PR183.before.md": {
+      "mode": "100644",
+      "sha": "33099ef428dcd5463486cc90a7c7268bc2e194ed"
+    },
+    "docs/history/braces-qh009-20261022/docs/validation/rust-178/check-ported-graph.cjs": {
+      "mode": "100644",
+      "sha": "ac48b63d3615944031d039227fb3e57fcf1cb93c"
+    },
+    "docs/history/braces-qh009-20261022/patches/braces-3.0.3.patch": {
+      "mode": "100644",
+      "sha": "1a0f684bb519b44b5f20a19cfd104525411435d7"
+    },
+    "docs/history/braces-qh009-20261022/pnpm-lock.yaml": {
+      "mode": "100644",
+      "sha": "bee600c75f31574cac5d1f2f1e8b446c337ce1f6"
+    },
+    "docs/history/braces-qh009-20261022/tests/dependency_updates/js-security-183.test.cjs": {
+      "mode": "100644",
+      "sha": "c0aaea2b14405b3c6340f797c728f38aa107ef86"
+    },
+    "docs/history/braces-qh009-20261022/tests/dependency_updates/vite-qh010.test.cjs": {
+      "mode": "100644",
+      "sha": "f1a063162194fa12dbc0d533bc3965cd6bf44db6"
+    },
+    "docs/history/development-validation-20261021/PollenCard.before.tsx.txt": {
+      "mode": "100644",
+      "sha": "5a9d9cbfd67154fcba5349381d22c2a82cc0828c"
+    },
+    "docs/history/development-validation-20261021/pnpm-lock.yaml": {
+      "mode": "100644",
+      "sha": "858b1dbf37401218a923096de5a1b9ae6ce1b68a"
+    },
+    "docs/history/development-validation-20261021/rust.before.yml": {
+      "mode": "100644",
+      "sha": "3ef053317588c180ab33476eb984cac82842c71f"
+    },
+    "docs/history/development-validation-20261021/src-tauri/Cargo.toml": {
+      "mode": "100644",
+      "sha": "855908a51b5d5298f69342b4e063ab1fad84e54a"
+    },
+    "docs/history/development-validation-20261021/src-tauri/src/main.rs": {
+      "mode": "100644",
+      "sha": "e09a27e4aac5cb00b9369abc31d743c16d0716e6"
+    },
+    "docs/history/development-validation-20261021/src/services/tauri.ts.txt": {
+      "mode": "100644",
+      "sha": "38e968b25fb20203e44959c16bb8bd71de4d3576"
+    },
+    "docs/history/http2-183-20261022/Cargo.lock": {
+      "mode": "100644",
+      "sha": "15fdb22462d6f5e66819afd14bf777c56fe04223"
+    },
+    "docs/history/http2-183-20261022/PR183.before.md": {
+      "mode": "100644",
+      "sha": "0463ca2a04059fbf2f46098d78bfe4e6b0d61c5c"
+    },
+    "docs/history/http2-183-20261022/src-tauri/Cargo.toml": {
+      "mode": "100644",
+      "sha": "4b256199d65c053699c3ec8dbe852bb44881ad78"
+    },
+    "docs/history/js-security-183-20261022/PORT.json": {
+      "mode": "100644",
+      "sha": "0d6fecc517e11f7a1a38772b7b7ea599593eb9af"
+    },
+    "docs/history/js-security-183-20261022/PR183.before.md": {
+      "mode": "100644",
+      "sha": "1330e86fc6875e9e5eeae126c8fc16f1d4e66827"
+    },
+    "docs/history/js-security-183-20261022/docs/validation/rust-178/check-ported-graph.cjs": {
+      "mode": "100644",
+      "sha": "456e367066b19c52d6b3d40654b3fd7df6c9d245"
+    },
+    "docs/history/js-security-183-20261022/package.json": {
+      "mode": "100644",
+      "sha": "de94c035ddf132da16b286bd07186e3d3eb92777"
+    },
+    "docs/history/js-security-183-20261022/pnpm-lock.yaml": {
+      "mode": "100644",
+      "sha": "62aaa36a21f27bc91b2636e2ede71caec90b38ea"
+    },
+    "docs/history/rust-178/PORT.json": {
+      "mode": "100644",
+      "sha": "51b4434ae96204934f4ee766e8c273e6901e004d"
+    },
+    "docs/history/rust-178/package.json": {
+      "mode": "100644",
+      "sha": "e1c2d3f28dbff9cc28a420dc000282fc0a8fe83f"
+    },
+    "docs/history/rust-178/pnpm-lock.yaml": {
+      "mode": "100644",
+      "sha": "858b1dbf37401218a923096de5a1b9ae6ce1b68a"
+    },
+    "docs/history/tokio-qh011-20261023/Cargo.lock": {
+      "mode": "100644",
+      "sha": "221de1eaa6950adae5f1b97d7bae06bf6bfdbdb0"
+    },
+    "docs/history/tokio-qh011-20261023/PORT.json": {
+      "mode": "100644",
+      "sha": "e8fc51688f124f6aeb4444d73d9abb3c73409e44"
+    },
+    "docs/history/tokio-qh011-20261023/PR183.before.md": {
+      "mode": "100644",
+      "sha": "d12db82f3bbeb97d2ef640824b952f25086ad037"
+    },
+    "docs/history/tokio-qh011-20261023/docs/validation/rust-178/check-ported-graph.cjs": {
+      "mode": "100644",
+      "sha": "e101b8ecf9a6982c848dcee0e3f78253d469f68d"
+    },
+    "docs/history/vite-qh010-20261022/PORT.json": {
+      "mode": "100644",
+      "sha": "fd0aa72ac11de114fe30267eafcb345ef8d959da"
+    },
+    "docs/history/vite-qh010-20261022/PR183.before.md": {
+      "mode": "100644",
+      "sha": "3bba00e4af3865e8467c2d407e1c158165a9f963"
+    },
+    "docs/history/vite-qh010-20261022/Scripts/check-js-security-183.cjs": {
+      "mode": "100644",
+      "sha": "d57a80e2fac35d98b2d4b79bdb5d9bc077745bec"
+    },
+    "docs/history/vite-qh010-20261022/package.json": {
+      "mode": "100644",
+      "sha": "5708e9bd06e752fe841945c3d4110b8e91792707"
+    },
+    "docs/history/vite-qh010-20261022/pnpm-lock.yaml": {
+      "mode": "100644",
+      "sha": "d5fd998f0f9a965a38625afb369340ce67073318"
+    },
+    "docs/history/vite-qh010-20261022/tests/dependency_updates/js-security-183.test.cjs": {
+      "mode": "100644",
+      "sha": "8faf004298f55b70c1657cef3894535f01ee2896"
+    },
+    "docs/reports/braces-qh009-20261022-evidence.json": {
+      "mode": "100644",
+      "sha": "57e04175f9674dabc868bb07832c6269164364a7"
+    },
+    "docs/reports/braces-qh009-20261022.md": {
+      "mode": "100644",
+      "sha": "edd23b22a35d695cdaa28d94cff8cdae9e862d44"
+    },
+    "docs/reports/development-validation-20261021.md": {
+      "mode": "100644",
+      "sha": "3196a76ee5c1d9e98128dcda5a3e5621e9813e35"
+    },
+    "docs/reports/http2-183-20261022-evidence.json": {
+      "mode": "100644",
+      "sha": "f47e80088107794514d723092c783a16cbd88816"
+    },
+    "docs/reports/http2-183-20261022.md": {
+      "mode": "100644",
+      "sha": "774dfc270519ca805ef8e375a71ec58d32c06046"
+    },
+    "docs/reports/js-security-183-20261022-evidence.json": {
+      "mode": "100644",
+      "sha": "9cac43e2ef98c0bab46bf390704250b937ed5e53"
+    },
+    "docs/reports/js-security-183-20261022.md": {
+      "mode": "100644",
+      "sha": "2c4884d605edbe04e8a8882215a852bf2fc1e150"
+    },
+    "docs/reports/tokio-qh011-20261023-evidence.json": {
+      "mode": "100644",
+      "sha": "cb6eb263a6c49af849ef4a24adfbc9c7e4482deb"
+    },
+    "docs/reports/tokio-qh011-20261023.md": {
+      "mode": "100644",
+      "sha": "2e4bec61800cc365f7e7ebb108ca71acf01edc70"
+    },
+    "docs/reports/vite-qh010-20261022-evidence.json": {
+      "mode": "100644",
+      "sha": "b8d650a9c399fe537ece8611d5df9c06403d80f4"
+    },
+    "docs/reports/vite-qh010-20261022.md": {
+      "mode": "100644",
+      "sha": "8e17b979c26175b56d1c6f0bb6d3307801cf9811"
+    },
+    "docs/validation/rust-178/check-js-dependency-preservation.cjs": {
+      "mode": "100644",
+      "sha": "72a00dd767c7761ff9a5aac62d301a004c11c37d"
+    },
+    "docs/validation/rust-178/check-ported-graph.cjs": {
+      "mode": "100644",
+      "sha": "66e25f71a9240178974a78d5cf4052cc2f23e674"
+    },
+    "eslint.config.js": {
+      "mode": "100644",
+      "sha": "82c2e20ccc2bae01b6589f5f391cb20f34db41fd"
+    },
+    "index.html": {
+      "mode": "100644",
+      "sha": "f4bf029a5e77ce1a30a84ff015ce3bd006bdb8a7"
+    },
+    "package-lock.fix-report.json": {
+      "mode": "100644",
+      "sha": "abc147ffacc282a6084c0dd46a41f20e11b80649"
+    },
+    "package-lock.json": {
+      "mode": "100644",
+      "sha": "fef5ecde2a8b66712345421ed69f408a971a2277"
+    },
+    "package-lock.main.fixed.json": {
+      "mode": "100644",
+      "sha": "dd43c9bfaa69da4759147e51dcbf26a51bb2889a"
+    },
+    "package-lock.main.json": {
+      "mode": "100644",
+      "sha": "56007d26d0ed4695cf7ee649493a58c9e2ee95d3"
+    },
+    "package.json": {
+      "mode": "100644",
+      "sha": "0a5752a3ab9ed63ba502fc900ee578e41d8fee08"
+    },
+    "patches/braces-3.0.3.patch": {
+      "mode": "100644",
+      "sha": "ae2c420fdbce41998f28c4cb4800cdf1da5f12c4"
+    },
+    "pnpm-lock.yaml": {
+      "mode": "100644",
+      "sha": "efbc018999dc4037a5882bf598fbe1000285ca44"
+    },
+    "postcss.config.js": {
+      "mode": "100644",
+      "sha": "2aa7205d4b402a1bdfbe07110c61df920b370066"
+    },
+    "renovate.json": {
+      "mode": "100644",
+      "sha": "5db72dd6a94fc07d18b0e6c0cf76e67ce982f1f9"
+    },
+    "src-tauri/Cargo.toml": {
+      "mode": "100644",
+      "sha": "b41853b59061fe3142252fe41069508011ceb1cf"
+    },
+    "src-tauri/build.rs": {
+      "mode": "100644",
+      "sha": "795b9b7c83dbfc6bf454958eef78f93e211703d2"
+    },
+    "src-tauri/icons/icon.png": {
+      "mode": "100644",
+      "sha": "fde760bc8173080d1ca767a2cd217c9317e902ab"
+    },
+    "src-tauri/src/cache.rs": {
+      "mode": "100644",
+      "sha": "c824258c3d68f78b3bb64f68d2ca755e6ae25326"
+    },
+    "src-tauri/src/geocoding.rs": {
+      "mode": "100644",
+      "sha": "67c6ea3ccdc11156fcd6e12fc3739ce4515f3e7f"
+    },
+    "src-tauri/src/main.rs": {
+      "mode": "100644",
+      "sha": "0d28fd07d1a182673460d87162b21a0a016518d2"
+    },
+    "src-tauri/src/weather.rs": {
+      "mode": "100644",
+      "sha": "363e80b2e4ad0302b058cb8d9bbeff50728541fc"
+    },
+    "src-tauri/tauri.conf.json": {
+      "mode": "100644",
+      "sha": "c665218ee8a5da583a67626793f507cad5a0cd90"
+    },
+    "src-tauri/tests/http_client.rs": {
+      "mode": "100644",
+      "sha": "21b9a3885281b586d97434ff1a9e60c05ee73b39"
+    },
+    "src/App.tsx": {
+      "mode": "100644",
+      "sha": "0e24651ff2e579c0436955e846187a6e9876ec79"
+    },
+    "src/components/AirQualityCard.tsx": {
+      "mode": "100644",
+      "sha": "c00c1967fa32ea28f7c8f8e7b68ed9bb78f5d555"
+    },
+    "src/components/Dashboard.tsx": {
+      "mode": "100644",
+      "sha": "aae65d4c49fa331d3178701b2c51a5a1dcd627f5"
+    },
+    "src/components/ForecastCard.tsx": {
+      "mode": "100644",
+      "sha": "6250a7a2e6ab2ebbec22ea4afc63d82191dd30c9"
+    },
+    "src/components/LandingHero.tsx": {
+      "mode": "100644",
+      "sha": "8c2cf9673e9ae1897391d9db34e4ce3384459ec3"
+    },
+    "src/components/PollenCard.tsx": {
+      "mode": "100644",
+      "sha": "492e257bd43f7bd8ba8c4315c8363a8f98ade7eb"
+    },
+    "src/components/SearchBar.tsx": {
+      "mode": "100644",
+      "sha": "8003a543e006906fa93eb0293868726e997ff265"
+    },
+    "src/components/SettingsBar.tsx": {
+      "mode": "100644",
+      "sha": "e5836c60778d3f149f12cac13b86131e4e5a5e3a"
+    },
+    "src/components/TimeCard.tsx": {
+      "mode": "100644",
+      "sha": "72445fd981ae11d808b74bbdf6ceb8f449768e3d"
+    },
+    "src/components/WeatherCard.tsx": {
+      "mode": "100644",
+      "sha": "381b6c50bc3c1acbf7c39e56e601ddd41099af2e"
+    },
+    "src/hooks/useAppState.ts": {
+      "mode": "100644",
+      "sha": "62d3204d2186dc522a7521c75694eeb05cdc2b87"
+    },
+    "src/index.css": {
+      "mode": "100644",
+      "sha": "a753a6d4db1f1aae31673389afa22facf7219f2a"
+    },
+    "src/main.tsx": {
+      "mode": "100644",
+      "sha": "ea9e3630a4f82a3cc92500297b28fa6f1ff72a75"
+    },
+    "src/services/cache.ts": {
+      "mode": "100644",
+      "sha": "1944f3f86512a085893f109e37a38533d792a0d2"
+    },
+    "src/services/geocoding.ts": {
+      "mode": "100644",
+      "sha": "25e9c974bcb5af39f4bf38caf3a7c7a164c20e22"
+    },
+    "src/services/tauri.ts": {
+      "mode": "100644",
+      "sha": "a01c33afabd267bfffe12bc79a4102aa0df76e5d"
+    },
+    "src/services/weather.ts": {
+      "mode": "100644",
+      "sha": "0a0a2ce7b333c09d78eac125e3f75801e174a2a3"
+    },
+    "src/types/index.ts": {
+      "mode": "100644",
+      "sha": "46f6238fcf4fa66334ef7515fbd949095ba591ce"
+    },
+    "src/utils/formatters.ts": {
+      "mode": "100644",
+      "sha": "7f6d534388413dcebc2c4da638a58a05505c1fca"
+    },
+    "src/vite-env.d.ts": {
+      "mode": "100644",
+      "sha": "11f02fe2a0061d6e6e1f271b21da95423b448b32"
+    },
+    "tailwind.config.js": {
+      "mode": "100644",
+      "sha": "d21f1cdae70ca548855964467cc032c21ce5c1bb"
+    },
+    "tauri.conf.json": {
+      "mode": "100644",
+      "sha": "76d38f4eaa8ff42b11c808aa196d203dcf2f04d5"
+    },
+    "tests/braces-hardening.test.mjs": {
+      "mode": "100644",
+      "sha": "905db282885a41497bb7aa6f65a40c8d5f06ae65"
+    },
+    "tests/dependency_updates/braces-qh009.test.cjs": {
+      "mode": "100644",
+      "sha": "e887bd3cd3c98fc68fc922461eea8ae9e9a493af"
+    },
+    "tests/dependency_updates/js-security-183.test.cjs": {
+      "mode": "100644",
+      "sha": "47ba1635af7f00f54b339e11032fcbd9b980a4cd"
+    },
+    "tests/dependency_updates/tokio-qh011.test.cjs": {
+      "mode": "100644",
+      "sha": "d5e68fe3c0052bdef457e8f640063fef2b9576d0"
+    },
+    "tests/dependency_updates/vite-qh010.test.cjs": {
+      "mode": "100644",
+      "sha": "5b56a32f53fec39c57fd74590326a927ed43933c"
+    },
+    "tests/pollen-card.test.mjs": {
+      "mode": "100644",
+      "sha": "bd925101de52368ed7129a8e4d14ff57cf25a141"
+    },
+    "tests/security/braces-depth.test.cjs": {
+      "mode": "100644",
+      "sha": "b0ce4344d903b2a6b26e995efee91f86a1521747"
+    },
+    "tests/security/braces-hardening-worker.cjs": {
+      "mode": "100644",
+      "sha": "0bd66fdc23173316f3b06c4edcc32484ecc44969"
+    },
+    "tests/security/vite-qh010.test.mjs": {
+      "mode": "100644",
+      "sha": "d11da43e292158cd8bf2b009a8e0820f56ab88fa"
+    },
+    "tsconfig.app.json": {
+      "mode": "100644",
+      "sha": "f0a235055d24607ba5e0bedc494ffc35b5956fbb"
+    },
+    "tsconfig.json": {
+      "mode": "100644",
+      "sha": "1ffef600d959ec9e396d5a260bd3f5b927b2cef8"
+    },
+    "tsconfig.node.json": {
+      "mode": "100644",
+      "sha": "0d3d71446a455c5f997e3cffb25099dab0f74a9b"
+    },
+    "vite.config.ts": {
+      "mode": "100644",
+      "sha": "ce4f5bd649912d247c7fd18e47153dd021d209cb"
+    }
+  },
+  "modified_files": [
+    "Cargo.toml",
+    "Cargo.lock",
+    "src-tauri/Cargo.toml",
+    "docs/validation/rust-178/check-ported-graph.cjs"
+  ],
+  "upstream_commit": "b5a4071e439bef2b5eea76c3aa25e5ae84839e34",
+  "upstream_url": "https://github.com/gtk-rs/gtk-rs-core/pull/1343"
+}

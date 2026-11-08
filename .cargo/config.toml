@@ -1,0 +1,3 @@
+# FR// Substituer le code GLib sans perdre son identité de registre dans le verrou et les audits.
+# EN// Override GLib source while retaining its registry identity in the lockfile and audits.
+paths = ["vendor/glib-0.18.5"]

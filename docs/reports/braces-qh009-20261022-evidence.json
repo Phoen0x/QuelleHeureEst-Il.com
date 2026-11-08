@@ -1,0 +1,793 @@
+{
+  "mission": "QH-009 minimal parent-cycle hardening; advisory remains open",
+  "base_sha": "66f4d47f0b10f07c80a3ac257c3f76947bff8051",
+  "base_tree": "158f80803a721879177ab9e9de85abeb367e0457",
+  "references": {
+    "main": "eb3c9403fa97db5ccf1fb4b13e3b0872e36c8228",
+    "186": "9256ae8fe280c2c4abd1eb2d23fd180e7784b076",
+    "187": "a1087aeebfb7a3938ca74072e14c777e29e71682"
+  },
+  "runtime": {
+    "node": "24.19.0",
+    "pnpm": "8.15.9",
+    "rustc": "1.99.1 (58cf8f9c3 2026-10-13)",
+    "cargo": "1.99.1 (5f94df478 2026-08-27)",
+    "tauri_cli": "2.11.2",
+    "os": "Debian 13.6 Linux amd64"
+  },
+  "inventory": {
+    "initial_files": 144,
+    "unchanged_initial_files": 139,
+    "modified": [
+      "patches/braces-3.0.3.patch",
+      "pnpm-lock.yaml",
+      "docs/validation/rust-178/check-ported-graph.cjs",
+      "tests/dependency_updates/js-security-183.test.cjs",
+      "tests/dependency_updates/vite-qh010.test.cjs"
+    ],
+    "added": [
+      "Scripts/check-braces-qh009.cjs",
+      "docs/history/braces-qh009-20261022/PORT.json",
+      "docs/history/braces-qh009-20261022/PR183.before.md",
+      "docs/history/braces-qh009-20261022/docs/validation/rust-178/check-ported-graph.cjs",
+      "docs/history/braces-qh009-20261022/patches/braces-3.0.3.patch",
+      "docs/history/braces-qh009-20261022/pnpm-lock.yaml",
+      "docs/history/braces-qh009-20261022/tests/dependency_updates/js-security-183.test.cjs",
+      "docs/history/braces-qh009-20261022/tests/dependency_updates/vite-qh010.test.cjs",
+      "docs/reports/braces-qh009-20261022-evidence.json",
+      "docs/reports/braces-qh009-20261022.md",
+      "tests/braces-hardening.test.mjs",
+      "tests/dependency_updates/braces-qh009.test.cjs",
+      "tests/security/braces-hardening-worker.cjs"
+    ],
+    "deleted": [],
+    "mode_changes": [],
+    "archive_hashes": {
+      "patches/braces-3.0.3.patch": {
+        "git_blob": "1a0f684bb519b44b5f20a19cfd104525411435d7",
+        "sha256": "0798420c485a08534083b6eba2d8d8f50888716f40e1f5fc9883c43a38419619"
+      },
+      "pnpm-lock.yaml": {
+        "git_blob": "bee600c75f31574cac5d1f2f1e8b446c337ce1f6",
+        "sha256": "20e472df3c157d77791d94e3b025bbf4bf8dee25cf87a0970d449ba5ce37c860"
+      },
+      "docs/validation/rust-178/check-ported-graph.cjs": {
+        "git_blob": "ac48b63d3615944031d039227fb3e57fcf1cb93c",
+        "sha256": "5cb0d6c5ec7533c5e52e4f4fadc18e57d92f208f9d0fac46011d4e6ef45cbd66"
+      },
+      "tests/dependency_updates/js-security-183.test.cjs": {
+        "git_blob": "c0aaea2b14405b3c6340f797c728f38aa107ef86",
+        "sha256": "f444aa27cb453aa050f6afead6be0bba817c9b96a1e76ab7d8747d04869d4800"
+      },
+      "tests/dependency_updates/vite-qh010.test.cjs": {
+        "git_blob": "f1a063162194fa12dbc0d533bc3965cd6bf44db6",
+        "sha256": "436c1d94b3a2d9f0fdc2b93e768030d521efb04e53d56b4c82144318df75002a"
+      }
+    }
+  },
+  "conservation": {
+    "status": "PASS",
+    "base": "66f4d47f0b10f07c80a3ac257c3f76947bff8051",
+    "originalFiles": 144,
+    "unchangedFiles": 139,
+    "archivedModifiedFiles": [
+      "patches/braces-3.0.3.patch",
+      "pnpm-lock.yaml",
+      "docs/validation/rust-178/check-ported-graph.cjs",
+      "tests/dependency_updates/js-security-183.test.cjs",
+      "tests/dependency_updates/vite-qh010.test.cjs"
+    ],
+    "snapshotsBefore": 408,
+    "snapshotsAfter": 409,
+    "identicalActiveBlocks": 406,
+    "adaptedConsumerEdges": [
+      "/chokidar@3.6.0",
+      "/micromatch@4.0.8"
+    ],
+    "exactOriginalBlocksArchived": 408,
+    "optional": 140,
+    "reachable": 304,
+    "initialInactiveNotReactivated": 104,
+    "historicalGuards": {
+      "status": "PASS",
+      "qh010": {
+        "base": "bdda4abf3430bc5bda20176538c08533694c83f7",
+        "originalFiles": 133,
+        "unchangedFiles": 129,
+        "archivedModifiedFiles": [
+          "package.json",
+          "pnpm-lock.yaml",
+          "Scripts/check-js-security-183.cjs",
+          "tests/dependency_updates/js-security-183.test.cjs"
+        ],
+        "identicalInitialSnapshots": 384,
+        "initialOptionalRetained": 121,
+        "initialInactiveNotReactivated": 81,
+        "addedSnapshots": 24,
+        "totalSnapshots": 408,
+        "reachableEntries": 304,
+        "optionalAfter": 140,
+        "cargoAndHttpTestsUnchanged": true
+      },
+      "base": "6db8239390b6cf12cb22c0d9ff43ac62c680967b",
+      "originalFiles": 122,
+      "unchangedFiles": 119,
+      "archivedModifiedFiles": [
+        "package.json",
+        "pnpm-lock.yaml",
+        "docs/validation/rust-178/check-ported-graph.cjs"
+      ],
+      "initialSnapshots": 337,
+      "identicalInitialSnapshots": 329,
+      "adaptedInitialSnapshots": 8,
+      "missingSnapshots": [],
+      "initialOptional": 95,
+      "optionalAfter": 140,
+      "historicalNotReactivated": 35,
+      "totalSnapshots": 408,
+      "reachableEntries": 304,
+      "missingEdges": [],
+      "cargoAndHttpTestsUnchanged": true
+    },
+    "patchHash": "ij22dduv7f6wi3glhwl7jmdbrm"
+  },
+  "parent_cycles_before": [
+    {
+      "case": "direct",
+      "timeout_seconds": 2,
+      "killed": true,
+      "seconds": 2.004
+    },
+    {
+      "case": "indirect",
+      "timeout_seconds": 2,
+      "killed": true,
+      "seconds": 2.004
+    },
+    {
+      "case": "prefix-cycle",
+      "timeout_seconds": 2,
+      "killed": true,
+      "seconds": 2.004
+    },
+    {
+      "case": "first-loop",
+      "timeout_seconds": 2,
+      "killed": true,
+      "seconds": 2.004
+    }
+  ],
+  "parent_cycles_after": {
+    "direct": "ERR_BRACES_PARENT_CYCLE",
+    "indirect": "ERR_BRACES_PARENT_CYCLE",
+    "prefix_cycle_10000": "ERR_BRACES_PARENT_CYCLE",
+    "first_loop": "ERR_BRACES_PARENT_CYCLE",
+    "child_heap_mib": 128,
+    "child_timeout_seconds": 3,
+    "valid_parent_chain_length": 10000
+  },
+  "volume": [
+    {
+      "factors": 10,
+      "length": 1024,
+      "elapsedMs": 3.734383000000001
+    },
+    {
+      "factors": 12,
+      "length": 4096,
+      "elapsedMs": 14.943673999999998
+    },
+    {
+      "factors": 14,
+      "length": 16384,
+      "elapsedMs": 27.634581999999998
+    }
+  ],
+  "compatibility": {
+    "seed": 93687,
+    "patterns": 2000,
+    "assertions": 24000,
+    "failures": 0,
+    "examples": [],
+    "depthBoundaries": {
+      "0": {
+        "parse": "returned",
+        "compile": "returned",
+        "expand": "returned",
+        "stringify": "returned"
+      },
+      "1": {
+        "parse": "returned",
+        "compile": "returned",
+        "expand": "returned",
+        "stringify": "returned"
+      },
+      "62": {
+        "parse": "returned",
+        "compile": "returned",
+        "expand": "returned",
+        "stringify": "returned"
+      },
+      "63": {
+        "parse": "returned",
+        "compile": "returned",
+        "expand": "returned",
+        "stringify": "returned"
+      },
+      "64": {
+        "parse": "returned",
+        "compile": "ERR_BRACES_MAX_DEPTH",
+        "expand": "returned",
+        "stringify": "ERR_BRACES_MAX_DEPTH"
+      },
+      "65": {
+        "parse": "ERR_BRACES_MAX_DEPTH",
+        "compile": "ERR_BRACES_MAX_DEPTH",
+        "expand": "ERR_BRACES_MAX_DEPTH",
+        "stringify": "ERR_BRACES_MAX_DEPTH"
+      },
+      "4000": {
+        "parse": "ERR_BRACES_MAX_DEPTH",
+        "compile": "ERR_BRACES_MAX_DEPTH",
+        "expand": "ERR_BRACES_MAX_DEPTH",
+        "stringify": "ERR_BRACES_MAX_DEPTH"
+      }
+    },
+    "cartesianOutputsAtDepthOne": 16384
+  },
+  "upstream": {
+    "commit": "74b2db2938fad48a2ea54a9c8bf27a37a62c350d",
+    "stats": {
+      "suites": 49,
+      "tests": 764,
+      "passes": 764,
+      "pending": 0,
+      "failures": 0,
+      "start": "2026-10-22T20:50:33.256Z",
+      "end": "2026-10-22T20:50:33.346Z",
+      "duration": 90
+    },
+    "test_files": [
+      {
+        "path": "test/bash-compiled-ranges.js",
+        "sha": "8181a35ea4729a1773def3798327d100b07ab7f1"
+      },
+      {
+        "path": "test/bash-compiled-sets.js",
+        "sha": "1a95c1992dc4ca641f584ef6343d76e7ea784e52"
+      },
+      {
+        "path": "test/bash-expanded-ranges.js",
+        "sha": "21c1db241a06eb1919b324346fac8af01a225aed"
+      },
+      {
+        "path": "test/bash-expanded-sets.js",
+        "sha": "b5a40cc26c13ec00a2bbe5a36bd7b9f1d31a3f39"
+      },
+      {
+        "path": "test/bash-spec.js",
+        "sha": "5675f5eb775989598e42a45141a2779175810cff"
+      },
+      {
+        "path": "test/braces.compile.js",
+        "sha": "04b42b1cc9758803353cdd997ff739c1b1fb5549"
+      },
+      {
+        "path": "test/braces.expand.js",
+        "sha": "c95fbb86876c6d01036708c69a461a544bfaf257"
+      },
+      {
+        "path": "test/braces.parse.js",
+        "sha": "9158316ff4bac01e3cea882e70c9b9553132e779"
+      },
+      {
+        "path": "test/minimatch.js",
+        "sha": "c2d42f24d171545e03bba436759e4c672b9b62a3"
+      },
+      {
+        "path": "test/multiples.js",
+        "sha": "e433aa41ef43779c77eff0a50bc7cf9710c0521e"
+      },
+      {
+        "path": "test/readme.js",
+        "sha": "a3bc702e4737016b4b35d4817b8096061553e811"
+      },
+      {
+        "path": "test/regression.js",
+        "sha": "544044ac5dec3090ecc6606815d6b6120f969cd7"
+      }
+    ]
+  },
+  "vite_bundle": {
+    "version": "8.1.6",
+    "official_tarball": "https://registry.npmjs.org/vite/-/vite-8.1.6.tgz",
+    "integrity": "sha512-aRAHIxx5SW5zc1sMqFwJU/t5qaFfXb5Hj0J7W0VXihu/X99+346tz6080tO1T1xVIJORX/b3zVTXGFqUXh35uw==",
+    "sha1": "77f27cfb40c29d02bc60490b01d983e0ecb9a394",
+    "sri_verified": true,
+    "all_installed_files_equal": 35,
+    "node_chunk_sha256": "9d9d6a26374aa5495b099ba77c234c8131b477aaeaafed8e1f3c9ed6fd10d4fc",
+    "embedded_braces": "3.0.3",
+    "guard_markers_present": false,
+    "archive_files": [
+      "dist/node/chunks/build.js",
+      "dist/node/cli.js",
+      "dist/node/chunks/dist.js",
+      "misc/false.js",
+      "dist/node/index.js",
+      "dist/node/internal.js",
+      "dist/node/chunks/lib.js",
+      "dist/node/module-runner.js",
+      "dist/node/chunks/node.js",
+      "bin/openChrome.js",
+      "dist/node/chunks/postcss-import.js",
+      "misc/true.js",
+      "bin/vite.js",
+      "package.json",
+      "LICENSE.md",
+      "README.md",
+      "dist/client/client.mjs",
+      "dist/client/env.mjs",
+      "client.d.ts",
+      "types/internal/cssPreprocessorOptions.d.ts",
+      "types/customEvent.d.ts",
+      "types/internal/esbuildOptions.d.ts",
+      "types/hmrPayload.d.ts",
+      "types/hot.d.ts",
+      "types/import-meta.d.ts",
+      "types/importGlob.d.ts",
+      "types/importMeta.d.ts",
+      "dist/node/index.d.ts",
+      "dist/node/internal.d.ts",
+      "types/internal/lightningcssOptions.d.ts",
+      "types/metadata.d.ts",
+      "dist/node/module-runner.d.ts",
+      "dist/node/chunks/moduleRunnerTransport.d.ts",
+      "types/internal/rollupTypeCompat.d.ts",
+      "types/internal/terserOptions.d.ts"
+    ]
+  },
+  "vite_watcher": {
+    "disableGlobbing": true,
+    "ignoreInitial": true,
+    "hostileLiteralPath": {
+      "hasGlob": false,
+      "dirParts": [],
+      "errors": []
+    }
+  },
+  "initial_validation_attempts": [
+    {
+      "name": "pnpm-install",
+      "command": [
+        "pnpm",
+        "install",
+        "--frozen-lockfile",
+        "--store-dir",
+        "$PNPM_STORE",
+        "--fetch-retries=1",
+        "--fetch-timeout=20000"
+      ],
+      "exit_code": 0,
+      "timeout_seconds": 240,
+      "seconds": 1.095
+    },
+    {
+      "name": "pnpm-graph",
+      "command": [
+        "pnpm",
+        "run",
+        "check:dependencies"
+      ],
+      "exit_code": 0,
+      "timeout_seconds": 60,
+      "seconds": 1.807
+    },
+    {
+      "name": "pnpm-list-all",
+      "command": [
+        "pnpm",
+        "list",
+        "--depth",
+        "Infinity",
+        "--json"
+      ],
+      "exit_code": 0,
+      "timeout_seconds": 60,
+      "seconds": 0.463
+    },
+    {
+      "name": "typecheck",
+      "command": [
+        "pnpm",
+        "run",
+        "typecheck"
+      ],
+      "exit_code": 0,
+      "timeout_seconds": 180,
+      "seconds": 1.866
+    },
+    {
+      "name": "lint",
+      "command": [
+        "pnpm",
+        "run",
+        "lint"
+      ],
+      "exit_code": 0,
+      "timeout_seconds": 180,
+      "seconds": 2.37
+    },
+    {
+      "name": "web-tests",
+      "command": [
+        "pnpm",
+        "test"
+      ],
+      "exit_code": 0,
+      "timeout_seconds": 120,
+      "seconds": 3.111
+    },
+    {
+      "name": "security-tests",
+      "command": [
+        "pnpm",
+        "run",
+        "test:security"
+      ],
+      "exit_code": 0,
+      "timeout_seconds": 60,
+      "seconds": 0.532
+    },
+    {
+      "name": "preservation-tests",
+      "command": [
+        "node",
+        "--test",
+        "tests/dependency_updates/js-security-183.test.cjs",
+        "tests/dependency_updates/vite-qh010.test.cjs",
+        "tests/dependency_updates/braces-qh009.test.cjs"
+      ],
+      "exit_code": 1,
+      "timeout_seconds": 120,
+      "seconds": 8.081
+    },
+    {
+      "name": "vite-security-tests",
+      "command": [
+        "node",
+        "--test",
+        "tests/security/vite-qh010.test.mjs"
+      ],
+      "exit_code": 0,
+      "timeout_seconds": 60,
+      "seconds": 0.376
+    },
+    {
+      "name": "vite",
+      "command": [
+        "pnpm",
+        "run",
+        "vite:build"
+      ],
+      "exit_code": 0,
+      "timeout_seconds": 180,
+      "seconds": 1.35
+    },
+    {
+      "name": "cargo-tree",
+      "command": [
+        "cargo",
+        "tree",
+        "--locked",
+        "--target",
+        "all"
+      ],
+      "exit_code": 0,
+      "timeout_seconds": 120,
+      "seconds": 0.659
+    },
+    {
+      "name": "cargo-build-debug",
+      "command": [
+        "cargo",
+        "build",
+        "--workspace",
+        "--locked",
+        "--jobs",
+        "3"
+      ],
+      "exit_code": 0,
+      "timeout_seconds": 1200,
+      "seconds": 7.182
+    },
+    {
+      "name": "cargo-tests-debug",
+      "command": [
+        "cargo",
+        "test",
+        "--workspace",
+        "--locked",
+        "--jobs",
+        "3"
+      ],
+      "exit_code": 0,
+      "timeout_seconds": 1200,
+      "seconds": 6.842
+    },
+    {
+      "name": "cargo-build-release",
+      "command": [
+        "cargo",
+        "build",
+        "--workspace",
+        "--release",
+        "--locked",
+        "--jobs",
+        "3"
+      ],
+      "exit_code": 0,
+      "timeout_seconds": 1200,
+      "seconds": 31.822
+    },
+    {
+      "name": "cargo-tests-release",
+      "command": [
+        "cargo",
+        "test",
+        "--workspace",
+        "--release",
+        "--locked",
+        "--jobs",
+        "3"
+      ],
+      "exit_code": 0,
+      "timeout_seconds": 1200,
+      "seconds": 34.485
+    },
+    {
+      "name": "tauri-cli-debug",
+      "command": [
+        "pnpm",
+        "exec",
+        "tauri",
+        "build",
+        "--debug",
+        "--no-bundle",
+        "--",
+        "--locked"
+      ],
+      "exit_code": 1,
+      "timeout_seconds": 1200,
+      "seconds": 0.433
+    },
+    {
+      "name": "pnpm-audit",
+      "command": [
+        "pnpm",
+        "audit",
+        "--json",
+        "--registry=https://registry.npmjs.org"
+      ],
+      "exit_code": 1,
+      "timeout_seconds": 120,
+      "seconds": 0.681
+    },
+    {
+      "name": "pnpm-audit-prod",
+      "command": [
+        "pnpm",
+        "audit",
+        "--prod",
+        "--json",
+        "--registry=https://registry.npmjs.org"
+      ],
+      "exit_code": 0,
+      "timeout_seconds": 120,
+      "seconds": 0.542
+    },
+    {
+      "name": "cargo-audit",
+      "command": [
+        "cargo",
+        "audit",
+        "--deny",
+        "warnings",
+        "--json",
+        "--db",
+        "$RUSTSEC_DB"
+      ],
+      "exit_code": 1,
+      "timeout_seconds": 120,
+      "seconds": 3.608
+    },
+    {
+      "name": "preservation-after",
+      "command": [
+        "node",
+        "docs/validation/rust-178/check-ported-graph.cjs"
+      ],
+      "exit_code": 0,
+      "timeout_seconds": 60,
+      "seconds": 1.247
+    },
+    {
+      "name": "diff-check",
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 2,
+      "timeout_seconds": 60,
+      "seconds": 0.006
+    }
+  ],
+  "final_reruns": {
+    "preservation_tests": {
+      "exit_code": 0,
+      "registered_tests": 23,
+      "distinct_cases": 20,
+      "negative_cases": 17
+    },
+    "web_tests": {
+      "exit_code": 0,
+      "registered_tests": 22
+    },
+    "lint": {
+      "exit_code": 0
+    },
+    "graph": {
+      "exit_code": 0
+    },
+    "tauri_cli": {
+      "command": "pnpm run tauri build --debug --no-bundle -- --locked",
+      "exit_code": 0
+    }
+  },
+  "test_counts": {
+    "historical_braces": 10,
+    "hardening_registered": 20,
+    "hardening_new_distinct": 19,
+    "web": 2,
+    "vite_security": 2,
+    "preservation_registered": 23,
+    "preservation_distinct": 20,
+    "node_registered_total": 57,
+    "node_distinct_total": 53,
+    "upstream_distinct": 764,
+    "generated_patterns": 2000,
+    "generated_comparisons": 24000,
+    "rust_distinct_http": 2,
+    "rust_http_executions_debug_release": 4,
+    "rust_binary_unit_tests": 0,
+    "final_failures": 0,
+    "ignored": 0,
+    "count_note": "Three shared preservation harness cases are replayed in both legacy suites; the deep-AST expansion case repeats an existing historical regression. These four replays are excluded from distinct total. Exploratory, repeated validation runs and diagnostic child exits are not additional passing cases."
+  },
+  "pnpm_audit": {
+    "full_exit_code": 1,
+    "production_exit_code": 0,
+    "baseline_same_advisory_ids": true,
+    "vulnerabilities": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 1,
+      "critical": 0
+    },
+    "advisories": [
+      {
+        "id": "GHSA-vfj7-8cjw-p6xm",
+        "package": "braces",
+        "severity": "high",
+        "vulnerable_versions": "<=3.0.3",
+        "patched_versions": "<0.0.0"
+      }
+    ]
+  },
+  "cargo_audit": {
+    "exit_code": 1,
+    "database": {
+      "advisory-count": 1349,
+      "last-commit": "640bf5a9f06e66d8721e8772766531fe77c8630d",
+      "last-updated": "2026-10-22T12:49:47+02:00"
+    },
+    "vulnerabilities": 1,
+    "items": [
+      {
+        "id": "RUSTSEC-2026-0384",
+        "name": "tokio",
+        "version": "1.54.0",
+        "title": "Race condition in `tokio::time::Interval` on Tokio v1.54.0",
+        "versions": {
+          "patched": [
+            ">=1.54.1"
+          ],
+          "unaffected": [
+            "<1.54.0"
+          ]
+        }
+      }
+    ],
+    "warnings": {
+      "unmaintained": [
+        {
+          "name": "proc-macro-error",
+          "version": "1.0.4",
+          "id": "RUSTSEC-2024-0370"
+        },
+        {
+          "name": "rustls-pemfile",
+          "version": "1.0.4",
+          "id": "RUSTSEC-2025-0134"
+        },
+        {
+          "name": "unic-char-property",
+          "version": "0.9.0",
+          "id": "RUSTSEC-2025-0081"
+        },
+        {
+          "name": "unic-char-range",
+          "version": "0.9.0",
+          "id": "RUSTSEC-2025-0075"
+        },
+        {
+          "name": "unic-common",
+          "version": "0.9.0",
+          "id": "RUSTSEC-2025-0080"
+        },
+        {
+          "name": "unic-ucd-ident",
+          "version": "0.9.0",
+          "id": "RUSTSEC-2025-0100"
+        },
+        {
+          "name": "unic-ucd-version",
+          "version": "0.9.0",
+          "id": "RUSTSEC-2025-0098"
+        }
+      ],
+      "unsound": [
+        {
+          "name": "glib",
+          "version": "0.18.5",
+          "id": "RUSTSEC-2024-0429"
+        }
+      ],
+      "yanked": [
+        {
+          "name": "tokio",
+          "version": "1.54.0",
+          "id": null
+        }
+      ]
+    },
+    "same_current_findings_on_exact_initial_cargo_lock": true
+  },
+  "tested_source_sha256": {
+    "package.json": "9c7c201b9de5258b35caf3b74dd7c08cee76fd6df95df2f835cd08e4ac83add7",
+    "pnpm-lock.yaml": "5cb81c84f2ef06fb5876883cadab9fdf71bcca04c0a2ba978af358d0916ce98d",
+    "patches/braces-3.0.3.patch": "d5e1e30675318dd5defe4850a6d481a779cf664129a11cc0bb1a09cb39b6cd09",
+    "Scripts/check-braces-qh009.cjs": "daa1a00f297560e30d0ce260abfed40b76be22c4535c9b691dede2aa2b5d777c",
+    "docs/validation/rust-178/check-ported-graph.cjs": "8947cb74755eabc6ddb3e0d2e049aa12d9f96ddedc08fe0160ff9ba5d95db1c6",
+    "tests/braces-hardening.test.mjs": "78ff18c24688350579732d2abe3051b9d53fcb42439d74deb169befce7c844da",
+    "tests/security/braces-hardening-worker.cjs": "02bfd3919e9ba3e1eb1baf6a0fb467fa09af8325af58ba1e19e7d2124f217828",
+    "tests/security/braces-depth.test.cjs": "2452495696c8856864a77260a39d955e85a56ef314c3dfad5fffb804e8788f5e",
+    "tests/dependency_updates/braces-qh009.test.cjs": "0cb4b878403573cf003b610da1dcf4aa4cac6c2864c3fd3c554be19e50997e50",
+    "tests/dependency_updates/js-security-183.test.cjs": "61ce6bc8d6ffb3461f71d0298b632d9f69a46f81eede5d48f74f2706931656a6",
+    "tests/dependency_updates/vite-qh010.test.cjs": "58ea8400eaa2429a5e1a4fd35cffcf5c53ba0e1063dfeaa9a0e6690aafa7c76b",
+    "Cargo.lock": "290f2a3269912edfd8fde187c848cf4828f6bead500feb1dd14b8ddc6da7c61c",
+    "src-tauri/Cargo.toml": "fd8a1ca892355fc6be739e5969acaddc1bacee1d8a943f64003119af4549bc08",
+    "src-tauri/tests/http_client.rs": "58ac032936f5d08914b3b98f7d0f1072fee2d57cda44ea9068047418dca02ff9"
+  },
+  "ci": "Not yet executed for the unpublished candidate at report creation; inspect actual published SHA on PR183.",
+  "limitations": [
+    "Local mitigation, no official upstream correction",
+    "Chokidar direct hostile glob still exits 1 on unhandled Promise rejection",
+    "No global Cartesian expansion budget",
+    "Vite official bundled braces remains unpatched; tested default watcher has disableGlobbing=true",
+    "No Android APK/device/emulator, Windows/WSL or native GUI validation",
+    "No adversarial accessor/proxy execution budget",
+    "Production audit does not inspect all code bundled inside development tools"
+  ]
+}
