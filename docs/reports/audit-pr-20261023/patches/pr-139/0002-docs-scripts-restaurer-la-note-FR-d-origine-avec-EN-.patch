@@ -1,0 +1,38 @@
+From f0dc245232afa9b86d7123b540c389468fb23778 Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Fri, 23 Oct 2026 07:35:06 +0200
+Subject: [PATCH 2/2] docs(scripts): restaurer la note FR d'origine, avec EN /
+ restore original FR note, with EN
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+FR : l'autofix avait traduit la note en anglais seul. Règle AGENTS.md :
+français d'abord, anglais ensuite. La note d'origine est rétablie, suivie
+de la version anglaise.
+
+EN: the autofix had replaced the note with English only. AGENTS.md rule:
+French first, English second. The original note is restored, followed by
+the English version.
+
+Co-Authored-By: Claude Sonnet 5.5 <noreply@anthropic.com>
+---
+ Scripts/fix-package-lock-merge.mjs | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Scripts/fix-package-lock-merge.mjs b/Scripts/fix-package-lock-merge.mjs
+index b2194be..eec414e 100644
+--- a/Scripts/fix-package-lock-merge.mjs
++++ b/Scripts/fix-package-lock-merge.mjs
+@@ -383,7 +383,7 @@ function preprocessOrphanSplices(arr) {
+         from: 'node_modules/@typescript-eslint/eslint-plugin',
+         to: 'node_modules/@types/prop-types',
+         version: fragObj.version,
+-        note: 'fragment — merged if unique fields',
++        note: 'fragment — fusionnée si champs uniques / fragment — merged if unique fields',
+       });
+     }
+   }
+-- 
+2.43.0
+

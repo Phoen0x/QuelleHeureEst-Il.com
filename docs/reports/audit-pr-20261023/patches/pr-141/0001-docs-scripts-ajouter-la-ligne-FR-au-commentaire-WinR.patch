@@ -1,0 +1,39 @@
+From e8701c751f9c11761a32f2fae8d6037e245632cd Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Fri, 23 Oct 2026 07:35:06 +0200
+Subject: [PATCH] docs(scripts): ajouter la ligne FR au commentaire WinRT / add
+ FR line to WinRT comment
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+FR : le commentaire ajouté par l'autofix était en anglais seul. Règle
+AGENTS.md : français d'abord, anglais ensuite. Le reste de l'autofix
+(log à la place de catch vide, GetType sans exception) est conservé.
+
+EN: the comment added by the autofix was English only. AGENTS.md rule:
+French first, English second. The rest of the autofix (logging instead of
+an empty catch, GetType without exception) is kept.
+
+Co-Authored-By: Claude Sonnet 5.5 <noreply@anthropic.com>
+---
+ Scripts/WindowsFullUpdate.ps1 | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/Scripts/WindowsFullUpdate.ps1 b/Scripts/WindowsFullUpdate.ps1
+index 7337b80..9fe7018 100644
+--- a/Scripts/WindowsFullUpdate.ps1
++++ b/Scripts/WindowsFullUpdate.ps1
+@@ -585,7 +585,8 @@ if (Test-StepSkipped 'store') {
+     $storeDone = $false
+     try {
+         Add-Type -AssemblyName "Windows.ApplicationModel" -ErrorAction Stop
+-        # NOTE: This hardcoded WinRT type depends on specific Windows Store API availability and may vary by OS version.
++        # FR// NOTE : ce type WinRT est codé en dur ; il dépend de la disponibilité de l'API du Windows Store et peut varier selon la version de l'OS.
++        # EN// NOTE: This hardcoded WinRT type depends on specific Windows Store API availability and may vary by OS version.
+         $typeName = 'Windows.ApplicationModel.Store.Preview.InstallControl.AppInstallManager, Windows.ApplicationModel.Store.Preview.InstallControl, ContentType=WindowsRuntime'
+         $type = [Type]::GetType($typeName, $false)
+         if (-not $type) { throw "WinRT type unavailable: $typeName" }
+-- 
+2.43.0
+
