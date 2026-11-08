@@ -1,0 +1,10 @@
+{
+  "local_renovate_validator": 0,
+  "local_schema": "PASS, SchemaStore community schema + Python jsonschema",
+  "local_schedule_and_prune": "PASS, 16 schedule instants + isolated pruning cases",
+  "warning": "RE2 fallback; no regular expressions configured",
+  "hosted_dependabot_validation": "NOT RUN",
+  "official_ruby_parser": "CI PENDING; Ruby unavailable locally",
+  "full_legacy_preservation": "NOT PROVEN, deployment blocked",
+  "security_assignment": "PROPOSED: Dependabot all security, Renovate Cargo regular versions; no live handoff"
+}

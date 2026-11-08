@@ -1,0 +1,35 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "enabled": true,
+  "automerge": false,
+  "enabledManagers": [
+    "cargo"
+  ],
+  "prConcurrentLimit": 5,
+  "prHourlyLimit": 2,
+  "ignorePaths": [
+    "**/node_modules/**",
+    "docs/**",
+    "vendor/**",
+    "**/package-lock*.json"
+  ],
+  "lockFileMaintenance": {
+    "enabled": false
+  },
+  "platformAutomerge": false,
+  "timezone": "Europe/Paris",
+  "schedule": [
+    "* 18-22 * * *"
+  ],
+  "updateNotScheduled": false,
+  "pruneStaleBranches": false,
+  "pruneBranchAfterAutomerge": false,
+  "dependencyDashboardAutoclose": false,
+  "rebaseWhen": "never",
+  "recreateWhen": "never",
+  "vulnerabilityAlerts": {
+    "enabled": false,
+    "automerge": false
+  },
+  "osvVulnerabilityAlerts": false
+}

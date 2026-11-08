@@ -1,0 +1,19 @@
+# FR : Parseur officiel en copie isolée ; aucun updater ni appel GitHub.
+# EN: Official parser in an isolated copy; no updater or GitHub call.
+require "yaml"
+require "json"
+require "dependabot/config/file"
+path = ARGV.fetch(0)
+raw = ::File.read(path)
+parsed = Dependabot::Config::File.parse(raw)
+data = YAML.safe_load(raw)
+raise "Expected three ecosystems" unless parsed.updates.size == 3
+raise "Ecosystems mismatch" unless data.fetch("updates").map { |u| u.fetch("package-ecosystem") }.sort == %w[cargo github-actions npm]
+cargo = data.fetch("updates").find { |u| u.fetch("package-ecosystem") == "cargo" }
+raise "Cargo version PRs must be disabled" unless cargo.fetch("open-pull-requests-limit") == 0
+raise "No dependency ignores allowed" unless parsed.updates.all? { |u| !u.key?(:ignore) }
+%w[npm_and_yarn cargo github_actions].each do |manager|
+  cfg = parsed.update_config(manager, directory: "/")
+  raise "Unexpected ignore condition" unless cfg.ignore_conditions.empty?
+end
+puts JSON.pretty_generate({ official_parser: "dependabot-core", config_version: data.fetch("version"), ecosystems: data.fetch("updates").map { |u| u.fetch("package-ecosystem") }, cargo_version_limit: cargo.fetch("open-pull-requests-limit"), assertions: "PASS", limit: "Parsing/configuration checks only, not the hosted Dependabot service or actual update resolution" })
