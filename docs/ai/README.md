@@ -134,3 +134,11 @@ La PR #187 a été fusionnée dans `main` au commit `ae600a6f0971f5e2d40f5d95ee5
 ## Documentary reconciliation after #187 — October 27, 2026
 
 PR #187 merged into `main` at `ae600a6f0971f5e2d40f5d95ee5b447778d2d439`. Its documentation and startup protocol are preserved alongside #186's additions. Reports, SHAs, verdicts and journal entries remain dated evidence; reconciliation does not retroactively update them or validate any migration. PR #186 still requires independent review before any separately authorized merge.
+
+## Référence de choix des modèles et outils — 11 novembre 2026
+
+Le [guide de sélection des modèles et outils](CHOIX_MODELES_ET_OUTILS.md) décrit les recommandations par rôle et prompt, leurs sources, paramètres de réflexion/vitesse et contraintes de quotas. Une PR non fusionnée n'est pas une consigne automatiquement découverte depuis `main`. Aucune donnée privée de quota n'est versionnée.
+
+## Model/tool selection reference — November 11, 2026
+
+See [model/tool selection guide](CHOIX_MODELES_ET_OUTILS.md) for role-specific model, effort, speed, fallback, eligibility and usage guidance. No private quotas are versioned and an unmerged PR does not automatically update `main`.

@@ -91,3 +91,12 @@ Before moving information from a conversation, PR or connected app into this **p
 ## Multi-repository startup — ChatGPT and Codex only
 
 At the start or resumption of Phoen0x work, **ChatGPT and Codex only** follow the [lightweight protocol](docs/ai/STARTUP_CHATGPT_CODEX_PHOEN0X.md): review project pages, READMEs and licenses for every accessible repository, then investigate only relevant sources. Reuse unchanged SHA-verified context; report missing reads. This instruction does not apply to Claude or Bolt.
+
+## Sélection des modèles et des réglages — avant chaque prompt
+
+- Pour chaque prompt et chaque rôle distinct (coordination, Codex implémentation, Work, audit indépendant), recommander **modèle exact, réflexion, vitesse, repli, éligibilité et coût/quota relatif** ; si un outil ne permet pas ces choix, le signaler.
+- Vérifier les disponibilités et sources officielles à chaque mission importante, sans prétendre que le réglage recommandé est appliqué. Le guide daté est [CHOIX_MODELES_ET_OUTILS.md](docs/ai/CHOIX_MODELES_ET_OUTILS.md). Les soldes privés de quota ne sont jamais publiés.
+
+## Model and settings selection — before each prompt
+
+For each separate role, state selectable model, reasoning effort, speed, fallback, availability and quota rationale. Verify current official guidance, mark non-configurable tools explicitly, and keep private usage outside this repository. See [model guide](docs/ai/CHOIX_MODELES_ET_OUTILS.md).

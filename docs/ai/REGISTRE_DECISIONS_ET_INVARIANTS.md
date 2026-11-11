@@ -86,3 +86,11 @@
 - Les autres PR gardent leur état, notamment [#190](https://github.com/Phoen0x/QuelleHeureEst-Il.com/pull/190) en brouillon et [#191](https://github.com/Phoen0x/QuelleHeureEst-Il.com/pull/191)/[#193](https://github.com/Phoen0x/QuelleHeureEst-Il.com/pull/193) ouvertes pour revue. **Aucune fusion et aucun bypass exécutés durant ce reclassement.**
 
 Les mentions plus haut (« #162 ouverte », « #192 en brouillon ») sont des **photographies prises avant ce reclassement** et restent conservées à dessein. Pour l'état courant, consulter l'API GitHub plutôt que ces observations datées.
+
+## G. Proposition de méthode — modèles et outils IA — 11 novembre 2026
+
+**Statut : proposée, sans modification d'autorisation.** Dans toute délégation, configuration explicite par rôle (modèle, réflexion, vitesse, repli, disponibilité et coût relatif) ; vérification officielle à chaque mission majeure. Voir [CHOIX_MODELES_ET_OUTILS.md](CHOIX_MODELES_ET_OUTILS.md). Aucun instantané privé de quota dans le dépôt. Ne pas prétendre à une garantie d'absence d'erreur. Les photographies et décisions anciennes restent inchangées.
+
+### English
+
+Proposed model/tool selection practice: per-role model, effort, speed, fallback, availability and usage justification, backed by current sources. Private quota snapshots remain outside the public repository; no security or merge authorization changes.

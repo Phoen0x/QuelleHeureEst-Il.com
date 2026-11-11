@@ -205,3 +205,13 @@ Lorsqu'une entrée est ajoutée, actualiser sa ligne d'index au-dessus. **Ne pas
 - **Limites communes :** aucune validation de migration Unicode, de transport général codegen/cible, Android/Windows/macOS/GUI ; confiance Rust hôte et csp:null à considérer. Le NO-GO Unicode précédent garde ses deux échecs. Les futurs besoins Android/offline-first restent ouverts.
 - **Preuves distinctes :** [archive A](../reports/qh011-atomic-integration-20261026/NOTICE.md), [archive B](../reports/qh011-acl-contract-20261027/NOTICE.md). 500 et sept empreintes sources vérifiées respectivement ; originaux exacts, transformations et exclusions explicites, aucune preuve manquante inventée. Sources complètes de dépendances/caches/binaires exclus. Aucune expérience technique ou analyse AST n'est relancée par l'archivage.
 - **Relais unique : ChatGPT V4**, revue indépendante de #186. Aucune implémentation, correction de deny, migration, fusion ou mission suivante automatique.
+
+### Décision de méthode — sélection des modèles IA — 11 novembre 2026
+
+- **Statut : proposition documentaire ; non activée sur main avant fusion distincte.** Pour chaque prompt et chaque rôle, déclarer le modèle, la réflexion, la vitesse, la disponibilité, une alternative et le coût relatif. Les outils sans sélecteur sont distingués de leur agent pilote.
+- **Source et preuves :** [guide](CHOIX_MODELES_ET_OUTILS.md), recherche officielle OpenAI datée du 11 novembre 2026. Réévaluer à chaque mission importante ; ne pas inventer de réglage ou d'absence de risque.
+- **Confidentialité :** les pourcentages de quota et horaires de compte sont des instantanés privés et ne sont pas enregistrés ici. Les anciennes décisions et rapports restent intacts ; aucune autorisation de fusion ni altération de sécurité.
+
+### Method decision — model selection — November 11, 2026
+
+Document model, reasoning, speed, eligibility, fallback and quota trade-offs separately for every role and prompt. Verify current official guidance, preserve earlier evidence, and keep private usage outside this repository.
