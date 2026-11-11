@@ -215,3 +215,14 @@ Lorsqu'une entrée est ajoutée, actualiser sa ligne d'index au-dessus. **Ne pas
 ### Method decision — model selection — November 11, 2026
 
 Document model, reasoning, speed, eligibility, fallback and quota trade-offs separately for every role and prompt. Verify current official guidance, preserve earlier evidence, and keep private usage outside this repository.
+
+### Retour d'expérience — quota de mission Cloud et restriction de vitesse — 11 novembre 2026
+
+- **Décision active :** ne recommander que la vitesse Standard/Normale pour Codex/Work et leurs sous-agents. Rapide suspendu pour tous les modèles jusqu'à nouvel accord explicite ; Ultrarapide exclu pour tous, et Astra Rapide/Ultrarapide interdit. Source opérationnelle : [guide modèles/outils](CHOIX_MODELES_ET_OUTILS.md).
+- **Retour d'expérience :** une mission technique complexe en Cloud a été interrompue par l'épuisement d'une fenêtre d'usage avant publication du correctif. L'agent principal et certains sous-agents peuvent avoir des réglages distincts et des limites d'interface ; ne pas imputer un coût individuel sans données probantes.
+- **Prévention :** configurer des jalons intermédiaires, privilégier la reprise de l'état distant préexistant et limiter le travail parallèle redondant. Les réglages exacts et contrôlables doivent être consignés à chaque prompt.
+- **Confidentialité :** aucun pourcentage, horaire ou autre détail personnel de quota enregistré ; les rapports précédents ne sont pas réécrits. Cette décision documentaire en PR distincte n'autorise aucune fusion.
+
+### Cloud usage and speed decision — English
+
+Cloud missions can exhaust a usage window before delivery. Until explicitly reversed, recommend Standard/Normal only: no Fast for any model, no Ultrafast, and specifically no GPT-6 Astra Fast/Ultrafast. Preserve resumable milestones and keep private usage details out of the repository.

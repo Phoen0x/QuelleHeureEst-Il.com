@@ -100,3 +100,12 @@ At the start or resumption of Phoen0x work, **ChatGPT and Codex only** follow th
 ## Model and settings selection — before each prompt
 
 For each separate role, state selectable model, reasoning effort, speed, fallback, availability and quota rationale. Verify current official guidance, mark non-configurable tools explicitly, and keep private usage outside this repository. See [model guide](docs/ai/CHOIX_MODELES_ET_OUTILS.md).
+
+## Restriction de vitesse active — décision du 11 novembre 2026
+
+- Pour Codex, Work et leurs sous-agents : **vitesse Standard/Normale uniquement** pour le moment, quel que soit le modèle. **Rapide est suspendu jusqu'à un nouvel accord explicite de l'utilisatrice ; Ultrarapide est interdit sauf nouvelle décision explicite.** Ne proposer ni utiliser GPT-6 Astra en Rapide ou Ultrarapide. L'état disponible du quota ne déroge pas à cette règle.
+- Si la vitesse d'un agent ne peut être réglée, signaler le réglage réellement observé, sans revendiquer de modification. Voir le [guide](docs/ai/CHOIX_MODELES_ET_OUTILS.md).
+
+## Active speed restriction — English
+
+Use Standard/Normal speed for Codex, Work and all sub-agents. Fast is suspended pending explicit user re-authorization, Ultrafast prohibited unless explicitly overridden, and GPT-6 Astra must not run in Fast or Ultrafast. Report non-configurable speed honestly.

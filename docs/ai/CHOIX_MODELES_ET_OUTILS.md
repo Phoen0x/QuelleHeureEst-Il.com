@@ -14,8 +14,21 @@ Ne jamais garantir zéro erreur : vérifier les sources, adapter le modèle à l
 - **Projets ChatGPT** : héritent des possibilités du compte et de l'espace de travail. Leur simple existence n'explique pas à elle seule une option absente du sélecteur.
 - **Codex / Work** : GPT-6.1 Sol est adapté aux tâches complexes et au compromis performance/consommation ; GPT-6 Astra aux investigations et livrables les plus difficiles. Modèles et niveaux proposés varient selon l'accès réel.
 - **Réflexion** : commencer à Moyen pour une tâche bornée ; Élevé pour une tâche difficile ; Très élevé/Ultra uniquement lorsqu'ils sont effectivement accessibles et que leur intérêt est justifié. Les intitulés API ne correspondent pas forcément aux choix de l'application.
-- **Vitesse** : Standard/Normale par défaut pour les travaux lourds ; Rapide seulement si un gain de latence justifie une consommation supplémentaire. Ultrarapide n'était pas inclus dans Plus au lancement documenté.
+- **Vitesse — décision opérationnelle du 11 novembre 2026** : **Standard/Normale uniquement** pour les missions Codex/Work et leurs sous-agents, quel que soit le modèle ou l'effort. **Rapide suspendu pour tous les modèles jusqu'à nouvel accord explicite de l'utilisatrice. Ultrarapide exclu sans exception tant qu'aucune décision explicite contraire n'a été donnée. En particulier, ne jamais proposer ni utiliser GPT-6 Astra en Rapide ou Ultrarapide.** Ne pas inférer une exception d'un quota disponible ou d'une échéance de réinitialisation.
 - **Quotas Work/Codex** : réserve commune, avec éventuellement deux fenêtres simultanées (cinq heures, sept jours). La consommation varie selon modèle, effort, vitesse et tâche. Ne jamais transformer des pourcentages instantanés en budget fixe de tokens.
+
+## Retour d'expérience et décision de vitesse — 11 novembre 2026
+
+**Décision en vigueur pour les nouvelles recommandations, sans limite de date présumée :**
+
+- Utiliser **Standard/Normale** pour toute mission Codex/Work, agent principal et sous-agents inclus ; si la vitesse n'est pas réglable, consigner la vitesse effectivement observée et signaler l'impossibilité de la modifier.
+- **Ne sélectionner Rapide pour aucun modèle** tant que l'utilisatrice ne l'a pas réautorisé explicitement. **Ne sélectionner Ultrarapide pour aucun modèle**, sauf nouvelle décision explicite qui remplace cette interdiction.
+- **GPT-6 Astra en Rapide ou Ultrarapide est particulièrement exclu**. Astra reste éligible en vitesse Standard/Normale selon la difficulté et le quota.
+- Le choix de réflexion (Moyen, Élevé, etc.) et celui du modèle restent indépendants de la vitesse ; ne pas diminuer automatiquement l'effort nécessaire pour compenser une vitesse Standard.
+- Retenir comme retour d'expérience qu'une mission Cloud complexe peut épuiser une fenêtre d'usage avant d'avoir publié son livrable. Imposer des jalons de reprise, la réutilisation de l'état existant et l'absence d'analyses redondantes.
+- Ne pas publier ici les quotas individuels, leur solde, leurs échéances, les identifiants de session ou toute autre télémétrie personnelle.
+
+**English:** Standard/Normal speed only for all Codex/Work roles. Fast is suspended until explicit user re-authorization; Ultrafast is prohibited unless explicitly overturned. In particular, never recommend or use GPT-6 Astra in Fast or Ultrafast. Keep milestone-based resumability and private usage outside the public repo.
 
 ## Matrice de recommandations de départ
 

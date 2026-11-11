@@ -142,3 +142,12 @@ Le mini-bilan final comporte :
 ### Model/tool selection — English
 
 Specify model, effort, speed, fallback, eligibility and usage rationale for each agent role and prompt. Verify official sources and real UI availability; mark tools without independent settings. Never publish private usage. Security and merge rules remain unchanged.
+
+### Complément du 11 novembre 2026 — vitesse maximale autorisée
+
+- **Standard/Normale** est la seule vitesse recommandée pour Codex, Work et les sous-agents jusqu'à nouvel arbitrage. **Rapide est suspendu pour tous les modèles**, **Ultrarapide exclu pour tous** ; GPT-6 Astra ne doit pas être recommandé ou lancé en Rapide/Ultrarapide. Une réactivation requiert un accord explicite de l'utilisatrice.
+- Ne pas transformer un relevé de quota en autorisation implicite d'utiliser un mode accéléré. Conserver les jalons de reprise et les preuves d'avancement. Aucun détail de quota personnel dans le dépôt public.
+
+### Speed constraint — English
+
+Standard/Normal is the only approved recommended speed. Fast is suspended for all models until explicit user re-authorization; Ultrafast is excluded until explicit reversal. Never run or recommend GPT-6 Astra Fast/Ultrafast. Private quota data must stay outside the public repository.
