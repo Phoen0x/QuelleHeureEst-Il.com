@@ -1049,24 +1049,32 @@ impl<T: TransparentPtrType> From<super::Slice<T>> for PtrSlice<T> {
         let len = value.len();
         let capacity = value.capacity();
         unsafe {
+            // FR// Une Slice vide renvoie NULL ; son éventuel tampon réservé est déjà libéré.
+            // EN// `into_raw()` returns `null` for an empty slice; in that case
+            // any reserved buffer has already been freed.
             let ptr = value.into_raw();
-            let mut s = PtrSlice::<T> {
-                ptr: ptr::NonNull::new_unchecked(ptr),
-                len,
-                capacity,
-            };
+            if ptr.is_null() {
+                debug_assert_eq!(len, 0);
+                PtrSlice::new()
+            } else {
+                let mut s = PtrSlice::<T> {
+                    ptr: ptr::NonNull::new_unchecked(ptr),
+                    len,
+                    capacity,
+                };
 
-            // Reserve space for the `NULL`-terminator if needed
-            if len == capacity {
-                s.reserve(0);
+                // Reserve space for the `NULL`-terminator if needed
+                if len == capacity {
+                    s.reserve(0);
+                }
+
+                ptr::write(
+                    s.ptr.as_ptr().add(s.len()),
+                    Ptr::from(ptr::null_mut::<<T as GlibPtrDefault>::GlibType>()),
+                );
+
+                s
             }
-
-            ptr::write(
-                s.ptr.as_ptr().add(s.len()),
-                Ptr::from(ptr::null_mut::<<T as GlibPtrDefault>::GlibType>()),
-            );
-
-            s
         }
     }
 }

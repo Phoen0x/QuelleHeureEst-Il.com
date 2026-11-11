@@ -21,6 +21,11 @@ const cases = {
   'optional Rust dependency removal': ['src-tauri/Cargo.toml', b => Buffer.from(b.toString().replace('[dependencies.rustls-pemfile]\nversion = "=1.0.4"\noptional = true\n', ''))],
   'baseline graph alteration': [`${history}/metadata-before-graph.json`, b => Buffer.concat([b, Buffer.from('\n')])],
   'unexpected added file': ['unexpected-qh011-file.txt', () => Buffer.from('unexpected\n')],
+  'removed null-pointer check': ['vendor/glib-0.18.5/src/collections/ptr_slice.rs', b => Buffer.from(b.toString().replace('if ptr.is_null() {', 'if false {'))],
+  'unchecked null construction': ['vendor/glib-0.18.5/src/collections/ptr_slice.rs', b => Buffer.from(b.toString().replace('            let ptr = value.into_raw();', '            let ptr = value.into_raw();\n            let _invalid = ptr::NonNull::new_unchecked(ptr);'))],
+  'empty regression tests deletion': ['src-tauri/tests/glib_empty_slice.rs', () => null],
+  'official checksum alteration': ['docs/history/glib-qh011-20261023/PORT.json', b => Buffer.from(b.toString().replace('233daaf6', '333daaf6'))],
+
 };
 for (const [name, [filename, mutate]] of Object.entries(cases)) test(`GLib preservation rejects ${name}`, () => {
   const fixture = fs.mkdtempSync(path.join(os.tmpdir(), 'qh011-glib-negative-'));
