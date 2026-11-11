@@ -132,3 +132,22 @@ Le mini-bilan final comporte :
 - Le registre est un **index de décisions, motifs, exceptions et preuves**, pas un nouveau système d'autorisation. Une possibilité de bypass ne vaut jamais permission de fusion ; une approbation de workflow ne remplace pas une revue indépendante ; un fait ancien ne vaut pas preuve actuelle.
 - Après chaque arbitrage durable, corriger ou compléter l'entrée concernée uniquement sur une branche **explicitement autorisée**, avec date, statut, liens et limites. Conserver les originaux historiques sans les réécrire. En cas de contradiction ou d'information inaccessible, documenter l'écart et solliciter la décision humaine nécessaire.
 - Si le registre demeure dans une PR non fusionnée, le signaler expressément : il n'est pas automatiquement disponible pour un agent qui démarre sur `main`. Cette référence **n'autorise ni fusion ni contournement**.
+
+## 16. Règle de sélection des modèles et outils — 11 novembre 2026
+
+- Avant toute délégation ou prompt nécessitant une exécution, afficher une configuration **par rôle** : modèle, réflexion, vitesse, alternative, conditions d'accès et quota relatif. Même exigence pour les recommandations ChatGPT/Work/Codex. Les outils sans sélecteur autonome sont qualifiés comme tels.
+- Vérifier les documents OpenAI actuels et les options disponibles dans l'interface ; ne pas promettre zéro erreur, coût fixe ou disponibilité non vérifiée. Voir [CHOIX_MODELES_ET_OUTILS.md](CHOIX_MODELES_ET_OUTILS.md).
+- Les chiffres privés de quota ne sont jamais copiés dans ce dépôt public. Ces recommandations ne changent pas les autorisations, la gouvernance ni l'obligation de revue indépendante.
+
+### Model/tool selection — English
+
+Specify model, effort, speed, fallback, eligibility and usage rationale for each agent role and prompt. Verify official sources and real UI availability; mark tools without independent settings. Never publish private usage. Security and merge rules remain unchanged.
+
+### Complément du 11 novembre 2026 — vitesse maximale autorisée
+
+- **Standard/Normale** est la seule vitesse recommandée pour Codex, Work et les sous-agents jusqu'à nouvel arbitrage. **Rapide est suspendu pour tous les modèles**, **Ultrarapide exclu pour tous** ; GPT-6 Astra ne doit pas être recommandé ou lancé en Rapide/Ultrarapide. Une réactivation requiert un accord explicite de l'utilisatrice.
+- Ne pas transformer un relevé de quota en autorisation implicite d'utiliser un mode accéléré. Conserver les jalons de reprise et les preuves d'avancement. Aucun détail de quota personnel dans le dépôt public.
+
+### Speed constraint — English
+
+Standard/Normal is the only approved recommended speed. Fast is suspended for all models until explicit user re-authorization; Ultrafast is excluded until explicit reversal. Never run or recommend GPT-6 Astra Fast/Ultrafast. Private quota data must stay outside the public repository.
