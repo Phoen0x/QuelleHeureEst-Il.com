@@ -1,0 +1,257 @@
+{
+  "status": "SECURITY_REGRESSIONS_PASS_CLIPPY_BLOCKED_REVIEW_PENDING",
+  "base_sha": "f2eee4223a1ccf5b0866944580df8fd5979575dd",
+  "base_tree": "d800ba93b598078b04631a1c87a2979912a59090",
+  "source_pr153": "0ebc167c8febf1b61752d1114f8135a59400c5f1",
+  "main_inspected": "ac5ea3a04b721a7f4071cd375708fc9bef0a85a6",
+  "upstream_commit": "b31265df94876febf259089a19de9c23d2468214",
+  "environment": {
+    "rust": "1.99.1",
+    "cargo": "1.99.1",
+    "node": "24.19.0",
+    "pnpm": "8.15.9",
+    "clippy": "0.1.99",
+    "native": "Existing local Debian 13 GTK/WebKit 4.1 prerequisite kit; no fresh-machine claim"
+  },
+  "results": {
+    "cargo_metadata": {
+      "exit": 0,
+      "graph_nodes_default": 502,
+      "graph_unchanged": true,
+      "vendor_from_root_and_src_tauri": true,
+      "all_features_graph": "Authenticated historical graph checked by conservation guard"
+    },
+    "debug": {
+      "exit": 0,
+      "distinct_tests": 14,
+      "passed": 14,
+      "ignored": 0
+    },
+    "release": {
+      "exit": 0,
+      "distinct_tests": 14,
+      "passed": 14,
+      "ignored": 0
+    },
+    "guard": {
+      "exit": 0,
+      "result": {
+        "status": "PASS",
+        "base": "d033c8ea819614b4676f4db057ee3ef62c33f264",
+        "originalFiles": 165,
+        "unchangedFiles": 161,
+        "archivedModifiedFiles": [
+          "Cargo.toml",
+          "Cargo.lock",
+          "src-tauri/Cargo.toml",
+          "docs/validation/rust-178/check-ported-graph.cjs"
+        ],
+        "vendorFiles": 121,
+        "onlyUpstreamVariantStrIterFix": false,
+        "onlyTwoApprovedUpstreamFixes": true,
+        "cargoPackages": 504,
+        "onlyAddedEdge": "Linux GLib dev-test dependency",
+        "glibSource": "vendor/glib-0.18.5",
+        "pnpmSnapshotsUnchanged": 409,
+        "optionalSnapshotsUnchanged": 140,
+        "historicalGuards": {
+          "status": "PASS",
+          "base": "fb3ff18a7829a7ac997e7569cabc8ed3a9603aca",
+          "originalFiles": 157,
+          "unchangedFiles": 155,
+          "archivedModifiedFiles": [
+            "Cargo.lock",
+            "docs/validation/rust-178/check-ported-graph.cjs"
+          ],
+          "cargoPackagesBefore": 504,
+          "cargoPackagesAfter": 504,
+          "modifiedDependencies": [
+            "tokio 1.54.0 -> 1.54.1"
+          ],
+          "onlyTokioVersionAndChecksumChanged": true,
+          "manifestsUnchanged": true,
+          "pnpmSnapshotsIdentical": 409,
+          "optionalIdentical": 140,
+          "reachable": 304,
+          "patchHash": "ij22dduv7f6wi3glhwl7jmdbrm",
+          "historicalGuards": {
+            "status": "PASS",
+            "base": "66f4d47f0b10f07c80a3ac257c3f76947bff8051",
+            "originalFiles": 144,
+            "unchangedFiles": 139,
+            "archivedModifiedFiles": [
+              "patches/braces-3.0.3.patch",
+              "pnpm-lock.yaml",
+              "docs/validation/rust-178/check-ported-graph.cjs",
+              "tests/dependency_updates/js-security-183.test.cjs",
+              "tests/dependency_updates/vite-qh010.test.cjs"
+            ],
+            "snapshotsBefore": 408,
+            "snapshotsAfter": 409,
+            "identicalActiveBlocks": 406,
+            "adaptedConsumerEdges": [
+              "/chokidar@3.6.0",
+              "/micromatch@4.0.8"
+            ],
+            "exactOriginalBlocksArchived": 408,
+            "optional": 140,
+            "reachable": 304,
+            "initialInactiveNotReactivated": 104,
+            "historicalGuards": {
+              "status": "PASS",
+              "qh010": {
+                "base": "bdda4abf3430bc5bda20176538c08533694c83f7",
+                "originalFiles": 133,
+                "unchangedFiles": 129,
+                "archivedModifiedFiles": [
+                  "package.json",
+                  "pnpm-lock.yaml",
+                  "Scripts/check-js-security-183.cjs",
+                  "tests/dependency_updates/js-security-183.test.cjs"
+                ],
+                "identicalInitialSnapshots": 384,
+                "initialOptionalRetained": 121,
+                "initialInactiveNotReactivated": 81,
+                "addedSnapshots": 24,
+                "totalSnapshots": 408,
+                "reachableEntries": 304,
+                "optionalAfter": 140,
+                "cargoAndHttpTestsUnchanged": true
+              },
+              "base": "6db8239390b6cf12cb22c0d9ff43ac62c680967b",
+              "originalFiles": 122,
+              "unchangedFiles": 119,
+              "archivedModifiedFiles": [
+                "package.json",
+                "pnpm-lock.yaml",
+                "docs/validation/rust-178/check-ported-graph.cjs"
+              ],
+              "initialSnapshots": 337,
+              "identicalInitialSnapshots": 329,
+              "adaptedInitialSnapshots": 8,
+              "missingSnapshots": [],
+              "initialOptional": 95,
+              "optionalAfter": 140,
+              "historicalNotReactivated": 35,
+              "totalSnapshots": 408,
+              "reachableEntries": 304,
+              "missingEdges": [],
+              "cargoAndHttpTestsUnchanged": true
+            },
+            "patchHash": "ij22dduv7f6wi3glhwl7jmdbrm"
+          }
+        }
+      }
+    },
+    "negative_guard_tests": {
+      "exit": 0,
+      "passed": 16,
+      "failed": 0,
+      "ignored": 0,
+      "historical_cases_retained": 12,
+      "new_cases": 4
+    },
+    "vite_build": {
+      "exit": 0,
+      "purpose": "Generate embedded frontend prerequisite"
+    },
+    "clippy": {
+      "exit": 101,
+      "errors": 8,
+      "cause": "Existing unused imports and dead cache functions in unchanged application sources; no allowances added"
+    },
+    "git_diff_check": {
+      "exit": 0
+    }
+  },
+  "preservation": {
+    "original_files": 302,
+    "unchanged_blobs_and_modes": 299,
+    "archived_modified_files": {
+      "vendor/glib-0.18.5/src/collections/ptr_slice.rs": {
+        "git_blob": "e925d98413cb8562d5db9307d6e6491ba294c180",
+        "sha256": "6fcb10ac7d9b4ba58cdbed9dc0ad40a4f4d4f608a3572403f8a7c77fc99c2221"
+      },
+      "Scripts/check-glib-qh011.py": {
+        "git_blob": "0d925fc06e1ec9e13b320666f6992ff138bdf559",
+        "sha256": "28fe37544dc76216ea4ea69256129f3b13ee95bd4252c577707b4da28136228c"
+      },
+      "tests/dependency_updates/glib-qh011.test.cjs": {
+        "git_blob": "9dd05aeee7faa96d2ed5736fb30b89bb44e56e79",
+        "sha256": "497861436ea5328fa6dd3efad6ec814c2337a2d41804db07f45937903b0b9c14"
+      }
+    },
+    "vendor_files": 121,
+    "vendor_changes_only": [
+      "src/variant_iter.rs (previous fix preserved)",
+      "src/collections/ptr_slice.rs (new approved fix)"
+    ],
+    "rust_tests_exact_pr153": true,
+    "ptr_slice_exact_pr153": true,
+    "manifest_lock_config_wrapper_unchanged": true
+  },
+  "initial_failures": [
+    {
+      "kind": "EPERM",
+      "result": "Node child-process runner and HTTP loopback initially restricted; rerun succeeded with scoped executor network permission, without scanner or sandbox configuration changes"
+    },
+    {
+      "kind": "missing frontend",
+      "result": "Initial cargo invocation failed before tests; Vite frontend generated then workspace rerun"
+    },
+    {
+      "kind": "archive path quoting",
+      "result": "Baseline manifest initially used quoted paths; regenerated with NUL-separated ls-tree; historical hashes unchanged"
+    },
+    {
+      "kind": "negative test harness",
+      "result": "One new deletion case first raised FileNotFoundError; explicit missing-test assertion added; final 16 cases pass"
+    },
+    {
+      "kind": "Clippy initially missing",
+      "result": "Installed matching official toolchain component outside repository; final strict invocation fails on existing application diagnostics"
+    }
+  ],
+  "logs": {
+    "debug.log": {
+      "sha256": "b9f978e9a18340627ca03d604227e56f0ea7c9ff36ad350ae0bc0dd894993006",
+      "published_bytes": false
+    },
+    "debug-after.log": {
+      "sha256": "bd72563eb5b35399ab001b15b5eec9733734f49b0d5cff316876bb9523abd608",
+      "published_bytes": false
+    },
+    "debug-network-grant.log": {
+      "sha256": "882a5ff387fbf8f32854dea4f083c2b0d931067eab0e9a8151517725e2825828",
+      "published_bytes": false
+    },
+    "release.log": {
+      "sha256": "d276f545e6c320e8c7d608f0a5a6cfbbc6232712164d3818b5964d5dff8cee65",
+      "published_bytes": false
+    },
+    "negative-final.log": {
+      "sha256": "4f409172abd5f327ee4268e9f9d6474cfa7fad862af1c2510afc348f2941dc5f",
+      "published_bytes": false
+    },
+    "guard-final.log": {
+      "sha256": "fb6832371e600e2c26f03bd00b2eb85aa6fbb878dc0af3458631486b5b8bc65a",
+      "published_bytes": false
+    },
+    "clippy-final.log": {
+      "sha256": "3d62c00f5518c98b67f560d32a72488de02006c5a654ab2a49deeff7672d901c",
+      "published_bytes": false
+    },
+    "vite.log": {
+      "sha256": "a3c23d41d24f3386c8db8f8eb8be0bafa53d5a07f928f4c6dbbc79287562bcdb",
+      "published_bytes": false
+    }
+  },
+  "limits": [
+    "No Android, Windows, macOS, GUI, Miri or sanitizer validation",
+    "No fresh dependency security audit",
+    "Strict Clippy failure remains blocking for full acceptance",
+    "Raw local logs not published; hashes preserve identity but not durable availability",
+    "CI not executed locally or manually dispatched; inspect published commit checks"
+  ],
+  "self_reference": "Evidence file and report hashes bound externally by containing Git commit"
+}

@@ -30,6 +30,15 @@ CONFIG = '# FR// Substituer le code GLib sans perdre son identité de registre d
 WRAPPER = "// FR// Cumuler les gardes historiques et la conservation du rétroport GLib.\n// EN// Combine historical guards with GLib backport preservation.\nconst { execFileSync } = require('node:child_process');\nexecFileSync('python3', [require('node:path').resolve(__dirname, '../../../Scripts/check-glib-qh011.py')], { stdio: 'inherit', timeout: 600000 });\n"
 
 
+# FR// Seul delta supplémentaire : fonction de conversion amont b31265df.
+# EN// Only additional delta: upstream b31265df conversion function.
+EMPTY_HISTORY = 'docs/history/glib-empty-ptrslice-20261111'
+EMPTY_BASE_TREE = 'd800ba93b598078b04631a1c87a2979912a59090'
+CONVERSION_BEFORE = b'impl<T: TransparentPtrType> From<super::Slice<T>> for PtrSlice<T> {\n    fn from(value: super::Slice<T>) -> Self {\n        let len = value.len();\n        let capacity = value.capacity();\n        unsafe {\n            let ptr = value.into_raw();\n            let mut s = PtrSlice::<T> {\n                ptr: ptr::NonNull::new_unchecked(ptr),\n                len,\n                capacity,\n            };\n\n            // Reserve space for the `NULL`-terminator if needed\n            if len == capacity {\n                s.reserve(0);\n            }\n\n            ptr::write(\n                s.ptr.as_ptr().add(s.len()),\n                Ptr::from(ptr::null_mut::<<T as GlibPtrDefault>::GlibType>()),\n            );\n\n            s\n        }\n    }\n}'
+CONVERSION_AFTER = b'impl<T: TransparentPtrType> From<super::Slice<T>> for PtrSlice<T> {\n    fn from(value: super::Slice<T>) -> Self {\n        let len = value.len();\n        let capacity = value.capacity();\n        unsafe {\n            // FR// Une Slice vide renvoie NULL ; son \xc3\xa9ventuel tampon r\xc3\xa9serv\xc3\xa9 est d\xc3\xa9j\xc3\xa0 lib\xc3\xa9r\xc3\xa9.\n            // EN// `into_raw()` returns `null` for an empty slice; in that case\n            // any reserved buffer has already been freed.\n            let ptr = value.into_raw();\n            if ptr.is_null() {\n                debug_assert_eq!(len, 0);\n                PtrSlice::new()\n            } else {\n                let mut s = PtrSlice::<T> {\n                    ptr: ptr::NonNull::new_unchecked(ptr),\n                    len,\n                    capacity,\n                };\n\n                // Reserve space for the `NULL`-terminator if needed\n                if len == capacity {\n                    s.reserve(0);\n                }\n\n                ptr::write(\n                    s.ptr.as_ptr().add(s.len()),\n                    Ptr::from(ptr::null_mut::<<T as GlibPtrDefault>::GlibType>()),\n                );\n\n                s\n            }\n        }\n    }\n}'
+EMPTY_TEST_SHA256 = '4055589019000ca885eca7f25f571bab41d9cc3ac3b3be9ecc7a5c3ed424fb69'
+
+
 def read(name):
     return (ROOT / name).read_bytes()
 
@@ -155,6 +164,9 @@ def main():
                 assert expected.count(b'let p: *mut libc::c_char = std::ptr::null_mut();') == 1
                 assert expected.count(b'                &p,\n') == 1
                 expected = expected.replace(b'let p: *mut libc::c_char = std::ptr::null_mut();', b'let mut p: *mut libc::c_char = std::ptr::null_mut();').replace(b'                &p,\n', b'                &mut p,\n')
+            if relative.as_posix() == 'src/collections/ptr_slice.rs':
+                assert expected.count(CONVERSION_BEFORE) == 1, 'Original conversion changed'
+                expected = expected.replace(CONVERSION_BEFORE, CONVERSION_AFTER)
             p = vendor / relative
             assert p.is_file() and not p.is_symlink() and p.read_bytes() == expected, f'Unexpected vendor source change {relative}'
     assert len(expected_files) == 121
@@ -169,6 +181,28 @@ def main():
         'docs/reports/glib-qh011-20261023.md', 'docs/reports/glib-qh011-20261023-evidence.json',
     } | {'vendor/glib-0.18.5/' + n for n in expected_files}
     assert set(reference['added_files']) == additions
+    # FR// Authentifier la nouvelle base sans réécrire les assertions historiques.
+    # EN// Authenticate the new baseline without rewriting historical assertions.
+    empty = json.loads(read(f'{EMPTY_HISTORY}/PORT.json'))
+    assert empty['base_sha'] == 'f2eee4223a1ccf5b0866944580df8fd5979575dd'
+    assert len(empty['initial_files']) == 302
+    assert tree_identity(empty['initial_files']) == EMPTY_BASE_TREE
+    changed = ['vendor/glib-0.18.5/src/collections/ptr_slice.rs',
+               'Scripts/check-glib-qh011.py', 'tests/dependency_updates/glib-qh011.test.cjs']
+    assert empty['modified_files'] == changed
+    for name, entry in empty['initial_files'].items():
+        archived = f'{EMPTY_HISTORY}/{name}' if name in changed else name
+        assert git('hash-object', '--path', name, archived).decode().strip() == entry['sha'], f'Initial source/archive changed {name}'
+        assert ('100755' if (ROOT / archived).stat().st_mode & 0o111 else '100644') == entry['mode']
+        if name in changed:
+            assert sha(read(archived)) == empty['archives'][name]['sha256']
+    assert (ROOT / 'src-tauri/tests/glib_empty_slice.rs').is_file(), 'Missing empty-slice tests'
+    assert sha(read('src-tauri/tests/glib_empty_slice.rs')) == EMPTY_TEST_SHA256, 'Missing/changed empty-slice tests'
+    additions |= {f'{EMPTY_HISTORY}/{n}' for n in changed} | {
+        f'{EMPTY_HISTORY}/PORT.json', 'src-tauri/tests/glib_empty_slice.rs',
+        'docs/reports/glib-empty-ptrslice-20261111.md',
+        'docs/reports/glib-empty-ptrslice-20261111-evidence.json',
+    }
     listed = set(filter(None, (git('ls-files', '-z') + git('ls-files', '--others', '--exclude-standard', '-z')).decode().split('\0')))
     assert listed <= set(reference['initial_files']) | additions, f'Out of scope: {sorted(listed - set(reference["initial_files"]) - additions)}'
     for name in additions:
@@ -205,7 +239,7 @@ def main():
         historical = json.loads(p.stdout)
     print(json.dumps({'status': 'PASS', 'base': BASE, 'originalFiles': 165,
                      'unchangedFiles': 161, 'archivedModifiedFiles': MODIFIED,
-                     'vendorFiles': 121, 'onlyUpstreamVariantStrIterFix': True,
+                     'vendorFiles': 121, 'onlyUpstreamVariantStrIterFix': False, 'onlyTwoApprovedUpstreamFixes': True,
                      'cargoPackages': 504, 'onlyAddedEdge': 'Linux GLib dev-test dependency',
                      'glibSource': 'vendor/glib-0.18.5', 'pnpmSnapshotsUnchanged': 409,
                      'optionalSnapshotsUnchanged': 140, 'historicalGuards': historical}, indent=2))
