@@ -1,0 +1,231 @@
+{
+  "base": "20825fc01d4f7fd03239093feacf26863ed65b3f",
+  "tree": "1bc867ea5ce31bbf3dfcfdbb04ab480ea58fbc9c",
+  "python": "Python 3.12.14",
+  "node": "v24.19.0",
+  "before": [
+    {
+      "script": "Scripts/check-sqlite-rustsec.py",
+      "flags": [],
+      "exit": 0,
+      "PASS": true,
+      "stderr_tail": ""
+    },
+    {
+      "script": "Scripts/check-sqlite-rustsec.py",
+      "flags": [
+        "-O"
+      ],
+      "exit": 0,
+      "PASS": true,
+      "stderr_tail": ""
+    },
+    {
+      "script": "Scripts/check-sqlite-rustsec.py",
+      "flags": [
+        "-OO"
+      ],
+      "exit": 0,
+      "PASS": true,
+      "stderr_tail": ""
+    },
+    {
+      "script": "Scripts/check-glib-qh011.py",
+      "flags": [],
+      "exit": 1,
+      "PASS": false,
+      "stderr_tail": "o.toml') == read(f'{HISTORY}/src-tauri/Cargo.toml') + MANIFEST_SUFFIX.encode(), 'Manifest changed beyond Linux test dependency'\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Manifest changed beyond Linux test dependency\n"
+    },
+    {
+      "script": "Scripts/check-glib-qh011.py",
+      "flags": [
+        "-O"
+      ],
+      "exit": 0,
+      "PASS": true,
+      "stderr_tail": ""
+    },
+    {
+      "script": "Scripts/check-glib-qh011.py",
+      "flags": [
+        "-OO"
+      ],
+      "exit": 0,
+      "PASS": true,
+      "stderr_tail": ""
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://docs.python.org/3/using/cmdline.html#cmdoption-O",
+      "download_sha256": "9005d8f3944afff0b1346de2eeed7d8f9547f6f4c3fe3bba29663141d4b68317"
+    },
+    {
+      "url": "https://docs.python.org/3/reference/simple_stmts.html#the-assert-statement",
+      "download_sha256": "0c1cda48b7157eab35cea43526083db6e7a069317a555ef8728b6a18909663f8"
+    },
+    {
+      "url": "https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html",
+      "access": "HTTP error; not claimed read"
+    }
+  ],
+  "files": [
+    {
+      "path": "Scripts/check-sqlite-rustsec.py",
+      "old_git_blob": "1ae1b45a1080fc482254c1ba3271d3f2f7a40cb9",
+      "old_sha256": "4130d830ee8198f1cbd5c784449dd7181713854d1e18648ec0aeec2e6981c05c",
+      "new_git_blob": "58c36ff442641fae604ac7564fd20446efb08073",
+      "new_sha256": "a0f5ace1da0df156a918711495fa42956f04c55e13091b0b9bbb3c7a12659a62"
+    },
+    {
+      "path": "Scripts/check-glib-qh011.py",
+      "old_git_blob": "687f247da19135ecdb6b5b3e06599bc6f3116f99",
+      "old_sha256": "206760eda507d016b7d8a0c3c9b2264abf7e76f7dc88be43e95252e97ecf74c0",
+      "new_git_blob": "7de86061f02c2ad20ba19f448d8e5e525cf1c5ee",
+      "new_sha256": "c9f0929bfd750453dc2c62a400a5f2b929ad6622fcd858d2a29117704f2df56b"
+    }
+  ],
+  "added": [
+    "docs/history/python-optimization-20261112/Scripts/check-sqlite-rustsec.py",
+    "docs/history/python-optimization-20261112/Scripts/check-glib-qh011.py",
+    "docs/history/python-optimization-20261112/PORT.json",
+    "tests/dependency_updates/python-optimization.test.cjs",
+    "docs/reports/python-optimization-20261112.md",
+    "docs/reports/python-optimization-20261112-evidence.json"
+  ],
+  "preservation": {
+    "initial": 323,
+    "unchanged": 321,
+    "modified_archived": 2,
+    "added": 6,
+    "deleted": 0,
+    "mode_changes": 0
+  },
+  "tests": {
+    "new": 22,
+    "optimized_refusals": 14,
+    "normal_acceptances": 6,
+    "historical_expected_refusals": 2,
+    "existing": 60,
+    "total_distinct": 82
+  },
+  "logs": {
+    "diagnostic-before.log": {
+      "sha256": "a42f15602a65a075e3faf291715d2451871a43195c6c67af1d621cf20a88400c",
+      "bytes": 2590,
+      "raw_bytes_published": false
+    },
+    "positive.log": {
+      "sha256": "b99afb016613299059cb09c13f0cc741ac52122ef4009aa2c3baa4f7af283c66",
+      "bytes": 2932,
+      "raw_bytes_published": false,
+      "exit": 0
+    },
+    "optimization-tests.log": {
+      "sha256": "46930e8ac424e95b20e1773173dbe8b73a9d1e2a3f06825ad7525207d084de10",
+      "bytes": 1784,
+      "raw_bytes_published": false,
+      "exit": 0
+    },
+    "all-tests.log": {
+      "sha256": "b39255a53c763a0e351aef50597ccca138f758bb80d4b443d207f95f2d164df7",
+      "bytes": 6165,
+      "raw_bytes_published": false,
+      "exit": 0
+    }
+  },
+  "test_output_summary": [
+    "ℹ tests 82",
+    "ℹ suites 0",
+    "ℹ pass 82",
+    "ℹ fail 0",
+    "ℹ cancelled 0",
+    "ℹ skipped 0",
+    "ℹ todo 0",
+    "ℹ duration_ms 72218.772993"
+  ],
+  "successful_cases": [
+    "QH009 preservation rejects historical depth guard removal",
+    "QH009 preservation rejects old patch archive mutation",
+    "QH009 preservation rejects old lock archive mutation",
+    "QH009 preservation rejects cycle guard removal",
+    "QH009 preservation rejects old patch reactivation",
+    "QH009 preservation rejects historical test assertion removal",
+    "GLib preservation rejects immutable out-pointer regression",
+    "GLib preservation rejects pointer declaration regression",
+    "GLib preservation rejects unrelated PtrSlice backport",
+    "GLib preservation rejects vendor feature alteration",
+    "GLib preservation rejects official source deletion",
+    "GLib preservation rejects official archive alteration",
+    "GLib preservation rejects registry identity alteration",
+    "GLib preservation rejects source override omission",
+    "GLib preservation rejects historical Tokio guard alteration",
+    "GLib preservation rejects optional Rust dependency removal",
+    "GLib preservation rejects baseline graph alteration",
+    "GLib preservation rejects unexpected added file",
+    "GLib preservation rejects removed null-pointer check",
+    "GLib preservation rejects unchecked null construction",
+    "GLib preservation rejects empty regression tests deletion",
+    "GLib preservation rejects official checksum alteration",
+    "preservation: intact candidate accepted",
+    "preservation: initial Git object not required by a shallow checkout",
+    "preservation: no-op mutation serializer preserves lock bytes",
+    "preservation rejects Android snapshot deletion",
+    "preservation rejects optional platform flag removal",
+    "preservation rejects historical Babel activation",
+    "preservation rejects unpatched braces consumer",
+    "preservation rejects Rust lock mutation",
+    "Scripts/check-sqlite-rustsec.py: -O refused",
+    "Scripts/check-sqlite-rustsec.py: -OO refused",
+    "Scripts/check-sqlite-rustsec.py: PYTHONOPTIMIZE=1 refused",
+    "Scripts/check-sqlite-rustsec.py: PYTHONOPTIMIZE=2 refused",
+    "Scripts/check-sqlite-rustsec.py: optimized import -O refused",
+    "Scripts/check-sqlite-rustsec.py: optimized import -OO refused",
+    "Scripts/check-glib-qh011.py: -O refused",
+    "Scripts/check-glib-qh011.py: -OO refused",
+    "Scripts/check-glib-qh011.py: PYTHONOPTIMIZE=1 refused",
+    "Scripts/check-glib-qh011.py: PYTHONOPTIMIZE=2 refused",
+    "Scripts/check-glib-qh011.py: optimized import -O refused",
+    "Scripts/check-glib-qh011.py: optimized import -OO refused",
+    "Node wrapper PYTHONOPTIMIZE=1 refused",
+    "Node wrapper PYTHONOPTIMIZE=2 refused",
+    "Scripts/check-sqlite-rustsec.py: normal optimize=unset accepted",
+    "docs/validation/rust-178/check-ported-graph.cjs: normal optimize=unset accepted",
+    "GLib direct on SQLite candidate optimize=unset retains historical refusal",
+    "GLib direct on authenticated #194 view optimize=unset accepted",
+    "Scripts/check-sqlite-rustsec.py: normal optimize=0 accepted",
+    "docs/validation/rust-178/check-ported-graph.cjs: normal optimize=0 accepted",
+    "GLib direct on SQLite candidate optimize=0 retains historical refusal",
+    "GLib direct on authenticated #194 view optimize=0 accepted",
+    "SQLite preservation rejects entry point disabled",
+    "SQLite preservation rejects vulnerable lock rollback",
+    "SQLite preservation rejects claimed fixed version without linkage",
+    "SQLite preservation rejects unrelated dependency",
+    "SQLite preservation rejects bundled feature loss",
+    "SQLite preservation rejects chrono feature loss",
+    "SQLite preservation rejects archived variant deletion",
+    "SQLite preservation rejects historical digest alteration",
+    "SQLite preservation rejects unexpected manifest change",
+    "SQLite preservation rejects historical guard disabled",
+    "SQLite preservation rejects SQLite regression deletion",
+    "SQLite preservation rejects active vulnerable source reintroduced",
+    "SQLite preservation rejects reviewed transformation altered",
+    "SQLite preservation rejects external library override LIBSQLITE3_SYS_USE_PKG_CONFIG",
+    "SQLite preservation rejects external library override SQLITE3_LIB_DIR",
+    "QH011 preservation rejects unfixed Tokio reactivation",
+    "QH011 preservation rejects Tokio checksum mutation",
+    "QH011 preservation rejects unrelated Windows edge update",
+    "QH011 preservation rejects initial Cargo archive mutation",
+    "QH011 preservation rejects previous braces guard mutation",
+    "QH011 preservation rejects Tokio feature removal",
+    "preservation: intact candidate accepted",
+    "preservation: initial Git object not required by a shallow checkout",
+    "preservation: no-op mutation serializer preserves lock bytes",
+    "preservation rejects previous JS archive deletion",
+    "preservation rejects QH010 archive mutation",
+    "preservation rejects historical Vite reactivation",
+    "preservation rejects new Android variant deletion",
+    "preservation rejects historical snapshot mutation",
+    "preservation rejects plugin version update"
+  ]
+}
