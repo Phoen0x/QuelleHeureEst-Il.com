@@ -1,4 +1,10 @@
 #!/usr/bin/env python3
+# FR// Les assertions de conservation exigent un interpréteur sans optimisation.
+# EN// Preservation assertions require an interpreter without optimization.
+import sys
+if sys.flags.optimize != 0:
+    raise RuntimeError("Optimisation Python interdite pour les gardes de conservation / Python optimization is forbidden")
+
 """FR : autoriser uniquement la transformation SQLite, rejouer toutes les gardes historiques.
 EN: allow only the SQLite transformation and replay all historical guards.
 """
@@ -15,6 +21,9 @@ sys.dont_write_bytecode = True
 import tomllib
 
 ROOT = Path(__file__).resolve().parents[1]
+OPT_HISTORY = 'docs/history/python-optimization-20261112'
+OPT_HEADER = '# FR// Les assertions de conservation exigent un interpréteur sans optimisation.\n# EN// Preservation assertions require an interpreter without optimization.\nimport sys\nif sys.flags.optimize != 0:\n    raise RuntimeError("Optimisation Python interdite pour les gardes de conservation / Python optimization is forbidden")\n\n'
+OPT_PORT_SHA256 = '822b5c06d6976acbc110595bd57e3aeefd8871f0c2c07f50ea5d86d0d47a1420'
 HISTORY = 'docs/history/sqlite-rustsec-20261111'
 BASE = 'd35eb03ff7e63a77fcc1094a9292b87992e3337d'
 TREE = 'bec9bfb986855bbe6c73426983b2198726b2dede'
@@ -34,6 +43,10 @@ def sha(data):
 
 def authenticated(name):
     data = read(name)
+    if name == 'Scripts/check-glib-qh011.py':
+        original = read(f'{OPT_HISTORY}/{name}')
+        assert data == original.replace(b'#!/usr/bin/env python3\n', b'#!/usr/bin/env python3\n' + OPT_HEADER.encode(), 1), 'GLib optimization guard changed'
+        data = original
     assert sha(data) == PINS[name], f'Pinned source/evidence changed: {name}'
     return data
 
@@ -83,8 +96,22 @@ def main():
     old = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(old)
     assert old.tree_identity(port['initial_files']) == TREE, 'Initial Git tree changed'
+    # FR// Authentifier les deux anciens contrôleurs et tous les fichiers de #197.
+    # EN// Authenticate both original controllers and every file from PR #197.
+    raw = read(f'{OPT_HISTORY}/PORT.json')
+    assert sha(raw) == OPT_PORT_SHA256, 'Optimization baseline changed'
+    opt = json.loads(raw)
+    assert opt['base'] == '20825fc01d4f7fd03239093feacf26863ed65b3f'
+    assert old.tree_identity(opt['initial_files']) == '1bc867ea5ce31bbf3dfcfdbb04ab480ea58fbc9c'
+    for name, entry in opt['initial_files'].items():
+        location = f'{OPT_HISTORY}/{name}' if name in opt['modified'] else name
+        assert sha(read(location)) == entry['sha256'], f'Initial source/archive changed {name}'
+        assert git('hash-object', '--path', name, location).decode().strip() == entry['sha']
+        assert ('100755' if (ROOT / location).stat().st_mode & 0o111 else '100644') == entry['mode']
+
     for name, entry in port['initial_files'].items():
-        location = f'{HISTORY}/{name}' if name in port['modified_files'] else name
+        location = (f'{OPT_HISTORY}/{name}' if name == 'Scripts/check-glib-qh011.py'
+                    else f'{HISTORY}/{name}' if name in port['modified_files'] else name)
         data = read(location)
         assert sha(data) == entry['sha256'], f'Initial bytes/archive changed {name}'
         assert git('hash-object', '--path', name, location).decode().strip() == entry['sha'], f'Initial blob changed {name}'
@@ -92,10 +119,10 @@ def main():
     assert read('docs/validation/rust-178/check-ported-graph.cjs') == WRAPPER.encode(), 'SQLite guard entry point changed'
     for name in PINS:
         authenticated(name)
-    allowed = set(port['initial_files']) | set(port['added_files'])
+    allowed = set(port['initial_files']) | set(port['added_files']) | set(opt['added'])
     listed = set(filter(None, (git('ls-files', '-z') + git('ls-files', '--others', '--exclude-standard', '-z')).decode().split('\0')))
     assert listed == allowed, f'Unexpected or missing deliverables: {sorted(listed ^ allowed)}'
-    for name in port['added_files']:
+    for name in port['added_files'] + opt['added']:
         read(name)
     delta = json.loads(authenticated(f'{HISTORY}/TRANSFORMATIONS.json'))
     before = tomllib.loads(read(f'{HISTORY}/Cargo.lock').decode())
@@ -139,7 +166,8 @@ def main():
         for name, entry in port['initial_files'].items():
             target = view / name
             target.parent.mkdir(parents=True, exist_ok=True)
-            source = ROOT / (f'{HISTORY}/{name}' if name in port['modified_files'] else name)
+            source = ROOT / (f'{OPT_HISTORY}/{name}' if name == 'Scripts/check-glib-qh011.py'
+                             else f'{HISTORY}/{name}' if name in port['modified_files'] else name)
             shutil.copyfile(source, target)
             target.chmod(0o755 if entry['mode'] == '100755' else 0o644)
         (view / 'node_modules').symlink_to(ROOT / 'node_modules', target_is_directory=True)
