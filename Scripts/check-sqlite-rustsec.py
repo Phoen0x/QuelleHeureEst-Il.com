@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
+"""FR : autoriser uniquement la transformation SQLite, rejouer toutes les gardes historiques.
+EN: allow only the SQLite transformation and replay all historical guards.
+"""
 # FR// Les assertions de conservation exigent un interpréteur sans optimisation.
 # EN// Preservation assertions require an interpreter without optimization.
 import sys
 if sys.flags.optimize != 0:
     raise RuntimeError("Optimisation Python interdite pour les gardes de conservation / Python optimization is forbidden")
 
-"""FR : autoriser uniquement la transformation SQLite, rejouer toutes les gardes historiques.
-EN: allow only the SQLite transformation and replay all historical guards.
-"""
 from pathlib import Path
 import hashlib
 import importlib.util
@@ -21,6 +21,9 @@ sys.dont_write_bytecode = True
 import tomllib
 
 ROOT = Path(__file__).resolve().parents[1]
+DOC_HISTORY = 'docs/history/python-docstrings-20261112'
+DOC_PORT_SHA256 = '345aaa83c35c22f1c4aae42b12cd42378724003e995fd323f66fdfe0fede5bea'
+GLIB_DOC_PREFIX = b'#!/usr/bin/env python3\n"""FR : authentifier le r\xc3\xa9troport, les graphes et toutes les gardes ant\xc3\xa9rieures.\nEN: authenticate the backport, dependency graphs and all previous guards.\n"""\n'
 OPT_HISTORY = 'docs/history/python-optimization-20261112'
 OPT_HEADER = '# FR// Les assertions de conservation exigent un interpréteur sans optimisation.\n# EN// Preservation assertions require an interpreter without optimization.\nimport sys\nif sys.flags.optimize != 0:\n    raise RuntimeError("Optimisation Python interdite pour les gardes de conservation / Python optimization is forbidden")\n\n'
 OPT_PORT_SHA256 = '822b5c06d6976acbc110595bd57e3aeefd8871f0c2c07f50ea5d86d0d47a1420'
@@ -45,7 +48,8 @@ def authenticated(name):
     data = read(name)
     if name == 'Scripts/check-glib-qh011.py':
         original = read(f'{OPT_HISTORY}/{name}')
-        assert data == original.replace(b'#!/usr/bin/env python3\n', b'#!/usr/bin/env python3\n' + OPT_HEADER.encode(), 1), 'GLib optimization guard changed'
+        assert original.startswith(GLIB_DOC_PREFIX), 'Historical GLib docstring prefix changed'
+        assert data == GLIB_DOC_PREFIX + OPT_HEADER.encode() + original[len(GLIB_DOC_PREFIX):], 'GLib optimization guard changed'
         data = original
     assert sha(data) == PINS[name], f'Pinned source/evidence changed: {name}'
     return data
@@ -103,6 +107,18 @@ def main():
     opt = json.loads(raw)
     assert opt['base'] == '20825fc01d4f7fd03239093feacf26863ed65b3f'
     assert old.tree_identity(opt['initial_files']) == '1bc867ea5ce31bbf3dfcfdbb04ab480ea58fbc9c'
+    # FR// Distinguer l'état #198 et sa seule transformation documentaire autorisée.
+    # EN// Distinguish PR #198 from its sole authorized documentation transformation.
+    doc_raw = read(f'{DOC_HISTORY}/PORT.json')
+    assert sha(doc_raw) == DOC_PORT_SHA256, 'Docstring baseline changed'
+    doc = json.loads(doc_raw)
+    assert doc['base'] == 'bc3d54bae109bd4fd53e2bf394934d0e0645a9bf'
+    assert old.tree_identity(doc['initial_files']) == '9405c1ff2a950c138feca169ee13ab737cf19285'
+    for name, entry in doc['initial_files'].items():
+        location = f'{DOC_HISTORY}/{name}' if name in doc['modified'] else name
+        assert sha(read(location)) == entry['sha256'], f'Initial docstring source/archive changed {name}'
+        assert git('hash-object', '--path', name, location).decode().strip() == entry['sha']
+        assert ('100755' if (ROOT / location).stat().st_mode & 0o111 else '100644') == entry['mode']
     for name, entry in opt['initial_files'].items():
         location = f'{OPT_HISTORY}/{name}' if name in opt['modified'] else name
         assert sha(read(location)) == entry['sha256'], f'Initial source/archive changed {name}'
@@ -119,10 +135,10 @@ def main():
     assert read('docs/validation/rust-178/check-ported-graph.cjs') == WRAPPER.encode(), 'SQLite guard entry point changed'
     for name in PINS:
         authenticated(name)
-    allowed = set(port['initial_files']) | set(port['added_files']) | set(opt['added'])
+    allowed = set(port['initial_files']) | set(port['added_files']) | set(opt['added']) | set(doc['added'])
     listed = set(filter(None, (git('ls-files', '-z') + git('ls-files', '--others', '--exclude-standard', '-z')).decode().split('\0')))
     assert listed == allowed, f'Unexpected or missing deliverables: {sorted(listed ^ allowed)}'
-    for name in port['added_files'] + opt['added']:
+    for name in port['added_files'] + opt['added'] + doc['added']:
         read(name)
     delta = json.loads(authenticated(f'{HISTORY}/TRANSFORMATIONS.json'))
     before = tomllib.loads(read(f'{HISTORY}/Cargo.lock').decode())

@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
+"""FR : authentifier le rétroport, les graphes et toutes les gardes antérieures.
+EN: authenticate the backport, dependency graphs and all previous guards.
+"""
 # FR// Les assertions de conservation exigent un interpréteur sans optimisation.
 # EN// Preservation assertions require an interpreter without optimization.
 import sys
 if sys.flags.optimize != 0:
     raise RuntimeError("Optimisation Python interdite pour les gardes de conservation / Python optimization is forbidden")
 
-"""FR : authentifier le rétroport, les graphes et toutes les gardes antérieures.
-EN: authenticate the backport, dependency graphs and all previous guards.
-"""
 from pathlib import Path
 import hashlib
 import io
