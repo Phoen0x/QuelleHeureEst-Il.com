@@ -1,0 +1,104 @@
+{
+  "fallible-iterator@0.3.0": {
+    "crate_sha256": "2acce4a10f12dc2fb14a218589d4f1f62ef011b2d0cc4b3cb1bba8e94da14649",
+    "files": {
+      ".cargo_vcs_info.json": "1477739f2a32cb87775e5e3758e503c373cf0cc1a3098c0d79b48c0d5ec04dfa",
+      "Cargo.toml": "1eefc77c1092c098db3822fd01220a0015a1e3851320a953665823fb9b46b4c1",
+      "Cargo.toml.orig": "84ac9af2002c5190150223fbecfef0df6bcbe64b9e7d687988d5068980c53293"
+    },
+    "license": "MIT/Apache-2.0",
+    "rust_version": null,
+    "vcs": {
+      "git": {
+        "sha1": "11cfa0558045e52bdb473c9eab6a1eb35a54e302"
+      },
+      "path_in_vcs": ""
+    }
+  },
+  "hashlink@0.12.2": {
+    "crate_sha256": "a596f1b20ed2cc5ecac41a164aaebc7258057060f06c0cf7a2ba3991ee7990fb",
+    "files": {
+      ".cargo_vcs_info.json": "93e8a1be4270f44e6dc734e7d7abe1e6155271dae7dc95f41e2f15e27e4debae",
+      "Cargo.toml": "d6c3b754effe5db64444c53cbaa28b6d3b65641cdabdd95de09b73f929ff58ce",
+      "Cargo.toml.orig": "0e5851f67222655b540a8e8cd0eaf739ded0e3065ee4c98968576b811a91aaf8"
+    },
+    "license": "MIT OR Apache-2.0",
+    "rust_version": "1.85",
+    "vcs": {
+      "git": {
+        "sha1": "c7aaa3c2504c08baf8c97da11f3536258464da8f"
+      },
+      "path_in_vcs": ""
+    }
+  },
+  "libsqlite3-sys@0.39.1": {
+    "crate_sha256": "14a5f01b87b92705d07b433c06f96cbc764637d81a0bffb5734ce17cf0f9a2b3",
+    "files": {
+      ".cargo_vcs_info.json": "f410bda919d68f688b35fb4fe324b8a506dfcfebcc4b5b6a31a1885d806485b7",
+      "Cargo.toml": "3fb7e11b7b71251e7e360511000befe692e5aee8d31415d477774f060577bb15",
+      "Cargo.toml.orig": "be5ec76809a60444ceccf8fc823d2c0a660f549f270f664ba0a8256b574bedcb",
+      "build.rs": "769b31370a41aa722e1d5a530012432c985bb142eab34d095481ffd1a3436e1b",
+      "sqlite3/sqlite3.c": "0c657666d819f261cc4007526ad57e1669de9949df7a8ea847aa284a2bf0ee52",
+      "sqlite3/sqlite3.h": "d6c84557261893439b341d2e6c35187ae3ea24fbfd843ad94616f72d89242b8c"
+    },
+    "license": "MIT",
+    "rust_version": "1.88.0",
+    "vcs": {
+      "git": {
+        "sha1": "fb7c711f4e988db149f43cac68f7865b25d0b10e"
+      },
+      "path_in_vcs": "libsqlite3-sys"
+    }
+  },
+  "rsqlite-vfs@0.2.0": {
+    "crate_sha256": "353b74f9810d5b085b6c42c9d86a5f0fdb795553235cdd48753b32e3809d18a7",
+    "files": {
+      ".cargo_vcs_info.json": "c1b6535d16324353aabf718b5caa0f63acf85449c2d67a1e34f8414989b71eb6",
+      "Cargo.toml": "9012cefba7190bf0f4cb2ce41745b3855a4fd935fb8607b1ca49a2ee338e6893",
+      "Cargo.toml.orig": "e7038d2474100012ba374cd8fc2352d76a52fd84cadc820ba3c03e06764aad08"
+    },
+    "license": "MIT",
+    "rust_version": "1.81.0",
+    "vcs": {
+      "git": {
+        "sha1": "3d8318430bacd7d6a1aafdf5b5e54fb0fee8d451"
+      },
+      "path_in_vcs": "crates/rsqlite-vfs"
+    }
+  },
+  "rusqlite@0.41.1": {
+    "crate_sha256": "da9bba6f3506135e120a6586df05be18b48d18896600646a4bec8f993d91a594",
+    "files": {
+      ".cargo_vcs_info.json": "45d55c9a95adfc19beb24dbab71a919fa58a8a86cd6bd31c9a69b8975017ab31",
+      "Cargo.toml": "8a18d2cfc64f75140c5d23633bbd2bbbc77d719a0c3d844f8929cd6bc319f9ed",
+      "Cargo.toml.orig": "5f9392a9ebaccdbb0ddf5cce153fe4da42d38c80277acf02dd132cd754327947"
+    },
+    "license": "MIT",
+    "rust_version": "1.89.0",
+    "vcs": {
+      "git": {
+        "sha1": "18ee76dbb976d5ef7e37ad5a8fffae678ca21a78"
+      },
+      "path_in_vcs": ""
+    }
+  },
+  "sqlite-wasm-rs@0.6.3": {
+    "crate_sha256": "a6cd504cecbfe7eef649988840f9a6cb768d11085efec138f8e99f160632d867",
+    "files": {
+      ".cargo_vcs_info.json": "041a0ce166051124bdc5d9139ce54cbff8ac03fd37917e996a24e86148a2dd47",
+      "Cargo.toml": "b034dc8a938ceed887e705d8aa90a7a0e05da87d19df251da0a58b78b94c25cf",
+      "Cargo.toml.orig": "51b9bb4d82058030a2f375b063768d2950d23b7498f95a80c13ab1d76e22ed2f",
+      "build.rs": "368c4a7695345c1dc1d56c1a56fbed95d95d84e63c912d9af37ccdd7402fc804",
+      "sqlite3/sqlite3.c": "0c657666d819f261cc4007526ad57e1669de9949df7a8ea847aa284a2bf0ee52",
+      "sqlite3/sqlite3.h": "d6c84557261893439b341d2e6c35187ae3ea24fbfd843ad94616f72d89242b8c"
+    },
+    "license": "MIT",
+    "rust_version": "1.81.0",
+    "vcs": {
+      "git": {
+        "sha1": "8511f047f18a7dd2543a644cd710268396e7e0bb"
+      },
+      "path_in_vcs": ""
+    }
+  }
+}

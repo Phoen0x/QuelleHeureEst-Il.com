@@ -1,0 +1,484 @@
+{
+  "advisory_db": {
+    "count": 1471,
+    "git_identity_separately_verified": true,
+    "git_sha": "e57e387b7eb75130ba53e800737107f46344bf2d",
+    "json_last_commit_null": true
+  },
+  "android": {
+    "api": 24,
+    "bundled_and_chrono_in_rustc_command": true,
+    "c_static_library_compiled": true,
+    "command": "cargo check --locked --offline -p rusqlite --target aarch64-linux-android --verbose",
+    "execution": false,
+    "exit": 0,
+    "full_application": false,
+    "ndk": "28.2.13676358"
+  },
+  "audits": {
+    "after": {
+      "exit": 1,
+      "vulnerabilities": [],
+      "warnings": {
+        "unmaintained": [
+          {
+            "id": "RUSTSEC-2024-0370",
+            "package": "proc-macro-error",
+            "version": "1.0.4"
+          },
+          {
+            "id": "RUSTSEC-2025-0134",
+            "package": "rustls-pemfile",
+            "version": "1.0.4"
+          },
+          {
+            "id": "RUSTSEC-2025-0081",
+            "package": "unic-char-property",
+            "version": "0.9.0"
+          },
+          {
+            "id": "RUSTSEC-2025-0075",
+            "package": "unic-char-range",
+            "version": "0.9.0"
+          },
+          {
+            "id": "RUSTSEC-2025-0080",
+            "package": "unic-common",
+            "version": "0.9.0"
+          },
+          {
+            "id": "RUSTSEC-2025-0100",
+            "package": "unic-ucd-ident",
+            "version": "0.9.0"
+          },
+          {
+            "id": "RUSTSEC-2025-0098",
+            "package": "unic-ucd-version",
+            "version": "0.9.0"
+          }
+        ],
+        "unsound": [
+          {
+            "id": "RUSTSEC-2024-0429",
+            "package": "glib",
+            "version": "0.18.5"
+          },
+          {
+            "id": "RUSTSEC-2026-0486",
+            "package": "rustix",
+            "version": "1.1.5"
+          }
+        ]
+      }
+    },
+    "before": {
+      "exit": 1,
+      "vulnerabilities": [
+        {
+          "id": "RUSTSEC-2026-0459",
+          "package": "libsqlite3-sys",
+          "version": "0.26.0"
+        }
+      ],
+      "warnings": {
+        "unmaintained": [
+          {
+            "id": "RUSTSEC-2024-0370",
+            "package": "proc-macro-error",
+            "version": "1.0.4"
+          },
+          {
+            "id": "RUSTSEC-2025-0134",
+            "package": "rustls-pemfile",
+            "version": "1.0.4"
+          },
+          {
+            "id": "RUSTSEC-2025-0081",
+            "package": "unic-char-property",
+            "version": "0.9.0"
+          },
+          {
+            "id": "RUSTSEC-2025-0075",
+            "package": "unic-char-range",
+            "version": "0.9.0"
+          },
+          {
+            "id": "RUSTSEC-2025-0080",
+            "package": "unic-common",
+            "version": "0.9.0"
+          },
+          {
+            "id": "RUSTSEC-2025-0100",
+            "package": "unic-ucd-ident",
+            "version": "0.9.0"
+          },
+          {
+            "id": "RUSTSEC-2025-0098",
+            "package": "unic-ucd-version",
+            "version": "0.9.0"
+          }
+        ],
+        "unsound": [
+          {
+            "id": "RUSTSEC-2024-0429",
+            "package": "glib",
+            "version": "0.18.5"
+          },
+          {
+            "id": "RUSTSEC-2026-0486",
+            "package": "rustix",
+            "version": "1.1.5"
+          }
+        ]
+      }
+    }
+  },
+  "base_sha": "d35eb03ff7e63a77fcc1094a9292b87992e3337d",
+  "base_tree": "bec9bfb986855bbe6c73426983b2198726b2dede",
+  "branch": "codex/fix-sqlite-rustsec-2026-0459-20261111",
+  "date": "2026-11-12",
+  "documentary_checks": {
+    "android_C_object_machine": "AArch64",
+    "diff_check": "PASS",
+    "json_and_script_syntax": "PASS",
+    "manual_scope_review": "PASS",
+    "new_sensitive_pattern_candidates": 0,
+    "relative_report_links": "PASS"
+  },
+  "files": {
+    "Cargo.lock": {
+      "git_blob": "061a4d76816d167f8e3316ebc8220f85f1209e6e",
+      "mode": "100644",
+      "sha256": "97ad73ef040ed498097a1bb43bbc15148b6271c766b9ef0807017109aa812c49"
+    },
+    "Scripts/check-sqlite-rustsec.py": {
+      "git_blob": "1ae1b45a1080fc482254c1ba3271d3f2f7a40cb9",
+      "mode": "100644",
+      "sha256": "4130d830ee8198f1cbd5c784449dd7181713854d1e18648ec0aeec2e6981c05c"
+    },
+    "docs/history/sqlite-rustsec-20261111/Cargo.lock": {
+      "git_blob": "b21376a21cb1775a6d539c6a5d7a6500a6532799",
+      "mode": "100644",
+      "sha256": "9487c3bd7fa0f5f59a3c7967cf64e324443e680fee05316db40ab7586e46ccac"
+    },
+    "docs/history/sqlite-rustsec-20261111/PORT.json": {
+      "git_blob": "b0cc9408a0302dddb99cafab56fe9eb3a3d8a0c1",
+      "mode": "100644",
+      "sha256": "e87e5f90bec3d78cee62acb67b6475e6a92e16972253ac871ccdb66b2a2d1968"
+    },
+    "docs/history/sqlite-rustsec-20261111/SOURCES.json": {
+      "git_blob": "a62e4f493b122173568ee0f7d38ff94bb81b57a4",
+      "mode": "100644",
+      "sha256": "84c6ca132aa9266f566dc3f2ad014b5540d4eeef2bc27320968dd0a77c961ca7"
+    },
+    "docs/history/sqlite-rustsec-20261111/TRANSFORMATIONS.json": {
+      "git_blob": "e3530cca2dc92155494dd5274335cb08e827d741",
+      "mode": "100644",
+      "sha256": "5b8c47ba331f0745e638e4f6ef4ce381e408f2cac65a063b7c0971fe9fca153a"
+    },
+    "docs/history/sqlite-rustsec-20261111/docs/validation/rust-178/check-ported-graph.cjs": {
+      "git_blob": "f1afc2e3f91af78bc3939b0f19b67c64c41dc3f7",
+      "mode": "100644",
+      "sha256": "bcf7d36c765d237d928a71b6d3351fd7fb1c84195cd11aaf72e04c34736722b2"
+    },
+    "docs/history/sqlite-rustsec-20261111/graph-all-before.json": {
+      "git_blob": "d92c677627e025d7eaa2087b5c3b4cdf0cf0a61f",
+      "mode": "100644",
+      "sha256": "ee72506a9a5a8cfc08d255ed03006094f8ad7a313d63da495e5839e5de58fbcb"
+    },
+    "docs/history/sqlite-rustsec-20261111/graph-before.json": {
+      "git_blob": "9e68a1da05d9cb0365d9364ab7859e34ac12c21b",
+      "mode": "100644",
+      "sha256": "88979b08b8e87f60430d094286236780da65838d36fe0a00510340ccfd90eca9"
+    },
+    "docs/history/sqlite-rustsec-20261111/src-tauri/Cargo.toml": {
+      "git_blob": "24e5a8c47b26f0c910016f9724755d3f0ea7b447",
+      "mode": "100644",
+      "sha256": "64ebc5012a8201ca0a0f09ce1d56cdbd611f2cb28210145c429cf28c4c9ee373"
+    },
+    "docs/validation/rust-178/check-ported-graph.cjs": {
+      "git_blob": "56295cd704a640aa54ee467b26fcd5a8d37fcb17",
+      "mode": "100644",
+      "sha256": "9d050422e8f836ac6be36f156f55077ff408c6491ca98bc782a26f31b96bbaf4"
+    },
+    "src-tauri/Cargo.toml": {
+      "git_blob": "8616c5591dad9a65b941bc65282838c860e4860a",
+      "mode": "100644",
+      "sha256": "755659576127151b576eb631802eb7ee7bdbbe814c50bba969a6ce78411ef403"
+    },
+    "src-tauri/tests/json_cache_preservation.rs": {
+      "git_blob": "5dbadac87bcec6c629032b293ef6c50609e144c0",
+      "mode": "100644",
+      "sha256": "58f59fb2291b60517aa14a57bee9f190fcf45a6db4e41b89df1506a51c27f3ea"
+    },
+    "src-tauri/tests/sqlite_security.rs": {
+      "git_blob": "d77f390765fd161fd4c6b6a8b7433d5c94c73d76",
+      "mode": "100644",
+      "sha256": "a4f4266a2c17ac8c907382edbb2a8e22f729498558edc28cef492ed08780d0a8"
+    },
+    "tests/dependency_updates/sqlite-rustsec.test.cjs": {
+      "git_blob": "c2328f14ee9259492776844af72dd70849823ef0",
+      "mode": "100644",
+      "sha256": "350eb63fb19c111e3674de1243127deb1fa517af0bd62c8257883656e5f899bd"
+    }
+  },
+  "graph": {
+    "added": [
+      "fallible-iterator@0.3.0",
+      "hashlink@0.12.2",
+      "libsqlite3-sys@0.39.1",
+      "rsqlite-vfs@0.2.0",
+      "rusqlite@0.41.1",
+      "sqlite-wasm-rs@0.6.3"
+    ],
+    "all_features_after": 501,
+    "all_features_before": 504,
+    "application_edge": "rusqlite@0.29.0 -> rusqlite@0.41.1",
+    "default_after": 499,
+    "default_before": 502,
+    "lock_after": 501,
+    "lock_before": 504,
+    "removed": [
+      "ahash@0.8.12",
+      "allocator-api2@0.2.21",
+      "fallible-iterator@0.2.0",
+      "hashbrown@0.14.5",
+      "hashlink@0.8.4",
+      "libsqlite3-sys@0.26.0",
+      "rusqlite@0.29.0",
+      "zerocopy-derive@0.8.63",
+      "zerocopy@0.8.63"
+    ],
+    "unchanged_identity_modified_nodes": [
+      "hashbrown@0.17.1"
+    ]
+  },
+  "limitations": [
+    "Audit strict exit1 avec9warnings identiques",
+    "Clippy strict101:8diagnostics historiques et import du cache répété dans le nouveau test",
+    "Formatage global1;nouveaux tests formatés",
+    "MSRV1.89 exact non testé",
+    "Pas de GUI/APK/GrapheneOS/Windows/macOS en exécution",
+    "CI à inspecter après publication;aucune anticipation de succès",
+    "Pas de nouvel audit licences/cargo-deny ou audit JavaScript"
+  ],
+  "preservation": {
+    "added": 14,
+    "base_files": 309,
+    "deleted": 0,
+    "historical_pnpm_snapshots": 409,
+    "mode_changes": 0,
+    "modified_archived": 3,
+    "old_tests": 14,
+    "optional_pnpm_snapshots": 140,
+    "unchanged": 306
+  },
+  "preservation_cases": {
+    "distinct_total": 60,
+    "failed": 0,
+    "historical": 45,
+    "initial_full_run": 58,
+    "overlap": 13,
+    "skipped": 0,
+    "sqlite": 15,
+    "sqlite_final_run": 15
+  },
+  "resume": {
+    "intermediate_messages_recovered": true,
+    "local_branch_recovered": true,
+    "old_subagents_final_reports_recovered": false,
+    "sqlite_changes_before_resume": false
+  },
+  "rust_tests": {
+    "debug": {
+      "distinct_cases": [
+        "backward_next_reads_written_pointer",
+        "backward_nth_reads_written_pointer",
+        "chrono_and_unicode_values_round_trip",
+        "converted_slice_owns_objects_until_their_last_reference_is_dropped",
+        "converting_then_truncating_finalizes_each_owned_object",
+        "emptied_reserved_slice_conversion_is_reusable",
+        "empty_slice_conversion_returns_fresh_reusable_storage",
+        "forward_last_reads_written_pointer",
+        "forward_next_reads_written_pointer",
+        "forward_nth_reads_written_pointer",
+        "http1_json_client_remains_compatible",
+        "http2_json_uses_patched_transport",
+        "json_cache_preserves_all_three_data_types_and_invalid_input",
+        "linked_sqlite_is_the_reviewed_fixed_source",
+        "mixed_iteration_and_empty_array_remain_valid",
+        "nonempty_slice_preserves_contents_and_null_termination",
+        "normal_wal_is_shared_and_reopened_without_data_loss",
+        "reserved_empty_slice_conversion_discards_freed_capacity",
+        "transaction_rollback_preserves_committed_data"
+      ],
+      "exit": 0,
+      "failed": 0,
+      "ignored": 0,
+      "note": "Le cas cache est exécuté par un parent et un enfant ; un seul cas distinct."
+    },
+    "release": {
+      "distinct_cases": [
+        "backward_next_reads_written_pointer",
+        "backward_nth_reads_written_pointer",
+        "chrono_and_unicode_values_round_trip",
+        "converted_slice_owns_objects_until_their_last_reference_is_dropped",
+        "converting_then_truncating_finalizes_each_owned_object",
+        "emptied_reserved_slice_conversion_is_reusable",
+        "empty_slice_conversion_returns_fresh_reusable_storage",
+        "forward_last_reads_written_pointer",
+        "forward_next_reads_written_pointer",
+        "forward_nth_reads_written_pointer",
+        "http1_json_client_remains_compatible",
+        "http2_json_uses_patched_transport",
+        "json_cache_preserves_all_three_data_types_and_invalid_input",
+        "linked_sqlite_is_the_reviewed_fixed_source",
+        "mixed_iteration_and_empty_array_remain_valid",
+        "nonempty_slice_preserves_contents_and_null_termination",
+        "normal_wal_is_shared_and_reopened_without_data_loss",
+        "reserved_empty_slice_conversion_discards_freed_capacity",
+        "transaction_rollback_preserves_committed_data"
+      ],
+      "exit": 0,
+      "failed": 0,
+      "ignored": 0,
+      "note": "Le cas cache est exécuté par un parent et un enfant ; un seul cas distinct."
+    }
+  },
+  "sqlite": {
+    "after": "3.54.1",
+    "before": "3.41.2",
+    "bundled": true,
+    "chrono": true,
+    "exploit_constructed": false,
+    "native_and_wasm_source_reviewed": true,
+    "source_id": "2026-10-16 14:45:20 555e07ef33f69a0957d24d8e555b702464a131d6f1607f4c3c1e4551e8e6ca76",
+    "sqlcipher_active": false
+  },
+  "status": "LOCAL_VALIDATION_COMPLETE_STRICT_AUDITS_REMAIN_RED",
+  "temporary_logs": {
+    "android-sqlite-corrected.log": {
+      "bytes": 41845,
+      "exit_code": 0,
+      "original_bytes_published": false,
+      "sha256": "e40bec81d9a8d7a93996081b85d22ea5265d85419b3bf1ae1cc67d516b0915ae"
+    },
+    "android-sqlite.log": {
+      "bytes": 309,
+      "exit_code": 101,
+      "original_bytes_published": false,
+      "sha256": "b06786bf47e83b007fb6b6998bc2960345885d5f8efa935ebe613d589055b330"
+    },
+    "audit-after.json": {
+      "bytes": 15400,
+      "exit_code": 1,
+      "original_bytes_published": false,
+      "sha256": "3901c353118e4c766a6555a4793c3f7810cf5763c70fc4317bb253c6c4ead6ed"
+    },
+    "audit-before.json": {
+      "bytes": 18307,
+      "exit_code": 1,
+      "original_bytes_published": false,
+      "sha256": "ea8723ca846fc6bebcb9814f7088d4bad20a2044fca8231857b2eccd6299f42b"
+    },
+    "build-debug.log": {
+      "bytes": 25563,
+      "exit_code": 0,
+      "original_bytes_published": false,
+      "sha256": "63779aa8c01ebe9f8a884984f19d57fb797011533116c9ca6ea23696570e7add"
+    },
+    "build-release.log": {
+      "bytes": 25141,
+      "exit_code": 0,
+      "original_bytes_published": false,
+      "sha256": "4f610e8794bff702488bfc08438530b6da1069afd751eb325a61745f683a5067"
+    },
+    "clippy-complete.log": {
+      "bytes": 24960,
+      "exit_code": 101,
+      "original_bytes_published": false,
+      "sha256": "dbd9ac456ece8e07614ad8f16eeec60592036d7585cf3faeb2a826fd755606b4"
+    },
+    "clippy.log": {
+      "bytes": 23814,
+      "exit_code": 101,
+      "original_bytes_published": false,
+      "sha256": "78d445a49cbb83a8ff7fb1d2d1d8631a64a3d8b31df15d3ee9268eb3d22b8404"
+    },
+    "fetch.log": {
+      "bytes": 469,
+      "original_bytes_published": false,
+      "sha256": "adcabb2e531694ba7120fce8f19c5f786c194cca33b3f049cf1120793600ddd4"
+    },
+    "fmt-new.log": {
+      "bytes": 0,
+      "exit_code": 0,
+      "original_bytes_published": false,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "fmt.log": {
+      "bytes": 4791,
+      "exit_code": 1,
+      "original_bytes_published": false,
+      "sha256": "a802c5dd06a122eb0d24d6f90df2b74c36c031661f843248a55c5180e6f64491"
+    },
+    "guard-final.log": {
+      "bytes": 2932,
+      "exit_code": 0,
+      "original_bytes_published": false,
+      "sha256": "b99afb016613299059cb09c13f0cc741ac52122ef4009aa2c3baa4f7af283c66"
+    },
+    "guard.log": {
+      "bytes": 2932,
+      "exit_code": 0,
+      "original_bytes_published": false,
+      "sha256": "b99afb016613299059cb09c13f0cc741ac52122ef4009aa2c3baa4f7af283c66"
+    },
+    "guards-negative.log": {
+      "bytes": 4357,
+      "exit_code": 0,
+      "original_bytes_published": false,
+      "sha256": "ba3d410bd74a9b7761bb2a96fb052647136bef0896ab1cbf1a649a6930a92e03"
+    },
+    "resolve.log": {
+      "bytes": 747,
+      "original_bytes_published": false,
+      "sha256": "e5a553a4b30b39b8119ca19e9f6b8d1f6906af0cb417eb103b27d701aa5e3496"
+    },
+    "sqlite-negative-final.log": {
+      "bytes": 1269,
+      "exit_code": 0,
+      "original_bytes_published": false,
+      "sha256": "c0b14d49c21be5db5bbeb3522d35dac749cd3e85d983999af84394b512030939"
+    },
+    "test-debug.log": {
+      "bytes": 26980,
+      "exit_code": 0,
+      "original_bytes_published": false,
+      "sha256": "0032cf6648e63b2d1a197fa7177c2041f71e83aa9f723e7ba714663b0897cfcc"
+    },
+    "test-release.log": {
+      "bytes": 27376,
+      "exit_code": 0,
+      "original_bytes_published": false,
+      "sha256": "52bfcb89c9245874c772b5ca87de875677a83329ab9d1ddf591013db0c9cbc46"
+    },
+    "vite.log": {
+      "bytes": 354,
+      "original_bytes_published": false,
+      "sha256": "d9acf757ed3f5798e827cbd8d692eaf9875b6470e9819e6bbdbd8fbc23e4e126"
+    }
+  },
+  "toolchain": {
+    "cargo": "1.99.1 (5f94df478 2026-08-27)",
+    "cargo_audit": "0.22.2",
+    "clippy": "0.1.99",
+    "glib": "2.84.4",
+    "gtk": "3.24.49",
+    "node": "24.19.0",
+    "pnpm": "8.15.9",
+    "rustc": "1.99.1 (58cf8f9c3 2026-10-13)",
+    "rustfmt": "1.10.0",
+    "webkitgtk": "2.54.0"
+  }
+}
