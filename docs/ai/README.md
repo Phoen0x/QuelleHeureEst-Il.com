@@ -134,3 +134,7 @@ La PR #187 a été fusionnée dans `main` au commit `ae600a6f0971f5e2d40f5d95ee5
 ## Documentary reconciliation after #187 — October 27, 2026
 
 PR #187 merged into `main` at `ae600a6f0971f5e2d40f5d95ee5b447778d2d439`. Its documentation and startup protocol are preserved alongside #186's additions. Reports, SHAs, verdicts and journal entries remain dated evidence; reconciliation does not retroactively update them or validate any migration. PR #186 still requires independent review before any separately authorized merge.
+
+## Drive centralisé et source de vérité GitHub — 19 novembre 2026
+
+La [règle de stockage et publication](STOCKAGE_DRIVE_ET_PUBLICATION_GITHUB.md) établit un unique dossier racine **privé** `QuelleHeureEst-Il?.com` pour l'ensemble des fichiers Drive du projet, et GitHub comme source de vérité des contenus techniques **publiables**. Protéger les originaux privés, permissions, identifiants, historiques et preuves non publiables. La règle demeure proposée uniquement sur sa PR documentaire tant qu'une fusion n'a pas été autorisée.
