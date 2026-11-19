@@ -202,4 +202,7 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    # FR// Appliquer aussi la garde rustix lors d'un lancement direct historique.
+    # EN// Apply the rustix guard to direct historical entry-point invocations too.
+    import runpy
+    runpy.run_path(str(ROOT / 'Scripts/check-rustix-rustsec.py'), run_name='__main__')

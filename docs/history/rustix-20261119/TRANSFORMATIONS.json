@@ -1,0 +1,9 @@
+{
+  "graph_replacement": [
+    "rustix@1.1.5",
+    "rustix@1.1.6"
+  ],
+  "new_lock_fragment": "name = \"rustix\"\nversion = \"1.1.6\"\nsource = \"registry+https://github.com/rust-lang/crates.io-index\"\nchecksum = \"e5e76742e5294153d4dde1207dbec5bdd81eef6fabdc0d2118babadabfd858aa\"",
+  "old_lock_fragment": "name = \"rustix\"\nversion = \"1.1.5\"\nsource = \"registry+https://github.com/rust-lang/crates.io-index\"\nchecksum = \"891efababe418670775f199f0d233d84843c227a0949a883ce15b37c78d6629d\"",
+  "other_graph_differences": []
+}

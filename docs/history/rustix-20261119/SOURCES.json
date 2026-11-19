@@ -1,0 +1,19 @@
+{
+  "crate_checksum": "e5e76742e5294153d4dde1207dbec5bdd81eef6fabdc0d2118babadabfd858aa",
+  "files": {
+    ".cargo_vcs_info.json": "30e804fa5f59e22afa45b69ec12ac2d873f50c83ec4af6dcc8fa7bc8852dc6a9",
+    "Cargo.toml": "43d4bcaf19bf857aaa17ada056e7561a50abdcb3201a1722770948ce050c77cb",
+    "Cargo.toml.orig": "bb8b1a90410d9e1e0545fbed680e72ce47c1c36bfb71208c7da13110153e7bba",
+    "src/buffer.rs": "d5ce44cfd30941fa25d7b46b8039c2e028abc8e9cf20bfbf7dc6ebf3e4b56097",
+    "src/fs/xattr.rs": "174033bce4d6ca1bddb377951c635d6091e1702b8a9fe6912a4f3c08a9c70787"
+  },
+  "license": "Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT",
+  "msrv": "1.65",
+  "upstream_fix": "8e6aaa6713d2bb64b1fdd8c472e3a32a10a76d70",
+  "vcs": {
+    "git": {
+      "sha1": "4a563ad698b2c20ff848515821023d2265a788d0"
+    },
+    "path_in_vcs": ""
+  }
+}
