@@ -138,3 +138,7 @@ PR #187 merged into `main` at `ae600a6f0971f5e2d40f5d95ee5b447778d2d439`. Its do
 ## Drive centralisé et source de vérité GitHub — 19 novembre 2026
 
 La [règle de stockage et publication](STOCKAGE_DRIVE_ET_PUBLICATION_GITHUB.md) établit un unique dossier racine **privé** `QuelleHeureEst-Il?.com` pour l'ensemble des fichiers Drive du projet, et GitHub comme source de vérité des contenus techniques **publiables**. Protéger les originaux privés, permissions, identifiants, historiques et preuves non publiables. La règle demeure proposée uniquement sur sa PR documentaire tant qu'une fusion n'a pas été autorisée.
+
+## Centralized Drive storage and GitHub source of truth — November 19, 2026
+
+The [storage and publication policy](STOCKAGE_DRIVE_ET_PUBLICATION_GITHUB.md) establishes **one private root folder** named `QuelleHeureEst-Il?.com` for every project file kept in Google Drive. GitHub remains the versioned source of truth for **publishable technical knowledge**, following privacy and licensing review. Preserve private originals, permissions, identifiers, history and restricted evidence. The policy is available only in its draft documentation PR until a separate merge is approved.
