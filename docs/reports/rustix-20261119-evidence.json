@@ -1,0 +1,409 @@
+{
+  "base": "86aae25c0be8479e2ffbfa7b09254d4b0c9810b6",
+  "tree": "2f68d4d412c3aeeed86917c2dbc29e3feb43e535",
+  "date": "2026-11-19",
+  "branch": "codex/fix-rustix-rustsec-2026-0486-20261112",
+  "status": "GO_FOR_INDEPENDENT_REVIEW_NO_MERGE",
+  "toolchain": {
+    "rustc": "1.99.1",
+    "cargo": "1.99.1",
+    "cargo_audit": "0.22.2",
+    "python": "3.12.14",
+    "node": "24.19.0"
+  },
+  "audits": {
+    "before": {
+      "exit": 1,
+      "vulnerabilities": [],
+      "warnings": {
+        "unmaintained": [
+          {
+            "id": "RUSTSEC-2026-0543",
+            "package": "chrono",
+            "version": "0.4.45"
+          },
+          {
+            "id": "RUSTSEC-2026-0555",
+            "package": "chrono-tz",
+            "version": "0.8.6"
+          },
+          {
+            "id": "RUSTSEC-2026-0559",
+            "package": "chrono-tz-build",
+            "version": "0.2.1"
+          },
+          {
+            "id": "RUSTSEC-2024-0370",
+            "package": "proc-macro-error",
+            "version": "1.0.4"
+          },
+          {
+            "id": "RUSTSEC-2025-0134",
+            "package": "rustls-pemfile",
+            "version": "1.0.4"
+          },
+          {
+            "id": "RUSTSEC-2025-0081",
+            "package": "unic-char-property",
+            "version": "0.9.0"
+          },
+          {
+            "id": "RUSTSEC-2025-0075",
+            "package": "unic-char-range",
+            "version": "0.9.0"
+          },
+          {
+            "id": "RUSTSEC-2025-0080",
+            "package": "unic-common",
+            "version": "0.9.0"
+          },
+          {
+            "id": "RUSTSEC-2025-0100",
+            "package": "unic-ucd-ident",
+            "version": "0.9.0"
+          },
+          {
+            "id": "RUSTSEC-2025-0098",
+            "package": "unic-ucd-version",
+            "version": "0.9.0"
+          }
+        ],
+        "unsound": [
+          {
+            "id": "RUSTSEC-2024-0429",
+            "package": "glib",
+            "version": "0.18.5"
+          },
+          {
+            "id": "RUSTSEC-2026-0486",
+            "package": "rustix",
+            "version": "1.1.5"
+          }
+        ]
+      }
+    },
+    "after": {
+      "exit": 1,
+      "vulnerabilities": [],
+      "warnings": {
+        "unmaintained": [
+          {
+            "id": "RUSTSEC-2026-0543",
+            "package": "chrono",
+            "version": "0.4.45"
+          },
+          {
+            "id": "RUSTSEC-2026-0555",
+            "package": "chrono-tz",
+            "version": "0.8.6"
+          },
+          {
+            "id": "RUSTSEC-2026-0559",
+            "package": "chrono-tz-build",
+            "version": "0.2.1"
+          },
+          {
+            "id": "RUSTSEC-2024-0370",
+            "package": "proc-macro-error",
+            "version": "1.0.4"
+          },
+          {
+            "id": "RUSTSEC-2025-0134",
+            "package": "rustls-pemfile",
+            "version": "1.0.4"
+          },
+          {
+            "id": "RUSTSEC-2025-0081",
+            "package": "unic-char-property",
+            "version": "0.9.0"
+          },
+          {
+            "id": "RUSTSEC-2025-0075",
+            "package": "unic-char-range",
+            "version": "0.9.0"
+          },
+          {
+            "id": "RUSTSEC-2025-0080",
+            "package": "unic-common",
+            "version": "0.9.0"
+          },
+          {
+            "id": "RUSTSEC-2025-0100",
+            "package": "unic-ucd-ident",
+            "version": "0.9.0"
+          },
+          {
+            "id": "RUSTSEC-2025-0098",
+            "package": "unic-ucd-version",
+            "version": "0.9.0"
+          }
+        ],
+        "unsound": [
+          {
+            "id": "RUSTSEC-2024-0429",
+            "package": "glib",
+            "version": "0.18.5"
+          }
+        ]
+      }
+    }
+  },
+  "advisory_db": {
+    "sha": "074ea9a7ed619f511b5b7374c7a97e98d1e98be4",
+    "count": 1550,
+    "json_last_commit": null,
+    "sha_verified_separately_with_git": true
+  },
+  "rust_distinct_tests": {
+    "debug": [
+      "backward_next_reads_written_pointer",
+      "backward_nth_reads_written_pointer",
+      "chrono_and_unicode_values_round_trip",
+      "converted_slice_owns_objects_until_their_last_reference_is_dropped",
+      "converting_then_truncating_finalizes_each_owned_object",
+      "emptied_reserved_slice_conversion_is_reusable",
+      "empty_slice_conversion_returns_fresh_reusable_storage",
+      "forward_last_reads_written_pointer",
+      "forward_next_reads_written_pointer",
+      "forward_nth_reads_written_pointer",
+      "http1_json_client_remains_compatible",
+      "http2_json_uses_patched_transport",
+      "json_cache_preserves_all_three_data_types_and_invalid_input",
+      "linked_sqlite_is_the_reviewed_fixed_source",
+      "mixed_iteration_and_empty_array_remain_valid",
+      "nonempty_slice_preserves_contents_and_null_termination",
+      "normal_wal_is_shared_and_reopened_without_data_loss",
+      "reserved_empty_slice_conversion_discards_freed_capacity",
+      "transaction_rollback_preserves_committed_data"
+    ],
+    "release": [
+      "backward_next_reads_written_pointer",
+      "backward_nth_reads_written_pointer",
+      "chrono_and_unicode_values_round_trip",
+      "converted_slice_owns_objects_until_their_last_reference_is_dropped",
+      "converting_then_truncating_finalizes_each_owned_object",
+      "emptied_reserved_slice_conversion_is_reusable",
+      "empty_slice_conversion_returns_fresh_reusable_storage",
+      "forward_last_reads_written_pointer",
+      "forward_next_reads_written_pointer",
+      "forward_nth_reads_written_pointer",
+      "http1_json_client_remains_compatible",
+      "http2_json_uses_patched_transport",
+      "json_cache_preserves_all_three_data_types_and_invalid_input",
+      "linked_sqlite_is_the_reviewed_fixed_source",
+      "mixed_iteration_and_empty_array_remain_valid",
+      "nonempty_slice_preserves_contents_and_null_termination",
+      "normal_wal_is_shared_and_reopened_without_data_loss",
+      "reserved_empty_slice_conversion_discards_freed_capacity",
+      "transaction_rollback_preserves_committed_data"
+    ]
+  },
+  "guard_tests": {
+    "old": 92,
+    "new": 19,
+    "distinct_total": 111,
+    "failed": 0,
+    "ignored": 0
+  },
+  "probe_tests": [
+    "queries_and_normal_reads",
+    "zero_buffers_and_full_vector_remain_empty",
+    "tempfile_persist_and_cleanup"
+  ],
+  "probe_manifest": "[package]\nname = \"qh-rustix-safe-probe\"\nversion = \"0.0.0\"\nedition = \"2021\"\npublish = false\n[workspace]\n[dependencies]\nrustix = { version = \"=1.1.6\", features = [\"fs\"] }\ntempfile = \"=3.27.0\"\n",
+  "probe_source": "// FR// Sonde synthétique exécutée exclusivement contre rustix 1.1.6 corrigé.\n// EN// Synthetic probe executed exclusively against fixed rustix 1.1.6.\n#[cfg(test)]\nmod tests {\n    use rustix::fs::*;\n    use std::mem::MaybeUninit;\n    fn fixture() -> (tempfile::TempDir, std::path::PathBuf, std::fs::File) {\n        let dir = tempfile::tempdir().unwrap();\n        let path = dir.path().join(\"synthetic\");\n        let file = std::fs::File::create(&path).unwrap();\n        setxattr(&path, \"user.qh_safe\", b\"safe\", XattrFlags::empty()).unwrap();\n        (dir, path, file)\n    }\n    #[test]\n    fn queries_and_normal_reads() {\n        let (_dir, path, file) = fixture();\n        assert_eq!(getxattr_query(&path, \"user.qh_safe\").unwrap(), 4);\n        assert_eq!(lgetxattr_query(&path, \"user.qh_safe\").unwrap(), 4);\n        assert_eq!(fgetxattr_query(&file, \"user.qh_safe\").unwrap(), 4);\n        assert!(listxattr_query(&path).unwrap() > 0);\n        assert!(llistxattr_query(&path).unwrap() > 0);\n        assert!(flistxattr_query(&file).unwrap() > 0);\n        let mut bytes = [0u8; 8];\n        assert_eq!(getxattr(&path, \"user.qh_safe\", &mut bytes).unwrap(), 4);\n        assert_eq!(&bytes[..4], b\"safe\");\n    }\n    #[test]\n    fn zero_buffers_and_full_vector_remain_empty() {\n        let (_dir, path, file) = fixture();\n        let mut bytes = [0u8; 0];\n        assert_eq!(getxattr(&path, \"user.qh_safe\", &mut bytes).unwrap(), 0);\n        assert_eq!(lgetxattr(&path, \"user.qh_safe\", &mut bytes).unwrap(), 0);\n        assert_eq!(fgetxattr(&file, \"user.qh_safe\", &mut bytes).unwrap(), 0);\n        assert_eq!(listxattr(&path, &mut bytes).unwrap(), 0);\n        assert_eq!(llistxattr(&path, &mut bytes).unwrap(), 0);\n        assert_eq!(flistxattr(&file, &mut bytes).unwrap(), 0);\n        let mut uninit: [MaybeUninit<u8>; 0] = [];\n        assert!(getxattr(&path, \"user.qh_safe\", &mut uninit).unwrap().0.is_empty());\n        assert!(listxattr(&path, &mut uninit).unwrap().0.is_empty());\n        let mut full = vec![42u8];\n        assert_eq!(full.len(), full.capacity());\n        assert_eq!(getxattr(&path, \"user.qh_safe\", rustix::buffer::spare_capacity(&mut full)).unwrap(), 0);\n        assert_eq!(full, vec![42]);\n    }\n    #[test]\n    fn tempfile_persist_and_cleanup() {\n        use std::io::{Read, Seek, SeekFrom, Write};\n        let dir = tempfile::tempdir().unwrap();\n        let mut file = tempfile::NamedTempFile::new_in(dir.path()).unwrap();\n        file.write_all(b\"synthetic safe data\").unwrap();\n        let path = dir.path().join(\"persisted\");\n        let mut persisted = file.persist(&path).unwrap();\n        persisted.seek(SeekFrom::Start(0)).unwrap();\n        let mut data = String::new();\n        persisted.read_to_string(&mut data).unwrap();\n        assert_eq!(data, \"synthetic safe data\");\n        drop(persisted);\n        let folder = dir.path().to_owned();\n        dir.close().unwrap();\n        assert!(!folder.exists());\n    }\n}\n",
+  "probe_lock_sha256": "1529f7f6474b40787c3524d08a8bfaf70e300a3987fad8f551c1c396f315a15b",
+  "probe_lock_rustix": {
+    "name": "rustix",
+    "version": "1.1.6",
+    "source": "registry+https://github.com/rust-lang/crates.io-index",
+    "checksum": "e5e76742e5294153d4dde1207dbec5bdd81eef6fabdc0d2118babadabfd858aa",
+    "dependencies": [
+      "bitflags",
+      "errno",
+      "libc",
+      "linux-raw-sys",
+      "windows-sys"
+    ]
+  },
+  "graph": {
+    "default_before": 499,
+    "default_after": 499,
+    "all_before": 501,
+    "all_after": 501,
+    "only_change": "rustix@1.1.5 -> rustix@1.1.6",
+    "other_feature_edge_target_changes": []
+  },
+  "source_xattr_blob": "c948edee88c72dd6e190f7cbd19dabbdb20b3172",
+  "source_matches_official_fix": true,
+  "zero_length_checks": 6,
+  "query_functions": 6,
+  "exposure": {
+    "all_target_consumer": "tempfile 3.27.0 -> native-tls 0.2.18 -> reqwest 0.12.28",
+    "macos_graph_present": true,
+    "linux_graph_present": false,
+    "android_graph_present": false
+  },
+  "preservation": {
+    "initial_files": 335,
+    "unchanged": 332,
+    "modified_archived": 3,
+    "added": 12,
+    "deleted": 0,
+    "mode_changes": 0
+  },
+  "files": {
+    "Cargo.lock": {
+      "git_blob": "801fd340a7212594f5bcf9bf3807609bc0b010cf",
+      "sha256": "c53a12fbb5500b288827d1dc17ef5775e8d09939851989e73c2907a61035f0d8",
+      "mode": "100644"
+    },
+    "Scripts/check-sqlite-rustsec.py": {
+      "git_blob": "17a9ea0ff4fbc930084e1cc58b502f9fcbd21e55",
+      "sha256": "ac320326cdf4d5a939e949da2fb318153544cf65fcc7ba5378cf8dd582f72d8e",
+      "mode": "100644"
+    },
+    "docs/validation/rust-178/check-ported-graph.cjs": {
+      "git_blob": "5eafe3b3c4e8bf18ac762bbec2d44220a12c67e1",
+      "sha256": "5a7c42181decefcebd47a8d340e77066b3ac9018a0efb82006446c0b3074c195",
+      "mode": "100644"
+    },
+    "docs/history/rustix-20261119/Cargo.lock": {
+      "git_blob": "061a4d76816d167f8e3316ebc8220f85f1209e6e",
+      "sha256": "97ad73ef040ed498097a1bb43bbc15148b6271c766b9ef0807017109aa812c49",
+      "mode": "100644"
+    },
+    "docs/history/rustix-20261119/Scripts/check-sqlite-rustsec.py": {
+      "git_blob": "54d174ee466dcde245ac92c71424e9813ef81032",
+      "sha256": "ed8221b594946d5e2c02813fcc7af13d5236e474accb9d86684daf108126b750",
+      "mode": "100644"
+    },
+    "docs/history/rustix-20261119/docs/validation/rust-178/check-ported-graph.cjs": {
+      "git_blob": "56295cd704a640aa54ee467b26fcd5a8d37fcb17",
+      "sha256": "9d050422e8f836ac6be36f156f55077ff408c6491ca98bc782a26f31b96bbaf4",
+      "mode": "100644"
+    },
+    "docs/history/rustix-20261119/PORT.json": {
+      "git_blob": "4c088578dfd14ce25d4b31d4f0d80a4bee18aaf5",
+      "sha256": "c07d25e0c2d5b599b7c523e2983f35bdd1501b0fe3125b140125670be39fc9e7",
+      "mode": "100644"
+    },
+    "docs/history/rustix-20261119/TRANSFORMATIONS.json": {
+      "git_blob": "6e2a036eda5ce850f63d4ac7982e738f1f1f4b18",
+      "sha256": "8a48bfd42cd612e8905d436bc79c276520ce897aabfbc0ace50bba4e176216b4",
+      "mode": "100644"
+    },
+    "docs/history/rustix-20261119/SOURCES.json": {
+      "git_blob": "92b9136c1efca46f3f2989ef422d94779f96af5d",
+      "sha256": "cc73ba2a2cfc821cb786257aad53061c4b69727b7f12f1c18652912e360a3b1b",
+      "mode": "100644"
+    },
+    "docs/history/rustix-20261119/graph-before.json": {
+      "git_blob": "241006e498321fa3ee34940c7194d1e50d1cc71a",
+      "sha256": "e8ce7233a41c735c830aeb06d952095d74b638bade4bfc4d1d0859794ec5d0e6",
+      "mode": "100644"
+    },
+    "docs/history/rustix-20261119/graph-all-before.json": {
+      "git_blob": "2a919ed2121e757a2f5585ce43f5b9ecb7739a26",
+      "sha256": "1a66e38cc2889d4026886831d509005eef02bd621d8a0ea95662edd5c7033aea",
+      "mode": "100644"
+    },
+    "Scripts/check-rustix-rustsec.py": {
+      "git_blob": "21eaac296ad642511de7f27610b9a7b827f71fe9",
+      "sha256": "9fd7177124aa9a4db62559d7fa49b0bfa58276350725bea61f0f8dabd04292db",
+      "mode": "100644"
+    },
+    "tests/dependency_updates/rustix-rustsec.test.cjs": {
+      "git_blob": "9ebe7e6e9576321ca767d4dc3c0d368a1c74e0e1",
+      "sha256": "de66c54548f88fc6264b1103396899fa72ece4ad620a24d940cce39cab204ea4",
+      "mode": "100644"
+    }
+  },
+  "temporary_logs": {
+    "build-debug": {
+      "sha256": "83e8e7e74f785129bba9e0768e88cd01afd5599b61037cb2efa0eb25a991102a",
+      "bytes": 24291,
+      "exit": 0,
+      "original_bytes_published": false
+    },
+    "test-debug": {
+      "sha256": "5a36bcc3ca81afbd73bf7559c67e7bd2a0726ead475db685ad9db6538f27afbd",
+      "bytes": 26956,
+      "exit": 0,
+      "original_bytes_published": false
+    },
+    "build-release": {
+      "sha256": "ee1639641d202b2363d9f12aab4f3e220b222a3044519a3216c64bdab5adb6ef",
+      "bytes": 24683,
+      "exit": 0,
+      "original_bytes_published": false
+    },
+    "test-release": {
+      "sha256": "edeba660ae51fe0eddd4a75b8856120fa561d27a99ab94bf61fc6ead1b01d296",
+      "bytes": 27360,
+      "exit": 0,
+      "original_bytes_published": false
+    },
+    "build-all": {
+      "sha256": "54faa18ae41cdb47f24050674c8a6d950f071afba9d26b3a6c16c5649732c413",
+      "bytes": 23824,
+      "exit": 0,
+      "original_bytes_published": false
+    },
+    "clippy": {
+      "sha256": "8094a6acfd0dfc706c6a15673c1e26718bb01eb9ecc095c7b49b543f61754260",
+      "bytes": 25509,
+      "exit": 101,
+      "original_bytes_published": false
+    },
+    "fmt": {
+      "sha256": "da1951a1e0bc27635864a41ec829664a717c88e0dd779c4af28022fed688631d",
+      "bytes": 4711,
+      "exit": 1,
+      "original_bytes_published": false
+    },
+    "probe": {
+      "sha256": "310d03da6304db32fa95108bde2fcb63d654b916a2c92cab3750730c3d80f3e7",
+      "bytes": 989,
+      "exit": 0,
+      "original_bytes_published": false
+    },
+    "android": {
+      "sha256": "cf8b8f9ebd77b3ab155e141677090e5498578d3d6f6e7e670763c664164a019f",
+      "bytes": 72793,
+      "exit": 101,
+      "original_bytes_published": false
+    },
+    "android-probe": {
+      "sha256": "5c79b02c9e09aee3ba10362fa7d1fc7a5cdd17a98939e262a5f7325cc6d6edc9",
+      "bytes": 446,
+      "exit": 0,
+      "original_bytes_published": false
+    },
+    "guard-tests": {
+      "sha256": "a05feef3a5d75965551d1344f58c7f5b4cc9ad88b41de825cd4bb8d36f6bde97",
+      "bytes": 8130,
+      "exit": 0,
+      "original_bytes_published": false
+    },
+    "guard-positive": {
+      "sha256": "1e9c9d3b37d5af41b92474abc2bbbd83d0ec22deff359600bbdc10704c4082db",
+      "bytes": 3069,
+      "exit": 0,
+      "original_bytes_published": false
+    }
+  },
+  "limits": [
+    "MSRV exact1.65 not tested",
+    "No application Android/APK/AAB/GrapheneOS run",
+    "No native Windows/macOS/GUI",
+    "CI snapshot to inspect after publication",
+    "Strict audit/clippy/fmt remain failed",
+    "No license policy changed;no full license audit"
+  ],
+  "intermediate_incidents": [
+    "Cargo update redirected6Windowsedges;restored all;lockedmetadata accepted",
+    "Preparation AST Attribute error;completed explicitly before validation",
+    "Selecting rustix as inactive Android workspace dependency panicked Cargo101;isolated probe Android check passed"
+  ]
+}
