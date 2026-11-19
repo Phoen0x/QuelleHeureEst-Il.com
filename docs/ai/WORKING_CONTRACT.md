@@ -132,3 +132,10 @@ Le mini-bilan final comporte :
 - Le registre est un **index de décisions, motifs, exceptions et preuves**, pas un nouveau système d'autorisation. Une possibilité de bypass ne vaut jamais permission de fusion ; une approbation de workflow ne remplace pas une revue indépendante ; un fait ancien ne vaut pas preuve actuelle.
 - Après chaque arbitrage durable, corriger ou compléter l'entrée concernée uniquement sur une branche **explicitement autorisée**, avec date, statut, liens et limites. Conserver les originaux historiques sans les réécrire. En cas de contradiction ou d'information inaccessible, documenter l'écart et solliciter la décision humaine nécessaire.
 - Si le registre demeure dans une PR non fusionnée, le signaler expressément : il n'est pas automatiquement disponible pour un agent qui démarre sur `main`. Cette référence **n'autorise ni fusion ni contournement**.
+
+## 16. Centralisation Drive et source de vérité GitHub — décision du 19 novembre 2026
+
+- Tous les fichiers Google Drive du projet doivent se trouver dans **le seul dossier racine privé** `QuelleHeureEst-Il?.com` ou ses sous-dossiers. Vérifier l'existant avant création et détecter les dispersions ; ne pas déplacer les éléments de provenance ambiguë.
+- Publier sur GitHub, après contrôle de confidentialité et licences, les informations techniques durables et **publiables** : code, décisions, analyses, rapports, preuves expurgées, limites et relais. Garder les originaux privés uniquement dans Drive.
+- Préserver l'identité, les permissions et l'historique lors des déplacements ; pas de suppression, copie ou changement de partage sans autorisation explicite. Ne pas inscrire sur GitHub les URL/identifiants privés de Drive.
+- Consulter le [protocole détaillé](STOCKAGE_DRIVE_ET_PUBLICATION_GITHUB.md). Une PR non fusionnée n'est pas automatiquement disponible depuis `main`.
