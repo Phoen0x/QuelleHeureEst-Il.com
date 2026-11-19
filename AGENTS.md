@@ -91,3 +91,10 @@ Before moving information from a conversation, PR or connected app into this **p
 ## Multi-repository startup — ChatGPT and Codex only
 
 At the start or resumption of Phoen0x work, **ChatGPT and Codex only** follow the [lightweight protocol](docs/ai/STARTUP_CHATGPT_CODEX_PHOEN0X.md): review project pages, READMEs and licenses for every accessible repository, then investigate only relevant sources. Reuse unchanged SHA-verified context; report missing reads. This instruction does not apply to Claude or Bolt.
+
+## Rangement Google Drive et connaissances publiables
+
+- Tout fichier Google Drive relevant du projet est rangé dans l'unique dossier racine privé `QuelleHeureEst-Il?.com` ou ses descendants, jamais dans un autre espace du Drive.
+- GitHub reste la source de vérité versionnée de toute connaissance technique durable **publiable** ; les archives privées ne sont ni copiées ni exposées sur GitHub.
+- Protéger les identifiants/URL privés, permissions, historiques et fichiers originaux ; aucune suppression ni réorganisation ambiguë sans autorisation.
+- Appliquer la [règle détaillée de stockage et publication](docs/ai/STOCKAGE_DRIVE_ET_PUBLICATION_GITHUB.md). Tant que la PR documentaire n'est pas fusionnée, cette règle doit être fournie explicitement à tout agent travaillant sur `main`.
